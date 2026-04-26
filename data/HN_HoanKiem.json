@@ -1,0 +1,1043 @@
+[
+  {
+    "id": "0251",
+    "name": "Phở BÁT ĐÀN 7 MÓN",
+    "address": "49 P.Bát Đàn, Hàng Bồ, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0341192,
+    "lng": 105.841136,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "sáng",
+      "tối"
+    ],
+    "semantic_text": "Phở gia truyền nổi tiếng với nước dùng đậm đà, bánh phở dai ngon và thịt bò tươi. Không gian bình dân, đông khách, thường phải xếp hàng. Phù hợp cho bữa sáng, tối nhanh gọn, trải nghiệm ẩm thực Hà Nội đích thực.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777102532/APNQkAFomce1pSgYAsHN_H1cgc7rHhDRDwQPmpPZ4_2MAHErauwqiA-cM_G1jFpBogTEh5S5SNLuot3R0r1sgyCE8ailQ-rlFENsCotAtcGuISG6CqNypgjtAsEuZOTbqSEOCNe-KymmxZZpwban_s1360-w1360-h1020-rw_vpom5q.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0252",
+    "name": "Phở 10 Lý Quốc Sư",
+    "address": "10 P. Lý Quốc Sư, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0304962,
+    "lng": 105.8462089,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Một trong những thương hiệu phở bò được yêu thích nhất Hà Nội. Nước dùng trong, ngọt thanh, thịt bò thái mỏng mềm. Không gian rộng rãi, sạch sẽ hơn các quán phở truyền thống khác. Lý tưởng cho bữa ăn gia đình, bạn bè.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777102892/pho-10-ly-quoc-su_cpdvcg.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02438257338"
+  },
+  {
+    "id": "0253",
+    "name": "Phở Thìn Bờ Hồ",
+    "address": "19 P. Hàng Vôi, French Quarter, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0302419,
+    "lng": 105.8565462,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Phở tái lăn nổi tiếng với hương vị đặc trưng, thịt bò được xào nhanh tay trên chảo lớn. Nước dùng béo ngậy, thơm lừng. Quán nằm ngay cạnh Hồ Gươm, rất tiện lợi để thưởng thức sau khi dạo chơi. Phong cách bình dân, nhanh gọn.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777103133/caing-vaio-16772329566681341538903-702-0-1370-1275-crop-16772332733512116635604_yjrnxk.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0339253464"
+  },
+  {
+    "id": "0254",
+    "name": "Bún chả Hương Liên",
+    "address": "24 P. Lê Văn Hưu, Phan Chu Trinh, Cửa Nam, Hà Nội, Việt Nam",
+    "lat": 21.0181373,
+    "lng": 105.8538926,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bún chả nổi tiếng thế giới sau khi Tổng thống Obama ghé thăm. Thịt nướng thơm lừng, chả viên mềm mọng, nước chấm đậm đà. Không gian 3 tầng, sạch sẽ, phục vụ nhanh chóng. Phù hợp cho du khách và những ai muốn thử món bún chả trứ danh.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777103279/Bun-cha-huong-lien_b86kpc.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02439434106"
+  },
+  {
+    "id": "0255",
+    "name": "Bún Chả Đắc Kim",
+    "address": "1 P. Hàng Mành, Hàng Gai, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0322492,
+    "lng": 105.8436014,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bún chả lâu đời, nổi tiếng với miếng chả nướng to, đậm đà và nem cua bể giòn rụm. Giá có phần cao hơn mặt bằng chung nhưng chất lượng luôn được đảm bảo. Không gian hơi nhỏ, mang đậm nét cổ kính phố cổ. Thích hợp cho những ai muốn trải nghiệm hương vị truyền thống.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777103534/caption_pjlwnv.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02438287060"
+  },
+  {
+    "id": "0256",
+    "name": "Bún chả 74 Hàng Quạt",
+    "address": "74 P. Hàng Quạt, Phố cổ Hà Nội, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0325441,
+    "lng": 105.8462551,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "trưa"
+    ],
+    "semantic_text": "Một quán bún chả vỉa hè được người dân địa phương yêu thích. Chả nướng than hoa thơm lừng, nước chấm vừa miệng. Không gian đơn giản, phục vụ nhanh. Rất lý tưởng cho bữa trưa bình dân, muốn hòa mình vào nhịp sống phố phường Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777121466/image_voub33.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0974519846"
+  },
+  {
+    "id": "0257",
+    "name": "Chả Cá Lăng Ngon 3B cơ sở 1",
+    "address": "115B P. Phùng Hưng, Hàng Mã, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0351175,
+    "lng": 105.8433652,
+    "avg_price": 150000,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Cá lăng tươi ngon được tẩm ướp đậm đà, chiên trên chảo nóng cùng hành thì là, ăn kèm bún, lạc rang và mắm tôm. Không gian cổ kính, truyền thống. Trải nghiệm ẩm thực độc đáo, phù hợp cho du khách và những buổi họp mặt trang trọng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777122552/unnamed_dzxmjk.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0888820990"
+  },
+  {
+    "id": "0258",
+    "name": "Chả Cá Thăng Long",
+    "address": "6B P. Đường Thành, Cửa Đông, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.033777,
+    "lng": 105.8456891,
+    "avg_price": 200000,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Một địa chỉ chả cá lăng được đánh giá cao với chất lượng cá tươi ngon và tẩm ướp vừa vặn. Không gian rộng rãi, sạch sẽ và hiện đại hơn so với Lã Vọng truyền thống. Phục vụ chuyên nghiệp. Lựa chọn tốt cho bữa ăn ấm cúng cùng gia đình, bạn bè hoặc tiếp khách.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777122957/caption_jol6pa.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02438245115"
+  },
+  {
+    "id": "0259",
+    "name": "Bún Riêu Cua Hàng Bạc",
+    "address": "11 P. Hàng Bạc, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0336887,
+    "lng": 105.8508917,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa"
+    ],
+    "semantic_text": "Quán bún riêu cua bình dân nhưng nức tiếng khu phố cổ. Nước dùng đậm đà vị cua đồng, gạch cua béo ngậy, topping đa dạng. Không gian vỉa hè đặc trưng. Phù hợp cho bữa sáng, trưa nhanh gọn và muốn thưởng thức món ăn đường phố truyền thống.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777123312/3E2BD936-5B86-4C2A-B8A7-446556EB6AEC_tsdooo.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "01255660304"
+  },
+  {
+    "id": "0260",
+    "name": "Bún Thang Lan Lùn",
+    "address": "5 P. Hàng Thiếc, Hàng Gai, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0337051,
+    "lng": 105.8479686,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Bún thang thanh tao, tinh tế với nước dùng gà trong vắt, sợi bún nhỏ, và hàng chục nguyên liệu thái chỉ cầu kỳ. Hương vị nhẹ nhàng, dễ chịu. Không gian giản dị, truyền thống. Rất hợp cho những ai muốn tìm kiếm món ăn thanh đạm nhưng đầy hương vị.",
+    "image_url": "",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0934437557"
+  },
+  {
+    "id": "0261",
+    "name": "Xôi Yến",
+    "address": "35b P. Nguyễn Hữu Huân, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0337304,
+    "lng": 105.8519397,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán xôi nổi tiếng bậc nhất Hà Nội, mở cửa gần như 24/7. Xôi dẻo thơm, nhiều loại topping hấp dẫn như thịt kho tàu, gà nướng, pate, chả, trứng ốp. Không gian đông đúc, nhộn nhịp. Phù hợp cho mọi bữa ăn trong ngày, đặc biệt là ăn đêm.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777123718/vn-11134259-7r98o-lwazbcbd1syj6d_resize_ss640x400_qfuxzq.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02439263427"
+  },
+  {
+    "id": "0262",
+    "name": "Bánh Mì 25",
+    "address": "25 P. Hàng Cá, Hàng Bồ, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.036113,
+    "lng": 105.848577,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Bánh mì kẹp được đánh giá cao bởi du khách và người dân địa phương. Vỏ bánh giòn tan, nhân đa dạng (pate, thịt nướng, trứng, xúc xích) và rau tươi. Giá cả phải chăng, phục vụ nhanh. Tuyệt vời cho bữa ăn nhẹ hoặc mang đi.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777123897/banh-mi-25-hanoi-vietnam-W26NYN_krhd4a.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0942548214"
+  },
+  {
+    "id": "0263",
+    "name": "Bánh Cuốn Gia Truyền Thanh Vân",
+    "address": "14 P P. Hàng Gà, Hàng Bồ, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0361078,
+    "lng": 105.8469777,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bánh cuốn bình dân với hương vị truyền thống. Bánh cuốn nóng hổi, mỏng mịn, nhân thịt mộc nhĩ thơm ngon, ăn kèm chả quế và nước chấm chua ngọt. Không gian nhỏ, phục vụ nhanh. Lý tưởng cho bữa sáng nhẹ nhàng hoặc ăn vặt buổi trưa.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777124062/banh-cuon-gia-truyen_wvwf5i.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02438280108"
+  },
+  {
+    "id": "0264",
+    "name": "Nộm Toàn Béo",
+    "address": "20 P.Hàm Long, Phan Chu Trinh, Cửa Nam, Hà Nội, Việt Nam",
+    "lat": 21.0190865,
+    "lng": 105.8511164,
+    "avg_price": 50000,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Món nộm bò khô chua cay mặn ngọt hài hòa, là món ăn vặt được yêu thích. Bò khô dai, gân bò sần sật, đu đủ xanh giòn. Quán vỉa hè, đông khách. Phù hợp cho những buổi chiều tụ tập bạn bè hoặc muốn ăn nhẹ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777124352/N-M-To-N-B-O-20-H-M-Long_a93b76e564864ebfacf66449279ca4bc_mj1mfu.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0585861268"
+  },
+  {
+    "id": "0265",
+    "name": "Nem Nướng Nha Trang Quế Hoa",
+    "address": "23 P. Hồ Hoàn Kiếm, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0319953,
+    "lng": 105.8506662,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán lâu năm, nem nướng thơm lừng, ăn kèm rau sống, bánh đa và nước chấm đậu phộng béo ngậy. Không gian đơn giản, đậm chất đường phố. Một lựa chọn tuyệt vời cho bữa ăn vặt hoặc trải nghiệm ẩm thực địa phương.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777124566/01_20SGD_3330_20Nem_20N_C6_B0_E1_BB_9Bng_20Nha_20Trang_20Qu_E1_BA_BF_20Hoa_20and_20their_20Grilled_20Spring_20Rolls_20_20Hanoi_20in_20Vietnam_nzxdob.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0982115448"
+  },
+  {
+    "id": "0266",
+    "name": "Kem Tràng Tiền",
+    "address": "35 Tràng Tiền, Cửa Nam, Hà Nội, Việt Nam",
+    "lat": 21.0248821,
+    "lng": 105.8521475,
+    "avg_price": 20000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Thương hiệu kem huyền thoại của Hà Nội, gắn liền với tuổi thơ nhiều thế hệ. Kem que, kem ốc quế với nhiều hương vị truyền thống như cốm, đậu xanh, sữa dừa. Không gian cổ điển, luôn đông khách. Hoàn hảo cho món tráng miệng giải nhiệt, đặc biệt vào mùa hè.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777124743/caption_gukuba.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0986257979"
+  },
+  {
+    "id": "0267",
+    "name": "Miến Lươn Đông Thịnh",
+    "address": "87 Hàng Điếu, Cửa Đông, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0318642,
+    "lng": 105.8442892,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Miến lươn giòn hoặc lươn mềm với nước dùng đậm đà, thơm mùi lươn đồng. Quán nhỏ, đông đúc, nằm trong khu phố cổ. Phù hợp cho bữa sáng, trưa hoặc tối, là món ăn đặc trưng của Hà Nội. Đặc biệt thích hợp cho những người yêu thích lươn.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777124903/photo0jpg_ey3l88.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02438267943"
+  },
+  {
+    "id": "0268",
+    "name": "Mỳ Vằn Thắn - Hủ Tíu",
+    "address": "9A P. Đinh Liệt, Hàng Đào, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.032479,
+    "lng": 105.8493611,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Mì vằn thắn với sợi mì dai, nước dùng ngọt thanh, tôm thịt đậm đà, rau cải tươi xanh. Quán nhỏ, vỉa hè, luôn tấp nập khách. Là lựa chọn tốt cho bữa ăn ấm bụng vào buổi sáng, trưa hoặc tối, mang hương vị đặc trưng của ẩm thực Hoa kiều tại Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777125127/vn-11134259-7r98o-lwghgmo3r7iz90_resize_w800_nr09mb.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0269",
+    "name": "Ốc Vi Saigon",
+    "address": "21 P. Gia Ngư, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0329861,
+    "lng": 105.8529282,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bún ốc lâu năm với nước dùng chua cay thanh mát, ốc giòn sần sật và đậu phụ chiên béo ngậy. Nằm trong ngõ nhỏ, mang đậm nét ẩm thực đường phố Hà Nội. Phù hợp cho những ai yêu thích hương vị bún ốc truyền thống, giản dị.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777125406/290571990_5246867798725961_2411314037283019046_n_ca2c1550b02f4c5d903f4de3942d7237_master_pz5ltx.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0888323342"
+  },
+  {
+    "id": "0270",
+    "name": "Bún đậu Gốc Đa",
+    "address": "4 Ng. Gạch, Hàng Buồm, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0363591,
+    "lng": 105.8506153,
+    "avg_price": 50000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán bún đậu mắm tôm nổi tiếng, thu hút đông đảo thực khách. Đậu rán giòn vỏ, mềm ruột, nem rán nóng hổi, thịt luộc, chả cốm và mắm tôm pha chuẩn vị. Không gian vỉa hè, đông vui. Lý tưởng cho bữa ăn dân dã, đậm chất Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777125587/goc-da-quan_knswjn.png",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0949505735"
+  },
+  {
+    "id": "0271",
+    "name": "Bánh Gối Lý Quốc Sư",
+    "address": "52 P. Lý Quốc Sư, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0293406,
+    "lng": 105.8466424,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Bánh gối chiên giòn rụm với nhân thịt mộc nhĩ trứng cút béo ngậy, ăn kèm nước chấm chua ngọt và rau sống. Món ăn vặt quen thuộc của người Hà Nội. Không gian bình dân, vỉa hè. Thích hợp cho những buổi chiều se lạnh hoặc ăn vặt cùng bạn bè.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777125746/15042020090034646-1_resize_ytdlna.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0946656056"
+  },
+  {
+    "id": "0272",
+    "name": "Bún Ngan Nhàn",
+    "address": "11 Ng. Trung Yên, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0334143,
+    "lng": 105.8499708,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "trưa"
+    ],
+    "semantic_text": "Quán bún ngan nổi tiếng với nước dùng đậm đà vị ngan, thịt ngan luộc mềm ngọt. Bạn có thể chọn bún ngan trộn hoặc bún ngan chan. Không gian khá nhỏ, đông khách. Phù hợp cho bữa ăn giản dị nhưng chất lượng, được nhiều người địa phương ưa chuộng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777126034/photo-6-15922050946111544109985_fl778z.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0373373088"
+  },
+  {
+    "id": "0273",
+    "name": "Quán Ăn Ngon",
+    "address": "18 P. Phan Bội Châu, Cửa Nam, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0263017,
+    "lng": 105.840796,
+    "avg_price": 100000,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng chuyên các món ăn truyền thống Việt Nam từ Bắc vào Nam trong không gian tái hiện chợ quê. Đa dạng món ăn, chất lượng ổn định, phù hợp để thử nhiều món cùng lúc. Không gian rộng rãi, có sân vườn. Lý tưởng cho gia đình, nhóm bạn và du khách muốn trải nghiệm ẩm thực Việt.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777126232/quan-an-ngon-18-phan_lscjsg.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0903246963"
+  },
+  {
+    "id": "0274",
+    "name": "Bún Cá Sâm Cây Si",
+    "address": "5 Ng. Trung Yên, Hàng Bạc, Hoàn Kiếm, Hà Nội 10000, Việt Nam",
+    "lat": 21.0334205,
+    "lng": 105.8479843,
+    "avg_price": 50000,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa"
+    ],
+    "semantic_text": "Bún cá rô đồng với nước dùng chua dịu, ngọt thanh, cá rô đồng chiên giòn thơm béo. Một món ăn dân dã, quen thuộc của người Hà Nội. Quán nhỏ, nằm trong ngõ. Thích hợp cho bữa sáng hoặc trưa nhanh gọn, tìm kiếm hương vị truyền thống.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777126404/Anh-9-1709887537_t0gdab.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0934488561"
+  },
+  {
+    "id": "0275",
+    "name": "Madame Hiền",
+    "address": "48 P. Hàng Bè, Hàng Bạc, Hoàn Kiếm, Hà Nội 10000, Việt Nam",
+    "lat": 21.0327024,
+    "lng": 105.8537627,
+    "avg_price": 400000,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng fine dining chuyên phục vụ ẩm thực Việt Nam truyền thống trong không gian biệt thự Pháp cổ sang trọng, ấm cúng. Món ăn được chế biến tinh tế, trình bày đẹp mắt. Lý tưởng cho những buổi hẹn hò lãng mạn, tiếp khách hoặc kỷ niệm đặc biệt, mang lại trải nghiệm đẳng cấp.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777126677/entrance_ldunsd.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02439381588"
+  },
+  {
+    "id": "0276",
+    "name": "L'essence De Cuisine",
+    "address": "99B P. Hàng Gai, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0315262,
+    "lng": 105.8469907,
+    "avg_price": 400000,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tọa lạc tại khu vực Hàng Gai sầm uất, nhà hàng mang đến trải nghiệm ẩm thực Việt Nam tinh tế trong một không gian kiến trúc Indochine sang trọng và nghệ thuật. Với phong cách phục vụ tận tâm và thực đơn phong phú từ truyền thống đến hiện đại, nơi đây là lựa chọn lý tưởng cho các buổi hẹn hò lãng mạn, gặp gỡ đối tác hoặc thực khách mong muốn thưởng thức tinh hoa ẩm thực giữa lòng phố cổ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777201332/lobby_zfacsr.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0988256226"
+  },
+  {
+      "id": "0277",
+      "name": "Cau Go Vietnamese Cuisine",
+      "address": "9 Đinh Tiên Hoàng, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+      "lat": 21.0320599,
+      "lng": 105.8520709,
+      "avg_price": 650000,
+      "shu": 2,
+      "star": 4.4,
+      "meals": [
+        "trưa",
+        "tối"
+      ],
+      "semantic_text": "Tọa lạc tại vị trí đắc địa nhìn thẳng ra Hồ Gươm, nhà hàng kết hợp hoàn hảo giữa kiến trúc Đông Dương cổ điển và sự tinh tế hiện đại. Thực đơn tập trung vào những món ăn truyền thống từ khắp các vùng miền Việt Nam được nâng tầm về cả hương vị lẫn cách trình bày. Không gian thoáng đãng với tầm nhìn đắt giá, là địa điểm ưu tiên hàng đầu cho các bữa tiệc ngoại giao, tiếp đón khách quốc tế hoặc kỷ niệm gia đình trang trọng.",
+      "image_url": "",
+      "type": [
+        "Quán Việt"
+      ],
+      "phone_num": "0838332688"
+  },
+  {
+      "id": "0278",
+      "name": "Red Bean Ma May",
+      "address": "94 Mã Mây, Hoàn Kiếm, Hà Nội, Việt Nam",
+      "lat": 21.0341501,
+      "lng": 105.853235,
+      "avg_price": 350000,
+      "shu": 2,
+      "star": 4.9,
+      "meals": [
+        "sáng",
+        "trưa",
+        "tối"
+      ],
+      "semantic_text": "Tọa lạc trên con phố Mã Mây cổ kính, nhà hàng mang phong cách đương đại nhưng vẫn giữ được nét quyến rũ của kiến trúc Việt. Thực đơn cung cấp các món ăn Việt Nam truyền thống được trình bày tinh tế cùng các món quốc tế phổ biến. Không gian sang trọng, dịch vụ tận tâm, rất phù hợp cho những ai muốn trải nghiệm ẩm thực chất lượng trong không gian độc lập, không quá ồn ào.",
+      "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777201949/red-bean-restaurant_y1ip6p.jpg",
+      "type": [
+        "Quán Việt"
+      ],
+      "phone_num": "02439263641"
+  },
+  {
+      "id": "0279",
+      "name": "Madam Tran Restaurant - Vietnamese Restaurant & Vegan Foods",
+      "address": "42B P. Đào Duy Từ, Phố cổ Hà Nội, Hoàn Kiếm, Hà Nội, Việt Nam",
+      "lat": 21.0359051,
+      "lng": 105.8526723,
+      "avg_price": 150000,
+      "shu": 3,
+      "star": 4.6,
+      "meals": [
+        "sáng",
+        "trưa",
+        "tối",
+        "khuya"
+      ],
+      "semantic_text": "Nổi tiếng với sự kết hợp hài hòa giữa các món ăn truyền thống Việt Nam và thực đơn chay phong phú, nhà hàng mang đến trải nghiệm ẩm thực lành mạnh và đầy hương vị. Không gian được bài trí tinh tế, ấm cúng với nét kiến trúc phố cổ đặc trưng, tạo cảm giác thư thái cho thực khách. Đây là điểm dừng chân lý tưởng cho những ai tìm kiếm bữa ăn cân bằng, thanh đạm nhưng vẫn giữ được sự tinh túy của gia vị Việt.",
+      "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777202330/Madam-Tran-Restaurant-Vietnamese-Restaurant-Vegan-Foods_3f4275397fbfced2c9398c6ca5ee6e1f_ugoadt.jpg",
+      "type": [
+        "Quán Việt",
+        "Đồ chay"
+      ],
+      "phone_num": "0916400858"
+  },
+  {
+    "id": "0280",
+    "name": "Cafe Giảng",
+    "address": "39 P. Nguyễn Hữu Huân, Lý Thái Tổ, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0334664,
+    "lng": 105.8519377,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cà phê trứng nổi tiếng nhất Hà Nội, với công thức gia truyền đặc biệt. Hương vị béo ngậy của trứng hòa quyện với cà phê thơm lừng. Không gian nhỏ hẹp, cổ kính, đông đúc. Phù hợp cho những ai muốn trải nghiệm thức uống độc đáo của Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777202453/Cafe-Giang-Hanoi-Vietnam_flvb5m.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0989892298"
+  },
+  {
+    "id": "0281",
+    "name": "Cà Phê Lâm",
+    "address": "60 P. Nguyễn Hữu Huân, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0332749,
+    "lng": 105.8517196,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cà phê truyền thống lâu đời, lưu giữ nhiều bức tranh của các danh họa. Hương vị cà phê đậm đà, đúng chất Hà Nội xưa. Không gian cổ kính, trầm mặc. Lý tưởng cho những người yêu thích cà phê truyền thống và muốn tìm một góc bình yên giữa phố cổ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777202576/2-cafe_20b_C3_ACnh_20d_C3_A2n_201_end0us.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02438245940"
+  },
+  {
+    "id": "0282",
+    "name": "Cafe Năng Tường",
+    "address": "6 P. Hàng Bạc, Phố cổ Hà Nội, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0337586,
+    "lng": 105.8511716,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cà phê có từ lâu đời, nổi tiếng với hương vị cà phê rang xay nguyên chất, đậm đà. Không gian giản dị, mang đậm dấu ấn thời gian. Thích hợp cho những người lớn tuổi hoặc những ai muốn thưởng thức cà phê phin truyền thống giữa lòng phố cổ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777202754/photo0jpg_wthrl3.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0988401093"
+  },
+  {
+    "id": "0283",
+    "name": "Cộng Cà Phê",
+    "address": "27 P. Nhà Thờ, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0288138,
+    "lng": 105.8470608,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Chuỗi cà phê với phong cách thiết kế độc đáo, lấy cảm hứng từ thời bao cấp. Đồ uống đa dạng, nổi bật là cà phê cốt dừa. Không gian thoải mái, có cả trong nhà và ngoài trời. Phù hợp cho giới trẻ, bạn bè tụ tập hoặc làm việc.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777202883/caption_ofwmlk.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0869353605"
+  },
+  {
+    "id": "0284",
+    "name": "The Coffee House",
+    "address": "23M P. Hai Bà Trưng, Hàng Bài, Cửa Nam, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0239774,
+    "lng": 105.8530593,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chuỗi cà phê hiện đại với không gian rộng rãi, thoáng đãng và thiết kế trẻ trung. Đồ uống đa dạng từ cà phê, trà đến đá xay. Thích hợp cho học sinh, sinh viên, dân văn phòng làm việc, học nhóm hoặc gặp gỡ bạn bè trong không gian thoải mái.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777203264/RwaLSoi_gjvddk.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "18006936"
+  },
+  {
+    "id": "0285",
+    "name": "Highlands Coffee",
+    "address": "1 P. Hàng Bạc, Hàng Bạc, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0336926,
+    "lng": 105.8511049,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Chuỗi cà phê phổ biến với cà phê truyền thống Việt Nam và các loại đồ uống hiện đại. Không gian thoải mái, tiện lợi. Phù hợp cho mọi đối tượng khách hàng muốn thưởng thức đồ uống nhanh gọn.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777203514/503dd9ae29d1da8f83c0_pee5jp.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02471085262"
+  },
+  {
+    "id": "0286",
+    "name": "Starbucks Hàng Điếu",
+    "address": "54 Hàng Điếu, Cửa Đông, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0327742,
+    "lng": 105.8421962,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Thương hiệu cà phê quốc tế nổi tiếng với các loại cà phê espresso, trà và đồ uống đá xay. Không gian sang trọng, hiện đại, phục vụ chuyên nghiệp. Lý tưởng cho những ai quen thuộc với phong cách Starbucks hoặc muốn tìm một không gian làm việc tiện nghi.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777206249/photo1720100029282-1720100029550283839087_msq4tv.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02432013803"
+  },
+  {
+    "id": "0287",
+    "name": "Puku Cafe & Sports Bar",
+    "address": "16-18 P. Tống Duy Tân, Hàng Bông, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.029338,
+    "lng": 105.8409414,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán cà phê kiêm bar, mở cửa 24/7, nằm ngay phố Tây Tạ Hiện. Thực đơn đa dạng từ đồ uống đến đồ ăn nhẹ và món chính. Không gian năng động, trẻ trung. Phù hợp cho du khách, những người muốn tụ tập bạn bè hoặc tìm một nơi ăn uống, giải trí xuyên đêm.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777206536/eyJidWNrZXQiOiJ1dGEtaW1hZ2VzIiwia2V5IjoicGxhY2VfaW1nL0NIZjNhUm80VG42dVpsdGxfTy1wNUEiLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjY0MCwiaGVpZ2h0Ijo2NDAsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsInRvRm9ybWF0IjogIndlYnAifX0_mrpmku.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02439381745"
+  },
+  {
+    "id": "0288",
+    "name": "Loading T Café",
+    "address": "8 P. Chân Cầm, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0305219,
+    "lng": 105.845921,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa"
+    ],
+    "semantic_text": "Quán cà phê ẩn mình trong một ngôi nhà Pháp cổ, mang phong cách vintage độc đáo. Không gian ấm cúng, hoài cổ với ban công nhỏ nhìn xuống phố. Đồ uống ngon, đặc biệt là cà phê trứng. Lý tưởng cho những người tìm kiếm sự yên tĩnh và lãng mạn.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777206779/dgq2yi4ay9tttnyi6edv_yy9ek7.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0903342000"
+  },
+  {
+    "id": "0289",
+    "name": "All Day Coffee",
+    "address": "37 P. Quang Trung, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0205794,
+    "lng": 105.8457806,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cà phê với không gian rộng rãi, thiết kế hiện đại, nhiều góc sống ảo. Thực đơn đồ uống và bánh ngọt đa dạng, chất lượng. Phù hợp cho giới trẻ, làm việc, học tập hoặc hẹn hò. Là điểm đến lý tưởng cho những ai thích không gian đẹp và thoải mái.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777207060/alldaycoffee12_kxn7wk.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02466868090"
+  },
+  {
+    "id": "0290",
+    "name": "Maison Marou Flagship Hanoi",
+    "address": "91 P. Thợ Nhuộm, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0220496,
+    "lng": 105.8472171,
+    "avg_price": 90000,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Thương hiệu chocolate thủ công cao cấp từ Việt Nam. Tại đây, bạn có thể thưởng thức các loại đồ uống và bánh ngọt làm từ chocolate nguyên chất, cùng không gian sang trọng, tinh tế. Phù hợp cho những tín đồ của chocolate và muốn trải nghiệm hương vị độc đáo.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777207363/2022-10-09_4ce694b22d3e42859ef022feb00bd45f_ssaoi4.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0291",
+    "name": "Tranquil Books & Coffee",
+    "address": "15B Trần Hưng Đạo, Mai Đình, Cửa Nam, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0195669,
+    "lng": 105.8538854,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cà phê sách mang đến không gian yên tĩnh, ấm cúng, lý tưởng để đọc sách, làm việc hoặc trò chuyện nhẹ nhàng. Đồ uống ngon, có cả trà và cà phê. Phù hợp cho những ai tìm kiếm sự tĩnh lặng giữa lòng phố cổ ồn ào.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777212528/Tranquil-Books-Coffee-15b-Tr-N-H-Ng-O_5f8d7ebf0f4162390ff638eb87bc67a1_plguk8.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0389775317"
+  },
+  {
+    "id": "0292",
+    "name": "Pizza 4P's Tràng Tiền",
+    "address": "43 Tràng Tiền, Cửa Nam, Hà Nội, Việt Nam",
+    "lat": 21.033254,
+    "lng": 105.846881,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng pizza nổi tiếng với pizza nướng củi tươi ngon, phô mai tự làm và các món Ý - Nhật sáng tạo. Không gian hiện đại, ấm cúng và dịch vụ chuyên nghiệp. Lý tưởng cho các bữa ăn gia đình, bạn bè hoặc hẹn hò, tìm kiếm ẩm thực quốc tế chất lượng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777212733/pizza-4p-trang-tien-43-trang-tien-hoan-kiem-ha-noi_jt9ros.png",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "19006043"
+  },
+  {
+    "id": "0293",
+    "name": "El Gaucho Tràng Tiền",
+    "address": "11 Tràng Tiền, Cửa Nam, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0244253,
+    "lng": 105.8563604,
+    "avg_price": 2500000,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng bò bít tết Argentina cao cấp, nổi tiếng với thịt bò nhập khẩu chất lượng hảo hạng và cách chế biến chuyên nghiệp. Không gian sang trọng, lịch sự, dịch vụ đẳng cấp. Phù hợp cho những dịp đặc biệt, bữa tối sang trọng hoặc tiếp đãi đối tác.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777213145/El-Gaucho-Tr-Ng-Ti-N_thumb_ca31b891a8f39416de6d9a60e2306682_tpfku7.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "02438247280"
+  },
+  {
+    "id": "0294",
+    "name": "Samé bistrot & wine",
+    "address": "29 P. Lê Thánh Tông, Phan Chu Trinh, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0196323,
+    "lng": 105.8587368,
+    "avg_price": 500000,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bistro Pháp với các món ăn Âu đơn giản nhưng tinh tế, mang hương vị gia đình. Không gian ấm cúng, thân thiện, với phong cách trang trí đậm chất Pháp. Thích hợp cho bữa ăn nhẹ nhàng, hẹn hò hoặc tụ tập bạn bè trong không gian ấm áp.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777213826/a-wine-bar-located-in_sj0sd3.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0983682353"
+  },
+  {
+    "id": "0295",
+    "name": "Bếp Thái Koh Yam",
+    "address": "2D P. Quang Trung, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0268681,
+    "lng": 105.8500744,
+    "avg_price": 250000,
+    "shu": 4,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chuỗi nhà hàng Thái Lan nổi tiếng với các món ăn đặc trưng như Pad Thai, Tom Yum, cà ri xanh đỏ. Hương vị Thái Lan chuẩn mực, có thể điều chỉnh độ cay. Không gian hiện đại, sạch sẽ, phù hợp cho bữa ăn gia đình hoặc nhóm bạn yêu thích ẩm thực Thái.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777214042/kg_sg_web-06-06_9b0576e1edcb4a8a81e0039e736a93ff_hroz17.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0342555386"
+  },
+  {
+    "id": "0296",
+    "name": "Khrua Baan Thai",
+    "address": "37 P. Bát Đàn, Cửa Đông, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0336292,
+    "lng": 105.8469029,
+    "avg_price": 250000,
+    "shu": 5,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Thái Lan với menu đa dạng, hương vị đậm đà và cay nồng đặc trưng. Nổi bật với các món gỏi, cà ri và lẩu Thái. Không gian được trang trí theo phong cách Thái, ấm cúng. Phù hợp cho những ai muốn khám phá ẩm thực Thái đích thực và thích ăn cay.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777214190/a-new-business-serving_dlp6n5.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0763166266"
+  },
+  {
+    "id": "0297",
+    "name": "McDonald’s Hồ Gươm",
+    "address": "2 P. Hàng Bài, Tràng Tiền, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.025365,
+    "lng": 105.8504615,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Chuỗi nhà hàng thức ăn nhanh nổi tiếng thế giới. Các món burger, khoai tây chiên, gà rán và đồ uống đa dạng. Không gian sạch sẽ, hiện đại, phục vụ nhanh chóng. Phù hợp cho bữa ăn nhanh gọn, gia đình có trẻ nhỏ hoặc những ai muốn thưởng thức ẩm thực quốc tế.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777214436/2-1512216052-width650height433_vl06vw.jpg",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "02439338080"
+  },
+  {
+    "id": "0298",
+    "name": "KFC",
+    "address": "3C P. Lê Thái Tổ, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0319949,
+    "lng": 105.8512454,
+    "avg_price": 150000,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Thương hiệu thức ăn nhanh Hàn Quốc với các món burger, gà rán, khoai tây chiên và cơm trộn. Không gian năng động, trẻ trung. Phù hợp cho bữa ăn nhanh, tiện lợi, đặc biệt là các bạn trẻ và gia đình muốn thưởng thức ẩm thực fast food châu Á.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777214791/tp-10b-1618-7665-1742623313731-1742623313833399016567_kywc0j.jpg",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0299",
+    "name": "TOUS les JOURS",
+    "address": "51 P. Lý Thường Kiệt, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0235854,
+    "lng": 105.8462309,
+    "avg_price": 50000,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh và cà phê phong cách Pháp-Hàn. Đa dạng các loại bánh ngọt, bánh mì, bánh kem và đồ uống. Không gian sạch sẽ, hiện đại. Thích hợp cho bữa sáng nhẹ nhàng, ăn vặt buổi chiều hoặc mua bánh mang về làm quà. Sản phẩm tươi ngon mỗi ngày.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777214923/109914.1_ujy3vb.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02466884112"
+  },
+  {
+      "id": "0300",
+      "name": "MBAKES CREPE",
+      "address": "11 Đinh Tiên Hoàng, Hàng Trống, Hoàn Kiếm, Hà Nội, Việt Nam",
+      "lat": 21.0320093,
+      "lng": 105.8521285,
+      "avg_price": 50000,
+      "shu": 1,
+      "star": 4.8,
+      "meals": [
+        "sáng",
+        "trưa",
+        "tối",
+        "khuya"
+      ],
+      "semantic_text": "Tiệm bánh chuyên về các dòng bánh Crepe và bánh ngọt thủ công mang đậm phong cách Pháp hiện đại. Nổi tiếng với lớp vỏ bánh mềm mịn và nhân kem tươi thanh nhẹ, không gian quán tuy nhỏ nhắn nhưng cực kỳ xinh xắn và đậm chất nghệ thuật. Đây là điểm đến yêu thích của những tín đồ hảo ngọt, phù hợp cho một buổi hẹn hò nhẹ nhàng hoặc mua mang đi thưởng thức khi dạo quanh phố cổ.",
+      "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777215182/caption_iz63zo.jpg",
+      "type": [
+        "Tiệm bánh"
+      ],
+      "phone_num": "0915668102"
+  }
+]
