@@ -63,24 +63,24 @@
   },
   {
     "id": "0254",
-    "name": "Bún chả Hương Liên",
-    "address": "24 P. Lê Văn Hưu, Phan Chu Trinh, Cửa Nam, Hà Nội, Việt Nam",
-    "lat": 21.0181373,
-    "lng": 105.8538926,
+    "name": "Bun Cha Ta Hanoi",
+    "address": "21 P. Nguyễn Hữu Huân, Lý Thái Tổ, Hoàn Kiếm, Hà Nội, Việt Nam",
+    "lat": 21.0343417,
+    "lng": 105.854475,
     "avg_price": 50000,
     "shu": 1,
-    "star": 4.1,
+    "star": 4.4,
     "meals": [
       "sáng",
       "trưa",
       "tối"
     ],
-    "semantic_text": "Quán bún chả nổi tiếng thế giới sau khi Tổng thống Obama ghé thăm. Thịt nướng thơm lừng, chả viên mềm mọng, nước chấm đậm đà. Không gian 3 tầng, sạch sẽ, phục vụ nhanh chóng. Phù hợp cho du khách và những ai muốn thử món bún chả trứ danh.",
-    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777103279/Bun-cha-huong-lien_b86kpc.jpg",
+    "semantic_text": "Tọa lạc trên con phố cà phê Nguyễn Hữu Huân sầm uất, nhà hàng chuyên phục vụ bún chả truyền thống với hương vị đậm đà và nguyên liệu tươi ngon. Không gian quán được thiết kế mộc mạc với nội thất tre nứa, mang đậm hơi thở làng quê Việt Nam nhưng vẫn đảm bảo sự sạch sẽ và dịch vụ chuyên nghiệp. Đây là địa điểm lý tưởng cho thực khách muốn thưởng thức đặc sản Hà Nội trong không gian ấm cúng, thân thiện, phù hợp cho cả khách du lịch và người dân địa phương.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1777218369/f070e27f8cf54f8898c2e073939b833d_IMG_8545__281_29_ozfymq.jpg",
     "type": [
       "Quán Việt"
     ],
-    "phone_num": "02439434106"
+    "phone_num": "0966848389"
   },
   {
     "id": "0255",
