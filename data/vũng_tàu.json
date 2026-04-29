@@ -1,0 +1,1019 @@
+[
+  {
+    "id": "0351",
+    "name": "Nhà hàng Gành Hào 1",
+    "address": "03 Trần Phú, Phường 5, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3600349,
+    "lng": 107.0602722,
+    "avg_price": 300000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gành Hào là nhà hàng hải sản nổi tiếng nhất Vũng Tàu với view biển tuyệt đẹp, không gian rộng rãi và menu hải sản tươi sống đa dạng, phù hợp cho gia đình và tiệc tùng.",
+    "image_url": "https://lh3.googleusercontent.com/p/AF1QipO3Be6IJkXdugRpxlPnoBcdjg0QyQLs1atMFsE5",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543550900"
+  },
+  {
+    "id": "0352",
+    "name": "Bánh Khọt Gốc Vú Sữa",
+    "address": "14 Nguyễn Trường Tộ, Phường 3, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3403287,
+    "lng": 107.0788244,
+    "avg_price": 60000.0,
+    "shu": 1,
+    "star": 3.2,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Địa chỉ ăn bánh khọt trứ danh Vũng Tàu, bánh đổ giòn rụm với tôm tươi, ăn kèm rau sống và nước mắm chua ngọt đặc trưng, thường xuyên đông đúc vào cuối tuần.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434407/B%C3%A1nh-Kh%E1%BB%8Dt-G%E1%BB%91c-V%C3%BA-S%E1%BB%AFa_hjjuhh.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543523465"
+  },
+  {
+    "id": "0353",
+    "name": "Lẩu Cá Đuối Hoàng Minh",
+    "address": "44 Trương Công Định, Phường 3, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3442428,
+    "lng": 107.0794541,
+    "avg_price": 200000.0,
+    "shu": 2,
+    "star": 3.7,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán lẩu cá đuối lâu đời và nổi tiếng nhất nhì Vũng Tàu, nước lẩu chua thanh nấu cùng măng chua và thịt cá đuối săn chắc, là món ăn không thể bỏ qua khi đến đây.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434406/B%C3%A1nh-Kh%E1%BB%8Dt-C%C3%B4-Ba-V%C5%A9ng-T%C3%A0u_a2lmwp.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0898786878"
+  },
+  {
+    "id": "0354",
+    "name": "Bánh Khọt Cô Ba Vũng Tàu",
+    "address": "1 Hoàng Hoa Thám, Phường 3, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3413835,
+    "lng": 107.0784992,
+    "avg_price": 80000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian quán sang trọng, sạch sẽ hơn các quán bình dân, chuyên phục vụ bánh khọt đa dạng các loại nhân như tôm, mực, chả cá với hương vị đậm đà.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434406/B%C3%A1nh-Kh%E1%BB%8Dt-C%C3%B4-Ba-V%C5%A9ng-T%C3%A0u_a2lmwp.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543526165"
+  },
+  {
+    "id": "0355",
+    "name": "Hủ Tiếu Mực Ông Già Cali",
+    "address": "  ",
+    "lat": 10.3392425,
+    "lng": 107.0848231,
+    "avg_price": 70000.0,
+    "shu": 1,
+    "star": 3.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Món hủ tiếu mực tươi ngon với nước dùng ngọt thanh từ xương và mực, sợi hủ tiếu dai, mực giòn sần sật, rất thích hợp cho bữa sáng hoặc ăn đêm.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434507/H%E1%BB%A7-Ti%E1%BA%BFu-M%E1%BB%B1c-%C3%94ng-Gi%C3%A0-Cali_l1fxg1.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0903099955"
+  },
+  {
+    "id": "0356",
+    "name": "Ốc Tự Nhiên 2",
+    "address": "34 Trần Phú, Phường 1, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.353653,
+    "lng": 107.0634364,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ốc view biển cực chill, giá cả bình dân nhưng chất lượng ổn định. Thực đơn phong phú các loại ốc, sò, tôm được chế biến hấp dẫn theo khẩu vị địa phương.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434524/%E1%BB%90c-T%E1%BB%B1-Nhi%C3%AAn-2_fdks3b.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0903376468"
+  },
+  {
+    "id": "0357",
+    "name": "Bánh Bông Lan Trứng Muối Gốc Cột Điện",
+    "address": "17B Nguyễn Trường Tộ, Phường 2, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3404423,
+    "lng": 107.078593,
+    "avg_price": 35000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh nổi tiếng nhất Vũng Tàu, chuyên bánh bông lan nướng lò than thủ công thơm nức, cốt bánh mềm mịn kết hợp trứng muối bùi béo.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434405/B%C3%A1nh-B%C3%B4ng-Lan-Tr%E1%BB%A9ng-Mu%E1%BB%91i-G%E1%BB%91c-C%E1%BB%99t-%C4%90i%E1%BB%87n_gn1kuf.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0913815096"
+  },
+  {
+    "id": "0358",
+    "name": "Lẩu Cá Đuối 7 Lượm",
+    "address": "37 Nguyễn Trường Tộ, Phường 3, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3436696,
+    "lng": 107.0794051,
+    "avg_price": 180000.0,
+    "shu": 2,
+    "star": 3.6,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lẩu cá đuối 7 Lượm nổi tiếng với nguồn hải sản tươi sống và nước lẩu đậm đà, không gian quán rộng rãi thoáng mát, là lựa chọn tốt thay thế cho Hoàng Minh khi đông khách.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434509/L%E1%BA%A9u-C%C3%A1-%C4%90u%E1%BB%91i-7-L%C6%B0%E1%BB%A3m_lhedep.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0902380480"
+  },
+  {
+    "id": "0359",
+    "name": "Nhà Hàng Vạn Chài",
+    "address": "02-04 Lê Hồng Phong, Phường Thắng Tam, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3471438,
+    "lng": 107.0932351,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng thiết kế độc đáo hình vòm tre, phục vụ hải sản cao cấp. Thực khách có thể tự tay chọn hải sản tươi sống tại bể để đầu bếp chế biến trực tiếp.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777435668/Nh%C3%A0_H%C3%A0ng_V%E1%BA%A1n_Ch%C3%A0i_nqfvfr.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0901558866"
+  },
+  {
+    "id": "0360",
+    "name": "Bánh canh ghẹ Anh Vy",
+    "address": "109 Võ Thị Sáu, Phường 2, Thành phố Vũng Tàu, Bà Rịa - Vũng Tàu",
+    "lat": 10.3346616,
+    "lng": 107.0857771,
+    "avg_price": 65000.0,
+    "shu": 1,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán bánh canh ghẹ nổi tiếng với sợi bánh dai mềm, nước dùng sệt ngọt từ ghẹ tươi, topping gồm thịt ghẹ chắc ngọt, chả cá và trứng cút.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434401/B%C3%A1nh_canh_gh%E1%BA%B9_Anh_Vy_hejsvs.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0913709837"
+  },
+  {
+    "id": "0361",
+    "name": "Hải Sản Thành Phát 1",
+    "address": "334 Trần Phú, Phường 5, Thành phố Vũng Tàu",
+    "lat": 10.375215,
+    "lng": 107.049382,
+    "avg_price": 350000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng hải sản nổi tiếng nằm trên đường Trần Phú, cung cấp đa dạng các loại hải sản tươi sống với không không gian ngắm biển tuyệt đẹp, thích hợp cho gia đình và khách đoàn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434505/H%E1%BA%A3i_S%E1%BA%A3n_Th%C3%A0nh_Ph%C3%A1t_1_nw7mck.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0339467379"
+  },
+  {
+    "id": "0362",
+    "name": "Bánh Khọt Miền Đông",
+    "address": "59 Bà Huyện Thanh Quan, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.347521,
+    "lng": 107.076842,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán bánh khọt lâu đời được yêu thích bởi hương vị đậm đà, vỏ bánh giòn rụm và tôm tươi ngọt, phục vụ chu đáo, giá cả phải chăng.",
+    "image_url":"https://res.cloudinary.com/dqovodsqf/image/upload/v1777434402/B%C3%A1nh_Kh%E1%BB%8Dt_Mi%E1%BB%81n_%C4%90%C3%B4ng_nusada.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543810392"
+  },
+  {
+    "id": "0363",
+    "name": "Quán nướng Cô Nên",
+    "address": "06 Trần Phú, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.344821,
+    "lng": 107.069412,
+    "avg_price": 200000.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Điểm đến lý tưởng cho các tín đồ hải sản và đồ nướng. Quán có không gian thoáng đãng, các món nướng được tẩm ướp đậm đà, hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434402/B%C3%A1nh_Kh%E1%BB%8Dt_Mi%E1%BB%81n_%C4%90%C3%B4ng_nusada.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0907090606"
+  },
+  {
+    "id": "0364",
+    "name": "Bún Súng Vũng Tàu",
+    "address": "26 Phạm Hồng Thái, Phường 7, Thành phố Vũng Tàu",
+    "lat": 10.358241,
+    "lng": 107.085412,
+    "avg_price": 45000.0,
+    "shu": 2,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Món bún súng đặc sản độc đáo của Vũng Tàu mang hương vị biển cả, nước dùng ngọt thanh, ăn kèm với các loại hải sản tươi ngon.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434411/B%C3%BAn_S%C3%BAng_V%C5%A9ng_T%C3%A0u_ua2fqd.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543833451"
+  },
+  {
+    "id": "0365",
+    "name": "Nhà hàng Cây Bàng",
+    "address": "93-95 Trần Phú, Phường 5, Thành phố Vũng Tàu",
+    "lat": 10.3695391,
+    "lng": 107.060717,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 3.7,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Một trong những nhà hàng hải sản lâu đời và có tiếng tại Vũng Tàu. Không gian rộng rãi, view sát biển lý tưởng để thưởng thức hải sản tươi sống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434512/Nh%C3%A0_H%C3%A0ng_C%C3%A2y_B%C3%A0ng_ejjitd.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543839251"
+  },
+  {
+    "id": "0366",
+    "name": "Ốc Thiên Nhiên",
+    "address": "245 Trương Công Định, Phường 3, Thành phố Vũng Tàu",
+    "lat": 10.349812,
+    "lng": 107.082415,
+    "avg_price": 120000.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ốc bình dân nhưng cực kỳ hút khách nhờ thực đơn phong phú, ốc tươi ngon và cách chế biến đa dạng, nêm nếm vừa miệng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434524/%E1%BB%90c_Thi%C3%AAn_Nhi%C3%AAn_g2cyum.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933527262"
+  },
+  {
+    "id": "0367",
+    "name": "Bánh mì không tên",
+    "address": "58 Lý Thường Kiệt, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.342412,
+    "lng": 107.075412,
+    "avg_price": 25000.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh mì tuy không có tên nhưng luôn tấp nập khách nhờ phần nhân đậm đà, pate béo ngậy và vỏ bánh mì luôn giòn rụm.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434404/B%C3%A1nh_m%C3%AC_kh%C3%B4ng_t%C3%AAn_lkbwy9.jpg",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "Đang cập nhật"
+  },
+  {
+    "id": "0368",
+    "name": "Cơm Niêu Rau Tập Tàng",
+    "address": "12 - 14 Trần Hưng Đạo, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.343418,
+    "lng": 107.0773637,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mang đến hương vị bữa cơm gia đình Việt ấm cúng với món cơm niêu dẻo thơm, dùng kèm các món ăn dân dã, đậm đà bản sắc.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434424/C%C6%A1m_Ni%C3%AAu_Rau_T%E1%BA%ADp_T%C3%A0ng_eagdul.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0967890678"
+  },
+  {
+    "id": "0369",
+    "name": "Mì Thảy Nghiệp Ký",
+    "address": "127 Ba Cu, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.345812,
+    "lng": 107.079215,
+    "avg_price": 60000.0,
+    "shu": 1,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Tối"
+    ],
+    "semantic_text": "Quán mì truyền thống nổi tiếng with tuyệt chiêu 'thảy' mì điêu luyện. Sợi mì dai ngon tự làm kết hợp nước dùng sườn non ngọt thanh.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434510/M%C3%AC_Th%E1%BA%A3y_Nghi%E1%BB%87p_K%C3%BD_xvoulz.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543859600"
+  },
+  {
+    "id": "0370",
+    "name": "Hải sản Lâm Đường",
+    "address": "125B Trần Phú, Phường 5, Thành phố Vũng Tàu",
+    "lat": 10.373241,
+    "lng": 107.051215,
+    "avg_price": 350000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng hải sản có view biển lãng mạn. Thực đơn đa dạng các món hải sản tươi sống được đánh bắt trong ngày, chế biến chuyên nghiệp.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434505/H%E1%BA%A3i_s%E1%BA%A3n_L%C3%A2m_%C4%90%C6%B0%E1%BB%9Dng_ijjcsl.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543553279"
+  },
+  {
+    "id": "0371",
+    "name": "Bún chả cá Quy Nhơn - 79",
+    "address": "39 Lê Hồng Phong, Phường 7, Thành phố Vũng Tàu",
+    "lat": 10.3442454,
+    "lng": 107.0772833,
+    "avg_price": 40000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mang hương vị miền Trung đến Vũng Tàu với tô bún chả cá đậm đà, nước dùng chua ngọt thanh mát và chả cá dai giòn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434408/B%C3%BAn_ch%E1%BA%A3_c%C3%A1_Quy_Nh%C6%A1n_-_79_ck1ge0.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0933615617"
+  },
+  {
+    "id": "0372",
+    "name": "Nhà hàng Ocean Bay",
+    "address": "115 Trần Phú, Phường 5, Thành phố Vũng Tàu",
+    "lat": 10.372141,
+    "lng": 107.052412,
+    "avg_price": 500000.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tổ hợp nhà hàng sang trọng với không gian mở hướng biển tuyệt đẹp. Phục vụ ẩm thực hải sản cao cấp và các món ăn đa dạng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434513/Nh%C3%A0_h%C3%A0ng_Ocean_Bay_qii30q.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543522222"
+  },
+  {
+    "id": "0373",
+    "name": "Cơm Niêu Quê Nhà",
+    "address": "158 Lê Hồng Phong, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.349821,
+    "lng": 107.088412,
+    "avg_price": 180000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Đúng như tên gọi, quán chuyên phục vụ cơm niêu và các món ăn đồng quê Việt Nam trong không gian bài trí mộc mạc, gần gũi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434424/C%C6%A1m_Ni%C3%AAu_Qu%C3%AA_Nh%C3%A0_orpeoc.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543542268"
+  },
+  {
+    "id": "0374",
+    "name": "Lẩu Băng Chuyền Kichi Kichi",
+    "address": "40 Lý Thường Kiệt, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.3483815,
+    "lng": 107.074601,
+    "avg_price": 280000.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thương hiệu lẩu băng chuyền nổi tiếng với hàng chục món nhúng lẩu đa dạng, từ thịt bò Mỹ đến hải sản tươi ngon, ăn không giới hạn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434508/L%E1%BA%A9u_B%C4%83ng_Chuy%E1%BB%81n_Kichi_Kichi_ziyhsz.png",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02547300337"
+  },
+  {
+    "id": "0375",
+    "name": "Bò Né Ô Kìa",
+    "address": "648 Trương Công Định, Phường 8, Thành phố Vũng Tàu",
+    "lat": 10.368412,
+    "lng": 107.102412,
+    "avg_price": 55000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Tối"
+    ],
+    "semantic_text": "Điểm ăn sáng quen thuộc với món bò né nóng hổi, thịt bò mềm ngọt ngấm sốt đậm đà, ăn kèm pate, ốp la và bánh mì giòn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434407/B%C3%B2_N%C3%A9_%C3%94_K%C3%ACa_nh4ebu.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0908123456"
+  },
+  {
+    "id": "0376",
+    "name": "Phở Bình",
+    "address": "29A Nguyễn Trường Tộ, Phường 3, Thành phố Vũng Tàu",
+    "lat": 10.342812,
+    "lng": 107.079212,
+    "avg_price": 55000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán phở truyền thống lâu đời với nước dùng được ninh từ xương bò nhiều giờ, thơm mùi hoa hồi thảo quả, bánh phở mềm và thịt bò tươi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434397/Ph%E1%BB%9F_B%C3%ACnh_dot4td.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543852033"
+  },
+  {
+    "id": "0377",
+    "name": "Súp cua cô Tư",
+    "address": "72A Nam Kỳ Khởi Nghĩa, Phường Thắng Tam, Thành phố Vũng Tàu",
+    "lat": 10.3456642,
+    "lng": 107.0816021,
+    "avg_price": 35000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "Chiều",
+      "Tối"
+    ],
+    "semantic_text": "Gánh súp cua nóng hổi, đặc sánh với đầy ắp thịt cua, óc heo, trứng cút. Món ăn xế chiều lý tưởng để lót dạ khi dạo phố.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434400/S%C3%BAp_cua_c%C3%B4_T%C6%B0_f4ntvn.png",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0393957950"
+  },
+  {
+    "id": "0378",
+    "name": "Sushi Tokyo Vũng Tàu",
+    "address": "201 Thống Nhất mới, Phường 8, Thành phố Vũng Tàu",
+    "lat": 10.354812,
+    "lng": 107.094212,
+    "avg_price": 300000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng chuyên ẩm thực Nhật Bản với các món sushi, sashimi tươi sống được chế biến tỉ mỉ, giữ nguyên hương vị truyền thống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434401/Sushi_Tokyo_V%C5%A9ng_T%C3%A0u_odntki.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "02543585858"
+  },
+  {
+    "id": "0379",
+    "name": "Cơm Tấm Hướng Dương",
+    "address": "140 Nam Kỳ Khởi Nghĩa, Phường 2, Thành phố Vũng Tàu",
+    "lat": 10.341812,
+    "lng": 107.084212,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán cơm tấm tấp nập khách với miếng sườn nướng than hoa thơm lừng, chả cua béo ngậy và nước mắm kẹo đặc trưng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434425/C%C6%A1m_T%E1%BA%A5m_H%C6%B0%E1%BB%9Bng_D%C6%B0%C6%A1ng_m4tnqb.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543522223"
+  },
+  {
+    "id": "0380",
+    "name": "Munterra Vung Tau",
+    "address": "8 Thủ Khoa Huân, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.3498203,
+    "lng": 107.073768,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian kết hợp giữa nhà hàng và quán cà phê mang phong cách hiện đại, phục vụ đa dạng các món ăn u Á và đồ uống pha chế bắt mắt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434511/Munterra_Vung_Tau_dwasfg.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0922387879"
+  },
+  {
+    "id": "0381",
+    "name": "Gỏi cá mai Vườn Xoài",
+    "address": "34/5 Hoàng Hoa Thám, Phường 2, Thành phố Vũng Tàu",
+    "lat": 10.337812,
+    "lng": 107.085212,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nổi tiếng trứ danh với món gỏi cá mai tươi rói, không hề tanh, trộn cùng thính thơm lừng và cuốn bánh tráng chấm nước mắm đậu phộng đậm đà.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434427/G%E1%BB%8Fi_c%C3%A1_mai_V%C6%B0%E1%BB%9Dn_Xo%C3%A0i_koeibz.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543810059"
+  },
+  {
+    "id": "0382",
+    "name": "Bánh khọt Út Loan",
+    "address": "11 Bà Triệu, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.3537345,
+    "lng": 107.0364988,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán bánh khọt nhỏ xinh nhưng luôn hút khách bởi những chiếc bánh được đổ giòn rụm, tôm to tươi ngọt ăn kèm rau sống sạch sẽ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434403/B%C3%A1nh_kh%E1%BB%8Dt_%C3%9At_Loan_i83d28.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909924888"
+  },
+  {
+    "id": "0383",
+    "name": "Hải sản Bè Hào Đực Nhỏ",
+    "address": "Thôn 2, Đảo Long Sơn, Thành phố Vũng Tàu",
+    "lat": 10.452412,
+    "lng": 107.098412,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Trải nghiệm thưởng thức hải sản trên bè nổi độc đáo. Hàu và các loại hải sản được nuôi trực tiếp tại bè, đảm bảo độ tươi ngon tuyệt đối.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434428/H%E1%BA%A3i_s%E1%BA%A3n_B%C3%A8_H%C3%A0o_%C4%90%E1%BB%B1c_Nh%E1%BB%8F_vjyg1z.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0905123456"
+  },
+  {
+    "id": "0384",
+    "name": "Lẩu đầu cá Bảy Giai",
+    "address": "36 Hoàng Hoa Thám, Phường 2, Thành phố Vũng Tàu",
+    "lat": 10.339412,
+    "lng": 107.082412,
+    "avg_price": 200000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chuyên các món lẩu cá với nước dùng đậm đà, chua cay mặn ngọt hài hòa, thịt cá chắc ngọt ăn kèm với bún và nhiều loại rau xanh.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434508/L%E1%BA%A9u_%C4%91%E1%BA%A7u_c%C3%A1_B%E1%BA%A3y_Giai_n12u7i.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543850113"
+  },
+  {
+    "id": "0385",
+    "name": "Bánh hỏi An Nhất",
+    "address": "Quốc lộ 55, An Nhất, Long Điền, Bà Rịa - Vũng Tàu",
+    "lat": 10.485412,
+    "lng": 107.214512,
+    "avg_price": 80000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Đặc sản truyền thống vùng Long Điền với những cuốn bánh hỏi trắng muốt, dai mềm, ăn cùng thịt nướng xiên que và nước mắm chua ngọt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434401/B%C3%A1nh_h%E1%BB%8Fi_An_Nh%E1%BA%A5t_d7o8bj.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543862356"
+  },
+  {
+    "id": "0386",
+    "name": "Quán Vườn Bàng",
+    "address": "37/4 Nguyễn Thái Học, Phường 7, Thành phố Vũng Tàu",
+    "lat": 10.358412,
+    "lng": 107.091212,
+    "avg_price": 180000.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Chiều",
+      "Tối"
+    ],
+    "semantic_text": "Không gian sân vườn thoáng mát, lý tưởng cho những buổi tụ tập bạn bè với thực đơn phong phú các món nhậu và hải sản nướng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434398/Qu%C3%A1n_V%C6%B0%E1%BB%9Dn_B%C3%A0ng_gbyzql.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543853112"
+  },
+  {
+    "id": "0387",
+    "name": "Phở Quyền",
+    "address": "484 Thống Nhất Mới, Phường 8, Thành phố Vũng Tàu",
+    "lat": 10.3538176,
+    "lng": 107.0364988,
+    "avg_price": 60000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán phở được nhiều người địa phương yêu thích bởi tô phở đầy đặn, nước dùng thanh ngọt tự nhiên từ xương và thịt bò tái mềm.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434404/B%C3%A1nh_M%C3%AC_X%C3%ADu_M%E1%BA%A1i_H%C3%A0ng_Quy%C3%AAn_Chi_Nh%C3%A1nh_2_oa1pym.webp ",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0931212835"
+  },
+  {
+    "id": "0388",
+    "name": "Bánh mì xíu mại Hàng Quyên",
+    "address": "37 Cô Bắc, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.346812,
+    "lng": 107.081212,
+    "avg_price": 30000.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng"
+    ],
+    "semantic_text": "Nổi tiếng with món xíu mại nóng hổi, nước xốt đậm đà chấm cùng bánh mì giòn rụm, là món ăn sáng đặc trưng không thể bỏ qua tại Vũng Tàu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434404/B%C3%A1nh_M%C3%AC_X%C3%ADu_M%E1%BA%A1i_H%C3%A0ng_Quy%C3%AAn_Chi_Nh%C3%A1nh_2_oa1pym.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933123456"
+  },
+  {
+    "id": "0389",
+    "name": "Rau má Bà Già",
+    "address": "03 Đồ Chiểu, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.341412,
+    "lng": 107.074212,
+    "avg_price": 20000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thương hiệu nước rau má lâu năm và nổi tiếng nhất nhì Vũng Tàu, thức uống giải khát thanh mát với nhiều biến tấu độc đáo.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434398/Rau_m%C3%A1_B%C3%A0_Gi%C3%A0_scj4fy.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543853617"
+  },
+  {
+    "id": "0390",
+    "name": "Sữa chua cô Tiên",
+    "address": "Đường lên Hải Đăng, Phường 2, Thành phố Vũng Tàu",
+    "lat": 10.331412,
+    "lng": 107.078212,
+    "avg_price": 15000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Điểm dừng chân quen thuộc trên đường lên ngọn Hải Đăng, nổi tiếng với món sữa chua dẻo mịn, chua ngọt thanh mát và trứng gà lòng đào.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434399/S%E1%BB%AFa_chua_c%C3%B4_Ti%C3%AAn_itboly.webp",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "Đang cập nhật"
+  },
+  {
+    "id": "0391",
+    "name": "Bún riêu tôm Thuận Phúc",
+    "address": "94 Hoàng Hoa Thám, Phường Thắng Tam, Thành phố Vũng Tàu",
+    "lat": 10.339812,
+    "lng": 107.085412,
+    "avg_price": 65000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tô bún riêu độc đáo with phần riêu làm từ tôm biển tươi ngon, nước dùng ngọt thanh vị hải sản, mang đến hương vị mới lạ hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434410/B%C3%BAn_ri%C3%AAu_t%C3%B4m_Thu%E1%BA%ADn_Ph%C3%BAc_er0pab.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0939008788"
+  },
+  {
+    "id": "0392",
+    "name": "Quán Bò Kho Cô Bắc",
+    "address": "12 Cô Bắc, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.3540821,
+    "lng": 107.0631692,
+    "avg_price": 70000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán bò kho lâu đời with hương vị đậm đà, thịt bò gân hầm mềm tơi, nước dùng sánh sệt thơm mùi gia vị đặc trưng, ăn cùng bánh mì hoặc hủ tiếu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434397/Qu%C3%A1n_B%C3%B2_Kho_C%C3%B4_B%E1%BA%AFc_znivw5.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0773055919"
+  },
+  {
+    "id": "0393",
+    "name": "Nhà hàng Hải An",
+    "address": "10 Trần Phú, Phường 1, Thành phố Vũng Tàu",
+    "lat": 10.352125,
+    "lng": 107.066482,
+    "avg_price": 500000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng sở hữu không gian view biển tuyệt đẹp cùng thiết kế sang trọng. Chuyên phục vụ các loại hải sản cao cấp và ẩm thực đa dạng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434513/Nh%C3%A0_h%C3%A0ng_H%E1%BA%A3i_An_uzkoig.png",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543511511"
+  },
+  {
+    "id": "0394",
+    "name": "Panda - BBQ Beer & Hotpot",
+    "address": "150 Hạ Long, Phường 2, Thành phố Vũng Tàu",
+    "lat": 10.3406555,
+    "lng": 107.0734306,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.9,
+    "meals": [
+      "Chiều",
+      "Tối"
+    ],
+    "semantic_text": "Không gian thưởng thức lẩu và đồ nướng BBQ đa dạng, nhâm nhi cùng bia mát lạnh trong không khí sôi động, nhộn nhịp.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434525/Panda_-_BBQ_Beer_Hotpot_jhhfin.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "19004604"
+  },
+  {
+    "id": "0395",
+    "name": "Hải sản Hùng Chi",
+    "address": "F19 Đường Ông Ích Khiêm, phường Thắng Nhì, Vũng Tàu",
+    "lat": 10.3732114,
+    "lng": 107.0809347,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán hải sản bình dân nhưng chất lượng vượt trội. Nguồn hải sản được nhập tươi mỗi ngày, chế biến đa dạng theo khẩu vị ba miền.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434444/H%E1%BA%A3i_s%E1%BA%A3n_H%B9ng_Chi_ka9n0f.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0905965556"
+  },
+  {
+    "id": "0396",
+    "name": "Bún mắm Chị Bé",
+    "address": "26 Tú Xương, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.347812,
+    "lng": 107.082212,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mang đặc sản miền Tây đến phố biển with tô bún mắm đậm đà, thơm lừng, đầy ắp các loại topping như heo quay, tôm, mực và chả cá.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434409/B%C3%BAn_m%E1%BA%AFm_Ch%E1%BB%8B_B%C3%A9_chelzb.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0903123667"
+  },
+  {
+    "id": "0397",
+    "name": "Cơm tấm Lộc",
+    "address": "72 Xô Viết Nghệ Tĩnh, Phường Thắng Tam, Thành phố Vũng Tàu",
+    "lat": 10.3445181,
+    "lng": 107.0830233,
+    "avg_price": 45000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Dĩa cơm tấm chất lượng with miếng sườn nướng to bản, ướp vị đậm đà, hạt cơm tơi xốp ăn kèm mỡ hành và đồ chua giải ngấy.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434426/C%C6%A1m_t%E1%BA%A5m_L%E1%BB%99c_nfuypy.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0865326793"
+  },
+  {
+    "id": "0398",
+    "name": "Chè Hiệp",
+    "address": "167 Ba Cu, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.346412,
+    "lng": 107.081412,
+    "avg_price": 25000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thiên đường ăn vặt with vô số các loại chè truyền thống, trái cây tô và đồ ăn nhẹ, là điểm hẹn quen thuộc của giới trẻ Vũng Tàu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434411/Ch%C3%A8_Hi%E1%BB%87p_luysy9.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02543859600"
+  },
+  {
+    "id": "0399",
+    "name": "Hủ tiếu Nam Vang Nhân Quán",
+    "address": "118 Lê Lai, Phường 3, Thành phố Vũng Tàu",
+    "lat": 10.345823,
+    "lng": 107.078412,
+    "avg_price": 65000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối",
+      "Đêm"
+    ],
+    "semantic_text": "Hủ tiếu Nam Vang chuẩn vị with nước dùng trong vắt, ngọt thanh từ xương ống, topping phong phú gồm thịt băm, tôm, gan và trứng cút.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434506/H%E1%BB%A7_ti%E1%BA%BFu_Nam_Vang_Nh%C3%A2n_Qu%C3%A1n_tjzmks.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02543533445"
+  },
+  {
+    "id": "0400",
+    "name": "Bánh mì chảo Xíu Mại lạp xưởng - Tú Xương",
+    "address": "31 Tú Xương, Phường 4, Thành phố Vũng Tàu",
+    "lat": 10.348215,
+    "lng": 107.081942,
+    "avg_price": 40000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bữa sáng đầy năng lượng with chảo xíu mại lạp xưởng nóng hổi, trứng ốp la béo ngậy, dùng kèm bánh mì giòn tan.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1777434403/B%C3%A1nh_m%C3%AC_ch%E1%BA%A3o_X%C3%ADu_M%E1%BA%A1i_l%E1%BA%A1p_x%C6%B0%E1%BB%9Fng_-_T%C3%BA_X%C6%B0%C6%A1ng_zbghd7.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0908527262"
+  }
+]
