@@ -1,1 +1,4 @@
-google-generativeai
+google.genai
+chromadb
+sentence-transformers
+pandas
