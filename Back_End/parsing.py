@@ -14,14 +14,16 @@ class LLMParser():
 
     def JSON_response(self, user_prompt: str):
         prompt = f"""
-        Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài, nếu thông tin quá sơ sài, không đủ để bạn nhận biết bất cứ gì thì hãy trả về null ở mọi field.
+        Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài, nếu thông tin quá sơ sài thì trả về null/mảng rỗng ở các field tương ứng.
 
         Quy tắc trích xuất:
-        1. "budget": (Integer) Tổng ngân sách. Đổi chữ sang số (VD: "1 củ", "1 tr" -> 1000000). Nếu không đề cập, trả về null. Budget ở đây tính bình quân cho 1 người. Nếu người dùng không đề cập mấy người thì mặc định là 1 người.
+        1. "budget": (Integer) Tổng ngân sách bình quân cho 1 người. Đổi chữ sang số (VD: "1 củ" -> 1000000). Trả về null nếu không đề cập.
         2. "num_meals": (Integer) Số bữa ăn. Mặc định là 3 nếu không nói rõ.
-        3. "meal_tags": (Array of Strings) Các bữa ăn được nhắc đến (chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya"). Trả về mảng rỗng [] nếu không đề cập.
-        4. "type": (Array of Strings) Loại nhà hàng được trả về (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về mảng rỗng [] nếu không đề cập.
-        5. "semantic_query": (String) Tập hợp CÁC TỪ KHÓA còn lại mô tả cảm xúc, không khí, phong cách, view, tiện ích vật lý (máy lạnh, wifi) hoặc trải nghiệm trừu tượng. Gom thành 1 chuỗi string cách nhau bằng dấu phẩy. Trả về null nếu không có.
+        3. "location_pref": (String) Tên Quận/Huyện, Tên đường hoặc khu vực cụ thể. Trả về null nếu không có.
+        4. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Nếu người dùng đưa ra yêu cầu chung (không chỉ định riêng bữa nào), hãy gán yêu cầu đó vào tất cả các bữa ăn được nhắc đến. Mỗi object bao gồm:
+            - "meal": (String) Bắt buộc. Chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya".
+            - "type": (Array of Strings) Loại nhà hàng (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về [] nếu không có.
+            - "semantic_query": (String) Các từ khóa mô tả cảm xúc, không khí, view, hoặc tiện ích (máy lạnh, wifi...). Các từ cách nhau bằng dấu phẩy. Trả về null nếu không có.
 
         Input của người dùng: "{user_prompt}"
         Output JSON: 
@@ -45,5 +47,5 @@ class LLMParser():
 
 if __name__ == "__main__":
     parser = LLMParser()
-    print(parser.JSON_response("Tôi muốn tìm nhà hành ăn sáng, trưa, tối. Kinh phí 2 triệu rưỡi"))
+    print(parser.JSON_response("Tôi muốn tìm nhà hành ăn sáng, trưa, tối. Kinh phí 2 triệu rưỡi. Buổi tối phải là nhà hàng âu, có không khí lãng mạn"))
 
