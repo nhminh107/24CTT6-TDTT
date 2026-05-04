@@ -13,8 +13,8 @@ import requests
 
 
 st.set_page_config(
-    page_title="AI Advisor Portal",
-    page_icon="🧠",
+    page_title="Trợ lý ẩm thực",
+    page_icon=":tomato:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -302,7 +302,7 @@ def generate_response(api_response: dict) -> dict:
 
 def call_restaurant_api(user_input):
     
-    url = "http://127.0.0.1:8000/prompt" 
+    url="http://127.0.0.1:8000/prompt"
     
 
     payload = {"prompt": user_input}
@@ -330,7 +330,7 @@ def process_prompt(user_input: str):
 
     with st.spinner("Đang suy nghĩ..."):
         try:
-            # Giả sử app.post trả về dict
+           
             response = call_restaurant_api(user_input)
 
             fake_response={
@@ -405,7 +405,7 @@ def process_prompt(user_input: str):
             st.session_state.messages.append({
                 "role": "assistant",
                 "content": final_result["text"], # Lưu câu chào
-                "restaurants": final_result["data"], # Lưu list nhà hàng để tí nữa vẽ Card
+                "restaurants": final_result["data"], # Lưu list nhà hàng để  vẽ Card
                 "id": msg_id + "_a",
             })
             
@@ -428,10 +428,11 @@ if "pending_prompt" not in st.session_state:
 
 st.markdown("""
 <div class="main-header">
-    <h1>🧠 Trợ lý AI</h1>
+    <h1>🍅 Trợ lý AI</h1>
     <p>Trợ lý tư vấn ẩm thực thông minh · Phân tích dữ liệu thời gian thực</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
