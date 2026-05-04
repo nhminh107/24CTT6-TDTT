@@ -1,8 +1,9 @@
 from Back_End.CONFIG import DB_PATH
 import chromadb
 from chromadb.utils import embedding_functions
-import pandas as pd 
-import os 
+import pandas as pd
+import os
+import math
 
 class ChromaDBManager: 
     def __init__(self):
@@ -18,6 +19,40 @@ class ChromaDBManager:
             query_texts=[query_text], 
             n_results=n_results
         )
+
+    @staticmethod
+    def _cosine_similarity(vec_a, vec_b):
+        dot = 0.0
+        norm_a = 0.0
+        norm_b = 0.0
+        for val_a, val_b in zip(vec_a, vec_b):
+            dot += val_a * val_b
+            norm_a += val_a * val_a
+            norm_b += val_b * val_b
+        if norm_a == 0.0 or norm_b == 0.0:
+            return 0.0
+        return dot / (math.sqrt(norm_a) * math.sqrt(norm_b))
+
+    def semantic_similarity(self, query_text, ids):
+        if not query_text or not ids:
+            return {rid: 0.0 for rid in ids}
+
+        try:
+            result = self.collection.get(ids=ids, include=["embeddings"])
+        except Exception:
+            return {rid: 0.0 for rid in ids}
+
+        embeddings = result.get("embeddings") or []
+        if not embeddings:
+            return {rid: 0.0 for rid in ids}
+
+        query_embedding = self.ef([query_text])[0]
+        scores = {}
+        result_ids = result.get("ids") or ids
+        for rid, emb in zip(result_ids, embeddings):
+            similarity = self._cosine_similarity(query_embedding, emb)
+            scores[rid] = (similarity + 1.0) / 2.0
+        return scores
     
     def add(self): 
         data_path = os.path.join(DB_PATH, "data.json")
