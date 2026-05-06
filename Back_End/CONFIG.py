@@ -1,4 +1,5 @@
 import os 
+from dotenv import load_dotenv
 
 # Trọng số tổng bằng 1
 Weights = {
