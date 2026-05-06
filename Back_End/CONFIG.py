@@ -1,6 +1,4 @@
 import os 
-user_lat = 0.0
-user_lng = 0.0
 
 # Trọng số tổng bằng 1
 Weights = {

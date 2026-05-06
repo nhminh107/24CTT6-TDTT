@@ -1,7 +1,7 @@
 import itertools
 from math import radians, sin, cos, sqrt, atan2
 import pandas as pd
-from Back_End.CONFIG import Weights, user_lat, user_lng
+from Back_End.CONFIG import Weights
 from Back_End.Database.database import ChromaDBManager
 
 class RestaurantScorer:
@@ -13,7 +13,7 @@ class RestaurantScorer:
         result = scorer.run_scoring_pipeline(filtered_data, parsed_json)
     """
 
-    def __init__(self, db: ChromaDBManager):
+    def __init__(self,user_lat: float, user_lng:float,  db: ChromaDBManager):
         """
         Khởi tạo scorer với vị trí người dùng.
         INPUT:
