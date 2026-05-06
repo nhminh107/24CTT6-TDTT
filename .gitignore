@@ -166,3 +166,6 @@ cython_debug/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+Back_End/Database/chroma.sqlite3
+Back_End/Database/*-*-*-*-*/
