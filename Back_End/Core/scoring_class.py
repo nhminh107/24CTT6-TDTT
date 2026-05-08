@@ -166,6 +166,9 @@ class RestaurantScorer:
         best_avg_score = -1
 
         for combination in itertools.product(*meal_candidates):
+            combo_ids = [str(rest.get('id')) for rest in combination]
+            if len(set(combo_ids)) != len(combo_ids):
+                continue
             current_lat, current_lng = self.user_lat, self.user_lng
             combination_scores = []
             itinerary_records = []
