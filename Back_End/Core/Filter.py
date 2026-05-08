@@ -7,6 +7,7 @@ class RestaurantFilter:
         self.user_prompt = prompt
         self.user_lat = user_lat
         self.user_lng = user_lng
+
     def _calculate_distance(self, df):
         """
         Tính khoảng cách Haversine giữa người dùng và tất cả các nhà hàng.
@@ -66,25 +67,29 @@ class RestaurantFilter:
         
         # Mapping để đồng bộ tên bữa ăn từ LLMParser sang Dataset JSON của bạn
         meal_name_map = {
-            'sáng': 'Sáng',
-            'trưa': 'Trưa',
-            'xế': 'Chiều',
-            'tối': 'Tối',
-            'khuya': 'Khuya'
+            'sáng': 'sáng',
+            'trưa': 'trưa',
+            'xế': 'chiều',
+            'tối': 'tối',
+            'khuya': 'khuya'
         }
+        
+        # Danh sách Blacklist và các bữa ăn chính cần lọc
+        BLACKLIST = ['Quán nước', 'Trà sữa', 'Bar', 'Pub', 'Ăn vặt', 'Tiệm bánh']
+        MAIN_MEALS = ['sáng', 'trưa', 'tối']
         
         # Bước 3: Lọc chi tiết theo từng bữa ăn có trong meals_detail
         meals_detail = self.user_prompt.get('meals_detail', [])
         
         for meal_info in meals_detail:
             meal_key_parser = meal_info.get('meal') # ví dụ: 'sáng'
-            meal_name_data = meal_name_map.get(meal_key_parser) # chuyển thành: 'Sáng'
+            meal_name_data = meal_name_map.get(meal_key_parser) # chuyển thành: 'sáng'
             
             if not meal_name_data:
                 continue
 
             # Lọc ra các quán có phục vụ bữa ăn này
-            meal_df = base_df[base_df['meals'].apply(lambda x: meal_name_data in x if isinstance(x, list) else False)].copy()
+            meal_df = base_df[base_df['meals'].apply(lambda x: meal_name_data.lower() in [str(m).lower() for m in x] if isinstance(x, list) else False)].copy()
             
             # Lọc tiếp theo 'type' (loại quán) TÙY THUỘC VÀO TỪNG BỮA
             req_types = meal_info.get('type', [])
@@ -93,9 +98,16 @@ class RestaurantFilter:
                 meal_df = meal_df[
                     meal_df['type'].apply(lambda x: bool(set(x) & desired_types) if isinstance(x, list) else False)
                 ]
+            else:
+                # Logic Blacklist: Nếu không yêu cầu type cụ thể và là bữa chính, loại bỏ đồ uống/ăn vặt
+                if meal_key_parser in MAIN_MEALS:
+                    meal_df = meal_df[
+                        meal_df['type'].apply(
+                            lambda x: not any(b.lower() in str(t).lower() for t in x for b in BLACKLIST) if isinstance(x, list) else True
+                        )
+                    ]
             
             # Lưu Dataframe đã lọc xong vào Dictionary kết quả
             result_dict[meal_key_parser] = meal_df
             
         return result_dict
-    
