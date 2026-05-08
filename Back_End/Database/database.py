@@ -42,8 +42,14 @@ class ChromaDBManager:
         except Exception:
             return {rid: 0.0 for rid in ids}
 
-        embeddings = result.get("embeddings") or []
-        if not embeddings:
+        embeddings = result.get("embeddings")
+        if embeddings is None:
+            return {rid: 0.0 for rid in ids}
+
+        # embeddings có thể là list hoặc numpy array
+        if getattr(embeddings, "size", None) == 0:
+            return {rid: 0.0 for rid in ids}
+        if hasattr(embeddings, "__len__") and len(embeddings) == 0:
             return {rid: 0.0 for rid in ids}
 
         query_embedding = self.ef([query_text])[0]
