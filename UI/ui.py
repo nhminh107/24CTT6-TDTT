@@ -9,6 +9,11 @@ import time
 import random
 import pandas as pd
 import requests
+from typing import Optional
+from streamlit_searchbox import st_searchbox
+from urllib.parse import quote
+
+API_BASE_URL = "http://127.0.0.1:8000/api/v1"
 
 
 
@@ -277,11 +282,58 @@ tr:hover td { background: rgba(255,255,255,0.03); }
 """, unsafe_allow_html=True)
 
 
+def fetch_map_suggestions(query: str) -> list:
+    if not query:
+        return []
+
+    url = f"{API_BASE_URL}/maps/suggestions"
+    try:
+        response = requests.get(url, params={"q": query}, timeout=8)
+        if response.status_code == 200:
+            return response.json()
+    except Exception:
+        pass
+
+    return []
+
+
+def location_search_callback(search_text: str) -> list:
+    suggestions = fetch_map_suggestions(search_text)
+    st.session_state.location_suggestions = suggestions
+    return [item["description"] for item in suggestions]
+
+
+def format_phone_number(phone_value: Optional[object]) -> str:
+    if phone_value is None:
+        return ""
+    try:
+        phone_float = float(phone_value)
+        phone_int = int(phone_float)
+        if phone_int == 0 and str(phone_value).strip().startswith("0"):
+            phone_str = str(phone_value).strip()
+            return phone_str[:-2] if phone_str.endswith(".0") else phone_str
+        return f"{phone_int}"
+    except (ValueError, TypeError):
+        phone_str = str(phone_value).strip()
+        if phone_str.endswith(".0"):
+            phone_str = phone_str[:-2]
+        return phone_str
+
+
 
 
 def generate_response(api_response: dict) -> dict:
-    if not api_response or api_response.get("status") != "success":
+    if not api_response:
         return {"text": "Lỗi hệ thống...", "data": []}
+
+    status = api_response.get("status")
+    if status != "success":
+        message = (
+            api_response.get("message")
+            or api_response.get("detail")
+            or "Lỗi hệ thống..."
+        )
+        return {"text": message, "data": []}
 
     restaurant_list = api_response.get("result", [])
     
@@ -300,21 +352,23 @@ def generate_response(api_response: dict) -> dict:
     }
 
 
-def call_restaurant_api(user_input):
-    
-    url="http://127.0.0.1:8000/prompt"
-    
-
+def call_restaurant_api(user_input: str, place_id: Optional[str] = None) -> dict:
+    url = f"{API_BASE_URL}/prompt"
     payload = {"prompt": user_input}
-    
-    # try:
-    #     response = requests.post(url, json=payload)
-    #     if response.status_code == 200:
-    #         return response.json() 
-    #     else:
-    #         return {"status": "error", "result": []}
-    # except Exception as e:
-    #     return {"status": "error", "message": str(e)}
+    if place_id:
+        payload["place_id"] = place_id
+
+    try:
+        response = requests.post(url, json=payload, timeout=30)
+        if response.status_code == 200:
+            return response.json()
+        return {
+            "status": "error",
+            "message": response.text,
+            "result": [],
+        }
+    except Exception as e:
+        return {"status": "error", "message": str(e), "result": []}
     
     
 def process_prompt(user_input: str):
@@ -330,75 +384,8 @@ def process_prompt(user_input: str):
 
     with st.spinner("Đang suy nghĩ..."):
         try:
-           
-            response = call_restaurant_api(user_input)
-
-            fake_response={
-                "status":"success",
-                "result":[
-                    {
-                    "id":"0001",
-                    "name":"Ăn Thôi",
-                    "address":"114 Bạch Đằng, Hải Châu, Đà Nẵng",
-                    "lat":16.0682463,
-                    "lng":108.2248133,
-                    "avg_price":150000,
-                    "shu":3,
-                    "star":4.8,
-                    "meals":[
-                    "trưa",
-                    "tối"
-                    ],
-                    "semantic_text":"Quán Việt nổi tiếng nằm ngay bên sông Hàn, được Michelin ghi nhận. Nổi bật với cơm chiên hải sản, sò điệp nướng và tôm tỏi. Luôn đông khách, cần lấy số thứ tự chờ bàn. Không gian thoáng mát, phục vụ nhanh và thân thiện.",
-                    "image_url":"https:\/\/encrypted-tbn0.gstatic.com\/images?q=tbn:ANd9GcT-1PzC5iv80HA3vJ0ziU1rzNCMnBRrLdSPgg&s",
-                    "type":[
-                    "Quán Việt"
-                    ],
-                    "phone_num":"+84 987 824 285"
-                },
-                {
-                    "id":"0002",
-                    "name":"Hải sản Mộc Quán Đà Nẵng",
-                    "address":"26 Tô Hiến Thành, An Hải, Đà Nẵng",
-                    "lat":16.063997,
-                    "lng":108.2415015,
-                    "avg_price":300000,
-                    "shu":3,
-                    "star":4.8,
-                    "meals":[
-                    "trưa",
-                    "tối"
-                    ],
-                    "semantic_text":"Nhà hàng hải sản 5 tầng nổi tiếng nhất Đà Nẵng, được Michelin ghi nhận. Hải sản tươi sống phong phú: tôm hùm, cua, tôm, ngao. Nhân viên nhiệt tình lột vỏ tôm và xử lý hải sản trực tiếp tại bàn. Cần đặt bàn trước vì luôn đông khách.",
-                    "image_url":"https:\/\/hellodanang.vn\/wp-content\/uploads\/2025\/12\/bai-viet-danh-gia-ve-hai-san-moc-quan-da-nang-1764818921.jpg",
-                    "type":[
-                    "Quán Việt"
-                    ],
-                    "phone_num":"+84 905 665 058"
-                },
-                {
-                    "id":"0003",
-                    "name":"Nhà Bếp Xưa Restaurant",
-                    "address":"64B Hà Bổng, An Hải, Đà Nẵng",
-                    "lat":16.066058,
-                    "lng":108.2443163,
-                    "avg_price":120000,
-                    "shu":3,
-                    "star":4.8,
-                    "meals":[
-                    "trưa",
-                    "tối"
-                    ],
-                    "semantic_text":"Quán ăn kiểu xưa mang nét mộc mạc với tre, đèn lồng và không gian ấm cúng. Chuyên các món Việt đặc sắc như Mỳ Quảng, bánh xèo, bún thịt nướng. Không gian nhỏ, thường xuyên đông khách du lịch và dân địa phương.",
-                    "image_url":"https:\/\/dynamic-media-cdn.tripadvisor.com\/media\/photo-o\/2c\/ed\/e7\/e6\/caption.jpg?w=900&h=500&s=1",
-                    "type":[
-                    "Quán Việt"
-                    ],
-                    "phone_num":"+84 906 123 858"
-                }
-            ]
-        }
-            response=fake_response
+            place_id = st.session_state.get("place_id")
+            response = call_restaurant_api(user_input, place_id=place_id)
             
             final_result = generate_response(response)
             
@@ -425,6 +412,13 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 if "pending_prompt" not in st.session_state:
     st.session_state.pending_prompt = None
+if "place_id" not in st.session_state:
+    st.session_state.place_id = None
+if "place_label" not in st.session_state:
+    st.session_state.place_label = ""
+if "location_suggestions" not in st.session_state:
+    st.session_state.location_suggestions = []
+
 
 st.markdown("""
 <div class="main-header">
@@ -432,6 +426,34 @@ st.markdown("""
     <p>Trợ lý tư vấn ẩm thực thông minh · Phân tích dữ liệu thời gian thực</p>
 </div>
 """, unsafe_allow_html=True)
+
+st.markdown(
+    '<div class="sidebar-section-label">Vị trí hiện tại</div>',
+    unsafe_allow_html=True,
+)
+selected_label = st_searchbox(
+    location_search_callback,
+    placeholder="Nhập vị trí hiện tại...",
+    key="location_searchbox",
+)
+
+if selected_label:
+    matched = next(
+        (
+            item
+            for item in st.session_state.location_suggestions
+            if item["description"] == selected_label
+        ),
+        None,
+    )
+    if matched:
+        st.session_state.place_id = matched["place_id"]
+        st.session_state.place_label = matched["description"]
+
+if st.session_state.place_label:
+    st.markdown(f"**Đã chọn:** {st.session_state.place_label}")
+else:
+    st.caption("Chưa chọn vị trí, hệ thống dùng mặc định.")
 
 
 
@@ -457,11 +479,28 @@ for msg in st.session_state.messages:
                     with st.container(border=True):
                         col_img, col_info = st.columns([1, 2])
                         with col_img:
-                            st.image(res.get("image_url"), use_container_width=True)
+                            st.image(
+                                res.get("image_url"),
+                                width=200,
+                            )
                         with col_info:
                             st.subheader(res.get("name", "Nhà hàng"))
                             st.write(f"📍 {res.get('address')}")
                             st.write(f"⭐ {res.get('star')} | 💰 ~{res.get('avg_price', 0):,.0f}đ")
+                            phone_display = format_phone_number(res.get("phone_num"))
+                            if phone_display:
+                                phone_link = ''.join(ch for ch in phone_display if ch.isdigit() or ch == '+')
+                                if phone_link:
+                                    st.markdown(
+                                        f"📞 <a class='action-btn' href='tel:{phone_link}'>Gọi {phone_display}</a>",
+                                        unsafe_allow_html=True,
+                                    )
+                                else:
+                                    st.write(f"📞 {phone_display}")
+                            address = res.get("address")
+                            if address:
+                                map_link = f"https://www.google.com/maps/search/?api=1&query={quote(address)}"
+                                st.markdown(f"[🧭 Xem trên Google Maps]({map_link})")
                             with st.expander("Xem chi tiết món ăn & mô tả"):
                                 st.write(res.get("semantic_text"))
                                 if res.get("meals"):
