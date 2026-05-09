@@ -46,7 +46,7 @@ async def process_prompt(request: UserRequest):
             raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
             
         df_raw = pd.read_json(data_path, encoding='utf-8', dtype={'id': str})
-        filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json)
+        filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng)
         filtered_data = filter_engine.run_filter_pipeline()
 
         # 4. Scoring & Optimization: Tính lịch trình tối ưu
