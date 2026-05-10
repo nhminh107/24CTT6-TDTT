@@ -181,31 +181,47 @@ export default function ChatInterface({
 
       <div className="flex flex-1 flex-col gap-4 pb-32">
         {messages.map((message, index) => (
-          <div
-            key={`${message.role}-${index}`}
-            className={`flex gap-4 ${
-              message.role === "user" ? "justify-end" : "justify-start"
-            }`}
-          >
-            {message.role === "assistant" && (
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
-                AI
-              </div>
-            )}
+          <div key={`${message.role}-${index}`} className="space-y-4">
             <div
-              className={`max-w-[520px] rounded-3xl px-5 py-4 text-sm shadow-soft ${
-                message.role === "user"
-                  ? "bg-gradient-to-r from-brand-coral to-brand-flame text-white"
-                  : "glass text-slate-700"
+              className={`flex gap-4 ${
+                message.role === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {message.content}
-            </div>
-            {message.role === "user" && (
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-                U
+              {message.role === "assistant" && (
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
+                  AI
+                </div>
+              )}
+              <div
+                className={`max-w-[520px] rounded-3xl px-5 py-4 text-sm shadow-soft ${
+                  message.role === "user"
+                    ? "bg-gradient-to-r from-brand-coral to-brand-flame text-white"
+                    : "glass text-slate-700"
+                }`}
+              >
+                {message.content}
               </div>
-            )}
+              {message.role === "user" && (
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
+                  U
+                </div>
+              )}
+            </div>
+
+            {message.role === "assistant" && message.restaurants?.length ? (
+              <div className="space-y-4">
+                {message.restaurants.map((restaurant, restaurantIndex) => (
+                  <motion.div
+                    key={`${index}-${restaurant.name}-${restaurantIndex}`}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <RestaurantCard restaurant={restaurant} />
+                  </motion.div>
+                ))}
+              </div>
+            ) : null}
           </div>
         ))}
 
@@ -216,21 +232,6 @@ export default function ChatInterface({
             </div>
             <div className="glass rounded-3xl px-5 py-4">Đang suy nghĩ...</div>
           </div>
-        )}
-
-        {messages.flatMap((message, messageIndex) =>
-          message.restaurants
-            ? message.restaurants.map((restaurant, index) => (
-                <motion.div
-                  key={`${messageIndex}-${restaurant.name}-${index}`}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <RestaurantCard restaurant={restaurant} />
-                </motion.div>
-              ))
-            : []
         )}
 
         <div className="flex flex-wrap gap-3">
