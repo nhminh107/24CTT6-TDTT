@@ -56,7 +56,7 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
           <img
             src={imageUrl}
             alt={restaurant.name}
-            className="h-full w-full object-cover"
+            className="h-40 w-full object-cover"
           />
         </div>
         <div className="flex flex-col justify-between gap-4">
