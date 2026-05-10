@@ -1,0 +1,24 @@
+import Link from "next/link";
+import { Github } from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-slate-200/70 bg-white/70 px-6 py-8">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
+        <div className="flex items-center gap-2">
+          <span className="font-display text-base font-semibold text-slate-900">
+            RouteAI
+          </span>
+          <span>© 2026. Bảo lưu mọi quyền.</span>
+        </div>
+        <Link
+          href="https://github.com"
+          className="inline-flex items-center gap-2 text-slate-600 transition hover:text-slate-900"
+        >
+          <Github size={18} />
+          Github
+        </Link>
+      </div>
+    </footer>
+  );
+}
