@@ -1,4 +1,3 @@
-import itertools
 from math import radians, sin, cos, sqrt, atan2
 import pandas as pd
 from Back_End.CONFIG import Weights
@@ -107,15 +106,14 @@ class RestaurantScorer:
                               parsed_json: dict) -> pd.DataFrame:
         """
         Hàm CHÍNH của Module Algorithm.
-        Chạy toàn bộ pipeline tính điểm và áp dụng Tối ưu toàn cục (Global Optimization)
-        để tìm ra lịch trình có tính liên kết địa lý tốt nhất (Sáng -> Trưa -> Tối).
+        Chạy toàn bộ pipeline tính điểm và trả về top 3 quán ăn cho mỗi bữa.
 
         INPUT:
             filtered_data (dict[str, DataFrame]) — output từ Module Filter
             parsed_json (dict) — output từ Module Parsing
 
         RETURN:
-            pd.DataFrame chứa chuỗi lịch trình tối ưu nhất kèm điểm đánh giá.
+            pd.DataFrame chứa top 3 quán ăn cho mỗi bữa kèm điểm đánh giá.
         """
         budget       = parsed_json.get('budget') or 0
         num_meals    = parsed_json.get('num_meals') or 1
@@ -128,8 +126,7 @@ class RestaurantScorer:
             for m in meals_detail
         }
 
-        meal_candidates = []
-        semantic_scores_all = {}
+        top_results = []
 
         for meal_tag, df in filtered_data.items():
             if df.empty:
@@ -140,9 +137,8 @@ class RestaurantScorer:
             df = df.copy()
             list_ids = df['id'].tolist() if 'id' in df.columns else []
             semantic_scores_dict = self._score_semantic(list_ids, semantic_query)
-            semantic_scores_all[meal_tag] = semantic_scores_dict
 
-            # Bước 1: Tính điểm sơ bộ dựa trên khoảng cách từ user để lọc Top 15 ứng viên
+            # Tính điểm sơ bộ dựa trên khoảng cách từ user để lọc Top 3 ứng viên
             df['score'] = df.apply(
                 lambda row: self._compute_total_score(
                     row.to_dict(),
@@ -153,58 +149,13 @@ class RestaurantScorer:
                 axis=1
             )
 
-            # Lấy top 15 quán ăn tốt nhất cho bữa này
-            top_df = df.sort_values('score', ascending=False).head(15).copy()
+            # Lấy top 3 quán ăn tốt nhất cho bữa này
+            top_df = df.sort_values('score', ascending=False).head(3).copy()
             top_df['meal'] = meal_tag
-            meal_candidates.append(top_df.to_dict('records'))
+            if not top_df.empty:
+                top_results.append(top_df)
 
-        if not meal_candidates:
+        if not top_results:
             return pd.DataFrame()
 
-        # Bước 2: Tối ưu toàn cục (Global Optimization) qua các tổ hợp hành trình
-        best_itinerary = []
-        best_avg_score = -1
-
-        for combination in itertools.product(*meal_candidates):
-            combo_ids = [str(rest.get('id')) for rest in combination]
-            if len(set(combo_ids)) != len(combo_ids):
-                continue
-            current_lat, current_lng = self.user_lat, self.user_lng
-            combination_scores = []
-            itinerary_records = []
-
-            for rest in combination:
-                meal_tag = rest['meal']
-                semantic_score = semantic_scores_all[meal_tag].get(str(rest.get('id')), 0.0)
-                
-                # Tính điểm dựa trên quãng đường thực tế từ quán trước đó
-                score = self._compute_total_score(
-                    rest,
-                    budget_per_meal,
-                    semantic_score,
-                    current_lat,
-                    current_lng
-                )
-                combination_scores.append(score)
-                
-                # Cập nhật tọa độ cho bữa ăn tiếp theo
-                current_lat, current_lng = rest.get('lat', 0), rest.get('lng', 0)
-                
-                rest_copy = rest.copy()
-                rest_copy['score'] = score
-                itinerary_records.append(rest_copy)
-
-            # Điểm của lịch trình là trung bình điểm các chặng
-            avg_score = sum(combination_scores) / len(combination_scores)
-            
-            if avg_score > best_avg_score:
-                best_avg_score = avg_score
-                best_itinerary = itinerary_records
-
-        if not best_itinerary:
-            return pd.DataFrame()
-
-        final_itinerary = pd.DataFrame(best_itinerary)
-        final_itinerary['itinerary_avg_score'] = round(best_avg_score, 4)
-
-        return final_itinerary
+        return pd.concat(top_results, ignore_index=True)
