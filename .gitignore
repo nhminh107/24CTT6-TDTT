@@ -169,3 +169,14 @@ Thumbs.db
 
 Back_End/Database/chroma.sqlite3
 Back_End/Database/*-*-*-*-*/
+
+
+# ========================
+# FRONTEND (Next.js / Node)
+# ========================
+FrontEnd/node_modules/
+FrontEnd/.next/
+FrontEnd/out/
+FrontEnd/build/
+FrontEnd/.env*.local
+FrontEnd/.env
