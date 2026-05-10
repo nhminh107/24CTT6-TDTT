@@ -59,47 +59,60 @@ class RestaurantFilter:
         return filtered_df
 
     def run_filter_pipeline(self): 
-        # Bước 1: Lọc dữ liệu tổng quan
         base_df = self._apply_general_filters()
-        
-        # Bước 2: Chuẩn bị Dictionary kết quả rỗng
         result_dict = {}
         
-        # Mapping để đồng bộ tên bữa ăn từ LLMParser sang Dataset JSON của bạn
         meal_name_map = {
-            'sáng': 'sáng',
-            'trưa': 'trưa',
-            'xế': 'chiều',
-            'tối': 'tối',
-            'khuya': 'khuya'
+            'sáng': ['sáng'],
+            'trưa': ['trưa'],
+            # Data hien tai khong co nhan "xế"/"chiều" trong meals,
+            # nen map xế ve cac nhan hop le de khong bi rong tap ung vien.
+            'xế': ['xế', 'chiều', 'trưa', 'tối'],
+            'tối': ['tối'],
+            'khuya': ['khuya']
         }
         
-        # Danh sách Blacklist và các bữa ăn chính cần lọc
+        type_normalization = {
+            'quán nước': ['quán cà phê', 'cà phê', 'trà sữa', 'cafe', 'quán nước']
+        }
+        
         BLACKLIST = ['Quán nước', 'Trà sữa', 'Bar', 'Pub', 'Ăn vặt', 'Tiệm bánh']
         MAIN_MEALS = ['sáng', 'trưa', 'tối']
         
-        # Bước 3: Lọc chi tiết theo từng bữa ăn có trong meals_detail
         meals_detail = self.user_prompt.get('meals_detail', [])
         
         for meal_info in meals_detail:
-            meal_key_parser = meal_info.get('meal') # ví dụ: 'sáng'
-            meal_name_data = meal_name_map.get(meal_key_parser) # chuyển thành: 'sáng'
-            
+            meal_key_parser = meal_info.get('meal')
+            meal_name_data = meal_name_map.get(meal_key_parser)
+
             if not meal_name_data:
                 continue
 
-            # Lọc ra các quán có phục vụ bữa ăn này
-            meal_df = base_df[base_df['meals'].apply(lambda x: meal_name_data.lower() in [str(m).lower() for m in x] if isinstance(x, list) else False)].copy()
+            meal_names = meal_name_data if isinstance(meal_name_data, list) else [meal_name_data]
+            meal_names_lower = [m.lower() for m in meal_names]
+
+            meal_df = base_df[
+                base_df['meals'].apply(
+                    lambda x: any(m in [str(meal).lower() for meal in x] for m in meal_names_lower)
+                    if isinstance(x, list) else False
+                )
+            ].copy()
             
-            # Lọc tiếp theo 'type' (loại quán) TÙY THUỘC VÀO TỪNG BỮA
             req_types = meal_info.get('type', [])
             if req_types:
-                desired_types = set(req_types)
+                expanded_reqs = []
+                for t in req_types:
+                    t_lower = t.lower()
+                    expanded_reqs.append(t_lower)
+                    if t_lower in type_normalization:
+                        expanded_reqs.extend(type_normalization[t_lower])
+                        
                 meal_df = meal_df[
-                    meal_df['type'].apply(lambda x: bool(set(x) & desired_types) if isinstance(x, list) else False)
+                    meal_df['type'].apply(
+                        lambda x: any(any(req in str(item).lower() for req in expanded_reqs) for item in x) if isinstance(x, list) else False
+                    )
                 ]
             else:
-                # Logic Blacklist: Nếu không yêu cầu type cụ thể và là bữa chính, loại bỏ đồ uống/ăn vặt
                 if meal_key_parser in MAIN_MEALS:
                     meal_df = meal_df[
                         meal_df['type'].apply(
@@ -107,7 +120,6 @@ class RestaurantFilter:
                         )
                     ]
             
-            # Lưu Dataframe đã lọc xong vào Dictionary kết quả
             result_dict[meal_key_parser] = meal_df
             
         return result_dict
