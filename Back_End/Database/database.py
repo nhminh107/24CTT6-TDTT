@@ -38,6 +38,13 @@ class ChromaDBManager:
             return {rid: 0.0 for rid in ids}
 
         try:
+            count = self.collection.count()
+        except Exception:
+            count = 0
+        if count == 0:
+            raise RuntimeError("ChromaDB collection is empty. Run database.py add() to build embeddings.")
+
+        try:
             result = self.collection.get(ids=ids, include=["embeddings"])
         except Exception:
             return {rid: 0.0 for rid in ids}
