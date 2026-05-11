@@ -38,6 +38,16 @@ class FinalResultLLM:
             payload[meal] = meal_df[available_fields].to_dict('records')
         return payload
 
+    def _candidate_rows(self, candidates_df: pd.DataFrame, meal_order: list) -> dict:
+        candidate_map = {}
+        for meal in meal_order:
+            meal_df = candidates_df[candidates_df['meal'] == meal].copy()
+            if meal_df.empty:
+                continue
+            meal_df = meal_df.sort_values('score', ascending=False)
+            candidate_map[meal] = meal_df.to_dict('records')
+        return candidate_map
+
     def _select_with_llm(self, candidates_payload: dict, user_prompt: str) -> dict:
         prompt = f"""
         Nhiệm vụ: chọn đúng 1 quán ăn cho mỗi bữa từ danh sách ứng viên.
@@ -73,25 +83,30 @@ class FinalResultLLM:
                 result[meal] = str(rid)
         return result
 
-    def _fallback_selection(self, candidates_df: pd.DataFrame, meal_order: list) -> dict:
-        selected = {}
+    def _select_unique_combination(self, meal_order: list, candidate_map: dict) -> list:
+        selected_rows = []
         used_ids = set()
-        for meal in meal_order:
-            meal_df = candidates_df[candidates_df['meal'] == meal].copy()
-            if meal_df.empty:
-                continue
-            meal_df = meal_df.sort_values('score', ascending=False)
-            chosen_row = None
-            for _, row in meal_df.iterrows():
+
+        def backtrack(index: int) -> bool:
+            if index >= len(meal_order):
+                return True
+            meal = meal_order[index]
+            candidates = candidate_map.get(meal, [])
+            for row in candidates:
                 rid = str(row.get('id'))
-                if rid not in used_ids:
-                    chosen_row = row
-                    break
-            if chosen_row is None:
-                chosen_row = meal_df.iloc[0]
-            selected[meal] = str(chosen_row.get('id'))
-            used_ids.add(str(chosen_row.get('id')))
-        return selected
+                if rid in used_ids:
+                    continue
+                used_ids.add(rid)
+                selected_rows.append(row)
+                if backtrack(index + 1):
+                    return True
+                selected_rows.pop()
+                used_ids.remove(rid)
+            return False
+
+        if backtrack(0):
+            return selected_rows
+        return []
 
     def run_final_selection(
         self,
@@ -107,7 +122,8 @@ class FinalResultLLM:
             return pd.DataFrame()
 
         candidates_payload = self._candidates_payload(candidates_df, meal_order)
-        if not candidates_payload:
+        candidate_map = self._candidate_rows(candidates_df, meal_order)
+        if not candidates_payload or not candidate_map:
             return pd.DataFrame()
 
         try:
@@ -115,23 +131,23 @@ class FinalResultLLM:
         except Exception:
             selected_map = {}
 
-        if not selected_map:
-            selected_map = self._fallback_selection(candidates_df, meal_order)
+        if selected_map:
+            for meal, selected_id in selected_map.items():
+                if meal not in candidate_map:
+                    continue
+                rows = candidate_map[meal]
+                preferred = []
+                fallback = []
+                for row in rows:
+                    if str(row.get('id')) == str(selected_id):
+                        preferred.append(row)
+                    else:
+                        fallback.append(row)
+                candidate_map[meal] = preferred + fallback
 
-        final_rows = []
-        for meal in meal_order:
-            meal_df = candidates_df[candidates_df['meal'] == meal].copy()
-            if meal_df.empty:
-                continue
-            selected_id = selected_map.get(meal)
-            selected_row = None
-            if selected_id:
-                match_df = meal_df[meal_df['id'].astype(str) == str(selected_id)]
-                if not match_df.empty:
-                    selected_row = match_df.iloc[0]
-            if selected_row is None:
-                selected_row = meal_df.sort_values('score', ascending=False).iloc[0]
-            final_rows.append(selected_row.to_dict())
+        final_rows = self._select_unique_combination(meal_order, candidate_map)
+        if not final_rows:
+            return pd.DataFrame()
 
         if not final_rows:
             return pd.DataFrame()
