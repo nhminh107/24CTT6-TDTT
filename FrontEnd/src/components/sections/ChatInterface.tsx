@@ -76,8 +76,9 @@ export default function ChatInterface({
   const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
     items.map((item) => {
       const imageUrl = item.image_url ? item.image_url.replace(/\\\//g, "/") : "";
-      const mapUrl = item.address
-        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`
+      const mapQuery = [item.name, item.address].filter(Boolean).join(" ");
+      const mapUrl = mapQuery
+        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`
         : "https://www.google.com/maps";
       const ratingValue =
         typeof item.star === "number"
@@ -230,7 +231,16 @@ export default function ChatInterface({
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
               AI
             </div>
-            <div className="glass rounded-3xl px-5 py-4">Đang suy nghĩ...</div>
+            <div className="glass rounded-3xl px-5 py-4">
+              <div className="flex items-center gap-2">
+                <span className="text-slate-600">Đang suy nghĩ</span>
+                <span className="flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-coral" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-flame [animation-delay:120ms]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-lagoon [animation-delay:240ms]" />
+                </span>
+              </div>
+            </div>
           </div>
         )}
 

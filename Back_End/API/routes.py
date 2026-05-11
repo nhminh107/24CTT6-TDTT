@@ -7,6 +7,7 @@ from typing import List, Optional
 from Back_End.Core.parsing import LLMParser
 from Back_End.Core.Filter import RestaurantFilter
 from Back_End.Core.scoring_class import RestaurantScorer
+from Back_End.Core.final_result import FinalResultLLM
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 
@@ -52,7 +53,14 @@ async def process_prompt(request: UserRequest):
         # 4. Scoring & Optimization: Tính lịch trình tối ưu
         db_manager = ChromaDBManager()
         scorer = RestaurantScorer(user_lat=user_lat, user_lng=user_lng, db=db_manager)
-        final_itinerary = scorer.run_scoring_pipeline(filtered_data, parsed_json)
+        scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json)
+
+        selector = FinalResultLLM()
+        final_itinerary = selector.run_final_selection(
+            scored_candidates,
+            request.prompt,
+            parsed_json
+        )
 
         # 5. Trả kết quả về cho FrontEnd
         if final_itinerary.empty:
