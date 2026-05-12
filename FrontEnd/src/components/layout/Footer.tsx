@@ -13,6 +13,8 @@ export default function Footer() {
         </div>
         <Link
           href="https://github.com"
+          target="_blank"
+          rel="noreferrer"
           className="inline-flex items-center gap-2 text-slate-600 transition hover:text-slate-900"
         >
           <Github size={18} />

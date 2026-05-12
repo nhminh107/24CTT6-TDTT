@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
 import { MapPin, MessageSquare, Map } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -43,6 +44,7 @@ const promptCards = [
 export default function GuidePage() {
   return (
     <div className="min-h-screen bg-white/60">
+      <Navbar />
       <section className="section-spacing !pb-10 md:!pb-12 lg:!pb-16">
         <div className="mx-auto w-full max-w-5xl space-y-10">
           <motion.div
