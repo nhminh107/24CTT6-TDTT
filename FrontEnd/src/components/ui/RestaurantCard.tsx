@@ -93,6 +93,8 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
             ) : null}
             <Link
               href={restaurant.mapUrl}
+              target="_blank"
+              rel="noreferrer"
               className="text-xs font-semibold text-brand-lagoon transition hover:text-brand-teal"
             >
               Xem trên Google Maps
