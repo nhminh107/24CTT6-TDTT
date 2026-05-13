@@ -14,6 +14,7 @@ Tải NodeJS tại: <a href ="https://nodejs.org/en/download"> NodeJS Download <
 Vào Powershell chạy lệnh ``` npm -v``` để xác nhận đã tải thành công
 
 ## Chạy và Test 
+**LƯU Ý:** Cần chạy file Database/database.py trước tiên để khởi tạo dữ liệu Database
 Mở 2 terminal
 Terminal 1: Chạy lệnh
 ```
