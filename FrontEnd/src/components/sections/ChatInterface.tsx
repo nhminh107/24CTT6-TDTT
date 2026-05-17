@@ -54,12 +54,14 @@ type ChatInterfaceProps = {
   placeId: string;
   input: string;
   onInputChange: (value: string) => void;
+  onPreviewPass?: (restaurants: Restaurant[]) => void;
 };
 
 export default function ChatInterface({
   placeId,
   input,
-  onInputChange
+  onInputChange,
+  onPreviewPass
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
@@ -221,6 +223,25 @@ export default function ChatInterface({
                     <RestaurantCard restaurant={restaurant} />
                   </motion.div>
                 ))}
+                <div className="relative flex">
+                  <motion.div
+                    animate={{ y: [0, -6, 0], opacity: [0.85, 1, 0.85] }}
+                    transition={{ duration: 2.2, repeat: Infinity }}
+                    className="absolute -top-11 left-0 rounded-2xl border border-brand-coral/30 bg-white/90 px-3 py-2 text-xs font-semibold text-brand-flame shadow-soft"
+                  >
+                    Khoe vé sang chảnh ngay
+                  </motion.div>
+                  <motion.button
+                    type="button"
+                    onClick={() => onPreviewPass?.(message.restaurants || [])}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-3 text-sm font-semibold text-white shadow-glow"
+                  >
+                    <Sparkles size={16} />
+                    Khoe lịch trình
+                  </motion.button>
+                </div>
               </div>
             ) : null}
           </div>

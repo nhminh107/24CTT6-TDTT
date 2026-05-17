@@ -1,7 +1,6 @@
 from typing import Any, Dict, List, Tuple
 import requests
 import streamlit as st
-from streamlit_searchbox import st_searchbox
 from dotenv import load_dotenv
 import os
 

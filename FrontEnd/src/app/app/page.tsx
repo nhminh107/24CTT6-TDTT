@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Wallet } from "lucide-react";
-import { motion } from "framer-motion";
+import { Wallet, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import LocationSearch from "@/components/ui/LocationSearch";
 import ChatInterface from "@/components/sections/ChatInterface";
 import { cn } from "@/lib/utils";
+import BoardingPass from "@/components/ui/BoardingPass";
 
 export default function AppPage() {
   const [location, setLocation] = useState("");
@@ -14,6 +15,32 @@ export default function AppPage() {
   const [budget, setBudget] = useState("");
   const [promptInput, setPromptInput] = useState("");
   const [isCompact, setIsCompact] = useState(false);
+  const [showBoardingPass, setShowBoardingPass] = useState(false);
+  const [meals, setMeals] = useState([
+    { label: "STOP 01", name: "Chưa có dữ liệu", time: "07:30", price: "Chưa cập nhật", type: "Cafe" },
+    { label: "STOP 02", name: "Chưa có dữ liệu", time: "12:15", price: "Chưa cập nhật", type: "Bistro" },
+    { label: "STOP 03", name: "Chưa có dữ liệu", time: "19:30", price: "Chưa cập nhật", type: "Fine Dining" }
+  ]);
+
+  const mealTimes = ["07:30", "12:15", "19:30", "21:00"];
+  const mealTypes = ["Cafe", "Bistro", "Fine Dining", "Street Food"];
+
+  const buildMealStops = (restaurants: { name: string; price: string | number; meals?: string[] }[]) =>
+    restaurants.slice(0, 3).map((restaurant, index) => {
+      const label = `STOP ${String(index + 1).padStart(2, "0")}`;
+      const priceText =
+        typeof restaurant.price === "number"
+          ? `${restaurant.price.toLocaleString("vi-VN")}đ`
+          : restaurant.price || "Chưa cập nhật";
+      const type = restaurant.meals?.[0]?.trim() || mealTypes[index] || "Cafe";
+      return {
+        label,
+        name: restaurant.name || "Chưa có dữ liệu",
+        time: mealTimes[index] || "19:30",
+        price: priceText,
+        type
+      };
+    });
   const filters = useMemo(
     () => ["Lãng mạn", "Cay", "Hải sản", "View biển", "Chay", "Gia đình"],
     []
@@ -41,6 +68,14 @@ export default function AppPage() {
       return "";
     }
     return `Với ngân sách là ${amount.toLocaleString("vi-VN")} cho 1 người`;
+  }, [budget]);
+
+  const budgetDisplay = useMemo(() => {
+    const amount = Number(budget);
+    if (!amount || Number.isNaN(amount)) {
+      return "Chưa nhập";
+    }
+    return `${amount.toLocaleString("vi-VN")} VNĐ`;
   }, [budget]);
 
   const applyBudgetToPrompt = (value: string, current: string) => {
@@ -161,11 +196,19 @@ export default function AppPage() {
             </div>
           </motion.div>
 
-          <ChatInterface
-            placeId={placeId}
-            input={promptInput}
-            onInputChange={setPromptInput}
-          />
+          <div className="space-y-6">
+            <ChatInterface
+              placeId={placeId}
+              input={promptInput}
+              onInputChange={setPromptInput}
+              onPreviewPass={(restaurants) => {
+                if (restaurants.length) {
+                  setMeals(buildMealStops(restaurants));
+                  setShowBoardingPass(true);
+                }
+              }}
+            />
+          </div>
         </motion.div>
       </div>
 
@@ -194,6 +237,46 @@ export default function AppPage() {
           </div>
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {showBoardingPass && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 px-4 py-8 backdrop-blur"
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="flex w-full max-w-3xl flex-col"
+            >
+              <div className="flex items-center justify-between">
+                <div className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">
+                  Xuất vé ẩm thực
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowBoardingPass(false)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-slate-600 shadow-soft"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="mt-4 max-h-[75vh] overflow-auto rounded-3xl bg-white/90 p-6 shadow-soft">
+                <BoardingPass
+                  departure={location}
+                  meals={meals}
+                  totalAllowance={budgetDisplay}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
