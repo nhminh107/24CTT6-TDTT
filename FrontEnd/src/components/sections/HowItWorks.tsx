@@ -5,21 +5,24 @@ import { motion } from "framer-motion";
 const steps = [
   {
     title: "Bước 1",
-    detail: "Nhập vị trí và ngân sách."
+    detail: "Nhập vị trí và ngân sách.",
+    note: "BMI sẽ ghi nhớ điểm xuất phát để tối ưu quãng đường."
   },
   {
     title: "Bước 2",
-    detail: "AI phân tích & Lọc dữ liệu."
+    detail: "AI phân tích & Lọc dữ liệu.",
+    note: "Thuật toán cân bằng giá, khẩu vị và thời gian di chuyển."
   },
   {
     title: "Bước 3",
-    detail: "Trải nghiệm lộ trình hoàn hảo."
+    detail: "Trải nghiệm lộ trình hoàn hảo.",
+    note: "Xem bản đồ, lưu vé và chia sẻ ngay trong một chạm."
   }
 ];
 
 export default function HowItWorks() {
   return (
-    <section className="section-spacing" id="how">
+    <section className="section-spacing !pt-10" id="how">
       <div className="mx-auto w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -35,7 +38,7 @@ export default function HowItWorks() {
             3 bước để có lịch trình ẩm thực hoàn hảo.
           </h2>
         </motion.div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
@@ -43,13 +46,16 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="glass rounded-3xl p-6 shadow-soft"
+              className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
             >
               <div className="text-sm font-semibold text-brand-coral">
                 {step.title}
               </div>
               <div className="mt-4 text-lg font-semibold text-slate-900">
                 {step.detail}
+              </div>
+              <div className="mt-2 text-sm text-slate-600">
+                {step.note}
               </div>
               <div className="mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-brand-coral to-brand-flame" />
             </motion.div>

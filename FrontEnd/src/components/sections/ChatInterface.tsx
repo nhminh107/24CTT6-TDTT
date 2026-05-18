@@ -27,7 +27,7 @@ const initialMessages: Message[] = [
   {
     role: "assistant",
     content:
-      "Chào bạn! Hãy cho RouteAI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
+      "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
   }
 ];
 const API_BASE_URL = "";
@@ -177,7 +177,7 @@ export default function ChatInterface({
             Lời khuyên của AI
           </div>
           <div className="mt-4 text-sm leading-relaxed text-slate-600">
-            Hãy mô tả rõ món ăn, không gian và mức ngân sách cho từng bữa. Bạn càng chi tiết, RouteAI càng tối ưu lộ trình.
+            Hãy mô tả rõ món ăn, không gian và mức ngân sách cho từng bữa. Bạn càng chi tiết, BMI càng tối ưu lộ trình.
           </div>
         </div>
       </div>

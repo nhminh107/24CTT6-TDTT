@@ -6,7 +6,7 @@ import { Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="section-spacing" id="about">
+    <section className="section-spacing !pb-10" id="about">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
