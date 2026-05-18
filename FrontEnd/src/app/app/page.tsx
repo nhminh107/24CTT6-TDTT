@@ -104,7 +104,10 @@ export default function AppPage() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-10">
         <div className="flex flex-col gap-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-coral/20 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-flame shadow-soft">
-            Ứng dụng RouteAI
+            Ứng dụng BMI
+          </div>
+          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+            Bite Mapping Intelligent
           </div>
           <h1 className="font-display text-3xl font-semibold text-slate-900 md:text-4xl">
             Tối ưu lộ trình ẩm thực theo phong cách của bạn.
@@ -155,13 +158,13 @@ export default function AppPage() {
                 <input
                   type="number"
                   value={budget}
-                  onChange={(event) => {
+                  onBlur={(event) => {
                     const nextValue = event.target.value;
-                    setBudget(nextValue);
                     setPromptInput((prev) =>
                       applyBudgetToPrompt(nextValue, prev)
                     );
                   }}
+                  onChange={(event) => setBudget(event.target.value)}
                   placeholder="Nhập ngân sách"
                   className="w-full min-w-0 bg-transparent text-sm text-slate-700 outline-none"
                 />

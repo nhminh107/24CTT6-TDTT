@@ -58,8 +58,11 @@ export default function GuidePage() {
               Hướng dẫn nhanh
             </div>
             <h1 className="font-display text-4xl font-semibold text-slate-900 md:text-5xl">
-              Hướng dẫn sử dụng RouteAI
+              Hướng dẫn sử dụng BMI
             </h1>
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              Bite Mapping Intelligent
+            </div>
             <p className="max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg">
               Làm chủ hệ thống gợi ý lộ trình chỉ trong 3 bước đơn giản.
             </p>

@@ -45,8 +45,11 @@ export default function AboutPage() {
               Về chúng tôi
             </div>
             <h1 className="font-display text-3xl font-semibold text-slate-900 md:text-4xl">
-              Đội ngũ đứng sau RouteAI
+              Đội ngũ đứng sau BMI
             </h1>
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              Bite Mapping Intelligent
+            </div>
           </div>
           <Link
             href="/"

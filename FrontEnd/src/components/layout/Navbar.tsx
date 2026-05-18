@@ -24,9 +24,14 @@ export default function Navbar() {
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-coral to-brand-flame text-white shadow-glow">
             <MapPin size={20} />
           </span>
-          <span className="font-display text-xl font-semibold tracking-tight text-slate-900">
-            RouteAI
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-display text-xl font-semibold tracking-tight text-slate-900">
+              BMI
+            </span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+              Bite Mapping Intelligent
+            </span>
+          </div>
         </Link>
         <div className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
           {links.map((link) => (

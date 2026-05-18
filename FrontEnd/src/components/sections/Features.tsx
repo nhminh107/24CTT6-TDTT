@@ -26,8 +26,8 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="section-spacing" id="features">
-      <div className="mx-auto w-full max-w-6xl space-y-10">
+    <section className="section-spacing !pt-12 !pb-12" id="features">
+      <div className="mx-auto w-full max-w-6xl space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

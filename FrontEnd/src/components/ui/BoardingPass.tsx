@@ -75,7 +75,7 @@ export default function BoardingPass({
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: "RouteAI - Lộ trình ẩm thực",
+          title: "BMI - Lộ trình ẩm thực",
           text: "Khoe vé lịch trình ẩm thực của mình!"
         });
       } else {
@@ -127,7 +127,7 @@ export default function BoardingPass({
       <div className="flex justify-center">
         <div
           ref={passRef}
-          className="relative w-full max-w-[640px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-[#FAFAFA] p-6 shadow-[0_32px_80px_rgba(15,23,42,0.14)] before:absolute before:left-[-18px] before:top-[160px] before:h-9 before:w-9 before:rounded-full before:bg-[#FAFAFA] before:shadow-[0_0_0_8px_rgba(250,250,250,1)] after:absolute after:right-[-18px] after:top-[160px] after:h-9 after:w-9 after:rounded-full after:bg-[#FAFAFA] after:shadow-[0_0_0_8px_rgba(250,250,250,1)]"
+          className="relative h-[800px] w-[450px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-[#FAFAFA] p-6 shadow-[0_32px_80px_rgba(15,23,42,0.14)] before:absolute before:left-[-18px] before:top-[210px] before:h-9 before:w-9 before:rounded-full before:bg-[#FAFAFA] before:shadow-[0_0_0_8px_rgba(250,250,250,1)] after:absolute after:right-[-18px] after:top-[210px] after:h-9 after:w-9 after:rounded-full after:bg-[#FAFAFA] after:shadow-[0_0_0_8px_rgba(250,250,250,1)]"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,106,61,0.10),_transparent_45%),radial-gradient(circle_at_bottom,_rgba(12,139,214,0.10),_transparent_50%)]" />
           <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon" />
@@ -140,7 +140,7 @@ export default function BoardingPass({
                 </span>
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-lagoon">
-                    RouteAI
+                    BMI
                   </div>
                   <div className="font-display text-xl font-semibold text-slate-900">
                     Food Itinerary Pass
@@ -270,7 +270,7 @@ export default function BoardingPass({
                 </span>
                 <div>
                   <div className="text-xs font-semibold text-slate-600">
-                    Quét để tự tạo lộ trình tại RouteAI
+                    Quét để tự tạo lộ trình tại BMI
                   </div>
                   <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
                     YOUR JOURNEY, OUR TASTE.
