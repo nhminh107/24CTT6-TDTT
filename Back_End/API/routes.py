@@ -28,7 +28,7 @@ async def process_prompt(request: UserRequest):
     try:
         # 1. LLM Parsing: Hiểu ý định người dùng
         parser = LLMParser()
-        parsed_json = parser.JSON_response(request.prompt)
+        parsed_json = await parser.JSON_response(request.prompt)
         if not parsed_json:
             raise HTTPException(status_code=400, detail="AI không thể phân tích yêu cầu này.")
 
@@ -36,7 +36,7 @@ async def process_prompt(request: UserRequest):
         # Mặc định tọa độ trung tâm nếu người dùng không chọn địa điểm cụ thể
         user_lat, user_lng = 10.7769, 106.7009 
         if request.place_id:
-            loc_detail = get_place_detail(request.place_id)
+            loc_detail = await get_place_detail(request.place_id)
             if loc_detail.get("status") == "success":
                 user_lat = loc_detail["data"]["lat"]
                 user_lng = loc_detail["data"]["lng"]
@@ -56,7 +56,7 @@ async def process_prompt(request: UserRequest):
         scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json)
 
         selector = FinalResultLLM()
-        final_itinerary = selector.run_final_selection(
+        final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
             parsed_json
@@ -83,5 +83,5 @@ async def process_prompt(request: UserRequest):
 
 @router.get("/maps/suggestions")
 async def get_map_suggestions(q: str):
-    results = suggest_locations(q)
+    results = await suggest_locations(q)
     return [{"description": d, "place_id": p} for d, p in results]
