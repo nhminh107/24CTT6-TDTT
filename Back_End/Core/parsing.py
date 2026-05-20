@@ -12,7 +12,7 @@ class LLMParser():
         self.client = genai.Client(api_key=api_key)
         self.model_name = 'gemini-2.5-flash-lite'
 
-    def JSON_response(self, user_prompt: str):
+    async def JSON_response(self, user_prompt: str):
         prompt = f"""
         Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài, nếu thông tin quá sơ sài thì trả về null/mảng rỗng ở các field tương ứng.
 
@@ -30,7 +30,7 @@ class LLMParser():
         Output JSON: 
         """
 
-        response = self.client.models.generate_content(
+        response = await self.client.aio.models.generate_content(
             model=self.model_name,
             contents=prompt,
             config=types.GenerateContentConfig(

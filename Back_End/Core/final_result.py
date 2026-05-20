@@ -48,7 +48,7 @@ class FinalResultLLM:
             candidate_map[meal] = meal_df.to_dict('records')
         return candidate_map
 
-    def _select_with_llm(self, candidates_payload: dict, user_prompt: str) -> dict:
+    async def _select_with_llm(self, candidates_payload: dict, user_prompt: str) -> dict:
         prompt = f"""
         Nhiệm vụ: chọn đúng 1 quán ăn cho mỗi bữa từ danh sách ứng viên.
         Không tạo mới, chỉ chọn từ danh sách đã cho. Ưu tiên phù hợp yêu cầu người dùng.
@@ -65,7 +65,7 @@ class FinalResultLLM:
         Candidates: {json.dumps(candidates_payload, ensure_ascii=False)}
         """
 
-        response = self.client.models.generate_content(
+        response = await self.client.aio.models.generate_content(
             model=self.model_name,
             contents=prompt,
             config=types.GenerateContentConfig(
@@ -108,7 +108,7 @@ class FinalResultLLM:
             return selected_rows
         return []
 
-    def run_final_selection(
+    async def run_final_selection(
         self,
         candidates_df: pd.DataFrame,
         user_prompt: str,
@@ -127,7 +127,7 @@ class FinalResultLLM:
             return pd.DataFrame()
 
         try:
-            selected_map = self._select_with_llm(candidates_payload, user_prompt)
+            selected_map = await self._select_with_llm(candidates_payload, user_prompt)
         except Exception:
             selected_map = {}
 

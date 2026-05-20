@@ -1,5 +1,6 @@
 from typing import Any, Dict, List, Tuple
 import requests
+import httpx
 import streamlit as st
 from dotenv import load_dotenv
 import os
@@ -43,7 +44,7 @@ MOCK_DETAILS = {
 
 
 
-def suggest_locations(search_text: str) -> List[Tuple[str, str]]:
+async def suggest_locations(search_text: str) -> List[Tuple[str, str]]:
     if not search_text:
         return []
 
@@ -59,7 +60,8 @@ def suggest_locations(search_text: str) -> List[Tuple[str, str]]:
         f"&input={search_text}&limit=5"
     )
     try:
-        response = requests.get(url, timeout=5)
+        async with httpx.AsyncClient() as client: 
+            response =  await client.get(url, timeout=5.0)
         if response.status_code == 200:
             data = response.json()
             if "predictions" in data:
@@ -76,7 +78,7 @@ def suggest_locations(search_text: str) -> List[Tuple[str, str]]:
         if search_text.lower() in item["description"].lower()
     ]
 
-def get_place_detail(place_id: str) -> Dict[str, Any]:
+async def get_place_detail(place_id: str) -> Dict[str, Any]:
     if place_id in MOCK_DETAILS:
         return {"status": "success", "data": MOCK_DETAILS[place_id]}
 
@@ -85,7 +87,8 @@ def get_place_detail(place_id: str) -> Dict[str, Any]:
         f"&place_id={place_id}"
     )
     try:
-        response = requests.get(url, timeout=5)
+        async with httpx.AsyncClient() as client: 
+            response =  await client.get(url, timeout=5.0)
         if response.status_code == 200:
             data = response.json().get("result", {})
             location = data.get("geometry", {}).get("location", {})
