@@ -10,8 +10,12 @@ from Back_End.Core.scoring_class import RestaurantScorer
 from Back_End.Core.final_result import FinalResultLLM
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
+from Back_End.Core.semantic_cache import SemanticCacheManager
 
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
+
+# KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
+cache_manager = SemanticCacheManager()
 
 #Định nghĩa cấu trúc dữ liệu (Pydantic Models)
 class UserRequest(BaseModel):
@@ -40,6 +44,30 @@ async def process_prompt(request: UserRequest):
             if loc_detail.get("status") == "success":
                 user_lat = loc_detail["data"]["lat"]
                 user_lng = loc_detail["data"]["lng"]
+
+        # KIỂM TRA BỘ NHỚ ĐỆM
+        #Xử lý lấy budget từ parsed_json an toàn
+        budget_value = parsed_json.get("budget", 0)
+        if isinstance(budget_value, str):
+            try:
+                budget_value = int(budget_value)
+            except ValueError:
+                budget_value = 0
+
+        cached_result = cache_manager.check_cache(
+            prompt=request.prompt,
+            lat=user_lat,
+            lng=user_lng,
+            budget=budget_value
+        )
+
+        if cached_result:
+            print("Trùng Cache. Bỏ qua các bước tính toán nặng nhọc.")
+            return {
+                "status": "success",
+                "parsed_intent": parsed_json,
+                "result": cached_result
+            }
 
         # 3. Data Filtering: Lọc quán ăn phù hợp
         data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
@@ -70,12 +98,24 @@ async def process_prompt(request: UserRequest):
                 "result": []
             }
 
+        # Chuyển đổi kết quả thành dạng danh sách từ điển
+        final_result_list = final_itinerary.to_dict(orient='records')
+
+        # LƯU LẠI CACHE CHO LẦN DÙNG SAU
+        cache_manager.save_cache(
+            prompt=request.prompt,
+            lat=user_lat,
+            lng=user_lng,
+            budget=budget_value,
+            result_json=final_result_list
+        )
+
         return {
             "status": "success",
             "parsed_intent": parsed_json,
-            "result": final_itinerary.to_dict(orient='records')
+            "result": final_result_list
         }
-
+        
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống: {str(e)}")
 
