@@ -190,15 +190,7 @@ class RestaurantScorer:
             semantic_query = semantic_map.get(meal_tag, '')
 
             df = df.copy()
-            if 'id' in df.columns:
-                list_ids = [
-                    str(rid)
-                    for rid in df['id'].tolist()
-                    if pd.notna(rid)
-                ]
-            else:
-                list_ids = []
-
+            list_ids = df['id'].tolist() if 'id' in df.columns else []
             semantic_scores_dict = self._score_semantic(
                 list_ids,
                 semantic_query,
@@ -206,14 +198,14 @@ class RestaurantScorer:
             )
 
             if semantic_query and 'semantic_text' in df.columns:
-                missing_ids = [rid for rid in list_ids if rid not in semantic_scores_dict]
+                missing_ids = [str(rid) for rid in list_ids if str(rid) not in semantic_scores_dict]
                 all_zero = not any(score > 0 for score in semantic_scores_dict.values())
                 if missing_ids or all_zero:
                     texts = df['semantic_text'].fillna('').tolist()
                     fallback_scores = self._score_semantic_from_texts(
                         semantic_query,
                         texts,
-                        df['id'].astype(str).fillna("").tolist(),
+                        df['id'].astype(str).tolist(),
                         0.0
                     )
                     if all_zero:
@@ -232,8 +224,7 @@ class RestaurantScorer:
                     row.to_dict(),
                     budget_per_meal,
                     row.get('semantic_score', 0.0),
-                    self.user_lat, self.user_lng
-                    ,
+                    self.user_lat, self.user_lng,
                     buff_weights
                 ),
                 axis=1
