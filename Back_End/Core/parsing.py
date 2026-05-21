@@ -7,10 +7,13 @@ from google.genai import types
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
 
+_client = genai.Client(api_key=api_key)
+_model_name = 'gemini-2.5-flash-lite'
+
 class LLMParser():
     def __init__(self):
-        self.client = genai.Client(api_key=api_key)
-        self.model_name = 'gemini-2.5-flash-lite'
+        self.client = _client
+        self.model_name = _model_name
 
     async def JSON_response(self, user_prompt: str):
         prompt = f"""
