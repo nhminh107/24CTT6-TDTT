@@ -27,15 +27,16 @@ class RestaurantScorer:
         self.db = db 
     # ─── PRIVATE: các hàm tính điểm thành phần ──────────────────────────
 
-    def _score_star(self, star: float) -> float:
+    def _score_star(self, star: float, buff_weight: float = 0.0) -> float:
         """
         Normalize điểm sao về [0, 1]
         INPUT  : star (float) — VD: 4.8
         RETURN : float trong [0.0, 1.0]
         """
-        return round((star - 1) / 4, 4)
+        base = (star - 1) / 4
+        return round(max(0.0, min(1.0, base + buff_weight)), 4)
 
-    def _score_price(self, avg_price: int, budget_per_meal: float) -> float:
+    def _score_price(self, avg_price: int, budget_per_meal: float, buff_weight: float = 0.0) -> float:
         """
         Tính điểm giá so với ngân sách mỗi bữa.
         INPUT  : avg_price (int), budget_per_meal (float)
@@ -45,14 +46,16 @@ class RestaurantScorer:
             return 0.0
         ratio = avg_price / budget_per_meal
         if ratio <= 0.5:
-            return 1.0
+            base = 1.0
         elif ratio <= 0.8:
-            return 0.8
+            base = 0.8
         elif ratio <= 1.0:
-            return 0.5
-        return 0.0
+            base = 0.5
+        else:
+            base = 0.0
+        return round(max(0.0, min(1.0, base + buff_weight)), 4)
 
-    def _score_distance(self, start_lat: float, start_lng: float, end_lat: float, end_lng: float) -> float:
+    def _score_distance(self, start_lat: float, start_lng: float, end_lat: float, end_lng: float, buff_weight: float = 0.0) -> float:
         """
         Tính điểm khoảng cách bằng Haversine giữa 2 điểm.
         INPUT  : start_lat, start_lng, end_lat, end_lng (float)
@@ -66,22 +69,27 @@ class RestaurantScorer:
              * cos(radians(end_lat))
              * sin(dlng / 2) ** 2)
         dist_km = R * 2 * atan2(sqrt(a), sqrt(1 - a))
-        return round(1 / (1 + dist_km), 4)
+        base = 1 / (1 + dist_km)
+        return round(max(0.0, min(1.0, base + buff_weight)), 4)
 
 
-    def _score_semantic(self, list_ids: list, semantic_query: str) -> dict:
+    def _score_semantic(self, list_ids: list, semantic_query: str, buff_weight: float = 0.0) -> dict:
         """
         Tính điểm khớp ngữ nghĩa bằng model từ ChromaDB.
         INPUT  : list_ids (list của id nhà hàng), semantic_query (str) từ Parsing
         RETURN : dict {id: score} với score trong [0.0, 1.0]
         """
         if not semantic_query or not list_ids:
-            return {str(rid): 0.0 for rid in list_ids}
+            return {str(rid): max(0.0, min(1.0, 0.0 + buff_weight)) for rid in list_ids}
         
         # Gọi hàm semantic_similarity từ database.py cung cấp
-        return self.db.semantic_similarity(semantic_query, [str(rid) for rid in list_ids])
+        scores = self.db.semantic_similarity(semantic_query, [str(rid) for rid in list_ids])
+        return {
+            str(rid): max(0.0, min(1.0, score + buff_weight))
+            for rid, score in scores.items()
+        }
 
-    def _score_semantic_from_texts(self, semantic_query: str, texts: list, ids: list) -> dict:
+    def _score_semantic_from_texts(self, semantic_query: str, texts: list, ids: list, buff_weight: float = 0.0) -> dict:
         if not semantic_query or not texts or not ids:
             return {}
         query_embedding = self.db.ef([semantic_query])[0]
@@ -89,8 +97,12 @@ class RestaurantScorer:
         scores = {}
         for rid, emb in zip(ids, text_embeddings):
             similarity = self.db._cosine_similarity(query_embedding, emb)
-            scores[str(rid)] = (similarity + 1.0) / 2.0
+            base = (similarity + 1.0) / 2.0
+            scores[str(rid)] = max(0.0, min(1.0, base + buff_weight))
         return scores
+
+    def _score_semantic_single(self, semantic_score: float, buff_weight: float = 0.0) -> float:
+        return round(max(0.0, min(1.0, semantic_score + buff_weight)), 4)
 
     def _extract_semantic_terms(self, semantic_query: str) -> list:
         if not semantic_query:
@@ -101,17 +113,35 @@ class RestaurantScorer:
                               budget_per_meal: float,
                               semantic_score: float,
                               start_lat: float,
-                              start_lng: float) -> float:
+                              start_lng: float,
+                              buff_weights: dict) -> float:
         """
         Tính tổng điểm weighted cho 1 nhà hàng tính từ một vị trí bắt đầu.
         INPUT  : row (dict), budget_per_meal, semantic_score, start_lat, start_lng
         RETURN : float — tổng điểm trong [0.0, 1.0]
         """
         total = (
-            self.weights['star']     * self._score_star(row.get('star', 0)) +
-            self.weights['price']    * self._score_price(row.get('avg_price', 0), budget_per_meal) +
-            self.weights['distance'] * self._score_distance(start_lat, start_lng, row.get('lat', 0), row.get('lng', 0)) +
-            self.weights['semantic'] * semantic_score
+            self.weights['star']
+            * self._score_star(row.get('star', 0), buff_weights.get("buff_star_weight", 0.0))
+            + self.weights['price']
+            * self._score_price(
+                row.get('avg_price', 0),
+                budget_per_meal,
+                buff_weights.get("buff_price_weight", 0.0)
+            )
+            + self.weights['distance']
+            * self._score_distance(
+                start_lat,
+                start_lng,
+                row.get('lat', 0),
+                row.get('lng', 0),
+                buff_weights.get("buff_distance_weight", 0.0)
+            )
+            + self.weights['semantic']
+            * self._score_semantic_single(
+                semantic_score,
+                buff_weights.get("buff_semantic_weight", 0.0)
+            )
         )
         return round(total, 4)
 
@@ -119,7 +149,8 @@ class RestaurantScorer:
 
     def run_scoring_pipeline(self,
                               filtered_data: dict,
-                              parsed_json: dict) -> pd.DataFrame:
+                              parsed_json: dict,
+                              buff_weights: dict | None = None) -> pd.DataFrame:
         """
         Hàm CHÍNH của Module Algorithm.
         Chạy toàn bộ pipeline tính điểm và trả về top 3 quán ăn cho mỗi bữa.
@@ -134,6 +165,14 @@ class RestaurantScorer:
         budget       = parsed_json.get('budget') or 0
         num_meals    = parsed_json.get('num_meals') or 1
         meals_detail = parsed_json.get('meals_detail', [])
+
+        if buff_weights is None:
+            buff_weights = {
+                "buff_star_weight": 0.0,
+                "buff_price_weight": 0.0,
+                "buff_distance_weight": 0.0,
+                "buff_semantic_weight": 0.0
+            }
 
         budget_per_meal = budget / num_meals if num_meals > 0 else 0
 
@@ -151,18 +190,31 @@ class RestaurantScorer:
             semantic_query = semantic_map.get(meal_tag, '')
 
             df = df.copy()
-            list_ids = df['id'].tolist() if 'id' in df.columns else []
-            semantic_scores_dict = self._score_semantic(list_ids, semantic_query)
+            if 'id' in df.columns:
+                list_ids = [
+                    str(rid)
+                    for rid in df['id'].tolist()
+                    if pd.notna(rid)
+                ]
+            else:
+                list_ids = []
+
+            semantic_scores_dict = self._score_semantic(
+                list_ids,
+                semantic_query,
+                0.0
+            )
 
             if semantic_query and 'semantic_text' in df.columns:
-                missing_ids = [str(rid) for rid in list_ids if str(rid) not in semantic_scores_dict]
+                missing_ids = [rid for rid in list_ids if rid not in semantic_scores_dict]
                 all_zero = not any(score > 0 for score in semantic_scores_dict.values())
                 if missing_ids or all_zero:
                     texts = df['semantic_text'].fillna('').tolist()
                     fallback_scores = self._score_semantic_from_texts(
                         semantic_query,
                         texts,
-                        df['id'].astype(str).tolist()
+                        df['id'].astype(str).fillna("").tolist(),
+                        0.0
                     )
                     if all_zero:
                         semantic_scores_dict = fallback_scores
@@ -181,6 +233,8 @@ class RestaurantScorer:
                     budget_per_meal,
                     row.get('semantic_score', 0.0),
                     self.user_lat, self.user_lng
+                    ,
+                    buff_weights
                 ),
                 axis=1
             )
