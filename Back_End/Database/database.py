@@ -6,13 +6,26 @@ import os
 import math
 
 class ChromaDBManager: 
+    _client = None
+    _ef = None
+    _collection = None
+
     def __init__(self):
-        self.client = chromadb.PersistentClient(path=DB_PATH)
-        self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="paraphrase-multilingual-MiniLM-L12-v2")
-        self.collection = self.client.get_or_create_collection(
-            name="restaurants_collection_vn",
-            embedding_function=self.ef
-        )
+        if ChromaDBManager._client is None:
+            ChromaDBManager._client = chromadb.PersistentClient(path=DB_PATH)
+        if ChromaDBManager._ef is None:
+            ChromaDBManager._ef = embedding_functions.SentenceTransformerEmbeddingFunction(
+                model_name="paraphrase-multilingual-MiniLM-L12-v2"
+            )
+        if ChromaDBManager._collection is None:
+            ChromaDBManager._collection = ChromaDBManager._client.get_or_create_collection(
+                name="restaurants_collection_vn",
+                embedding_function=ChromaDBManager._ef
+            )
+
+        self.client = ChromaDBManager._client
+        self.ef = ChromaDBManager._ef
+        self.collection = ChromaDBManager._collection
     
     def search(self, query_text, n_results=5):
         return self.collection.query(
