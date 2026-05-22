@@ -9,18 +9,21 @@ import {
   signInWithPopup,
   updateProfile,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Mail, Lock, User, ArrowRight, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Suspense } from "react";
 
-export default function LoginPage() {
+function LoginContent() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/app";
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +35,7 @@ export default function LoginPage() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(userCredential.user, { displayName: name });
       }
-      router.push("/app");
+      router.push(redirectPath);
     } catch (error: any) {
       alert("Lỗi: " + (error.code === 'auth/user-not-found' ? 'Tài khoản không tồn tại' : error.message));
     } finally {
@@ -45,7 +48,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await signInWithPopup(auth, provider);
-      router.push("/app");
+      router.push(redirectPath);
     } catch (error: any) {
       alert("Lỗi Google Auth: " + error.message);
     } finally {
@@ -173,5 +176,17 @@ export default function LoginPage() {
         </p>
       </motion.div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen w-full items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-brand-coral border-t-transparent"></div>
+      </div>
+    }>
+      <LoginContent />
+    </Suspense>
   );
 }
