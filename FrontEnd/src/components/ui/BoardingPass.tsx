@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import html2canvas from "html2canvas";
-import { Compass, Clock, Ticket, QrCode, Sparkles, Download } from "lucide-react";
+import { Compass, Clock, PlaneTakeoff, QrCode, Sparkles, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type MealStop = {
@@ -11,6 +11,7 @@ type MealStop = {
   time: string;
   price: string;
   type: string;
+  rating: number;
 };
 
 type BoardingPassProps = {
@@ -31,12 +32,20 @@ export default function BoardingPass({
 
   const sanitizedMeals = useMemo(() => meals.slice(0, 3), [meals]);
 
+  const waitForStableLayout = async () => {
+    if (document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  };
+
   const handleExport = async () => {
     if (!passRef.current || isExporting) {
       return;
     }
     setIsExporting(true);
     try {
+      await waitForStableLayout();
       const canvas = await html2canvas(passRef.current, {
         useCORS: true,
         scale: 2,
@@ -58,6 +67,7 @@ export default function BoardingPass({
     }
     setIsExporting(true);
     try {
+      await waitForStableLayout();
       const canvas = await html2canvas(passRef.current, {
         useCORS: true,
         scale: 2,
@@ -101,14 +111,14 @@ export default function BoardingPass({
   return (
     <div className={cn("space-y-4", className)}>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A059]">
           Xuất vé ẩm thực
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={handleShare}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white px-4 py-2 text-xs font-semibold text-slate-600 shadow-soft"
+            className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#FAFAFA] px-4 py-2 text-xs font-semibold text-[#0B3C5D] shadow-soft"
           >
             <Sparkles size={14} />
             Chia sẻ
@@ -116,7 +126,7 @@ export default function BoardingPass({
           <button
             type="button"
             onClick={handleExport}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-2 text-xs font-semibold text-white shadow-glow"
+            className="inline-flex items-center gap-2 rounded-full bg-[#0B3C5D] px-4 py-2 text-xs font-semibold text-[#C5A059] shadow-glow"
           >
             <Download size={14} />
             {isExporting ? "Đang xuất..." : "Tải ảnh"}
@@ -127,121 +137,113 @@ export default function BoardingPass({
       <div className="flex justify-center">
         <div
           ref={passRef}
-          className="relative h-[800px] w-[450px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-[#FAFAFA] p-6 shadow-[0_32px_80px_rgba(15,23,42,0.14)] before:absolute before:left-[-18px] before:top-[210px] before:h-9 before:w-9 before:rounded-full before:bg-[#FAFAFA] before:shadow-[0_0_0_8px_rgba(250,250,250,1)] after:absolute after:right-[-18px] after:top-[210px] after:h-9 after:w-9 after:rounded-full after:bg-[#FAFAFA] after:shadow-[0_0_0_8px_rgba(250,250,250,1)]"
+          className="relative h-[800px] w-[450px] overflow-hidden rounded-[24px] border border-[#0B3C5D]/15 bg-[#FAFAFA] p-6 shadow-[0_32px_80px_rgba(11,60,93,0.25)] before:absolute before:left-[-18px] before:top-[210px] before:h-9 before:w-9 before:rounded-full before:bg-[#FAFAFA] before:shadow-[0_0_0_8px_rgba(250,250,250,1)] after:absolute after:right-[-18px] after:top-[210px] after:h-9 after:w-9 after:rounded-full after:bg-[#FAFAFA] after:shadow-[0_0_0_8px_rgba(250,250,250,1)]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,106,61,0.10),_transparent_45%),radial-gradient(circle_at_bottom,_rgba(12,139,214,0.10),_transparent_50%)]" />
-          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon" />
-          <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-amber-300 via-amber-200 to-brand-coral" />
+          <div className="absolute inset-x-0 top-0 h-[120px] bg-[#0B3C5D]" />
           <div className="relative">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-coral to-brand-flame text-white shadow-glow">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0B3C5D] text-[#C5A059] shadow-soft">
                   <Compass size={22} />
                 </span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-lagoon">
+                  <div className="text-xs font-semibold uppercase tracking-[0.35em] text-[#C5A059]">
                     BMI
                   </div>
-                  <div className="font-display text-xl font-semibold text-slate-900">
+                  <div className="font-display text-xl font-semibold text-white">
                     Food Itinerary Pass
                   </div>
                 </div>
               </div>
-              <div className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-600">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059]">
                 BUSINESS CLASS
               </div>
             </div>
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="inline-flex items-center gap-2 rounded-full border border-amber-200/70 bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700 shadow">
-                <Ticket size={14} />
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#FAFAFA] px-3 py-1 text-[11px] font-semibold text-[#0B3C5D] shadow-soft">
                 AI-OPTIMIZED
               </div>
-              <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+              <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[#C5A059]">
                 {nowLabel}
               </div>
             </div>
 
-            <div className="mt-5 h-px w-full border-t border-dashed border-slate-300" />
+            <div className="mt-5 h-px w-full border-t border-dashed border-[#C5A059]/30" />
 
-            <div className="mt-5 grid gap-4 rounded-2xl border border-slate-200/70 bg-white/90 p-4 sm:grid-cols-2">
+            <div className="mt-5 grid gap-4 rounded-2xl border border-[#0B3C5D]/10 bg-[#FDFBF7] p-4 sm:grid-cols-[1fr_auto_1fr]">
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Departure
                 </div>
-                <div className="mt-2 text-base font-semibold text-slate-900">
+                <div className="mt-2 text-base font-semibold text-[#0B3C5D]">
                   {departure || "Chưa chọn vị trí"}
                 </div>
-                <div className="mt-1 text-xs text-slate-500">Điểm khởi hành</div>
+                <div className="mt-1 text-xs text-[#0B3C5D]/60">Điểm khởi hành</div>
+              </div>
+              <div className="flex items-center justify-center">
+                <PlaneTakeoff size={28} className="text-[#C5A059]" />
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Destination
                 </div>
-                <div className="mt-2 text-base font-semibold text-slate-900">
-                  CITY CULINARY
+                <div className="mt-2 text-base font-semibold text-[#0B3C5D]">
+                  CULINARY PASSPORT
                 </div>
-                <div className="mt-1 text-xs text-slate-500">Hành trình đa hương vị</div>
+                <div className="mt-1 text-xs text-[#0B3C5D]/60">Hành trình đa hương vị</div>
               </div>
             </div>
 
-            <div className="mt-4 grid gap-4 rounded-2xl border border-slate-200/70 bg-white/90 p-4 sm:grid-cols-3">
+            <div className="mt-4 grid gap-4 rounded-2xl border border-[#0B3C5D]/10 bg-[#FDFBF7] p-4 sm:grid-cols-3">
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Passenger
                 </div>
-                <div className="mt-2 text-sm font-semibold text-slate-900">
+                <div className="mt-2 text-sm font-semibold text-[#0B3C5D]">
                   Người xinh đẹp nhất thế giới
                 </div>
               </div>
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Total allowance
                 </div>
-                <div className="mt-2 text-sm font-semibold text-slate-900">
+                <div className="mt-2 text-sm font-semibold text-[#0B3C5D]">
                   {totalAllowance}
                 </div>
               </div>
               <div>
-                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Gate time
                 </div>
-                <div className="mt-2 text-sm font-semibold text-slate-900">
+                <div className="mt-2 text-sm font-semibold text-[#0B3C5D]">
                   {nowLabel}
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 space-y-5">
+            <div className="mt-6 space-y-4">
               {sanitizedMeals.map((meal, index) => (
-                <div key={`${meal.label}-${index}`} className="flex items-start gap-4">
-                  <div className="flex flex-col items-center">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-brand-flame shadow">
-                      <Clock size={18} />
-                    </span>
-                    {index < sanitizedMeals.length - 1 && (
-                      <div className="mt-2 h-10 w-px border-l border-dashed border-slate-300" />
-                    )}
-                  </div>
-                  <div className="flex-1 rounded-2xl border border-slate-200/70 bg-white px-4 py-3 shadow-sm">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <div className="inline-flex items-center gap-2 text-sm font-semibold text-slate-900">
-                        <Sparkles size={14} className="text-brand-coral" />
-                        {meal.label}
-                      </div>
-                      <div className="text-xs font-semibold text-brand-lagoon">
-                        {meal.time}
-                      </div>
+                <div key={`${meal.label}-${index}`} className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-[#0B3C5D]">
+                    <Clock size={16} className="text-[#C5A059]" />
+                    <div className="text-xs font-semibold tracking-[0.2em]">
+                      {meal.time}
                     </div>
-                    <div className="mt-2 text-sm font-semibold text-slate-900">
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
+                      {meal.label}
+                    </div>
+                    <div className="mt-1 text-sm font-semibold text-[#0B3C5D] truncate">
                       {meal.name}
                     </div>
-                    <div className="mt-1 text-xs text-slate-500">
-                      {meal.type}
+                    <div className="mt-1 text-xs text-[#0B3C5D]/60">
+                      {meal.rating.toFixed(1)} sao
                     </div>
-                    <div className="mt-2 text-xs font-semibold text-slate-500">
-                      {meal.price}
-                    </div>
+                  </div>
+                  <div className="text-sm font-semibold text-[#0B3C5D]">
+                    {meal.price}
                   </div>
                 </div>
               ))}
@@ -249,7 +251,7 @@ export default function BoardingPass({
 
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
               <div className="space-y-1">
-                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-[#0B3C5D]/60">
                   Mã vé
                 </div>
                 <div className="flex flex-wrap items-center gap-1">
@@ -258,22 +260,22 @@ export default function BoardingPass({
                       key={`bar-${index}`}
                       className={cn(
                         "h-6 w-1 rounded-full",
-                        index % 3 === 0 ? "bg-slate-900" : "bg-slate-400"
+                        index % 3 === 0 ? "bg-[#0B3C5D]" : "bg-[#C5A059]/70"
                       )}
                     />
                   ))}
                 </div>
               </div>
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/90 px-4 py-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-brand-lagoon shadow">
+              <div className="flex items-center gap-3 rounded-2xl border border-[#0B3C5D]/10 bg-[#FDFBF7] px-4 py-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FAFAFA] text-[#C5A059] shadow-soft">
                   <QrCode size={20} />
                 </span>
                 <div>
-                  <div className="text-xs font-semibold text-slate-600">
+                  <div className="text-xs font-semibold text-[#0B3C5D]">
                     Quét để tự tạo lộ trình tại BMI
                   </div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
-                    YOUR JOURNEY, OUR TASTE.
+                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#C5A059]">
+                    LOGISTICALLY OPTIMIZED BY AI
                   </div>
                 </div>
               </div>

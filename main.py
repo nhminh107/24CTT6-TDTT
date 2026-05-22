@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+import asyncio
+from Back_End.Database.database import ChromaDBManager
 from Back_End.API.routes import router
 
 app = FastAPI(
@@ -8,6 +10,10 @@ app = FastAPI(
 )
 
 app.include_router(router)
+
+@app.on_event("startup")
+async def warmup_models():
+    asyncio.create_task(asyncio.to_thread(ChromaDBManager))
 
 #Cổng phụ
 @app.get("/")

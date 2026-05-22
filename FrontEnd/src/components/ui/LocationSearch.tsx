@@ -31,11 +31,20 @@ export default function LocationSearch({
   const [options, setOptions] = useState<LocationOption[]>([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("");
 
   useEffect(() => {
-    if (!value.trim()) {
+    const trimmed = value.trim();
+    if (!trimmed) {
       setOptions([]);
       setOpen(false);
+      return;
+    }
+
+    if (selectedValue && trimmed === selectedValue) {
+      setOptions([]);
+      setOpen(false);
+      setLoading(false);
       return;
     }
 
@@ -44,7 +53,7 @@ export default function LocationSearch({
     const handle = setTimeout(async () => {
       try {
         const response = await fetch(
-          `${API_BASE_URL}/api/maps/suggestions?q=${encodeURIComponent(value)}`,
+          `${API_BASE_URL}/api/maps/suggestions?q=${encodeURIComponent(trimmed)}`,
           { signal: controller.signal }
         );
         if (!response.ok) {
@@ -79,8 +88,16 @@ export default function LocationSearch({
   }, [value]);
 
   const handleSelect = (option: LocationOption) => {
+    setSelectedValue(option.name);
     onSelect(option);
     setOpen(false);
+  };
+
+  const handleChange = (nextValue: string) => {
+    if (selectedValue) {
+      setSelectedValue("");
+    }
+    onChange(nextValue);
   };
 
   return (
@@ -92,7 +109,7 @@ export default function LocationSearch({
         <MapPin className="text-brand-coral" size={18} />
         <input
           value={value}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => handleChange(event.target.value)}
           placeholder="Nhập khu vực bạn đang ở"
           className="w-full min-w-0 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
         />
