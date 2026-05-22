@@ -148,7 +148,7 @@ async def process_prompt(request: UserRequest):
         # 3. Data Filtering: Lọc quán ăn phù hợp
         
         #Lấy hồ sơ sức khỏe của user
-        user_health_profile=fetch_user_health_profile(request.user_id)
+        user_health_profile= await fetch_user_health_profile(request.user_id)
         
         df_raw = await df_task
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
@@ -159,7 +159,7 @@ async def process_prompt(request: UserRequest):
         # 4. Scoring & Optimization: Tính lịch trình tối ưu
         db_manager = ChromaDBManager()
         scorer = RestaurantScorer(user_lat=user_lat, user_lng=user_lng, db=db_manager)
-        scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights)
+        scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights,diet_mode=user_health_profile.get('diet_mode',None))
 
         selector = FinalResultLLM()
         final_itinerary = await selector.run_final_selection(

@@ -119,7 +119,7 @@ class RestaurantScorer:
                               diet_mode) -> float:
         """
         Tính tổng điểm weighted cho 1 nhà hàng tính từ một vị trí bắt đầu.
-        INPUT  : row (dict), budget_per_meal, semantic_score, start_lat, start_lng
+        INPUT  : row (dict), budget_per_meal, semantic_score, start_lat, start_lng,diet_mode (chế độ ăn của user)
         RETURN : float — tổng điểm trong [0.0, 1.0]
         """
         base_score = (
@@ -179,6 +179,7 @@ class RestaurantScorer:
         INPUT:
             filtered_data (dict[str, DataFrame]) — output từ Module Filter
             parsed_json (dict) — output từ Module Parsing
+            diet_mode: Chế độ ăn của user
 
         RETURN:
             pd.DataFrame chứa top 3 quán ăn cho mỗi bữa kèm điểm đánh giá.

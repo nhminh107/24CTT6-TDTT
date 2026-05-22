@@ -96,21 +96,20 @@ def analyze_restaurant_tags(name, restaurant_type, shu, semantic_text):
         print(f"❌ Lỗi khi xử lý quán '{name}': {e}")
         return {"main_tag": [], "potential_tag": []}
 
+import os
 # --- KỊCH BẢN CHẠY THỬ NGHIỆM VỚI DỮ LIỆU MẪU ---
 if __name__ == "__main__":
     print("🚀 Đang kiểm tra kết nối tới Ollama và phân tích thử dữ liệu mẫu...")
     
-    with open('vũng_tàu.json', 'r', encoding='utf-8') as file:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # 2. Đi lùi ra thư mục cha (Back_End), rồi đi vào 'Database' -> 'old_data.json'
+    input_filename = os.path.join(current_dir, "..", "Database", "old_data.json")
+        
+    with open(input_filename, 'r', encoding='utf-8') as file:
       # 2. Nạp dữ liệu JSON thành List/Dict trong Python
       sample_restaurants = json.load(file)
-
-# 3. Bây giờ bạn có thể sử dụng vòng lặp để xử lý như bình thường
-    print("--- Danh sách quán ăn đọc từ file ---")
-    for res in sample_restaurants:
-      print(f"Quán: {res['name']} | Loại: {res['type']} | Độ cay: {res['shu']}")
-    
-    # Giả lập 2 bản ghi dữ liệu cào từ Apify của bạn
-      
+  
     from concurrent.futures import ThreadPoolExecutor
 
     def process_single_restaurant(res):
@@ -130,7 +129,7 @@ if __name__ == "__main__":
     print("✅ Đã xử lý xong toàn bộ dữ liệu quán ăn!")
 
     # --- ĐOẠN CODE GHI RA FILE JSON Ở ĐÂY ---
-    output_filename = "restaurants_with_tags.json"
+    output_filename = os.path.join(current_dir, "..", "Database", "data.json")
     
     try:
         # Mở file ở chế độ ghi ('w'), ép định dạng utf-8 để không bị lỗi font tiếng Việt

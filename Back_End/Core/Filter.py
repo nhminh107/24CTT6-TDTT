@@ -154,7 +154,11 @@ class RestaurantFilter:
     
     # Lọc bỏ những quán mà user phải tránh
     def run_health_codition_first_step(self, raw_data):
-        
+        """
+        Lọc các quán có tag chính thuộc các tag mà user phải né,
+        hiện tại là chỉ cần 1 tag chung là bỏ,
+        có thể làm lại logic là nếu có n tag và n/2 tag chung mới bỏ
+        """
         diet_mode= self.user_health.get("diet_mode",None)
         
         # trong trường hợp user chọn ăn nghiêm ngặt hoặc không chọn gì thì mặc định là ăn nghiêm ngặt
@@ -292,6 +296,9 @@ class RestaurantFilter:
         return result_dict
     
     def calculate_penalty_health_score(self, res):
+        """
+        Tính toán điểm penalty dựa vào các potential_tag
+        """
         # 1. Lấy danh sách tag cấm của user (chuyển sang set để tính toán nhanh hơn)
         forbidden_tags = set(self.user_health.get("forbidden_tags", []))
         
@@ -311,6 +318,9 @@ class RestaurantFilter:
         return res
     
     def generate_notes(self, res):
+        """
+        Thêm note dựa vào điểm penalty
+        """
         penalty = res.get("penalty_score", 0.0)
         notes = []
         
@@ -373,6 +383,10 @@ class RestaurantFilter:
         return res
 
     def generate_warning(self,res):
+        """
+        Thêm cảnh báo dựa vào potential_tag
+        """
+        
         warnings = []
         forbidden_tags = self.user_health.get("forbidden_tags", [])
     
