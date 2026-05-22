@@ -15,6 +15,8 @@ type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  warnings?: string[];
+  notes?: string[];
 };
 
 type RestaurantCardProps = {
@@ -48,6 +50,8 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
     () => normalizeImageUrl(restaurant.imageUrl),
     [restaurant.imageUrl]
   );
+
+  console.log(restaurant);
 
   return (
     <div className="glass overflow-hidden rounded-3xl shadow-soft">
@@ -115,15 +119,63 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
         />
       </button>
       {open && (
-        <div className="space-y-3 px-5 pb-5 text-sm text-slate-600">
-          <div>{restaurant.semanticText}</div>
-          {restaurant.meals && restaurant.meals.length > 0 && (
-            <div>
-              Phục vụ: {restaurant.meals.join(", ")}
-            </div>
-          )}
+  <div className="space-y-4 px-5 pb-5 text-sm text-slate-600">
+    <div>{restaurant.semanticText}</div>
+
+    {restaurant.meals && restaurant.meals.length > 0 && (
+      <div>
+        <span className="font-medium text-slate-800">
+          Phục vụ:
+        </span>{" "}
+        {restaurant.meals.join(", ")}
+      </div>
+    )}
+
+    {/* Warnings */}
+    {restaurant.warnings &&
+      restaurant.warnings.length > 0 && (
+        <div className="space-y-2">
+          <h4 className="font-semibold text-red-600">
+            Cảnh báo sức khỏe
+          </h4>
+
+          <div className="flex flex-wrap gap-2">
+            {restaurant.warnings.map(
+              (warning, index) => (
+                <span
+                  key={`${warning}-${index}`}
+                  className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-medium text-red-700"
+                >
+                  {warning}
+                </span>
+              )
+            )}
+          </div>
         </div>
       )}
+
+    {/* Notes */}
+    {restaurant.notes &&
+      restaurant.notes.length > 0 && (
+        <div className="space-y-2">
+          <h4 className="font-semibold text-emerald-600">
+            Gợi ý / Lưu ý
+          </h4>
+
+          <div className="flex flex-wrap gap-2">
+            {restaurant.notes.map((note, index) => (
+              <span
+                key={`${note}-${index}`}
+                className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
+              >
+                {note}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+  </div>
+)}
     </div>
   );
 }

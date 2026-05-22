@@ -39,14 +39,8 @@ user_health_profile_mockup={
             ]
         },
         "forbidden_tags": [
-            "Red_Meat",
-            "Seafood",
-            "Alcohol_Pub",
-            "Shellfish",
-            "Spicy",
             "DeepFried_Oily",
             "Peanuts_Nuts",
-            "Gluten_Present"
         ]
     } 
 
@@ -148,7 +142,8 @@ async def process_prompt(request: UserRequest):
         # 3. Data Filtering: Lọc quán ăn phù hợp
         
         #Lấy hồ sơ sức khỏe của user
-        user_health_profile= await fetch_user_health_profile(request.user_id)
+        # user_health_profile= await fetch_user_health_profile(request.user_id)
+        user_health_profile=user_health_profile_mockup
         
         df_raw = await df_task
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
@@ -206,10 +201,14 @@ async def get_map_suggestions(q: str):
     return [{"description": d, "place_id": p} for d, p in results]
 
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Quay lại 1 cấp vào Back_End, sau đó vào Database
+json_path = os.path.join(os.path.dirname(current_dir), "Database", "serviceAccountKey.json")
+
 
 # Khởi tạo Firebase Admin SDK (Chỉ khởi tạo một lần duy nhất)
 if not firebase_admin._apps:
-    cred = credentials.Certificate(os.getenv("FIREBASE_CREDENTIALS_PATH", "serviceAccountKey.json"))
+    cred = credentials.Certificate(os.getenv("FIREBASE_CREDENTIALS_PATH", json_path))
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
