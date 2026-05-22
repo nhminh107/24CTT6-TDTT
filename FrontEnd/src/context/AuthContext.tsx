@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import { authStorage } from "@/lib/auth";
 
 interface AuthContextType {
   user: User | null;
@@ -21,18 +22,40 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      setUser(firebaseUser);
       setLoading(false);
       
-      // Nếu có user, có thể sync token với Backend ở đây
-      if (user) {
-        user.getIdToken().then(token => {
-          // Lưu token vào localStorage hoặc gửi qua Header
-          localStorage.setItem("token", token);
-        });
+      if (firebaseUser) {
+        try {
+          const token = await firebaseUser.getIdToken();
+          authStorage.setIdToken(token);
+          
+          const isGoogle = firebaseUser.providerData.some(p => p.providerId === 'google.com');
+          if (isGoogle) {
+            authStorage.setGoogleUid(firebaseUser.uid);
+          }
+
+          // Gọi API Sync để lưu vào Firestore trên Backend
+          const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api/v1";
+          await fetch(`${apiBaseUrl}/auth/sync`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              email: firebaseUser.email,
+              name: firebaseUser.displayName,
+              photo_url: firebaseUser.photoURL
+            })
+          });
+
+        } catch (error) {
+          console.error("Lỗi đồng bộ người dùng:", error);
+        }
       } else {
-        localStorage.removeItem("token");
+        authStorage.clear();
       }
     });
 
@@ -40,7 +63,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const logout = async () => {
-    await signOut(auth);
+    try {
+      await signOut(auth);
+      authStorage.clear();
+    } catch (error) {
+      console.error("Lỗi đăng xuất:", error);
+    }
   };
 
   return (
