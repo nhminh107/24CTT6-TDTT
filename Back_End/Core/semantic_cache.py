@@ -1,10 +1,12 @@
 import chromadb
 import json
 import hashlib
+import os
 
 class SemanticCacheManager:
     def __init__(self):
-        self.client = chromadb.PersistentClient(path="./chroma_cache_db")
+        cache_path = os.path.join(os.getcwd(), "Back_End", "Database", "chroma_cache_db")
+        self.client = chromadb.PersistentClient(path=cache_path)
         self.collection = self.client.get_or_create_collection(
             name="route_cache",
             metadata={"hnsw:space": "cosine"} 
@@ -16,6 +18,10 @@ class SemanticCacheManager:
         return f"zone_{zone_lat}_{zone_lng}"
 
     def check_cache(self, prompt: str, lat: float, lng: float, budget: int):
+        if lat is None or lng is None:
+            return None
+        if budget is None:
+            budget = 0
         zone = self._get_location_zone(lat, lng)
 
         results = self.collection.query(

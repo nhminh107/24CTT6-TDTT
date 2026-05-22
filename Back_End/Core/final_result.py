@@ -8,11 +8,14 @@ import pandas as pd
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
 
+_client = genai.Client(api_key=api_key)
+_model_name = 'gemini-2.5-flash-lite'
+
 
 class FinalResultLLM:
     def __init__(self):
-        self.client = genai.Client(api_key=api_key)
-        self.model_name = 'gemini-2.5-flash-lite'
+        self.client = _client
+        self.model_name = _model_name
 
     def _meal_order(self, candidates_df: pd.DataFrame, parsed_json: dict | None) -> list:
         if parsed_json and parsed_json.get('meals_detail'):
