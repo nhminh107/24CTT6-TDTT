@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { MapPin, LogOut, User as UserIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { useAuth } from "@/context/AuthContext";
 
 const links = [
   { label: "Trang chủ", href: "/" },
@@ -12,6 +13,8 @@ const links = [
 ];
 
 export default function Navbar() {
+  const { user, logout } = useAuth();
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -12 }}
@@ -44,12 +47,37 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <Link
-          href="/app"
-          className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
-        >
-          Dùng ngay
-        </Link>
+        
+        <div className="flex items-center gap-4">
+          {user ? (
+            <div className="flex items-center gap-3">
+              <div className="hidden flex-col items-end md:flex">
+                <span className="text-xs font-semibold text-slate-900">{user.displayName || "Người dùng"}</span>
+                <span className="text-[10px] text-slate-500">{user.email}</span>
+              </div>
+              <button
+                onClick={() => logout()}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50 hover:text-brand-coral"
+                title="Đăng xuất"
+              >
+                <LogOut size={18} />
+              </button>
+              <Link
+                href="/app"
+                className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+              >
+                Vào ứng dụng
+              </Link>
+            </div>
+          ) : (
+            <Link
+              href="/login?redirect=/app"
+              className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+            >
+              Dùng ngay
+            </Link>
+          )}
+        </div>
       </div>
     </motion.nav>
   );

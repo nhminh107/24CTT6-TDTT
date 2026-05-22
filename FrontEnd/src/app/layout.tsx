@@ -1,5 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { AuthProvider } from "@/context/AuthContext";
+import AuthWrapper from "@/components/layout/AuthWrapper";
 
 export const metadata: Metadata = {
   title: "BMI | Tối ưu hóa lịch trình ẩm thực",
@@ -15,7 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body className="font-sans antialiased">
+        <AuthProvider>
+          <AuthWrapper>
+            {children}
+          </AuthWrapper>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
