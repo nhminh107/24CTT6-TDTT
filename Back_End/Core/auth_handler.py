@@ -1,22 +1,35 @@
 from fastapi import HTTPException, Security, Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import firebase_admin
-from firebase_admin import auth, credentials
+from firebase_admin import auth, credentials, firestore
 import os
 
-# Đường dẫn tới tệp Service Account Key
-# Lưu ý: Bạn cần đặt tệp serviceAccountKey.json vào thư mục Back_End/Database/
-base_dir = os.path.dirname(os.path.dirname(__file__)) # Back_End/
-json_path = os.path.join(base_dir, "Database", "serviceAccountKey.json")
+# Đường dẫn tuyệt đối tới tệp Service Account Key
+# __file__ là path tới file hiện tại (Back_End/Core/auth_handler.py)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Quay lại 1 cấp vào Back_End, sau đó vào Database
+json_path = os.path.join(os.path.dirname(current_dir), "Database", "serviceAccountKey.json")
 
 # Khởi tạo Firebase Admin
 if not firebase_admin._apps:
-    if os.path.exists(json_path):
-        cred = credentials.Certificate(json_path)
-        firebase_admin.initialize_app(cred)
-    else:
-        # Nếu không có tệp key, chúng ta sẽ log cảnh báo
-        print(f"CẢNH BÁO: Không tìm thấy tệp {json_path}. Các chức năng xác thực sẽ lỗi.")
+    try:
+        if os.path.exists(json_path):
+            cred = credentials.Certificate(json_path)
+            firebase_admin.initialize_app(cred)
+            print(">>> Firebase Admin SDK khởi tạo thành công.")
+        else:
+            print(f">>> CẢNH BÁO: Không tìm thấy tệp xác thực tại {json_path}")
+    except Exception as e:
+        print(f">>> LỖI khởi tạo Firebase Admin: {e}")
+
+# Khởi tạo Firestore client
+db = None
+try:
+    if firebase_admin._apps:
+        db = firestore.client()
+        print(">>> Kết nối Firestore thành công.")
+except Exception as e:
+    print(f">>> LỖI kết nối Firestore: {e}")
 
 security = HTTPBearer()
 
