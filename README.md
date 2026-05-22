@@ -23,8 +23,11 @@ uvicorn main:app --reload
 
 Terminal 2: Chạy lệnh 
 ```
+cd FrontEnd
+```
+```
 npm run dev
 ```
-
+**NẾU BỊ LỖI:** Chạy thêm lệnh ```npm install firebase```
 **LƯU Ý**: Để tiết kiệm API Key chung thì mọi người có thể tự vào <a href="https://aistudio.google.com/welcome"> Google AI Studio </a> tạo key và bỏ vào .env để sử dụng. Ngoài ra, những tính năng, kiểm tra không cần dùng đến
 vị trí thì mọi người có thể test trực tiếp sau khi chạy Terminal 1, vào link 127.0.0.1
