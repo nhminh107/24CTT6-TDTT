@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< Updated upstream
     "firebase": "^12.13.0",
     "framer-motion": "11.3.30",
     "html2canvas": "1.4.1",
+=======
+    "framer-motion": "11.3.30",
+    "html2canvas": "^1.4.1",
+>>>>>>> Stashed changes
     "lucide-react": "0.461.0",
     "next": "14.2.3",
     "react": "18.3.1",
