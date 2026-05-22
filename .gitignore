@@ -182,6 +182,10 @@ FrontEnd/build/
 FrontEnd/.env*.local
 FrontEnd/.env
 
+# Firebase/Google Cloud Service Account Keys
 serviceAccountKey.json
-Back_End/Database/serviceAccountKey.json
+*/serviceAccountKey.json
+**/serviceAccountKey.json
+*.json.serviceAccount
+service-account-*.json
 
