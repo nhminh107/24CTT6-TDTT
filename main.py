@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 from Back_End.Database.database import ChromaDBManager
-from Back_End.API.routes import router
+from Back_End.API.routes import router as main_router
+from Back_End.API.auth_routes import router as auth_router
 
 app = FastAPI(
     title="Trợ lý du lịch thông minh",
@@ -9,7 +11,18 @@ app = FastAPI(
     version="1.0"
 )
 
-app.include_router(router)
+# Cấu hình CORS để cho phép FrontEnd kết nối
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"], # Hoặc ["*"] nếu muốn cho phép tất cả
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Đăng ký các router
+app.include_router(main_router)
+app.include_router(auth_router)
 
 @app.on_event("startup")
 async def warmup_models():

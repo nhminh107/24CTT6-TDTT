@@ -14,7 +14,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -171,6 +170,12 @@ Thumbs.db
 Back_End/Database/chroma.sqlite3
 Back_End/Database/*-*-*-*-*/
 
+# Firebase/Google Cloud Service Account Keys
+serviceAccountKey.json
+*/serviceAccountKey.json
+**/serviceAccountKey.json
+*.json.serviceAccount
+service-account-*.json
 
 # ========================
 # FRONTEND (Next.js / Node)
