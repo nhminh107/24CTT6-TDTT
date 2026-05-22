@@ -13,7 +13,7 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     // Nếu không loading và không có user, chuyển hướng về login
     // Chỉ áp dụng cho các route bảo mật (ví dụ /app)
     if (!loading && !user && pathname.startsWith("/app")) {
-      router.push("/login");
+      router.push(`/login?redirect=${pathname}`);
     }
   }, [user, loading, router, pathname]);
 

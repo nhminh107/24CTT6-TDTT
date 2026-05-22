@@ -4,7 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 
+import { useAuth } from "@/context/AuthContext";
+
 export default function Hero() {
+  const { user } = useAuth();
+  
   return (
     <section className="section-spacing !pb-10" id="about">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -32,7 +36,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link
-              href="/app"
+              href={user ? "/app" : "/login?redirect=/app"}
               className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
             >
               Bắt đầu lên lịch trình - Miễn phí
