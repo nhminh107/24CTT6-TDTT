@@ -17,15 +17,38 @@ export default function AppPage() {
   const [isCompact, setIsCompact] = useState(false);
   const [showBoardingPass, setShowBoardingPass] = useState(false);
   const [meals, setMeals] = useState([
-    { label: "STOP 01", name: "Chưa có dữ liệu", time: "07:30", price: "Chưa cập nhật", type: "Cafe" },
-    { label: "STOP 02", name: "Chưa có dữ liệu", time: "12:15", price: "Chưa cập nhật", type: "Bistro" },
-    { label: "STOP 03", name: "Chưa có dữ liệu", time: "19:30", price: "Chưa cập nhật", type: "Fine Dining" }
+    {
+      label: "STOP 01",
+      name: "Chưa có dữ liệu",
+      time: "12p",
+      price: "Chưa cập nhật",
+      type: "Cafe",
+      rating: 0
+    },
+    {
+      label: "STOP 02",
+      name: "Chưa có dữ liệu",
+      time: "15p",
+      price: "Chưa cập nhật",
+      type: "Bistro",
+      rating: 0
+    },
+    {
+      label: "STOP 03",
+      name: "Chưa có dữ liệu",
+      time: "18p",
+      price: "Chưa cập nhật",
+      type: "Fine Dining",
+      rating: 0
+    }
   ]);
 
   const mealTimes = ["07:30", "12:15", "19:30", "21:00"];
   const mealTypes = ["Cafe", "Bistro", "Fine Dining", "Street Food"];
 
-  const buildMealStops = (restaurants: { name: string; price: string | number; meals?: string[] }[]) =>
+  const getTravelTime = () => `${Math.floor(10 + Math.random() * 11)}p`;
+
+  const buildMealStops = (restaurants: { name: string; price: string | number; meals?: string[]; rating?: number }[]) =>
     restaurants.slice(0, 3).map((restaurant, index) => {
       const label = `STOP ${String(index + 1).padStart(2, "0")}`;
       const priceText =
@@ -36,9 +59,10 @@ export default function AppPage() {
       return {
         label,
         name: restaurant.name || "Chưa có dữ liệu",
-        time: mealTimes[index] || "19:30",
+        time: getTravelTime(),
         price: priceText,
-        type
+        type,
+        rating: restaurant.rating ?? 0
       };
     });
   const filters = useMemo(
