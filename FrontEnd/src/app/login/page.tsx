@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth } from "@/lib/firebase";
 import {
   signInWithEmailAndPassword,
@@ -15,8 +15,20 @@ import Link from "next/link";
 import { MapPin, Mail, Lock, User, ArrowRight, Loader2, AlertCircle, X, ChevronLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Suspense } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 function LoginContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get('redirect') || '/app';
+  const { user, loading: authLoading } = useAuth();
+
+  useEffect(() => {
+    if (!authLoading && user) {
+      router.push(redirectPath);
+    }
+  }, [user, authLoading, router, redirectPath]);
+
   const [isLogin, setIsLogin] = useState(true);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [email, setEmail] = useState("");
