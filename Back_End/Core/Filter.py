@@ -162,15 +162,29 @@ class RestaurantFilter:
         diet_mode= self.user_health.get("diet_mode",None)
         
         # trong trường hợp user chọn ăn nghiêm ngặt hoặc không chọn gì thì mặc định là ăn nghiêm ngặt
-        if diet_mode=="strict" or diet_mode is None:
-        
-            forbidden_tags = self.user_health.get("forbidden_tags", [])
+        if diet_mode == "strict" or diet_mode is None:
+            forbidden_tags = set(self.user_health.get("forbidden_tags", []))
+            filtered_res = []
             
-            filtered_res = [
-                res for res in raw_data
-                if not any(tag in forbidden_tags for tag in res.get("main_tag", []))
-            ]
-            
+            for res in raw_data:
+                main_tags = res.get("main_tag", [])
+                if not main_tags:
+                    filtered_res.append(res)
+                    continue
+                    
+                # Tìm các tag của quán bị trùng với tag cấm của user
+                intersect_tags = [tag for tag in main_tags if tag in forbidden_tags]
+                
+                # LOGIC CẢI TIẾN: 
+                # Nếu dính tag ĐẶC BIỆT NGUY HIỂM -> Loại ngay lập tức
+                if any(tag in self.CRITICAL_ALLERGY_TAGS for tag in intersect_tags):
+                    continue
+                    
+                # Nếu là tag hạn chế thông thường -> Tính tỷ lệ (ví dụ: trùng >= 50% số tag của quán thì mới loại)
+                match_ratio = len(intersect_tags) / len(main_tags)
+                if match_ratio < 0.5: 
+                    filtered_res.append(res)
+                    
             return filtered_res
         # trong trường hợp user chọn ăn xả láng thì chỉ né những tag nguy hiển về tính mạng còn cay,dầu mỡ,... thì có thể bỏ qua
         else:

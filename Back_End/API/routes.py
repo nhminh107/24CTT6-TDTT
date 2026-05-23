@@ -41,6 +41,9 @@ user_health_profile_mockup={
         "forbidden_tags": [
             "DeepFried_Oily",
             "Peanuts_Nuts",
+            "Alcohol_Pub",
+            "Shellfish",
+            "Spicy"
         ]
     } 
 
