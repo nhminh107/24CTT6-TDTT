@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MapPin, LogOut, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
+import { useEffect } from "react";
 import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
 
 const links = [
@@ -16,10 +17,10 @@ const links = [
 
 // Default profile — export để dùng ở chỗ khác nếu cần
 export const DEFAULT_HEALTH_PROFILE: HealthProfile = {
-  conditions: [],
-  allergies: [],
-  mode: "flexible",
-  more_description: "",
+  selected_conditions: [],
+  selected_allergies: [],
+  diet_mode: "casual",
+  more_descriptions: "",
 };
 
 export default function Navbar() {
@@ -28,9 +29,80 @@ export default function Navbar() {
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
 
   const hasProfile =
-    healthProfile.conditions.length > 0 ||
-    healthProfile.allergies.length > 0 ||
-    !!healthProfile.more_description;
+    healthProfile.selected_conditions.length > 0 ||
+    healthProfile.selected_allergies.length > 0 ||
+    !!healthProfile.more_descriptions;
+
+
+const fetchHealthProfile = async () => {
+    if (!user?.uid) return;
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/health-profile/${user.uid}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch profile");
+      }
+
+      const data = await response.json();
+
+      setHealthProfile({
+        selected_conditions:
+          data.raw_selections?.selected_conditions || [],
+        selected_allergies:
+          data.raw_selections?.selected_allergies || [],
+        diet_mode: data.diet_mode || "casual",
+        more_descriptions: data.more_description || "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+const handleSaveHealthProfile = async (profile: HealthProfile) => {
+  if (!user?.uid) return;
+
+  try {
+    // update UI trước
+    setHealthProfile(profile);
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user/health-profile/${user.uid}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: user.uid,
+          diet_mode: profile.diet_mode,
+          selected_conditions: profile.selected_conditions,
+          selected_allergies: profile.selected_allergies,
+          more_descriptions: profile.more_descriptions,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to save profile");
+    }
+
+    const data = await response.json();
+
+    console.log("Saved profile:", data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+  useEffect(() => {
+    if (user?.uid) {
+      fetchHealthProfile();
+    }
+  }, [user]);
 
   return (
     <>
@@ -128,8 +200,10 @@ export default function Navbar() {
         open={healthOpen}
         onClose={() => setHealthOpen(false)}
         profile={healthProfile}
-        onChange={setHealthProfile}
+        onChange={handleSaveHealthProfile}
       />
     </>
   );
 }
+
+

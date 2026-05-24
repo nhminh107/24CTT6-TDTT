@@ -145,8 +145,8 @@ async def process_prompt(request: UserRequest):
         # 3. Data Filtering: Lọc quán ăn phù hợp
         
         #Lấy hồ sơ sức khỏe của user
-        # user_health_profile= await fetch_user_health_profile(request.user_id)
-        user_health_profile=user_health_profile_mockup
+        user_health_profile= await fetch_user_health_profile(request.user_id)
+        # user_health_profile=user_health_profile_mockup
         
         df_raw = await df_task
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
@@ -252,8 +252,15 @@ class ProfileCreateRequest(BaseModel):
     more_descriptions: Optional[str] = ""
 
 
-def call_llm_to_extract_tags(description: str) -> List[str]:
-    # VIết một hàm trong class paring.py
+async def call_llm_to_extract_tags(description: str) -> List[str]:
+
+    llm = LLMParser()
+
+    llm_forbidden_tags = await llm.phrase_health_description(description)
+
+    if llm_forbidden_tags != []:
+        return llm_forbidden_tags
+
     return []
 
 
@@ -276,7 +283,7 @@ async def save_user_health_profile(user_id: str, payload: ProfileCreateRequest):
                 forbidden_set.update(ALLERGY_MAP[allergy]["potential"])
                 
     elif not has_selections and has_description:
-        llm_tags = call_llm_to_extract_tags(payload.more_descriptions)
+        llm_tags = await call_llm_to_extract_tags(payload.more_descriptions)
         forbidden_set.update(llm_tags)
         
     db_data = {

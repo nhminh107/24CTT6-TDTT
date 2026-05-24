@@ -4,7 +4,7 @@ import asyncio
 from Back_End.Database.database import ChromaDBManager
 from Back_End.API.routes import router as main_router
 from Back_End.API.auth_routes import router as auth_router
-
+from Back_End.API.routes import user_router
 app = FastAPI(
     title="Trợ lý du lịch thông minh",
     description="Lên lịch trình ăn uống",
@@ -23,7 +23,7 @@ app.add_middleware(
 # Đăng ký các router
 app.include_router(main_router)
 app.include_router(auth_router)
-
+app.include_router(user_router)
 @app.on_event("startup")
 async def warmup_models():
     asyncio.create_task(asyncio.to_thread(ChromaDBManager))

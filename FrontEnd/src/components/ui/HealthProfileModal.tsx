@@ -4,14 +4,17 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ShieldCheck, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+import { useAuth } from "@/context/AuthContext";
+import { useEffect } from "react";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+
+
 export interface HealthProfile {
-  conditions: string[];   // bệnh nền
-  allergies: string[];    // dị ứng
-  mode: "strict" | "casual";
-  more_description: string;
+  selected_conditions: string[];
+  selected_allergies: string[];
+  diet_mode: "strict" | "casual";
+  more_descriptions: string;
 }
 
 interface HealthProfileModalProps {
@@ -52,20 +55,25 @@ function Chip({
   label,
   selected,
   onClick,
+  disabled,        // ← thêm
 }: {
   label: string;
   selected: boolean;
   onClick: () => void;
+  disabled?: boolean;  // ← thêm
 }) {
   return (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}   // ← thêm
       className={cn(
         "rounded-full border px-4 py-2 text-xs font-semibold transition-all duration-200",
-        selected
-          ? "border-orange-400 bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-200"
-          : "border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:text-orange-600"
+        disabled
+          ? "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-300"  // ← thêm
+          : selected
+            ? "border-orange-400 bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-200"
+            : "border-slate-200 bg-white text-slate-600 hover:border-orange-300 hover:text-orange-600"
       )}
     >
       {label}
@@ -83,10 +91,22 @@ export default function HealthProfileModal({
 }: HealthProfileModalProps) {
   const [local, setLocal] = useState<HealthProfile>(profile);
 
-  // sync khi mở lại
-  const handleOpen = () => setLocal(profile);
+  const hasTags =
+  local.selected_conditions.length > 0 ||
+  local.selected_allergies.length > 0;
 
-  const toggle = (field: "conditions" | "allergies", value: string) => {
+const hasDescription =
+  local.more_descriptions.trim().length > 0;
+
+  // sync khi mở lại
+    useEffect(() => {
+    if (open) { 
+      setLocal(profile);
+    }
+  }, [profile, open]);
+
+  const { user } = useAuth();
+  const toggle = (field: "selected_conditions" | "selected_allergies", value: string) => {
     setLocal((prev) => ({
       ...prev,
       [field]: prev[field].includes(value)
@@ -95,9 +115,13 @@ export default function HealthProfileModal({
     }));
   };
 
-  const handleSave = () => {
-    onChange(local);
-    onClose();
+  const handleSave = async () => {
+  try {
+      onChange(local);
+      onClose();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -156,8 +180,9 @@ export default function HealthProfileModal({
                     <Chip
                       key={c}
                       label={c}
-                      selected={local.conditions.includes(c)}
-                      onClick={() => toggle("conditions", c)}
+                      selected={local.selected_conditions.includes(c)}
+                      onClick={() => toggle("selected_conditions", c)}
+                      disabled={hasDescription}   
                     />
                   ))}
                 </div>
@@ -176,8 +201,9 @@ export default function HealthProfileModal({
                     <Chip
                       key={a}
                       label={a}
-                      selected={local.allergies.includes(a)}
-                      onClick={() => toggle("allergies", a)}
+                      selected={local.selected_allergies.includes(a)}
+                      onClick={() => toggle("selected_allergies", a)}
+                      disabled={hasDescription}
                     />
                   ))}
                 </div>
@@ -193,10 +219,10 @@ export default function HealthProfileModal({
                 <div className="flex overflow-hidden rounded-2xl border border-slate-200">
                   <button
                     type="button"
-                    onClick={() => setLocal((p) => ({ ...p, mode: "strict" }))}
+                    onClick={() => setLocal((p) => ({ ...p, diet_mode: "strict" }))}
                     className={cn(
                       "flex-1 py-3 text-sm font-semibold transition-all",
-                      local.mode === "strict"
+                      local.diet_mode === "strict"
                         ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
                         : "bg-white text-slate-500 hover:bg-slate-50"
                     )}
@@ -205,10 +231,10 @@ export default function HealthProfileModal({
                   </button>
                   <button
                     type="button"
-                    onClick={() => setLocal((p) => ({ ...p, mode: "casual" }))}
+                    onClick={() => setLocal((p) => ({ ...p, diet_mode: "casual" }))}
                     className={cn(
                       "flex-1 py-3 text-sm font-semibold transition-all",
-                      local.mode === "casual"
+                      local.diet_mode === "casual"
                         ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
                         : "bg-white text-slate-500 hover:bg-slate-50"
                     )}
@@ -217,7 +243,7 @@ export default function HealthProfileModal({
                   </button>
                 </div>
                 <p className="mt-2 text-xs text-slate-400">
-                  {local.mode === "strict"
+                  {local.diet_mode === "strict"
                     ? "AI sẽ lọc ketat theo bệnh nền & dị ứng của bạn."
                     : "AI vẫn gợi ý đa dạng, chỉ cảnh báo nhẹ khi cần."}
                 </p>
@@ -231,17 +257,18 @@ export default function HealthProfileModal({
                   </span>
                 </div>
                 <textarea
-                  value={local.more_description}
+                  value={local.more_descriptions}
                   onChange={(e) =>
-                    setLocal((p) => ({ ...p, more_description: e.target.value }))
+                    setLocal((p) => ({ ...p, more_descriptions: e.target.value }))
                   }
+                  disabled={hasTags}
                   maxLength={200}
                   rows={3}
                   placeholder="Ví dụ: Tôi đang giảm cân, không ăn đồ chiên rán..."
                   className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-4 focus:ring-orange-100"
                 />
                 <p className="mt-1 text-right text-xs text-slate-400">
-                  {local.more_description.length}/200
+                  {local.more_descriptions.length}/200
                 </p>
               </section>
             </div>
