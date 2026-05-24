@@ -265,7 +265,6 @@ async def call_llm_to_extract_tags(description: str) -> List[str]:
 
     return []
 
-
 @user_router.post("/health-profile/{user_id}", status_code=status.HTTP_200_OK)
 async def save_user_health_profile(user_id: str, payload: ProfileCreateRequest):
     forbidden_set = set()
@@ -301,8 +300,10 @@ async def save_user_health_profile(user_id: str, payload: ProfileCreateRequest):
     }
     
     try:
-        # Lưu hoặc ghi đè (upsert) tài liệu trong Firestore với ID là user_id
-        db.collection("user_health_profile").document(user_id).set(db_data)
+        # ✅ Sửa: subcollection của user
+        db.collection("users").document(user_id) \
+          .collection("user_health_profile").document("profile") \
+          .set(db_data)
         
         return {
             "status": "success",
@@ -312,10 +313,13 @@ async def save_user_health_profile(user_id: str, payload: ProfileCreateRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Firestore error: {str(e)}")
 
+
 @user_router.get("/health-profile/{user_id}")
 async def get_user_health_profile(user_id: str):
     try:
-        doc_ref = db.collection("user_health_profile").document(user_id)
+        # ✅ Sửa: subcollection của user
+        doc_ref = db.collection("users").document(user_id) \
+                    .collection("user_health_profile").document("profile")
         doc = doc_ref.get()
         
         if not doc.exists:
@@ -336,39 +340,38 @@ async def get_user_health_profile(user_id: str):
         }
         
     except HTTPException as he:
-        if he.status_code==404:
-            user_health_profile = {
+        if he.status_code == 404:
+            return {
                 "user_id": user_id,
-                "diet_mode": "strict",          # Hoặc "casual" 
+                "diet_mode": "strict",
                 "more_description": "",
                 "raw_selections": {
                     "selected_conditions": [],
                     "selected_allergies": []
                 },
-                "forbidden_tags": []            # Không cấm tag nào
+                "forbidden_tags": []
             }
-            return user_health_profile
         raise he
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải hồ sơ từ Firebase: {str(e)}")
-    
-    
+
+
 async def fetch_user_health_profile(user_id: str):
-    doc_ref = db.collection("user_health_profile").document(user_id)
+    # ✅ Sửa: subcollection của user
+    doc_ref = db.collection("users").document(user_id) \
+                .collection("user_health_profile").document("profile")
     doc = doc_ref.get()
 
     if not doc.exists:
-        
-        user_health_profile = {
+        return {
             "user_id": user_id,
-            "diet_mode": "strict",          # Hoặc "casual" 
+            "diet_mode": "strict",
             "more_description": "",
             "raw_selections": {
                 "selected_conditions": [],
                 "selected_allergies": []
             },
-            "forbidden_tags": []            # Không cấm tag nào
+            "forbidden_tags": []
         }
-        return user_health_profile
 
     return doc.to_dict()
