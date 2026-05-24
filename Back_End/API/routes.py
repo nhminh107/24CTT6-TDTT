@@ -256,6 +256,8 @@ async def call_llm_to_extract_tags(description: str) -> List[str]:
 
     llm = LLMParser()
 
+    print("Đang gọi LLM")
+    
     llm_forbidden_tags = await llm.phrase_health_description(description)
 
     if llm_forbidden_tags != []:

@@ -6,6 +6,7 @@ import { X, ShieldCheck, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
+import { Loader2 } from "lucide-react";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 
@@ -114,13 +115,22 @@ const hasDescription =
         : [...prev[field], value],
     }));
   };
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleSave = async () => {
-  try {
-      onChange(local);
-      onClose();
+    setIsSaving(true); // Bật trạng thái loading nếu muốn tạo cảm giác đang xử lý
+
+    try {
+      // 1. Đẩy dữ liệu ra component cha thông qua props onChange.
+      // Nếu component cha truyền vào một hàm async (có await lưu DB), ta thêm await ở đây để đợi nó chạy xong.
+      await onChange(local); 
+      
+      // 2. Component cha xử lý lưu DB thành công xong xuôi thì mới đóng modal
+      onClose(); 
     } catch (error) {
-      console.error(error);
+      console.error("Lỗi khi cập nhật hồ sơ sức khỏe từ component cha:", error);
+    } finally {
+      setIsSaving(false); // Tắt trạng thái loading
     }
   };
 
