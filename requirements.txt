@@ -1,0 +1,8 @@
+google.genai
+chromadb
+sentence-transformers
+pandas
+streamlit
+streamlit_searchbox
+pyarrow
+timezonefinder

@@ -1,0 +1,1386 @@
+[
+  {
+    "id": "dn_001",
+    "name": "Ăn Thôi",
+    "address": "114 Bạch Đằng, Hải Châu, Đà Nẵng",
+    "lat": 16.0682463,
+    "lng": 108.2248133,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [ "trưa", "tối" ],
+    "semantic_text": "Quán Việt nổi tiếng nằm ngay bên sông Hàn, được Michelin ghi nhận. Nổi bật với cơm chiên hải sản, sò điệp nướng và tôm tỏi. Luôn đông khách, cần lấy số thứ tự chờ bàn. Không gian thoáng mát, phục vụ nhanh và thân thiện.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-1PzC5iv80HA3vJ0ziU1rzNCMnBRrLdSPgg&s",
+    "type": [ "Quán Việt" ],
+    "phone_num": "+84 987 824 285"
+  },
+  {
+    "id": "dn_002",
+    "name": "Hải sản Mộc Quán Đà Nẵng",
+    "address": "26 Tô Hiến Thành, An Hải, Đà Nẵng",
+    "lat": 16.063997,
+    "lng": 108.24150150000001,
+    "avg_price": 300000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [ "trưa", "tối" ],
+    "semantic_text": "Nhà hàng hải sản 5 tầng nổi tiếng nhất Đà Nẵng, được Michelin ghi nhận. Hải sản tươi sống phong phú: tôm hùm, cua, tôm, ngao. Nhân viên nhiệt tình lột vỏ tôm và xử lý hải sản trực tiếp tại bàn. Cần đặt bàn trước vì luôn đông khách.",
+    "image_url": "https://hellodanang.vn/wp-content/uploads/2025/12/bai-viet-danh-gia-ve-hai-san-moc-quan-da-nang-1764818921.jpg",
+    "type": [ "Quán Việt" ],
+    "phone_num": "+84 905 665 058"
+  },
+  {
+    "id": "dn_003",
+    "name": "Nhà Bếp Xưa Restaurant",
+    "address": "64B Hà Bổng, An Hải, Đà Nẵng",
+    "lat": 16.066057999999998,
+    "lng": 108.2443163,
+    "avg_price": 120000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [ "trưa", "tối" ],
+    "semantic_text": "Quán ăn kiểu xưa mang nét mộc mạc với tre, đèn lồng và không gian ấm cúng. Chuyên các món Việt đặc sắc như Mỳ Quảng, bánh xèo, bún thịt nướng. Không gian nhỏ, thường xuyên đông khách du lịch và dân địa phương.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/ed/e7/e6/caption.jpg?w=900&h=500&s=1",
+    "type": [ "Quán Việt" ],
+    "phone_num": "+84 906 123 858"
+  },
+  {
+    "id": "dn_004",
+    "name": "Nhà hàng Thiên Kim",
+    "address": "166 Bạch Đằng, Hải Châu, Đà Nẵng",
+    "lat": 16.0666255,
+    "lng": 108.22468939999999,
+    "avg_price": 180000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [ "trưa", "tối" ],
+    "semantic_text": "Nhà hàng Việt nổi tiếng ngay cạnh cầu Rồng, nơi BTS Jungkook và Jimin ghé thăm. Phục vụ các món Việt đặc sắc như bánh xèo, cơm chiên, gỏi xoài, chả giò cua. Không gian 2 tầng rộng rãi, phục vụ nhanh.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/ce/f8/28/ph-vi-t-nam.jpg?w=900&h=500&s=1",
+    "type": [ "Quán Việt" ],
+    "phone_num": "+84 773 566 882"
+  },
+  {
+    "id": "dn_005",
+    "name": "Cơm Nhà Vui (Hà Bổng)",
+    "address": "133 Hà Bổng, An Hải, Đà Nẵng",
+    "lat": 16.0659232,
+    "lng": 108.2445434,
+    "avg_price": 80000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [ "trưa", "tối" ],
+    "semantic_text": "Quán cơm bình dân phong cách vintage với đồ điện tử cũ trang trí độc đáo. Giá rẻ, khẩu phần lớn, thức ăn ngon kiểu gia đình. Thực đơn dễ hiểu, nhân viên thân thiện. Nổi bật với món bò xào và các món kho.",
+    "image_url": "https://khamphadanang.vn/wp-content/uploads/2025/03/Com-nha-vui119.jpg",
+    "type": [ "Quán Việt" ],
+    "phone_num": "+84 931 886 133"
+  },
+  {
+    "id": "dn_006",
+    "name": "Thèm Hải Sản",
+    "address": "39 Trần Bạch Đằng, An Hải, Đà Nẵng",
+    "lat": 16.0570832,
+    "lng": 108.24546300000002,
+    "avg_price": 250000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng hải sản mở đến 12h đêm, nổi tiếng với tôm tiêu đen, sò điệp nướng và hàu. Nhân viên thân thiện, phục vụ bóc vỏ tôm. Không gian rộng, sôi động. Giá cả hợp lý so với chất lượng.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWYFelfzTj9fSKZgVCcfYl-aFnoHNvzC8nVg&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 946 495 571"
+  },
+  {
+    "id": "dn_007",
+    "name": "Bé Ni 2",
+    "address": "228 Võ Nguyên Giáp, An Hải, Đà Nẵng",
+    "lat": 16.066801599999998,
+    "lng": 108.2449953,
+    "avg_price": 200000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán hải sản mở 24/24 ngay gần biển, phổ biến trong giới địa phương và du lịch. Giá rẻ hơn phía biển nhưng chất lượng tương đương. Nổi tiếng với sò điệp, hàu, tôm, cua và cơm chiên trứng. Thanh toán tiền mặt.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNwQ7aHNX38KbBIdgSYx4LNJMBYbB2BmMiZA&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 773 515 685"
+  },
+  {
+    "id": "dn_008",
+    "name": "Ô Kìa - Seafood Restaurant",
+    "address": "7 Trần Phú, Thạch Thang, Hải Châu, Đà Nẵng",
+    "lat": 16.0801078,
+    "lng": 108.2230986,
+    "avg_price": 280000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng hải sản yên tĩnh trên phố nhỏ, phục vụ từ 6 sáng đến 11 đêm. Nổi tiếng với cá mú hấp tỏi Lý Sơn, tôm hùm, hàu tươi. Nhân viên Kieu được khách khen đặc biệt. Phục vụ đĩa trái cây miễn phí cuối bữa.",
+    "image_url": "https://khamphadanang.vn/wp-content/uploads/2024/11/nha-hang-o-kia-1.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 906 430 707"
+  },
+  {
+    "id": "dn_009",
+    "name": "Nhà hàng Hải Sản Gành Bàng",
+    "address": "112 Võ Nguyên Giáp, An Hải, Đà Nẵng",
+    "lat": 16.0784903,
+    "lng": 108.24564009999999,
+    "avg_price": 220000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng hải sản cạnh biển, phong cách địa phương chân thực. Khách tự chọn hải sản tươi sống theo cân. Tôm hùm bơ tỏi, cơm chiên trứng, cá nướng tươi ngon. Nhân viên Hieu phục vụ nhiệt tình.",
+    "image_url": "https://khamphadanang.vn/wp-content/themes/yootheme/cache/2e/Hai-san-ganh-bang1-e1742268044900-2e4dd5ee.jpeg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 935 434 743"
+  },
+  {
+    "id": "dn_010",
+    "name": "Hải Sản Đà Nẵng Bé Biển",
+    "address": "202 Võ Nguyên Giáp, An Hải, Đà Nẵng",
+    "lat": 16.0685271,
+    "lng": 108.2449805,
+    "avg_price": 230000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng hải sản lớn mặt tiền biển, mở từ 7h30 sáng đến 2h sáng hôm sau. Phong cách sự kiện và ăn uống kết hợp. Nổi tiếng sò điệp, bạch tuộc hấp, tôm tích. Không gian rộng thoáng.",
+    "image_url": "https://topgo.vn/ho-chi-minh/wp-content/uploads/sites/2/2025/02/Nha-hang-Hai-san-Da-Nang-Be-Bien.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 775 142"
+  },
+  {
+    "id": "dn_011",
+    "name": "Quán Hải Sản Thời Cổ Đà Nẵng",
+    "address": "354/1 Võ Nguyên Giáp, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0438626,
+    "lng": 108.2473136,
+    "avg_price": 180000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán hải sản theo phong cách địa phương chân thực, hải sản tươi giá rẻ. Đặc sản chip chip hấp sả, ốc bơ, rau muống xào nghêu. Không gian đơn giản nhưng thức ăn ngon và giá hợp lý. Phục vụ thân thiện.",
+    "image_url": "https://i2.ex-cdn.com/crystalbay.com/files/content/2025/12/22/quan-hai-san-thoi-co-da-nang-1-1455.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 749 079"
+  },
+  {
+    "id": "dn_012",
+    "name": "Mỳ Quảng Cô Sáu",
+    "address": "397 Đ. Trần Hưng Đạo, An Hải Trung, An Hải, Đà Nẵng",
+    "lat": 16.0661787,
+    "lng": 108.2296635,
+    "avg_price": 60000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán Mỳ Quảng nổi tiếng được Michelin ghi nhận. Nổi bật với mỳ quảng gà, mỳ quảng ếch. Nước dùng đậm đà, gà mềm ngon. Quán nhỏ, thường xuyên đông và phải chờ hàng. Giá rất hợp lý chỉ từ 45k.",
+    "image_url": "https://www.cotrang.org/public/images/tin_dang/5/203_mi-quang-co-sau-tran-hung-dao-da-nang-pk-01.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 963 982 634"
+  },
+  {
+    "id": "dn_013",
+    "name": "Quán Bún Bò Huế Cô My",
+    "address": "08 Huy Du, An Hải, Đà Nẵng",
+    "lat": 16.0711349,
+    "lng": 108.2336902,
+    "avg_price": 45000,
+    "shu": 4,
+    "star": 4.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bún bò Huế nổi tiếng với bà chủ thân thiện, mở từ 6 sáng. Đặc sản bún lưỡi bò với nước dùng đậm đà, thịt bò mềm tan. Không gian đơn giản kiểu nhà dân, phục vụ nhanh. Được nhiều khách quốc tế yêu thích.",
+    "image_url": "https://mms.img.susercontent.com/vn-11134259-7ras8-m1532ziwdke20f@resize_ss1242x600!@crop_w1242_h600_cT",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 264 419"
+  },
+  {
+    "id": "dn_014",
+    "name": "Cô Ba Phở Bò",
+    "address": "154 Bạch Đằng, Hải Châu, Đà Nẵng",
+    "lat": 16.0669705,
+    "lng": 108.2247188,
+    "avg_price": 90000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng phở bò nổi tiếng cạnh sông Hàn, không gian thoáng mát. Phở sườn ngắn hầm mềm, nước dùng trong và thơm. Cơm dừa độc đáo và tôm bơ tỏi ngon. Tặng mochi Dubai và giảm 10% khi để lại review.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/db/ba/be/caption.jpg?w=900&h=500&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 236 3996 268"
+  },
+  {
+    "id": "dn_015",
+    "name": "Phở Cù Hà Nội",
+    "address": "05 Trần Quốc Toản, Hải Châu, Đà Nẵng",
+    "lat": 16.0659471,
+    "lng": 108.2237674,
+    "avg_price": 55000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán phở Hà Nội mở 24/24, nổi tiếng với phở bò đặc biệt, bún chả ngon. Nước dùng đậm đà, thịt bò tươi và mềm. Thực đơn đa ngôn ngữ, phù hợp du khách nước ngoài. Giá bình dân chỉ nhận tiền mặt.",
+    "image_url": "https://lh3.googleusercontent.com/places/ANXAkqElp6sGihYBXRVwR6LqX53DxlAfE3vLow6RPnm-6DnBrf8S_c5XN1tz2nzP7i6SJQMdobC_jaE9aG0Gk3JOTEj6HfVPY5jpuhI=s4800-w1200",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 796 623 866"
+  },
+  {
+    "id": "dn_016",
+    "name": "Phở, Bún Chả Hà Nội Xưa - 21 Ngô Thì Sĩ",
+    "address": "21 Ngô Thì Sĩ, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.046981499999998,
+    "lng": 108.24247229999999,
+    "avg_price": 55000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán phở và bún chả phong cách Hà Nội chính gốc, chủ quán gốc Hà Nội. Bún chả cực ngon với thịt viên đậm vị, nước dùng cân bằng ngọt chua. Phở bò nước dùng hầm lâu, thịt ngon. Giá siêu rẻ, phần ăn lớn.",
+    "image_url": "https://mms.img.susercontent.com/vn-11134513-7r98o-lsvbp15dr4ih30@resize_ss1242x600!@crop_w1242_h600_cT",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 766 752 086"
+  },
+  {
+    "id": "dn_017",
+    "name": "Nhà Bếp Chợ Hàn",
+    "address": "22 Hùng Vương, Hải Châu, Đà Nẵng",
+    "lat": 16.0687376,
+    "lng": 108.22433749999999,
+    "avg_price": 120000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Việt gần Chợ Hàn, nổi tiếng với khách Hàn Quốc. Phong cách ẩm thực Việt-Hàn hòa quyện. Đặc sản xiên thịt nướng, mỳ quảng, bánh xèo. Không gian 2 tầng, trang trí đậm nét văn hóa. Đông khách cả ngày.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/a1/0d/12/caption.jpg?w=900&h=500&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 236 3966 268"
+  },
+  {
+    "id": "dn_018",
+    "name": "Cơm Nhà Vui (2 Tháng 9)",
+    "address": "86 Đ. 2 Tháng 9, Bình Hiên, Hải Châu, Đà Nẵng",
+    "lat": 16.0566182,
+    "lng": 108.22206709999999,
+    "avg_price": 100000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cơm gia đình phong cách Hà Nội, nổi tiếng với các combo thực đơn phong phú. Đặc sản mắm Hà Nội, các món kho, cuốn lá. Không gian sôi động với 2 tầng. Rất đông khách, phục vụ nhanh và thân thiện.",
+    "image_url": "https://www.cotrang.org/public/images/tin_dang/4/84_com-nha-vui-86-duong-2thang9-bk-17.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 933 865 786"
+  },
+  {
+    "id": "dn_019",
+    "name": "Cơm Mẹ Anh",
+    "address": "82 Đ. 2 Tháng 9, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.0569654,
+    "lng": 108.22200910000001,
+    "avg_price": 90000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cơm nhà kiểu gia đình, không gian nhỏ ấm cúng, phục vụ nhiệt tình. Thức ăn mang phong vị Nam Á, phù hợp khẩu vị khách Malaysia, Singapore. Các món theo mùa, tươi ngon và vệ sinh sạch sẽ. Ít khách du lịch biết đến.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToy0oMarGKi_69LEtkNWIwtilbbq2HRA-ryg&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 967 487 179"
+  },
+  {
+    "id": "dn_020",
+    "name": "Nhà Hàng Cơm Niêu Phù Sa",
+    "address": "198 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0525669,
+    "lng": 108.24671269999999,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cơm niêu theo phong cách truyền thống, có khu vực ngồi ngoài trời thoáng mát. Đặc sản cá kho niêu đất, thịt heo chiên giòn, bò xào khoai tây. Phục vụ nhanh, giá cả hợp lý cho 5 người khoảng 939k.",
+    "image_url": "https://cokhiviendong.com/wp-content/uploads/2020/07/82007640_2961152333943882_1005546217309995008_o.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 949 293 569"
+  },
+  {
+    "id": "dn_021",
+    "name": "Cơm Gà A Hải",
+    "address": "94-100 Thái Phiên, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.0653555,
+    "lng": 108.21985409999999,
+    "avg_price": 60000,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán cơm gà nổi tiếng Đà Nẵng, đặc sản cơm gà quay da giòn vàng ruộm. Cơm vàng thơm lẫn hạt gạo nếp giòn độc đáo. Gà xé cũng là món ngon không kém. Đông khách cả ngày, phục vụ nhanh.",
+    "image_url": "https://down-vn.img.susercontent.com/vn-11134513-7r98o-lstq2meh228497",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 312 642"
+  },
+  {
+    "id": "dn_022",
+    "name": "Phở An - Vietnamese Food & Drinks",
+    "address": "360 Võ Nguyên Giáp, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0436676,
+    "lng": 108.24755289999999,
+    "avg_price": 60000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán phở bình dân gần biển Mỹ Khê, phục vụ từ 8h30 sáng. Nổi bật với phở bò, chả giò hải sản và các món ăn kèm ngon miệng. Không gian sạch sẽ có chỗ ngồi mát. Chấp nhận thẻ Visa/Mastercard.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/b3/e3/df/caption.jpg?w=1100&h=1100&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 387 700 272"
+  },
+  {
+    "id": "dn_023",
+    "name": "Trúc Lâm Viên Cafe & Restaurant",
+    "address": "08 Trần Quý Cáp, Hải Châu, Đà Nẵng",
+    "lat": 16.0817179,
+    "lng": 108.2217503,
+    "avg_price": 130000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng cà phê kết hợp với không gian thiên nhiên độc đáo, tiếng thác nước nhẹ nhàng. Phục vụ các món Việt truyền thống như cá kho tiêu, cơm chiên dứa, bánh xèo. Nhân viên tận tâm, phù hợp cho các bữa ăn thư giãn.",
+    "image_url": "https://truclamvien.vn/wp-content/uploads/2024/03/Frame-78-2-min-1024x717.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 236 3849 969"
+  },
+  {
+    "id": "dn_024",
+    "name": "Bánh Canh Ghẹ Quận Nhất",
+    "address": "B13 Đ. 2 Tháng 9, Hòa Cường, Đà Nẵng",
+    "lat": 16.054809199999998,
+    "lng": 108.22242039999999,
+    "avg_price": 55000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bánh canh ghẹ nổi tiếng từ Sài Gòn mở chuỗi tại Đà Nẵng. Bánh canh sợi tapioca với ghẹ tươi, nước dùng ngọt đậm từ xương hầm. Thức uống nước chanh leo ngon. Đông khách, nên đến sớm.",
+    "image_url": "https://khamphadanang.vn/wp-content/uploads/2025/03/banh-canh-ghe-quan-nhat-11.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 819 918 866"
+  },
+  {
+    "id": "dn_025",
+    "name": "Da Nang Snails & Seafood",
+    "address": "137 Nguyễn Đức Trung, Hòa Khê, Thanh Khê, Đà Nẵng",
+    "lat": 16.0663069,
+    "lng": 108.1886495,
+    "avg_price": 100000,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán ốc hải sản khu vực Thanh Khê, ít du lịch nhưng nổi tiếng dân địa phương. Menu đa dạng các loại ốc, order qua QR code tiện lợi. Phục vụ nhanh, giá bình dân. Nổi bật nước chanh muối sấy rất ngon.",
+    "image_url": "https://danangprivatecar.com/wp-content/uploads/2023/01/The-night-market-sells-a-lot-of-attractive-snacks-Photo-Collectibles.jpeg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 511 302"
+  },
+  {
+    "id": "dn_026",
+    "name": "Nam Danh Seafood",
+    "address": "139/59/38 Trần Quang Khải, Sơn Trà, Đà Nẵng",
+    "lat": 16.1022967,
+    "lng": 108.2533986,
+    "avg_price": 120000,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán hải sản địa phương ẩn sâu trong hẻm, cần đi bộ 140m từ đường lớn. Hải sản tươi ngon với giá rẻ hơn các quán ven biển. Đặc biệt nổi tiếng với sò điệp nướng ngon tuyệt. Phù hợp khách muốn trải nghiệm ẩm thực địa phương.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/4f/6e/45/nha-hang-bi-n-r-ng.jpg?w=900&h=500&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 333 922"
+  },
+  {
+    "id": "dn_027",
+    "name": "Le Four",
+    "address": "268 Võ Nguyên Giáp, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0561802,
+    "lng": 108.2468298,
+    "avg_price": 350000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng châu Âu sang trọng đối diện biển Mỹ Khê. Thực đơn phong phú gồm pizza, pasta, sushi, steak và bia craft. Không khí thoải mái, phục vụ chu đáo. Đặc sản tuna tartare và bít tết bơ mềm tan. Một trong những nhà hàng Âu tốt nhất khu vực này.",
+    "image_url": "https://lefour.vn/wp-content/uploads/2025/07/1.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 941 043 311"
+  },
+  {
+    "id": "dn_028",
+    "name": "My Casa",
+    "address": "53 Morrison, An Hải, Đà Nẵng",
+    "lat": 16.0717751,
+    "lng": 108.24275469999999,
+    "avg_price": 280000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng phong cách Địa Trung Hải, chuyên tapas, pizza và wine. Bà chủ Sharon người nước ngoài quản lý, không gian ấm áp kiểu Tây Ban Nha. Đặc sản sườn heo nấu chậm, pizza vỏ mỏng thơm ngon. Phù hợp cho bữa tối lãng mạn.",
+    "image_url": "https://vietnamdiscovery.com/wp-content/uploads/2020/11/Outside-My-Casa-restaurant-in-danang.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 769 919 273"
+  },
+  {
+    "id": "dn_029",
+    "name": "L'Italiano Restaurant Danang",
+    "address": "Lot 40 An Thượng 30, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.051130399999998,
+    "lng": 108.24568819999999,
+    "avg_price": 180000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Ý chính gốc do người Ý làm chủ tại khu An Thượng. Không gian ngoài trời dễ chịu, nhân viên thân thiện. Đặc sản calzone, pasta gamberi, lasagna và pizza vỏ mỏng. Thực đơn đa dạng phù hợp gia đình và nhóm đông.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/c0/15/93/caption.jpg?w=1100&h=1100&s=1",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 906 069 458"
+  },
+  {
+    "id": "dn_030",
+    "name": "Cabanon Palace",
+    "address": "Cordial Grand Hotel, Tầng 21, 27-29 Loseby, An Hải, Đà Nẵng",
+    "lat": 16.0737348,
+    "lng": 108.2408397,
+    "avg_price": 700000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Pháp sang trọng tầng 21 với view 360 độ Đà Nẵng. Bếp trưởng người Pháp với công thức từ cụ nội thợ đánh cá. Đặc sản tôm hùm, mực nhồi, foie gras. Không gian tinh tế, phù hợp dịp đặc biệt và kỷ niệm.",
+    "image_url": "https://avnaudit.vn/wp-content/uploads/2019/12/cabanon_compressed.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 796 653 020"
+  },
+  {
+    "id": "dn_031",
+    "name": "Olivia's Prime Steakhouse",
+    "address": "74 Bạch Đằng, Hải Châu, Đà Nẵng",
+    "lat": 16.070167299999998,
+    "lng": 108.2242232,
+    "avg_price": 600000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Steakhouse cao cấp được Michelin ghi nhận tại Indochina Mall, ngay bờ sông Hàn. Chuyên bít tết Úc MB5/6, tôm nướng, pasta kem gà. Không gian sang trọng, phục vụ chuyên nghiệp. Đặt bàn trước để có chỗ.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/67/3c/c6/olivia-s-prime-steakhouse.jpg?w=900&h=500&s=1",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 908 163 352"
+  },
+  {
+    "id": "dn_032",
+    "name": "Bistecca - Italian Restaurant",
+    "address": "Tầng 7, 20 Đống Đa, Thuận Phước, Hải Châu, Đà Nẵng",
+    "lat": 16.0826174,
+    "lng": 108.22082569999999,
+    "avg_price": 400000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Ý tại khách sạn New Orient, phong cách lãng mạn và tinh tế. Nổi tiếng với xúp tôm hùm, sò điệp pasta, và các món được chế biến cầu kỳ. Giá cả hợp lý so với chất lượng và không gian sang trọng.",
+    "image_url": "https://neworienthoteldanang.com/wp-content/uploads/2023/09/Bistecca-1.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 702 663 456"
+  },
+  {
+    "id": "dn_033",
+    "name": "Herbal Pizza & Steak Bạch Đằng",
+    "address": "Phố Đi Bộ/Lô Y4, Bạch Đằng, Hòa Cường, Đà Nẵng",
+    "lat": 16.0560155,
+    "lng": 108.2238383,
+    "avg_price": 200000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng pizza và steak view sông Hàn gần cầu Rồng, lý tưởng xem màn trình diễn phun lửa cuối tuần. Tầng mái nhìn ra phố đi bộ. Pizza thảo mộc độc đáo, phục vụ chu đáo. Không gian lãng mạn cho các dịp đặc biệt.",
+    "image_url": "https://static.where-e.com/Viet_Nam/Herbal-Pizza-Steak-Da-Nang_416d689a6c03710c8dcbdb330bc33e6b.jpg",
+    "type": [
+      "Quán Âu",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 934 868 615"
+  },
+  {
+    "id": "dn_034",
+    "name": "Pizza and Burger by Herbal Pizza",
+    "address": "Võ Nguyên Giáp, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0547267,
+    "lng": 108.2477613,
+    "avg_price": 180000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán pizza và burger mặt biển, có thể ngồi ngắm biển và xem bóng chuyền bãi. Pizza thảo mộc vỏ mềm thơm, burger bò ngon. Không khí chill giản dị. Bia và pizza cạnh biển là trải nghiệm không thể bỏ lỡ.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROc-3welI4tVVVfzvCMp791FVuvG4VN7vGw&s",
+    "type": [
+      "Quán Âu",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 934 878 987"
+  },
+  {
+    "id": "dn_035",
+    "name": "Bello Pizza - Burger & Pasta Son Tra",
+    "address": "105 Hà Bổng, An Hải, Đà Nẵng",
+    "lat": 16.0664479,
+    "lng": 108.2444711,
+    "avg_price": 160000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Chuỗi pizza nổi tiếng Đà Nẵng, phong cách Naples, vỏ mỏng với nhiều mozzarella. Pizza ham & Camembert và seafood pesto pasta là highlight. Mở đến gần 12h đêm, phù hợp bữa tối muộn sau khi dạo phố.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfc6GQBiJsewsR8QZ0bwE_9ye2uKvdbd1_Q&s",
+    "type": [
+      "Quán Âu",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 708 471 674"
+  },
+  {
+    "id": "dn_036",
+    "name": "Miếng Pizza",
+    "address": "132 Hoàng Bích Sơn, An Hải, Đà Nẵng",
+    "lat": 16.0721922,
+    "lng": 108.2410178,
+    "avg_price": 120000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm pizza nhỏ kiểu Neapolitan chất lượng cao, chủ quán đam mê và thân thiện. Pizza margherita vỏ giòn dai đặc trưng kiểu Ý. Dầu ớt tự pha siêu ngon đi kèm. Không gian nhỏ xinh với chạm khắc địa phương. Đóng thứ 5.",
+    "image_url": "https://ibb.co/p6D1y0Gt",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 905 071 039"
+  },
+  {
+    "id": "dn_037",
+    "name": "MeliOh Bistro Danang",
+    "address": "Lot 01-A4, Đảo Xanh 4, Khu Biệt Thự Đảo Xanh, Hòa Cường, Đà Nẵng",
+    "lat": 16.0480295,
+    "lng": 108.22759049999999,
+    "avg_price": 350000,
+    "shu": 4,
+    "star": 4.7,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Quán bistro lãng mạn tại khu biệt thự Đảo Xanh, nổi tiếng với không gian trang trí cực đẹp cho hẹn hò và cầu hôn. Phục vụ từ 5 tối, các món Á-Âu kết hợp. Gà kimchi đào vô cùng ngon. Nhân viên chuyên nghiệp nói tiếng Anh.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCdztZunrVx1V3VtjrTxtE-Q2vWaTDFpHa1w&s",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 905 263 891"
+  },
+  {
+    "id": "dn_038",
+    "name": "FOR YOU SteakHouse",
+    "address": "Lô 1C Võ Nguyên Giáp, An Hải, Đà Nẵng",
+    "lat": 16.0673975,
+    "lng": 108.24593999999999,
+    "avg_price": 500000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Steakhouse mặt biển với view đẹp. Wagyu burger và steak cao cấp là điểm nhấn. Nhân viên Kim Nhan được khen đặc biệt. Không gian ngoài trời mát mẻ với gió biển. Phù hợp bữa tối sang trọng cạnh biển Mỹ Khê.",
+    "image_url": "https://4usteakhouse.vn/upload/hinhanh/tg1-8593.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "+84 914 700 220"
+  },
+  {
+    "id": "dn_039",
+    "name": "Burger Bros",
+    "address": "30 An Thượng 4, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0486741,
+    "lng": 108.24637320000001,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán burger nổi tiếng khu An Thượng, thịt bò xay thơm ngon. Khoai tây chiên làm từ khoai tươi không dùng đông lạnh. Phong cách quán Mỹ chill và thoải mái. Chỉ nhận tiền mặt. Đóng thứ 4 và 5.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/c1/19/1c/new-location.jpg?w=900&h=500&s=1",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 945 576 240"
+  },
+  {
+    "id": "dn_040",
+    "name": "MIA Pizza - Burger - Breakfast",
+    "address": "Lô 17-18, Monarchy B/535 Đ. Trần Hưng Đạo, An Hải, Đà Nẵng",
+    "lat": 16.0545794,
+    "lng": 108.23309379999999,
+    "avg_price": 160000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán combo ăn sáng, pizza, burger và schnitzel phong phú. Mở từ 7 sáng đến 11 rưỡi đêm, phù hợp cho cả bữa sáng lẫn đêm muộn. WiFi mạnh, phù hợp làm việc. Đặc sản schnitzel parmigiana giòn ngon.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPrchJLyy5AFCjqLyeedBF35r_vKqrQgoFnQ&s",
+    "type": [
+      "Quán Âu",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 795 799 679"
+  },
+  {
+    "id": "dn_041",
+    "name": "Thai Market Restaurant - Bình Minh 5",
+    "address": "43 đường Bình Minh 5, Bình Thuận, Hòa Cường, Đà Nẵng",
+    "lat": 16.0554099,
+    "lng": 108.22282299999999,
+    "avg_price": 130000,
+    "shu": 4,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chuỗi nhà hàng Thái nổi tiếng Đà Nẵng, không gian đẹp và thực đơn Thái phong phú. Pad Thai, larb, bánh cá Thái ngon. Phục vụ tốt và giá hợp lý. Một trong những địa chỉ ẩm thực Thái uy tín nhất thành phố.",
+    "image_url": "https://danangfantasticity.com/wp-content/uploads/2019/06/nha-hang-thai-market-restaurant-diem-dung-chan-ly-tuong-khi-den-da-nang-04.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "+84 1900 0207"
+  },
+  {
+    "id": "dn_042",
+    "name": "Thai Market - Trần Quốc Toản",
+    "address": "04 Trần Quốc Toản, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.0661982,
+    "lng": 108.2243539,
+    "avg_price": 130000,
+    "shu": 4,
+    "star": 4.5,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chi nhánh Thai Market trung tâm Đà Nẵng, không gian rộng và đẹp. Ẩm thực Thái Lan phong phú, phục vụ tốt. Nhiều lựa chọn từ Pad Thai, tom yum đến các món lẩu. Nằm gần sông Hàn tiện di chuyển.",
+    "image_url": "https://danangfantasticity.com/wp-content/uploads/2018/11/thai-market-chuyen-am-thuc-thai-duy-nhat-tai-da-nang-01.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "+84 1900 0207"
+  },
+  {
+    "id": "dn_043",
+    "name": "Thai Siam Kitchen",
+    "address": "Nguyễn Sinh Sắc, Hòa Khánh, Đà Nẵng",
+    "lat": 16.067285299999998,
+    "lng": 108.15573739999999,
+    "avg_price": 100000,
+    "shu": 4,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Thái khu Hòa Khánh, thực đơn Thái đa dạng và ngon miệng. Phục vụ thân thiện, giá bình dân. Phù hợp ăn theo nhóm. Nằm trong khu Mega Mall tiện di chuyển.",
+    "image_url": "https://images2.thanhnien.vn/528068263637045248/2026/3/2/1-1772455887720677402097.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "+84 889 868 898"
+  },
+  {
+    "id": "dn_044",
+    "name": "Asian Market Cuisine",
+    "address": "49 Trần Văn Đán, Hòa Hải, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.013132799999998,
+    "lng": 108.25286829999999,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Á châu đa phong cách gần Núi Thần Tài, thực đơn đa dạng từ bánh bao, mì udon đến các món fusion Đông Nam Á. Không gian hiện đại, nhân viên thân thiện nói tiếng Anh tốt. Ít người biết nhưng chất lượng tuyệt vời.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/0d/20/2d/caption.jpg?w=1000&h=1000&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 899 856 547"
+  },
+  {
+    "id": "dn_045",
+    "name": "Jako Kitchen",
+    "address": "17 Đặng Thai Mai, Thạc Gián, Thanh Khê, Đà Nẵng",
+    "lat": 16.060859699999998,
+    "lng": 108.21155,
+    "avg_price": 100000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán Nhật-Hàn xinh xắn tại Thanh Khê, nổi tiếng với chicken katsu curry và tuna salad giá 150k. Không gian nhỏ, sạch và ấm cúng. Menu đa dạng món Nhật và Hàn. Phục vụ nhanh và thân thiện.",
+    "image_url": "https://static.where-e.com/Viet_Nam/Thanh_Kh/V_Nh_Trung/Jako-Kitchen_2f7b52df36971044140dbeae1826c036.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 704 922 228"
+  },
+  {
+    "id": "dn_046",
+    "name": "Yen Yakiniku - Buffet Nướng Nhật Bản (Bình Minh 6)",
+    "address": "Lô B24, khu B2.2, Bình Minh 6, Hòa Cường, Đà Nẵng",
+    "lat": 16.0540199,
+    "lng": 108.2226618,
+    "avg_price": 399000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Buffet nướng Nhật Bản nổi tiếng với sashimi, sushi, thịt nướng kiểu yakiniku. Combo từ 299k, đa dạng lựa chọn hải sản và thịt tươi. Không gian rộng, phục vụ chu đáo. Cá hồi và bạch tuộc nướng được đánh giá cao.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYHDoXwT0RHFBQZHHfGNoiB4jUUugKP1kEPA&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 903 559 447"
+  },
+  {
+    "id": "dn_047",
+    "name": "Yen Yakiniku - Buffet Nướng Nhật (Nguyễn Văn Thoại)",
+    "address": "191 Nguyễn Văn Thoại, An Hải, Đà Nẵng",
+    "lat": 16.0554371,
+    "lng": 108.2429848,
+    "avg_price": 399000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chi nhánh Yen Yakiniku tại khu An Hải, phong cách ngồi bệt kiểu Nhật tầng 2. Buffet với sashimi, sushi, thịt nướng và lẩu shabu. Combo 799k cho 2 người rất đáng. Nhân viên nhiệt tình hướng dẫn.",
+    "image_url": "https://lh3.googleusercontent.com/p/AF1QipMttAANAkI-TCdwPiPX8cJm791K3Twg3uw_C5fI=s680-w680-h510-rw",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 903 559 447"
+  },
+  {
+    "id": "dn_048",
+    "name": "GOYUHAN - Tiệm nướng Hàn Quốc",
+    "address": "11 Phan Đăng Lưu, Hòa Cường Bắc, Hòa Cường, Đà Nẵng",
+    "lat": 16.037516,
+    "lng": 108.22307579999999,
+    "avg_price": 350000,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "BBQ Hàn Quốc all-you-can-eat chất lượng cao giá chỉ 14$, đánh giá 5 sao hiếm có. Thịt tươi đa dạng, thẩm mỹ nhà hàng sạch đẹp. Nhân viên Khanh Bang và Thanh Dieu được khen đặc biệt. Có phục vụ thịt nướng tại bàn.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHRNjD0T3i2YU6HndEkE4MN2tR-6qsVRiLGA&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 779 604 333"
+  },
+  {
+    "id": "dn_049",
+    "name": "BBQ HOUSE",
+    "address": "Lô A19 Võ Văn Kiệt, An Hải, Đà Nẵng",
+    "lat": 16.0632757,
+    "lng": 108.24185609999999,
+    "avg_price": 299000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Buffet BBQ Hàn Quốc phong phú, nhân viên thân thiện nói tiếng Anh. Không gian sạch đẹp, phục vụ chu đáo. Kết thúc bữa ăn có thêm dessert. Giá trẻ em dưới 1.3m chỉ 90k. Phù hợp gia đình và nhóm bạn đông.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4qlxT8YdZd4KZ1mkeBkR_LUovx-BQjsCmyg&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 768 000 051"
+  },
+  {
+    "id": "dn_050",
+    "name": "Nhà Hàng Buffet Lẩu Nướng Lục Thiện Môn",
+    "address": "233 Nguyễn Văn Thoại, An Hải, Đà Nẵng",
+    "lat": 16.0563389,
+    "lng": 108.2462006,
+    "avg_price": 350000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Buffet lẩu nướng Trung Hoa kết hợp Nhật Bản, 3 loại nước lẩu khác nhau. Không gian sang trọng ven biển, phục vụ chuyên nghiệp. Nhân viên Tho hướng dẫn tận tình. Mở đến 12h đêm. Phù hợp nhóm lớn.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Xl2hJ_kP_0FqhKT-WOOEiHC4gm9lS1HIAw&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 917 066 877"
+  },
+  {
+    "id": "dn_051",
+    "name": "Chú Bi Quán Nướng",
+    "address": "48 Nguyễn Chí Thanh, Thạch Thang, Hải Châu, Đà Nẵng",
+    "lat": 16.0752869,
+    "lng": 108.2204866,
+    "avg_price": 250000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán nướng nổi tiếng khu trung tâm, thịt tươi chất lượng cao. Phục vụ từ 5 chiều đến 11 tối. Không gian có điều hòa mát mẻ, quạt thông gió tốt. Có quầy dessert sau bữa ăn. Nhân viên V.Duc phục vụ chu đáo.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-JjRVEUb3xLFkrlH-7awD_xpp8sTADV6W7w&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 777 399 369"
+  },
+  {
+    "id": "dn_052",
+    "name": "Dã Viên 2 - Nhà Hàng Hàn Quốc",
+    "address": "26 Thái Phiên, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.065144,
+    "lng": 108.22293549999999,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Hàn Quốc chính gốc tại Đà Nẵng, nổi tiếng với jjajangmyeon và mì đen Hàn Quốc. Khẩu phần rộng rãi, giá hơi cao nhưng đáng tiền. Không gian 2 tầng rộng. Nhân viên thân thiện.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj5LIdfGhUbX-bDKe9muDSR6igDte4ucfiMA&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 358 306 163"
+  },
+  {
+    "id": "dn_053",
+    "name": "Nhà hàng Hàn Quốc Lòng Bò Nướng",
+    "address": "170b Hồ Nghinh, An Hải, Đà Nẵng",
+    "lat": 16.071877699999998,
+    "lng": 108.2429186,
+    "avg_price": 200000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng BBQ Hàn Quốc chuyên lòng bò nướng và galbi. Nhân viên phục vụ nướng thịt tại bàn. Mở đến gần 12h đêm, thích hợp tụ tập nhóm bạn. Soju đi kèm lòng là combo cực phẩm.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfVsR2DtgZAUWVMsvWQPXjSS99OI8hR3Avtw&s",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 938 148 082"
+  },
+  {
+    "id": "dn_054",
+    "name": "Yen Yakiniku & Izakaya - Trần Quốc Toản",
+    "address": "38 Trần Quốc Toản, Hải Châu, Đà Nẵng",
+    "lat": 16.0664639,
+    "lng": 108.22206709999999,
+    "avg_price": 350000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Chi nhánh Yen Yakiniku trung tâm thành phố, buffet nướng và lẩu Nhật Bản. Không gian izakaya phong cách, thực đơn đa dạng. Combo từ 299k. Phù hợp nhóm bạn và gia đình.",
+    "image_url": "https://static.where-e.com/Viet_Nam/Yen-Yakiniku-Buffet-N-Ng-Nh-T-B-N-T-I-N-Ng-C-S-2_96e6b8674c01b7dba0b84a7565c355f9.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 903 559 447"
+  },
+  {
+    "id": "dn_055",
+    "name": "Nang Ngot Patisserie",
+    "address": "20 Phan Bội Châu, Thạch Thang, Hải Châu, Đà Nẵng",
+    "lat": 16.0794298,
+    "lng": 108.2213604,
+    "avg_price": 80000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh ngọt Pháp tuyệt vời với croissant, tiramisu và các loại bánh tart. Không gian ấm cúng và sáng tạo, phù hợp làm việc. Cà phê mịn và thức uống trà hoa đặc sắc. Được khách nước ngoài rất yêu thích.",
+    "image_url": "https://khamphadanang.vn/wp-content/uploads/2024/11/nang-ngot-patisserie.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 366 389 172"
+  },
+  {
+    "id": "dn_056",
+    "name": "Bread & Butter Bakery",
+    "address": "192 Nguyễn Văn Thoại, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0559868,
+    "lng": 108.2459152,
+    "avg_price": 90000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh phong cách Pháp sang trọng gần biển Mỹ Khê. Đa dạng bánh ngọt, croissant, danish và các loại bánh pháp thuật. Không gian rộng với chỗ ngồi ngoài trời. View đường biển đẹp, phù hợp cả làm việc.",
+    "image_url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/40/11/f8/hinh-chinh-di-n-c-a-hang.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 786 200 180"
+  },
+  {
+    "id": "dn_057",
+    "name": "Bloom Patisserie",
+    "address": "189 Đ. Trần Hưng Đạo, An Hải, Đà Nẵng",
+    "lat": 16.0780522,
+    "lng": 108.22900460000001,
+    "avg_price": 80000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh ngọt view sông ven Trần Hưng Đạo, không gian thơ mộng với bàn hướng ra sông. Bánh tráng miệng đẹp mắt lấy cảm hứng từ Cedric Grolet. Cinnamon roll và mango matcha được khen. Đóng thứ 2.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSldl-licp1AH5gSAq9gui5COt8Cp_21cUfg&s",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 799 334 888"
+  },
+  {
+    "id": "dn_058",
+    "name": "Daegu Bakery",
+    "address": "175 Tô Hiến Thành, An Hải, Đà Nẵng",
+    "lat": 16.056604699999998,
+    "lng": 108.24428329999999,
+    "avg_price": 70000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh phong cách Hàn nhỏ xinh, nổi tiếng với cream cheese Biscoff pastry, cinnamon roll salted caramel. Chất lượng bánh được đánh giá cao. Chấp nhận Visa, có WiFi. Gần biển Mỹ Khê tiện cho buổi sáng.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj3HYHhpnh9V73ScEcVmIiG5AWj3V7nxwI0A&s",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 905 637 861"
+  },
+  {
+    "id": "dn_059",
+    "name": "Merci Bakery",
+    "address": "67 Hoàng Hoa Thám, Tân Chính, Thanh Khê, Đà Nẵng",
+    "lat": 16.0688419,
+    "lng": 108.209948,
+    "avg_price": 65000,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Tiệm bánh mở 24/24, nổi bật với croissant matcha xoài và các loại bánh phủ matcha phong phú. Nhân viên trẻ trung năng động, không gian cute với tay cầm cửa hình croissant. Phù hợp những ai cần bánh đêm khuya.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8jOIVB2ByyI365Koq7YGBr1AkEe4KDc3STg&s",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 981 202 067"
+  },
+  {
+    "id": "dn_060",
+    "name": "Tiệm Bánh MiaCake Đà Nẵng",
+    "address": "68A Lê Đình Dương, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.0615926,
+    "lng": 108.22008939999999,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh kem custom theo yêu cầu, nổi tiếng với bánh sinh nhật vẽ hình theo ảnh. Chủ Lam nói tiếng Anh tốt, thiết kế sáng tạo. Giá hợp lý cho chất lượng tuyệt vời. Phù hợp đặt bánh theo dịp đặc biệt.",
+    "image_url": "https://down-vn.img.susercontent.com/vn-11134259-7r98o-lwaojsphje1leb@resize_w800",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 857 888 588"
+  },
+  {
+    "id": "dn_061",
+    "name": "Vera Cakes",
+    "address": "233 Nguyễn Công Trứ, An Hải, Đà Nẵng",
+    "lat": 16.065414099999998,
+    "lng": 108.2406977,
+    "avg_price": 80000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh ngọt nhỏ của Vera - chủ quán thân thiện và tâm huyết. Bánh flan 8k, donut caramel và cinnamon roll ngon. Không gian sạch sẽ và được sắp xếp gọn gàng. Chỉ nhận tiền mặt. Bánh tươi mỗi ngày.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_qvzMhMaai-btduE-AIP7-2_d_t55M3r-FA&s",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 932 657 045"
+  },
+  {
+    "id": "dn_062",
+    "name": "Bồng Bông Bakery",
+    "address": "320 Lê Thanh Nghị, Hải Châu, Đà Nẵng",
+    "lat": 16.0335401,
+    "lng": 108.2184066,
+    "avg_price": 30000,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm bánh mở từ 5h30 sáng, nổi tiếng với bánh mềm dẻo thơm ngon. Khách quen ghé hàng ngày vì nghiện bánh. Chủ quán vui vẻ và nhiệt tình. Giá rẻ, phù hợp bữa sáng tiện lợi.",
+    "image_url": "https://ibb.co/27nfwKhR",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "+84 868 670 901"
+  },
+  {
+    "id": "dn_063",
+    "name": "Bello Pizza - Slice & Crust",
+    "address": "222 Trần Bạch Đằng, Bắc Mỹ Phú, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.049700899999998,
+    "lng": 108.24761210000001,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Chi nhánh Bello Pizza khu An Thượng, pizza cỡ 42cm khổng lồ với vỏ giòn dai. Nổi tiếng four cheese và pizza pepperoni. Ngồi ngoài trời ngắm phố. Mở đến 11h30 đêm, phù hợp đêm muộn.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHSi5l58xgVvA2Yi7LzgoLsS1CxybQhdQ7SQ&s",
+    "type": [
+      "Quán Âu",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "+84 708 471 674"
+  },
+  {
+    "id": "dn_064",
+    "name": "Quán Hải Sản Ông Minh",
+    "address": "94 Võ Nguyên Giáp, Mân Thái, Sơn Trà, Đà Nẵng",
+    "lat": 16.0802935,
+    "lng": 108.2466356,
+    "avg_price": 200000,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán hải sản mặt tiền đường lớn Võ Nguyên Giáp, phong cách sôi động. Hải sản tươi sống, nhân viên hỗ trợ nhau phục vụ khách quốc tế. Mở đến 2h sáng phù hợp ăn khuya. Giá tương đương khu du lịch.",
+    "image_url": "https://www.cotrang.org/public/images/tin_dang/4/7_hai-san-ong-minh-vo-nguyen-giap-bk-1.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 932 777 703"
+  },
+  {
+    "id": "dn_065",
+    "name": "Muối Biển Seafood Restaurant",
+    "address": "51 Võ Nguyên Giáp, Bắc Mỹ An, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0478481,
+    "lng": 108.2495921,
+    "avg_price": 350000,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Nhà hàng hải sản mặt biển có bể cá tươi sống, khách tự chọn hải sản. Nổi tiếng với sò điệp, tôm hùm và cua hoàng đế. Tôm hùm hấp rượu vang ngon xuất sắc. Không gian ngoài trời ven biển.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/b2/a0/f9/khong-gian-trong-nha.jpg?w=900&h=500&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 363 399 388"
+  },
+  {
+    "id": "dn_066",
+    "name": "Quán Cô Hồng - Đặc sản Đà Nẵng",
+    "address": "38 Lê Hồng Phong, Phước Ninh, Hải Châu, Đà Nẵng",
+    "lat": 16.0640133,
+    "lng": 108.22198780000001,
+    "avg_price": 70000,
+    "shu": 4,
+    "star": 4.4,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán đặc sản Đà Nẵng chuyên gỏi cá Nam Ô và chả cá thu cuốn rau. Cá tươi ngon, đậu phộng thêm vào rất hợp. Đặc sản gỏi cá Nam Ô nổi tiếng toàn quốc. Không khí giản dị, giá bình dân.",
+    "image_url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/c2/ab/23/caption.jpg?w=800&h=500&s=1",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 905 935 755"
+  },
+  {
+    "id": "dn_067",
+    "name": "Cơm nhà Kiều Thị",
+    "address": "68, Đ. 2 Tháng 9, Bình Hiên, Hải Châu, Đà Nẵng",
+    "lat": 16.0572122,
+    "lng": 108.22215260000002,
+    "avg_price": 100000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán cơm nhà phong cách gia đình, thực đơn set đa dạng và ngon. Nhân viên biết tiếng Anh, phục vụ nhanh và thân thiện. Giá hợp lý khoảng 600k cho 5 người. Đặc sản canh chua và các món gia truyền.",
+    "image_url": "https://www.cotrang.org/public/images/tin_dang/4/257_com-nha-kieu-thi-70-duong-2thang9-bk-1.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 982 282 843"
+  },
+  {
+    "id": "dn_068",
+    "name": "An Nam Quán",
+    "address": "Lô 76, 78 Trần Bạch Đằng, Ngũ Hành Sơn, Đà Nẵng",
+    "lat": 16.0556756,
+    "lng": 108.2457347,
+    "avg_price": 150000,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nhà hàng Việt gần biển khu An Thượng, không gian rộng có chỗ ngồi ngoài trời. Đặc sản tôm hùm sốt, bò lúc lắc và cháo bò loãng. Giá bia địa phương LaRue chỉ 17k. Quán chủ và nhân viên thân thiện.",
+    "image_url": "https://bazantravel.com/cdn/medias/uploads/89/89403-khong-gian-quan-com-nieu-an-nam-quan-700x465.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "+84 788 661 233"
+  }
+]
