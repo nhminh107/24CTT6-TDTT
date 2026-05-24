@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 export interface HealthProfile {
   conditions: string[];   // bệnh nền
   allergies: string[];    // dị ứng
-  mode: "strict" | "flexible";
+  mode: "strict" | "casual";
   more_description: string;
 }
 
@@ -205,10 +205,10 @@ export default function HealthProfileModal({
                   </button>
                   <button
                     type="button"
-                    onClick={() => setLocal((p) => ({ ...p, mode: "flexible" }))}
+                    onClick={() => setLocal((p) => ({ ...p, mode: "casual" }))}
                     className={cn(
                       "flex-1 py-3 text-sm font-semibold transition-all",
-                      local.mode === "flexible"
+                      local.mode === "casual"
                         ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white"
                         : "bg-white text-slate-500 hover:bg-slate-50"
                     )}
