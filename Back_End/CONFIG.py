@@ -6,7 +6,11 @@ Weights = {
     'star'    : 0.15,
     'price'   : 0.25,
     'distance': 0.25,
-    'semantic': 0.35
+    'semantic': 0.35,
+    
+    'health':0.3
+    # ý tưởng mới:
+    # $Score_{final} = (star * 0.15 + price * 0.25 + distance * 0.25 + semantic * 0.35) - (penalty_score * W_{penalty})$
 }
 
 # Path

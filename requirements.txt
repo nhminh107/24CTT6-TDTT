@@ -5,3 +5,4 @@ pandas
 streamlit
 streamlit_searchbox
 pyarrow
+timezonefinder

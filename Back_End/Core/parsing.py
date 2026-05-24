@@ -49,6 +49,96 @@ class LLMParser():
             print("AI không trả về đúng định dạng JSON")
             return content
 
+    async def phrase_health_description(self, user_prompt: str):
+        ALL_AVAILABLE_TAGS = [
+            "Red_Meat", "Seafood", "Alcohol_Pub", "Shellfish", 
+            "Spicy", "DeepFried_Oily", "High_Sugar", "Refined_Carbs", 
+            "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present"
+        ]
+
+        prompt = f"""
+            You are an expert medical and dietary restriction parser.
+
+            Your task:
+            Analyze the user's health condition, symptoms, or dietary descriptions. 
+            Use your general medical and nutrition knowledge to infer which dietary restriction tags apply to them, then return ONLY a JSON array of matching tags.
+
+            Allowed tags and their medical meanings:
+            - Red_Meat: Avoid for Gout, high uric acid.
+            - Seafood / Shellfish: Avoid for Gout, seafood allergies.
+            - Alcohol_Pub: Avoid for Gout, stomach issues, weight loss.
+            - Spicy: Avoid for Stomach issues (dạ dày), gastritis, reflux (trào ngược), digestive pains.
+            - DeepFried_Oily: Avoid for Stomach issues, weight loss, obesity, fatty liver.
+            - High_Sugar / Refined_Carbs: Avoid for Diabetes (tiểu đường), weight loss, obesity.
+            - Low_GI_Diet: Suitable for Diabetes, low GI requirements.
+            - Peanuts_Nuts: Avoid for peanut/nut allergies.
+            - Dairy_Product: Avoid for lactose intolerance (bất dung nạp lactose), milk allergy.
+            - Gluten_Present: Avoid for Celiac disease, gluten allergy/intolerance.
+
+            Rules:
+            - Use medical reasoning: If a user mentions a symptom or disease (e.g., "đau dạ dày"), infer the restricted food groups (e.g., "Spicy", "DeepFried_Oily").
+            - Return ONLY tags from the allowed list above.
+            - No markdown, no explanations, no comments.
+            - Output must be a valid JSON array.
+            - If nothing matches or applies, return [].
+
+            Examples:
+
+            User:
+            "Tôi hay bị đau bụng và đôi khi là đau dạ dày"
+            Output:
+            ["Spicy", "DeepFried_Oily"]
+
+            User:
+            "Bác sĩ bảo tôi có chỉ số đường huyết cao và cần giảm cân"
+            Output:
+            ["High_Sugar", "Refined_Carbs", "DeepFried_Oily"]
+
+            User:
+            "Tôi bị gout khớp ngón chân cái sưng to"
+            Output:
+            ["Red_Meat", "Seafood", "Shellfish", "Alcohol_Pub"]
+
+            User:
+            "{user_prompt}"
+
+            Output:
+            """
+
+        try:
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0  # Giữ bằng 0 để đảm bảo suy luận nhất quán, không đoán mò lung tung
+                )
+            )
+
+            content = response.text.strip()
+
+            try:
+                data = json.loads(content)
+
+                if not isinstance(data, list):
+                    return []
+
+                # Lọc lại một lần nữa bằng Python cho chắc chắn
+                filtered_tags = list({
+                    tag for tag in data
+                    if tag in ALL_AVAILABLE_TAGS
+                })
+
+                return filtered_tags
+
+            except json.JSONDecodeError:
+                print("RAW RESPONSE:", content)
+                return []
+
+        except Exception as e:
+            print(f"[phrase_health_description ERROR] {e}")
+            return []
+    
 if __name__ == "__main__":
     parser = LLMParser()
     print(parser.JSON_response("Tôi đang muốn tìm quán nước, quán ăn trưa và tối. Quán trưa phải là quán Việt, quán ăn tối phải là quán Thái"))

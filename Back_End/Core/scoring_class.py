@@ -25,6 +25,7 @@ class RestaurantScorer:
         self.user_lng = user_lng
         self.weights  = Weights
         self.db = db 
+        
     # ─── PRIVATE: các hàm tính điểm thành phần ──────────────────────────
 
     def _score_star(self, star: float, buff_weight: float = 0.0) -> float:
@@ -114,13 +115,14 @@ class RestaurantScorer:
                               semantic_score: float,
                               start_lat: float,
                               start_lng: float,
-                              buff_weights: dict) -> float:
+                              buff_weights: dict,
+                              diet_mode) -> float:
         """
         Tính tổng điểm weighted cho 1 nhà hàng tính từ một vị trí bắt đầu.
-        INPUT  : row (dict), budget_per_meal, semantic_score, start_lat, start_lng
+        INPUT  : row (dict), budget_per_meal, semantic_score, start_lat, start_lng,diet_mode (chế độ ăn của user)
         RETURN : float — tổng điểm trong [0.0, 1.0]
         """
-        total = (
+        base_score = (
             self.weights['star']
             * self._score_star(row.get('star', 0), buff_weights.get("buff_star_weight", 0.0))
             + self.weights['price']
@@ -143,14 +145,33 @@ class RestaurantScorer:
                 buff_weights.get("buff_semantic_weight", 0.0)
             )
         )
+        
+        raw_penalty = row.get('penalty_score', 0)
+        max_penalty_limit = 60 # Điểm phạt tối đa (12 tag * 5 điểm)
+        normalized_penalty = min(raw_penalty / max_penalty_limit, 1.0)
+        
+        
+        if diet_mode == "strict" or diet_mode is None:
+            penalty_weight = self.weights['health']
+        else:
+            penalty_weight = 0.00  # Ăn xả láng -> Trọng số phạt bằng 0 (không trừ điểm)
+        
+        # 4. Tính điểm tổng kết cuối cùng
+        total = base_score - (normalized_penalty * penalty_weight)
+        
+        # Chuẩn hóa lại tránh điểm cuối cùng bị âm
+        total = max(total, 0.0) 
+        
         return round(total, 4)
 
     # ─── PUBLIC: hàm chính giao tiếp với các module khác ────────────────
 
     def run_scoring_pipeline(self,
-                              filtered_data: dict,
-                              parsed_json: dict,
-                              buff_weights: dict | None = None) -> pd.DataFrame:
+                         filtered_data: dict,
+                         parsed_json: dict,
+                         buff_weights: dict | None = None,
+                         diet_mode: str | None = None) -> pd.DataFrame:
+        
         """
         Hàm CHÍNH của Module Algorithm.
         Chạy toàn bộ pipeline tính điểm và trả về top 3 quán ăn cho mỗi bữa.
@@ -158,6 +179,7 @@ class RestaurantScorer:
         INPUT:
             filtered_data (dict[str, DataFrame]) — output từ Module Filter
             parsed_json (dict) — output từ Module Parsing
+            diet_mode: Chế độ ăn của user
 
         RETURN:
             pd.DataFrame chứa top 3 quán ăn cho mỗi bữa kèm điểm đánh giá.
@@ -225,7 +247,8 @@ class RestaurantScorer:
                     budget_per_meal,
                     row.get('semantic_score', 0.0),
                     self.user_lat, self.user_lng,
-                    buff_weights
+                    buff_weights,
+                    diet_mode=diet_mode
                 ),
                 axis=1
             )

@@ -4,8 +4,9 @@ import { useMemo, useState } from "react";
 import { SendHorizontal, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import RestaurantCard from "@/components/ui/RestaurantCard";
-
+import { useAuth } from "@/context/AuthContext";
 type Restaurant = {
+  id: string; // 👈 Thêm ID để làm key khi render danh sách
   name: string;
   address: string;
   rating: number;
@@ -15,6 +16,11 @@ type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  // 👈 Bổ sung vào đây để Component RestaurantCard nhận được dữ liệu
+  healthTagsDisplay?: {
+    warnings?: string[];
+    notes?: string[];
+  };
 };
 
 type Message = {
@@ -33,6 +39,7 @@ const initialMessages: Message[] = [
 const API_BASE_URL = "";
 
 type ApiRestaurant = {
+  id?: string;
   name?: string;
   address?: string;
   star?: number;
@@ -41,13 +48,19 @@ type ApiRestaurant = {
   image_url?: string;
   semantic_text?: string;
   meals?: string[];
+  assigned_meal?: string;
+  main_tag?: string[];
+  potential_tag?: string[];
+  // Bổ sung cấu trúc chứa cảnh báo và ghi chú từ Backend
+    warnings?: string[];
+    notes?: string[];
 };
 
 type ApiResponse = {
   status?: string;
   message?: string;
   detail?: string;
-  result?: ApiRestaurant[];
+  result?: ApiRestaurant[]; // ⚠️ LƯU Ý: Đổi từ 'result' thành 'results' cho đúng với JSON mới của bạn
 };
 
 type ChatInterfaceProps = {
@@ -65,7 +78,7 @@ export default function ChatInterface({
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
-
+  const { user } = useAuth();
   const suggestions = useMemo(
     () => [
       "Tối nay tôi muốn ăn hải sản view biển, ngân sách 800k.",
@@ -76,30 +89,56 @@ export default function ChatInterface({
   );
 
   const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
-    items.map((item) => {
-      const imageUrl = item.image_url ? item.image_url.replace(/\\\//g, "/") : "";
-      const mapQuery = [item.name, item.address].filter(Boolean).join(" ");
-      const mapUrl = mapQuery
-        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`
-        : "https://www.google.com/maps";
-      const ratingValue =
-        typeof item.star === "number"
-          ? item.star
-          : Number(item.star ?? 0) || 0;
-      return {
-        name: item.name || "Nhà hàng",
-        address: item.address || "Chưa có địa chỉ",
-        rating: ratingValue,
-        price: item.avg_price ?? "Chưa cập nhật",
-        phone: item.phone_num ?? "",
-        mapUrl,
-        imageUrl,
-        semanticText: item.semantic_text ? String(item.semantic_text) : "Chưa có mô tả.",
-        meals: item.meals
-      };
-    });
+  items.map((item, index) => {
+    const imageUrl = item.image_url
+      ? item.image_url.replace(/\\\//g, "/")
+      : "";
+
+    const mapQuery = [item.name, item.address]
+      .filter(Boolean)
+      .join(" ");
+
+    const mapUrl = mapQuery
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          mapQuery
+        )}`
+      : "https://www.google.com/maps";
+
+    const ratingValue =
+      typeof item.star === "number"
+        ? item.star
+        : Number(item.star ?? 0) || 0;
+
+    return {
+      id: item.id ?? `${item.name}-${index}`,
+
+      name: item.name || "Nhà hàng",
+      address: item.address || "Chưa có địa chỉ",
+
+      rating: ratingValue,
+      price: item.avg_price ?? "Chưa cập nhật",
+      phone: item.phone_num ?? "",
+
+      mapUrl,
+      imageUrl,
+
+      semanticText: item.semantic_text
+        ? String(item.semantic_text)
+        : "Chưa có mô tả.",
+
+      meals: item.meals ?? [],
+
+      // 👇 QUAN TRỌNG
+      warnings: item.warnings ?? [],
+      notes: item.notes ?? []
+    };
+  });
 
   const buildAssistantMessage = (response: ApiResponse) => {
+
+    console.log("API RESPONSE:", response);
+
+
     if (!response || response.status !== "success") {
       return {
         content:
@@ -107,7 +146,7 @@ export default function ChatInterface({
         restaurants: []
       };
     }
-    const results = response.result || [];
+     const results = response.result || []; // <- sửa ở đây
     const count = results.length;
     const content =
       count > 0
@@ -127,6 +166,7 @@ export default function ChatInterface({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           prompt,
+          user_id: user?.uid || "guest_user",
           ...(placeId ? { place_id: placeId } : {})
         })
       });

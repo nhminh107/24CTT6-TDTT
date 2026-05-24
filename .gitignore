@@ -187,8 +187,6 @@ FrontEnd/build/
 FrontEnd/.env*.local
 FrontEnd/.env
 
-
-
-
-
+serviceAccountKey.json
+Back_End/Database/serviceAccountKey.json
 
