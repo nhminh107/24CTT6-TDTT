@@ -85,8 +85,66 @@ class UserManager:
             col = self._get_collection()
             doc = col.document(uid).get()
             if doc.exists:
-                return doc.to_dict()
+                data = doc.to_dict()
+                
+                # Lấy allergies từ subcollection user_health_profile
+                health_doc = col.document(uid).collection("user_health_profile").document("profile").get()
+                if health_doc.exists:
+                    health_data = health_doc.to_dict()
+                    data["allergies"] = health_data.get("raw_selections", {}).get("selected_allergies", [])
+                else:
+                    data["allergies"] = []
+                    
+                return data
             return None
         except Exception as e:
             print(f">>> UserManager Error (get_user_profile): {e}")
             return None
+
+    async def update_user_profile(self, uid: str, update_data: dict) -> bool:
+        """
+        Cập nhật thông tin profile của user: name, avatar, allergies.
+        """
+        return await asyncio.to_thread(self._update_user_profile_sync, uid, update_data)
+
+    def _update_user_profile_sync(self, uid: str, update_data: dict) -> bool:
+        try:
+            col = self._get_collection()
+            
+            # 1. Cập nhật thông tin cơ bản (name, avatar) vào document user
+            data_to_update = {"updated_at": datetime.now()}
+            if "name" in update_data and update_data["name"] is not None:
+                data_to_update["display_name"] = update_data["name"]
+            if "avatar" in update_data and update_data["avatar"] is not None:
+                data_to_update["photo_url"] = update_data["avatar"]
+
+            col.document(uid).set(data_to_update, merge=True)
+            
+            # 2. Cập nhật allergies vào subcollection user_health_profile/profile
+            if "allergies" in update_data and update_data["allergies"] is not None:
+                allergies = update_data["allergies"]
+                health_ref = col.document(uid).collection("user_health_profile").document("profile")
+                health_doc = health_ref.get()
+                
+                if health_doc.exists:
+                    health_ref.update({
+                        "raw_selections.selected_allergies": allergies,
+                        "updated_at": datetime.utcnow().isoformat() + "Z"
+                    })
+                else:
+                    health_ref.set({
+                        "user_id": uid,
+                        "updated_at": datetime.utcnow().isoformat() + "Z",
+                        "diet_mode": "strict",
+                        "more_description": "",
+                        "raw_selections": {
+                            "selected_conditions": [],
+                            "selected_allergies": allergies
+                        },
+                        "forbidden_tags": []
+                    })
+                    
+            return True
+        except Exception as e:
+            print(f">>> UserManager Error (update_user_profile): {e}")
+            return False

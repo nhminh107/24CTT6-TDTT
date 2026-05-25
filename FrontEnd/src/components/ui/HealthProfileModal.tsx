@@ -207,7 +207,7 @@ const hasDescription =
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {ALLERGIES.map((a) => (
+                  {Array.from(new Set([...ALLERGIES, ...local.selected_allergies])).map((a) => (
                     <Chip
                       key={a}
                       label={a}

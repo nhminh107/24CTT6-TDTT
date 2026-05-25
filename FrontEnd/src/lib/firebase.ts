@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -18,5 +19,6 @@ if (!firebaseConfig.apiKey && typeof window !== 'undefined') {
 // Initialize Firebase
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
-export { auth };
+export { auth, storage };

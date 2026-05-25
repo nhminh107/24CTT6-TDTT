@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MapPin, LogOut, HeartPulse } from "lucide-react";
+import { MapPin, LogOut, HeartPulse, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
@@ -145,36 +145,52 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
           <div className="flex items-center gap-3">
             {user ? (
               <div className="flex items-center gap-3">
-                {/* User info */}
-                <div className="hidden flex-col items-end md:flex">
-                  <span className="text-xs font-semibold text-slate-900">
-                    {user.displayName || "Người dùng"}
-                  </span>
-                  <span className="text-[10px] text-slate-500">{user.email}</span>
-                </div>
-
                 {/* Health profile button */}
                 <button
                   type="button"
                   onClick={() => setHealthOpen(true)}
                   title="Hồ sơ sức khỏe"
-                  className="relative flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-orange-50 hover:border-orange-300 hover:text-orange-500"
+                  className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-orange-50 hover:border-orange-300 hover:text-orange-500 shadow-sm"
                 >
                   <HeartPulse size={18} />
                   {/* dot indicator nếu đã có profile */}
                   {hasProfile && (
-                    <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-orange-500" />
+                    <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-white bg-orange-500" />
                   )}
                 </button>
 
-                {/* Logout */}
-                <button
-                  onClick={() => logout()}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50 hover:text-brand-coral"
-                  title="Đăng xuất"
-                >
-                  <LogOut size={18} />
-                </button>
+                {/* User Dropdown */}
+                <div className="relative group z-50">
+                  <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pr-3.5 transition hover:bg-slate-50 shadow-sm">
+                    <img 
+                      src={user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=ff6b4a&color=fff`} 
+                      alt="Avatar" 
+                      className="h-8 w-8 rounded-full object-cover bg-slate-100" 
+                      onError={(e) => (e.currentTarget.src = "https://ui-avatars.com/api/?name=U&background=ff6b4a&color=fff")}
+                    />
+                    <div className="hidden flex-col items-start text-left md:flex">
+                      <span className="text-xs font-bold text-slate-800 leading-tight max-w-[100px] truncate">
+                        {user.displayName || "Người dùng"}
+                      </span>
+                    </div>
+                  </button>
+                  
+                  {/* Dropdown Menu (Hover Trigger) */}
+                  <div className="absolute right-0 top-full mt-2 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out rounded-2xl border border-slate-100 bg-white p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
+                    <div className="px-3 py-3 mb-2 border-b border-slate-100 flex flex-col gap-0.5">
+                      <span className="text-sm font-bold text-slate-800 truncate">{user.displayName || "Người dùng"}</span>
+                      <span className="text-[11px] text-slate-500 truncate">{user.email}</span>
+                    </div>
+                    
+                    <Link href="/profile" className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 hover:bg-brand-coral/10 hover:text-brand-coral transition-colors">
+                      <User size={16} /> Hồ sơ cá nhân
+                    </Link>
+                    
+                    <button onClick={() => logout()} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors mt-1">
+                      <LogOut size={16} /> Đăng xuất
+                    </button>
+                  </div>
+                </div>
 
                 <Link
                   href="/app"

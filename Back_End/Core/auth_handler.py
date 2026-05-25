@@ -16,20 +16,20 @@ if not firebase_admin._apps:
         if os.path.exists(json_path):
             cred = credentials.Certificate(json_path)
             firebase_admin.initialize_app(cred)
-            print(">>> Firebase Admin SDK khởi tạo thành công.")
+            print(">>> Firebase Admin SDK initialized successfully.")
         else:
-            print(f">>> CẢNH BÁO: Không tìm thấy tệp xác thực tại {json_path}")
+            print(f">>> WARNING: Credentials file not found at {json_path}")
     except Exception as e:
-        print(f">>> LỖI khởi tạo Firebase Admin: {e}")
+        print(f">>> ERROR initializing Firebase Admin: {e}")
 
 # Khởi tạo Firestore client
 db = None
 try:
     if firebase_admin._apps:
         db = firestore.client()
-        print(">>> Kết nối Firestore thành công.")
+        print(">>> Firestore connected successfully.")
 except Exception as e:
-    print(f">>> LỖI kết nối Firestore: {e}")
+    print(f">>> ERROR connecting to Firestore: {e}")
 
 security = HTTPBearer()
 
