@@ -46,56 +46,56 @@ class RestaurantFilter:
         self.user_lng = user_lng
         self.user_health=user_health_profie
         
-        self.warnings={
-                "Spicy": {
-                    "potential": "Nhà hàng này có thể có vị cay nồng đặc trưng, hãy dặn nhân viên phục vụ làm mức nhẹ nhất hoặc không cay để bảo vệ dạ dày.",
-                    "main": "Quán chuyên các món cay nồng đậm vị, bạn nên chủ động dặn nhà bếp gia giảm độ cay khi gọi món để tránh kích ứng dạ dày."
-                },
-                "DeepFried_Oily": {
-                    "potential": "Nhà hàng này có thể có nhiều món chiên rán, bạn có thể nhờ đầu bếp giảm bớt dầu khi chế biến hoặc ưu tiên chọn các món luộc/hấp.",
-                    "main": "Thực đơn chính của quán chứa nhiều dầu mỡ do chiên xào, bạn nên cân nhắc đổi sang các món thanh đạm để tránh đầy bụng, nóng trong."
-                },
-                "High_Sugar": {
-                    "potential": "Quán ăn này có thể sử dụng hàm lượng đường cao trong nước sốt hoặc đồ uống, hãy nhờ người bán giảm ngọt tối đa khi gọi món.",
-                    "main": "Quán có thực đơn chứa hàm lượng đường rất cao, bạn hãy yêu cầu nhân viên để riêng nước sốt/nước đường hoặc chọn dòng không đường."
-                },
-                "Refined_Carbs": {
-                    "potential": "Quán này có thể sử dụng nhiều tinh bột tinh chế (bún, mì trắng, bánh mì), hãy hỏi nhân viên xem có thể đổi sang rau hoặc bún lứt không.",
-                    "main": "Thực đơn chủ yếu là tinh bột hấp thu nhanh, bạn nên ăn kèm nhiều rau xanh hoặc hạn chế lượng ăn để tránh làm tăng đường huyết đột ngột."
-                },
-                "Low_GI_Diet": {
-                    "potential": "Nhà hàng này có thể có các lựa chọn thực phẩm nguyên cám, hãy nhờ nhân viên tư vấn các món ăn ít tinh bột hoặc không đường.",
-                    "main": "Quán này có thực đơn thuần chế độ ăn lành mạnh, rất tốt cho việc ổn định đường huyết và duy trì vóc dáng của bạn."
-                },
-                "Red_Meat": {
-                    "potential": "Nhà hàng này có thể có món chứa thịt đỏ (bò, heo), hãy nhờ nhân viên kiểm tra xem nước dùng hoặc món xào có lẫn thịt đỏ hay không.",
-                    "main": "Thực đơn chính chứa thịt đỏ (bò, heo), không phù hợp nếu bạn đang trong giai đoạn sưng đau Gout hoặc cần kiêng purin."
-                },
-                "Seafood": {
-                    "potential": "Nhà hàng này có thể có món chứa hải sản, hãy nhờ nhân viên kiểm tra xem nước dùng hoặc nước sốt có nấu từ tôm/khô mực không.",
-                    "main": "Quán chuyên phục vụ hải sản, nguy cơ cao gây kích ứng dị ứng hoặc làm tăng axit uric (Gout), bạn nên chọn món khác thay thế."
-                },
-                "Alcohol_Pub": {
-                    "potential": "Không gian này có thể có phục vụ các thức uống có cồn, bạn nên hỏi nhân viên về menu nước ép hoặc trà lành tính để thay thế.",
-                    "main": "Đây là không gian quán nước có cồn (bia, rượu, pub), không phù hợp với chế độ kiêng chất kích thích hoặc lộ trình thải độc của bạn."
-                },
-                "Peanuts_Nuts": {
-                    "potential": "Nhà hàng này có thể sử dụng đậu phộng hoặc hạt trong nước chấm, món trộn; hãy chủ động dặn người bán bỏ qua để tránh dị ứng.",
-                    "main": "Món ăn tại đây chứa đậu phộng hoặc các loại hạt nguy cơ dị ứng cao, bạn tuyệt đối không nên dùng nếu có tiền sử sốc phản vệ."
-                },
-                "Dairy_Product": {
-                    "potential": "Quán có thể dùng sữa, bơ hoặc phô mai trong chế biến; hãy nhờ nhân viên xác nhận món ăn thuần chay hoặc không chứa sữa (Dairy-free).",
-                    "main": "Thành phần món ăn chứa các sản phẩm từ sữa, bạn cần cân nhắc kỹ nếu cơ thể có hội chứng bất dung nạp lactose gây đau bụng."
-                },
-                "Gluten_Present": {
-                    "potential": "Nhà hàng có thể sử dụng bột mì hoặc các sản phẩm chứa gluten, hãy nhờ nhân viên tư vấn các món thuần túy không có gluten để an tâm hơn.",
-                    "main": "Thành phần món ăn chứa bột mì hoặc gluten, không thích hợp cho người có hệ tiêu hóa nhạy cảm hoặc mắc hội chứng Celiac."
-                },
-                "Shellfish": {
-                    "potential": "Nhà hàng này có thể có món chứa hải sản vỏ cứng, hãy nhờ người bán xác nhận món ăn không dùng chung chảo hoặc dính vụn tôm, cua.",
-                    "main": "Món ăn chứa hải sản vỏ cứng (tôm, cua, nghêu, sò), cân nhắc kỹ nếu bạn có tiền sử dị ứng nghiêm trọng với nhóm này."
-                }
+        self.warnings = {
+            "Spicy": {
+                "potential": "Vị cay nồng (Tiềm ẩn): Món ăn có thể cay. Bạn nên dặn nhân viên làm mức nhẹ nhất hoặc không cay để bảo vệ dạ dày.",
+                "main": "Món cay nồng (Chủ đạo): Quán chuyên vị cay đậm. Nên chủ động yêu cầu nhà bếp giảm độ cay để tránh kích ứng dạ dày."
+            },
+            "DeepFried_Oily": {
+                "potential": "Đồ chiên rán (Tiềm ẩn): Thực đơn có thể nhiều dầu mỡ. Bạn nên nhờ đầu bếp giảm dầu hoặc ưu tiên chọn món luộc/hấp.",
+                "main": "Nhiều dầu mỡ (Chủ đạo): Các món chủ yếu là chiên xào. Nên cân nhắc đổi sang món thanh đạm để tránh đầy bụng, nóng trong."
+            },
+            "High_Sugar": {
+                "potential": "Hàm lượng đường (Tiềm ẩn): Nước sốt hoặc đồ uống có thể khá ngọt. Hãy nhờ người bán giảm ngọt tối đa khi gọi món.",
+                "main": "Hàm lượng đường (Chủ đạo): Thực đơn chứa lượng đường rất cao. Bạn hãy yêu cầu nhân viên để riêng nước sốt hoặc chọn dòng không đường."
+            },
+            "Refined_Carbs": {
+                "potential": "Tinh bột tinh chế (Tiềm ẩn): Quán chủ yếu dùng bún, mì trắng, bánh mì. Hãy hỏi nhân viên xem có thể đổi sang bún lứt hoặc rau không.",
+                "main": "Tinh bột nhanh (Chủ đạo): Thực đơn nhiều tinh bột hấp thu nhanh. Bạn nên ăn kèm nhiều rau xanh để tránh làm tăng đường huyết đột ngột."
+            },
+            "Low_GI_Diet": {
+                "potential": "Chế độ Low-GI (Gợi ý): Có sẵn các lựa chọn thực phẩm nguyên cám. Hãy nhờ nhân viên tư vấn các món ít tinh bột hoặc không đường.",
+                "main": "Chế độ ăn lành mạnh (Điểm cộng): Thực đơn chuẩn ăn kiêng, rất tốt cho việc ổn định đường huyết và duy trì vóc dáng."
+            },
+            "Red_Meat": {
+                "potential": "Thịt đỏ (Tiềm ẩn): Có thể có món chứa thịt bò, heo. Bạn nên nhờ nhân viên kiểm tra xem nước dùng hoặc món xào có lẫn thịt đỏ không.",
+                "main": "Thịt đỏ (Chủ đạo): Thực đơn chính chứa nhiều thịt bò, heo. Không phù hợp nếu bạn đang trong giai đoạn sưng đau Gout."
+            },
+            "Seafood": {
+                "potential": "Hải sản (Tiềm ẩn): Có thể có hải sản. Hãy nhờ nhân viên kiểm tra xem nước dùng hoặc nước sốt có nấu từ tôm, khô mực không.",
+                "main": "Chuyên hải sản (Chủ đạo): Nguy cơ cao gây dị ứng hoặc tăng axit uric (Gout). Bạn nên chọn các nhóm món khác thay thế."
+            },
+            "Alcohol_Pub": {
+                "potential": "Thức uống có cồn (Tiềm ẩn): Không gian có phục vụ bia rượu. Bạn nên hỏi menu nước ép hoặc trà lành tính để thay thế.",
+                "main": "Quán nước có cồn (Chủ đạo): Đây là không gian pub/bia rượu. Không phù hợp với chế độ kiêng chất kích thích hoặc lộ trình thải độc."
+            },
+            "Peanuts_Nuts": {
+                "potential": "Đậu phộng & Hạt (Tiềm ẩn): Quán có thể dùng hạt trong nước chấm, món trộn. Hãy dặn người bán bỏ qua để phòng dị ứng.",
+                "main": "Chứa đậu phộng/Hạt (Chủ đạo): Món ăn thành phần chứa hạt nguy cơ cao. Tuyệt đối không dùng nếu bạn có tiền sử sốc phản vệ."
+            },
+            "Dairy_Product": {
+                "potential": "Sữa & Bơ (Tiềm ẩn): Có thể dùng sữa, phô mai khi chế biến. Hãy nhờ nhân viên xác nhận món không chứa sữa (Dairy-free).",
+                "main": "Thành phần từ sữa (Chủ đạo): Món ăn chứa sữa/bơ. Cần cân nhắc kỹ nếu cơ thể bạn có hội chứng bất dung nạp lactose gây đau bụng."
+            },
+            "Gluten_Present": {
+                "potential": "Gluten / Bột mì (Tiềm ẩn): Quán có thể dùng bột mì trong chế biến. Hãy nhờ tư vấn các món thuần túy không gluten để an tâm hơn.",
+                "main": "Chứa Gluten (Chủ đạo): Món ăn chứa bột mì/gluten. Không thích hợp cho người có hệ tiêu hóa nhạy cảm hoặc mắc hội chứng Celiac."
+            },
+            "Shellfish": {
+                "potential": "Hải sản vỏ cứng (Tiềm ẩn): Có thể có tôm, cua, nghêu, sò. Hãy dặn người bán tránh dùng chung chảo hoặc dính vụn thức ăn.",
+                "main": "Hải sản vỏ cứng (Chủ đạo): Thành phần chứa tôm, cua, nghêu, sò. Cân nhắc kỹ nếu bạn từng có tiền sử dị ứng nghiêm trọng nhóm này."
             }
+        }
         
         # Các tag này nếu người dùng chọn ăn xả láng cũng phải loại bỏ
         self.CRITICAL_ALLERGY_TAGS=["Peanuts_Nuts", "Gluten_Present", "Dairy_Product", "Seafood", "Shellfish"] 
