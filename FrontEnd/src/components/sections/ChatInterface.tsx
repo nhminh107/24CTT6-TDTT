@@ -36,7 +36,7 @@ const initialMessages: Message[] = [
       "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
   }
 ];
-const API_BASE_URL = "";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
 
 type ApiRestaurant = {
   id?: string;
@@ -161,7 +161,7 @@ export default function ChatInterface({
   const callRestaurantApi = async (prompt: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/api/prompt`, {
+      const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

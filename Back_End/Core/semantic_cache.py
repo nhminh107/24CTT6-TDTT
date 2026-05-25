@@ -2,14 +2,23 @@ import chromadb
 import json
 import hashlib
 import os
+from chromadb.utils import embedding_functions
 
 class SemanticCacheManager:
     def __init__(self):
         cache_path = os.path.join(os.getcwd(), "Back_End", "Database", "chroma_cache_db")
         self.client = chromadb.PersistentClient(path=cache_path)
+        
+        # Đổi model sang all-mpnet-base-v2 (chính xác cao hơn)
+        self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(
+            model_name="all-mpnet-base-v2" 
+        )
+        
+        # Đổi tên collection thành 'route_cache_v2' để tránh xung đột với data cũ
         self.collection = self.client.get_or_create_collection(
-            name="route_cache",
-            metadata={"hnsw:space": "cosine"} 
+            name="route_cache_v2",
+            metadata={"hnsw:space": "cosine"},
+            embedding_function=self.ef
         )
 
     def _get_location_zone(self, lat: float, lng: float) -> str:
@@ -17,38 +26,33 @@ class SemanticCacheManager:
         zone_lng = round(lng, 2)
         return f"zone_{zone_lat}_{zone_lng}"
 
-    def check_cache(self, prompt: str, lat: float, lng: float, budget: int):
-        if lat is None or lng is None:
-            return None
-        if budget is None:
-            budget = 0
+    
+    def check_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str):
+        prompt = prompt.strip().lower() 
         zone = self._get_location_zone(lat, lng)
+        doc_id = hashlib.md5(f"{prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
+        
+        print(f"DEBUG: Checking ID: {doc_id}")
 
-        results = self.collection.query(
-            query_texts=[prompt],
-            n_results=1,
-            where={
-                "$and": [
-                    {"zone": {"$eq": zone}},
-                    {"budget": {"$eq": budget}}
-                ]
-            }
-        )
+        # THAY VÌ QUERY VỚI VECTOR (DỄ BỊ NHIỄU), TA LẤY TRỰC TIẾP THEO ID
+        existing_doc = self.collection.get(ids=[doc_id])
 
-        if results['distances'] and len(results['distances'][0]) > 0:
-            distance = results['distances'][0][0]
-            if distance < 0.15: 
-                cached_data = results['documents'][0][0]
-                return json.loads(cached_data)
-
+        if existing_doc and existing_doc['documents']:
+            print("✅ [CACHE DEBUG] ID TRÙNG KHỚP! BẮN CACHE NGAY TỨC THÌ!")
+            return json.loads(existing_doc['documents'][0])
+        
+        print("❌ [CACHE DEBUG] KHÔNG TÌM THẤY CACHE CHO ID NÀY!")
         return None
 
-    def save_cache(self, prompt: str, lat: float, lng: float, budget: int, result_json: dict):
+    def save_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str, result_json: dict):
+        prompt = prompt.strip().lower()
+        budget = budget if budget is not None else 0
         zone = self._get_location_zone(lat, lng)
-        doc_id = hashlib.md5(f"{prompt}_{zone}_{budget}".encode()).hexdigest()
+        doc_id = hashlib.md5(f"{prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
 
         self.collection.upsert(
             documents=[json.dumps(result_json)],
-            metadatas=[{"zone": zone, "budget": budget, "health_filters": "null"}],
+            metadatas=[{"zone": zone, "budget": budget, "health_filters": health_key}],
             ids=[doc_id]
         )
+        print("💾 [CACHE DEBUG] ĐÃ LƯU THÀNH CÔNG VÀO DATABASE!")

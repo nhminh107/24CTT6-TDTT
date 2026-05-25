@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 import pandas as pd
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from google.api_core import exceptions # Import thêm error của google để bắt cho chuẩn
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
@@ -50,6 +52,12 @@ class FinalResultLLM:
             meal_df = meal_df.sort_values('score', ascending=False)
             candidate_map[meal] = meal_df.to_dict('records')
         return candidate_map
+    
+    @retry(
+    stop=stop_after_attempt(3), 
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
+    )
 
     async def _select_with_llm(self, candidates_payload: dict, user_prompt: str) -> dict:
         prompt = f"""
@@ -68,23 +76,28 @@ class FinalResultLLM:
         Candidates: {json.dumps(candidates_payload, ensure_ascii=False)}
         """
 
-        response = await self.client.aio.models.generate_content(
-            model=self.model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
+        try:
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.0
+                )
             )
-        )
-        content = response.text
-        data = json.loads(content)
-        selected = data.get('selected', []) if isinstance(data, dict) else []
-        result = {}
-        for item in selected:
-            meal = item.get('meal')
-            rid = item.get('id')
-            if meal and rid:
-                result[meal] = str(rid)
-        return result
+            data = json.loads(response.text)
+            selected = data.get('selected', []) if isinstance(data, dict) else []
+            result = {}
+            for item in selected:
+                meal = item.get('meal')
+                rid = item.get('id')
+                if meal and rid:
+                    result[meal] = str(rid)
+            return result
+
+        except Exception as e:
+            print(f"DEBUG: Lỗi API trong final_result.py: {type(e).__name__} - {e}")
+            raise e
 
     def _select_unique_combination(self, meal_order: list, candidate_map: dict) -> list:
         selected_rows = []

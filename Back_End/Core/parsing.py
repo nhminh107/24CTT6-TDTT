@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+from google.api_core import exceptions # Import thêm error của google để bắt cho chuẩn
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
@@ -14,6 +16,12 @@ class LLMParser():
     def __init__(self):
         self.client = _client
         self.model_name = _model_name
+
+    @retry(
+    stop=stop_after_attempt(3), 
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
+    )
 
     async def JSON_response(self, user_prompt: str):
         prompt = f"""
@@ -33,21 +41,24 @@ class LLMParser():
         Output JSON: 
         """
 
-        response = await self.client.aio.models.generate_content(
-            model=self.model_name,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-            )
-        )
-        content = response.text
-
         try:
-            data = json.loads(content)
-            return data
-        except json.JSONDecodeError:
-            print("AI không trả về đúng định dạng JSON")
-            return content
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    temperature=0.0
+                )
+            )
+            content = response.text
+            # Trả về data ngay lập tức
+            return json.loads(content)
+            
+        except Exception as e:
+            # In lỗi ra để debug
+            print(f"DEBUG: Lỗi API trong parsing.py: {type(e).__name__} - {e}")
+            # Raise lên để @retry bắt được và thử lại
+            raise e
 
     async def phrase_health_description(self, user_prompt: str):
         ALL_AVAILABLE_TAGS = [

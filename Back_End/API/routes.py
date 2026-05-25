@@ -6,6 +6,7 @@ import os
 import pandas as pd
 from typing import List, Optional
 import traceback
+import json
 
 
 
@@ -109,25 +110,35 @@ async def process_prompt(request: UserRequest):
         elif isinstance(budget_value, float):
             budget_value = int(budget_value)
 
+        # --- DỜI VIỆC LẤY HỒ SƠ SỨC KHỎE LÊN ĐÂY ---
+        user_health_profile = await fetch_user_health_profile(request.user_id)
+        
+        # Tạo health_key từ danh sách forbidden_tags để phân biệt các user bệnh lý khác nhau
+        forbidden_tags = user_health_profile.get("forbidden_tags", [])
+        health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
+
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
 
+        # --- KIỂM TRA BỘ NHỚ ĐỆM (TRUYỀN THÊM health_key) ---
         cache_task = asyncio.to_thread(
             cache_manager.check_cache,
             prompt=request.prompt,
             lat=user_lat,
             lng=user_lng,
-            budget=budget_value
+            budget=budget_value,
+            health_key=health_key
         )
 
         data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
         if not os.path.exists(data_path):
             raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
 
-        df_task = asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str})
+        df_task = asyncio.create_task(asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str}))
 
         cached_result = await cache_task
         if cached_result:
+            print("⚡ HIT CACHE! TRẢ KẾT QUẢ NGAY LẬP TỨC!") # Thêm dòng in ra để test cho dễ
             weight_task.cancel()
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError):
@@ -139,8 +150,6 @@ async def process_prompt(request: UserRequest):
                 "parsed_intent": parsed_json,
                 "result": cached_result
             }
-
-        
         
         # 3. Data Filtering: Lọc quán ăn phù hợp
         
@@ -173,9 +182,9 @@ async def process_prompt(request: UserRequest):
                 "message": "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn.",
                 "result": []
             }
-
-        # Chuyển đổi kết quả thành dạng danh sách từ điển
-        final_result_list = final_itinerary.to_dict(orient='records')
+        
+        final_result_json_str = final_itinerary.to_json(orient='records', force_ascii=False)
+        final_result_list = json.loads(final_result_json_str)
 
         # LƯU LẠI CACHE CHO LẦN DÙNG SAU
         cache_manager.save_cache(
@@ -183,6 +192,7 @@ async def process_prompt(request: UserRequest):
             lat=user_lat,
             lng=user_lng,
             budget=budget_value,
+            health_key=health_key, # Thêm health_key lúc lưu
             result_json=final_result_list
         )
 

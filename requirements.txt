@@ -5,4 +5,10 @@ pandas
 streamlit
 streamlit_searchbox
 pyarrow
+fastapi
 timezonefinder
+pytz
+firebase_admin
+numpy>=2.1.0
+tenacity
+sentence-transformers
