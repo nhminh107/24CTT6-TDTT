@@ -3,7 +3,8 @@ import numpy as np
 import traceback
 import logging
 import os
-import json 
+import json
+from Back_End.Database.database import ChromaDBManager
 
 # Khi khởi tạo Class thì chuyền cái này vô, viết các Endpoints trong routes.py để lấy từ Firebase
 user_heath_profie_mockup={
@@ -37,6 +38,7 @@ user_heath_profie_mockup={
 
 
 class RestaurantFilter:
+    _menu_db_manager = None
     def __init__(self, df, prompt, user_lat, user_lng,user_health_profie):
         self.data = df
         self.user_prompt = prompt
@@ -98,6 +100,81 @@ class RestaurantFilter:
         # Các tag này nếu người dùng chọn ăn xả láng cũng phải loại bỏ
         self.CRITICAL_ALLERGY_TAGS=["Peanuts_Nuts", "Gluten_Present", "Dairy_Product", "Seafood", "Shellfish"] 
         
+
+    def _get_menu_db_manager(self):
+        if RestaurantFilter._menu_db_manager is None:
+            RestaurantFilter._menu_db_manager = ChromaDBManager()
+        return RestaurantFilter._menu_db_manager
+
+    def _normalize_menu_query(self, value):
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return value.strip()
+        if isinstance(value, list):
+            parts = [str(item).strip() for item in value if str(item).strip()]
+            return ", ".join(parts)
+        return ""
+
+    def _extract_menu_query(self, meal_info):
+        if not isinstance(meal_info, dict):
+            return ""
+        for key in ("menu_query", "dish_query", "food_query", "menu", "dish", "food"):
+            query = self._normalize_menu_query(meal_info.get(key))
+            if query:
+                return query
+        return ""
+
+    def menu_filter(self, meal_df, menu_query):
+        if meal_df is None or meal_df.empty:
+            return meal_df
+        menu_query = self._normalize_menu_query(menu_query)
+        if not menu_query:
+            return meal_df
+        if 'id' not in meal_df.columns:
+            return meal_df
+
+        candidate_ids = meal_df['id'].astype(str).dropna().unique().tolist()
+        if not candidate_ids:
+            return meal_df
+
+        n_results = min(max(len(candidate_ids) * 3, 20), 200)
+        where = {"restaurant_id": {"$in": candidate_ids}}
+
+        try:
+            db_manager = self._get_menu_db_manager()
+            result = db_manager.search_menu(menu_query, n_results=n_results, where=where)
+        except Exception:
+            return meal_df
+
+        matched_ids = set()
+        metadatas = result.get("metadatas") or []
+        for meta_list in metadatas:
+            if not meta_list:
+                continue
+            for meta in meta_list:
+                if not meta:
+                    continue
+                rid = meta.get("restaurant_id")
+                if rid:
+                    matched_ids.add(str(rid))
+
+        if not matched_ids:
+            raw_ids = result.get("ids") or []
+            for id_list in raw_ids:
+                if not id_list:
+                    continue
+                for item_id in id_list:
+                    if not isinstance(item_id, str):
+                        continue
+                    if "__menu__" in item_id:
+                        matched_ids.add(item_id.split("__menu__", 1)[0])
+
+        if not matched_ids:
+            return meal_df
+
+        filtered = meal_df[meal_df['id'].astype(str).isin(matched_ids)]
+        return filtered if not filtered.empty else meal_df
 
     def _calculate_distance(self, df):
         """
@@ -298,6 +375,10 @@ class RestaurantFilter:
                 except Exception as e:
                     print(f"Lỗi logic lọc Type của {meal_key_parser}: {traceback.format_exc()}")
                     meal_df = meal_df.iloc[0:0]
+
+                menu_query = self._extract_menu_query(meal_info)
+                if menu_query:
+                    meal_df = self.menu_filter(meal_df, menu_query)
 
                 # Lưu kết quả
                 result_dict[meal_key_parser] = meal_df

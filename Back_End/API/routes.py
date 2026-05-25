@@ -53,6 +53,48 @@ router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
 # KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
 cache_manager = SemanticCacheManager()
+last_results_by_user = {}
+
+
+def _extract_ids_from_result(result):
+    if not isinstance(result, list):
+        return []
+    ids = []
+    for item in result:
+        if not isinstance(item, dict):
+            continue
+        rid = item.get("id")
+        if rid is None:
+            continue
+        ids.append(str(rid))
+    return list(dict.fromkeys(ids))
+
+
+def _wants_alternative(prompt: str) -> bool:
+    if not prompt:
+        return False
+    text = prompt.strip().lower()
+    keywords = [
+        "khác", "khác đi", "khác nữa", "quán khác",
+        "đổi quán", "đổi chỗ", "tìm quán khác", "thêm quán"
+    ]
+    return any(keyword in text for keyword in keywords)
+
+
+def _apply_exclusions(filtered_data: dict, exclude_ids: list):
+    if not filtered_data or not exclude_ids:
+        return filtered_data
+    exclude_set = {str(rid) for rid in exclude_ids if rid is not None}
+    if not exclude_set:
+        return filtered_data
+    result = {}
+    for meal_tag, df in filtered_data.items():
+        if df is None or df.empty or 'id' not in df.columns:
+            result[meal_tag] = df
+            continue
+        filtered_df = df[~df['id'].astype(str).isin(exclude_set)]
+        result[meal_tag] = filtered_df if not filtered_df.empty else df
+    return result
 
 #Định nghĩa cấu trúc dữ liệu (Pydantic Models)
 class UserRequest(BaseModel):
@@ -120,6 +162,10 @@ async def process_prompt(request: UserRequest):
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
 
+        wants_alternative = _wants_alternative(request.prompt)
+        exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
+        bypass_cache = wants_alternative and bool(exclude_ids)
+
         # --- KIỂM TRA BỘ NHỚ ĐỆM (TRUYỀN THÊM health_key) ---
         cache_task = asyncio.to_thread(
             cache_manager.check_cache,
@@ -137,7 +183,7 @@ async def process_prompt(request: UserRequest):
         df_task = asyncio.create_task(asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str}))
 
         cached_result = await cache_task
-        if cached_result:
+        if cached_result and not bypass_cache:
             print("⚡ HIT CACHE! TRẢ KẾT QUẢ NGAY LẬP TỨC!") # Thêm dòng in ra để test cho dễ
             weight_task.cancel()
             df_task.cancel()
@@ -145,6 +191,7 @@ async def process_prompt(request: UserRequest):
                 await weight_task
             with contextlib.suppress(asyncio.CancelledError):
                 await df_task
+            last_results_by_user[request.user_id] = _extract_ids_from_result(cached_result)
             return {
                 "status": "success",
                 "parsed_intent": parsed_json,
@@ -160,6 +207,8 @@ async def process_prompt(request: UserRequest):
         df_raw = await df_task
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
         filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
+        if exclude_ids:
+            filtered_data = _apply_exclusions(filtered_data, exclude_ids)
 
         buff_weights = await weight_task
 
@@ -187,14 +236,17 @@ async def process_prompt(request: UserRequest):
         final_result_list = json.loads(final_result_json_str)
 
         # LƯU LẠI CACHE CHO LẦN DÙNG SAU
-        cache_manager.save_cache(
-            prompt=request.prompt,
-            lat=user_lat,
-            lng=user_lng,
-            budget=budget_value,
-            health_key=health_key, # Thêm health_key lúc lưu
-            result_json=final_result_list
-        )
+        if not bypass_cache:
+            cache_manager.save_cache(
+                prompt=request.prompt,
+                lat=user_lat,
+                lng=user_lng,
+                budget=budget_value,
+                health_key=health_key, # Thêm health_key lúc lưu
+                result_json=final_result_list
+            )
+
+        last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
 
         return {
             "status": "success",
