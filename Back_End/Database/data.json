@@ -27,6 +27,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm chiên hải sản",
+            "Sò điệp nướng",
+            "Tôm tỏi",
+            "Bánh xèo"
         ]
     },
     {
@@ -54,6 +60,13 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Hải sản tươi sống",
+            "Cua xào sả ớt",
+            "Tôm nướng mọi vị",
+            "Ò óng xào bún",
+            "Hải sản rang me"
         ]
     },
     {
@@ -83,6 +96,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Mỳ Quảng",
+            "Bánh Xèo",
+            "Bún Thịt Nướng",
+            "Chả Giò"
         ]
     },
     {
@@ -113,6 +132,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh xèo",
+            "Cơm chiên",
+            "Gỏi xoài",
+            "Chả giò cua"
         ]
     },
     {
@@ -140,6 +165,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm bò xào",
+            "Bò kho",
+            "Gà kho sả ớt",
+            "Cơm tấm"
         ]
     },
     {
@@ -168,6 +199,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Tôm Tiêu Đen Nướng",
+            "Sò Điệp Nướng",
+            "Hàu Nướng",
+            "Bánh Xèo"
         ]
     },
     {
@@ -199,6 +236,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sò điệp nướng",
+            "Hàu nướng",
+            "Tôm hấp gừng",
+            "Cơm chiên trứng"
         ]
     },
     {
@@ -228,6 +271,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Cá Mú Hấp Tỏi Lý Sơn",
+            "Tôm Hùm",
+            "Hàu Tươi",
+            "Bể Hàu"
         ]
     },
     {
@@ -259,6 +308,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gạch tôm hùm bơ tỏi",
+            "Cá nướng tươi",
+            "Cơm chiên trứng",
+            "Bánh xèo"
         ]
     },
     {
@@ -288,6 +343,9 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Sò Điệp Nướng Yang"
         ]
     },
     {
@@ -318,6 +376,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Ốc xào nghêu",
+            "Chip chip hấp sả",
+            "Bể ốc bơ",
+            "Hải sản nướng"
         ]
     },
     {
@@ -349,6 +413,10 @@
         ],
         "potential_tag": [
             "Red_Meat"
+        ],
+        "menu": [
+            "Mỳ Quảng Gà",
+            "Mỳ Quảng Ếch"
         ]
     },
     {
@@ -378,6 +446,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Bò Huế",
+            "Bún Lưỡi Bò",
+            "Phở Bò",
+            "Cơm Gà"
         ]
     },
     {
@@ -409,6 +483,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Phở sườn ngắn",
+            "Cơm dừa",
+            "Tôm bơ tỏi",
+            "Bánh xèo"
         ]
     },
     {
@@ -439,6 +519,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò Đặc Biệt",
+            "Bún Chả",
+            "Phở Gà",
+            "Cơm Gà"
         ]
     },
     {
@@ -468,6 +554,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò",
+            "Bún Chả Hà Nội",
+            "Gỏi cuốn",
+            "Cơm gà rán"
         ]
     },
     {
@@ -497,6 +589,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Mỳ Quảng",
+            "Xên Thịt Nướng",
+            "Bánh Xèo",
+            "Cơm Gà"
         ]
     },
     {
@@ -527,6 +625,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Cơm Gà Kho",
+            "Mắm Hà Nội",
+            "Bún Chả Cá Kho",
+            "Thịt Kho Tàu Ngư"
         ]
     },
     {
@@ -554,6 +658,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Gà Tẩm Chấm",
+            "Cơm Chiên Xíu Xíu",
+            "Cơm Trắng",
+            "Bún Gà"
         ]
     },
     {
@@ -584,6 +694,12 @@
             "Refined_Carbs",
             "Seafood",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm niêu cá kho",
+            "Thịt heo chiên giòn",
+            "Bò xào khoai tây",
+            "Gà rán"
         ]
     },
     {
@@ -611,6 +727,12 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Cơm Gà Quay",
+            "Gà Xé",
+            "Cơm Gà Ngào",
+            "Cơm Gạo Nếp"
         ]
     },
     {
@@ -643,6 +765,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò",
+            "Chả Giò Hải Sản",
+            "Bánh Xèo",
+            "Gỏi cuốn"
         ]
     },
     {
@@ -672,6 +800,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Cá kho tiêu",
+            "Cơm chiên dứa",
+            "Bánh xèo",
+            "Gà nướng lá lốt"
         ]
     },
     {
@@ -703,6 +837,10 @@
         "potential_tag": [
             "High_Sugar",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh Canh Ghẹ",
+            "Ghẹ Hàm"
         ]
     },
     {
@@ -730,6 +868,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Ốc xào sả ớt",
+            "Ốc nướng mắm ớt",
+            "Gỏi ngõ ngó",
+            "Bể ốc tươi"
         ]
     },
     {
@@ -758,6 +902,12 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Sò điệp nướng",
+            "Hàu hấp gừng",
+            "Cá diêu hồng nướng",
+            "Tôm tít xào sả ớt"
         ]
     },
     {
@@ -793,6 +943,12 @@
             "High_Sugar",
             "Alcohol_Pub",
             "Shellfish"
+        ],
+        "menu": [
+            "Pizza hải sản",
+            "Bít tết bơ mềm",
+            "Pasta sốt kem",
+            "Sushi tươi ngon"
         ]
     },
     {
@@ -823,6 +979,12 @@
             "Spicy",
             "Red_Meat",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Tapas ассорти",
+            "Pizza vỏ mỏng",
+            "Sườn heo nấu chậm",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -853,6 +1015,12 @@
         "potential_tag": [
             "Spicy",
             "Shellfish"
+        ],
+        "menu": [
+            "Calzone",
+            "Pasta gamberi",
+            "Lasagna",
+            "Pizza vỏ mỏng"
         ]
     },
     {
@@ -885,6 +1053,12 @@
             "Spicy",
             "DeepFried_Oily",
             "High_Sugar"
+        ],
+        "menu": [
+            "Canard rôti",
+            "Foie gras nhồi",
+            "Mực nhồi sốt rượu vang",
+            "Tôm hùm nướng"
         ]
     },
     {
@@ -917,6 +1091,12 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Bít tết Úc MB5/6",
+            "Tôm nướng",
+            "Pasta kem gà",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -950,6 +1130,12 @@
         "potential_tag": [
             "Low_GI_Diet",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Súp Tôm Hùm",
+            "Pasta Sò Điệp",
+            "Pizza Margherita",
+            "Risotto Hải Dương"
         ]
     },
     {
@@ -981,6 +1167,12 @@
         "potential_tag": [
             "Spicy",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Pizza thảo mộc",
+            "Bít tết nướng",
+            "Pizza hải sản",
+            "Steak wagyu"
         ]
     },
     {
@@ -1016,6 +1208,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Pizza thảo mộc",
+            "Burger bò",
+            "Bánh mì kẹp thịt",
+            "Khoai tây chiên"
         ]
     },
     {
@@ -1048,6 +1246,12 @@
         "potential_tag": [
             "Spicy",
             "Shellfish"
+        ],
+        "menu": [
+            "Pizza ham & Camembert",
+            "Seafood pesto pasta",
+            "Burger beef",
+            "Pasta carbonara"
         ]
     },
     {
@@ -1076,6 +1280,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Pizza Margherita",
+            "Pizza Ớt Chuẩn",
+            "Pizza Neapolitan"
         ]
     },
     {
@@ -1103,6 +1312,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Gà Kimchi Đào",
+            "Bánh mì Pháp",
+            "Salad Caesar",
+            "Sườn Nướng Bí Đỏ"
         ]
     },
     {
@@ -1138,6 +1353,12 @@
             "High_Sugar",
             "Low_GI_Diet",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Bò wagyu sốt kem",
+            "Steak T-bone",
+            "Burger Wagyu",
+            "Salad Caesar"
         ]
     },
     {
@@ -1168,6 +1389,10 @@
         "potential_tag": [
             "Spicy",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Burger bò",
+            "Khoai tây chiên"
         ]
     },
     {
@@ -1201,6 +1426,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Red_Meat"
+        ],
+        "menu": [
+            "Pizza Margherita",
+            "Burger Beef",
+            "Schnitzel Parmigiana",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -1233,6 +1464,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Pad Thái",
+            "Larb Moo",
+            "Bánh Cá Thái",
+            "Gỏi Xoài Rữa Đắng"
         ]
     },
     {
@@ -1266,6 +1503,12 @@
             "Red_Meat",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Pad Thai",
+            "Tom Yum",
+            "Lẩu Thái",
+            "Cà Ri Thái"
         ]
     },
     {
@@ -1297,6 +1540,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Pad Thai",
+            "Gỏi Xanh",
+            "Cà Ri Gà",
+            "Súp Xanh"
         ]
     },
     {
@@ -1326,6 +1575,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh xèo",
+            "Mì udon",
+            "Gà xào sả ớt",
+            "Cơm tấm"
         ]
     },
     {
@@ -1358,6 +1613,12 @@
             "Dairy_Product",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Katsu Curry",
+            "Tuna Salad",
+            "Gà rán",
+            "Bò lá xốt"
         ]
     },
     {
@@ -1390,6 +1651,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sashimi",
+            "Sushi",
+            "Thịt Yakiniku",
+            "Hải Sản"
         ]
     },
     {
@@ -1422,6 +1689,12 @@
             "Dairy_Product",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Sushi Sashimi",
+            "Thịt Nướng",
+            "Lẩu Shabu",
+            "Bò Úc"
         ]
     },
     {
@@ -1451,6 +1724,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Thịt bò Mỹ nướng",
+            "Thịt heo wagyu nướng",
+            "Sụn bò nướng",
+            "Đùi gà nướng"
         ]
     },
     {
@@ -1481,6 +1760,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Thịt bò nướng",
+            "Thịt heo nướng",
+            "Gà nướng",
+            "Kim chi"
         ]
     },
     {
@@ -1514,6 +1799,12 @@
             "Red_Meat",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Lẩu Trung Hoa",
+            "Nướng thịt heo",
+            "Bún chả Nhật Bản",
+            "Gà nướng kiểu Nhật"
         ]
     },
     {
@@ -1543,6 +1834,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Thịt nướng chả chỉ",
+            "Gà nướng kiểu Saigon",
+            "Lẩu thái",
+            "Bánh xèo cơ cơ"
         ]
     },
     {
@@ -1573,6 +1870,11 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Jjajangmyeon",
+            "Mì đen Hàn Quốc",
+            "Bibimbap"
         ]
     },
     {
@@ -1604,6 +1906,12 @@
             "Refined_Carbs",
             "Alcohol_Pub",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lòng bò nướng",
+            "Galbi",
+            "Bắp nướng",
+            "Sò đi kèm"
         ]
     },
     {
@@ -1636,6 +1944,12 @@
             "Alcohol_Pub",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Thịt bò nướng",
+            "Gà nướng",
+            "Lẩu Yakiniku",
+            "Đồ ăn kèm"
         ]
     },
     {
@@ -1664,7 +1978,13 @@
             "Dairy_Product",
             "Gluten_Present"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Croissant Pháp",
+            "Tiramisu",
+            "Bánh tart trứng",
+            "Cà phê mịn"
+        ]
     },
     {
         "id": "0056",
@@ -1692,7 +2012,13 @@
             "Dairy_Product",
             "Gluten_Present"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Bánh Croissant",
+            "Bánh Danish",
+            "Bánh ngọt Pháp",
+            "Bánh Tart"
+        ]
     },
     {
         "id": "0057",
@@ -1722,6 +2048,11 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh tráng Cedric Grolet",
+            "Cinnamon Roll",
+            "Mango Matcha"
         ]
     },
     {
@@ -1753,6 +2084,11 @@
         "potential_tag": [
             "Spicy",
             "Peanuts_Nuts"
+        ],
+        "menu": [
+            "Bánh cream Biscoff",
+            "Cinnamon roll salted caramel",
+            "Bánh ngọt Hàn"
         ]
     },
     {
@@ -1784,6 +2120,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Croissant matcha xoài",
+            "Bánh phủ matcha",
+            "Bánh ngọt"
         ]
     },
     {
@@ -1814,6 +2155,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh kem sinh nhật",
+            "Bánh quy tròn"
         ]
     },
     {
@@ -1844,6 +2189,11 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh Flan",
+            "Donut Caramel",
+            "Cinnamon Roll"
         ]
     },
     {
@@ -1874,6 +2224,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bánh bông lan mềm",
+            "Bánh mì ngọt",
+            "Bánh quy giòn",
+            "Bánh da lộn"
         ]
     },
     {
@@ -1904,6 +2260,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Pizza bốn loại phô mai",
+            "Pizza pepperoni",
+            "Pizza cỡ lớn"
         ]
     },
     {
@@ -1937,6 +2298,12 @@
             "Red_Meat",
             "Alcohol_Pub",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu hải sản",
+            "Cá diêu hồng nướng",
+            "Bể cá"
         ]
     },
     {
@@ -1965,6 +2332,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Sò Điệp Nướng",
+            "Tôm Hùm Hấp Rượu",
+            "Cua Hoàng Đế Nướng",
+            "Bể Cá Tự Chọn"
         ]
     },
     {
@@ -1994,6 +2367,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá Nam Ô",
+            "Chả cá thu cuốn rau",
+            "Bánh xèo miền Trung",
+            "Cá kho tộ"
         ]
     },
     {
@@ -2020,6 +2399,12 @@
             "Spicy",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm gà Hải Nam",
+            "Canh chua",
+            "Bánh xèo",
+            "Gà kho gừng"
         ]
     },
     {
@@ -2052,6 +2437,12 @@
             "Red_Meat",
             "Alcohol_Pub",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà lúc lắc",
+            "Tôm hùm sốt kem",
+            "Bò lúc lắc",
+            "Cháo bò loãng"
         ]
     },
     {
@@ -2082,6 +2473,10 @@
         "potential_tag": [
             "Spicy",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì kẹp thịt",
+            "Bánh mì chả pate"
         ]
     },
     {
@@ -2112,6 +2507,12 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Cơm Tấm Sườn",
+            "Bún Chả",
+            "Chả Giò",
+            "Gỏi Dưa Rém"
         ]
     },
     {
@@ -2143,6 +2544,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò",
+            "Bánh Xèo"
         ]
     },
     {
@@ -2170,6 +2575,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún thịt nướng",
+            "Phở gà",
+            "Cá kho tộ",
+            "Gà nướng nguyên con"
         ]
     },
     {
@@ -2199,6 +2610,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả Hà Nội",
+            "Chả giò đặc biệt"
         ]
     },
     {
@@ -2229,6 +2644,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh xèo Nam Bộ",
+            "Cơm tấm ngon",
+            "Gỏi cuốn tôm thịt",
+            "Lẩu mắm cá lóc"
         ]
     },
     {
@@ -2253,6 +2674,12 @@
         "main_tag": [],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bánh Xèo",
+            "Phở Bò",
+            "Bún Chả",
+            "Gỏi cuốn"
         ]
     },
     {
@@ -2284,6 +2711,10 @@
             "Low_GI_Diet",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu Mắm Bà Dú",
+            "Bún Chả Cá"
         ]
     },
     {
@@ -2311,6 +2742,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò",
+            "Bún Chả Hà Nội",
+            "Gỏi cuốn",
+            "Cá kho tộ"
         ]
     },
     {
@@ -2341,6 +2778,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Gỏi cuốn",
+            "Cá kho tộ",
+            "Sườn nướng"
         ]
     },
     {
@@ -2370,6 +2813,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún thịt nướng",
+            "Cà phê cốt dừa",
+            "Phở gà",
+            "Bánh mì"
         ]
     },
     {
@@ -2398,6 +2847,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bia Hà Nội",
+            "Cà phê sữa đá",
+            "Bánh mì kẹp thịt",
+            "Trứng chưng"
         ]
     },
     {
@@ -2427,6 +2882,12 @@
             "Low_GI_Diet",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Trà Đào",
+            "Trà Vải",
+            "Bánh Âu",
+            "Cà Phê Sữa Đá"
         ]
     },
     {
@@ -2456,6 +2917,10 @@
             "Peanuts_Nuts",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê hạt rang",
+            "Latte"
         ]
     },
     {
@@ -2483,6 +2948,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Cà phê phin đen",
+            "Trà đá nóng",
+            "Bánh mì ngọt"
         ]
     },
     {
@@ -2513,6 +2984,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Trà sữa socola",
+            "Cà phê muối",
+            "Bánh crepe",
+            "Bánh mì ngọt"
         ]
     },
     {
@@ -2542,6 +3019,11 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Trà trái cây",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -2570,6 +3052,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Bia Hà Nội",
+            "Bánh mì kẹp thịt",
+            "Trứng chưng"
         ]
     },
     {
@@ -2601,6 +3089,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê phin",
+            "Bánh Toast nướng"
         ]
     },
     {
@@ -2635,6 +3127,12 @@
             "Red_Meat",
             "Seafood",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh mì kẹp thịt",
+            "Salad Caesar",
+            "Gà nướng kiểu tây",
+            "Pasta carbonara"
         ]
     },
     {
@@ -2664,6 +3162,12 @@
         ],
         "potential_tag": [
             "High_Sugar"
+        ],
+        "menu": [
+            "Bánh ngọt Pháp",
+            "Bánh nướng Pháp",
+            "Bánh kem Pháp",
+            "Croissant Pháp"
         ]
     },
     {
@@ -2693,6 +3197,11 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Tiramisu",
+            "Croissant",
+            "Bánh quy táo"
         ]
     },
     {
@@ -2726,6 +3235,10 @@
             "DeepFried_Oily",
             "Peanuts_Nuts",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh mì Hàn",
+            "Bánh ngọt kem"
         ]
     },
     {
@@ -2757,6 +3270,12 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Bánh ngọt",
+            "Cà phê",
+            "Bánh quy",
+            "Bánh tart"
         ]
     },
     {
@@ -2787,6 +3306,10 @@
         "potential_tag": [
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì ngọt",
+            "Bánh gato cơ bản"
         ]
     },
     {
@@ -2820,6 +3343,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì thịt nướng",
+            "Bánh trung thu",
+            "Giò chả",
+            "Bánh mì kẹp"
         ]
     },
     {
@@ -2850,6 +3379,12 @@
         "potential_tag": [
             "Low_GI_Diet",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Bœuf bourguignon",
+            "Steak frites",
+            "Salade niçoise",
+            "Soupe à l'oignon"
         ]
     },
     {
@@ -2881,6 +3416,12 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Bò Tái Sườn",
+            "Bò Thăn Pepper",
+            "Sườn Nướng",
+            "Salad Caesar"
         ]
     },
     {
@@ -2907,7 +3448,11 @@
             "Dairy_Product",
             "Gluten_Present"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Pizza nướng lò củi",
+            "Pizza hải sản"
+        ]
     },
     {
         "id": "0098",
@@ -2939,6 +3484,12 @@
             "Seafood",
             "Alcohol_Pub",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh mì Ý",
+            "Spaghetti Bolognese",
+            "Pizza Margherita",
+            "Risotto hải sản"
         ]
     },
     {
@@ -2969,6 +3520,10 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà rán xốt H&S",
+            "Bánh mì xốt"
         ]
     },
     {
@@ -3001,6 +3556,12 @@
             "Red_Meat",
             "Seafood",
             "Shellfish"
+        ],
+        "menu": [
+            "Salad Địa Trung Hải",
+            "Bánh mì kẹp thịt",
+            "Cá hồi áp chảo",
+            "Cá trích sốt kem"
         ]
     },
     {
@@ -3028,6 +3589,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh mì kẹp thịt",
+            "Gà nướng kiểu Âu",
+            "Salad Caesar",
+            "Sườn nướng mật ong"
         ]
     },
     {
@@ -3055,6 +3622,12 @@
         "potential_tag": [
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà Ri Gà",
+            "Pad Thái Xanh",
+            "Súp Tom Yum",
+            "Gỏi Xoài Rau Chanh"
         ]
     },
     {
@@ -3083,6 +3656,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi đu đủ",
+            "Lẩu Isan"
         ]
     },
     {
@@ -3112,6 +3689,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà cơ xào chua ngọt",
+            "Sườn xào chua ngọt",
+            "Thịt viên xào rau",
+            "Tôm rim mắm tôm"
         ]
     },
     {
@@ -3141,6 +3724,12 @@
             "Spicy",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi Hải Sản",
+            "Lẩu Cá Hồi",
+            "Tôm Xào Sả Ớt",
+            "Bể Trứng Ngõ Ngửa"
         ]
     },
     {
@@ -3170,6 +3759,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm chay",
+            "Canh chay",
+            "Bún chay",
+            "Xôi chay"
         ]
     },
     {
@@ -3199,6 +3794,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cháo yến mạch",
+            "Sườn non kho",
+            "Đậu phụ sốt cà chua",
+            "Cơm chiên rau củ"
         ]
     },
     {
@@ -3228,6 +3829,10 @@
         "potential_tag": [
             "High_Sugar",
             "Peanuts_Nuts"
+        ],
+        "menu": [
+            "Mì Tom Yum",
+            "Xôi Xoài"
         ]
     },
     {
@@ -3260,6 +3865,12 @@
         "potential_tag": [
             "High_Sugar",
             "Red_Meat"
+        ],
+        "menu": [
+            "Burger bò",
+            "Gà rán",
+            "Khoai tây chiên",
+            "Milkshake"
         ]
     },
     {
@@ -3288,6 +3899,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà rán Kentucky",
+            "Bánh mì Kentucky"
         ]
     },
     {
@@ -3318,6 +3933,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh ngọt",
+            "Thức uống đậm đà"
         ]
     },
     {
@@ -3347,6 +3966,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Roti gà tandoori",
+            "Butter chicken",
+            "Naan tandoori",
+            "Biryani gà"
         ]
     },
     {
@@ -3376,6 +4001,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sashimi cá hồi",
+            "Sushi tấm",
+            "Sashimi cá ngừ",
+            "Sashimi cá tuyết"
         ]
     },
     {
@@ -3404,6 +4035,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Mì Ramen gà",
+            "Mì Ramen bò"
         ]
     },
     {
@@ -3436,6 +4071,12 @@
             "Alcohol_Pub",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Robatayaki gà",
+            "Robatayaki thịt bò",
+            "Robatayaki hải sản",
+            "Đồ nhậu Nhật Bản"
         ]
     },
     {
@@ -3466,6 +4107,12 @@
             "Low_GI_Diet",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sushi tấm",
+            "Sushi cuộn cá hồi",
+            "Sushi cuộn thịt bò",
+            "Sushi cuộn trứng"
         ]
     },
     {
@@ -3496,6 +4143,10 @@
             "Peanuts_Nuts",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè khúc bạch",
+            "Bánh pía"
         ]
     },
     {
@@ -3529,6 +4180,12 @@
             "Dairy_Product",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bánh mì kẹp thịt",
+            "Gà xào sả ớt",
+            "Cá kho tộ",
+            "Sườn nướng mật ong"
         ]
     },
     {
@@ -3557,6 +4214,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò Tái Lăn",
+            "Bún Chả"
         ]
     },
     {
@@ -3588,6 +4249,12 @@
             "Red_Meat",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bún chả Obama",
+            "Nem hải sản",
+            "Chả nướng",
+            "Bánh mì"
         ]
     },
     {
@@ -3616,6 +4283,10 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Pizza nướng lò củi",
+            "Bánh phô mai tự làm"
         ]
     },
     {
@@ -3642,6 +4313,10 @@
         "potential_tag": [
             "Spicy",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún đậu mắm tôm",
+            "Đậu rán nóng hổi"
         ]
     },
     {
@@ -3668,6 +4343,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bò Tơ Tưới Chua",
+            "Bò Tơ Nướng",
+            "Gỏi Bò Tơ",
+            "Cháo Bò Tơ"
         ]
     },
     {
@@ -3695,6 +4376,11 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả",
+            "Cà phê sữa đá",
+            "Trứng chim"
         ]
     },
     {
@@ -3725,6 +4411,10 @@
             "Low_GI_Diet",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sushi tấm",
+            "Sashimi cá hồi"
         ]
     },
     {
@@ -3753,6 +4443,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Niêu",
+            "Sốt Bò Tiêu Đen"
         ]
     },
     {
@@ -3781,6 +4475,10 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê phin",
+            "Latte"
         ]
     },
     {
@@ -3810,6 +4508,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò Trắng",
+            "Bánh Xèo",
+            "Gỏi cuốn",
+            "Cháo Gà"
         ]
     },
     {
@@ -3840,6 +4544,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu nấm Ashima",
+            "Bún bò Huế"
         ]
     },
     {
@@ -3868,6 +4576,12 @@
             "Refined_Carbs",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Lẩu Yakiniku",
+            "Lẩu Hotpot",
+            "Gà Nướng",
+            "Thịt Nướng"
         ]
     },
     {
@@ -3893,6 +4607,10 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Bánh cuốn nhân chả",
+            "Nước chấm đặc biệt"
         ]
     },
     {
@@ -3922,6 +4640,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Kem Trà Xanh",
+            "Kem Dừa",
+            "Kem Chanh Bưởi",
+            "Kem Chocolate"
         ]
     },
     {
@@ -3953,6 +4677,12 @@
             "Spicy",
             "Dairy_Product",
             "Shellfish"
+        ],
+        "menu": [
+            "Burger bò",
+            "Gà rán",
+            "Cơm gà Hàn",
+            "Bánh mì kẹp"
         ]
     },
     {
@@ -3981,6 +4711,10 @@
         "potential_tag": [
             "Spicy",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Mì Tantanmen",
+            "Cơm Gà Teriyaki"
         ]
     },
     {
@@ -4007,6 +4741,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Bánh khoái Huế"
         ]
     },
     {
@@ -4033,6 +4771,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Gà Rán",
+            "Bánh Xèo",
+            "Gỏi cuốn",
+            "Cơm Chiên Thịt Bò"
         ]
     },
     {
@@ -4064,6 +4808,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sushi tấm",
+            "Sushi cuộn cá hồi",
+            "Sushi cuộn thịt bò",
+            "Sushi cuộn bạch tuộc"
         ]
     },
     {
@@ -4095,6 +4845,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bít tết chảo gang",
+            "Bánh mì bò hầm",
+            "Gà nướng cháo trắng",
+            "Salad Caesar"
         ]
     },
     {
@@ -4122,6 +4878,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Mỳ trộn",
+            "Mỳ nước"
         ]
     },
     {
@@ -4149,6 +4909,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu Topokki",
+            "Gà rán"
         ]
     },
     {
@@ -4178,6 +4942,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chả Cá Lăng",
+            "Rau Luộc",
+            "Bún Không Lá",
+            "Lạc Rang"
         ]
     },
     {
@@ -4208,6 +4978,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả",
+            "Nem cua bể"
         ]
     },
     {
@@ -4237,6 +5011,12 @@
         ],
         "potential_tag": [
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Bít tết wagyu",
+            "Súp kem bí đỏ",
+            "Salad Caesar",
+            "Gà nướng kiểu Pháp"
         ]
     },
     {
@@ -4263,6 +5043,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh Ốc Đước",
+            "Bánh Đúc Nóng",
+            "Thịt Bằm Mộc Nhĩ",
+            "Nước Sấu"
         ]
     },
     {
@@ -4293,6 +5079,12 @@
             "Spicy",
             "High_Sugar",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Gà rán giòn",
+            "Burger gà",
+            "Khoai tây chiên",
+            "Bánh mì gà"
         ]
     },
     {
@@ -4320,6 +5112,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Bia Hà Nội",
+            "Phở gà",
+            "Bánh mì pate"
         ]
     },
     {
@@ -4349,6 +5147,12 @@
             "Refined_Carbs",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Chả Cá Lăng",
+            "Bánh Xèo",
+            "Sườn Nước Dùng",
+            "Gỏi Hến"
         ]
     },
     {
@@ -4378,6 +5182,10 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Mỳ Vằn Thắn",
+            "Hoành Thánh Nhân Tôm"
         ]
     },
     {
@@ -4404,6 +5212,11 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Cà phê sữa đá",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -4432,6 +5245,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Cà phê muối",
+            "Trà sữa",
+            "Sinh tố dừa"
         ]
     },
     {
@@ -4458,6 +5277,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Phở gà",
+            "Cá kho tộ",
+            "Gà nướng mật ong"
         ]
     },
     {
@@ -4488,6 +5313,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh tiramisu",
+            "Bánh chocolate",
+            "Bánh red velvet",
+            "Bánh macaron"
         ]
     },
     {
@@ -4516,6 +5347,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún thịt nướng",
+            "Phở gà",
+            "Cơm tấm",
+            "Bánh xèo"
         ]
     },
     {
@@ -4544,6 +5381,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà rán giòn",
+            "Sốt đặc biệt"
         ]
     },
     {
@@ -4571,6 +5412,11 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả",
+            "Cà phê sữa đá",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -4602,6 +5448,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả cá",
+            "Gỏi cuốn",
+            "Chả giò",
+            "Bò kho"
         ]
     },
     {
@@ -4630,6 +5482,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Trà xanh matcha",
+            "Sinh tố matcha",
+            "Chè matcha",
+            "Bánh matcha"
         ]
     },
     {
@@ -4658,6 +5516,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả rau củ",
+            "Gỏi cuốn chay",
+            "Cơm chiên rau củ",
+            "Canh chua chay"
         ]
     },
     {
@@ -4687,6 +5551,12 @@
             "Refined_Carbs",
             "Alcohol_Pub",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu Bò Tự Do",
+            "Bắp bò xào rau cải",
+            "Sườn nướng lá bỏng",
+            "Gỏi cuốn Bò"
         ]
     },
     {
@@ -4717,6 +5587,10 @@
         "potential_tag": [
             "Spicy",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Gà rán",
+            "Burger"
         ]
     },
     {
@@ -4743,6 +5617,11 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở gà",
+            "Bún thang",
+            "Cơm rang Vân Thủy"
         ]
     },
     {
@@ -4769,6 +5648,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Phở chay",
+            "Bún chay"
         ]
     },
     {
@@ -4798,6 +5681,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Trà sữa socola",
+            "Trà trái cây",
+            "Bánh mì sandwich",
+            "Bánh xèo"
         ]
     },
     {
@@ -4827,6 +5716,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Trà sữa",
+            "Cà phê sữa đá",
+            "Bánh mì ngọt",
+            "Bánh xèo"
         ]
     },
     {
@@ -4854,6 +5749,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả",
+            "Phở gà",
+            "Cơm tấm",
+            "Bánh xèo"
         ]
     },
     {
@@ -4881,6 +5782,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Trà đá nóng",
+            "Bánh mì ngọt",
+            "Bánh xèo"
         ]
     },
     {
@@ -4909,6 +5816,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm chay thangiá",
+            "Canh chay rau củ",
+            "Sườn chay nướng",
+            "Bánh xèo chay"
         ]
     },
     {
@@ -4939,6 +5852,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò",
+            "Bún Bò Huế"
         ]
     },
     {
@@ -4967,6 +5884,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Phở Bát Đàn",
+            "Bánh Xèo",
+            "Gỏi cuốn",
+            "Thịt Nguội"
         ]
     },
     {
@@ -4996,6 +5919,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò Trắng",
+            "Bánh Xèo",
+            "Gỏi cuốn",
+            "Cháo Gà"
         ]
     },
     {
@@ -5025,6 +5954,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở tái lăn",
+            "Bún bò Huế"
         ]
     },
     {
@@ -5052,6 +5985,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả Hà Nội",
+            "Chả giò tôm"
         ]
     },
     {
@@ -5084,6 +6021,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Chả Đắc Kim",
+            "Nem Cua Bể Giòn Rụm",
+            "Chả Nướng",
+            "Bún Bò Huế"
         ]
     },
     {
@@ -5112,6 +6055,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả than hoa",
+            "Chả nướng",
+            "Nước chấm",
+            "Bún chả"
         ]
     },
     {
@@ -5144,6 +6093,10 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Cá Lăng Chiên",
+            "Bún Lạc Rang"
         ]
     },
     {
@@ -5174,6 +6127,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chả Cá Thăng Long",
+            "Bún Chả Cá Thăng Long",
+            "Cá Kho Tộ",
+            "Gỏi Ngêu"
         ]
     },
     {
@@ -5203,6 +6162,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Riêu Cua",
+            "Cháo Gà"
         ]
     },
     {
@@ -5230,6 +6193,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Thang",
+            "Cháo Gà Thang"
         ]
     },
     {
@@ -5262,6 +6229,12 @@
             "DeepFried_Oily",
             "Red_Meat",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Xôi Gà Nướng",
+            "Xôi Thịt Kho Tàu",
+            "Xôi Trứng Ốp",
+            "Xôi Chả"
         ]
     },
     {
@@ -5292,6 +6265,10 @@
             "Spicy",
             "Red_Meat",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì kẹp thịt",
+            "Bánh mì pate trứng"
         ]
     },
     {
@@ -5320,6 +6297,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh cuốn mộc nhĩ",
+            "Chả quế",
+            "Nước chấm chua ngọt",
+            "Bún chả quế"
         ]
     },
     {
@@ -5349,6 +6332,10 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Nộm bò khô",
+            "Gân bò sụn sật"
         ]
     },
     {
@@ -5379,6 +6366,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Nem Nướng Nha Trang",
+            "Rau Sống",
+            "Bánh Đa",
+            "Nước Chấm Đậu Phộng"
         ]
     },
     {
@@ -5409,6 +6402,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Kem que",
+            "Kem ốc quế",
+            "Kem cốm",
+            "Kem đậu xanh"
         ]
     },
     {
@@ -5439,6 +6438,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Miến lươn giòn",
+            "Lươn mềm nước dùng"
         ]
     },
     {
@@ -5469,6 +6472,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Mỳ vằn thắn tôm thịt",
+            "Hủ tiú bò",
+            "Rau cải tươi",
+            "Thịt pate"
         ]
     },
     {
@@ -5499,6 +6508,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún ốc",
+            "Ốc xào đậu hiểm"
         ]
     },
     {
@@ -5530,6 +6543,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Bún đậu mắm tôm",
+            "Đậu rán giòn",
+            "Nem rán",
+            "Thịt luộc"
         ]
     },
     {
@@ -5560,6 +6579,10 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh gối chiên nhân thịt",
+            "Nước chấm chua ngọt"
         ]
     },
     {
@@ -5588,6 +6611,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún ngan trộn",
+            "Bún ngan chan"
         ]
     },
     {
@@ -5617,6 +6644,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở bò",
+            "Bún thịt nướng",
+            "Gỏi cuốn",
+            "Cơm gà rán"
         ]
     },
     {
@@ -5647,6 +6680,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún cá rô đồng",
+            "Bún cá sâm"
         ]
     },
     {
@@ -5677,6 +6714,13 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Gà nướng kiểu Pháp",
+            "Bò sốt kem vang",
+            "Ếch áp chảo",
+            "Canh chua chay",
+            "Sườn rim meadamia"
         ]
     },
     {
@@ -5704,6 +6748,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Gỏi cuốn tôm thịt",
+            "Cá kho tộ",
+            "Sườn nướng mật ong"
         ]
     },
     {
@@ -5731,6 +6781,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Phở gà",
+            "Cơm tấm gà",
+            "Gỏi cuốn cá hồi"
         ]
     },
     {
@@ -5759,6 +6815,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún bò Huế",
+            "Gỏi cuốn",
+            "Cơm tấm",
+            "Bánh xèo"
         ]
     },
     {
@@ -5791,6 +6853,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả cây",
+            "Cơm gà chay",
+            "Canh chay thập cẩm",
+            "Gỏi cuốn chay"
         ]
     },
     {
@@ -5820,6 +6888,10 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê trứng",
+            "Nước chè khớp cắn"
         ]
     },
     {
@@ -5847,6 +6919,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Cà phê đen nóng",
+            "Bánh mì ngọt",
+            "Bánh pía"
         ]
     },
     {
@@ -5875,6 +6953,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê phin",
+            "Bia Hà Nội",
+            "Trứng chưng",
+            "Bánh mì ngọt"
         ]
     },
     {
@@ -5905,6 +6989,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê cốt dừa",
+            "Nước mía đá",
+            "Bánh mì ngọt",
+            "Trà sữa đá"
         ]
     },
     {
@@ -5935,6 +7025,12 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Trà đá",
+            "Đá xay",
+            "Bánh mì"
         ]
     },
     {
@@ -5964,6 +7060,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Cà phê phin truyền thống",
+            "Sinh tố trái cây",
+            "Trà chanh nóng"
         ]
     },
     {
@@ -5994,6 +7096,11 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Cà phê Espresso",
+            "Trà Latte",
+            "Đồ uống đá xay"
         ]
     },
     {
@@ -6027,6 +7134,12 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bia Hà Nội",
+            "Gà rán",
+            "Bánh mì",
+            "Miến lươn"
         ]
     },
     {
@@ -6054,6 +7167,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê trứng",
+            "Sinh tố trái cây",
+            "Bánh mì Pháp",
+            "Mì Quảng"
         ]
     },
     {
@@ -6084,6 +7203,11 @@
         "potential_tag": [
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Trà sữa boba",
+            "Bánh ngọt"
         ]
     },
     {
@@ -6113,6 +7237,11 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh mì chocolate",
+            "Cà phê chocolate",
+            "Bánh ngọt chocolate"
         ]
     },
     {
@@ -6141,6 +7270,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả",
+            "Cà phê sữa đá",
+            "Trà đá",
+            "Bánh mì kẹp thịt"
         ]
     },
     {
@@ -6169,6 +7304,10 @@
         ],
         "potential_tag": [
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Pizza củi nướng",
+            "Bánh mì Ý"
         ]
     },
     {
@@ -6201,6 +7340,12 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Alcohol_Pub"
+        ],
+        "menu": [
+            "Bít tết Wagyu",
+            "Bít tết T-bone",
+            "Súp bò truyền thống",
+            "Salad Caesar"
         ]
     },
     {
@@ -6234,6 +7379,12 @@
             "Seafood",
             "Alcohol_Pub",
             "Shellfish"
+        ],
+        "menu": [
+            "Bœuf bourguignon",
+            "Coq au vin",
+            "Salade niçoise",
+            "Crème brûlée"
         ]
     },
     {
@@ -6266,6 +7417,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Pad Thai",
+            "Tom Yum",
+            "Cà Ri Xanh",
+            "Cà Ri Đỏ"
         ]
     },
     {
@@ -6299,6 +7456,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Gỏi Xứ",
+            "Cà Ri Gà",
+            "Lẩu Thái",
+            "Sườn Xào Sả Ớt"
         ]
     },
     {
@@ -6331,6 +7494,12 @@
         "potential_tag": [
             "High_Sugar",
             "Red_Meat"
+        ],
+        "menu": [
+            "Burger bò",
+            "Khoai tây chiên",
+            "Gà rán",
+            "Milkshake"
         ]
     },
     {
@@ -6362,6 +7531,12 @@
             "Spicy",
             "High_Sugar",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Gà rán KFC",
+            "Khoai tây chiên",
+            "Burger KFC",
+            "Cơm trộn"
         ]
     },
     {
@@ -6390,7 +7565,13 @@
             "Dairy_Product",
             "Gluten_Present"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Bánh Croissant",
+            "Bánh Mì Pháp",
+            "Bánh Flan",
+            "Bánh Cheesecake"
+        ]
     },
     {
         "id": "0218",
@@ -6419,7 +7600,11 @@
             "Dairy_Product",
             "Gluten_Present"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Bánh Crepe Kem",
+            "Bánh Crepe Chocolate"
+        ]
     },
     {
         "id": "0219",
@@ -6450,6 +7635,12 @@
             "Refined_Carbs",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Khuấy Kem",
+            "Gà Xé Sả Ớt",
+            "Cà Ri Rua",
+            "Súp Bò Xép"
         ]
     },
     {
@@ -6480,6 +7671,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh mì ngọt",
+            "Bánh gato chocolate",
+            "Phở gà",
+            "Gỏi cuốn bún chả"
         ]
     },
     {
@@ -6509,6 +7706,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Bò Huế",
+            "Bánh Xèo"
         ]
     },
     {
@@ -6539,6 +7740,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè bơ",
+            "Kem bơ",
+            "Chè Thái",
+            "Chè xoài"
         ]
     },
     {
@@ -6566,6 +7773,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Hủ Tiếu Mỹ",
+            "Bánh Xèo"
         ]
     },
     {
@@ -6595,6 +7806,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Bò",
+            "Mì Quảng"
         ]
     },
     {
@@ -6624,6 +7839,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh Canh Chả Cá",
+            "Bún Bò Huế",
+            "Phở Bò",
+            "Bún Mắm Ruốc"
         ]
     },
     {
@@ -6652,6 +7873,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Mì Quảng đặc biệt",
+            "Cháo gà Ấnh Sáng"
         ]
     },
     {
@@ -6681,6 +7906,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè Thái",
+            "Chè Chuối",
+            "Chè Ba Màu",
+            "Chè Gà"
         ]
     },
     {
@@ -6709,6 +7940,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh cuốn nhân chả",
+            "Nước mắm chua ngọt",
+            "Chả lụa",
+            "Hành phi thơm"
         ]
     },
     {
@@ -6737,6 +7974,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Xôi Gà",
+            "Miến Gà",
+            "Thịt Gà Nướng",
+            "Xôi Đậm"
         ]
     },
     {
@@ -6766,6 +8009,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bánh mì xíu mại",
+            "Bánh mì pate",
+            "Bánh mì thịt nguội"
         ]
     },
     {
@@ -6795,6 +8043,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà Ri Bò",
+            "Cà Ri Gà",
+            "Bún Chả",
+            "Gỏi cuốn"
         ]
     },
     {
@@ -6825,6 +8079,10 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả Hà Nội",
+            "Chả nướng than hoa"
         ]
     },
     {
@@ -6854,6 +8112,11 @@
         "potential_tag": [
             "Alcohol_Pub",
             "Shellfish"
+        ],
+        "menu": [
+            "Lẩu Ếch Măng Cay",
+            "Bún Chả Cá He",
+            "Gỏi Ếch Nhồi Thịt Bò"
         ]
     },
     {
@@ -6882,6 +8145,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gà Nướng Mọi",
+            "Cơm Lam",
+            "Bánh Xèo",
+            "Com Ga"
         ]
     },
     {
@@ -6911,6 +8180,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Gà rán",
+            "Burger",
+            "Khoai tây chiên"
         ]
     },
     {
@@ -6937,6 +8211,12 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Cơm Niêu Heo Xép",
+            "Bò Kho",
+            "Gà Nướng",
+            "Cháo Gà"
         ]
     },
     {
@@ -6965,6 +8245,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Gà",
+            "Nem Nướng",
+            "Bún Thịt Nguội",
+            "Cháo Ngũ Xương"
         ]
     },
     {
@@ -6994,6 +8280,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sữa đậu nành nóng",
+            "Bánh ngọt giòn"
         ]
     },
     {
@@ -7022,6 +8312,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cháo trắng lá dứa",
+            "Cháo gà lá nhàu",
+            "Cháo bò kho",
+            "Cháo tôm rang muối"
         ]
     },
     {
@@ -7054,6 +8350,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Súp bắp tôm gà",
+            "Bánh xèo",
+            "Bún chả cá",
+            "Cơm gà rán"
         ]
     },
     {
@@ -7083,6 +8385,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Thịt heo nướng",
+            "Bún chả",
+            "Nem rán",
+            "Gà nướng"
         ]
     },
     {
@@ -7108,6 +8416,12 @@
         "main_tag": [],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Phở Bò Trắng",
+            "Bún Chả Cá Thu",
+            "Gỏi cuốn tôm thịt",
+            "Cơm gà Hải Nam"
         ]
     },
     {
@@ -7139,6 +8453,10 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Bánh mì thịt nướng",
+            "Ốp bánh mì kẹp thịt"
         ]
     },
     {
@@ -7167,6 +8485,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè thập cẩm",
+            "Chè đậu xanh"
         ]
     },
     {
@@ -7197,6 +8519,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Tấm Sườn",
+            "Cơm Tấm Chả Giò",
+            "Cơm Tấm Bì",
+            "Cơm Tấm Thịt Nguội"
         ]
     },
     {
@@ -7228,6 +8556,11 @@
             "DeepFried_Oily",
             "Seafood",
             "Shellfish"
+        ],
+        "menu": [
+            "Mì Hoành Thánh",
+            "Phở",
+            "Hủ Tiếu"
         ]
     },
     {
@@ -7258,6 +8591,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Riêu Cua Đồng",
+            "Bún Măng Gà",
+            "Cơm Tấm",
+            "Xôi Gà"
         ]
     },
     {
@@ -7285,6 +8624,11 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Chả Ram Bắp",
+            "Rau Sống",
+            "Gỏi Bắp"
         ]
     },
     {
@@ -7314,6 +8658,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Bò Khánh Thy",
+            "Bánh Xèo Trứng",
+            "Gỏi cuốn băm thịt",
+            "Thịt Nguội"
         ]
     },
     {
@@ -7339,6 +8689,12 @@
         "main_tag": [],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Phở gà",
+            "Bún thịt nướng",
+            "Gỏi cuốn",
+            "Cơm tấm"
         ]
     },
     {
@@ -7367,6 +8723,10 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Sữa đậu nành nóng",
+            "Bánh mì sữa"
         ]
     },
     {
@@ -7395,6 +8755,12 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Chiên Chay",
+            "Canh Chua Chay",
+            "Đậu Hũ Chiên",
+            "Bún Chay"
         ]
     },
     {
@@ -7422,6 +8788,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Gà",
+            "Bò Kho",
+            "Chả Cá",
+            "Sườn Xào"
         ]
     },
     {
@@ -7451,6 +8823,11 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Trà sữa boba",
+            "Sinh tố trái cây"
         ]
     },
     {
@@ -7481,6 +8858,12 @@
             "Refined_Carbs",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu Bò Ba Toa",
+            "Chao Chua",
+            "Bò Lá Rau",
+            "Sườn Nước Dùng"
         ]
     },
     {
@@ -7510,6 +8893,12 @@
             "Low_GI_Diet",
             "Dairy_Product",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cà phê sữa đá",
+            "Cà phê đen nóng",
+            "Cà phê phin",
+            "Trà đá lạnh"
         ]
     },
     {
@@ -7536,6 +8925,12 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Gà Nướng Đà Lạt",
+            "Gà Xào Lăn",
+            "Gà Luộc",
+            "Cơm Gà Ngon"
         ]
     },
     {
@@ -7561,7 +8956,13 @@
             "Spicy",
             "Red_Meat"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Lẩu gà khô cay",
+            "Thịt ngựa xào gừng",
+            "Bún bò Huế",
+            "Gà nướng nguyên con"
+        ]
     },
     {
         "id": "0259",
@@ -7587,7 +8988,13 @@
             "Spicy",
             "Seafood"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Cháo Ếch Singapore",
+            "Thịt Ếch Cay",
+            "Cháo Gà Hải Nam",
+            "Bánh Xèo"
+        ]
     },
     {
         "id": "0260",
@@ -7616,6 +9023,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Thịt nướng heo combo",
+            "Gà nướng mật ong",
+            "Rau củ nướng",
+            "Sườn nướng"
         ]
     },
     {
@@ -7643,6 +9056,10 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Thịt nướng ngói",
+            "Bắp nướng nướng"
         ]
     },
     {
@@ -7670,6 +9087,12 @@
             "Spicy",
             "DeepFried_Oily",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Nem Nướng Trứng",
+            "Bún Chả Đồ Nướng",
+            "Rau Xanh",
+            "Gỏi Ngó Sen"
         ]
     },
     {
@@ -7699,6 +9122,10 @@
             "Spicy",
             "DeepFried_Oily",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm gà xé phay",
+            "Cơm gà chiên dương châu"
         ]
     },
     {
@@ -7731,6 +9158,12 @@
             "DeepFried_Oily",
             "High_Sugar",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì thịt nguội",
+            "Bánh mì pate",
+            "Bánh mì xíu mại",
+            "Bánh mì trứng tráng"
         ]
     },
     {
@@ -7758,6 +9191,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè đậu xanh",
+            "Chè đậu trắng"
         ]
     },
     {
@@ -7786,6 +9223,12 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Bánh mì xíu mại",
+            "Phở gà",
+            "Bún chả",
+            "Cà phê sữa đá"
         ]
     },
     {
@@ -7814,6 +9257,10 @@
         "potential_tag": [
             "Spicy",
             "Peanuts_Nuts"
+        ],
+        "menu": [
+            "Chè Thái",
+            "Bánh Tráng Sầu R riêng"
         ]
     },
     {
@@ -7843,6 +9290,10 @@
         "potential_tag": [
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún Bò Huế",
+            "Bún Bò Trắng"
         ]
     },
     {
@@ -7874,6 +9325,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu cá ngừ",
+            "Hải sản nướng",
+            "Bể cá"
         ]
     },
     {
@@ -7904,6 +9361,10 @@
             "Spicy",
             "DeepFried_Oily",
             "High_Sugar"
+        ],
+        "menu": [
+            "Bánh Khọt Vũng Tàu",
+            "Bánh Đ đổ Giòn Rụm"
         ]
     },
     {
@@ -7931,7 +9392,13 @@
             "Seafood",
             "Shellfish"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Lẩu Cá Đuối",
+            "Cá Đuối Sốt Chua",
+            "Măng Xanh",
+            "Thịt Chả Ngó"
+        ]
     },
     {
         "id": "0272",
@@ -7962,6 +9429,12 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh Khọt Tôm",
+            "Bánh Khọt Mực",
+            "Bánh Khọt Chả Cá",
+            "Bánh Khọt Hải Giã"
         ]
     },
     {
@@ -7992,6 +9465,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Hủ Tiếu Mực",
+            "Bánh Xèo Mực",
+            "Cháo Mực",
+            "Mực Nướng"
         ]
     },
     {
@@ -8019,6 +9498,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Ốc xào rua gừng",
+            "Ốc nướng mắm ớt",
+            "Sò hấp gừng",
+            "Tôm nướng sa tế"
         ]
     },
     {
@@ -8049,6 +9534,10 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh bông lan nướng",
+            "Bánh bông lan trứng muối"
         ]
     },
     {
@@ -8075,7 +9564,11 @@
             "Seafood",
             "Shellfish"
         ],
-        "potential_tag": []
+        "potential_tag": [],
+        "menu": [
+            "Lẩu Cá Đuối",
+            "Bún Chả Cá Đục"
+        ]
     },
     {
         "id": "0277",
@@ -8105,6 +9598,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu hải sản",
+            "Cá viên chiên",
+            "Bể hải sản tươi sống"
         ]
     },
     {
@@ -8135,6 +9634,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh canh ghẹ",
+            "Bánh canh chả cá",
+            "Ghẹ xào xuyên qua",
+            "Bánh canh trứng cút"
         ]
     },
     {
@@ -8164,6 +9669,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Cháo hàu",
+            "Lẩu cá ngừ",
+            "Bể ốc"
         ]
     },
     {
@@ -8191,6 +9702,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bánh Khọt Tôm",
+            "Bánh Khọt Thịt Bò",
+            "Bánh Khọt Cá",
+            "Bánh Khọt Trứng"
         ]
     },
     {
@@ -8220,6 +9737,12 @@
             "DeepFried_Oily",
             "Red_Meat",
             "Shellfish"
+        ],
+        "menu": [
+            "Gà nướng mật đắng",
+            "Hàu nướng sa tế",
+            "Tôm nướng mọi",
+            "Chả cá nướng"
         ]
     },
     {
@@ -8248,6 +9771,12 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Bún Súng Vũng Tàu",
+            "Hải Sản Tươi",
+            "Ốc Nướng",
+            "Bánh Xèo"
         ]
     },
     {
@@ -8278,6 +9807,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu cá ngừ",
+            "Hải sản nướng",
+            "Bún quậy"
         ]
     },
     {
@@ -8305,6 +9840,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Ốc xào sả ớt",
+            "Ốc nướng mắm ớt",
+            "Ốc luộc",
+            "Gỏi ngõ ngác"
         ]
     },
     {
@@ -8334,6 +9875,10 @@
         "potential_tag": [
             "Spicy",
             "DeepFried_Oily"
+        ],
+        "menu": [
+            "Bánh mì pate",
+            "Bánh mì thịt nguội"
         ]
     },
     {
@@ -8361,6 +9906,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Niêu Rau Tập",
+            "Gà Kho Hành Tây"
         ]
     },
     {
@@ -8388,6 +9937,12 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Mì Thảy Sườn Nón",
+            "Bún Sườn",
+            "Phở Sườn",
+            "Mì Gõ"
         ]
     },
     {
@@ -8418,6 +9973,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu hải sản",
+            "Cá diêu hồng nướng",
+            "Bể đềng"
         ]
     },
     {
@@ -8450,6 +10011,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún chả cá Quy Nhơn",
+            "Bún chả cá"
         ]
     },
     {
@@ -8482,6 +10047,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá Hải Dương",
+            "Lẩu hải sản",
+            "Cá viên chiên",
+            "Sườn nướng mật ong"
         ]
     },
     {
@@ -8507,6 +10078,10 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Cơm Niêu",
+            "Gỏi Đô"
         ]
     },
     {
@@ -8539,6 +10114,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Lẩu Bò Mỹ",
+            "Lẩu Cá Hồi",
+            "Lẩu Tôm",
+            "Lẩu Hải Sản"
         ]
     },
     {
@@ -8568,6 +10149,12 @@
         "potential_tag": [
             "Spicy",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bò Né Sốt Ô Kìa",
+            "Bánh Mì ốp La",
+            "Pate",
+            "Bún Chả"
         ]
     },
     {
@@ -8598,6 +10185,11 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Bò Trắng",
+            "Bánh Xèo",
+            "Cháo Gà"
         ]
     },
     {
@@ -8627,6 +10219,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Súp cua cô Tư",
+            "Bánh mì thịt heo"
         ]
     },
     {
@@ -8656,6 +10252,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sushi tấm",
+            "Sashimi cá hồi"
         ]
     },
     {
@@ -8688,6 +10288,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm Tấm Sườn Nướng",
+            "Chả Cá Hà Nội",
+            "Bún Chả Cá",
+            "Cơm Gà Nước Rém"
         ]
     },
     {
@@ -8722,6 +10328,12 @@
             "Red_Meat",
             "Seafood",
             "Shellfish"
+        ],
+        "menu": [
+            "Bún chả",
+            "Gỏi cuốn",
+            "Cá kho tộ",
+            "Sườn nướng"
         ]
     },
     {
@@ -8751,6 +10363,10 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá mai",
+            "Bánh xèo Vườn Xoài"
         ]
     },
     {
@@ -8778,6 +10394,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bánh khọt Út Loan",
+            "Rau sống ăn kèm"
         ]
     },
     {
@@ -8806,6 +10426,12 @@
         "potential_tag": [
             "Spicy",
             "Low_GI_Diet"
+        ],
+        "menu": [
+            "Hàu hấp gừng",
+            "Cá diêu hồng nướng",
+            "Tôm sú hấp",
+            "Ếch đồng nướng lửa"
         ]
     },
     {
@@ -8837,6 +10463,12 @@
             "Low_GI_Diet",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Lẩu Cá Bảy Giai",
+            "Cá Lẩu Ngon",
+            "Bún Cá",
+            "Rau Muối Nhà Làm"
         ]
     },
     {
@@ -8867,6 +10499,10 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bánh hỏi",
+            "Thịt nướng xiên que"
         ]
     },
     {
@@ -8899,6 +10535,12 @@
             "Peanuts_Nuts",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Gà nướng vườn",
+            "Hải sản nướng",
+            "Cháo lòng",
+            "Bánh xèo"
         ]
     },
     {
@@ -8929,6 +10571,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Phở Quyền",
+            "Bánh Xèo"
         ]
     },
     {
@@ -8957,6 +10603,10 @@
             "Spicy",
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì xíu mại",
+            "Xíu mại nước xốt"
         ]
     },
     {
@@ -8986,6 +10636,12 @@
             "High_Sugar",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Nước rau má Bà Già",
+            "Nước rau má đá",
+            "Nước rau má dừa",
+            "Nước rau má chanh"
         ]
     },
     {
@@ -9016,6 +10672,10 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Sữa chua dẻo",
+            "Trứng gà lòng đào"
         ]
     },
     {
@@ -9044,6 +10704,10 @@
         ],
         "potential_tag": [
             "Spicy"
+        ],
+        "menu": [
+            "Bún riêu tôm",
+            "Bún chả cá"
         ]
     },
     {
@@ -9073,6 +10737,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bò Kho Cô Bắc",
+            "Bánh Mì Trộn",
+            "Hủ Tiếu Bò",
+            "Cơm Gà"
         ]
     },
     {
@@ -9103,6 +10773,12 @@
             "Refined_Carbs",
             "Low_GI_Diet",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá Hứa",
+            "Lẩu hải sản",
+            "Cá kho tộ",
+            "Sườn nướng mật ong"
         ]
     },
     {
@@ -9135,6 +10811,12 @@
             "Seafood",
             "Gluten_Present",
             "Shellfish"
+        ],
+        "menu": [
+            "Lẩu Thái",
+            "Thịt Nướng Xiên",
+            "Bắp Nướng",
+            "Sườn Nướng"
         ]
     },
     {
@@ -9164,6 +10846,12 @@
             "Spicy",
             "Refined_Carbs",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Gỏi cá trích",
+            "Lẩu hải sản",
+            "Cá kho tộ",
+            "Bún chả cá"
         ]
     },
     {
@@ -9194,6 +10882,12 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Bún mắm",
+            "Bún thịt heo",
+            "Heo quay",
+            "Tôm rang mắm tôm"
         ]
     },
     {
@@ -9223,6 +10917,12 @@
         "potential_tag": [
             "DeepFried_Oily",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Cơm tấm sườn nướng",
+            "Mỡ hành ăn kèm",
+            "Đồ chua",
+            "Bánh xèo"
         ]
     },
     {
@@ -9252,6 +10952,12 @@
             "Low_GI_Diet",
             "Peanuts_Nuts",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Chè Thái",
+            "Chè Chuối",
+            "Chè Ba Màu",
+            "Bánh Flan"
         ]
     },
     {
@@ -9284,6 +10990,10 @@
             "Refined_Carbs",
             "Red_Meat",
             "Gluten_Present"
+        ],
+        "menu": [
+            "Hủ Tiếu Nam Vang",
+            "Bánh Xèo Nam Vang"
         ]
     },
     {
@@ -9313,6 +11023,11 @@
             "Spicy",
             "DeepFried_Oily",
             "Dairy_Product"
+        ],
+        "menu": [
+            "Bánh mì xíu mại lạp xưởng",
+            "Trứng ốp la bánh mì",
+            "Chảo xíu mại"
         ]
     }
 ]
