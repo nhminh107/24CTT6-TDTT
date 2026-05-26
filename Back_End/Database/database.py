@@ -152,6 +152,7 @@ class ChromaDBManager:
 if __name__ == "__main__": 
     db_mng = ChromaDBManager() 
     db_mng.add()
+    print("Database initialized successfully!")
     res = db_mng.search("Quán ăn lãng mạn")
-    res2 = db_mng.search_menu("Pizza")
-    print(res2)
+    # In ra terminal trên Windows có thể bị lỗi font, dùng encode utf-8 để tránh crash
+    print(str(res).encode('utf-8').decode('utf-8', 'ignore'))

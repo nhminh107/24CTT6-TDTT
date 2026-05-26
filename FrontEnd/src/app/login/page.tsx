@@ -39,11 +39,12 @@ function LoginContent() {
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const getErrorMessage = (errorCode: string) => {
+    const getErrorMessage = (errorCode: string) => {
     switch (errorCode) {
       case 'passwords-dont-match':
         return "Mật khẩu nhập lại không khớp. Vui lòng kiểm tra lại.";
       case 'auth/invalid-credential':
+      case 'auth/invalid-login-credentials':
         return "Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại.";
       case 'auth/user-not-found':
         return "Tài khoản không tồn tại trong hệ thống.";
@@ -59,8 +60,12 @@ function LoginContent() {
         return "Cửa sổ đăng nhập đã bị đóng trước khi hoàn tất.";
       case 'auth/too-many-requests':
         return "Yêu cầu quá thường xuyên. Vui lòng thử lại sau ít phút.";
+      case 'auth/network-request-failed':
+        return "Lỗi mạng. Vui lòng kiểm tra lại kết nối internet.";
+      case 'auth/user-disabled':
+        return "Tài khoản này đã bị vô hiệu hóa.";
       default:
-        return "Đã có lỗi xảy ra. Vui lòng thử lại sau.";
+        return `Đã có lỗi xảy ra (${errorCode}). Vui lòng thử lại sau.`;
     }
   };
 

@@ -41,10 +41,50 @@ async def sync_user(data: SyncUserRequest, current_user: dict = Depends(get_curr
 @router.get("/me")
 async def get_me(current_user: dict = Depends(get_current_user)):
     """
-    Trả về thông tin người dùng hiện tại từ Token.
-    Có thể mở rộng để lấy thêm data từ Firestore bằng user_manager.get_user_profile(uid)
+    Trả về thông tin người dùng hiện tại từ Token kết hợp với dữ liệu từ Firestore.
     """
+    uid = current_user.get("uid")
+    profile = await user_manager.get_user_profile(uid) if uid else None
+    
     return {
         "status": "success",
-        "user": current_user
+        "user": current_user,
+        "profile": profile
+    }
+
+class UpdateProfileRequest(BaseModel):
+    name: Optional[str] = None
+    avatar: Optional[str] = None
+    allergies: Optional[list[str]] = None
+
+@router.put("/update-profile")
+async def update_profile(data: UpdateProfileRequest, current_user: dict = Depends(get_current_user)):
+    """
+    Cập nhật thông tin tài khoản người dùng (tên, avatar, dị ứng).
+    """
+    uid = current_user.get("uid")
+    if not uid:
+        raise HTTPException(status_code=401, detail="User ID không hợp lệ.")
+    
+    # Lấy các trường được gửi lên, bỏ qua các trường không có
+    update_data = data.model_dump(exclude_unset=True) if hasattr(data, 'model_dump') else data.dict(exclude_unset=True)
+    
+    if not update_data:
+        raise HTTPException(status_code=400, detail="Không có dữ liệu để cập nhật.")
+        
+    success = await user_manager.update_user_profile(uid, update_data)
+    
+    if not success:
+        raise HTTPException(
+            status_code=500, 
+            detail="Không thể cập nhật thông tin người dùng."
+        )
+
+    # Trả về dữ liệu mới sau khi cập nhật
+    updated_profile = await user_manager.get_user_profile(uid)
+
+    return {
+        "status": "success",
+        "message": "Cập nhật thông tin thành công",
+        "data": updated_profile
     }
