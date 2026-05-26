@@ -19,10 +19,14 @@ export default function Hero() {
           viewport={{ once: true, amount: 0.4 }}
           className="space-y-6"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-coral/30 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-flame shadow-soft">
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex items-center gap-2 rounded-full border border-brand-coral/30 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-flame shadow-soft"
+          >
             <Sparkles size={14} />
             AI hành trình ẩm thực
-          </div>
+          </motion.div>
           <h1 className="font-display text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
             Khám phá lộ trình ẩm thực
             <span className="text-gradient"> tối ưu</span> bằng

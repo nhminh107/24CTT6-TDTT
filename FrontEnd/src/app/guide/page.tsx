@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
-import { MapPin, MessageSquare, Map } from "lucide-react";
+import { MapPin, MessageSquare, Map, HeartPulse, AlertTriangle, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 const steps = [
@@ -15,7 +15,7 @@ const steps = [
   {
     title: "Ra lệnh cho AI",
     description:
-      "Nhập câu lệnh (Prompt) thể hiện rõ sở thích món ăn, phong cách quán và thứ tự bữa ăn. Chi tiết ở phần dưới.",
+      "Nhập câu lệnh (Prompt) thể hiện rõ sở thích món ăn, phong cách quán và thứ tự bữa ăn. AI kết hợp với hồ sơ sức khỏe để gợi ý chính xác.",
     icon: MessageSquare
   },
   {
@@ -41,11 +41,32 @@ const promptCards = [
   }
 ];
 
+const healthSteps = [
+  {
+    title: "Mở Hồ sơ sức khỏe",
+    description:
+      "Bấm biểu tượng trái tim ở thanh điều hướng để mở bảng Hồ sơ sức khỏe bất cứ lúc nào.",
+    icon: HeartPulse
+  },
+  {
+    title: "Chọn bệnh nền & dị ứng",
+    description:
+      "Chọn nhanh các thẻ bệnh nền hoặc dị ứng. Có thể thêm ghi chú ngắn để AI hiểu rõ hơn.",
+    icon: AlertTriangle
+  },
+  {
+    title: "Chọn mức độ ăn kiêng",
+    description:
+      "Chọn Nghiêm ngặt hoặc Xả láng, sau đó bấm Lưu hồ sơ sức khỏe để áp dụng.",
+    icon: ShieldCheck
+  }
+];
+
 export default function GuidePage() {
   return (
     <div className="min-h-screen bg-white/60">
       <Navbar />
-      <section className="section-spacing !pb-10 md:!pb-12 lg:!pb-16">
+      <section className="section-spacing !py-12 md:!py-14 lg:!py-16">
         <div className="mx-auto w-full max-w-5xl space-y-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -58,13 +79,13 @@ export default function GuidePage() {
               Hướng dẫn nhanh
             </div>
             <h1 className="font-display text-4xl font-semibold text-slate-900 md:text-5xl">
-              Hướng dẫn sử dụng BMI
+              Hướng dẫn sử dụng <span className="text-gradient">BMI</span>
             </h1>
             <div className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
               Bite Mapping Intelligent
             </div>
             <p className="max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg">
-              Làm chủ hệ thống gợi ý lộ trình chỉ trong 3 bước đơn giản.
+              Làm chủ hệ thống gợi ý lộ trình và cá nhân hóa theo sức khỏe chỉ trong vài bước đơn giản.
             </p>
           </motion.div>
 
@@ -78,7 +99,7 @@ export default function GuidePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  className="glass rounded-3xl p-6 shadow-soft"
+                  className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-coral to-brand-flame text-white">
                     <Icon size={22} />
@@ -96,7 +117,71 @@ export default function GuidePage() {
         </div>
       </section>
 
-      <section className="section-spacing pt-0">
+      <section className="section-spacing pt-0 !pb-12 md:!pb-14 lg:!pb-16">
+        <div className="mx-auto w-full max-w-5xl space-y-8">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="space-y-3"
+          >
+            <div className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-lagoon">
+              Hồ sơ sức khỏe
+            </div>
+            <h2 className="font-display text-3xl font-semibold text-slate-900 md:text-4xl">
+              Cá nhân hóa gợi ý theo nhu cầu của bạn
+            </h2>
+            <p className="max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base">
+              Hồ sơ sức khỏe giúp AI ưu tiên món ăn an toàn và phù hợp với tình trạng của bạn. Cập nhật càng rõ ràng,
+              kết quả càng sát nhu cầu.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {healthSteps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white">
+                    <Icon size={22} />
+                  </div>
+                  <h3 className="mt-6 font-display text-lg font-semibold text-slate-900">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    {step.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.4 }}
+            className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
+          >
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-flame">
+              Lưu ý nhanh
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
+              Khi đã lưu hồ sơ, biểu tượng trái tim sẽ hiện chấm cam để bạn dễ nhận biết. Bạn có thể cập nhật lại bất cứ lúc nào.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="section-spacing pt-0 !pb-12 md:!pb-14 lg:!pb-16">
         <div className="mx-auto w-full max-w-5xl space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -121,7 +206,7 @@ export default function GuidePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="glass rounded-3xl p-6 shadow-soft"
+                className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
               >
                 <div className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${card.tone} px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white`}>
                   {card.label}
@@ -139,7 +224,7 @@ export default function GuidePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.4 }}
-            className="glass rounded-3xl p-6 shadow-soft"
+            className="glass rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
           >
             <div className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-lagoon">
               Mẹo nâng cao
@@ -156,9 +241,9 @@ export default function GuidePage() {
         </div>
       </section>
 
-      <section className="section-spacing pt-0">
+      <section className="section-spacing pt-0 !pb-12 md:!pb-14 lg:!pb-16">
         <div className="mx-auto w-full max-w-5xl">
-          <div className="glass flex flex-col items-start justify-between gap-6 rounded-3xl p-8 shadow-soft md:flex-row md:items-center">
+          <div className="glass flex flex-col items-start justify-between gap-6 rounded-3xl p-8 shadow-soft transition hover:-translate-y-2 hover:shadow-glow md:flex-row md:items-center">
             <div className="space-y-3">
               <h3 className="font-display text-2xl font-semibold text-slate-900">
                 Sẵn sàng tạo lộ trình đầu tiên?
