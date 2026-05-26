@@ -103,26 +103,29 @@ class FinalResultLLM:
         selected_rows = []
         used_ids = set()
 
-        def backtrack(index: int) -> bool:
-            if index >= len(meal_order):
-                return True
-            meal = meal_order[index]
+        # Chúng ta dùng greedy approach thay vì strict backtracking
+        # Vì nếu có bữa nào không có quán (candidates trống), ta vẫn muốn trả về các bữa khác
+        for meal in meal_order:
             candidates = candidate_map.get(meal, [])
+            
+            # Tìm quán tốt nhất cho bữa này mà chưa được chọn
+            best_choice = None
             for row in candidates:
                 rid = str(row.get('id'))
-                if rid in used_ids:
-                    continue
+                if rid not in used_ids:
+                    best_choice = row
+                    break
+            
+            if best_choice:
+                rid = str(best_choice.get('id'))
                 used_ids.add(rid)
-                selected_rows.append(row)
-                if backtrack(index + 1):
-                    return True
-                selected_rows.pop()
-                used_ids.remove(rid)
-            return False
+                selected_rows.append(best_choice)
+            else:
+                # Nếu không tìm được quán nào cho bữa này (do rỗng hoặc đã trùng), 
+                # in ra log cảnh báo nhưng VẪN TIẾP TỤC với bữa tiếp theo
+                print(f"[FINAL_RESULT_LOG] Warning: No available unique restaurants found for meal '{meal}'. Skipping this meal in the final itinerary.")
 
-        if backtrack(0):
-            return selected_rows
-        return []
+        return selected_rows
 
     async def run_final_selection(
         self,
