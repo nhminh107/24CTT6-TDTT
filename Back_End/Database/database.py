@@ -9,6 +9,7 @@ class ChromaDBManager:
     _client = None
     _ef = None
     _collection = None
+    _menu_collection = None
 
     def __init__(self):
         if ChromaDBManager._client is None:
@@ -22,16 +23,31 @@ class ChromaDBManager:
                 name="restaurants_collection_vn",
                 embedding_function=ChromaDBManager._ef
             )
+        if ChromaDBManager._menu_collection is None:
+            ChromaDBManager._menu_collection = ChromaDBManager._client.get_or_create_collection(
+                name="menu_collection_vn",
+                embedding_function=ChromaDBManager._ef
+            )
 
         self.client = ChromaDBManager._client
         self.ef = ChromaDBManager._ef
         self.collection = ChromaDBManager._collection
+        self.menu_collection = ChromaDBManager._menu_collection
     
     def search(self, query_text, n_results=5):
         return self.collection.query(
             query_texts=[query_text], 
             n_results=n_results
         )
+
+    def search_menu(self, query_text, n_results=5, where=None):
+        query_kwargs = {
+            "query_texts": [query_text],
+            "n_results": n_results
+        }
+        if where is not None:
+            query_kwargs["where"] = where
+        return self.menu_collection.query(**query_kwargs)
 
     @staticmethod
     def _cosine_similarity(vec_a, vec_b):
@@ -86,10 +102,52 @@ class ChromaDBManager:
         ids = df['id'].tolist()
         documents = df['semantic_text'].tolist()
 
-        self.collection.add(
-            documents=documents,
-            ids=ids
-        )
+        try:
+            restaurant_count = self.collection.count()
+        except Exception:
+            restaurant_count = 0
+        if restaurant_count == 0:
+            self.collection.add(
+                documents=documents,
+                ids=ids
+            )
+
+        if "menu" not in df.columns:
+            return
+
+        try:
+            menu_count = self.menu_collection.count()
+        except Exception:
+            menu_count = 0
+        if menu_count > 0:
+            return
+
+        menu_documents = []
+        menu_ids = []
+        menu_metadatas = []
+        for _, row in df.iterrows():
+            restaurant_id = str(row.get("id"))
+            restaurant_name = row.get("name")
+            menu_items = row.get("menu")
+            if not isinstance(menu_items, list):
+                continue
+            for idx, item in enumerate(menu_items):
+                item_text = str(item).strip()
+                if not item_text:
+                    continue
+                menu_ids.append(f"{restaurant_id}__menu__{idx}")
+                menu_documents.append(item_text)
+                menu_metadatas.append({
+                    "restaurant_id": restaurant_id,
+                    "restaurant_name": restaurant_name
+                })
+
+        if menu_documents:
+            self.menu_collection.add(
+                documents=menu_documents,
+                ids=menu_ids,
+                metadatas=menu_metadatas
+            )
 
 if __name__ == "__main__": 
     db_mng = ChromaDBManager() 
