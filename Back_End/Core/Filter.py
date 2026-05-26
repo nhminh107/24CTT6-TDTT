@@ -437,7 +437,6 @@ class RestaurantFilter:
         
 
         WEIGHT_MAIN = 10  
-        # Món chính vi phạm
         WEIGHT_POTENTIAL_CRITICAL = 10 
         WEIGHT_POTENTIAL_NORMAL = 5   
         # 6. Tính tổng điểm phạt tích lũy
