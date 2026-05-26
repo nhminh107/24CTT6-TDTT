@@ -233,11 +233,44 @@ class RestaurantFilter:
         filtered_res = []
         skipped_count = 0
         
-        # strict mode: Lọc kỹ dựa trên tỷ lệ và các dị ứng nguy hiểm
-        if diet_mode == "strict" or diet_mode is None:
+        # casual mode: Lọc nhẹ nhàng hơn nhưng vẫn phải loại bỏ các quán nguy hiểm
+        if diet_mode == "casual" or diet_mode is None:
+            
             for res in raw_data:
                 name = res.get("name", "Unknown")
                 main_tags = res.get("main_tag", [])
+                
+                # Chống crash dữ liệu bẩn (NaN) cho cả Casual Mode
+                if isinstance(main_tags, float) or main_tags is None:
+                    main_tags = []
+                else:
+                    main_tags = list(main_tags)
+                
+                # CHÚ Ý: Logic này cực kỳ quan trọng. 
+                # Chỉ SKIP nếu quán có tag nằm trong danh sách NGUY HIỂM VÀ user cũng có tag đó trong FORBIDDEN_TAGS
+                is_danger = False
+                for tag in main_tags:
+                    if tag in self.CRITICAL_ALLERGY_TAGS and tag in forbidden_tags:
+                        print(f"[HEALTH_FILTER_LOG] [CASUAL] SKIPPING '{name}': User is allergic to CRITICAL tag '{tag}'")
+                        is_danger = True
+                        break
+                
+                if is_danger:
+                    skipped_count += 1
+                    continue
+                    
+                filtered_res.append(res)
+        
+        # strict mode: lọc nghiêm ngặt loại bỏ toàn bộ tag mà user dị ứng
+        else:
+            for res in raw_data:
+                name = res.get("name", "Unknown")
+                main_tags = res.get("main_tag", [])
+                if isinstance(main_tags, float) or main_tags is None:
+                    main_tags = []
+                else:
+                # Đảm bảo nó là list để không bị lỗi nếu lỡ là kiểu dữ liệu lạ khác
+                    main_tags = list(main_tags)
                 if not main_tags:
                     filtered_res.append(res)
                     continue
@@ -258,27 +291,6 @@ class RestaurantFilter:
                     skipped_count += 1
                     continue
                 
-                filtered_res.append(res)
-        
-        # casual mode: Chỉ né những tag nguy hiểm về tính mạng MÀ USER CÓ DỊ ỨNG
-        else:
-            for res in raw_data:
-                name = res.get("name", "Unknown")
-                main_tags = res.get("main_tag", [])
-                
-                # CHÚ Ý: Logic này cực kỳ quan trọng. 
-                # Chỉ SKIP nếu quán có tag nằm trong danh sách NGUY HIỂM VÀ user cũng có tag đó trong FORBIDDEN_TAGS
-                is_danger = False
-                for tag in main_tags:
-                    if tag in self.CRITICAL_ALLERGY_TAGS and tag in forbidden_tags:
-                        print(f"[HEALTH_FILTER_LOG] [CASUAL] SKIPPING '{name}': User is allergic to CRITICAL tag '{tag}'")
-                        is_danger = True
-                        break
-                
-                if is_danger:
-                    skipped_count += 1
-                    continue
-                    
                 filtered_res.append(res)
 
         print(f"[HEALTH_FILTER_LOG] COMPLETED. Kept: {len(filtered_res)}, Skipped: {skipped_count}")
@@ -397,109 +409,139 @@ class RestaurantFilter:
     
     def calculate_penalty_health_score(self, res):
         """
-        Tính toán điểm penalty dựa vào các potential_tag
+        Tính toán điểm penalty tích lũy:
+        - main_tag vi phạm: Phạt 10 điểm/tag
+        - potential_tag vi phạm thuộc nhóm NGUY HIỂM: Phạt 10 điểm/tag
+        - potential_tag vi phạm thuộc nhóm THƯỜNG: Phạt 5 điểm/tag
         """
-        # 1. Lấy danh sách tag cấm của user (chuyển sang set để tính toán nhanh hơn)
+        # 1. Lấy danh sách tag cấm của user
         forbidden_tags = set(self.user_health.get("forbidden_tags", []))
         
-        # 2. Lấy danh sách potential_tag của nhà hàng hiện tại
+        if not forbidden_tags:
+            res["penalty_score"] = 0
+            return res
+            
+        # 2. Lấy danh sách tag của nhà hàng
+        main_tags = set(res.get("main_tag", []))
         potential_tags = set(res.get("potential_tag", []))
         
-        # 3. Tìm các tag trùng nhau giữa potential_tag và forbidden_tags
-        violated_tags = potential_tags.intersection(forbidden_tags)
+        # 3. Tìm các tag vi phạm (Trùng giữa quán và user)
+        violated_main = main_tags.intersection(forbidden_tags)
+        violated_potential = potential_tags.intersection(forbidden_tags)
         
-        # 4. Tính toán điểm phạt (Ví dụ: mỗi tag trùng phạt 10 điểm)
-        penalty_per_tag = 5 
-        total_penalty = len(violated_tags) * penalty_per_tag
         
-        # 5. Thêm key mới vào trực tiếp object 'res'
+        critical_set = set(self.CRITICAL_ALLERGY_TAGS)
+        
+        violated_potential_critical = violated_potential.intersection(critical_set)
+        violated_potential_normal = violated_potential.difference(critical_set)
+        
+
+        WEIGHT_MAIN = 10  
+        # Món chính vi phạm
+        WEIGHT_POTENTIAL_CRITICAL = 10 
+        WEIGHT_POTENTIAL_NORMAL = 5   
+        # 6. Tính tổng điểm phạt tích lũy
+        total_penalty = (
+            (len(violated_main) * WEIGHT_MAIN) +
+            (len(violated_potential_critical) * WEIGHT_POTENTIAL_CRITICAL) +
+            (len(violated_potential_normal) * WEIGHT_POTENTIAL_NORMAL)
+        )
+        
+        # 7. Lưu lại kết quả
         res["penalty_score"] = total_penalty
         
         return res
     
     def generate_notes(self, res):
         """
-        Thêm note dựa vào điểm penalty
+        Thêm đánh giá tổng quan và lời khuyên dựa vào điểm số penalty tích lũy.
         """
         penalty = res.get("penalty_score", 0.0)
         notes = []
         
-        if penalty >= 35.0:
+        # MỐC 1: Nguy hiểm tuyệt đối (Dính combo nhiều món chính hoặc nhiều chất gây dị ứng nặng)
+        if penalty >= 40.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Mức độ rủi ro tối đa. Thực đơn của quán hoàn toàn xung đột với hồ sơ sức khỏe hiện tại. Bạn nên cân nhắc đổi quán"
+                f"📊 Đánh giá tổng quan: Mức độ rủi ro tối đa (Điểm phạt: {penalty}). Thực đơn của quán hoàn toàn xung đột gay gắt với hồ sơ sức khỏe của bạn."
+            )
+            notes.append(
+                "🚨 Khuyên dùng: TUYỆT ĐỐI KHÔNG NÊN ĐẶT. Hãy chủ động đổi quán khác để bảo vệ an toàn."
             )
 
+        # MỐC 2: Rủi ro cực cao (Ví dụ: dính từ 3 món chính hoặc 3 tag potential nguy hiểm trở lên)
         elif penalty >= 30.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Nguy cơ cao. Khả năng tìm được món an toàn tại quán là rất thấp."
+                f"📊 Đánh giá tổng quan: Nguy cơ cao (Điểm phạt: {penalty}). Khả năng tìm được một món ăn an toàn hoặc không nhiễm chéo tại quán là rất thấp."
             )
-
-        elif penalty >= 25.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Nguy cơ trung bình - cao. Cần cực kỳ cẩn trọng nếu bắt buộc phải dùng bữa."
+                "💡 Khuyên dùng: Gần như toàn bộ thực đơn cốt lõi đều chứa thành phần bạn phải né."
             )
 
+        # MỐC 3: Nguy cơ trung bình - cao (Ví dụ: Dính combo 1 main + 1 potential nguy hiểm = 20đ, cộng thêm tag thường)
         elif penalty >= 20.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Rủi ro đáng kể. Phần lớn thực đơn thiên về nhóm món bạn nên hạn chế."
+                f"📊 Đánh giá tổng quan: Rủi ro đáng kể (Điểm phạt: {penalty}). Phần lớn thực đơn hoặc các món đặc trưng của quán thiên về nhóm món bạn cần hạn chế."
             )
             notes.append(
-                "💡 Khuyên dùng: Hãy sàng lọc món thật kỹ và trao đổi rõ với nhà bếp trước khi gọi."
+                "💡 Khuyên dùng: Cần cực kỳ cẩn trọng. Hãy sàng lọc món thật kỹ và bắt buộc phải ghi chú rõ ràng với nhà bếp trước khi gọi."
             )
 
-        elif penalty >= 15.0:
-            notes.append(
-                "📊 Đánh giá tổng quan: Có khá nhiều món không phù hợp với chế độ ăn hoặc bệnh lý của bạn."
-            )
-            notes.append(
-                "💡 Khuyên dùng: Ưu tiên chọn các món hấp, luộc hoặc các nhóm món phụ thuần túy."
-            )
-
+        # MỐC 4: Nguy cơ trung bình (Ví dụ: Dính 1 main vi phạm hoặc 1 potential nguy hiểm = 10đ)
         elif penalty >= 10.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Cần lưu ý. Quán có một số thành phần nên tránh hoặc cần chủ động điều chỉnh khi gọi món."
+                f"📊 Đánh giá tổng quan: Cần lưu ý (Điểm phạt: {penalty}). Quán có thành phần cấm xuất hiện trực tiếp trong món chính hoặc có nguy cơ nhiễm chéo nghiêm trọng."
+            )
+            notes.append(
+                "💡 Khuyên dùng: Tránh gọi các món chủ đạo chứa tag cấm. Ưu tiên các món thanh đạm, luộc, hấp hoặc món phụ thuần túy."
             )
 
+        # MỐC 5: Nhắc nhở nhẹ (Ví dụ: Chỉ dính 1 tag thường ở món phụ potential = 5đ)
         elif penalty >= 5.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Nhắc nhở nhẹ. Một vài thành phần có thể không tối ưu, nhưng quán vẫn có nhiều lựa chọn an toàn thay thế."
+                f"📊 Đánh giá tổng quan: Nhắc nhở nhẹ (Điểm phạt: {penalty}). Một vài thành phần món phụ có thể không tối ưu với chế độ ăn, nhưng tổng thể quán vẫn có nhiều lựa chọn an toàn thay thế."
             )
 
+        # MỐC 6: Rủi ro siêu nhỏ (Trường hợp điểm số lẻ hoặc tính toán tỷ lệ khác)
         elif penalty > 0.0:
             notes.append(
-                "📊 Đánh giá tổng quan: Tương đối an toàn. Chỉ có rủi ro nhỏ từ một vài món cụ thể, chọn món hợp lý là có thể dùng tốt."
+                f"📊 Đánh giá tổng quan: Tương đối an toàn (Điểm phạt: {penalty}). Chỉ có rủi ro rất nhỏ từ một vài thành phần riêng biệt, chọn món kỹ một chút là có thể dùng tốt."
             )
 
+        # MỐC 7: Hoàn hảo tuyệt đối (Penalty = 0)
         else:
             notes.append(
-                "✅ THỰC ĐƠN LÝ TƯỞNG: Không phát hiện thành phần đáng lo ngại nào đối với hồ sơ sức khỏe của bạn."
-            )
-            notes.append(
-                "🥗 Rất phù hợp cho chế độ ăn lành mạnh, eat-clean hoặc kiểm soát dinh dưỡng ổn định."
+                "✅ THỰC ĐƠN LÝ TƯỞNG: Không phát hiện bất kỳ thành phần đáng lo ngại nào đối với hồ sơ sức khỏe hiện tại của bạn."
             )
             
         # Gán mảng kết quả vào key "notes" của quán
         res["notes"] = notes
         return res
 
-    def generate_warning(self,res):
+    def generate_warning(self, res):
         """
-        Thêm cảnh báo dựa vào potential_tag
+        Thêm cảnh báo nguy cơ dựa trên cả main_tag và potential_tag (Quét sạch sành sanh mọi tag).
         """
+        warnings_set = set()
+        forbidden_tags = set(self.user_health.get("forbidden_tags", []))
         
-        warnings = []
-        forbidden_tags = self.user_health.get("forbidden_tags", [])
-    
-        # 2. Duyệt qua từng potential_tag của quán ăn
-        for tag in res.get("potential_tag", []):
-            # Nếu tag tiềm ẩn này nằm trong danh sách cấm của user và có trong cấu hình warning
+        main_tags = list(res.get("main_tag", [])) if not isinstance(res.get("main_tag"), float) else []
+        potential_tags = list(res.get("potential_tag", [])) if not isinstance(res.get("potential_tag"), float) else []
+
+        # 1. Duyệt tất cả các main_tag vi phạm
+        for tag in main_tags:
             if tag in forbidden_tags and tag in self.warnings:
-                # Lấy câu cảnh báo loại "potential"
-                msg = self.warnings[tag]["potential"]
-                warnings.append(msg)
-                
-        # 3. Gán mảng kết quả vào key "warnings" của res giống như notes
-        res["warnings"] = warnings
+                msg = self.warnings[tag].get("main", f"Cảnh báo: Thành phần món chính chứa {tag} không tốt cho bạn.")
+                warnings_set.add(msg)
+
+        # 2. Duyệt tất cả các potential_tag vi phạm
+        for tag in potential_tags:
+            if tag in forbidden_tags and tag in self.warnings:
+                main_msg = self.warnings[tag].get("main")
+                if main_msg not in warnings_set:
+                    msg = self.warnings[tag].get("potential", f"Lưu ý: Quán có nguy cơ chứa {tag} trong món phụ.")
+                    warnings_set.add(msg)
+
+        res["warnings"] = list(warnings_set)
         return res
     def run_health_conditions_filter(self,raw_data):
         restaurants_list = raw_data.to_dict(orient='records')
