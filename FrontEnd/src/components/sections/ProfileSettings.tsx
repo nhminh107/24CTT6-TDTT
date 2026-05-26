@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
-import { storage } from "@/lib/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { X, User, Image as ImageIcon, Activity, Camera, UploadCloud, Loader2 } from "lucide-react";
+import { auth } from "@/lib/firebase";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { User, Image as ImageIcon } from "lucide-react";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
 
@@ -12,12 +12,11 @@ export default function ProfileSettings() {
   const { user } = useAuth();
   
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
-  const [allergies, setAllergies] = useState<string[]>([]);
-  const [allergyInput, setAllergyInput] = useState("");
   
   const [isLoading, setIsLoading] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error", text: string } | null>(null);
 
   // Fetch dữ liệu khi mount
@@ -39,9 +38,12 @@ export default function ProfileSettings() {
           const profile = data.profile || {};
           const tokenUser = data.user || {};
           
-          setName(profile.display_name || tokenUser.name || "");
-          setAvatar(profile.photo_url || tokenUser.picture || "");
-          setAllergies(profile.allergies || []);
+          const displayName = user?.displayName || profile.display_name || tokenUser.name || "";
+          const photoUrl = user?.photoURL || profile.photo_url || tokenUser.picture || "";
+          const accountEmail = user?.email || profile.email || tokenUser.email || "";
+          setName(displayName);
+          setEmail(accountEmail);
+          setAvatar(photoUrl);
         }
       } catch (error) {
         console.error("Lỗi khi lấy thông tin:", error);
@@ -50,55 +52,6 @@ export default function ProfileSettings() {
     
     fetchProfile();
   }, [user]);
-
-  // Xử lý tạo Tag
-  const handleAddAllergy = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const val = allergyInput.trim();
-      if (val && !allergies.includes(val)) {
-        setAllergies([...allergies, val]);
-        setAllergyInput("");
-      }
-    }
-  };
-
-  const handleRemoveAllergy = (tag: string) => {
-    setAllergies(allergies.filter(a => a !== tag));
-  };
-
-  // Xử lý upload file ảnh
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0 || !user) return;
-    const file = e.target.files[0];
-    
-    if (!file.type.startsWith("image/")) {
-      setMessage({ type: "error", text: "Vui lòng chọn file hình ảnh (JPG, PNG...)." });
-      return;
-    }
-
-    setIsUploading(true);
-    setMessage(null);
-
-    try {
-      const storageRef = ref(storage, `avatars/${user.uid}_${Date.now()}`);
-      // Dùng uploadBytes thay vì uploadBytesResumable giúp tải file nhỏ siêu tốc (dưới 1 giây)
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      setAvatar(downloadURL);
-      setMessage({ type: "success", text: "Tải ảnh lên thành công! Nhớ bấm Lưu thay đổi." });
-    } catch (error: any) {
-      console.error("Upload failed:", error);
-      // Nếu là lỗi phân quyền
-      if (error?.code === "storage/unauthorized") {
-        setMessage({ type: "error", text: "Lỗi quyền truy cập! Vui lòng kiểm tra Rules của Firebase Storage." });
-      } else {
-        setMessage({ type: "error", text: "Lỗi khi tải ảnh lên. Vui lòng thử lại." });
-      }
-    } finally {
-      setIsUploading(false);
-    }
-  };
 
   // Gửi API cập nhật
   const handleSubmit = async (e: React.FormEvent) => {
@@ -119,7 +72,6 @@ export default function ProfileSettings() {
         body: JSON.stringify({
           name,
           avatar,
-          allergies
         })
       });
       
@@ -131,7 +83,6 @@ export default function ProfileSettings() {
         if (data.data) {
           setName(data.data.display_name || "");
           setAvatar(data.data.photo_url || "");
-          setAllergies(data.data.allergies || []);
           
           // Cập nhật trực tiếp vào Firebase Auth cục bộ để Navbar thay đổi ngay lập tức
           if (user) {
@@ -152,6 +103,20 @@ export default function ProfileSettings() {
       setMessage({ type: "error", text: "Không thể kết nối tới máy chủ." });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleResetPassword = async () => {
+    if (!email) return;
+    setIsResetting(true);
+    setMessage(null);
+    try {
+      await sendPasswordResetEmail(auth, email);
+      setMessage({ type: "success", text: "Đã gửi email đặt lại mật khẩu. Vui lòng kiểm tra hộp thư." });
+    } catch (error: any) {
+      setMessage({ type: "error", text: error?.message || "Không thể gửi email đặt lại mật khẩu." });
+    } finally {
+      setIsResetting(false);
     }
   };
 
@@ -188,6 +153,19 @@ export default function ProfileSettings() {
           </div>
         </div>
 
+        {/* Email (read-only) */}
+        <div>
+          <label className="block text-sm font-bold text-slate-700 mb-2">Email (chỉ đọc)</label>
+          <input
+            type="email"
+            value={email}
+            readOnly
+            disabled
+            className="w-full px-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-500 cursor-not-allowed"
+            placeholder="Chưa có email"
+          />
+        </div>
+
         {/* Avatar Input */}
         <div className="flex flex-col items-center sm:flex-row sm:items-start gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
           <div className="relative group">
@@ -220,34 +198,14 @@ export default function ProfileSettings() {
           </div>
         </div>
 
-        {/* Allergies Tag Input */}
-        <div>
-          <label className="block text-sm font-bold text-slate-700 mb-2">Dị ứng thức ăn</label>
-          <div className="relative">
-            <Activity className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-            <input 
-              type="text" 
-              value={allergyInput}
-              onChange={(e) => setAllergyInput(e.target.value)}
-              onKeyDown={handleAddAllergy}
-              className="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200 rounded-2xl outline-none focus:border-brand-coral focus:ring-4 focus:ring-brand-coral/10 transition shadow-sm"
-              placeholder="Gõ tên món dị ứng (VD: Hải sản) rồi ấn Enter"
-            />
-          </div>
-          
-          {allergies.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-4 p-4 bg-slate-50 border border-slate-100 rounded-2xl min-h-[60px]">
-              {allergies.map(tag => (
-                <span key={tag} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-brand-coral/30 text-brand-flame text-sm font-medium rounded-xl shadow-sm hover:border-brand-coral transition-colors">
-                  {tag}
-                  <button type="button" onClick={() => handleRemoveAllergy(tag)} className="text-brand-coral hover:text-red-500 transition-colors p-0.5 rounded-md hover:bg-red-50">
-                    <X size={14} strokeWidth={2.5} />
-                  </button>
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+        <button
+          type="button"
+          onClick={handleResetPassword}
+          disabled={!email || isResetting}
+          className="w-full px-5 py-3 rounded-2xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 hover:border-brand-coral hover:text-brand-coral transition disabled:opacity-60 disabled:hover:text-slate-700"
+        >
+          {isResetting ? "Đang gửi email..." : "Đổi mật khẩu"}
+        </button>
 
         {/* Submit Button */}
         <div className="pt-6 border-t border-slate-100">
