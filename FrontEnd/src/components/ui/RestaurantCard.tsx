@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { MapPin, Phone, Star, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+import { AlertCircle } from "lucide-react";
 import {
   AlertTriangle,
   ShieldCheck,
@@ -43,148 +43,9 @@ const formatPhoneNumber = (phone: string | number) => {
   return raw;
 };
 
+
+
 const normalizeImageUrl = (url: string) => url.replace(/\\\//g, "/");
-
-// export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
-//   const [open, setOpen] = useState(false);
-//   const phone = useMemo(() => formatPhoneNumber(restaurant.phone), [restaurant.phone]);
-//   const phoneLink = useMemo(
-//     () => phone.replace(/[^\d+]/g, ""),
-//     [phone]
-//   );
-//   const imageUrl = useMemo(
-//     () => normalizeImageUrl(restaurant.imageUrl),
-//     [restaurant.imageUrl]
-//   );
-
-//   console.log(restaurant);
-
-//   return (
-//     <div className="glass overflow-hidden rounded-3xl shadow-soft">
-//       <div className="grid gap-4 p-4 md:grid-cols-[1fr_2fr]">
-//         <div className="overflow-hidden rounded-2xl">
-//           <img
-//             src={imageUrl}
-//             alt={restaurant.name}
-//             className="h-40 w-full object-cover"
-//           />
-//         </div>
-//         <div className="flex flex-col justify-between gap-4">
-//           <div className="space-y-2">
-//             <h3 className="font-display text-xl font-semibold text-slate-900">
-//               {restaurant.name}
-//             </h3>
-//             <div className="flex items-center gap-2 text-sm text-slate-600">
-//               <MapPin size={16} className="text-brand-coral" />
-//               <span>{restaurant.address}</span>
-//             </div>
-//             <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
-//               <div className="inline-flex items-center gap-1">
-//                 <Star size={16} className="text-amber-500" />
-//                 <span>{restaurant.rating.toFixed(1)}</span>
-//               </div>
-//               <div className="rounded-full border border-slate-200/60 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700">
-//                 {typeof restaurant.price === "number"
-//                   ? `${restaurant.price.toLocaleString("vi-VN")}đ`
-//                   : restaurant.price}
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="flex flex-wrap items-center gap-3 text-sm">
-//             {phoneLink ? (
-//               <Link
-//                 href={`tel:${phoneLink}`}
-//                 className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-2 text-xs font-semibold text-white shadow-glow"
-//               >
-//                 <Phone size={14} />
-//                 Gọi điện
-//               </Link>
-//             ) : null}
-//             <Link
-//               href={restaurant.mapUrl}
-//               target="_blank"
-//               rel="noreferrer"
-//               className="text-xs font-semibold text-brand-lagoon transition hover:text-brand-teal"
-//             >
-//               Xem trên Google Maps
-//             </Link>
-//           </div>
-//         </div>
-//       </div>
-
-//       <button
-//         type="button"
-//         onClick={() => setOpen((value) => !value)}
-//         className="flex w-full items-center justify-between border-t border-white/70 px-5 py-4 text-sm font-semibold text-slate-700"
-//       >
-//         Món ăn & Mô tả
-//         <ChevronDown
-//           size={18}
-//           className={cn("transition", open && "rotate-180")}
-//         />
-//       </button>
-//       {open && (
-//   <div className="space-y-4 px-5 pb-5 text-sm text-slate-600">
-//     <div>{restaurant.semanticText}</div>
-
-//     {restaurant.meals && restaurant.meals.length > 0 && (
-//       <div>
-//         <span className="font-medium text-slate-800">
-//           Phục vụ:
-//         </span>{" "}
-//         {restaurant.meals.join(", ")}
-//       </div>
-//     )}
-
-//     {/* Warnings */}
-//     {restaurant.warnings &&
-//       restaurant.warnings.length > 0 && (
-//         <div className="space-y-2">
-//           <h4 className="font-semibold text-red-600">
-//             Cảnh báo sức khỏe
-//           </h4>
-
-//           <div className="flex flex-wrap gap-2">
-//             {restaurant.warnings.map(
-//               (warning, index) => (
-//                 <span
-//                   key={`${warning}-${index}`}
-//                   className="rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-medium text-red-700"
-//                 >
-//                   {warning}
-//                 </span>
-//               )
-//             )}
-//           </div>
-//         </div>
-//       )}
-
-//     {/* Notes */}
-//     {restaurant.notes &&
-//       restaurant.notes.length > 0 && (
-//         <div className="space-y-2">
-//           <h4 className="font-semibold text-emerald-600">
-//             Gợi ý / Lưu ý
-//           </h4>
-
-//           <div className="flex flex-wrap gap-2">
-//             {restaurant.notes.map((note, index) => (
-//               <span
-//                 key={`${note}-${index}`}
-//                 className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700"
-//               >
-//                 {note}
-//               </span>
-//             ))}
-//           </div>
-//         </div>
-//       )}
-//   </div>
-// )}
-//     </div>
-//   );
-// }
 
 
 
@@ -208,6 +69,10 @@ export default function RestaurantCard2({
     () => normalizeImageUrl(restaurant.imageUrl),
     [restaurant.imageUrl]
   );
+
+
+    
+  const [isOpenWarnings, setIsOpenWarnings] = useState(true);
 
   const warnings = restaurant.warnings ?? [];
   const notes = restaurant.notes ?? [];
@@ -340,26 +205,79 @@ export default function RestaurantCard2({
         </span>
       </div>
 
-        {warnings.length ? (
-          <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4">
-            <div className="text-xs font-semibold tracking-wide text-amber-700">
+    {warnings.length > 0 ? (
+      <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4">
+        {/* Nút bấm tiêu đề để ẩn/hiện */}
+        <button
+          type="button"
+          onClick={() => setIsOpenWarnings(!isOpenWarnings)}
+          className="flex w-full items-center justify-between rounded-xl bg-amber-100/60 px-3.5 py-2.5 text-left transition-all duration-200 hover:bg-amber-100 outline-none group"
+        >
+          {/* Bên trái: Tiêu đề bôi đậm, nổi bật hẳn lên */}
+          <div className="flex items-center gap-2">
+            <AlertCircle size={18} className="text-amber-600 animate-pulse" />
+            <span className="text-sm font-bold tracking-wide text-amber-900">
               Cần lưu ý
-            </div>
+            </span>
+            {/* Badge số lượng hình tròn nhỏ nhìn cực kỳ chuyên nghiệp */}
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-[11px] font-bold text-white shadow-sm">
+              {warnings.length}
+            </span>
+          </div>
 
-            <p className="mt-2 text-sm leading-6 text-amber-900">
-              {warnings[0]}
-            </p>
+          {/* Bên phải: Nút hành động kèm Icon xoay mượt mà */}
+          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 group-hover:text-amber-900">
+            <span>{isOpenWarnings ? "Thu gọn" : "Xem hết"}</span>
+            <ChevronDown
+              size={15}
+              className={`transition-transform duration-300 ${
+                isOpenWarnings ? "rotate-180 text-amber-600" : "text-amber-500"
+              }`}
+            />
           </div>
-        ) : (
-          <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
-            <p className="text-sm leading-6 text-emerald-800">
-              <span className="font-semibold">
-                Hệ thống đánh giá nhà hàng này phù hợp với sức khỏe của bạn:
-              </span>{" "}
-              Không có cảnh báo nào được đưa ra.
-            </p>
-          </div>
+        </button>
+
+        {/* Nếu isOpenWarnings là true thì mới render danh sách bên dưới */}
+        {isOpenWarnings && (
+          <ul className="list-disc list-inside space-y-1.5 text-sm leading-6 text-amber-900">
+            {warnings.map((warning, index) => {
+              // 1. Kiểm tra xem trong câu có dấu ":" không
+              if (warning.includes(":")) {
+                // Tách câu thành 2 phần: trước và sau dấu ":"
+                const indexFirstColon = warning.indexOf(":");
+                const title = warning.substring(0, indexFirstColon);
+                const description = warning.substring(indexFirstColon + 1);
+
+                return (
+                  <li key={index} className="marker:text-amber-500">
+                    {/* Phần trước dấu ":" - Bôi đậm màu nâu đen cho nổi bật */}
+                    <strong className="font-bold text-slate-900">{title}:</strong>
+                    {/* Phần sau dấu ":" - Giữ nguyên chữ thường */}
+                    <span className="text-amber-900">{description}</span>
+                  </li>
+                );
+              }
+
+              // 2. Dự phòng trường hợp câu không có dấu ":" thì hiển thị bình thường
+              return (
+                <li key={index} className="marker:text-amber-500">
+                  {warning}
+                </li>
+              );
+            })}
+          </ul>
         )}
+      </div>
+    ) : (
+      <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+        <p className="text-sm leading-6 text-emerald-800">
+          <span className="font-semibold">
+            Hệ thống đánh giá nhà hàng này phù hợp với sức khỏe của bạn:
+          </span>{" "}
+          Không có cảnh báo nào được đưa ra.
+        </p>
+      </div>
+    )}
 
         {/* semantic text */}
         <div className="mt-4 rounded-xl bg-amber-50/50 p-4 border-l-4 border-amber-500">
@@ -392,7 +310,7 @@ export default function RestaurantCard2({
             "inline-flex items-center justify-center gap-2 rounded-2xl border py-3.5 text-center text-sm font-semibold transition duration-300",
             phoneLink
               ? "w-1/2 border-blue-200 bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700"
-              : "w-full border-slate-200 bg-white text-slate-900"
+              : "bg-white border border-slate-200 text-slate-700"
           )}
         >
           <MapPin size={16} className="text-red-500" />
