@@ -23,6 +23,11 @@ export const DEFAULT_HEALTH_PROFILE: HealthProfile = {
   more_descriptions: "",
 };
 
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
+
 export default function Navbar() {
   const { user, logout } = useAuth();
   const [healthOpen, setHealthOpen] = useState(false);
@@ -39,7 +44,7 @@ const fetchHealthProfile = async () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/user/health-profile/${user.uid}`
+        `${API_BASE_URL}/api/user/health-profile/${user.uid}`
       );
 
       if (!response.ok) {
@@ -69,7 +74,7 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
     setHealthProfile(profile);
 
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/user/health-profile/${user.uid}`,
+      `${API_BASE_URL}/api/user/health-profile/${user.uid}`,
       {
         method: "POST",
         headers: {

@@ -11,7 +11,7 @@ class SemanticCacheManager:
         
         # Đổi model sang all-mpnet-base-v2 (chính xác cao hơn)
         self.ef = embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name="all-mpnet-base-v2" 
+            model_name="paraphrase-multilingual-MiniLM-L12-v2" 
         )
         
         # Đổi tên collection thành 'route_cache_v2' để tránh xung đột với data cũ

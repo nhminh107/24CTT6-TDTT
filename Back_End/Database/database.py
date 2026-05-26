@@ -96,8 +96,12 @@ class ChromaDBManager:
             scores[rid] = (similarity + 1.0) / 2.0
         return scores
     
-    def add(self): 
+    def add(self, force=False): 
         data_path = os.path.join(DB_PATH, "data.json")
+        if not os.path.exists(data_path):
+            print(f"❌ Error: {data_path} not found.")
+            return
+
         df = pd.read_json(data_path, encoding='utf-8', dtype={'id': str})
         ids = df['id'].tolist()
         documents = df['semantic_text'].tolist()
@@ -106,27 +110,35 @@ class ChromaDBManager:
             restaurant_count = self.collection.count()
         except Exception:
             restaurant_count = 0
-        if restaurant_count == 0:
-            self.collection.add(
+        
+        if restaurant_count == 0 or force:
+            print(f"Adding {len(ids)} restaurants to collection...")
+            self.collection.upsert( # Dùng upsert để tránh trùng và cho phép cập nhật
                 documents=documents,
                 ids=ids
             )
+        else:
+            print(f"Restaurant collection already has {restaurant_count} items. Skipping.")
 
         if "menu" not in df.columns:
+            print("No 'menu' column found in data.json")
             return
 
         try:
             menu_count = self.menu_collection.count()
         except Exception:
             menu_count = 0
-        if menu_count > 0:
+            
+        if menu_count > 0 and not force:
+            print(f"Menu collection already has {menu_count} items. Skipping.")
             return
 
+        print(f"Processing menu items from {len(df)} restaurants...")
         menu_documents = []
         menu_ids = []
         menu_metadatas = []
         for _, row in df.iterrows():
-            restaurant_id = str(row.get("id"))
+            restaurant_id = str(row.get("id")).strip() # Clean ID
             restaurant_name = row.get("name")
             menu_items = row.get("menu")
             if not isinstance(menu_items, list):
@@ -143,16 +155,24 @@ class ChromaDBManager:
                 })
 
         if menu_documents:
-            self.menu_collection.add(
-                documents=menu_documents,
-                ids=menu_ids,
-                metadatas=menu_metadatas
-            )
+            print(f"Adding {len(menu_documents)} menu items to menu_collection_vn...")
+            # Chia nhỏ để add nếu dữ liệu quá lớn (ChromaDB có limit batch size)
+            batch_size = 1000
+            for i in range(0, len(menu_documents), batch_size):
+                self.menu_collection.upsert(
+                    documents=menu_documents[i:i+batch_size],
+                    ids=menu_ids[i:i+batch_size],
+                    metadatas=menu_metadatas[i:i+batch_size]
+                )
+            print("✅ Menu addition completed!")
 
 if __name__ == "__main__": 
     db_mng = ChromaDBManager() 
-    db_mng.add()
-    print("Database initialized successfully!")
-    res = db_mng.search("Quán ăn lãng mạn")
-    # In ra terminal trên Windows có thể bị lỗi font, dùng encode utf-8 để tránh crash
-    print(str(res).encode('utf-8').decode('utf-8', 'ignore'))
+    # Thêm tham số force=True nếu muốn nạp lại dữ liệu mới nhất
+    db_mng.add(force=True) 
+    print(f"Final Restaurant count: {db_mng.collection.count()}")
+    print(f"Final Menu count: {db_mng.menu_collection.count()}")
+    
+    print("\nTesting search:")
+    res = db_mng.search_menu("bún chả", n_results=3)
+    print(f"Search 'bún chả' results: {res['ids']}")

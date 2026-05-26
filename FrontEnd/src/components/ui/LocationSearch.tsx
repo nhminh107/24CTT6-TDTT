@@ -15,7 +15,10 @@ type ApiSuggestion = {
   place_id?: string;
 };
 
-const API_BASE_URL = "";
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://127.0.0.1:8000";
 
 type LocationSearchProps = {
   value: string;
@@ -53,7 +56,7 @@ export default function LocationSearch({
     const handle = setTimeout(async () => {
       try {
         const response = await fetch(
-          `${API_BASE_URL}/api/maps/suggestions?q=${encodeURIComponent(trimmed)}`,
+          `${API_BASE_URL}/api/v1/maps/suggestions?q=${encodeURIComponent(trimmed)}`,
           { signal: controller.signal }
         );
         if (!response.ok) {

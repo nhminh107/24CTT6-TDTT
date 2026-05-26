@@ -6,37 +6,6 @@ import os
 import json
 from Back_End.Database.database import ChromaDBManager
 
-# Khi khởi tạo Class thì chuyền cái này vô, viết các Endpoints trong routes.py để lấy từ Firebase
-user_heath_profie_mockup={
-        "user_id": "24120417",
-        "updated_at": "2026-05-21T15:50:00Z",
-        "diet_mode": "strict", 
-        "more_description": "Đôi khi tôi hay bị nóng trong người và mọc mụn",
-        "raw_selections": {
-            "selected_conditions": [
-            "Gout",
-            "Dạ dày"
-            ],
-            "selected_allergies": [
-            "Đậu phộng",
-            "Bột mì"
-            ]
-        },
-        "forbidden_tags": [
-            "Red_Meat",
-            "Seafood",
-            "Alcohol_Pub",
-            "Shellfish",
-            "Spicy",
-            "DeepFried_Oily",
-            "Peanuts_Nuts",
-            "Gluten_Present"
-        ]
-    }   
-
-
-
-
 class RestaurantFilter:
     _menu_db_manager = None
     def __init__(self, df, prompt, user_lat, user_lng,user_health_profie):
@@ -138,7 +107,8 @@ class RestaurantFilter:
         if not candidate_ids:
             return meal_df
 
-        n_results = min(max(len(candidate_ids) * 3, 20), 200)
+        # Ép trả về số lượng hợp lý: lấy top 15-20 kết quả liên quan nhất thay vì nhân 3
+        n_results = 20 
         where = {"restaurant_id": {"$in": candidate_ids}}
 
         try:
@@ -149,32 +119,46 @@ class RestaurantFilter:
 
         matched_ids = set()
         metadatas = result.get("metadatas") or []
-        for meta_list in metadatas:
-            if not meta_list:
-                continue
-            for meta in meta_list:
-                if not meta:
-                    continue
+        distances = result.get("distances") or []
+        
+        # Ngưỡng khoảng cách: 0.0 là giống hệt, > 1.0 là khác biệt hoàn toàn.
+        # Với model MiniLM, ngưỡng 0.4 - 0.5 là mức độ liên quan khá cao.
+        DISTANCE_THRESHOLD = 0.8
+
+        for i, meta_list in enumerate(metadatas):
+            for j, meta in enumerate(meta_list):
+                if not meta: continue
+                
+                # Kiểm tra độ tương đồng
+                dist = distances[i][j] if i < len(distances) and j < len(distances[i]) else 0
+                if dist > DISTANCE_THRESHOLD:
+                    continue # Bỏ qua các món không thực sự liên quan
+                    
                 rid = meta.get("restaurant_id")
                 if rid:
                     matched_ids.add(str(rid))
 
         if not matched_ids:
+            # Fallback nếu không có metadata nhưng có IDs
             raw_ids = result.get("ids") or []
-            for id_list in raw_ids:
-                if not id_list:
-                    continue
-                for item_id in id_list:
-                    if not isinstance(item_id, str):
-                        continue
+            raw_dists = result.get("distances") or []
+            for i, id_list in enumerate(raw_ids):
+                for j, item_id in enumerate(id_list):
+                    if not isinstance(item_id, str): continue
+                    
+                    dist = raw_dists[i][j] if i < len(raw_dists) and j < len(raw_dists[i]) else 0
+                    if dist > DISTANCE_THRESHOLD: continue
+                    
                     if "__menu__" in item_id:
                         matched_ids.add(item_id.split("__menu__", 1)[0])
 
         if not matched_ids:
-            return meal_df
+            print(f"[MENU_FILTER_DEBUG] No relevant matches found for '{menu_query}' (Threshold {DISTANCE_THRESHOLD}). Returning empty list.")
+            return meal_df.iloc[0:0]
 
         filtered = meal_df[meal_df['id'].astype(str).isin(matched_ids)]
-        return filtered if not filtered.empty else meal_df
+        print(f"[MENU_FILTER_DEBUG] Found relevant matches for '{menu_query}': {len(filtered)} restaurants.")
+        return filtered
 
     def _calculate_distance(self, df):
         """
@@ -202,29 +186,32 @@ class RestaurantFilter:
         """
         # 0. Lọc sức khỏe trước khi tiến hành lọc những cái khác
         safe_df = self.run_health_conditions_filter(self.data)
+        print(f"[FILTER_DEBUG] Candidates after Health Filter: {len(safe_df)}")
         filtered_df = safe_df.copy()
         
         # 1. Lọc khoảng cách không quá 15km
         if self.user_lat and self.user_lng:
             filtered_df['distance'] = self._calculate_distance(filtered_df)
             filtered_df = filtered_df[filtered_df['distance'] <= 15]
+            print(f"[FILTER_DEBUG] Candidates after Distance Filter (15km): {len(filtered_df)}")
 
         # 2. Lọc ngân sách (Theo feedback: giá > 0.6 * budget là loại)
-        # Tức là chỉ giữ lại quán có giá <= 0.6 * budget
         if self.user_prompt.get('budget'):
             max_allowed_price = 0.6 * self.user_prompt['budget']
             filtered_df = filtered_df[filtered_df['avg_price'] <= max_allowed_price]
+            print(f"[FILTER_DEBUG] Candidates after Budget Filter: {len(filtered_df)}")
 
-        # 3. Lọc độ cay (Giữ lại quán có shu trong khoảng [1, x])
+        # 3. Lọc độ cay
         user_shu = self.user_prompt.get('shu')
         if user_shu:
-            # Lọc quán có 1 <= shu <= user_shu
             filtered_df = filtered_df[(filtered_df['shu'] >= 1) & (filtered_df['shu'] <= user_shu)]
+            print(f"[FILTER_DEBUG] Candidates after Spicy Filter: {len(filtered_df)}")
         
-        # 4. Lọc theo địa điểm (dựa trên key 'location_pref' của Parser)
+        # 4. Lọc theo địa điểm
         if self.user_prompt.get('location_pref'):
             loc = self.user_prompt['location_pref']
             filtered_df = filtered_df[filtered_df['address'].str.contains(loc, case=False, na=False)]
+            print(f"[FILTER_DEBUG] Candidates after Location Pref Filter: {len(filtered_df)}")
             
         return filtered_df
 
@@ -232,44 +219,70 @@ class RestaurantFilter:
     # Lọc bỏ những quán mà user phải tránh
     def run_health_codition_first_step(self, raw_data):
         """
-        Lọc các quán có tag chính thuộc các tag mà user phải né,
-        hiện tại là chỉ cần 1 tag chung là bỏ,
-        có thể làm lại logic là nếu có n tag và n/2 tag chung mới bỏ
+        Lọc các quán có tag chính thuộc các tag mà user phải né
         """
-        diet_mode= self.user_health.get("diet_mode",None)
+        diet_mode = self.user_health.get("diet_mode", "strict")
+        forbidden_tags = set(self.user_health.get("forbidden_tags", []))
         
-        # trong trường hợp user chọn ăn nghiêm ngặt hoặc không chọn gì thì mặc định là ăn nghiêm ngặt
+        print(f"\n[HEALTH_FILTER_LOG] STARTING Health Filter First Step")
+        print(f"[HEALTH_FILTER_LOG] User Diet Mode: {diet_mode}")
+        print(f"[HEALTH_FILTER_LOG] User Forbidden Tags: {list(forbidden_tags)}")
+        print(f"[HEALTH_FILTER_LOG] Critical Allergy Tags list: {self.CRITICAL_ALLERGY_TAGS}")
+        print(f"[HEALTH_FILTER_LOG] Initial restaurant count: {len(raw_data)}")
+
+        filtered_res = []
+        skipped_count = 0
+        
+        # strict mode: Lọc kỹ dựa trên tỷ lệ và các dị ứng nguy hiểm
         if diet_mode == "strict" or diet_mode is None:
-            forbidden_tags = set(self.user_health.get("forbidden_tags", []))
-            filtered_res = []
-            
             for res in raw_data:
+                name = res.get("name", "Unknown")
                 main_tags = res.get("main_tag", [])
                 if not main_tags:
                     filtered_res.append(res)
                     continue
                     
-                # Tìm các tag của quán bị trùng với tag cấm của user
                 intersect_tags = [tag for tag in main_tags if tag in forbidden_tags]
                 
-                # LOGIC CẢI TIẾN: 
-                # Nếu dính tag ĐẶC BIỆT NGUY HIỂM -> Loại ngay lập tức
-                if any(tag in self.CRITICAL_ALLERGY_TAGS for tag in intersect_tags):
+                # Check critical allergies
+                critical_intersection = [tag for tag in intersect_tags if tag in self.CRITICAL_ALLERGY_TAGS]
+                if critical_intersection:
+                    print(f"[HEALTH_FILTER_LOG] [STRICT] SKIPPING '{name}': Matches CRITICAL allergies {critical_intersection}")
+                    skipped_count += 1
                     continue
                     
-                # Nếu là tag hạn chế thông thường -> Tính tỷ lệ (ví dụ: trùng >= 50% số tag của quán thì mới loại)
+                # Check ratio
                 match_ratio = len(intersect_tags) / len(main_tags)
-                if match_ratio < 0.5: 
-                    filtered_res.append(res)
-                    
-            return filtered_res
-        # trong trường hợp user chọn ăn xả láng thì chỉ né những tag nguy hiển về tính mạng còn cay,dầu mỡ,... thì có thể bỏ qua
+                if match_ratio >= 0.5:
+                    print(f"[HEALTH_FILTER_LOG] [STRICT] SKIPPING '{name}': Tag match ratio {match_ratio:.2f} >= 0.5 (Matched: {intersect_tags})")
+                    skipped_count += 1
+                    continue
+                
+                filtered_res.append(res)
+        
+        # casual mode: Chỉ né những tag nguy hiểm về tính mạng MÀ USER CÓ DỊ ỨNG
         else:
-            filtered_res = [
-            res for res in raw_data
-            if not any(tag in self.CRITICAL_ALLERGY_TAGS for tag in res.get("main_tag", []))
-            ]
-            return filtered_res
+            for res in raw_data:
+                name = res.get("name", "Unknown")
+                main_tags = res.get("main_tag", [])
+                
+                # CHÚ Ý: Logic này cực kỳ quan trọng. 
+                # Chỉ SKIP nếu quán có tag nằm trong danh sách NGUY HIỂM VÀ user cũng có tag đó trong FORBIDDEN_TAGS
+                is_danger = False
+                for tag in main_tags:
+                    if tag in self.CRITICAL_ALLERGY_TAGS and tag in forbidden_tags:
+                        print(f"[HEALTH_FILTER_LOG] [CASUAL] SKIPPING '{name}': User is allergic to CRITICAL tag '{tag}'")
+                        is_danger = True
+                        break
+                
+                if is_danger:
+                    skipped_count += 1
+                    continue
+                    
+                filtered_res.append(res)
+
+        print(f"[HEALTH_FILTER_LOG] COMPLETED. Kept: {len(filtered_res)}, Skipped: {skipped_count}")
+        return filtered_res
                     
     # Gán điểm phạt và thêm các notes và warnings cho nhà hàng
     def run_health_condition_second_step(self, data):
@@ -284,13 +297,12 @@ class RestaurantFilter:
     
     def run_filter_pipeline(self): 
         base_df = self._apply_general_filters()
+        print(f"[FILTER_DEBUG] Total candidates in base_df after general filters: {len(base_df)}")
         result_dict = {}
         
         meal_name_map = {
             'sáng': ['sáng'],
             'trưa': ['trưa'],
-            # Data hien tai khong co nhan "xế"/"chiều" trong meals,
-            # nen map xế ve cac nhan hop le de khong bi rong tap ung vien.
             'xế': ['xế', 'chiều', 'trưa', 'tối'],
             'tối': ['tối'],
             'khuya': ['khuya']
@@ -309,16 +321,18 @@ class RestaurantFilter:
 
         for meal_info in meals_detail:
             meal_key_parser = meal_info.get('meal')
+            print(f"\n[FILTER_DEBUG] Processing meal: '{meal_key_parser}'")
             try:
                 # 1. Kiểm tra meal_name_map
                 meal_name_data = meal_name_map.get(meal_key_parser)
                 if not meal_name_data:
+                    print(f"[FILTER_DEBUG] Warning: meal_key_parser '{meal_key_parser}' not in meal_name_map.")
                     continue
 
                 meal_names = meal_name_data if isinstance(meal_name_data, list) else [meal_name_data]
                 meal_names_lower = [m.lower() for m in meal_names]
 
-                # 2. Try-Except khi lọc base_df theo bữa ăn (bước này dễ lỗi nếu cột 'meals' có giá trị lạ)
+                # 2. Lọc base_df theo bữa ăn
                 try:
                     meal_df = base_df[
                         base_df['meals'].apply(
@@ -326,18 +340,15 @@ class RestaurantFilter:
                             if isinstance(x, list) else False
                         )
                     ].copy()
+                    print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after meal name filter: {len(meal_df)}")
                 except Exception as e:
-                    print(f"Lỗi khi lọc base_df cho bữa {meal_key_parser}: {str(e)}")
+                    print(f"[FILTER_DEBUG] Lỗi khi lọc base_df cho bữa {meal_key_parser}: {str(e)}")
                     continue
 
                 # 3. Lấy req_types an toàn
-                try:
-                    req_types = meal_info.get('type', [])
-                except Exception as e:
-                    print(f"Lỗi khi truy cập 'type' trong meal_info: {e}")
-                    req_types = []
+                req_types = meal_info.get('type', [])
 
-                # 4. Logic lọc theo Type (Nghi phạm chính gây lỗi 'type')
+                # 4. Logic lọc theo Type
                 try:
                     if req_types:
                         expanded_reqs = []
@@ -347,9 +358,8 @@ class RestaurantFilter:
                             if t_lower in type_normalization:
                                 expanded_reqs.extend(type_normalization[t_lower])
                         
-                        # Bắt lỗi nếu DataFrame không có cột 'type'
                         if 'type' not in meal_df.columns:
-                            raise KeyError(f"DataFrame thiếu cột 'type'. Các cột hiện có: {meal_df.columns.tolist()}")
+                            raise KeyError(f"DataFrame thiếu cột 'type'.")
 
                         meal_df = meal_df[
                             meal_df['type'].apply(
@@ -357,35 +367,30 @@ class RestaurantFilter:
                                 if isinstance(x, list) else False
                             )
                         ]
+                        print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after type filter {req_types}: {len(meal_df)}")
                     else:
                         if meal_key_parser in MAIN_MEALS:
-                            if 'type' not in meal_df.columns:
-                                raise KeyError("DataFrame thiếu cột 'type' khi lọc Blacklist.")
-                                
                             meal_df = meal_df[
                                 meal_df['type'].apply(
                                     lambda x: not any(b.lower() in str(t).lower() for t in x for b in BLACKLIST) 
                                     if isinstance(x, list) else True
                                 )
                             ]
-                except KeyError as ke:
-                    print(f"LỖI CẤU TRÚC: {str(ke)}")
-                    # Bạn có thể quyết định skip meal này hoặc gán df rỗng
-                    meal_df = meal_df.iloc[0:0] 
+                            print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after Blacklist filter: {len(meal_df)}")
                 except Exception as e:
-                    print(f"Lỗi logic lọc Type của {meal_key_parser}: {traceback.format_exc()}")
+                    print(f"[FILTER_DEBUG] Lỗi logic lọc Type của {meal_key_parser}: {str(e)}")
                     meal_df = meal_df.iloc[0:0]
 
                 menu_query = self._extract_menu_query(meal_info)
                 if menu_query:
                     meal_df = self.menu_filter(meal_df, menu_query)
+                    print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after Menu Filter ('{menu_query}'): {len(meal_df)}")
 
                 # Lưu kết quả
                 result_dict[meal_key_parser] = meal_df
 
             except Exception as e:
-                # Catch-all cho một vòng lặp meal để không làm sập toàn bộ request
-                print(f"Lỗi không xác định tại meal {meal_key_parser}: {traceback.format_exc()}")
+                print(f"[FILTER_DEBUG] Lỗi không xác định tại meal {meal_key_parser}: {traceback.format_exc()}")
                 continue
 
         return result_dict

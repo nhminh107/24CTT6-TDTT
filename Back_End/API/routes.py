@@ -24,31 +24,6 @@ from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 from Back_End.Core.semantic_cache import SemanticCacheManager
 
-user_health_profile_mockup={
-        "user_id": "24120417",
-        "updated_at": "2026-05-21T15:50:00Z",
-        "diet_mode": "strict", 
-        "more_description": "Đôi khi tôi hay bị nóng trong người và mọc mụn",
-        "raw_selections": {
-            "selected_conditions": [
-            "Gout",
-            "Dạ dày"
-            ],
-            "selected_allergies": [
-            "Đậu phộng",
-            "Bột mì"
-            ]
-        },
-        "forbidden_tags": [
-            "DeepFried_Oily",
-            "Peanuts_Nuts",
-            "Alcohol_Pub",
-            "Shellfish",
-            "Spicy"
-        ]
-    } 
-
-
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
 # KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
@@ -96,6 +71,88 @@ def _apply_exclusions(filtered_data: dict, exclude_ids: list):
         result[meal_tag] = filtered_df if not filtered_df.empty else df
     return result
 
+def _normalize_parsed_intent(parsed_json: dict) -> dict:
+    if not isinstance(parsed_json, dict):
+        return parsed_json
+
+    meals_detail = parsed_json.get("meals_detail")
+    if not isinstance(meals_detail, list) or not meals_detail:
+        return parsed_json
+
+    snack_types = {
+        "quan nuoc", "tiem banh", "an vat", "tra sua",
+        "cafe", "quan ca phe"
+    }
+
+    normalized = []
+    index_map = {}
+
+    for item in meals_detail:
+        if not isinstance(item, dict):
+            continue
+
+        meal_raw = item.get("meal")
+        if not meal_raw:
+            continue
+
+        meal_key = str(meal_raw).strip().lower()
+
+        types_raw = item.get("type") or []
+        if isinstance(types_raw, str):
+            types_raw = [types_raw]
+        types = [t for t in types_raw if t]
+
+        semantic_raw = item.get("semantic_query")
+        semantic = semantic_raw.strip() if isinstance(semantic_raw, str) else ""
+
+        # Preserve the dish field
+        dish = item.get("dish", "")
+
+        is_snack = any(str(t).strip().lower() in snack_types for t in types)
+        if meal_key in index_map and is_snack:
+            meal_key = "xế"
+
+        if meal_key in index_map:
+            existing = normalized[index_map[meal_key]]
+            existing_types = existing.get("type") or []
+            if isinstance(existing_types, str):
+                existing_types = [existing_types]
+            merged_types = list(existing_types)
+            for t in types:
+                if t not in merged_types:
+                    merged_types.append(t)
+            existing["type"] = merged_types
+
+            existing_sem = existing.get("semantic_query")
+            existing_sem = existing_sem.strip() if isinstance(existing_sem, str) else ""
+            if existing_sem and semantic:
+                if semantic not in existing_sem:
+                    existing["semantic_query"] = f"{existing_sem}, {semantic}"
+            else:
+                existing["semantic_query"] = existing_sem or semantic or None
+            
+            # Merge dish if needed (though usually one dish per meal is expected)
+            if dish:
+                existing_dish = existing.get("dish", "")
+                if existing_dish and dish not in existing_dish:
+                    existing["dish"] = f"{existing_dish}, {dish}"
+                else:
+                    existing["dish"] = dish
+        else:
+            normalized.append({
+                "meal": meal_key,
+                "type": types,
+                "semantic_query": semantic or None,
+                "dish": dish
+            })
+            index_map[meal_key] = len(normalized) - 1
+
+    if normalized:
+        parsed_json["meals_detail"] = normalized
+        parsed_json["num_meals"] = len(normalized)
+
+    return parsed_json
+
 #Định nghĩa cấu trúc dữ liệu (Pydantic Models)
 class UserRequest(BaseModel):
     prompt: str
@@ -111,8 +168,14 @@ async def process_prompt(request: UserRequest):
     """
     Kết nối toàn bộ luồng xử lý từ Prompt đến Lịch trình.
     """
+    print(f"\n[API_LOG] Starting /prompt process for user_id: {request.user_id}")
+    print(f"[API_LOG] User prompt: '{request.prompt}'")
+    if request.place_id:
+        print(f"[API_LOG] Specified place_id: {request.place_id}")
+
     try:
         # 1. LLM Parsing: Hiểu ý định người dùng
+        print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
         parse_task = asyncio.create_task(parser.JSON_response(request.prompt))
         loc_task = (
@@ -123,41 +186,42 @@ async def process_prompt(request: UserRequest):
 
         parsed_json = await parse_task
         if not parsed_json:
+            print("[API_LOG] Error: LLM Parsing failed to return a result.")
             raise HTTPException(status_code=400, detail="AI không thể phân tích yêu cầu này.")
 
+        parsed_json = _normalize_parsed_intent(parsed_json)
+        print(f"[API_LOG] LLM Parsing result: {json.dumps(parsed_json, ensure_ascii=False)}")
+
         # 2. Xử lý vị trí người dùng (User Location)
-        # Mặc định tọa độ trung tâm nếu người dùng không chọn địa điểm cụ thể
         user_lat, user_lng = 10.7769, 106.7009 
         if loc_task:
+            print("[API_LOG] Fetching place details...")
             loc_detail = await loc_task
             if loc_detail.get("status") == "success":
                 user_lat = loc_detail["data"]["lat"]
                 user_lng = loc_detail["data"]["lng"]
-        # KIỂM TRA BỘ NHỚ ĐỆM
-        #Xử lý lấy budget từ parsed_json an toàn
-        budget_value = parsed_json.get("budget", 0)
+                print(f"[API_LOG] Place coordinates: ({user_lat}, {user_lng})")
+            else:
+                print(f"[API_LOG] Warning: Could not fetch place details, using default coordinates.")
+        else:
+            print(f"[API_LOG] Using default coordinates: ({user_lat}, {user_lng})")
 
-        # Trường hợp 1: Nếu LLM trả về khóa "budget" nhưng giá trị là None/null
-        if budget_value is None:
-            budget_value = 0
-            
-        # Trường hợp 2: Nếu LLM trả về dạng chuỗi (ví dụ: "50000")
+        # Normalize budget
+        budget_value = parsed_json.get("budget", 0)
+        if budget_value is None: budget_value = 0
         elif isinstance(budget_value, str):
-            try:
-                budget_value = int(budget_value)
-            except ValueError:
-                budget_value = 0
-                
-        # Trường hợp 3: Nếu nó là float (ví dụ: 150000.0), ép về int luôn cho đồng bộ với ChromaDB
+            try: budget_value = int(budget_value)
+            except ValueError: budget_value = 0
         elif isinstance(budget_value, float):
             budget_value = int(budget_value)
+        print(f"[API_LOG] Normalized budget: {budget_value}")
 
-        # --- DỜI VIỆC LẤY HỒ SƠ SỨC KHỎE LÊN ĐÂY ---
+        # Fetch health profile
+        print(f"[API_LOG] Fetching health profile for user: {request.user_id}")
         user_health_profile = await fetch_user_health_profile(request.user_id)
-        
-        # Tạo health_key từ danh sách forbidden_tags để phân biệt các user bệnh lý khác nhau
         forbidden_tags = user_health_profile.get("forbidden_tags", [])
         health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
+        print(f"[API_LOG] Health key: {health_key}")
 
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
@@ -165,8 +229,10 @@ async def process_prompt(request: UserRequest):
         wants_alternative = _wants_alternative(request.prompt)
         exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
         bypass_cache = wants_alternative and bool(exclude_ids)
+        print(f"[API_LOG] Wants alternative: {wants_alternative}, Bypass cache: {bypass_cache}")
 
-        # --- KIỂM TRA BỘ NHỚ ĐỆM (TRUYỀN THÊM health_key) ---
+        # Check cache
+        print("[API_LOG] Checking semantic cache...")
         cache_task = asyncio.to_thread(
             cache_manager.check_cache,
             prompt=request.prompt,
@@ -178,19 +244,18 @@ async def process_prompt(request: UserRequest):
 
         data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
         if not os.path.exists(data_path):
+            print(f"[API_LOG] Error: Database file not found at {data_path}")
             raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
 
         df_task = asyncio.create_task(asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str}))
 
         cached_result = await cache_task
         if cached_result and not bypass_cache:
-            print("⚡ HIT CACHE! TRẢ KẾT QUẢ NGAY LẬP TỨC!") # Thêm dòng in ra để test cho dễ
+            print("[API_LOG] ⚡ CACHE HIT! Returning cached result.")
             weight_task.cancel()
             df_task.cancel()
-            with contextlib.suppress(asyncio.CancelledError):
-                await weight_task
-            with contextlib.suppress(asyncio.CancelledError):
-                await df_task
+            with contextlib.suppress(asyncio.CancelledError): await weight_task
+            with contextlib.suppress(asyncio.CancelledError): await df_task
             last_results_by_user[request.user_id] = _extract_ids_from_result(cached_result)
             return {
                 "status": "success",
@@ -198,25 +263,40 @@ async def process_prompt(request: UserRequest):
                 "result": cached_result
             }
         
-        # 3. Data Filtering: Lọc quán ăn phù hợp
+        print("[API_LOG] CACHE MISS. Proceeding with filtering and scoring.")
         
-        #Lấy hồ sơ sức khỏe của user
-        user_health_profile= await fetch_user_health_profile(request.user_id)
-        # user_health_profile=user_health_profile_mockup
-        
+        # 3. Data Filtering
+        print("[API_LOG] Step 3: Filtering restaurants...")
         df_raw = await df_task
+        print(f"[API_LOG] Total restaurants in DB: {len(df_raw)}")
+        
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
         filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
+        
+        for m_tag, m_df in filtered_data.items():
+            print(f"[API_LOG] Meal '{m_tag}': found {len(m_df)} candidates after initial filter.")
+
         if exclude_ids:
+            print(f"[API_LOG] Applying exclusions for {len(exclude_ids)} IDs.")
             filtered_data = _apply_exclusions(filtered_data, exclude_ids)
-
+        
         buff_weights = await weight_task
+        print(f"[API_LOG] Weight buffers calculated: {json.dumps(buff_weights, ensure_ascii=False)}")
 
-        # 4. Scoring & Optimization: Tính lịch trình tối ưu
+        # 4. Scoring & Optimization
+        print("[API_LOG] Step 4: Scoring candidates...")
         db_manager = ChromaDBManager()
         scorer = RestaurantScorer(user_lat=user_lat, user_lng=user_lng, db=db_manager)
-        scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights,diet_mode=user_health_profile.get('diet_mode',None))
+        scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights, diet_mode=user_health_profile.get('diet_mode', None))
+        
+        if not scored_candidates.empty:
+            for m_tag in filtered_data.keys():
+                count = len(scored_candidates[scored_candidates['meal'] == m_tag])
+                print(f"[API_LOG] Meal '{m_tag}': {count} candidates scored.")
+        else:
+            print("[API_LOG] Warning: scored_candidates is empty!")
 
+        print("[API_LOG] LLM Selection for final itinerary...")
         selector = FinalResultLLM()
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
@@ -224,8 +304,16 @@ async def process_prompt(request: UserRequest):
             parsed_json
         )
 
-        # 5. Trả kết quả về cho FrontEnd
+        # 5. Result processing
         if final_itinerary.empty:
+            print("[API_LOG] Result: No suitable restaurants found (Final itinerary empty).")
+            # Check why it might be empty
+            requested_meals = [m.get('meal') for m in parsed_json.get('meals_detail', [])]
+            available_meals = scored_candidates['meal'].unique().tolist() if not scored_candidates.empty else []
+            missing_meals = [m for m in requested_meals if m not in available_meals]
+            if missing_meals:
+                print(f"[API_LOG] Reason: No candidates found for meals: {missing_meals}")
+            
             return {
                 "status": "empty",
                 "message": "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn.",
@@ -234,19 +322,22 @@ async def process_prompt(request: UserRequest):
         
         final_result_json_str = final_itinerary.to_json(orient='records', force_ascii=False)
         final_result_list = json.loads(final_result_json_str)
+        print(f"[API_LOG] Final itinerary contains {len(final_result_list)} items.")
 
-        # LƯU LẠI CACHE CHO LẦN DÙNG SAU
+        # Save to cache
         if not bypass_cache:
+            print("[API_LOG] Saving result to cache...")
             cache_manager.save_cache(
                 prompt=request.prompt,
                 lat=user_lat,
                 lng=user_lng,
                 budget=budget_value,
-                health_key=health_key, # Thêm health_key lúc lưu
+                health_key=health_key,
                 result_json=final_result_list
             )
 
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
+        print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
 
         return {
             "status": "success",
@@ -255,6 +346,7 @@ async def process_prompt(request: UserRequest):
         }
         
     except Exception as e:
+        print(f"[API_LOG] !!! CRITICAL ERROR in /prompt: {str(e)}")
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống: {str(e)}")
 

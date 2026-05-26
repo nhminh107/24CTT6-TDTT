@@ -24,6 +24,7 @@ class LLMParser():
     )
 
     async def JSON_response(self, user_prompt: str):
+        print(f"[LLM_PARSER_LOG] Parsing intent for prompt: '{user_prompt}'")
         prompt = f"""
         Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài, nếu thông tin quá sơ sài thì trả về null/mảng rỗng ở các field tương ứng.
 
@@ -32,11 +33,11 @@ class LLMParser():
         2. "num_meals": (Integer) Số địa điểm mà người dùng yêu cầu.
         3. "location_pref": (String) Tên Quận/Huyện, Tên đường hoặc khu vực cụ thể. Trả về null nếu không có.
         4. "shu": (Interger) Mức độ cay người dùng yêu cầu, chia làm 5 mức (Từ 1->5). Bắt buộc phải có nếu người dùng có đề cập đến từ "cay". Trả về null nếu không có
-        5. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Số danh sách yêu cầu phải khớp với num_meals. Nếu người dùng đưa ra yêu cầu chung (không chỉ định riêng bữa nào), hãy gán yêu cầu đó vào tất cả các bữa ăn được nhắc đến. Mỗi object bao gồm:
+        5. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Mỗi "meal" chỉ xuất hiện tối đa 1 lần. Số danh sách yêu cầu phải khớp với num_meals. Nếu người dùng đưa ra yêu cầu chung không chỉ định bữa, hãy gán vào bữa phù hợp; riêng "quán nước/tiệm bánh/ăn vặt" mặc định gán vào "xế" nếu không nói rõ bữa. Mỗi object bao gồm:
             - "meal": (String) Bắt buộc. Chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya".
             - "type": (Array of Strings) Loại nhà hàng (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về [] nếu không có.
             - "semantic_query": (String) Các từ khóa mô tả cảm xúc, không khí, view, hoặc tiện ích (máy lạnh, wifi...). Các từ cách nhau bằng dấu phẩy. Trả về null nếu không có.
-
+            - "dish": (String) Một món ăn duy nhất người dùng yêu cầu trong bữa đó, trả về "" nếu người dùng không yêu cầu
         Input của người dùng: "{user_prompt}"
         Output JSON: 
         """
@@ -51,16 +52,18 @@ class LLMParser():
                 )
             )
             content = response.text
+            print(f"[LLM_PARSER_LOG] Raw Gemini response (JSON_response): {content.strip()}")
             # Trả về data ngay lập tức
             return json.loads(content)
             
         except Exception as e:
             # In lỗi ra để debug
-            print(f"DEBUG: Lỗi API trong parsing.py: {type(e).__name__} - {e}")
+            print(f"[LLM_PARSER_LOG] Error in Gemini API (JSON_response): {type(e).__name__} - {e}")
             # Raise lên để @retry bắt được và thử lại
             raise e
 
     async def phrase_health_description(self, user_prompt: str):
+        print(f"[LLM_PARSER_LOG] Phrasing health description for: '{user_prompt}'")
         ALL_AVAILABLE_TAGS = [
             "Red_Meat", "Seafood", "Alcohol_Pub", "Shellfish", 
             "Spicy", "DeepFried_Oily", "High_Sugar", "Refined_Carbs", 
@@ -127,11 +130,13 @@ class LLMParser():
             )
 
             content = response.text.strip()
+            print(f"[LLM_PARSER_LOG] Raw Gemini response (phrase_health_description): {content}")
 
             try:
                 data = json.loads(content)
 
                 if not isinstance(data, list):
+                    print(f"[LLM_PARSER_LOG] Warning: Response is not a list: {data}")
                     return []
 
                 # Lọc lại một lần nữa bằng Python cho chắc chắn
@@ -139,15 +144,16 @@ class LLMParser():
                     tag for tag in data
                     if tag in ALL_AVAILABLE_TAGS
                 })
+                print(f"[LLM_PARSER_LOG] Extracted tags: {filtered_tags}")
 
                 return filtered_tags
 
             except json.JSONDecodeError:
-                print("RAW RESPONSE:", content)
+                print(f"[LLM_PARSER_LOG] JSON Decode Error: {content}")
                 return []
 
         except Exception as e:
-            print(f"[phrase_health_description ERROR] {e}")
+            print(f"[LLM_PARSER_LOG] !!! Error in phrase_health_description: {e}")
             return []
     
 if __name__ == "__main__":
