@@ -1,0 +1,514 @@
+[
+  {
+    "id": "0001",
+    "name": "Ốc Oanh",
+    "address": "534 Vĩnh Khánh, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7607194,
+    "lng": 106.7032972,
+    "avg_price": 500000.0,
+    "shu": 4,
+    "star": 3.7,
+    "meals": ["trưa"],
+    "semantic_text": "Quán ốc huyền thoại và sầm uất nhất khu Vĩnh Khánh, luôn đông đúc với các món hải sản tươi ngon, đặc biệt là càng ghẹ rang muối ớt.",
+    "image_url": "",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937916159"
+  },
+  {
+    "id": "0002",
+    "name": "Phá Lấu Bò Cô Thảo",
+    "address": "243/29G Tôn Đản, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.756633,
+    "lng": 106.7072959,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Chén phá lấu đậm đà, nước cốt dừa béo ngậy ăn kèm bánh mì. Điểm đến không thể bỏ qua khi nhắc đến ẩm thực Quận 4.",
+    "image_url": "",
+    "type": [
+      "Quán Việt",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0907917345"
+  },
+  {
+    "id": "0003",
+    "name": "Mì Ốc Hến Dì Lan",
+    "address": "2/4 Ngô Văn Sở, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7650277,
+    "lng": 106.7038806,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": ["sáng", "trưa", "tối"],
+    "semantic_text": "Tô mì chua cay bùng vị với topping ốc móng tay và hến xào thấm đẫm gia vị, cực kỳ kích thích vị giác.",
+    "image_url": "",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0984171730"
+  },
+  {
+    "id": "0004",
+    "name": "Súp Cua Hằng",
+    "address": "C200/18 Xóm Chiếu, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7557267,
+    "lng": 106.7088803,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": ["tối"],
+    "semantic_text": "Súp cua đặc ruột, đầy ắp thịt cua, óc heo và trứng bách thảo. Quán nằm trong hẻm nhưng lúc nào cũng tấp nập khách.",
+    "image_url": "",
+    "type": [
+      "Quán Việt",
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0903384052"
+  },
+  {
+    "id": "0005",
+    "name": "Bánh Tráng Cuốn Dì Hồng",
+    "address": "25 Đường số 11, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7570585,
+    "lng": 106.7026131,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 3.6,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Bánh tráng cuốn bơ và trứng cút béo ngậy, ăn cùng nước sốt bò đen mặn ngọt cực dính.",
+    "image_url": "",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0006",
+    "name": "Uchi Sushi",
+    "address": "14 Số 45, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7577088,
+    "lng": 106.7006533,
+    "avg_price": 400000.0,
+    "shu": 2,
+    "star": 4.9,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Quán Nhật nhỏ xinh, giá cả bình dân nhưng chất lượng sashimi và cuộn sushi rất tươi ngon, phù hợp cho học sinh sinh viên.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "02839409593"
+  },
+  {
+    "id": "0007",
+    "name": "Phố Nhật Quán",
+    "address": "43/19 Hoàng Diệu, Phường Xóm Chiếu, TP.HCM",
+    "lat": 10.7643861,
+    "lng": 106.7064295,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Menu đa dạng từ cơm bento, mì udon đến các loại sushi nướng lửa. Không gian ấm cúng, đậm chất Nhật Bản.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0909138797"
+  },
+  {
+    "id": "0008",
+    "name": "The Sushi House",
+    "address": "12/7 Nguyễn Khoái, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7535453,
+    "lng": 106.695575,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Quán ăn lý tưởng cho tín đồ món Nhật với thực đơn sushi, sashimi đa dạng, hải sản tươi ngon và giá cả vô cùng hợp lý tại khu ẩm thực Vĩnh Hội. Không gian quán tuy ấm cúng, nhỏ nhắn nhưng ghi điểm mạnh nhờ phong cách phục vụ nhanh nhẹn, nhiệt tình và bày trí món ăn bắt mắt.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0973013389"
+  },
+  {
+    "id": "0009",
+    "name": "Sakuraya Sushi",
+    "address": "52 Nguyễn Trường Tộ, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7652829,
+    "lng": 106.7047556,
+    "avg_price": 350000.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Nhà hàng mang đậm phong cách truyền thống Nhật Bản, nổi tiếng với các phần sashimi tươi rói, cắt lát dày dặn và các cuộn sushi được cuốn chắc tay, dẻo thơm. Không gian tại đây tuy nhỏ nhắn nhưng vô cùng ấm cúng, tinh tế với lồng đèn giấy cùng tranh núi Phú Sĩ, đi kèm mức giá rất hợp lý và đội ngũ nhân viên phục vụ tận tình, chu đáo.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0945219768"
+  },
+  {
+    "id": "0010",
+    "name": "Sushi Cô Bông",
+    "address": "10 Đường Số 48, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7552878,
+    "lng": 106.7012163,
+    "avg_price": 350000.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": ["trưa", "tối"],
+    "semantic_text": " Quán ăn núp hẻm mang phong cách low-key độc đáo, nổi tiếng với thực đơn hơn 200 món Nhật có mức giá vô cùng dễ chịu. Nơi đây ghi điểm tuyệt đối nhờ các phần sashimi cá hồi Na Uy được cắt lát siêu dày, tươi béo ngậy và không gian mộc mạc, yên tĩnh rất hợp để hẹn hò hay tụ họp gia đình.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0902848838"
+  },
+  {
+    "id": "0011",
+    "name": "Nhà hàng Chay Cỏ Ba Lá Vegetarian",
+    "address": "89 Đoàn Văn Bơ, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7641774,
+    "lng": 106.7032796,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Điểm đến thanh tịnh lý tưởng với không gian mang đậm chất Nam Bộ mộc mạc, yên bình, tọa lạc ngay gần chân cầu Calmette. Nhà hàng chinh phục thực khách nhờ menu món chay phong phú, sáng tạo được chế biến từ rau củ tươi sạch, nêm nếm vừa vặn và có mức giá vô cùng phải chăng.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0904665652"
+  },
+  {
+    "id": "0012",
+    "name": "Quán Chay Liên Hoa",
+    "address": "180 Đoàn Văn Bơ, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7627258,
+    "lng": 106.7046461,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 3.9,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Cơm tự chọn với hàng chục món xào, kho chay thay đổi mỗi ngày. Mức giá rất bình dân, được người dân địa phương ưa chuộng.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0013",
+    "name": "Quán Chay Tuỳ Duyên",
+    "address": "Q22 Nguyễn Hữu Hào, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7606821,
+    "lng": 106.7016267,
+    "avg_price": 50000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": ["sáng", "trưa", "tối"],
+    "semantic_text": "Điểm ăn sáng và ăn trưa bình dân quen thuộc, nổi tiếng với món bánh mì chay giòn rụm và các món nước thay đổi theo ngày vô cùng đậm đà. Quán có không gian nhỏ gọn, mộc mạc kiểu đường phố nhưng ghi điểm nhờ tốc độ phục vụ nhanh nhẹn và mức giá siêu hạt dẻ phù hợp cho học sinh, sinh viên hay người lao động.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0913979688"
+  },
+  {
+    "id": "0014",
+    "name": "Nhà Hàng Chay Phúc Tâm",
+    "address": "12 Tân Vĩnh, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7595142,
+    "lng": 106.6999444,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": ["trưa","tối"],
+    "semantic_text": "Điểm hẹn ẩm thực thanh tịnh được thực khách đánh giá rất cao nhờ thực đơn chay hiện đại, kết hợp hài hòa giữa các món Việt truyền thống và phong cách Âu béo thơm, độc đáo. Nằm yên bình tại khu chung cư Tân Vĩnh, quán sở hữu không gian nhỏ nhắn, ấm cúng và ghi điểm bằng những món ăn ít dầu mỡ, nêm nếm đậm đà cùng cách bày trí mẹt tre vô cùng tinh tế, chỉn chu.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0358449199"
+  },
+  {
+    "id": "0015",
+    "name": "Nhà hàng chay Nhất Tâm",
+    "address": "T6 Phường 6, Nguyễn Hữu Hào, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7602695,
+    "lng": 106.7017983,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Thiết kế quán bằng tre nứa mộc mạc. Món bì cuốn chay và đậu hũ non sốt nấm ở đây có hương vị cực kỳ đặc trưng.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0933578396"
+  },
+  {
+    "id": "0016",
+    "name": "Sushi Ớt Đỏ",
+    "address": "350 Nguyễn Tất Thành, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7604102,
+    "lng": 106.7117061,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.9,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Tiệm ăn Nhật Bản bình dân cực kỳ được lòng sinh viên và giới văn phòng nhờ không gian máy lạnh mát mẻ, sạch sẽ cùng thực đơn đa dạng từ sushi, maki đến sashimi với mức giá siêu 'hạt dẻ'.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0961062309"
+  },
+  {
+    "id": "0017",
+    "name": "Hibachi - Japanese Bento with Hawaiian Smoked Meat",
+    "address": "655 Đoàn Văn Bơ, Phường Xóm Chiếu, Quận 4, TP.HCM",
+    "lat": 10.757888,
+    "lng": 106.7127323,
+    "avg_price": 60000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Bento đầy đặn với gà karaage, trứng cuộn và rau trộn kiểu Nhật. Phần ăn vừa miệng, phù hợp mang đi khi bận rộn.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0908777656"
+  },
+  {
+    "id": "0018",
+    "name": "KING UNAGI",
+    "address": "103 Đường Số 18, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7553635,
+    "lng": 106.7042672,
+    "avg_price": 310000.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": ["trưa","tối"],
+    "semantic_text": "Thương hiệu ẩm thực Nhật Bản chuyên về hình thức giao hàng tận nơi, nổi tiếng với món cơm lươn Nhật (Unagi) nướng sốt Kabayaki thơm lừng, béo ngậy. Bên cạnh món lươn trứ danh, thương hiệu này còn sở hữu menu sashimi và maki platter cực kỳ tươi ngon, được đóng gói vô cùng chỉn chu và đẹp mắt với mức giá rất hợp lý.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0939333067"
+  },
+  {
+    "id": "0019",
+    "name": "Takoyaki Hatachi",
+    "address": "173 Tôn Đản, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7579966,
+    "lng": 106.7065968,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": ["tối"],
+    "semantic_text": "Takoyaki nóng hổi, lớp vỏ vàng giòn, phủ sốt đậm và cá bào thơm lừng. Mua ăn vặt buổi chiều là 'chuẩn bài'.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật", "Tiệm bánh"
+    ],
+    "phone_num": "0378544192"
+  },
+  {
+    "id": "0020",
+    "name": "Cơm Nắm IM HiHi",
+    "address": "37 Vĩnh Hội, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7562587,
+    "lng": 106.703205,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": ["sáng", "trưa","tối"],
+    "semantic_text": "Onigiri cơm nắm gọn tay với nhiều nhân mặn mà, tiện mang đi. Hợp cho bữa xế nhẹ nhàng nhưng vẫn chắc bụng.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0564596868"
+  },
+  {
+    "id": "0021",
+    "name": "Funny Ramen",
+    "address": "17/7 Đoàn Như Hài, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7660981,
+    "lng": 106.7058673,
+    "avg_price": 100000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Ramen đậm đà, sợi mì dai và topping đầy đặn, ăn là thấy ấm bụng ngay. Không gian nhỏ nhưng phục vụ nhanh.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0979712710"
+  },
+  {
+    "id": "0022",
+    "name": "Omakase by Uchi Quận 4",
+    "address": "14 Đường Số 45, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7577088,
+    "lng": 106.7006533,
+    "avg_price": 1500000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": ["trưa", "tối"],
+    "semantic_text": "Nhà hàng mang đến hành trình ẩm thực đầy cảm xúc với sự giao thoa độc đáo giữa kỹ thuật Nhật Bản tinh giản và hương vị Việt Nam sáng tạo từ những nguyên liệu tươi mới tuyển chọn theo ngày.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "070 379 7677"
+  },
+  {
+    "id": "0023",
+    "name": "Nhất Khắc Quán",
+    "address": "894 Đoàn Văn Bơ, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.756425,
+    "lng": 106.7163932,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": ["tối", "khuya"],
+    "semantic_text": "Quán ăn Nhật Bản mang phong cách gia đình mộc mạc, nổi bật với các phần sashimi cá hồi tươi ngon, lát cắt dày dặn và món cơm lươn nướng bếp than thơm lừng, đậm vị. Quán có diện tích nhỏ nhắn, ấm cúng ẩn mình trong hẻm và gây ấn tượng mạnh nhờ menu sáng tạo thay đổi linh hoạt kèm những set ăn thử thách đầy thú vị do chính chủ quán trực tiếp đứng bếp.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0826690494"
+  },
+  {
+    "id": "0024",
+    "name": "IKKYU Ramen",
+    "address": "45 Vĩnh Hội, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.756214,
+    "lng": 106.703402,
+    "avg_price": 80000.0,
+    "shu": 2,
+    "star": 4.9,
+    "meals": ["trưa","tối"],
+    "semantic_text": "Tiệm mì Nhật nhỏ xinh, bình dân mới nổi do chủ người Nhật trực tiếp đứng bếp, chuyên phục vụ các dòng ramen truyền thống và mì trộn với mức giá siêu 'hạt dẻ'.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0339018484"
+  },
+  {
+    "id": "0025",
+    "name": "Bánh cá Momei",
+    "address": "144/17 Nguyễn Khoái, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7571816,
+    "lng": 106.6940515,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Taiyaki vỏ bánh thơm bơ, nướng tại chỗ nên luôn nóng giòn. Món tráng miệng “ngọt vừa” cho một vòng dạo phố Quận 4.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật", "Tiệm bánh"
+    ],
+    "phone_num": "0368967382"
+  },
+  {
+    "id": "0026",
+    "name": "Sushi H",
+    "address": "531 Vĩnh Khánh, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7612319,
+    "lng": 106.7053852,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 3.9,
+    "meals": ["trưa","tối","khuya"],
+    "semantic_text": "Tiệm sushi bình dân vỉa hè nằm trên con phố ẩm thực Vĩnh Khánh sầm uất, nổi bật với các phần sashimi cá hồi chuẩn Na Uy tươi béo và thực đơn món Nhật đa dạng có mức giá siêu 'học sinh sinh viên'.",
+    "image_url": "",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0767852818"
+  },
+  {
+    "id": "0027",
+    "name": "Cơm Chay Tường Nguyên",
+    "address": "Q10 Cư Xá Vĩnh Hội, Nguyễn Hữu Hào, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7608749,
+    "lng": 106.7013932,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Quán ăn bình dân vô cùng nổi tiếng và đắt khách tại khu cư xá Vĩnh Hội, ghi điểm nhờ những đĩa cơm thập cẩm đầy đặn, ngon miệng và mức giá siêu rẻ.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0899905828"
+  },
+  {
+    "id": "0028",
+    "name": "Cơm Chay Hoà",
+    "address": "4 Lê Văn Linh, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7645885,
+    "lng": 106.7070647,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Điểm ăn chay bình dân vô cùng độc đáo, nổi tiếng với món cơm tấm sườn bì chả chay chuẩn vị Sài Gòn và món miến Thái xào đậm đà do chính anh chủ tiệm tâm huyết đứng bếp. Quán tuy nhỏ mộc mạc nhưng cực kỳ đông khách nhờ thực đơn món nước thay đổi linh hoạt theo ngày có vị ngọt thanh tự nhiên từ rau củ và mức giá siêu bình dân.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0901463418"
+  },
+  {
+    "id": "0029",
+    "name": "Cơm Chay Nhân Tâm",
+    "address": "65 Tôn Đản, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.7601072,
+    "lng": 106.7072693,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 3.8,
+    "meals": ["sáng","trưa","tối"],
+    "semantic_text": "Quán ăn chay bình dân vô cùng quen thuộc và đắt khách trên cung đường Tôn Đản sầm uất, nổi tiếng với khay đồ ăn tự chọn cực kỳ phong phú và đĩa cơm thập cẩm ú ụ được dọn kèm phần canh ngon ngọt miễn phí.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0898754938"
+  },
+  {
+    "id": "0030",
+    "name": "Quán chay liên Phước",
+    "address": "S13 Tôn Thất Thuyết, Phường Xóm Chiếu, Quận 4, TP.HCM",
+    "lat": 10.7534015,
+    "lng": 106.7149496,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": ["trưa","tối"],
+    "semantic_text": "Điểm hẹn ẩm thực lý tưởng nổi tiếng với menu chay mang phong cách Fusion độc đáo kết hợp cùng các món ăn thuần Việt quen thuộc có mức giá vô cùng bình dân.",
+    "image_url": "",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": ""
+  }
+]
