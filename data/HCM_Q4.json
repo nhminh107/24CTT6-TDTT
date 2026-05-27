@@ -8,9 +8,11 @@
     "avg_price": 500000.0,
     "shu": 4,
     "star": 3.7,
-    "meals": ["trưa"],
+    "meals": [
+      "trưa"
+    ],
     "semantic_text": "Quán ốc huyền thoại và sầm uất nhất khu Vĩnh Khánh, luôn đông đúc với các món hải sản tươi ngon, đặc biệt là càng ghẹ rang muối ớt.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779875785/oc-oanh_yzetzp.jpg",
     "type": [
       "Quán Việt"
     ],
@@ -25,9 +27,12 @@
     "avg_price": 50000.0,
     "shu": 2,
     "star": 4.2,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Chén phá lấu đậm đà, nước cốt dừa béo ngậy ăn kèm bánh mì. Điểm đến không thể bỏ qua khi nhắc đến ẩm thực Quận 4.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779875822/z63833208177707ddfbdcc4526f49cdd5ddc2b961efc84-17413340576101886735544-45-0-845-1280-crop-1741335131212792363281_fzxjbf.jpg",
     "type": [
       "Quán Việt",
       "Đồ ăn nhanh"
@@ -37,15 +42,19 @@
   {
     "id": "0003",
     "name": "Mì Ốc Hến Dì Lan",
-    "address": "2/4 Ngô Văn Sở, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "address": "20/23 Đ. Nguyễn Trường Tộ, Phường Xóm Chiếu, Quận 4, TP.HCM",
     "lat": 10.7650277,
     "lng": 106.7038806,
     "avg_price": 50000.0,
     "shu": 2,
     "star": 4.2,
-    "meals": ["sáng", "trưa", "tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Tô mì chua cay bùng vị với topping ốc móng tay và hến xào thấm đẫm gia vị, cực kỳ kích thích vị giác.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779875990/a70f8864-0b6a-4719-8fb3-faf4d32dfa6e8q_y4n22_wgju3j.jpg",
     "type": [
       "Quán Việt"
     ],
@@ -60,9 +69,11 @@
     "avg_price": 50000.0,
     "shu": 2,
     "star": 4.3,
-    "meals": ["tối"],
+    "meals": [
+      "tối"
+    ],
     "semantic_text": "Súp cua đặc ruột, đầy ắp thịt cua, óc heo và trứng bách thảo. Quán nằm trong hẻm nhưng lúc nào cũng tấp nập khách.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779876039/c5e3756be0420c4c753dbe6369d75c87_z0swcw.jpg",
     "type": [
       "Quán Việt",
       "Đồ ăn nhanh"
@@ -78,9 +89,12 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 3.6,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Bánh tráng cuốn bơ và trứng cút béo ngậy, ăn cùng nước sốt bò đen mặn ngọt cực dính.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779876079/cf7aa257-banh-trang-quan-4-5_vgunft.jpg",
     "type": [
       "Đồ ăn nhanh"
     ],
@@ -95,9 +109,12 @@
     "avg_price": 400000.0,
     "shu": 2,
     "star": 4.9,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Quán Nhật nhỏ xinh, giá cả bình dân nhưng chất lượng sashimi và cuộn sushi rất tươi ngon, phù hợp cho học sinh sinh viên.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779881521/uchi-sushi-1_lbnw9f.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -112,9 +129,12 @@
     "avg_price": 250000.0,
     "shu": 2,
     "star": 4.7,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Menu đa dạng từ cơm bento, mì udon đến các loại sushi nướng lửa. Không gian ấm cúng, đậm chất Nhật Bản.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882410/7XjATtE_ip0hii.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -129,9 +149,12 @@
     "avg_price": 250000.0,
     "shu": 1,
     "star": 4.8,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Quán ăn lý tưởng cho tín đồ món Nhật với thực đơn sushi, sashimi đa dạng, hải sản tươi ngon và giá cả vô cùng hợp lý tại khu ẩm thực Vĩnh Hội. Không gian quán tuy ấm cúng, nhỏ nhắn nhưng ghi điểm mạnh nhờ phong cách phục vụ nhanh nhẹn, nhiệt tình và bày trí món ăn bắt mắt.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882516/sushi-quan-4-1_qdcxxu.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -146,9 +169,12 @@
     "avg_price": 350000.0,
     "shu": 1,
     "star": 4.9,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Nhà hàng mang đậm phong cách truyền thống Nhật Bản, nổi tiếng với các phần sashimi tươi rói, cắt lát dày dặn và các cuộn sushi được cuốn chắc tay, dẻo thơm. Không gian tại đây tuy nhỏ nhắn nhưng vô cùng ấm cúng, tinh tế với lồng đèn giấy cùng tranh núi Phú Sĩ, đi kèm mức giá rất hợp lý và đội ngũ nhân viên phục vụ tận tình, chu đáo.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882545/eyJidWNrZXQiOiJ1dGEtaW1hZ2VzIiwia2V5IjoicGxhY2VfaW1nL3ZrV1JiVmtIVDFLOGNRXzVzQURmd2ciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjY0MCwiaGVpZ2h0Ijo2NDAsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsInRvRm9ybWF0IjogIndlYnAifX0_v3nqxy.webp",
     "type": [
       "Quán Nhật"
     ],
@@ -163,9 +189,12 @@
     "avg_price": 350000.0,
     "shu": 2,
     "star": 4.8,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": " Quán ăn núp hẻm mang phong cách low-key độc đáo, nổi tiếng với thực đơn hơn 200 món Nhật có mức giá vô cùng dễ chịu. Nơi đây ghi điểm tuyệt đối nhờ các phần sashimi cá hồi Na Uy được cắt lát siêu dày, tươi béo ngậy và không gian mộc mạc, yên tĩnh rất hợp để hẹn hò hay tụ họp gia đình.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882608/ANXAkqHruyZrcJqhDy_f0B79GVMWjIlB6fyryN2fyrDXnmit95Pwk0eL3lyEQo5Oa1DWDo234K8krfNaQFbyxb1aeM1B8VWCXJ0XgNY_s1600-w640_uliplq.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -180,9 +209,12 @@
     "avg_price": 150000.0,
     "shu": 2,
     "star": 4.7,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Điểm đến thanh tịnh lý tưởng với không gian mang đậm chất Nam Bộ mộc mạc, yên bình, tọa lạc ngay gần chân cầu Calmette. Nhà hàng chinh phục thực khách nhờ menu món chay phong phú, sáng tạo được chế biến từ rau củ tươi sạch, nêm nếm vừa vặn và có mức giá vô cùng phải chăng.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882663/quan-chay-quan-4-11_rbudze.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -197,9 +229,13 @@
     "avg_price": 50000.0,
     "shu": 2,
     "star": 3.9,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Cơm tự chọn với hàng chục món xào, kho chay thay đổi mỗi ngày. Mức giá rất bình dân, được người dân địa phương ưa chuộng.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882759/unnamed_da1eza.webp",
     "type": [
       "Quán Chay"
     ],
@@ -214,9 +250,13 @@
     "avg_price": 50000.0,
     "shu": 3,
     "star": 4.6,
-    "meals": ["sáng", "trưa", "tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Điểm ăn sáng và ăn trưa bình dân quen thuộc, nổi tiếng với món bánh mì chay giòn rụm và các món nước thay đổi theo ngày vô cùng đậm đà. Quán có không gian nhỏ gọn, mộc mạc kiểu đường phố nhưng ghi điểm nhờ tốc độ phục vụ nhanh nhẹn và mức giá siêu hạt dẻ phù hợp cho học sinh, sinh viên hay người lao động.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882795/sddefault_hz5cbt.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -231,9 +271,12 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 4.8,
-    "meals": ["trưa","tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Điểm hẹn ẩm thực thanh tịnh được thực khách đánh giá rất cao nhờ thực đơn chay hiện đại, kết hợp hài hòa giữa các món Việt truyền thống và phong cách Âu béo thơm, độc đáo. Nằm yên bình tại khu chung cư Tân Vĩnh, quán sở hữu không gian nhỏ nhắn, ấm cúng và ghi điểm bằng những món ăn ít dầu mỡ, nêm nếm đậm đà cùng cách bày trí mẹt tre vô cùng tinh tế, chỉn chu.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882843/testing-1290329_btimba.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -248,9 +291,13 @@
     "avg_price": 150000.0,
     "shu": 2,
     "star": 4.6,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Thiết kế quán bằng tre nứa mộc mạc. Món bì cuốn chay và đậu hũ non sốt nấm ở đây có hương vị cực kỳ đặc trưng.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882897/27ef0ed7-nha-hang-quan-4-7_c8jtrd.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -265,9 +312,13 @@
     "avg_price": 150000.0,
     "shu": 2,
     "star": 4.9,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Tiệm ăn Nhật Bản bình dân cực kỳ được lòng sinh viên và giới văn phòng nhờ không gian máy lạnh mát mẻ, sạch sẽ cùng thực đơn đa dạng từ sushi, maki đến sashimi với mức giá siêu 'hạt dẻ'.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779882957/unnamed_1_ifhjcs.webp",
     "type": [
       "Quán Nhật"
     ],
@@ -282,9 +333,12 @@
     "avg_price": 60000.0,
     "shu": 1,
     "star": 5.0,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Bento đầy đặn với gà karaage, trứng cuộn và rau trộn kiểu Nhật. Phần ăn vừa miệng, phù hợp mang đi khi bận rộn.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883008/image_adfjof.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -299,9 +353,12 @@
     "avg_price": 310000.0,
     "shu": 2,
     "star": 5.0,
-    "meals": ["trưa","tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Thương hiệu ẩm thực Nhật Bản chuyên về hình thức giao hàng tận nơi, nổi tiếng với món cơm lươn Nhật (Unagi) nướng sốt Kabayaki thơm lừng, béo ngậy. Bên cạnh món lươn trứ danh, thương hiệu này còn sở hữu menu sashimi và maki platter cực kỳ tươi ngon, được đóng gói vô cùng chỉn chu và đẹp mắt với mức giá rất hợp lý.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883063/item-99452436-2b31-4a41-bcb6-001bc668f610_q4mm3h.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -316,11 +373,14 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 4.5,
-    "meals": ["tối"],
+    "meals": [
+      "tối"
+    ],
     "semantic_text": "Takoyaki nóng hổi, lớp vỏ vàng giòn, phủ sốt đậm và cá bào thơm lừng. Mua ăn vặt buổi chiều là 'chuẩn bài'.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883093/vn-11134259-7r98o-lwi8c5ktj5y3ae_resize_ss1242x600_crop_w1242_h600_cT_bgymqw.jpg",
     "type": [
-      "Quán Nhật", "Tiệm bánh"
+      "Quán Nhật",
+      "Tiệm bánh"
     ],
     "phone_num": "0378544192"
   },
@@ -333,9 +393,13 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 4.7,
-    "meals": ["sáng", "trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Onigiri cơm nắm gọn tay với nhiều nhân mặn mà, tiện mang đi. Hợp cho bữa xế nhẹ nhàng nhưng vẫn chắc bụng.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883120/vn-11134259-7r98o-m06skn4zz4b36a_resize_ss1242x600_crop_w1242_h600_cT_p5xbno.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -350,9 +414,13 @@
     "avg_price": 100000.0,
     "shu": 3,
     "star": 4.8,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Ramen đậm đà, sợi mì dai và topping đầy đặn, ăn là thấy ấm bụng ngay. Không gian nhỏ nhưng phục vụ nhanh.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883235/unnamed_2_el3lui.webp",
     "type": [
       "Quán Nhật"
     ],
@@ -367,9 +435,12 @@
     "avg_price": 1500000.0,
     "shu": 2,
     "star": 4.7,
-    "meals": ["trưa", "tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Nhà hàng mang đến hành trình ẩm thực đầy cảm xúc với sự giao thoa độc đáo giữa kỹ thuật Nhật Bản tinh giản và hương vị Việt Nam sáng tạo từ những nguyên liệu tươi mới tuyển chọn theo ngày.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883318/unnamed_3_odpuko.webp",
     "type": [
       "Quán Nhật"
     ],
@@ -384,9 +455,12 @@
     "avg_price": 250000.0,
     "shu": 2,
     "star": 4.7,
-    "meals": ["tối", "khuya"],
+    "meals": [
+      "tối",
+      "khuya"
+    ],
     "semantic_text": "Quán ăn Nhật Bản mang phong cách gia đình mộc mạc, nổi bật với các phần sashimi cá hồi tươi ngon, lát cắt dày dặn và món cơm lươn nướng bếp than thơm lừng, đậm vị. Quán có diện tích nhỏ nhắn, ấm cúng ẩn mình trong hẻm và gây ấn tượng mạnh nhờ menu sáng tạo thay đổi linh hoạt kèm những set ăn thử thách đầy thú vị do chính chủ quán trực tiếp đứng bếp.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883366/Nh-T-Kh-C-Qu-N_3b1eaa62d4737e879945b29d68667077_o3giwn.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -401,9 +475,12 @@
     "avg_price": 80000.0,
     "shu": 2,
     "star": 4.9,
-    "meals": ["trưa","tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Tiệm mì Nhật nhỏ xinh, bình dân mới nổi do chủ người Nhật trực tiếp đứng bếp, chuyên phục vụ các dòng ramen truyền thống và mì trộn với mức giá siêu 'hạt dẻ'.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883454/658970405_1567395095103233_5640915875948678310_n_ftir7u.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -418,11 +495,16 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 5.0,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Taiyaki vỏ bánh thơm bơ, nướng tại chỗ nên luôn nóng giòn. Món tráng miệng “ngọt vừa” cho một vòng dạo phố Quận 4.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883488/59ccd414-506d-4628-8027-3c017bd4d7d2vnki3r0w_jj3z6i.jpg",
     "type": [
-      "Quán Nhật", "Tiệm bánh"
+      "Quán Nhật",
+      "Tiệm bánh"
     ],
     "phone_num": "0368967382"
   },
@@ -435,9 +517,13 @@
     "avg_price": 150000.0,
     "shu": 2,
     "star": 3.9,
-    "meals": ["trưa","tối","khuya"],
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
     "semantic_text": "Tiệm sushi bình dân vỉa hè nằm trên con phố ẩm thực Vĩnh Khánh sầm uất, nổi bật với các phần sashimi cá hồi chuẩn Na Uy tươi béo và thực đơn món Nhật đa dạng có mức giá siêu 'học sinh sinh viên'.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883525/photo0jpg_mckubp.jpg",
     "type": [
       "Quán Nhật"
     ],
@@ -452,9 +538,13 @@
     "avg_price": 50000.0,
     "shu": 2,
     "star": 4.6,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Quán ăn bình dân vô cùng nổi tiếng và đắt khách tại khu cư xá Vĩnh Hội, ghi điểm nhờ những đĩa cơm thập cẩm đầy đặn, ngon miệng và mức giá siêu rẻ.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883574/quan-com-chay-tuong-nguyen-quan-4-2_fhgoeu.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -469,9 +559,13 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 4.7,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Điểm ăn chay bình dân vô cùng độc đáo, nổi tiếng với món cơm tấm sườn bì chả chay chuẩn vị Sài Gòn và món miến Thái xào đậm đà do chính anh chủ tiệm tâm huyết đứng bếp. Quán tuy nhỏ mộc mạc nhưng cực kỳ đông khách nhờ thực đơn món nước thay đổi linh hoạt theo ngày có vị ngọt thanh tự nhiên từ rau củ và mức giá siêu bình dân.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883628/534839810_783132460911048_7709452110040824764_n_cxclnf.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -486,9 +580,13 @@
     "avg_price": 50000.0,
     "shu": 2,
     "star": 3.8,
-    "meals": ["sáng","trưa","tối"],
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Quán ăn chay bình dân vô cùng quen thuộc và đắt khách trên cung đường Tôn Đản sầm uất, nổi tiếng với khay đồ ăn tự chọn cực kỳ phong phú và đĩa cơm thập cẩm ú ụ được dọn kèm phần canh ngon ngọt miễn phí.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883683/quan-chay-nhan-tam-949624_ies5sc.jpg",
     "type": [
       "Quán Chay"
     ],
@@ -503,12 +601,549 @@
     "avg_price": 50000.0,
     "shu": 1,
     "star": 4.5,
-    "meals": ["trưa","tối"],
+    "meals": [
+      "trưa",
+      "tối"
+    ],
     "semantic_text": "Điểm hẹn ẩm thực lý tưởng nổi tiếng với menu chay mang phong cách Fusion độc đáo kết hợp cùng các món ăn thuần Việt quen thuộc có mức giá vô cùng bình dân.",
-    "image_url": "",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883792/vn-11134513-7r98o-lsvhux1kfrgk0e_resize_ss1242x600_crop_w1242_h600_cT_k4uptl.jpg",
     "type": [
       "Quán Chay"
     ],
     "phone_num": ""
+  },
+  {
+    "id": "0031",
+    "name": "Cô Thu Bún Riêu Cua",
+    "address": "198C Xóm Chiếu, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.756191,
+    "lng": 106.7095405,
+    "avg_price": 25000.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Quán bún riêu đông khách nhờ nước dùng đậm vị cua, thơm và thanh. Tô đầy đặn, topping chất lượng, ăn một lần là nhớ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883958/unnamed_5_umhhpa.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938239897"
+  },
+  {
+    "id": "0032",
+    "name": "Cơm Tấm Cô Nga",
+    "address": "143 Đoàn Văn Bơ, Phường Xóm Chiếu, Quận 4, TP.HCM",
+    "lat": 10.7629461,
+    "lng": 106.7045288,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Sườn nướng thơm lửa, mềm và thấm sốt, ăn cùng cơm tấm nóng rất bắt vị. Quán luôn nhộn nhịp vào giờ trưa và tối.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779883916/unnamed_4_dv5syr.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0033",
+    "name": "Hủ Tiếu Nam Vang Nhị",
+    "address": "55 Nguyễn Khoái, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7545142,
+    "lng": 106.6944256,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Nước lèo trong ngọt tự nhiên, sợi hủ tiếu dai vừa, topping đầy đặn. Một địa chỉ quen thuộc của dân sành ăn khu Quận 4.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884083/unnamed_6_ktwuhy.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0907363403"
+  },
+  {
+    "id": "0034",
+    "name": "Bánh Canh Cua Dì Bình",
+    "address": "28 Xóm Chiếu, Phường Xóm Chiếu, Quận 4, TP. HCM",
+    "lat": 10.759655,
+    "lng": 106.711526,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Bánh canh sánh nhẹ, thịt cua tươi và chả cua chắc tay. Hương vị đậm đà, hợp cho bữa tối ấm bụng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884023/vn-11134513-7r98o-lsu0p949femccc_resize_ss1242x600_crop_w1242_h600_cT_lq1efv.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0982178608"
+  },
+  {
+    "id": "0035",
+    "name": "Lẩu Cá Kèo 48",
+    "address": "209/48 Tôn Thất Thuyết, Phường Vĩnh Hội, Quận 4, TP.HCMM",
+    "lat": 10.7547202,
+    "lng": 106.6995064,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Lẩu cá kèo chua cay chuẩn vị miền Tây, cá tươi và rau ăn kèm phong phú. Đi nhóm bạn hoặc gia đình đều rất hợp.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884143/unnamed_8_efjzep.webp",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02839414083"
+  },
+  {
+    "id": "0036",
+    "name": "Bế Bistro - Quán Ăn Chill Quận 4",
+    "address": "255 Bến Vân Đồn, Phường Khánh Hội, Quận 4, TP. HCM",
+    "lat": 10.7551336,
+    "lng": 106.6911819,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Không gian sang nhẹ, món Âu trình bày đẹp và nêm nếm tinh tế. Steak và pasta ở đây luôn được thực khách đánh giá cao.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884168/quan-be_g9aema.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0981644453"
+  },
+  {
+    "id": "0037",
+    "name": "MK Kitchen & Bar",
+    "address": "360D Bến Vân Đồn, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7580349,
+    "lng": 106.6935433,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Điểm hẹn hò vô cùng lý tưởng cho các cặp đôi. Nhà hàng được bày trí theo phong cách contemporary chill với ánh đèn vàng ấm áp, nhạc nhẹ lãng mạn và phục vụ menu món Âu đa dạng cùng các loại cocktail, rượu vang chất lượng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884190/nha-hang-mk-kitchen-bar-ben-van-don-1-normal-2253769856506_pri0ss.webp",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0901883159"
+  },
+  {
+    "id": "0038",
+    "name": "Redfox Pizza",
+    "address": "24 Tân Vĩnh, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7557526,
+    "lng": 106.6937669,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Tiệm pizza thủ công Napoletana 'local' chất lượng cao ẩn mình trong hẻm Nguyễn Khoái, nổi tiếng với lớp đế mỏng xốp, viền bánh nướng xém giòn rụm thơm mùi củi và topping chất lượng vượt tầm giá.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884205/red-fox-bar-grille_qbc7dh.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0933436376"
+  },
+  {
+    "id": "0039",
+    "name": "Nhà Hàng OLiu Đỏ",
+    "address": "62 Vĩnh Hội, Phường Vĩnh Hội, Quận 4, TP. HCM",
+    "lat": 10.7638446,
+    "lng": 106.703985,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Điểm hẹn lý tưởng cho các gia đình và cặp đôi nhờ sự kết hợp tinh tế giữa ẩm thực châu Âu sang trọng và các món ăn thuần Việt quen thuộc. Điểm cộng lớn của quán là không gian mang đậm phong cách kiến trúc Ý cổ điển với những vòm gạch ấm cúng, lung linh dưới ánh đèn vàng, dọn món nhanh nhẹn và có mức giá vô cùng 'hạt dẻ', vừa vặn với túi tiền.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884239/Nh-H-Ng-Oliu_62ac1f70168c393b54322f9d33c262b3_addodh.jpg",
+    "type": [
+      "Quán Âu",
+      "Quán Việt"
+    ],
+    "phone_num": "0774455071"
+  },
+  {
+    "id": "0040",
+    "name": "Hàng Dương Sakura",
+    "address": "224 Đường số 48, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7587523,
+    "lng": 106.698555,
+    "avg_price": 2000000.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Điểm hẹn ẩm thực đẳng cấp nổi tiếng với sự giao thoa độc đáo giữa nguồn hải sản tươi sống bắt tại hồ và menu món Nhật tinh tế hợp khẩu vị người Việt. Sở hữu không gian rộng rãi, sang trọng nằm ngay đối diện công viên Khánh Hội, nhà hàng ghi điểm tuyệt đối nhờ hệ thống phòng VIP riêng tư, tiện nghi, cực kỳ lý tưởng cho các buổi tiếp đãi đối tác kinh doanh, liên hoan công ty hay sum họp gia đình.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884266/hang-duong-sakura-09062721_pwrpwh.jpg",
+    "type": [
+      "Quán Âu",
+      "Quán Nhật"
+    ],
+    "phone_num": "18009478"
+  },
+  {
+    "id": "0041",
+    "name": "Meo Meo - Trà Sữa & Matcha",
+    "address": "150/27 Bến Vân Đồn, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7630889,
+    "lng": 106.6990183,
+    "avg_price": 35000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tiệm nước mang phong cách take-away 'local' cực kỳ hot, nổi tiếng với menu đồ uống từ matcha chuẩn vị Nhật béo mịn, đậm thơm và các dòng trà trái cây tươi mát giải nhiệt",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884310/unnamed_9_te69nw.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0936002633"
+  },
+  {
+    "id": "0042",
+    "name": "Thương Rooftop",
+    "address": "258 Tôn Đản, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7568339,
+    "lng": 106.7060929,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Quán bar sân thượng cực kỳ 'chill' nằm ẩn mình trên tầng cao tòa nhà đường Tôn Đản, nổi tiếng với góc view 360 độ ôm trọn cảnh sắc Sài Gòn lung linh và ngắm được cả Bitexco lẫn Landmark 81.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884383/cafe-thuong-rooftop-quan-4-13_kducrc.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0378038438"
+  },
+  {
+    "id": "0043",
+    "name": "Trà Sữa Viên Viên - Vĩnh Hội",
+    "address": "122 Đ. Vĩnh Hội, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7559935,
+    "lng": 106.7049325,
+    "avg_price": 30000.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Trạm dừng chân lý tưởng cho tín đồ mê trà sữa phong vị Đài Loan truyền thống với những ly trà đậm đà, mộc mạc kết hợp cùng các loại viên topping tươi dai ngon độc quyền. Quán ghi điểm mạnh nhờ không gian trẻ trung, xinh xắn, tốc độ phục vụ nhanh nhẹn và mức giá vô cùng 'học sinh sinh viên'.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884411/unnamed_10_dkvjct.webp",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0397255408"
+  },
+  {
+    "id": "0044",
+    "name": "Somtamlam K66 Hoàng Diệu",
+    "address": "K66 Bến Vân Đồn, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7610247,
+    "lng": 106.7001393,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Gỏi đu đủ, tomyum và các món nướng Thái đều đậm vị, chua cay rất đã. Quán luôn tấp nập vào khung giờ tối.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884435/Somtamlam-K66-Hoang-Dieu-Q4-TPHCM_zchurp.webp",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0949155585"
+  },
+  {
+    "id": "0045",
+    "name": "Hủ tiếu Thái Lan Pi Thai",
+    "address": "255 Khánh Hội, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7593911,
+    "lng": 106.6985618,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Điểm đến không thể bỏ qua cho các tín đồ mê ẩm thực xứ Chùa Vàng, nổi tiếng với món hủ tiếu thuyền (Kuay Tiew Ruea) và hủ tiếu Tomyum chua cay bùng nổ vị giác.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884463/369345-_oapkcq.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": ""
+  },
+  {
+    "id": "0046",
+    "name": "Bếp Thái Ngò Rí",
+    "address": "14 Đường số 38, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7579352,
+    "lng": 106.7014848,
+    "avg_price": 250000.0,
+    "shu": 4,
+    "star": 4.5,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Điểm hẹn lý tưởng cho các tín đồ mê đồ Thái với menu món ăn chuẩn vị xứ Chùa Vàng, đầy đặn và có mức giá vô cùng phải chăng. Không gian quán mang đậm phong cách đường phố gần gũi, ấm cúng với những mảng tường ốp tre mộc mạc, ghi điểm tuyệt đối nhờ phong cách phục vụ chân chất, chu đáo của các cô chú lớn tuổi và khu vực vệ sinh cực kỳ sạch sẽ.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884556/687833862_1496346435841486_6901461949738030277_n_annurf.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0909304814"
+  },
+  {
+    "id": "0047",
+    "name": "Thái Sumo Lẩu cá viên - Quận 4",
+    "address": "005 Lô B2 đường 12B, Chung cư Phường 3, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7551491,
+    "lng": 106.7004933,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Quán lẩu cá viên cực kỳ hot, nổi tiếng với phần nước lẩu Tomyum chua cay, đậm đà chuẩn vị, kết hợp cùng quầy nước chấm tự pha miễn phí siêu ngon và không gian hiện đại, máy lạnh vô cùng thoáng đãng, dễ chịu.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884581/Thai-Sumo-Fish-Ball-Hotpot_thumb_50a74968e81d438d208df0b43d44f64b_cfslwk.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0932108256"
+  },
+  {
+    "id": "0048",
+    "name": "Tiệm Bánh Sài Gòn Givral",
+    "address": "236 Khánh Hội, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7591471,
+    "lng": 106.6989495,
+    "avg_price": 380000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Thương hiệu bánh ngọt danh tiếng lâu đời mang đậm phong cách Pháp tinh tế, nổi tiếng với dòng bánh kem bắp thơm bùi cùng các loại bánh nướng, bánh lạnh đa dạng có chất lượng thượng hạng.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884658/382765ab-banh-kem-quan-4-20_i6lr0n.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02839402102"
+  },
+  {
+    "id": "0049",
+    "name": "TOUS les JOURS - Khánh Hội",
+    "address": "201 Khánh Hội, Phường Vĩnh Hội, Quận 4, TP.HCM",
+    "lat": 10.7575738,
+    "lng": 106.6998909,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Cửa hàng ghi điểm tuyệt đối nhờ tủ bánh tươi đa dạng từ bánh mì mặn, bánh ngọt đến các dòng bánh kem bắp, Tiramisu cao cấp được nướng mới liên tục trong ngày và bãi giữ xe máy hoàn toàn miễn phí ngay bên hông quán.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884702/1617769840_kakaotalk-20180327-182136731_rkfkw6.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02836365775"
+  },
+  {
+    "id": "0050",
+    "name": "Midori Bakery & Pastry",
+    "address": "224/224 Khu Phố 3, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7589849,
+    "lng": 106.6991363,
+    "avg_price": 170000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Tọa lạc ngay mặt tiền trục đường Khánh Hội sầm uất, tiệm ghi điểm tuyệt đối nhờ các mẫu bánh sinh nhật custom thiết kế vô cùng xinh xắn, mẫu mã đa dạng theo xu hướng bắt mắt đi kèm mức giá 'hạt dẻ' và phong cách phục vụ siêu thân thiện.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884762/unnamed_11_ykjh7p.webp",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0965137144"
+  },
+  {
+    "id": "0051",
+    "name": "Tiệm Cô Phương - Ngọt Ngào & Mặn Mà",
+    "address": "339/38 Đ. Tôn Đản, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7543419,
+    "lng": 106.7056737,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Tiệm ăn vặt và bánh ngọt online 'home-made' cực kỳ được lòng các gia đình nhỏ, nổi tiếng với các hũ sữa chua hạt yến mạch sánh mịn cùng dòng bánh flan, bánh dứa béo ngậy mềm tan.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884812/vn-11134513-7r98o-lsvf0klm69p592_resize_ss1242x600_crop_w1242_h600_cT_pkfurg.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0936525618"
+  },
+  {
+    "id": "0052",
+    "name": "KEBAB ANH ĐỨC",
+    "address": "243 Hoàng Diệu, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7614275,
+    "lng": 106.701443,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Xe bánh mì Thổ Nhĩ Kỳ và ăn vặt vỉa hè cực kỳ nổi tiếng đối với giới trẻ, gây ấn tượng mạnh nhờ phần vỏ bánh tam giác nướng giòn rụm kết hợp với thịt nướng đậm đà và lớp phô mai kéo sợi siêu 'cuốn'.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884885/468453114_122140481210345319_311874370770403093_n_ousj6v.jpg",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0931757333"
+  },
+  {
+    "id": "0053",
+    "name": "Good Chicken Gà Rán Hàn Quốc",
+    "address": "199/1 Hoàng Diệu, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7626105,
+    "lng": 106.7029737,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "tối"
+    ],
+    "semantic_text": "Quán chinh phục thực khách nhờ lớp vỏ gà chiên nóng hổi, giòn rụm không bị ngấy dầu, kết hợp cùng lớp sốt chuẩn vị Hàn đa dạng từ sốt cay bùng nổ, sốt bơ tỏi đến sốt mật ong thơm ngọt với mức giá siêu 'hạt dẻ'.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884947/unnamed_12_nwmnzr.webp",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0907858985"
+  },
+  {
+    "id": "0054",
+    "name": "Hot Dog Nguyễn Thần Hiến",
+    "address": "B150 Nguyễn Thần Hiến, Phường Xóm Chiếu, Quận 4, TP.HCM",
+    "lat": 10.7538129,
+    "lng": 106.7158313,
+    "avg_price": 50000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Hotdog nóng giòn, topping đa dạng và sốt pha đậm đà. Một lựa chọn ăn nhanh tiện lợi cho học sinh, sinh viên.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779884977/c4f9d776947740d6b3b269e515c631b0_oggd7p.jpg",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0983709433"
+  },
+  {
+    "id": "0055",
+    "name": "McDonald's Hoàng Diệu",
+    "address": "Chung cư H3, 384 Hoàng Diệu, Phường Khánh Hội, Quận 4, TP.HCM",
+    "lat": 10.7601747,
+    "lng": 106.6989822,
+    "avg_price": 50000.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối",
+      "khuya"
+    ],
+    "semantic_text": "Cửa hàng thức ăn nhanh chuẩn Mỹ vô cùng sầm uất, nổi tiếng với thực đơn burger bò Big Mac trứ danh, gà rán giòn rụm không bị khô thịt và quầy McCafé phục vụ đa dạng các món nước giải khát.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779885017/unnamed_13_pha5eq.webp",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "02839433666"
+  },
+  {
+    "id": "0056",
+    "name": "Lotteria Hoàng Diệu",
+    "address": "102 Đ. Lê Quốc Hưng, Phường Xóm Chiếu, Quận 4, TP.HCM",
+    "lat": 10.7639008,
+    "lng": 106.7046101,
+    "avg_price": 80000.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "sáng",
+      "trưa",
+      "tối"
+    ],
+    "semantic_text": "Cửa hàng có không gian nhiều tầng rộng rãi, sáng sủa, cực kỳ được lòng các nhóm bạn trẻ và gia đình nhờ menu burger bò mềm thơm, gà rán sốt đậu giòn rụm chất lượng và bãi giữ xe máy hoàn toàn miễn phí ngay phía trước.",
+    "image_url": "https://res.cloudinary.com/dhcom09wr/image/upload/v1779885047/2025-07-23_jqvtve.webp",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "028 3826 6434"
   }
 ]
