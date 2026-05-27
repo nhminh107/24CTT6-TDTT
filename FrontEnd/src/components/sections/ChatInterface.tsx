@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { SendHorizontal, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useAuth } from "@/context/AuthContext";
 type Restaurant = {
@@ -63,6 +63,11 @@ type ApiResponse = {
   status?: string;
   message?: string;
   detail?: string;
+  error?: {
+    code?: number;
+    message?: string;
+    status?: string;
+  };
   result?: ApiRestaurant[]; // ⚠️ LƯU Ý: Đổi từ 'result' thành 'results' cho đúng với JSON mới của bạn
 };
 
@@ -81,6 +86,11 @@ export default function ChatInterface({
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorModal, setErrorModal] = useState({
+    open: false,
+    code: "",
+    message: ""
+  });
   const { user } = useAuth();
   const suggestions = useMemo(
     () => [
@@ -173,7 +183,55 @@ export default function ChatInterface({
           ...(placeId ? { place_id: placeId } : {})
         })
       });
-      const data = (await response.json()) as ApiResponse;
+      let data: ApiResponse | null = null;
+      try {
+        data = (await response.json()) as ApiResponse;
+      } catch {
+        data = null;
+      }
+
+      if (response.status !== 200) {
+        const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
+        const detailedMessage =
+          data?.message ||
+          data?.detail ||
+          data?.error?.message ||
+          (data ? JSON.stringify(data) : "Đã có lỗi xảy ra.");
+        const errorCode = data?.error?.code ?? response.status;
+        setErrorModal({
+          open: true,
+          code: String(errorCode),
+          message
+        });
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: detailedMessage,
+            restaurants: []
+          }
+        ]);
+        return;
+      }
+
+      if (!data) {
+        const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
+        setErrorModal({
+          open: true,
+          code: String(response.status),
+          message
+        });
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: message,
+            restaurants: []
+          }
+        ]);
+        return;
+      }
+
       const assistant = buildAssistantMessage(data);
       setMessages((prev) => [
         ...prev,
@@ -184,6 +242,12 @@ export default function ChatInterface({
         }
       ]);
     } catch {
+      const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
+      setErrorModal({
+        open: true,
+        code: "NETWORK",
+        message
+      });
       setMessages((prev) => [
         ...prev,
         {
@@ -213,6 +277,69 @@ export default function ChatInterface({
 
   return (
     <div className="flex h-full flex-col gap-6">
+      <AnimatePresence>
+        {errorModal.open && (
+          <motion.div
+            key="error-backdrop"
+            initial={false}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 px-4 backdrop-blur-sm"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) {
+                setErrorModal((prev) => ({ ...prev, open: false }));
+              }
+            }}
+          >
+            <motion.div
+              key="error-modal"
+              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 24, scale: 0.96 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl"
+            >
+              <div className="flex items-start gap-4 px-6 py-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 shadow-md shadow-rose-200">
+                  <AlertTriangle size={22} className="text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-base font-bold text-slate-900">
+                    Có lỗi xảy ra
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-600">
+                    {errorModal.message}
+                  </p>
+                  <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-rose-200/70 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-600">
+                    Mã lỗi: {errorModal.code}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setErrorModal((prev) => ({ ...prev, open: false }))
+                  }
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:bg-slate-100"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+              <div className="border-t border-slate-100 px-6 py-4">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setErrorModal((prev) => ({ ...prev, open: false }))
+                  }
+                  className="w-full rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-3 text-sm font-semibold text-white shadow-glow transition hover:opacity-90"
+                >
+                  Đóng thông báo
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="rounded-3xl bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon p-[1px] shadow-glow">
         <div className="glass rounded-3xl p-6">
           <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-brand-flame">
