@@ -116,7 +116,10 @@
     "avg_price": 450000.0,
     "shu": 3,
     "star": 4.8,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Sushi World Hà Huy Tập mang đến trải nghiệm hương vị Nhật Bản tinh tế với những nguyên liệu tươi ngon và cách chế biến truyền thống.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870341/quan_an_q7/z00ibrkfpngun9ibg3jx.jpg",
     "type": [
@@ -219,7 +222,10 @@
     "avg_price": 300000.0,
     "shu": 1,
     "star": 4.7,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Yan Sushi mang đến trải nghiệm ẩm thực Nhật Bản tinh tế với các món sushi tươi ngon, nhẹ nhàng và thanh mát.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870348/quan_an_q7/ugemx0rky8jecp1lrva9.jpg",
     "type": [
@@ -279,7 +285,10 @@
     "avg_price": 250000.0,
     "shu": 3,
     "star": 3.8,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Sushi in Sushi mang đến trải nghiệm hương vị biển tươi ngon với những nguyên liệu chất lượng cao, đặc biệt phù hợp với những ai yêu thích vị cay nhẹ.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870352/quan_an_q7/sbei4b9cfq1onkyt1zpt.jpg",
     "type": [
@@ -424,7 +433,10 @@
     "avg_price": 250000.0,
     "shu": 6,
     "star": 4.3,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán mang đến hương vị Thái truyền thống với sự hiện đại, các món ăn đậm đà, kích thích vị giác.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870362/quan_an_q7/zo7piqjodqfvog3qfql6.jpg",
     "type": [
@@ -680,7 +692,10 @@
     "avg_price": 250000.0,
     "shu": 6,
     "star": 4.7,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán Thái P'MEE Thai Casual Food mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được chế biến với gia vị cay nồng, kích thích vị giác.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870377/quan_an_q7/etjudhqrkumkbtzim0hg.jpg",
     "type": [
@@ -720,7 +735,10 @@
     "avg_price": 200000.0,
     "shu": 2,
     "star": 4.4,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán Thái Hoàng Ty mang đến trải nghiệm với nhiều món ăn truyền thống như bánh tráng mắm nêm, gỏi cuốn, và các món lẩu đặc trưng, tạo nên hương vị đậm đà và hấp dẫn.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870380/quan_an_q7/eqkmvothfj0mwkaucdsq.jpg",
     "type": [
@@ -804,7 +822,10 @@
     "avg_price": 450000.0,
     "shu": 6,
     "star": 5.0,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán Hoàng Thái Tử Q7 mang đến trải nghiệm ẩm thực Thái cay nồng, đậm đà với các món ăn được chế biến tinh tế.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870385/quan_an_q7/ptsj3vhrrsoqehkyg8fz.jpg",
     "type": [
@@ -1828,7 +1849,10 @@
     "avg_price": 150000.0,
     "shu": 3,
     "star": 5.0,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Bánh pizza và mì Ý tại Cy’s Pizza & Pasta mang hương vị truyền thống châu Âu, với lớp vỏ giòn và sốt đậm đà, trải nghiệm ẩm thực đáng nhớ.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870453/quan_an_q7/djdmhlw05qfymcrgcx15.jpg",
     "type": [
@@ -1889,7 +1913,10 @@
     "avg_price": 250000.0,
     "shu": 3,
     "star": 4.1,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Buzza Pizza Nguyễn Thị Thập mang đến những chiếc pizza kiểu Âu với hương vị truyền thống, kết hợp hài hòa giữa đế bánh giòn và topping chất lượng.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870457/quan_an_q7/carimyeowxqkns2mkdvc.jpg",
     "type": [
@@ -1907,7 +1934,10 @@
     "avg_price": 450000.0,
     "shu": 3,
     "star": 4.9,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Pizza 4P's mang đến hương vị truyền thống Ý với lớp vỏ giòn tan và topping tươi ngon, trải nghiệm ẩm thực châu Âu ngay giữa Phú Mỹ Hưng.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870458/quan_an_q7/hm1ns7zedoregmctzg48.jpg",
     "type": [
@@ -2275,7 +2305,10 @@
     "avg_price": 200000.0,
     "shu": 1,
     "star": 4.5,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán chay An & Cafe mang đến những món ăn thuần chay nhẹ nhàng, thanh mát, phù hợp cho mọi bữa ăn.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870481/quan_an_q7/quapgeoxlmuapqzwuq2f.jpg",
     "type": [
@@ -2490,7 +2523,10 @@
     "avg_price": 150000.0,
     "shu": 1,
     "star": 5.0,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Quán Ăn Sức Khỏe Soumaki Quận 7 mang đến những món ăn chay thanh mát, tươi ngon, phù hợp cho những ai quan tâm đến sức khỏe.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870494/quan_an_q7/zvvrbirnbwxb2la6rx2q.jpg",
     "type": [
@@ -2991,7 +3027,10 @@
     "avg_price": 100500.0,
     "shu": 1,
     "star": 4.6,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Navido Specialty Coffee Scenic Valley mang đến trải nghiệm cà phê tinh tế, hương vị dịu nhẹ, phù hợp với mọi vị giác.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870525/quan_an_q7/kh0gtp02it0m2nbdbxn1.jpg",
     "type": [
@@ -3835,7 +3874,10 @@
     "avg_price": 50500.0,
     "shu": 2,
     "star": 4.0,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Phở Linh Trang Anh mang đến hương vị truyền thống đậm đà, với nước dùng thanh ngọt và bánh phở mềm mại, trải nghiệm ẩm thực đáng nhớ.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870577/quan_an_q7/tffc8c8nhk5mm0blwbmu.jpg",
     "type": [
@@ -4049,7 +4091,10 @@
     "avg_price": 50500.0,
     "shu": 3,
     "star": 4.6,
-    "meals": [],
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
     "semantic_text": "Bún Mắm Út Gọ mang hương vị truyền thống, mắm nêm đậm đà kết hợp cùng sợi bún mềm, trải nghiệm ẩm thực Việt Nam đích thực.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870591/quan_an_q7/gsc1wi9pocvutgedhziu.jpg",
     "type": [
