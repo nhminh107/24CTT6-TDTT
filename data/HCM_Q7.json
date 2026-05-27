@@ -50,7 +50,7 @@
     "lat": 10.741985,
     "lng": 106.7153868,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 5.0,
     "meals": [
       "Sáng",
@@ -277,7 +277,7 @@
     "lat": 10.7405807,
     "lng": 106.6983836,
     "avg_price": 250000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 3.8,
     "meals": [],
     "semantic_text": "Sushi in Sushi mang đến trải nghiệm hương vị biển tươi ngon với những nguyên liệu chất lượng cao, đặc biệt phù hợp với những ai yêu thích vị cay nhẹ.",
@@ -570,17 +570,17 @@
     "lat": 10.7195805,
     "lng": 106.731538,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 2,
     "star": 4.4,
     "meals": [
       "Sáng",
       "Trưa",
       "Tối"
     ],
-    "semantic_text": "Chạm Bistro Garden mang đến hương vị Thái truyền thống với các món ăn đậm đà,cay nồng, đặc biệt phù hợp với những ai yêu thích trải nghiệm ẩm thực nhiệt đới.",
+    "semantic_text": "Chạm Bistro Garden mang đến hương vị món ÂU thanh lịch, với sự kết hợp tinh tế giữa các nguyên liệu tươi ngon và phong cách chế biến hiện đại, tạo nên trải nghiệm ẩm thực độc đáo và hấp dẫn.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870371/quan_an_q7/mb7wwd5u3liq2j2cg7bg.jpg",
     "type": [
-      "Quán Thái"
+      "Quán Âu"
     ],
     "phone_num": "0773930355"
   },
@@ -718,13 +718,13 @@
     "lat": 10.7374228,
     "lng": 106.7112761,
     "avg_price": 200000.0,
-    "shu": 6,
+    "shu": 2,
     "star": 4.4,
     "meals": [],
-    "semantic_text": "Quán Thái Hoàng Ty mang đến trải nghiệm hương vị cay nồng đặc trưng, đậm đà với các món ăn được chế biến tinh tế.",
+    "semantic_text": "Quán Thái Hoàng Ty mang đến trải nghiệm với nhiều món ăn truyền thống như bánh tráng mắm nêm, gỏi cuốn, và các món lẩu đặc trưng, tạo nên hương vị đậm đà và hấp dẫn.",
     "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870380/quan_an_q7/eqkmvothfj0mwkaucdsq.jpg",
     "type": [
-      "Quán Thái"
+      "Quán Việt"
     ],
     "phone_num": null
   },
@@ -3378,7 +3378,7 @@
     "lat": 10.7485159,
     "lng": 106.7174776,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 4,
     "star": 4.8,
     "meals": [
       "Sáng",
@@ -3399,7 +3399,7 @@
     "lat": 10.7374415,
     "lng": 106.7313761,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 4,
     "star": 4.8,
     "meals": [
       "Sáng",
@@ -3442,7 +3442,7 @@
     "lat": 10.7363012,
     "lng": 106.7061533,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 4,
     "star": 4.8,
     "meals": [
       "Sáng",
@@ -3464,7 +3464,7 @@
     "lat": 10.726966,
     "lng": 106.7088345,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 4,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3486,7 +3486,7 @@
     "lat": 10.7400244,
     "lng": 106.7098293,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.0,
     "meals": [
       "Sáng",
@@ -3508,7 +3508,7 @@
     "lat": 10.74478,
     "lng": 106.7111449,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3530,7 +3530,7 @@
     "lat": 10.7266487,
     "lng": 106.7106341,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 3.8,
     "meals": [
       "Sáng",
@@ -3574,7 +3574,7 @@
     "lat": 10.7411959,
     "lng": 106.703898,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.5,
     "meals": [
       "Sáng",
@@ -3595,7 +3595,7 @@
     "lat": 10.7207339,
     "lng": 106.7324853,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.6,
     "meals": [
       "Sáng",
@@ -3617,7 +3617,7 @@
     "lat": 10.7291014,
     "lng": 106.7252604,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 2,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3639,7 +3639,7 @@
     "lat": 10.7222352,
     "lng": 106.7297253,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.7,
     "meals": [
       "Sáng",
@@ -3661,7 +3661,7 @@
     "lat": 10.7289981,
     "lng": 106.7250907,
     "avg_price": 50500.0,
-    "shu": 3,
+    "shu": 2,
     "star": 4.5,
     "meals": [
       "Sáng",
@@ -3683,7 +3683,7 @@
     "lat": 10.7311945,
     "lng": 106.710301,
     "avg_price": 50500.0,
-    "shu": 5,
+    "shu": 3,
     "star": 4.2,
     "meals": [
       "Sáng",
@@ -3705,7 +3705,7 @@
     "lat": 10.7266202,
     "lng": 106.7128122,
     "avg_price": 50500.0,
-    "shu": 5,
+    "shu": 3,
     "star": 4.8,
     "meals": [
       "Sáng",
@@ -3726,7 +3726,7 @@
     "lat": 10.7317311,
     "lng": 106.7315357,
     "avg_price": 50500.0,
-    "shu": 3,
+    "shu": 2,
     "star": 4.5,
     "meals": [
       "Sáng",
@@ -3748,7 +3748,7 @@
     "lat": 10.7252722,
     "lng": 106.7291204,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.5,
     "meals": [
       "Sáng",
@@ -3770,7 +3770,7 @@
     "lat": 10.7489032,
     "lng": 106.7048003,
     "avg_price": 50500.0,
-    "shu": 3,
+    "shu": 2,
     "star": 5.0,
     "meals": [
       "Sáng",
@@ -3791,7 +3791,7 @@
     "lat": 10.7403818,
     "lng": 106.7076562,
     "avg_price": 50500.0,
-    "shu": 3,
+    "shu": 2,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3812,7 +3812,7 @@
     "lat": 10.7386082,
     "lng": 106.7107251,
     "avg_price": 300000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.8,
     "meals": [
       "Trưa",
@@ -3833,7 +3833,7 @@
     "lat": 10.7407016,
     "lng": 106.7048689,
     "avg_price": 50500.0,
-    "shu": 3,
+    "shu": 2,
     "star": 4.0,
     "meals": [],
     "semantic_text": "Phở Linh Trang Anh mang đến hương vị truyền thống đậm đà, với nước dùng thanh ngọt và bánh phở mềm mại, trải nghiệm ẩm thực đáng nhớ.",
@@ -3851,7 +3851,7 @@
     "lat": 10.7315098,
     "lng": 106.7067903,
     "avg_price": 450000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.7,
     "meals": [
       "Sáng",
@@ -3873,7 +3873,7 @@
     "lat": 10.7301016,
     "lng": 106.713896,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.2,
     "meals": [
       "Sáng",
@@ -3895,7 +3895,7 @@
     "lat": 10.7448222,
     "lng": 106.7046567,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.2,
     "meals": [
       "Sáng",
@@ -3916,7 +3916,7 @@
     "lat": 10.733923,
     "lng": 106.7016503,
     "avg_price": 50500.0,
-    "shu": 5,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3938,7 +3938,7 @@
     "lat": 10.7320917,
     "lng": 106.731659,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -3960,7 +3960,7 @@
     "lat": 10.7200473,
     "lng": 106.7367564,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 5.0,
     "meals": [
       "Sáng",
@@ -3981,7 +3981,7 @@
     "lat": 10.7390024,
     "lng": 106.7102195,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.2,
     "meals": [
       "Sáng",
@@ -4003,7 +4003,7 @@
     "lat": 10.7343588,
     "lng": 106.70218,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -4087,7 +4087,7 @@
     "lat": 10.746294,
     "lng": 106.7061533,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -4109,7 +4109,7 @@
     "lat": 10.740461,
     "lng": 106.6987225,
     "avg_price": 300000.0,
-    "shu": 6,
+    "shu":3,
     "star": 4.8,
     "meals": [
       "Sáng",
@@ -4131,7 +4131,7 @@
     "lat": 10.7407384,
     "lng": 106.7050395,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Sáng",
@@ -4153,7 +4153,7 @@
     "lat": 10.7301817,
     "lng": 106.7068787,
     "avg_price": 50500.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.3,
     "meals": [
       "Sáng",
@@ -4175,7 +4175,7 @@
     "lat": 10.7391332,
     "lng": 106.7158317,
     "avg_price": 150000.0,
-    "shu": 6,
+    "shu": 3,
     "star": 4.4,
     "meals": [
       "Trưa",
