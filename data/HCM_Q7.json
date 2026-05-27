@@ -1,0 +1,4191 @@
+[
+  {
+    "Link googl": "https://www.google.com/maps/place/Haru+Sushi+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f759b9bb3c1:0x71cd7a6749744e1c!8m2!3d10.7394396!4d106.7072969!16s%2Fg%2F11t7zhwwg8!19sChIJwbObm3UvdTERHE50SWd6zXE?authuser=0&hl=vi&rclk=1",
+    "id": "0001",
+    "name": "Haru Sushi Quận 7",
+    "address": "458 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7394396,
+    "lng": 106.7072969,
+    "avg_price": 400000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Haru Sushi Quận 7 mang đến trải nghiệm sushi tươi ngon, tinh tế với hương vị truyền thống Nhật Bản.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870333/quan_an_q7/fbqkyhzmtzjhywqjkxn8.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/iSushi+Lotte+Mart+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f005b1e455b:0x7a52492f160ff213!8m2!3d10.7410229!4d106.702043!16s%2Fg%2F11svwq7s8g!19sChIJW0UeWwAvdTERE_IPFi9JUno?authuser=0&hl=vi&rclk=1",
+    "id": "0002",
+    "name": "iSushi Lotte Mart Quận 7",
+    "address": "TTTM Lotte Mart Nam, 469 Nguyễn Hữu Thọ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7410229,
+    "lng": 106.702043,
+    "avg_price": 400000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "iSushi Lotte Mart Quận 7 mang đến trải nghiệm sushi tươi ngon, tinh tế với hương vị truyền thống Nhật Bản, phù hợp cho mọi khẩu vị.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870335/quan_an_q7/qityu7ionzmshjgt2bew.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "02873008739"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sushi+Hinoki+-+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fc1cfa16289:0xa64b7b79d11a6e7e!8m2!3d10.741985!4d106.7153868!16s%2Fg%2F11jnnvsx6l!19sChIJiWKhz8EvdTERfm4a0Xl7S6Y?authuser=0&hl=vi&rclk=1",
+    "id": "0003",
+    "name": "Sushi Hinoki - Quận 7",
+    "address": "71 Số 47, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.741985,
+    "lng": 106.7153868,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Sushi Hinoki mang đến trải nghiệm hương vị biển tươi ngon, tinh tế với những nguyên liệu Nhật Bản cao cấp. Không gian quán thanh lịch, sang trọng, phù hợp cho những buổi tụ tập bạn bè.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870337/quan_an_q7/w1nmjqmtfo7dbzch1xve.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0941003181"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Izakaya+Unatoto+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752dab5f0d73ef:0x7110ef52720b1511!8m2!3d10.7379031!4d106.7253835!16s%2Fg%2F11y5v5_y2j!19sChIJ73MNX6stdTERERULclLvEHE?authuser=0&hl=vi&rclk=1",
+    "id": "0004",
+    "name": "Izakaya Unatoto Nguyễn Thị Thập",
+    "address": "70 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7379031,
+    "lng": 106.7253835,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Izakaya Unatoto Nguyễn Thị Thập mang đến trải nghiệm ẩm thực Nhật Bản tinh tế với các món ăn nhẹ nhàng, phù hợp với mọi vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870338/quan_an_q7/kwwot04n765zz44iozhv.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "02836203380"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/HINODE+IZAKAYA/data=!4m7!3m6!1s0x31752faa718797a7:0xc7ba44e9f4d42665!8m2!3d10.7427234!4d106.7005505!16s%2Fg%2F11hz0k1lxz!19sChIJp5eHcaovdTERZSbU9OlEusc?authuser=0&hl=vi&rclk=1",
+    "id": "0005",
+    "name": "HINODE IZAKAYA",
+    "address": "1.018 Toà nhà Sunrise City North Towers 27, Nguyễn Hữu Thọ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7427234,
+    "lng": 106.7005505,
+    "avg_price": 450000.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "HINODE IZAKAYA mang đến trải nghiệm ẩm thực Nhật Bản với hương vị đậm đà, tinh tế, phù hợp cho những ai yêu thích các món ăn thanh lịch.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870339/quan_an_q7/jl1aqxxrtcabeqvjoqox.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0934074433"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sushi+World+H%C3%A0+Huy+T%E1%BA%ADp/data=!4m7!3m6!1s0x31752fcc2de3adbb:0x607aa098c4e77069!8m2!3d10.7266027!4d106.7102247!16s%2Fg%2F11s38kvmg9!19sChIJu63jLcwvdTERaXDnxJigemA?authuser=0&hl=vi&rclk=1",
+    "id": "0006",
+    "name": "Sushi World Hà Huy Tập",
+    "address": "110 Hà Huy Tập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7266027,
+    "lng": 106.7102247,
+    "avg_price": 450000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [],
+    "semantic_text": "Sushi World Hà Huy Tập mang đến trải nghiệm hương vị Nhật Bản tinh tế với những nguyên liệu tươi ngon và cách chế biến truyền thống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870341/quan_an_q7/z00ibrkfpngun9ibg3jx.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0975689612"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sushi+Hokkaido+Sachi+-+Crescent+Mall/data=!4m7!3m6!1s0x31752fc8067bf239:0x167dcbea3010f96f!8m2!3d10.7282008!4d106.718055!16s%2Fg%2F11hzzx0k3p!19sChIJOfJ7BsgvdTERb_kQMOrLfRY?authuser=0&hl=vi&rclk=1",
+    "id": "0007",
+    "name": "Sushi Hokkaido Sachi - Crescent Mall",
+    "address": "101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7282008,
+    "lng": 106.718055,
+    "avg_price": 600000.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Sushi Hokkaido Sachi mang đến trải nghiệm hương vị tươi ngon của hải sản Nhật Bản, đặc biệt phù hợp với những ai yêu thích vị cay nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870342/quan_an_q7/g1likfc7tpct0rw2myty.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0325515966"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sushi+88/data=!4m7!3m6!1s0x31752fa1f53971f3:0x3a36a21df6b01c2d!8m2!3d10.7403466!4d106.6986816!16s%2Fg%2F11b7lnn3xy!19sChIJ83E59aEvdTERLRyw9h2iNjo?authuser=0&hl=vi&rclk=1",
+    "id": "0008",
+    "name": "Sushi 88",
+    "address": "44-46 Đường Số 14, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7403466,
+    "lng": 106.6986816,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Sushi 88 mang đến trải nghiệm hương vị biển tươi mát với những nguyên liệu chất lượng cao, phù hợp cho những ai yêu thích sự tinh tế của ẩm thực Nhật Bản.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870344/quan_an_q7/juos35xlwqpinnema7pk.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0985753753"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Tokyo+Deli/data=!4m7!3m6!1s0x31752f8bdc404e9b:0xdfd672584672db5d!8m2!3d10.7276091!4d106.7195025!16s%2Fg%2F1td3cj74!19sChIJm05A3IsvdTERXdtyRlhy1t8?authuser=0&hl=vi&rclk=1",
+    "id": "0009",
+    "name": "Tokyo Deli",
+    "address": "Lot CR3-1/103 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7276091,
+    "lng": 106.7195025,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tokyo Deli mang đến những hương vị tinh tế của Nhật Bản, với các món ăn nhẹ nhàng, thanh mát, phù hợp cho mọi vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870345/quan_an_q7/qlofgbvm0pub15xayxgk.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Tr%C3%A0ng+An+Qu%C3%A1n+-+Nh%C3%A0+h%C3%A0ng+%E1%BA%A8m+Th%E1%BB%B1c+%C4%90%E1%BB%93ng+Qu%C3%AA+Ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f3380b18f65:0xdec731c121f1d27!8m2!3d10.741822!4d106.7123838!16s%2Fg%2F11scch847b!19sChIJZY-xgDMvdTERJx0fEhxz7A0?authuser=0&hl=vi&rclk=1",
+    "id": "0010",
+    "name": "Tràng An Quán - Nhà hàng Ẩm Thực Đồng Quê Ngon Quận 7",
+    "address": "131 Số 47, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.741822,
+    "lng": 106.7123838,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Tràng An Quán mang đến trải nghiệm ẩm thực Nhật Bản tinh tế với hương vị thanh lịch, phù hợp cho những ai yêu thích sự cân bằng trong từng món ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870347/quan_an_q7/axxevxrpjjz9ezxb3hce.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0969273254"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Yan+Sushi/data=!4m7!3m6!1s0x31752fe518ecf863:0xa06077f576c6ca6b!8m2!3d10.7399392!4d106.7098004!16s%2Fg%2F11j91ybt84!19sChIJY_jsGOUvdTERa8rGdvV3YKA?authuser=0&hl=vi&rclk=1",
+    "id": "0011",
+    "name": "Yan Sushi",
+    "address": "2 Số 38, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7399392,
+    "lng": 106.7098004,
+    "avg_price": 300000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "Yan Sushi mang đến trải nghiệm ẩm thực Nhật Bản tinh tế với các món sushi tươi ngon, nhẹ nhàng và thanh mát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870348/quan_an_q7/ugemx0rky8jecp1lrva9.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0982266447"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/AMAI+TEN+Sushi/data=!4m7!3m6!1s0x317525a80cb8dde9:0x144a371d9acc0a79!8m2!3d10.7412002!4d106.7043739!16s%2Fg%2F11svtsz012!19sChIJ6d24DKgldTEReQrMmh03ShQ?authuser=0&hl=vi&rclk=1",
+    "id": "0012",
+    "name": "AMAI TEN Sushi",
+    "address": "355/11 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7412002,
+    "lng": 106.7043739,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Trưa"
+    ],
+    "semantic_text": "Amai Ten Sushi mang đến trải nghiệm sushi tươi ngon, tinh tế với hương vị hải sản đặc trưng của Nhật Bản. Không gian quán ấm cúng, thanh lịch, phù hợp cho những buổi thưởng thức ẩm thực Nhật chất lượng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870349/quan_an_q7/zkqy1i7ub05q6y3zv48v.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0355246466"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/KOHAKU+SUSHI+-+CRESCENT+MALL/data=!4m7!3m6!1s0x31752f80358ac097:0xeb7075ae9f5297f3!8m2!3d10.7283657!4d106.717844!16s%2Fg%2F11mz22qnsv!19sChIJl8CKNYAvdTER85dSn651cOs?authuser=0&hl=vi&rclk=1",
+    "id": "0013",
+    "name": "KOHAKU SUSHI - CRESCENT MALL",
+    "address": "Crescent Mall, 101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7283657,
+    "lng": 106.717844,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 3.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KOHAKU SUSHI mang đến trải nghiệm sushi Nhật Bản tinh tế với hương vị tươi ngon và đa dạng, phù hợp cho mọi khẩu vị.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870351/quan_an_q7/codzrvzir2lnm86dgogc.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0919077486"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sushi+in+Sushi+-+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752f002f53f609:0x2d3608265562a4a1!8m2!3d10.7405807!4d106.6983836!16s%2Fg%2F11wq7m4tbk!19sChIJCfZTLwAvdTERoaRiVSYINi0?authuser=0&hl=vi&rclk=1",
+    "id": "0014",
+    "name": "Sushi in Sushi - Nguyễn Thị Thập",
+    "address": "51-53 Đ. Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7405807,
+    "lng": 106.6983836,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 3.8,
+    "meals": [],
+    "semantic_text": "Sushi in Sushi mang đến trải nghiệm hương vị biển tươi ngon với những nguyên liệu chất lượng cao, đặc biệt phù hợp với những ai yêu thích vị cay nhẹ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870352/quan_an_q7/sbei4b9cfq1onkyt1zpt.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/My+SuShi+House/data=!4m7!3m6!1s0x31752fc0338655c7:0xff7fd6d1b145d40!8m2!3d10.7426792!4d106.7138248!16s%2Fg%2F11jn65rkpb!19sChIJx1WGM8AvdTERQF0UG2399w8?authuser=0&hl=vi&rclk=1",
+    "id": "0015",
+    "name": "My SuShi House",
+    "address": "19 Mai Văn Vĩnh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7426792,
+    "lng": 106.7138248,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "My SuShi House mang đến trải nghiệm thưởng thức sushi Nhật Bản tinh tế, với hương vị tươi ngon và tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870354/quan_an_q7/tvik6p8rlim1y9uv55sz.jpg",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0905471991"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+Th%C3%A1i+Khapi+-+394+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752f73702709cd:0x88e195005ca865f7!8m2!3d10.7392613!4d106.7033676!16s%2Fg%2F11vf50wcqr!19sChIJzQkncHMvdTER92WoXACV4Yg?authuser=0&hl=vi&rclk=1",
+    "id": "0016",
+    "name": "Quán Thái Khapi - 394 Lê Văn Lương",
+    "address": "394 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7392613,
+    "lng": 106.7033676,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.9,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Thái Khapi mang đến hương vị cay nồng đặc trưng của Thái Lan, kết hợp với sự tinh tế của các loại thảo mộc và gia vị, tạo nên trải nghiệm ẩm thực khó quên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870355/quan_an_q7/afxl6y75hxrnmjft8gmz.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0909403655"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%E1%BA%BFp+Th%C3%A1i+PIPU+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f017f1eb511:0x6d9131ac88d2e7f1!8m2!3d10.7439521!4d106.7100594!16s%2Fg%2F11z9p1319b!19sChIJEbUefwEvdTER8efSiKwxkW0?authuser=0&hl=vi&rclk=1",
+    "id": "0017",
+    "name": "Bếp Thái PIPU Quận 7",
+    "address": "58 Bế Văn Cấm, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7439521,
+    "lng": 106.7100594,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Bếp Thái PIPU mang đến hương vị Thái Lan truyền thống với các món ăn đậm đà, sử dụng nhiều thảo mộc và gia vị đặc trưng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870356/quan_an_q7/tz9hrjbmyl35gfj6tjci.png",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0862696480"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Thai+Siam+Kitchen+-+Hu%E1%BB%B3nh+T%E1%BA%A5n+Ph%C3%A1t/data=!4m7!3m6!1s0x31752552bec8a4b3:0xd20d49f904725403!8m2!3d10.7432831!4d106.7298793!16s%2Fg%2F11y_qmdn_q!19sChIJs6TIvlIldTERA1RyBPlJDdI?authuser=0&hl=vi&rclk=1",
+    "id": "0018",
+    "name": "Thai Siam Kitchen - Huỳnh Tấn Phát",
+    "address": "547 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7432831,
+    "lng": 106.7298793,
+    "avg_price": 300000.0,
+    "shu": 6,
+    "star": 4.9,
+    "meals": [
+      "Sáng"
+    ],
+    "semantic_text": "Quán Thái này mang đến trải nghiệm hương vị cay nồng đặc trưng, với các món ăn đậm đà và tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870357/quan_an_q7/szt3vk59r4ssvxa6h7hl.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0825868898"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Thai+Siam+Kitchen+-+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752f42cbb2c5fd:0x645caed9161b891a!8m2!3d10.7382322!4d106.7151841!16s%2Fg%2F11z58hzhlm!19sChIJ_cWyy0IvdTERGokbFtmuXGQ?authuser=0&hl=vi&rclk=1",
+    "id": "0019",
+    "name": "Thai Siam Kitchen - Nguyễn Thị Thập",
+    "address": "313 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7382322,
+    "lng": 106.7151841,
+    "avg_price": 300000.0,
+    "shu": 6,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Thái Thai Siam Kitchen mang đến trải nghiệm hương vị cay nồng đặc trưng, với các món ăn đậm đà và thơm ngon.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870358/quan_an_q7/wgy89v7qcohfsv31boun.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0823868898"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chill+Th%C3%A1i+-+Star+Hill,+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752500780ab47d:0x421636d03507c4c0!8m2!3d10.7292754!4d106.7255677!16s%2Fg%2F11vz8030jd!19sChIJfbQKeAAldTERwMQHNdA2FkI?authuser=0&hl=vi&rclk=1",
+    "id": "0020",
+    "name": "Chill Thái - Star Hill, Phú Mỹ Hưng",
+    "address": "17 số 10, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7292754,
+    "lng": 106.7255677,
+    "avg_price": 200000.0,
+    "shu": 6,
+    "star": 4.9,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chill Thái - Star Hill mang đến hương vị Thái Lan đậm đà, với các món ăn được chế biến vừa truyền thống vừa hiện đại, tạo nên trải nghiệm ẩm thực thú vị.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870360/quan_an_q7/vaa4btktddwwupsqer7l.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0931112290"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chang+-+Modern+Thai+Cuisine+C%E1%BA%A3nh+Vi%C3%AAn+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x3175253c7bc9e60f:0x6c87013d33daf3f0!8m2!3d10.7225888!4d106.7287252!16s%2Fg%2F11kk5z1sk1!19sChIJD-bJezwldTER8PPaMz0Bh2w?authuser=0&hl=vi&rclk=1",
+    "id": "0021",
+    "name": "Chang - Modern Thai Cuisine Cảnh Viên Quận 7",
+    "address": "S2, 57 Đường C, Khu Nam Viên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7225888,
+    "lng": 106.7287252,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 4.3,
+    "meals": [],
+    "semantic_text": "Quán mang đến hương vị Thái truyền thống với sự hiện đại, các món ăn đậm đà, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870362/quan_an_q7/zo7piqjodqfvog3qfql6.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "02873019168"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nathalie%27s+Th%C3%A1i+Restaurant/data=!4m7!3m6!1s0x31752f9178b5e37b:0x21d26b8cb893244a!8m2!3d10.7293758!4d106.7087402!16s%2Fg%2F11xbn0d7q!19sChIJe-O1eJEvdTERSiSTuIxr0iE?authuser=0&hl=vi&rclk=1",
+    "id": "0022",
+    "name": "Nathalie's Thái Restaurant",
+    "address": "23 Bùi Bằng Đoàn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7293758,
+    "lng": 106.7087402,
+    "avg_price": 300000.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Nathalie's Thái Restaurant mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được chế biến với gia vị cay nồng, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870363/quan_an_q7/fgxlvrmxsb1al3snbi0u.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0392028800"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chang+-+Modern+Thai+Cuisine+Nguy%E1%BB%85n+%C4%90%E1%BB%A9c+C%E1%BA%A3nh/data=!4m7!3m6!1s0x31752fec5429b6f1:0x7b9e7744b4ee8e44!8m2!3d10.7275483!4d106.7083886!16s%2Fg%2F11k7cd7y1m!19sChIJ8bYpVOwvdTERRI7utER3nns?authuser=0&hl=vi&rclk=1",
+    "id": "0023",
+    "name": "Chang - Modern Thai Cuisine Nguyễn Đức Cảnh",
+    "address": "Mỹ Khánh 2, Nguyễn Đức Cảnh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7275483,
+    "lng": 106.7083886,
+    "avg_price": 350000.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chang mang đến trải nghiệm ẩm thực Thái Lan hiện đại với hương vị đậm đà, cân bằng giữa vị chua, cay và ngọt, đặc biệt phù hợp với những ai yêu thích sự kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870365/quan_an_q7/xgqvwuspej3vojgg7ukz.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "02873068833"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Som+Tum+Thai+-+Crescent+Mall/data=!4m7!3m6!1s0x31752f385638d857:0xff488a01e9c92ee1!8m2!3d10.7281441!4d106.7181994!16s%2Fg%2F11sy8sjn03!19sChIJV9g4VjgvdTER4S7J6QGKSP8?authuser=0&hl=vi&rclk=1",
+    "id": "0024",
+    "name": "Som Tum Thai - Crescent Mall",
+    "address": "Gf - 01, 101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7281441,
+    "lng": 106.7181994,
+    "avg_price": 400000.0,
+    "shu": 6,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Som Tum Thai mang đến hương vị chua ngọt đặc trưng của món đu đủ xanh Thái, kết hợp cùng vị cay nồng từ ớt và các gia vị truyền thống, tạo nên trải nghiệm ẩm thực Thái Lan đầy thú vị.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870366/quan_an_q7/kq6tg5blujykmws0v0gw.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "02835152288"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/SABAI+TH%C3%81I-+MODERN+THAI+BISTRO/data=!4m7!3m6!1s0x31752f3d64b33c5d:0xcb59e436e17a2f2c!8m2!3d10.7406713!4d106.6980292!16s%2Fg%2F11ycyknprw!19sChIJXTyzZD0vdTERLC964TbkWcs?authuser=0&hl=vi&rclk=1",
+    "id": "0025",
+    "name": "SABAI THÁI- MODERN THAI BISTRO",
+    "address": "67 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7406713,
+    "lng": 106.6980292,
+    "avg_price": 150000.0,
+    "shu": 5,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Savor the vibrant flavors of Thailand with aromatic herbs and spices, a delightful experience for those who enjoy a touch of heat.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870367/quan_an_q7/ja7e1mkiyqhkoeh5jyqd.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0335823033"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chala+Th%C3%A1i+-+%E1%BA%A8m+Th%E1%BB%B1c+Th%C3%A1i+Lan/data=!4m7!3m6!1s0x31752f00357c7349:0xc6974899cb8b2db6!8m2!3d10.7468224!4d106.7098375!16s%2Fg%2F11xmmhgm1z!19sChIJSXN8NQAvdTERti2Ly5lIl8Y?authuser=0&hl=vi&rclk=1",
+    "id": "0026",
+    "name": "Chala Thái - Ẩm Thực Thái Lan",
+    "address": "7 Đ. số 9, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7468224,
+    "lng": 106.7098375,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 3.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chala Thái mang đến trải nghiệm ẩm thực Thái Lan đậm đà, với hương vị cay nồng đặc trưng và các món ăn tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870369/quan_an_q7/rypsbrwvpdwqvoiveglb.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0372939092"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/L%E1%BA%A9u+D%C3%AA+T%C3%A0i+K%C3%BD+2/data=!4m7!3m6!1s0x31752f1967320c75:0x939cf2d1ca45086!8m2!3d10.7400941!4d106.7015867!16s%2Fg%2F11v10fxg13!19sChIJdQwyZxkvdTERhlCkHC3POQk?authuser=0&hl=vi&rclk=1",
+    "id": "0027",
+    "name": "Lẩu Dê Tài Ký 2",
+    "address": "621 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7400941,
+    "lng": 106.7015867,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lẩu Dê Tài Ký 2 mang đến trải nghiệm vị cay nồng đặc trưng của ẩm thực Thái, cùng với hương vị thịt dê tươi ngon, đậm đà.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870370/quan_an_q7/a0q6kyixgq0hwiixefxd.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0927333535"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ch%E1%BA%A1m+Bistro+Garden+-+CN+M%E1%BB%B9+Th%C3%A1i/data=!4m7!3m6!1s0x317525dc8cf42d1f:0x16cfc869eb32c01f!8m2!3d10.7195805!4d106.731538!16s%2Fg%2F11pytw9h20!19sChIJHy30jNwldTERH8Ay62nIzxY?authuser=0&hl=vi&rclk=1",
+    "id": "0028",
+    "name": "Chạm Bistro Garden - CN Mỹ Thái",
+    "address": "2 Đường Noi Khu My Thai 1A, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7195805,
+    "lng": 106.731538,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Chạm Bistro Garden mang đến hương vị Thái truyền thống với các món ăn đậm đà,cay nồng, đặc biệt phù hợp với những ai yêu thích trải nghiệm ẩm thực nhiệt đới.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870371/quan_an_q7/mb7wwd5u3liq2j2cg7bg.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0773930355"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+%C4%82n+Khob+Khun/data=!4m7!3m6!1s0x31752f00024dae3b:0xffaccc5c39f8d977!8m2!3d10.7487405!4d106.7049158!16s%2Fg%2F11w8vg1c37!19sChIJO65NAgAvdTERd9n4OVzMrP8?authuser=0&hl=vi&rclk=1",
+    "id": "0029",
+    "name": "Tiệm Ăn Khob Khun",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7487405,
+    "lng": 106.7049158,
+    "avg_price": null,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Thái Tiệm Ăn Khob Khun mang đến hương vị cay nồng đặc trưng, đậm đà với các món ăn truyền thống Thái Lan.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870372/quan_an_q7/rrqjobsehn3unicumorg.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0796660039"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/ThaiExpress+SC+VivoCity/data=!4m7!3m6!1s0x31752f2500eefb37:0x54d618e019e7eab1!8m2!3d10.7298577!4d106.7032856!16s%2Fg%2F11vbg0cvms!19sChIJN_vuACUvdTERsernGeAY1lQ?authuser=0&hl=vi&rclk=1",
+    "id": "0030",
+    "name": "ThaiExpress SC VivoCity",
+    "address": "SC VivoCity, 1058 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7298577,
+    "lng": 106.7032856,
+    "avg_price": 300000.0,
+    "shu": 5,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ThaiExpress SC VivoCity mang đến trải nghiệm hương vị Thái cay nồng, đậm đà với các món ăn tươi ngon và hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870373/quan_an_q7/vmeahifa6ufydmehqbm7.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "02837760341"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/L%E1%BA%A9u+Naro/data=!4m7!3m6!1s0x31752f4be37317bb:0xac04af4641125e5b!8m2!3d10.7386924!4d106.7127936!16s%2Fg%2F11t4j2ccpt!19sChIJuxdz40svdTERW14SQUavBKw?authuser=0&hl=vi&rclk=1",
+    "id": "0031",
+    "name": "Lẩu Naro",
+    "address": "4a Đ. Số 42, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7386924,
+    "lng": 106.7127936,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lẩu Naro mang đến trải nghiệm lẩu Thái cay nồng, đậm đà với nhiều loại thịt và rau tươi ngon. Hương vị đặc trưng của quán sẽ khiến bạn không thể nào quên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870375/quan_an_q7/ds9cursakx7ntdozr3qq.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0903981999"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chill+Th%C3%A1i+-+Thai+Food/data=!4m7!3m6!1s0x31752f2c7fccce15:0xb5361c1b7aa41546!8m2!3d10.762092!4d106.6939671!16s%2Fg%2F11rn2twyrm!19sChIJFc7MfywvdTERRhWkehscNrU?authuser=0&hl=vi&rclk=1",
+    "id": "0032",
+    "name": "Chill Thái - Thai Food",
+    "address": "163 Cô Giang, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.762092,
+    "lng": 106.6939671,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chill Thái mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được chế biến với mức độ cay vừa phải, phù hợp cho cả người mới bắt đầu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870376/quan_an_q7/cftnviqflztzj6zoflfe.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0906003539"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Th%C3%A1i+P%27MEE+Thai+Casual+Food/data=!4m7!3m6!1s0x31752fbb4c167c91:0xed1d622cdd9659dd!8m2!3d10.730065!4d106.7235617!16s%2Fg%2F11jz0cfj5b!19sChIJkXwWTLsvdTER3VmW3SxiHe0?authuser=0&hl=vi&rclk=1",
+    "id": "0033",
+    "name": "Nhà Hàng Thái P'MEE Thai Casual Food",
+    "address": "tòa nhà Novotel, 2 Đường C - Bắc, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.730065,
+    "lng": 106.7235617,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "Quán Thái P'MEE Thai Casual Food mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được chế biến với gia vị cay nồng, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870377/quan_an_q7/etjudhqrkumkbtzim0hg.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Spice+Temple+Crescent+Mall/data=!4m7!3m6!1s0x31752f9f4c673c8d:0x7e79e6fc679268ee!8m2!3d10.7290836!4d106.7188731!16s%2Fg%2F11j2qm03rp!19sChIJjTxnTJ8vdTER7miSZ_zmeX4?authuser=0&hl=vi&rclk=1",
+    "id": "0034",
+    "name": "Spice Temple Crescent Mall",
+    "address": "Crescent Mall, 101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7290836,
+    "lng": 106.7188731,
+    "avg_price": 350000.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Spice Temple Crescent Mall mang đến trải nghiệm ẩm thực Thái Lan đậm đà, với hương vị cay nồng đặc trưng, phù hợp cho những ai yêu thích sự kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870379/quan_an_q7/rb53kmtfoij2xdfecptq.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "02836220997"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ho%C3%A0ng+Ty+Premium+Restaurant/data=!4m7!3m6!1s0x31752f02dc365a27:0xc94eca0f1e7ffc1e!8m2!3d10.7374228!4d106.7112761!16s%2Fg%2F11t9t3_zt4!19sChIJJ1o23AIvdTERHvx_Hg_KTsk?authuser=0&hl=vi&rclk=1",
+    "id": "0035",
+    "name": "Hoàng Ty Premium Restaurant",
+    "address": "·, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7374228,
+    "lng": 106.7112761,
+    "avg_price": 200000.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [],
+    "semantic_text": "Quán Thái Hoàng Ty mang đến trải nghiệm hương vị cay nồng đặc trưng, đậm đà với các món ăn được chế biến tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870380/quan_an_q7/eqkmvothfj0mwkaucdsq.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Tien+Tien+Thai+Cuisine/data=!4m7!3m6!1s0x31752f6b312d319b:0x5cd5220bade80218!8m2!3d10.771735!4d106.689996!16s%2Fg%2F11xknnwy2f!19sChIJmzEtMWsvdTERGALorQsi1Vw?authuser=0&hl=vi&rclk=1",
+    "id": "0036",
+    "name": "Tien Tien Thai Cuisine",
+    "address": "40 - 42 Bùi Thị Xuân, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.771735,
+    "lng": 106.689996,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tien Tien Thai Cuisine mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được nêm nếm đậm đà, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870381/quan_an_q7/szvocdycherqee32uqn7.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0931883853"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Tien+Tien+Thai+Cuisine/data=!4m7!3m6!1s0x31752f6b312d319b:0x5cd5220bade80218!8m2!3d10.771735!4d106.689996!16s%2Fg%2F11xknnwy2f!19sChIJmzEtMWsvdTERGALorQsi1Vw?authuser=0&hl=vi&rclk=1",
+    "id": "0037",
+    "name": "Tien Tien Thai Cuisine",
+    "address": "40 - 42 Bùi Thị Xuân, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.771735,
+    "lng": 106.689996,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tien Tien Thai Cuisine mang đến trải nghiệm hương vị Thái Lan đậm đà, với các món ăn được nêm nếm đậm đà, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870382/quan_an_q7/grrheq1tmpgwabgtec7r.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0931883853"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+h%C3%A0ng+C%C3%A1+Minh+Th%C3%A1i/data=!4m7!3m6!1s0x31752f4301d97eb1:0x281319ad1f75dec4!8m2!3d10.7306937!4d106.7077926!16s%2Fg%2F11qpq98b_h!19sChIJsX7ZAUMvdTERxN51H60ZEyg?authuser=0&hl=vi&rclk=1",
+    "id": "0038",
+    "name": "Nhà hàng Cá Minh Thái",
+    "address": "22-20 Khu Phố Hưng Phước 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7306937,
+    "lng": 106.7077926,
+    "avg_price": 450000.0,
+    "shu": 6,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cá Minh Thái mang đến hương vị Thái truyền thống với các món ăn đậm đà, sử dụng nhiều thảo mộc và gia vị đặc trưng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870384/quan_an_q7/ze3ikbumvlexu17rorws.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0901650077"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/HO%C3%80NG+TH%C3%81I+T%E1%BB%AC+Q7/data=!4m7!3m6!1s0x31752f0017f82b8b:0x992dda18a6e00bc8!8m2!3d10.7446082!4d106.6989583!16s%2Fg%2F11m77q6x60!19sChIJiyv4FwAvdTERyAvgphjaLZk?authuser=0&hl=vi&rclk=1",
+    "id": "0039",
+    "name": "HOÀNG THÁI TỬ Q7",
+    "address": "A28 Đường Số 15, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7446082,
+    "lng": 106.6989583,
+    "avg_price": 450000.0,
+    "shu": 6,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Quán Hoàng Thái Tử Q7 mang đến trải nghiệm ẩm thực Thái cay nồng, đậm đà với các món ăn được chế biến tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870385/quan_an_q7/ptsj3vhrrsoqehkyg8fz.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+%C4%83n+Nh%E1%BB%9B+Ho%C3%A0i+145+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752f03c2b746ef:0x35906aacb49f593d!8m2!3d10.7487405!4d106.7049158!16s%2Fg%2F11s48hwvyc!19sChIJ70a3wgMvdTERPVmftKxqkDU?authuser=0&hl=vi&rclk=1",
+    "id": "0040",
+    "name": "Tiệm ăn Nhớ Hoài 145 Lê Văn Lương",
+    "address": "145 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7487405,
+    "lng": 106.7049158,
+    "avg_price": 250000.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Thái Nhớ Hoài 145 Lê Văn Lương mang đến hương vị cay nồng đặc trưng của Thái Lan, với các món ăn đậm đà, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870387/quan_an_q7/mfdvhsxhcqgpuwlgu1mg.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0796660039"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%9AN+TH%C3%81I+NH%C3%80+KEM-+HU%E1%BB%B2NH+T%E1%BA%A4N+PH%C3%81T+QU%E1%BA%ACN7/data=!4m7!3m6!1s0x31752500654e36b3:0x8ba1e423495b3035!8m2!3d10.7349907!4d106.7311783!16s%2Fg%2F11vyx559t1!19sChIJszZOZQAldTERNTBbSSPkoYs?authuser=0&hl=vi&rclk=1",
+    "id": "0041",
+    "name": "BÚN THÁI NHÀ KEM- HUỲNH TẤN PHÁT QUẬN7",
+    "address": "803/8 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7349907,
+    "lng": 106.7311783,
+    "avg_price": 250000.0,
+    "shu": 5,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Bún Thái Nhà Kem mang đến hương vị cay nồng đặc trưng của Thái Lan, kết hợp với sợi bún mềm và các loại rau thơm tươi mát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870388/quan_an_q7/o3hoalaaxu3cjm8z7alj.jpg",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0907790080"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+Kem+Th%E1%BB%8F+T%C3%A2y+%7C+Th%E1%BB%8F+T%C3%A2y+Bakery+-+Mai+V%C4%83n+V%C4%A9nh/data=!4m7!3m6!1s0x31752f829c900221:0x84dacffdb55ecfe!8m2!3d10.744475!4d106.7138049!16s%2Fg%2F11qmlzj1sh!19sChIJIQKQnIIvdTER_uxV2_-sTQg?authuser=0&hl=vi&rclk=1",
+    "id": "0042",
+    "name": "Bánh Kem Thỏ Tây | Thỏ Tây Bakery - Mai Văn Vĩnh",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.744475,
+    "lng": 106.7138049,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh kem bông mềm mịn, hương vị kem tươi thanh mát kết hợp với lớp bánh bông lan béo ngậy, tạo nên trải nghiệm ngọt ngào đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870389/quan_an_q7/qy9l1h0vrmnfez0rrsxc.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0965695678"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+Kem+Ho%C3%A0ng+Ph%C3%BAc+Ti%E1%BB%87m+B%C3%A1nh+Ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752509b0abf91b:0x3281fd2835eafb9!8m2!3d10.7283342!4d106.7327137!16s%2Fg%2F11h6tzqz1v!19sChIJG_mrsAkldTERua9eg9IfKAM?authuser=0&hl=vi&rclk=1",
+    "id": "0043",
+    "name": "Bánh Kem Hoàng Phúc Tiệm Bánh Ngon Quận 7",
+    "address": "878 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7283342,
+    "lng": 106.7327137,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh kem tại Hoàng Phúc Tiệm Bánh Ngon mang hương vị ngọt ngào, béo ngậy, đặc biệt thích hợp cho những ai yêu thích sự tinh tế và cầu kỳ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870391/quan_an_q7/ns0s4kempbhssbnpkiqu.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0908367930"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Si%C3%AAu+Th%E1%BB%8B+Nh%E1%BA%A5t+H%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x317525187ac414fb:0x2dcd7d85a37e4d66!8m2!3d10.7373942!4d106.7295721!16s%2Fg%2F11f5vfsvcb!19sChIJ-xTEehgldTERZk1-o4V9zS0?authuser=0&hl=vi&rclk=1",
+    "id": "0044",
+    "name": "Siêu Thị Nhất Hương",
+    "address": "21 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7373942,
+    "lng": 106.7295721,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Siêu Thị Nhất Hương mang đến những món bánh ngọt thanh mát, phù hợp với mọi lứa tuổi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870393/quan_an_q7/qlrypcknb9ckmq3ko7df.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02862989725"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+b%C3%A1nh+Dolce+Vita+%7C+B%C3%A1nh+Tiramisu+ngon+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317528b1311212df:0x71e96a9e4f5372fd!8m2!3d10.7364395!4d106.7019765!16s%2Fg%2F11b6d3jb3s!19sChIJ3xISMbEodTER_XJTT55q6XE?authuser=0&hl=vi&rclk=1",
+    "id": "0045",
+    "name": "Tiệm bánh Dolce Vita | Bánh Tiramisu ngon quận 7",
+    "address": "460/4/10 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7364395,
+    "lng": 106.7019765,
+    "avg_price": 350000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh Tiramisu ở Tiệm bánh Dolce Vita mang hương vị cà phê đậm đà, kết hợp với lớp mascarpone mềm mịn, tạo nên trải nghiệm ngọt ngào khó quên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870394/quan_an_q7/dt5skxa51anagejpzaoe.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0903789390"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/TOUS+les+JOURS+-+Panorama/data=!4m7!3m6!1s0x31752ff29606f4c9:0xed8de95827379f0a!8m2!3d10.7216809!4d106.7127572!16s%2Fg%2F11xqpy0l6!19sChIJyfQGlvIvdTERCp83J1jpje0?authuser=0&hl=vi&rclk=1",
+    "id": "0046",
+    "name": "TOUS les JOURS - Panorama",
+    "address": "203 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7216809,
+    "lng": 106.7127572,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "TOUS les JOURS - Panorama mang đến những chiếc bánh ngọt tinh tế, hương vị nhẹ nhàng và thanh lịch, hoàn hảo cho những khoảnh khắc thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870395/quan_an_q7/vuz5ncwqfj0husjwyn55.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02854136883"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/TOUS+les+JOURS+-+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752fd2ff8165a5:0x6c60c35b86b9fa23!8m2!3d10.7386131!4d106.7112902!16s%2Fg%2F11s1pr5k7b!19sChIJpWWB_9IvdTERI_q5hlvDYGw?authuser=0&hl=vi&rclk=1",
+    "id": "0047",
+    "name": "TOUS les JOURS - Nguyễn Thị Thập",
+    "address": "441 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7386131,
+    "lng": 106.7112902,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh TOUS les JOURS - Nguyễn Thị Thập mang đến những món bánh ngọt thanh mát, tinh tế, phù hợp cho mọi khoảnh khắc thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870397/quan_an_q7/oy0fsnyrt1xw2lxb7egw.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02873069168"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/GRAND+CASTELLA+-+33+%C4%90%C6%B0%E1%BB%9Dng+17,+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f16a74646b1:0x32636c346dd6b261!8m2!3d10.721922!4d106.728067!16s%2Fg%2F11xmx5f6w8!19sChIJsUZGpxYvdTERYbLWbTRsYzI?authuser=0&hl=vi&rclk=1",
+    "id": "0048",
+    "name": "GRAND CASTELLA - 33 Đường 17, Quận 7",
+    "address": "Đường Số 17/33 Khu Phố Mỹ Thái 2, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.721922,
+    "lng": 106.728067,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh GRAND CASTELLA mang đến những món bánh ngọt thanh mát, tinh tế, hoàn hảo cho những giây phút thư giãn",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870398/quan_an_q7/cy8wshnjotz7jwbyizl3.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0901862583"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+Bao+Thu%C3%BD+%C4%90%E1%BB%97+-+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f54e4a94f55:0x25f5622a4df9e3ee!8m2!3d10.7421193!4d106.7157848!16s%2Fg%2F11t_s4dhhd!19sChIJVU-p5FQvdTER7uP5TSpi9SU?authuser=0&hl=vi&rclk=1",
+    "id": "0049",
+    "name": "Bánh Bao Thuý Đỗ - Quận 7",
+    "address": "174 Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7421193,
+    "lng": 106.7157848,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh Bao Thuý Đỗ mang đến hương vị truyền thống thanh mát với nhân thịt thơm ngon, kết hợp hài hòa với lớp vỏ bánh mềm mại và giòn tan.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870400/quan_an_q7/nlrzzih8qamaanvmrlrv.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0343993199"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%E1%BB%ADa+H%C3%A0ng+B%C3%A1nh+T%E1%BA%A5m+Bakery+-+L%C3%A2m+V%C4%83n+B%E1%BB%81n/data=!4m7!3m6!1s0x31752fc0ccfa48f1:0x62b68f050bc80487!8m2!3d10.7450401!4d106.7159367!16s%2Fg%2F11j3tt_b88!19sChIJ8Uj6zMAvdTERhwTICwWPtmI?authuser=0&hl=vi&rclk=1",
+    "id": "0050",
+    "name": "Cửa Hàng Bánh Tấm Bakery - Lâm Văn Bền",
+    "address": "171 Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7450401,
+    "lng": 106.7159367,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh mang hương vị ngọt ngào, thanh mát với những chiếc bánh ngọt được chế biến tỉ mỉ, phù hợp cho những buổi chiều thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870401/quan_an_q7/vatmyd7rm1qe1kxkr1bu.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+MaDi+-+Ti%E1%BB%87m+b%C3%A1nh+kem+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f48825c49b1:0x45eed83e3bd96a8!8m2!3d10.7385441!4d106.6965714!16s%2Fg%2F11g6t_7nbs!19sChIJsUlcgkgvdTERqJa944PtXgQ?authuser=0&hl=vi&rclk=1",
+    "id": "0051",
+    "name": "Tiệm Bánh MaDi - Tiệm bánh kem quận 7",
+    "address": "103 Hoàng Trọng Mậu, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7385441,
+    "lng": 106.6965714,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh MaDi mang đến những chiếc bánh kem tinh tế, nhẹ nhàng, phù hợp với mọi vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870403/quan_an_q7/hbhfot4brfvsfyrqhe02.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0906348948"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+M%C3%AC+Pate+H%E1%BA%A3i+Ph%C3%B2ng+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f006ff5a539:0xceb2acc0fcf0499f!8m2!3d10.7369556!4d106.7170716!16s%2Fg%2F11wx58_1z8!19sChIJOaX1bwAvdTERn0nw_MCsss4?authuser=0&hl=vi&rclk=1",
+    "id": "0052",
+    "name": "Bánh Mì Pate Hải Phòng Quận 7",
+    "address": "141 Đ. Số 1, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7369556,
+    "lng": 106.7170716,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh mì pate đậm đà, hương vị truyền thống Hải Phòng, trải nghiệm ẩm thực đáng nhớ tại tiệm bánh nhỏ xinh này.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870404/quan_an_q7/wtn7ukxdcssihow9pxei.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0829938489"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%81NH+SU+QUE+-+Q7/data=!4m7!3m6!1s0x31752f99333ec769:0x944fe3379dd503d9!8m2!3d10.7395858!4d106.7039034!16s%2Fg%2F11b6_tc10g!19sChIJacc-M5kvdTER2QPVnTfjT5Q?authuser=0&hl=vi&rclk=1",
+    "id": "0053",
+    "name": "BÁNH SU QUE - Q7",
+    "address": "601 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7395858,
+    "lng": 106.7039034,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh su que thanh mát, nhẹ nhàng, phù hợp với mọi lứa tuổi. Quán bánh mang đến trải nghiệm ngọt ngào thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870406/quan_an_q7/ltiauvqzmfgfzh7nncco.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0943392391"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Gia+Huy/data=!4m7!3m6!1s0x31752f9e41bea115:0x9c0c6eedf6c1cd12!8m2!3d10.7438611!4d106.7042222!16s%2Fg%2F11r7trvx_1!19sChIJFaG-QZ4vdTEREs3B9u1uDJw?authuser=0&hl=vi&rclk=1",
+    "id": "0054",
+    "name": "Tiệm Bánh Gia Huy",
+    "address": "271 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7438611,
+    "lng": 106.7042222,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Bánh Gia Huy mang đến những món bánh ngọt thanh mát, phù hợp cho mọi lứa tuổi. Hương vị nhẹ nhàng, tinh tế, là lựa chọn hoàn hảo cho những giây phút thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870407/quan_an_q7/wan9oqr5gltekf6is8sn.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0855422345"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/TOUS+les+JOURS+-+Lotte+Mart+Nam+S%C3%A0i+G%C3%B2n/data=!4m7!3m6!1s0x31752fdeb767394f:0xab62b961b80c8831!8m2!3d10.7415078!4d106.7016876!16s%2Fg%2F11gwmg96fw!19sChIJTzlnt94vdTERMYgMuGG5Yqs?authuser=0&hl=vi&rclk=1",
+    "id": "0055",
+    "name": "TOUS les JOURS - Lotte Mart Nam Sài Gòn",
+    "address": "Lotte Mart, Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7415078,
+    "lng": 106.7016876,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "TOUS les JOURS - Lotte Mart Nam Sài Gòn mang đến những chiếc bánh ngọt tinh tế, hương vị dịu nhẹ, hoàn hảo cho những giây phút thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870408/quan_an_q7/gpg7padverkaxs3fq6w7.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02837751524"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/CHU%E1%BB%90I+CHI%C3%8AN+%C3%9AT+T%C3%82M+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x317525a3a3b25d7f:0xf7f4a913537745eb!8m2!3d10.7450462!4d106.7314379!16s%2Fg%2F11ln17sn93!19sChIJf12yo6MldTER60V3UxOp9Pc?authuser=0&hl=vi&rclk=1",
+    "id": "0056",
+    "name": "CHUỐI CHIÊN ÚT TÂM QUẬN 7",
+    "address": "41 Đ. Võ Thị Nhờ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7450462,
+    "lng": 106.7314379,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh chuối chiên giòn tan, bùi bùi vị chuối tươi kết hợp với lớp vỏ ngoài thơm béo, một món ăn vặt lý tưởng tại tiệm.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870409/quan_an_q7/jshay1p0livjkiqv8jne.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0836278373"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/L%C3%B2+B%C3%A1nh+M%C3%AC+%C4%90%E1%BA%A1i+Ph%C3%A1t+1+%7C+B%C3%81NH+M%C3%8C+%26+HEO+QUAY+%26+V%E1%BB%8AT+QUAY+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x3175258411c8ebc3:0x3ebfdd9c4b7eb78f!8m2!3d10.7500782!4d106.7303399!16s%2Fg%2F11c1t5371n!19sChIJw-vIEYQldTERj7d-S5zdvz4?authuser=0&hl=vi&rclk=1",
+    "id": "0057",
+    "name": "Lò Bánh Mì Đại Phát 1 | BÁNH MÌ & HEO QUAY & VỊT QUAY QUẬN 7",
+    "address": "48 Bùi Văn Ba, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7500782,
+    "lng": 106.7303399,
+    "avg_price": null,
+    "shu": 6,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh mì heo quay và vịt quay tại đây mang hương vị đậm đà, thơm ngon, đặc biệt với lớp vỏ bánh giòn rụm và thịt quay mềm ngọt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870411/quan_an_q7/q4o9ycstchkhgpdcbllp.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0938932982"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+kem+Happy+Bakery/data=!4m7!3m6!1s0x31752f75ea47e4f7:0x94a52457712e9fce!8m2!3d10.7484699!4d106.7047266!16s%2Fg%2F11g8g4gwy5!19sChIJ9-RH6nUvdTERzp8ucVckpZQ?authuser=0&hl=vi&rclk=1",
+    "id": "0058",
+    "name": "Bánh kem Happy Bakery",
+    "address": "136 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7484699,
+    "lng": 106.7047266,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh kem ngọt ngào từ Happy Bakery mang đến trải nghiệm hương vị thuần khiết, nhẹ nhàng, hoàn hảo cho những ai yêu thích sự tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870412/quan_an_q7/omhbe0qxjsd8bydjjbzl.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0949234317"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/T%E1%BA%A5m+Bakery+-+T%E1%BA%A5m+Bakery+-+347+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752f73a21d278f:0x65b003b292d65062!8m2!3d10.7410949!4d106.7038351!16s%2Fg%2F11sl1w3twx!19sChIJjycdonMvdTERYlDWkrIDsGU?authuser=0&hl=vi&rclk=1",
+    "id": "0059",
+    "name": "Tấm Bakery - Tấm Bakery - 347 Lê Văn Lương",
+    "address": "347 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7410949,
+    "lng": 106.7038351,
+    "avg_price": 150500.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tấm Bakery mang đến những chiếc bánh ngọt thanh mát, nhẹ nhàng, hoàn hảo cho những buổi chiều thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870415/quan_an_q7/jnasfnuslhmzvpydz6oh.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "02822005433"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Artisan+Bakery+Patina+Homes/data=!4m7!3m6!1s0x31752f509777e629:0xe581243a6bec7764!8m2!3d10.7228254!4d106.7138315!16s%2Fg%2F11stg_8q7d!19sChIJKeZ3l1AvdTERZHfsazokgeU?authuser=0&hl=vi&rclk=1",
+    "id": "0060",
+    "name": "Artisan Bakery Patina Homes",
+    "address": "12 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7228254,
+    "lng": 106.7138315,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Artisan Bakery Patina Homes mang đến những chiếc bánh ngọt thanh lịch, tinh tế, hoàn hảo cho những khoảnh khắc thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870416/quan_an_q7/p2y9u8oxz6bxkucq8cs2.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%A1nh+M%C3%AC+Anh+Trai+-+Anh+Trai+B%C3%A1nh+M%C3%AC+%26+Drink+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f73414daca9:0xe8fffda5c51ea975!8m2!3d10.7376259!4d106.7030895!16s%2Fg%2F11yf25nb8h!19sChIJqaxNQXMvdTERdakexaX9_-g?authuser=0&hl=vi&rclk=1",
+    "id": "0061",
+    "name": "Bánh Mì Anh Trai - Anh Trai Bánh Mì & Drink Quận 7",
+    "address": "428B Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7376259,
+    "lng": 106.7030895,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh mì tại Anh Trai mang hương vị truyền thống, bánh giòn tan kết hợp với nhân thịt đậm đà, tạo nên trải nghiệm ẩm thực quen thuộc và ngon miệng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870417/quan_an_q7/bez6wcmsn5brddmpsuv1.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0868399211"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Artisan+Eco+Green/data=!4m7!3m6!1s0x317525ef24ad0e8b:0x28a7161e5d83d6cb!8m2!3d10.7487316!4d106.7234365!16s%2Fg%2F11k4v184nl!19sChIJiw6tJO8ldTERy9aDXR4Wpyg?authuser=0&hl=vi&rclk=1",
+    "id": "0062",
+    "name": "Artisan Eco Green",
+    "address": "107 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7487316,
+    "lng": 106.7234365,
+    "avg_price": 100500.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Artisan Eco Green mang đến những món bánh ngọt thanh mát, tinh tế, phù hợp với mọi vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870419/quan_an_q7/wvpl8slidranbvn7g46o.jpg",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0975088739"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/BCB+-+Burgers+Cocktails+Beers/data=!4m7!3m6!1s0x3175254e1f6a160b:0x9259ac303985d330!8m2!3d10.7314059!4d106.7096731!16s%2Fg%2F11rk23j7bk!19sChIJCxZqH04ldTERMNOFOTCsWZI?authuser=0&hl=vi&rclk=1",
+    "id": "0063",
+    "name": "BCB - Burgers Cocktails Beers",
+    "address": "23 Nội khu Hưng Phước 1, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7314059,
+    "lng": 106.7096731,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Burger tại BCB - Burgers Cocktails Beers mang hương vị thịt bò nướng đậm đà, kết hợp hoàn hảo với các loại sốt đặc trưng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870420/quan_an_q7/dzo6j1nhaqb6uuvqaxhv.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0822637697"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Popeyes+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752f9953e7f6eb:0xca9d89f33fe2999d!8m2!3d10.7392149!4d106.7072685!16s%2Fg%2F11c1mgbqxy!19sChIJ6_bnU5kvdTERnZniP_OJnco?authuser=0&hl=vi&rclk=1",
+    "id": "0064",
+    "name": "Popeyes Nguyễn Thị Thập",
+    "address": "519 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7392149,
+    "lng": 106.7072685,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Popeyes Nguyễn Thị Thập mang đến những món gà rán giòn rụm, hương vị truyền thống, phù hợp cho mọi bữa ăn nhanh.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870422/quan_an_q7/m4svsaraufka9tmewonj.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "02837752286"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Burger+Meister+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752f0058e02831:0x8160dfcb023b637a!8m2!3d10.7323078!4d106.7088022!16s%2Fg%2F11vx3x3yl0!19sChIJMSjgWAAvdTERemM7AsvfYIE?authuser=0&hl=vi&rclk=1",
+    "id": "0065",
+    "name": "Burger Meister Phú Mỹ Hưng",
+    "address": "43 Hưng Gia 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7323078,
+    "lng": 106.7088022,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Burger Meister Phú Mỹ Hưng chuyên các món burger giòn ngon, hương vị đậm đà, trải nghiệm ẩm thực nhanh chóng và tiện lợi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870423/quan_an_q7/gffw6ziijmftwew9okwq.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0329148898"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/GYUMARU+PMH+%E3%83%8F%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B0%EF%BC%86%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD+%E3%81%8E%E3%82%85%E3%81%86%E4%B8%B8+%E3%83%95%E3%83%BC%E3%83%9F%E3%83%B3%E3%83%95%E3%83%B3%E5%BA%97/data=!4m7!3m6!1s0x31752fa101350e27:0x3fe9d2cabcbd9850!8m2!3d10.729317!4d106.707448!16s%2Fg%2F11vjc1vz5d!19sChIJJw41AaEvdTERUJi9vMrS6T8?authuser=0&hl=vi&rclk=1",
+    "id": "0066",
+    "name": "GYUMARU PMH ハンバーグ＆ステーキ ぎゅう丸 フーミンフン店",
+    "address": "980 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.729317,
+    "lng": 106.707448,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Trưa"
+    ],
+    "semantic_text": "Bánh mì kẹp thịt GYUMARU nổi bật với phần nhân thịt bò mềm ngọt, kết hợp hài hòa với các nguyên liệu tươi ngon, mang đến trải nghiệm ẩm thực nhanh chóng và hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870425/quan_an_q7/u6i9onnwuhj6q7ozy8i7.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0382944186"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Hoolala+Chicken/data=!4m7!3m6!1s0x317525e98a77e1d7:0xcfa8cac833edd18a!8m2!3d10.724946!4d106.7279911!16s%2Fg%2F11srylrbn2!19sChIJ1-F3iukldTERitHtM8jKqM8?authuser=0&hl=vi&rclk=1",
+    "id": "0067",
+    "name": "Hoolala Chicken",
+    "address": "Lô M7 Đ. Số 15, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.724946,
+    "lng": 106.7279911,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hoolala Chicken mang đến những món gà rán giòn rụm, hương vị đậm đà, thích hợp cho những bữa ăn nhanh năng động.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870426/quan_an_q7/wbzlmdqt1zxbcebg5rg1.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0368471020"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/KFC+Hu%E1%BB%B3nh+T%E1%BA%A5n+Ph%C3%A1t+1/data=!4m7!3m6!1s0x3175257ba02bbd41:0x32ac9c48d5c0fb09!8m2!3d10.7358665!4d106.7307709!16s%2Fg%2F11c57cwvps!19sChIJQb0roHsldTERCfvA1UicrDI?authuser=0&hl=vi&rclk=1",
+    "id": "0068",
+    "name": "KFC Huỳnh Tấn Phát 1",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7358665,
+    "lng": 106.7307709,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KFC Huỳnh Tấn Phát 1 chuyên về các món gà rán quen thuộc, hương vị nhẹ nhàng, phù hợp cho mọi bữa ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870427/quan_an_q7/b5xh9ykp436lx5ilbrrq.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lotteria+LOTTE+Mart+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f9f4be80c8f:0x8a577c38f0b1f7!8m2!3d10.7409715!4d106.7020071!16s%2Fg%2F11dzs_d93t!19sChIJjwzoS58vdTER97HwOHxXigA?authuser=0&hl=vi&rclk=1",
+    "id": "0069",
+    "name": "Lotteria LOTTE Mart Quận 7",
+    "address": "Lotte Mart, Tầng Trệt, 469 Nguyễn Hữu Thọ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7409715,
+    "lng": 106.7020071,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian Lotteria LOTTE Mart Quận 7 mang đến những món ăn nhanh quen thuộc, phù hợp cho mọi lứa tuổi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870428/quan_an_q7/upco5mti19zgyoi9wsp4.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chicken+Talk+%EC%B9%98%ED%82%A8%ED%86%A1+-+Qu%C3%A1n+G%C3%A0+r%C3%A1n+H%C3%A0n+Qu%E1%BB%91c/data=!4m7!3m6!1s0x31752f4b86a563db:0x21c6050608abf11d!8m2!3d10.7363466!4d106.7030901!16s%2Fg%2F11lkjlk_rc!19sChIJ22OlhksvdTERHfGrCAYFxiE?authuser=0&hl=vi&rclk=1",
+    "id": "0070",
+    "name": "Chicken Talk 치킨톡 - Quán Gà rán Hàn Quốc",
+    "address": "479 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7363466,
+    "lng": 106.7030901,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gà rán Hàn Quốc tại Chicken Talk mang hương vị giòn tan, đậm đà, thích hợp cho những ai yêu thích đồ ăn nhanh",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870429/quan_an_q7/qsl2zcg5r5jeyrb8mjne.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0862733634"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Burger+King+Nguy%E1%BB%85n+%C4%90%E1%BB%A9c+C%E1%BA%A3nh/data=!4m7!3m6!1s0x31752f001bbad0cb:0x7100aced949d847a!8m2!3d10.72787!4d106.708892!16s%2Fg%2F11vx0zxpxv!19sChIJy9C6GwAvdTEReoSdlO2sAHE?authuser=0&hl=vi&rclk=1",
+    "id": "0071",
+    "name": "Burger King Nguyễn Đức Cảnh",
+    "address": "Mỹ Khánh 1, 003 Nguyễn Đức Cảnh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.72787,
+    "lng": 106.708892,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 3.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Burger King Nguyễn Đức Cảnh mang đến những chiếc burger giòn sừn so với nguyên liệu tươi ngon, hương vị đậm đà, trải nghiệm ẩm thực nhanh chóng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870431/quan_an_q7/z43skdbcbrecioudgttq.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lotteria+Hu%E1%BB%B3nh+T%E1%BA%A5n+Ph%C3%A1t/data=!4m7!3m6!1s0x3175258ddf69eb81:0x3eecf0d963d541d7!8m2!3d10.7422648!4d106.7298046!16s%2Fg%2F11v0jt8rhm!19sChIJgetp340ldTER10HVY9nw7D4?authuser=0&hl=vi&rclk=1",
+    "id": "0072",
+    "name": "Lotteria Huỳnh Tấn Phát",
+    "address": "573 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7422648,
+    "lng": 106.7298046,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lotteria Huỳnh Tấn Phát chuyên về các món ăn nhanh quen thuộc, phù hợp cho những bữa ăn tiện lợi và nhanh chóng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870432/quan_an_q7/o7ybmvfusdphbctpjs7v.png",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lotteria+Go+Cityland+1F/data=!4m7!3m6!1s0x3175257db89806b7:0x87186dc0e3656297!8m2!3d10.7374411!4d106.725445!16s%2Fg%2F11mn151m27!19sChIJtwaYuH0ldTERl2Jl48BtGIc?authuser=0&hl=vi&rclk=1",
+    "id": "0073",
+    "name": "Lotteria Go Cityland 1F",
+    "address": "TTTM Go Cityland, Lô A/99 Đ. Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7374411,
+    "lng": 106.725445,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lotteria Go Cityland 1F chuyên các món ăn nhanh quen thuộc, hương vị đơn giản, dễ ăn, phù hợp cho mọi lứa tuổi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870434/quan_an_q7/w126ehc0ruryii0ywhw3.png",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/KFC+L%C3%A2m+V%C4%83n+B%E1%BB%81n/data=!4m7!3m6!1s0x31752f3e4ce85537:0x2cc6b74a21d1aebe!8m2!3d10.7425853!4d106.7157225!16s%2Fg%2F11hdsc4j1s!19sChIJN1XoTD4vdTERvq7RIUq3xiw?authuser=0&hl=vi&rclk=1",
+    "id": "0074",
+    "name": "KFC Lâm Văn Bền",
+    "address": "Đ. Lâm Văn Bền/168 P, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7425853,
+    "lng": 106.7157225,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KFC Lâm Văn Bền mang đến những món gà rán quen thuộc, hương vị nhẹ nhàng, phù hợp cho mọi bữa ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870436/quan_an_q7/jftmeogh2wzvzqanyvw3.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Texas+Chicken/data=!4m7!3m6!1s0x317525685f9abf8f:0x12eaeae9437deeba!8m2!3d10.7373991!4d106.7250202!16s%2Fg%2F11h10vbcvh!19sChIJj7-aX2gldTERuu59Q-nq6hI?authuser=0&hl=vi&rclk=1",
+    "id": "0075",
+    "name": "Texas Chicken",
+    "address": "Big C, Lô A/99 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7373991,
+    "lng": 106.7250202,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Texas Chicken mang đến hương vị gà rán truyền thống, giòn tan và thơm ngon, trải nghiệm ẩm thực nhanh chóng và tiện lợi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870437/quan_an_q7/ba0dbg8xa1nj2jgs8ufg.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "02862769892"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lotteria+Crescent+Mall/data=!4m7!3m6!1s0x31752f830629d877:0xf43fd4eb04fd4ad6!8m2!3d10.7290836!4d106.7188731!16s%2Fg%2F11kk8_gd5n!19sChIJd9gpBoMvdTER1kr9BOvUP_Q?authuser=0&hl=vi&rclk=1",
+    "id": "0076",
+    "name": "Lotteria Crescent Mall",
+    "address": "Tầng 5/101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7290836,
+    "lng": 106.7188731,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lotteria Crescent Mall mang đến những món bánh mì và đồ uống quen thuộc, phù hợp cho những bữa trưa nhanh nhẹn hoặc giải trí tại trung tâm thương mại.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870439/quan_an_q7/vknxjpm3seabk4tcyvdn.png",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lotteria+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng+GRAB+%26+GO/data=!4m7!3m6!1s0x3175255918c1b793:0x4b16be1622010d8d!8m2!3d10.7272923!4d106.7087658!16s%2Fg%2F1thq7ccg!19sChIJk7fBGFkldTERjQ0BIha-Fks?authuser=0&hl=vi&rclk=1",
+    "id": "0077",
+    "name": "Lotteria Phú Mỹ Hưng GRAB & GO",
+    "address": "051 Nguyễn Đức Cảnh Khu Phố Mỹ Khánh, 4A H12-2, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7272923,
+    "lng": 106.7087658,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lotteria Phú Mỹ Hưng GRAB & GO mang đến những món ăn nhanh, tiện lợi với hương vị quen thuộc, phù hợp cho mọi bữa giờ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870440/quan_an_q7/ugwvdggv0mc9i5ahrscr.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chao+Chicken/data=!4m7!3m6!1s0x31752f83400069f7:0xfba8e4f2e10e828!8m2!3d10.7311409!4d106.708156!16s%2Fg%2F11fp47f0sc!19sChIJ92kAQIMvdTERKOgQLk-Oug8?authuser=0&hl=vi&rclk=1",
+    "id": "0078",
+    "name": "Chao Chicken",
+    "address": "Lê Văn Thiêm/56 Khu Phố Hưng Phước 2, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7311409,
+    "lng": 106.708156,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Chao Chicken mang đến hương vị gà rán giòn rụm, đậm đà với nước sốt đặc biệt, trải nghiệm ẩm thực nhanh chóng và hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870442/quan_an_q7/jsrmopg6uhx09lauqtax.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0919190779"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Hapi+Burger/data=!4m7!3m6!1s0x31752f83ae1676b7:0x3e8b85492a14e391!8m2!3d10.741672!4d106.7152867!16s%2Fg%2F11qmm3rbc7!19sChIJt3YWroMvdTERkeMUKkmFiz4?authuser=0&hl=vi&rclk=1",
+    "id": "0079",
+    "name": "Hapi Burger",
+    "address": "82 Số 49, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.741672,
+    "lng": 106.7152867,
+    "avg_price": 200500.0,
+    "shu": 1,
+    "star": 2.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hapi Burger mang đến những chiếc bánh burger quen thuộc với hương vị tươi ngon và nguyên liệu chất lượng. Thích hợp cho những ai thích trải nghiệm nhanh chóng và ngon miệng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870443/quan_an_q7/tavtloqgtefnzfk6o7kx.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/G%C3%A0+R%C3%A1n+Five+Star/data=!4m7!3m6!1s0x317525a1134bd245:0x2ee9d49a665702c4!8m2!3d10.7452819!4d106.7295142!16s%2Fg%2F11kk65ybqh!19sChIJRdJLE6EldTERxAJXZprU6S4?authuser=0&hl=vi&rclk=1",
+    "id": "0080",
+    "name": "Gà Rán Five Star",
+    "address": "487/1 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7452819,
+    "lng": 106.7295142,
+    "avg_price": 200500.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gà Rán Five Star mang đến hương vị gà rán giòn tan, thơm ngon, trải nghiệm ẩm thực nhanh chóng và tiện lợi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870444/quan_an_q7/giq6ghgsokryuiw48syo.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chickita+-+Flame+Grilled+Chicken/data=!4m7!3m6!1s0x31752faca2c947e9:0xe4a7426b8f7d27fa!8m2!3d10.7290836!4d106.7188731!16s%2Fg%2F11rkp1qt88!19sChIJ6UfJoqwvdTER-id9j2tCp-Q?authuser=0&hl=vi&rclk=1",
+    "id": "0081",
+    "name": "Chickita - Flame Grilled Chicken",
+    "address": "101 Đ. Tôn Dật Tiên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7290836,
+    "lng": 106.7188731,
+    "avg_price": 200000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thịt gà nướng kiểu Chickita mang hương vị tươi ngon, đậm đà với lớp vỏ ngoài giòn tan, là lựa chọn hoàn hảo cho bữa ăn nhanh.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870446/quan_an_q7/xsfupc9qvvakrausj4fb.jpg",
+    "type": [
+      "Thức ăn nhanh"
+    ],
+    "phone_num": "0906657003"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Pizza+LaPoza/data=!4m7!3m6!1s0x31752fcc31170ef5:0xeb455e17b60aab5c!8m2!3d10.7395516!4d106.7130716!16s%2Fg%2F11tmyf3nb5!19sChIJ9Q4XMcwvdTERXKsKthdeRes?authuser=0&hl=vi&rclk=1",
+    "id": "0082",
+    "name": "Pizza LaPoza",
+    "address": "1B đường 42, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7395516,
+    "lng": 106.7130716,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Pizza LaPoza mang đến hương vị truyền thống Ý với lớp vỏ giòn tan và sốt cà chua tươi mát, trải nghiệm ẩm thực châu Âu đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870447/quan_an_q7/ftfrthr6hhlz8u4f4djn.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0869900133"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/PINE%27S+-+Ti%E1%BB%87m+Pizza+Trong+R%E1%BB%ABng/data=!4m7!3m6!1s0x31752fd7ae96c56b:0x92a2b509608f962e!8m2!3d10.742179!4d106.6999999!16s%2Fg%2F11z5w70g7c!19sChIJa8WWrtcvdTERLpaPYAm1opI?authuser=0&hl=vi&rclk=1",
+    "id": "0083",
+    "name": "PINE'S - Tiệm Pizza Trong Rừng",
+    "address": "02 Đ. Số 1, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.742179,
+    "lng": 106.6999999,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Pizza tại PINE'S mang hương vị tươi mát, kết hợp giữa nguyên liệu gỗ và các loại thảo mộc, tạo nên trải nghiệm ẩm thực gần gũi với thiên nhiên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870449/quan_an_q7/ygsxgk2pcojeegjxjct7.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0819492929"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Pizza+Hut+Liberty+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752514c2252f3f:0xf8600f1bebb48a52!8m2!3d10.7379302!4d106.7301635!16s%2Fg%2F11f6d9175t!19sChIJPy8lwhQldTERUoq06xsPYPg?authuser=0&hl=vi&rclk=1",
+    "id": "0084",
+    "name": "Pizza Hut Liberty Quận 7",
+    "address": "544 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7379302,
+    "lng": 106.7301635,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Pizza Hut Liberty Quận 7 mang đến hương vị pizza truyền thống với lớp vỏ giòn tan và topping chất lượng, hoàn hảo cho bữa ăn gia đình.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870450/quan_an_q7/pqbepg7sjhk7sfqfo0nd.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/The+Pizza+Company+Hu%E1%BB%B3nh+T%E1%BA%A5n+Ph%C3%A1t/data=!4m7!3m6!1s0x3175258144e18d55:0x5997a3fb17a8da2d!8m2!3d10.7486197!4d106.7285116!16s%2Fg%2F11gchx8df0!19sChIJVY3hRIEldTERLdqoF_ujl1k?authuser=0&hl=vi&rclk=1",
+    "id": "0085",
+    "name": "The Pizza Company Huỳnh Tấn Phát",
+    "address": "346 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7486197,
+    "lng": 106.7285116,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh pizza tại The Pizza Company Huỳnh Tấn Phát mang hương vị truyền thống, với lớp vỏ giòn tan và topping chất lượng, đảm bảo trải nghiệm ẩm thực quen thuộc.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870452/quan_an_q7/hljpdtig6qnanjgpok7o.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Cy%E2%80%99s+Pizza+%26+Pasta/data=!4m7!3m6!1s0x317525b34be03707:0xa655107b7a6c1693!8m2!3d10.7462979!4d106.7095623!16s%2Fg%2F11vd67fdml!19sChIJBzfgS7MldTERkxZsensQVaY?authuser=0&hl=vi&rclk=1",
+    "id": "0086",
+    "name": "Cy’s Pizza & Pasta",
+    "address": "19 Số 11, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7462979,
+    "lng": 106.7095623,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Bánh pizza và mì Ý tại Cy’s Pizza & Pasta mang hương vị truyền thống châu Âu, với lớp vỏ giòn và sốt đậm đà, trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870453/quan_an_q7/djdmhlw05qfymcrgcx15.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0703038252"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Jimmy%E2%80%99s+New+York+Pizza+-+D7/data=!4m7!3m6!1s0x317525ec2a455023:0x9f98535ecf85e921!8m2!3d10.7213629!4d106.7291676!16s%2Fg%2F11pcmk8cds!19sChIJI1BFKuwldTERIemFz15TmJ8?authuser=0&hl=vi&rclk=1",
+    "id": "0087",
+    "name": "Jimmy’s New York Pizza - D7",
+    "address": "66 Đường C, Khu đô thị Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7213629,
+    "lng": 106.7291676,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh pizza đậm đà với lớp vỏ giòn tan, trải nghiệm hương vị New York đích thực tại Jimmy’s New York Pizza.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870454/quan_an_q7/lbtc06qdrpq1f6jdtrjg.png",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0896741099"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Margher%C3%AD+pizza+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752f478c58124f:0x43e64271ad3c1d67!8m2!3d10.7297896!4d106.7077113!16s%2Fg%2F11kpzr70d4!19sChIJTxJYjEcvdTERZx08rXFC5kM?authuser=0&hl=vi&rclk=1",
+    "id": "0088",
+    "name": "Margherí pizza Phú Mỹ Hưng",
+    "address": "Hưng Phước 4/60 Khu P.Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7297896,
+    "lng": 106.7077113,
+    "avg_price": 450000.0,
+    "shu": 5,
+    "star": 4.6,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Pizza Margherí mang hương vị truyền thống Italy với lớp vỏ giòn tan và sốt cà chua tươi mát, kết hợp cùng phô mai mozzarella béo ngậy.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870456/quan_an_q7/xxksahs6tzzof0euhb9r.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0338424925"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Buzza+Pizza+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp/data=!4m7!3m6!1s0x31752f98d36c46d3:0x4f91c9b4c7bd698c!8m2!3d10.7405883!4d106.6982389!16s%2Fg%2F11hb4xshrs!19sChIJ00Zs05gvdTERjGm9x7TJkU8?authuser=0&hl=vi&rclk=1",
+    "id": "0089",
+    "name": "Buzza Pizza Nguyễn Thị Thập",
+    "address": "51-53 Nguyễn Thị Thập, Khu đô thị Him Lam, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7405883,
+    "lng": 106.6982389,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [],
+    "semantic_text": "Buzza Pizza Nguyễn Thị Thập mang đến những chiếc pizza kiểu Âu với hương vị truyền thống, kết hợp hài hòa giữa đế bánh giòn và topping chất lượng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870457/quan_an_q7/carimyeowxqkns2mkdvc.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0937328045"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Pizza+4P%27s+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752f8f1b85f2e7:0x5f1b89599086065d!8m2!3d10.7305587!4d106.7244526!16s%2Fg%2F11cjjvw91l!19sChIJ5_KFG48vdTERXQaGkFmJG18?authuser=0&hl=vi&rclk=1",
+    "id": "0090",
+    "name": "Pizza 4P's Phú Mỹ Hưng",
+    "address": "PPJF+7Q Toà nhà Cobi Tower II, 2-4 Đường Số 8, Khu đô thị Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7305587,
+    "lng": 106.7244526,
+    "avg_price": 450000.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [],
+    "semantic_text": "Pizza 4P's mang đến hương vị truyền thống Ý với lớp vỏ giòn tan và topping tươi ngon, trải nghiệm ẩm thực châu Âu ngay giữa Phú Mỹ Hưng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870458/quan_an_q7/hm1ns7zedoregmctzg48.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "02836220500"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/PLAYPIZZA%28%ED%94%8C%EB%A0%88%EC%9D%B4%ED%94%BC%EC%9E%90%29/data=!4m7!3m6!1s0x31752f3e4e2339ef:0xc9f3263cf6d023fb!8m2!3d10.722595!4d106.7107278!16s%2Fg%2F11y4qv_v85!19sChIJ7zkjTj4vdTER-yPQ9jwm88k?authuser=0&hl=vi&rclk=1",
+    "id": "0091",
+    "name": "PLAYPIZZA(플레이피자)",
+    "address": "37 Khu Phố Mỹ Tú 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.722595,
+    "lng": 106.7107278,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Những chiếc pizza tại PLAYPIZZA mang hương vị truyền thống châu Âu, với lớp vỏ giòn tan và topping tươi ngon, đảm bảo trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870460/quan_an_q7/kgrpyx8m5arkxaafeqb9.jpg",
+    "type": [
+      "Quán Âu"
+    ],
+    "phone_num": "0797372386"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+Chay+T%C3%A2m+H%E1%BA%ADu/data=!4m7!3m6!1s0x31752f05cd52b8ff:0x13866f710841b969!8m2!3d10.7501613!4d106.7157681!16s%2Fg%2F11qpm3s9wy!19sChIJ_7hSzQUvdTERablBCHFvhhM?authuser=0&hl=vi&rclk=1",
+    "id": "0092",
+    "name": "Quán Chay Tâm Hậu",
+    "address": "34a Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7501613,
+    "lng": 106.7157681,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chay Tâm Hậu mang đến những món chay thanh đạm, tinh tế, phù hợp với những ai tìm kiếm sự nhẹ nhàng và thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870461/quan_an_q7/sisjmhak4uxqgb1vczpa.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0768493618"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chay+Tu%E1%BB%87+Garden+-+Nguy%E1%BB%85n+B%C3%ADnh/data=!4m7!3m6!1s0x31752f2581753a33:0x27d514c6cea786f8!8m2!3d10.7280502!4d106.7103638!16s%2Fg%2F11vxxvtf0g!19sChIJMzp1gSUvdTER-IanzsYU1Sc?authuser=0&hl=vi&rclk=1",
+    "id": "0093",
+    "name": "Chay Tuệ Garden - Nguyễn Bính",
+    "address": "Nguyễn Bính/101 Khu Phố Mỹ Hoàng, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7280502,
+    "lng": 106.7103638,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Chay Tuệ Garden mang đến những món chay thanh đạm, tinh tế, phù hợp với những ai yêu thích sự nhẹ nhàng và hương vị tự nhiên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870463/quan_an_q7/ogg6ttm5pplgivxhydpa.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0979553101"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Chay+T%E1%BB%8Bnh+Li%C3%AAn+V%C3%A0ng/data=!4m7!3m6!1s0x31752f6551d478e1:0x9cded1a1ba44c85d!8m2!3d10.7234968!4d106.7281066!16s%2Fg%2F11vlwhs07c!19sChIJ4XjUUWUvdTERXchEuqHR3pw?authuser=0&hl=vi&rclk=1",
+    "id": "0094",
+    "name": "Nhà Hàng Chay Tịnh Liên Vàng",
+    "address": "45 Đường C, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7234968,
+    "lng": 106.7281066,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay Tịnh Liên Vàng mang đến những món ăn thanh đạm, tinh tế, phù hợp với những ai tìm kiếm sự thư thái và yên bình.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870464/quan_an_q7/qdpyk01p73zmxhbtofal.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0938663308"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+h%C3%A0ng+chay+An+%26+cafe+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317525ccb9333c99:0xda58d8a6074bac72!8m2!3d10.7198048!4d106.7311906!16s%2Fg%2F11fklj_sv0!19sChIJmTwzucwldTERcqxLB6bYWNo?authuser=0&hl=vi&rclk=1",
+    "id": "0095",
+    "name": "Nhà hàng chay An & cafe quận 7",
+    "address": "Phố Tiểu Nam/75 Phú Mỹ Hưng, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7198048,
+    "lng": 106.7311906,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay An & Cafe quận 7 mang đến những món ăn thanh đạm, tinh tế, phù hợp cho những ai yêu thích hương vị tự nhiên của rau củ quả.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870465/quan_an_q7/ah4zucmriaw4rxljvjn5.png",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0353831900"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Chay+Rau+C%E1%BB%A7+N%E1%BA%A5m+Vegan+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752fb422f81a2f:0xd0f8a1aabe1bf6f6!8m2!3d10.7339125!4d106.7020228!16s%2Fg%2F11r9vj06bw!19sChIJLxr4IrQvdTER9vYbvqqh-NA?authuser=0&hl=vi&rclk=1",
+    "id": "0096",
+    "name": "Chay Rau Củ Nấm Vegan Lê Văn Lương",
+    "address": "557 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7339125,
+    "lng": 106.7020228,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay rau củ nấm Vegan Lê Văn Lương mang đến những món ăn thuần chay nhẹ nhàng, tươi mát, tập trung vào hương vị tự nhiên của nguyên liệu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870467/quan_an_q7/igvacmowm4uikkvidbr8.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0783473718"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+Chay+Di%E1%BB%87u+M%E1%BB%B9+%7C+C%C6%A1m+Chay+Ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f004c260049:0xb1f3aac07f239a09!8m2!3d10.7490777!4d106.7050247!16s%2Fg%2F11lcz1n12z!19sChIJSQAmTAAvdTERCZojf8Cq87E?authuser=0&hl=vi&rclk=1",
+    "id": "0097",
+    "name": "Quán Chay Diệu Mỹ | Cơm Chay Ngon Quận 7",
+    "address": "133 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7490777,
+    "lng": 106.7050247,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm Chay Ngon Quận 7 mang đến hương vị thanh mát, tinh tế của cơm gạo lứt kết hợp cùng các nguyên liệu tươi ngon, đảm bảo sự cân bằng dinh dưỡng và trải nghiệm ẩm thực nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870468/quan_an_q7/uygtmwoaxq2egy9zimpm.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0938217221"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Hana+qu%C3%A1n+chay/data=!4m7!3m6!1s0x31752f0f4c25471f:0x505de0989feaf771!8m2!3d10.7484253!4d106.7159864!16s%2Fg%2F11fsts1gwd!19sChIJH0clTA8vdTERcffqn5jgXVA?authuser=0&hl=vi&rclk=1",
+    "id": "0098",
+    "name": "Hana quán chay",
+    "address": "49 Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7484253,
+    "lng": 106.7159864,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hana quán chay mang đến những món ăn thanh đạm, tinh tế với hương vị tự nhiên của rau củ và trái cây, phù hợp cho những ai tìm kiếm sự thư thái và cân bằng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870470/quan_an_q7/v9e5cssoneijakceksvi.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0973895217"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C6%A0M+T%E1%BA%A4M+CHAY+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x31752f001e156231:0x7043ba50b1b55737!8m2!3d10.7463352!4d106.7068421!16s%2Fg%2F11xmh1my75!19sChIJMWIVHgAvdTERN1e1sVC6Q3A?authuser=0&hl=vi&rclk=1",
+    "id": "0099",
+    "name": "CƠM TẤM CHAY QUẬN 7",
+    "address": "109 Số 11, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7463352,
+    "lng": 106.7068421,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm tấm chay Quận 7 mang hương vị thanh đạm, tinh tế với các nguyên liệu tươi ngon, tạo nên món ăn vừa ngon miệng lại giàu dinh dưỡng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870471/quan_an_q7/xoyzo8kb8kt1wnakwsu6.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0966307207"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+chay+Ph%C6%B0%E1%BB%9Bc+%C4%90%E1%BB%A9c/data=!4m7!3m6!1s0x31752f836218914b:0x6a569840c8d812bd!8m2!3d10.7396142!4d106.7123001!16s%2Fg%2F11gy3d44xq!19sChIJS5EYYoMvdTERvRLYyECYVmo?authuser=0&hl=vi&rclk=1",
+    "id": "0100",
+    "name": "Quán chay Phước Đức",
+    "address": "19 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7396142,
+    "lng": 106.7123001,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay Phước Đức mang đến những món ăn thanh đạm, tinh tế với hương vị dịu nhẹ, phù hợp cho mọi bữa ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870472/quan_an_q7/p3ybbk5efu2wct5xjyqn.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0707682016"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Thu%E1%BA%A7n+Chay+%C4%90%C3%B3a+Sen+V%C3%A0ng+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f20c9761921:0xc5043b662fec6454!8m2!3d10.7247176!4d106.7094587!16s%2Fg%2F11bwh4nlbk!19sChIJIRl2ySAvdTERVGTsL2Y7BMU?authuser=0&hl=vi&rclk=1",
+    "id": "0101",
+    "name": "Nhà Hàng Thuần Chay Đóa Sen Vàng Quận 7",
+    "address": "Đ. số 10/226 Mỹ Kim 2, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7247176,
+    "lng": 106.7094587,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay với hương vị thanh đạm, tinh tế, phù hợp cho những ai yêu thích sự nhẹ nhàng và tươi mát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870473/quan_an_q7/o02bwyrnhahhrdrb8qr7.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0938460773"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Mantra+Vegetarian+Restaurant+-+Nh%C3%A0+h%C3%A0ng+chay/data=!4m7!3m6!1s0x317525f4d06b5e2d:0xf8f9a7a57e6adbc8!8m2!3d10.7300534!4d106.7094791!16s%2Fg%2F11t5x6_5cn!19sChIJLV5r0PQldTERyNtqfqWn-fg?authuser=0&hl=vi&rclk=1",
+    "id": "0102",
+    "name": "Mantra Vegetarian Restaurant - Nhà hàng chay",
+    "address": "SHOP HOUSE J040 CHUNG CƯ HƯNG VƯỢNG, 1 Đường số 6, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7300534,
+    "lng": 106.7094791,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mantra Vegetarian Restaurant mang đến những món chay thanh đạm, tinh tế, phù hợp với những ai tìm kiếm sự thư thái và cân bằng trong hương vị.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870475/quan_an_q7/felj6oawb8lligmlvriw.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0961468050"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+chay+T%C3%A2m+An/data=!4m7!3m6!1s0x31752f1b5248a7ed:0x2a22e770a5dd2ecc!8m2!3d10.7399271!4d106.7104926!16s%2Fg%2F11s4y3q9pl!19sChIJ7adIUhsvdTERzC7dpXDnIio?authuser=0&hl=vi&rclk=1",
+    "id": "0103",
+    "name": "Quán chay Tâm An",
+    "address": "65 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7399271,
+    "lng": 106.7104926,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay Tâm An mang đến những món ăn thanh đạm, tinh tế với hương vị dịu nhẹ, phù hợp cho mọi bữa ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870476/quan_an_q7/ltxq5zrwc6odzsdw92eo.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0938912199"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/L%E1%BA%A9u+Naro/data=!4m7!3m6!1s0x31752f4be37317bb:0xac04af4641125e5b!8m2!3d10.7386924!4d106.7127936!16s%2Fg%2F11t4j2ccpt!19sChIJuxdz40svdTERW14SQUavBKw?authuser=0&hl=vi&rclk=1",
+    "id": "0104",
+    "name": "Lẩu Naro",
+    "address": "4a Đ. Số 42, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7386924,
+    "lng": 106.7127936,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lẩu Naro mang đến trải nghiệm lẩu chay thanh đạm với hương vị tự nhiên, tinh tế, phù hợp cho những ai yêu thích sự nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870477/quan_an_q7/wu4ve5b2k6lo28wm561c.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0903981999"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qua%CC%81n+Chay+78/data=!4m7!3m6!1s0x317525787136dd5d:0x26458f1d1f63eb13!8m2!3d10.7433771!4d106.7333027!16s%2Fg%2F11hc_zh8bv!19sChIJXd02cXgldTERE-tjHx2PRSY?authuser=0&hl=vi&rclk=1",
+    "id": "0105",
+    "name": "Quán Chay 78",
+    "address": "78 Trần Trọng Cung, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7433771,
+    "lng": 106.7333027,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Chay 78 mang đến những món ăn thuần chay nhẹ nhàng, thanh mát, phù hợp cho những ai yêu thích hương vị tươi mới và tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870478/quan_an_q7/uz4ookdgply6hhb7x1of.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0837278889"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Chay+N%E1%BA%A5m+Thi%C3%AAn+%C4%90%C3%A0ng/data=!4m7!3m6!1s0x31752f98ddff801d:0x634d9b4e8aeee5e3!8m2!3d10.7427707!4d106.703855!16s%2Fg%2F11c5bm2m_r!19sChIJHYD_3ZgvdTER4-Xuik6bTWM?authuser=0&hl=vi&rclk=1",
+    "id": "0106",
+    "name": "Nhà Hàng Chay Nấm Thiên Đàng",
+    "address": "278 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7427707,
+    "lng": 106.703855,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán chay với hương vị nấm đặc trưng, kết hợp hài hòa giữa vị ngọt thanh và bùi bùi, tạo nên trải nghiệm ẩm thực tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870480/quan_an_q7/ecb4lfblashccx3dkrtr.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0938441477"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/AN+-+nh%C3%A0+h%C3%A0ng+chay+An+%26+cafe+-+Ph%E1%BA%A1m+Th%C3%A1i+B%C6%B0%E1%BB%9Dng/data=!4m7!3m6!1s0x31752f1b223d3a45:0x9f3b5d0dd2597ef3!8m2!3d10.7275792!4d106.7124718!16s%2Fg%2F11s57yrk_7!19sChIJRTo9IhsvdTER835Z0g1dO58?authuser=0&hl=vi&rclk=1",
+    "id": "0107",
+    "name": "AN - nhà hàng chay An & cafe - Phạm Thái Bường",
+    "address": "220 Phạm Thái Bường, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7275792,
+    "lng": 106.7124718,
+    "avg_price": 200000.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [],
+    "semantic_text": "Quán chay An & Cafe mang đến những món ăn thuần chay nhẹ nhàng, thanh mát, phù hợp cho mọi bữa ăn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870481/quan_an_q7/quapgeoxlmuapqzwuq2f.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0862462179"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C6%A1m+Chay+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f68654a0f3b:0xb31f5388ed305bfd!8m2!3d10.7475565!4d106.7075435!16s%2Fg%2F11kpt66d_c!19sChIJOw9KZWgvdTER_Vsw7YhTH7M?authuser=0&hl=vi&rclk=1",
+    "id": "0108",
+    "name": "Cơm Chay Quận 7",
+    "address": "90 Phan Huy Thực, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7475565,
+    "lng": 106.7075435,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm chay Quận 7 mang hương vị thanh đạm, tinh tế với những nguyên liệu tươi ngon, đảm bảo sức khỏe cho thực khách.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870482/quan_an_q7/dsuuoa3o4v6rdktchewq.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0355635152"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/NG%E1%BB%8CC+T%C3%82M+QU%C3%81N+%7C+NGAN+CH%C3%81Y+T%E1%BB%8EI+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x31752f6bbf3bf0ff:0xe4480c1125096bf8!8m2!3d10.7515661!4d106.7005677!16s%2Fg%2F11ssfbz016!19sChIJ__A7v2svdTER-GsJJREMSOQ?authuser=0&hl=vi&rclk=1",
+    "id": "0109",
+    "name": "NGỌC TÂM QUÁN | NGAN CHÁY TỎI QUẬN 7",
+    "address": "749 Đ. Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7515661,
+    "lng": 106.7005677,
+    "avg_price": null,
+    "shu": 5,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Ngọc Tâm Quán mang đến trải nghiệm vị cay nồng đặc trưng của món ăn Ngán Chay Tỏi Quận 7, với hương vị đậm đà và hấp dẫn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870484/quan_an_q7/l8akfpyyyqieyvfg2tsq.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0346086739"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Simple+Chay+-+Simple+Chay+Restaurant/data=!4m7!3m6!1s0x31752f003bd934d3:0x4ec15e5ffaa9d769!8m2!3d10.7411131!4d106.6992548!16s%2Fg%2F11xh5lcvhl!19sChIJ0zTZOwAvdTERadep-l9ewU4?authuser=0&hl=vi&rclk=1",
+    "id": "0110",
+    "name": "Nhà Hàng Simple Chay - Simple Chay Restaurant",
+    "address": "9 Đường Số 12, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7411131,
+    "lng": 106.6992548,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Simple Chay mang đến những món ăn chay thanh đạm, tinh tế, phù hợp với những ai yêu thích sự nhẹ nhàng và tươi mát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870485/quan_an_q7/xh87itodhth8ewdjpjgn.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0947546768"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+Chay+Thi%E1%BB%87n+T%C3%A2m/data=!4m7!3m6!1s0x31752f97d7a74041:0x56b135d349268b3e!8m2!3d10.7325339!4d106.7000848!16s%2Fg%2F11fxzmhttq!19sChIJQUCn15cvdTERPosmSdM1sVY?authuser=0&hl=vi&rclk=1",
+    "id": "0111",
+    "name": "Quán Chay Thiện Tâm",
+    "address": "335 Nguyễn Hữu Thọ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7325339,
+    "lng": 106.7000848,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chay Thiện Tâm mang đến những món chay thanh đạm, tinh tế, phù hợp với những ai yêu thích hương vị dịu nhẹ và tinh khiết.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870486/quan_an_q7/apszfawkgo9hpdpbinxl.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+chay+Ki%E1%BB%81u+%C4%90%C3%A0m/data=!4m7!3m6!1s0x31752f55f2d15ee1:0x3d0cb556f08e0285!8m2!3d10.7472783!4d106.7008954!16s%2Fg%2F11h48s2gpp!19sChIJ4V7R8lUvdTERhQKO8Fa1DD0?authuser=0&hl=vi&rclk=1",
+    "id": "0112",
+    "name": "Quán chay Kiều Đàm",
+    "address": "793/55/16, 793/55 Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7472783,
+    "lng": 106.7008954,
+    "avg_price": 100500.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán chay Kiều Đàm mang đến những món ăn thanh đạm, tinh tế với hương vị dịu nhẹ, phù hợp cho những ai yêu thích sự thư thái và tinh khiết.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870488/quan_an_q7/vavcz3gzkjcsq5alghw0.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0903902270"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+CHAY+365+-+%E1%BA%A8m+Th%E1%BB%B1c+Chay+%26+L%E1%BA%A9u+Chay+Th%C6%B0%E1%BB%A3ng+H%E1%BA%A1ng/data=!4m7!3m6!1s0x3175254f5c1ba6c7:0xe8f99b079cc1474a!8m2!3d10.7502899!4d106.7356134!16s%2Fg%2F11kj9lhjk0!19sChIJx6YbXE8ldTERSkfBnAeb-eg?authuser=0&hl=vi&rclk=1",
+    "id": "0113",
+    "name": "Nhà Hàng CHAY 365 - Ẩm Thực Chay & Lẩu Chay Thượng Hạng",
+    "address": "210 Bùi Văn Ba, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7502899,
+    "lng": 106.7356134,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà Hàng CHAY 365 mang đến trải nghiệm ẩm thực chay thanh đạm với nhiều món lẩu và các món ăn được chế biến tỉ mỉ, đảm bảo hương vị tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870489/quan_an_q7/qxvhjbonyqvzej5t3xpm.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0928339339"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+chay,+c%C6%A1m+chay/data=!4m7!3m6!1s0x31752fde3479e891:0x52eca8c83d5e2a0!8m2!3d10.7386523!4d106.7127282!16s%2Fg%2F11gwhbrcv6!19sChIJkeh5NN4vdTERoOLVg4zKLgU?authuser=0&hl=vi&rclk=1",
+    "id": "0114",
+    "name": "Phở chay, cơm chay",
+    "address": "334 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7386523,
+    "lng": 106.7127282,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở chay và cơm chay mang hương vị thanh tao, tinh tế, phù hợp cho những ai yêu thích ẩm thực chay nhẹ nhàng và tươi mát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870490/quan_an_q7/kehvo7lmz8yme6k4vjiv.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C6%A1m+chay+T%E1%BB%AB+T%C3%A2m/data=!4m7!3m6!1s0x31752fdd5944768f:0xfe507bd1dab12346!8m2!3d10.7502806!4d106.6991192!16s%2Fg%2F11h06xyn03!19sChIJj3ZEWd0vdTERRiOx2tF7UP4?authuser=0&hl=vi&rclk=1",
+    "id": "0115",
+    "name": "Cơm chay Từ Tâm",
+    "address": "41 Đ. Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7502806,
+    "lng": 106.6991192,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm chay Từ Tâm mang đến hương vị thanh đạm, tinh tế với những nguyên liệu tươi ngon, đảm bảo sự cân bằng dinh dưỡng và trải nghiệm ẩm thực nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870492/quan_an_q7/tr2lijfonaptbovorhim.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+chay+Thi%E1%BB%87n+Quang/data=!4m7!3m6!1s0x31752f9ab2e0ba17:0xac92afc83a4ddbf9!8m2!3d10.7517413!4d106.7139471!16s%2Fg%2F11jgzdg7ll!19sChIJF7rgspovdTER-dtNOsivkqw?authuser=0&hl=vi&rclk=1",
+    "id": "0116",
+    "name": "Quán chay Thiện Quang",
+    "address": "281 Đ. Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7517413,
+    "lng": 106.7139471,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay Thiện Quang mang đến những món ăn thanh đạm, tinh tế với hương vị tự nhiên của các loại thực vật. Không gian quán ấm cúng, phù hợp để thưởng thức những món chay truyền thống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870493/quan_an_q7/bodjd0lq91uiwy1m5l6y.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0702520225"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+S%E1%BB%A9c+Kh%E1%BB%8Fe+Soumaki+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f3a4d0e4111:0xa3619004e4197fe!8m2!3d10.7294411!4d106.7066008!16s%2Fg%2F11wc2gs998!19sChIJEUEOTTovdTER_pdBTgAZNgo?authuser=0&hl=vi&rclk=1",
+    "id": "0117",
+    "name": "Quán Ăn Sức Khỏe Soumaki Quận 7",
+    "address": "Sky Garden 1, 88 Đ. Phạm Văn Nghị, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7294411,
+    "lng": 106.7066008,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Quán Ăn Sức Khỏe Soumaki Quận 7 mang đến những món ăn chay thanh mát, tươi ngon, phù hợp cho những ai quan tâm đến sức khỏe.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870494/quan_an_q7/zvvrbirnbwxb2la6rx2q.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0386700381"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Chay+The+Vegan+Garden/data=!4m7!3m6!1s0x31752fed34d4ddcf:0xe422b5198d38893b!8m2!3d10.7180448!4d106.7297147!16s%2Fg%2F11gvt72p1d!19sChIJz93UNO0vdTERO4k4jRm1IuQ?authuser=0&hl=vi&rclk=1",
+    "id": "0118",
+    "name": "Nhà Hàng Chay The Vegan Garden",
+    "address": "Shop 3SB1-9 Số 2 Mỹ Viên Chung Cư Mỹ Viên P, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7180448,
+    "lng": 106.7297147,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian xanh mát, hương vị thuần chay nhẹ nhàng, phù hợp cho những ai yêu thích sự thanh đạm và tinh tế.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870496/quan_an_q7/ojzmnhtoxnpbnc8invo7.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0916766024"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/H%C3%A0ng+D%C6%B0%C6%A1ng+Qu%C3%A1n/data=!4m7!3m6!1s0x31752f9c083bf5f9:0x7bc44b602503d677!8m2!3d10.7356121!4d106.7059747!16s%2Fg%2F1t_wlvrg!19sChIJ-fU7CJwvdTERd9YDJWBLxHs?authuser=0&hl=vi&rclk=1",
+    "id": "0119",
+    "name": "Hàng Dương Quán",
+    "address": "132 Đ. Số 65, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7356121,
+    "lng": 106.7059747,
+    "avg_price": 600000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hàng Dương Quán mang đến những món chay thanh đạm, tinh tế, phù hợp với những ai yêu thích hương vị truyền thống và nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870497/quan_an_q7/yscgx3we0fbrgljvg6r5.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0345094078"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Truy%E1%BB%81n+Thuy%E1%BA%BFt+ChamPong+Qu%E1%BA%ADn+7+-+%EC%A0%84%EC%84%A4%EC%9D%98%EC%A7%AC%EB%BD%95+7%EA%B5%B0%EC%A0%90/data=!4m7!3m6!1s0x31752fbc1c3a0245:0x96da0593aeb4c5d6!8m2!3d10.7299709!4d106.7068405!16s%2Fg%2F11h8rcbf4n!19sChIJRQI6HLwvdTER1sW0rpMF2pY?authuser=0&hl=vi&rclk=1",
+    "id": "0120",
+    "name": "Truyền Thuyết ChamPong Quận 7 - 전설의짬뽕 7군점",
+    "address": "93 Đ. Phạm Văn Nghị, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7299709,
+    "lng": 106.7068405,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.7,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán chay Truyền Thuyết ChamPong mang đến trải nghiệm hương vị đậm đà, đặc biệt với các món ăn cay nồng, phù hợp với những ai yêu thích sự kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870499/quan_an_q7/zcpnuo7rf1ja3oowqife.jpg",
+    "type": [
+      "Quán Chay"
+    ],
+    "phone_num": "0978316231"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/%C3%82me+Caf%C3%A9+%26+Brunch/data=!4m7!3m6!1s0x31752f6e56535f4d:0x11f690ae6f54e06b!8m2!3d10.7217913!4d106.7145112!16s%2Fg%2F11tm_xrdt7!19sChIJTV9TVm4vdTERa-BUb66Q9hE?authuser=0&hl=vi&rclk=1",
+    "id": "0121",
+    "name": "Âme Café & Brunch",
+    "address": "The Panorama, 28 Đường P, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7217913,
+    "lng": 106.7145112,
+    "avg_price": 150000.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Âme Café & Brunch mang đến những món bánh ngọt và đồ uống nhẹ nhàng, tinh tế, hoàn hảo cho buổi sáng thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870500/quan_an_q7/dlebmfs7zawyu4by7wl9.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0522366399"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/HERA+COFFEE+AND+TEA+%7C+C%C3%80+PH%C3%8A+NGON+QU%E1%BA%ACN+7+%7C+C%C3%80+PH%C3%8A+VIEW+%C4%90%E1%BA%B8P+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x31752579819570e5:0x98b5919c726ea71d!8m2!3d10.729048!4d106.7324469!16s%2Fg%2F11y1zmx_y3!19sChIJ5XCVgXkldTERHaducpyRtZg?authuser=0&hl=vi&rclk=1",
+    "id": "0122",
+    "name": "HERA COFFEE AND TEA | CÀ PHÊ NGON QUẬN 7 | CÀ PHÊ VIEW ĐẸP QUẬN 7",
+    "address": "852 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.729048,
+    "lng": 106.7324469,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "HERA COFFEE AND TEA mang đến những tách cà phê thơm ngon, nhẹ nhàng, phù hợp với không gian quán nước thanh bình tại Quận 7.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870501/quan_an_q7/yzsueqp9tdc56umlv9ag.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0773613365"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/M%C3%A9o+Meo+Cat+Cafe+-+Cafe+th%C3%BA+c%C6%B0ng+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f005fd1f24d:0x9a79c6e694118bf!8m2!3d10.7287665!4d106.7204463!16s%2Fg%2F11vz8fxbc3!19sChIJTfLRXwAvdTERvxhBaW6cpwk?authuser=0&hl=vi&rclk=1",
+    "id": "0123",
+    "name": "Méo Meo Cat Cafe - Cafe thú cưng Quận 7",
+    "address": "27-29 Nguyễn Khắc Viện, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7287665,
+    "lng": 106.7204463,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian ấm cúng, phù hợp cho những tín đồ yêu mèo. Các món đồ uống được pha chế với hương vị tươi mát, nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870503/quan_an_q7/tojmpqxn7do0thmfaxhv.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0866393963"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/%C3%9A+C%C3%A0+Ph%C3%AA+Kokeshi+%7C+Coffee+vintage+qu%E1%BA%ADn+7+%7C+Cafe+vintage+L%C3%A2m+V%C4%83n+B%E1%BB%81n/data=!4m7!3m6!1s0x31752f59eb4d94d5:0x9b16577775c4ffa2!8m2!3d10.7415254!4d106.7170667!16s%2Fg%2F11s5741cxf!19sChIJ1ZRN61kvdTERov_EdXdXFps?authuser=0&hl=vi&rclk=1",
+    "id": "0124",
+    "name": "Ú Cà Phê Kokeshi | Coffee vintage quận 7 | Cafe vintage Lâm Văn Bền",
+    "address": "15 Số 49, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7415254,
+    "lng": 106.7170667,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Ú Cà Phê Kokeshi mang đến trải nghiệm thưởng thức cà phê ấm áp với hương vị truyền thống, kết hợp cùng không gian vintage độc đáo.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870504/quan_an_q7/ejalee2rxmdevmuqeq1h.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0928456789"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/CAFE+M%C3%88O+SHIKI+-+CAFE+TH%C3%9A+C%C6%AFNG+QU%E1%BA%ACN+7-+CAT+COFFEE/data=!4m7!3m6!1s0x31752f504a8668e9:0xf9d23b7826ea017d!8m2!3d10.7309015!4d106.7035148!16s%2Fg%2F11w4dm1959!19sChIJ6WiGSlAvdTERfQHqJng70vk?authuser=0&hl=vi&rclk=1",
+    "id": "0125",
+    "name": "CAFE MÈO SHIKI - CAFE THÚ CƯNG QUẬN 7- CAT COFFEE",
+    "address": "A44 Đường Số 14, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7309015,
+    "lng": 106.7035148,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian quán CAFE MÈO SHIKI - CAT COFFEE mang đậm nét vui nhộn, đặc biệt phù hợp với những tín đồ yêu thích thú cưng. Các món nước ngọt có hương vị dịu nhẹ, dễ chịu.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870505/quan_an_q7/yplgod3iexjukuztjkhs.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Bamos+Coffee+Qu%E1%BA%ADn+7+-+C%C3%A0+ph%C3%AA+24h+%28Khu+Kim+S%C6%A1n%29/data=!4m7!3m6!1s0x31752f72ce74dad9:0x3224ac91d27e5568!8m2!3d10.734842!4d106.7007331!16s%2Fg%2F11tdcjvhth!19sChIJ2dp0znIvdTERaFV-0pGsJDI?authuser=0&hl=vi&rclk=1",
+    "id": "0126",
+    "name": "Bamos Coffee Quận 7 - Cà phê 24h (Khu Kim Sơn)",
+    "address": "B68 Đ. Số 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.734842,
+    "lng": 106.7007331,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bamos Coffee mang đến trải nghiệm cà phê 24h với hương vị đậm đà, phù hợp cho những ai yêu thích sự mạnh mẽ và sảng khoái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870507/quan_an_q7/cmlzquluf1706thx6lxv.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0973878508"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Sumatra+Coffee+%26+Cigar+Lounge+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng+-+Cafe+Ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f48f2ef92b5:0xdbc0133ee0e10333!8m2!3d10.7311857!4d106.7100687!16s%2Fg%2F11vr8km3nk!19sChIJtZLv8kgvdTERMwPh4D4TwNs?authuser=0&hl=vi&rclk=1",
+    "id": "0127",
+    "name": "Sumatra Coffee & Cigar Lounge Phú Mỹ Hưng - Cafe Ngon Quận 7",
+    "address": "8-10 Lê Văn Thiêm, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7311857,
+    "lng": 106.7100687,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Sumatra Coffee & Cigar Lounge mang đến trải nghiệm thưởng thức cà phê đậm đà, kết hợp cùng không gian ấm cúng, thư giãn, lý tưởng cho những buổi chiều cuối tuần.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870508/quan_an_q7/lm2kag6yls3ip5owocam.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0909888502"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/The+Festa+Coffee/data=!4m7!3m6!1s0x31752570d92618b1:0x2050e5497f3d998d!8m2!3d10.7434733!4d106.7323428!16s%2Fg%2F11j1n1zq2_!19sChIJsRgm2XAldTERjZk9f0nlUCA?authuser=0&hl=vi&rclk=1",
+    "id": "0128",
+    "name": "The Festa Coffee",
+    "address": "46 Trần Trọng Cung, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7434733,
+    "lng": 106.7323428,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "The Festa Coffee mang đến những tách cà phê thơm ngon, nhẹ nhàng, phù hợp với không gian quán ấm cúng và thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870509/quan_an_q7/fc4zlb0c6vzfwjodj2bv.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Hochi+Cafe/data=!4m7!3m6!1s0x317525e56485ca93:0x7ef64a361c0fbc71!8m2!3d10.7243937!4d106.7277273!16s%2Fg%2F11mhy5y1l7!19sChIJk8qFZOUldTERcbwPHDZK9n4?authuser=0&hl=vi&rclk=1",
+    "id": "0129",
+    "name": "Hochi Cafe",
+    "address": "43 Đ. Số 15, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7243937,
+    "lng": 106.7277273,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hochi Cafe mang đến những món nước truyền thống với hương vị thanh mát, tinh tế, phù hợp cho những buổi chiều thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870511/quan_an_q7/zbirrbypvmiuacihmdq1.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0918989827"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/TH%E1%BA%A2O+CAFE/data=!4m7!3m6!1s0x31752f24da37cf59:0x3104d592df6efcf3!8m2!3d10.7478122!4d106.7070436!16s%2Fg%2F11k4w5zggr!19sChIJWc832iQvdTER8_xu35LVBDE?authuser=0&hl=vi&rclk=1",
+    "id": "0130",
+    "name": "THẢO CAFE",
+    "address": "83 Số 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7478122,
+    "lng": 106.7070436,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thảo Cafe mang đến những tách nước mát lành, thanh đạm, phù hợp với mọi lúc mọi nơi. Không gian quán bình yên, lý tưởng để thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870512/quan_an_q7/i6jogcroqvsjokxvm3tf.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0935024099"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/The+Sis+Cafe/data=!4m7!3m6!1s0x317525ce23386fab:0xeb82482c3501a37e!8m2!3d10.7373572!4d106.7311688!16s%2Fg%2F11rf9z5_dp!19sChIJq284I84ldTERfqMBNSxIgus?authuser=0&hl=vi&rclk=1",
+    "id": "0131",
+    "name": "The Sis Cafe",
+    "address": "1F Nguyễn Văn Quỳ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7373572,
+    "lng": 106.7311688,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "The Sis Cafe mang đến những món nước thanh mát, nhẹ nhàng, hoàn hảo cho những buổi chiều thư thái.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870513/quan_an_q7/zes8zwffwquxmstqkkxt.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0903810084"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/SOF%C3%89/data=!4m7!3m6!1s0x31752f005e09b9f9:0xed3863fd796421af!8m2!3d10.7393717!4d106.694896!16s%2Fg%2F11wvmn86gr!19sChIJ-bkJXgAvdTERryFkef1jOO0?authuser=0&hl=vi&rclk=1",
+    "id": "0132",
+    "name": "SOFÉ",
+    "address": "PMQV+RX4, Đ. Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7393717,
+    "lng": 106.694896,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "SOFÉ mang đến những món nước truyền thống thanh mát, phù hợp với mọi vị giác, đặc biệt thích hợp cho những ngày hè nóng bức.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870514/quan_an_q7/lp4evtlpo3b962kyzk3w.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0703355947"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nap+Cafe+-+Dream+and+Drink/data=!4m7!3m6!1s0x31752ff26f2452b3:0xab3e0580e455c91a!8m2!3d10.7346061!4d106.7014019!16s%2Fg%2F11lybk87gq!19sChIJs1Ikb_IvdTERGslV5IAFPqs?authuser=0&hl=vi&rclk=1",
+    "id": "0133",
+    "name": "Nap Cafe - Dream and Drink",
+    "address": "5 Đ. Số 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7346061,
+    "lng": 106.7014019,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian Nap Cafe - Dream and Drink mang đến những tách trà và bánh ngọt thanh mát, phù hợp cho những giấc mơ yên bình.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870516/quan_an_q7/bxehvkcpjr2husjaxhp7.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0969990330"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/The+Seventh+Barista%2Fcafe+and+more/data=!4m7!3m6!1s0x31752f3578a14eb3:0xbf3adfd748b5dca0!8m2!3d10.7268505!4d106.6934762!16s%2Fg%2F11jgdbl_4f!19sChIJs06heDUvdTERoNy1SNffOr8?authuser=0&hl=vi&rclk=1",
+    "id": "0134",
+    "name": "The Seventh Barista/cafe and more",
+    "address": "63 đường số 14, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7268505,
+    "lng": 106.6934762,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian ấm cúng, nơi bạn có thể thưởng thức những tách cà phê thơm ngon và các món bánh ngọt nhẹ nhàng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870517/quan_an_q7/h7jhw4gp6fthmfmkvijk.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0913629169"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Trung+Nguy%C3%AAn+E-Coffee+%7C+Coffee+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fd8c2e90adf:0x1cb1c4f1366c0a63!8m2!3d10.7419573!4d106.713821!16s%2Fg%2F11nhhk9jbd!19sChIJ3wrpwtgvdTERYwpsNvHEsRw?authuser=0&hl=vi&rclk=1",
+    "id": "0135",
+    "name": "Trung Nguyên E-Coffee | Coffee Quận 7",
+    "address": "21D Mai Văn Vĩnh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7419573,
+    "lng": 106.713821,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Trung Nguyên E-Coffee mang đến trải nghiệm cà phê thuần khiết, hương vị dịu nhẹ, phù hợp cho mọi lúc mọi nơi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870519/quan_an_q7/q2jsp5fexhdunu6bdfl1.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0333464897"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Neru+Coffee+24%2F7+chi+nh%C3%A1nh+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317525002ee29263:0xa426658886f1be9c!8m2!3d10.7369107!4d106.7212125!16s%2Fg%2F11wy221w3d!19sChIJY5LiLgAldTERnL7xhohlJqQ?authuser=0&hl=vi&rclk=1",
+    "id": "0136",
+    "name": "Neru Coffee 24/7 chi nhánh quận 7",
+    "address": "4 Đ. Số 1, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7369107,
+    "lng": 106.7212125,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Neru Coffee 24/7 mang đến những tách cà phê thơm ngon, êm ái, hoàn hảo cho những buổi sáng hoặc chiều thư giãn tại quận 7.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870520/quan_an_q7/gbuq5magvwhvqqbnvbzm.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0969458881"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Newdays+qu%E1%BA%ADn+7+%28Japanese+Matcha+cafe%29/data=!4m7!3m6!1s0x31752f4464e4574d:0x726005fda6368b58!8m2!3d10.7400754!4d106.7052457!16s%2Fg%2F11w4d9xsg8!19sChIJTVfkZEQvdTERWIs2pv0FYHI?authuser=0&hl=vi&rclk=1",
+    "id": "0137",
+    "name": "Newdays quận 7 (Japanese Matcha cafe)",
+    "address": "PPR4+23, 08 Đường số 30, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7400754,
+    "lng": 106.7052457,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Newdays quận 7 mang đến trải nghiệm matcha thanh nhạt, phù hợp với những ai yêu thích hương vị tinh tế của trà xanh Nhật Bản.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870521/quan_an_q7/ntoidiudbe9i8rkxfo34.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0329898138"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/KAFIN+COFFEE+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fa93cf5fb21:0x9e863bc692f93426!8m2!3d10.7467075!4d106.6940188!16s%2Fg%2F11fqsbywyn!19sChIJIfv1PKkvdTERJjT5ksY7hp4?authuser=0&hl=vi&rclk=1",
+    "id": "0138",
+    "name": "KAFIN COFFEE Quận 7",
+    "address": "62 Hẻm 1041/62 Trần Xuân Soạn, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7467075,
+    "lng": 106.6940188,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KAFIN COFFEE Quận 7 mang đến những tách cà phê thơm ngon, nhẹ nhàng, phù hợp với không gian yên bình tại Quận 7.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870523/quan_an_q7/a7bffsuw9xevcoyn9pne.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C3%A0+ph%C3%AA+NGUY%E1%BB%84N+TR%E1%BA%A6N/data=!4m7!3m6!1s0x31752f400fa3ff27:0x7c664bdb61d3355f!8m2!3d10.7447548!4d106.7163805!16s%2Fg%2F11hz8kwyp0!19sChIJJ_-jD0AvdTERXzXTYdtLZnw?authuser=0&hl=vi&rclk=1",
+    "id": "0139",
+    "name": "Cà phê NGUYỄN TRẦN",
+    "address": "07 Số 35, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7447548,
+    "lng": 106.7163805,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà phê NGUYỄN TRẦN mang đến trải nghiệm hương vị cà phê truyền thống, nhẹ nhàng và thư thái, hoàn hảo cho những buổi chiều yên bình.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870524/quan_an_q7/p5c7s0o1dc2loxhrtgam.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0918833881"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Navido+specialty+coffee+Scenic+Valley/data=!4m7!3m6!1s0x31752fc0943aaf6d:0xb5be81f6588654d9!8m2!3d10.7307265!4d106.7169923!16s%2Fg%2F11r8d6shqm!19sChIJba86lMAvdTER2VSGWPaBvrU?authuser=0&hl=vi&rclk=1",
+    "id": "0140",
+    "name": "Navido specialty coffee Scenic Valley",
+    "address": "Chung cư Scenic Valley 1, Nhà H002-H003, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7307265,
+    "lng": 106.7169923,
+    "avg_price": 100500.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [],
+    "semantic_text": "Navido Specialty Coffee Scenic Valley mang đến trải nghiệm cà phê tinh tế, hương vị dịu nhẹ, phù hợp với mọi vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870525/quan_an_q7/kh0gtp02it0m2nbdbxn1.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0795231635"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C3%80+PH%C3%8A+PHI+LONG+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x317525fca2b338b9:0x5c1499a24f13bfc5!8m2!3d10.744099!4d106.7296086!16s%2Fg%2F11fpq5r50b!19sChIJuTizovwldTERxb8TT6KZFFw?authuser=0&hl=vi&rclk=1",
+    "id": "0141",
+    "name": "CÀ PHÊ PHI LONG QUẬN 7",
+    "address": "517 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.744099,
+    "lng": 106.7296086,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà Phê Phi Long Quận 7 mang đến trải nghiệm vị ngọt thanh của cà phê, phù hợp với mọi lứa tuổi và sở thích.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870526/quan_an_q7/cjcjvdybdnmkgvj4eux0.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0933010208"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Kofi+Kai+-+T%C3%A2n+Quy+%C4%90%C3%B4ng+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f8139d4a4c9:0xd9e110e028ec595d!8m2!3d10.7383654!4d106.7065502!16s%2Fg%2F11lqnc495z!19sChIJyaTUOYEvdTERXVnsKOAQ4dk?authuser=0&hl=vi&rclk=1",
+    "id": "0142",
+    "name": "Kofi Kai - Tân Quy Đông Quận 7",
+    "address": "26 Đ. Số 65, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7383654,
+    "lng": 106.7065502,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán nước Kofi Kai mang hương vị thanh mát, tươi mát của các loại trái cây và thảo mộc, phù hợp để giải nhiệt vào những ngày hè nóng bức.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870528/quan_an_q7/dzyswqq6fzf57dqorapd.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Win.D+Gaming+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fe20a2a86b5:0xcb8fbe7518a7921c!8m2!3d10.7425992!4d106.7014496!16s%2Fg%2F11ks1p1602!19sChIJtYYqCuIvdTERHJKnGHW-j8s?authuser=0&hl=vi&rclk=1",
+    "id": "0143",
+    "name": "Win.D Gaming Quận 7",
+    "address": "458 Nguyễn Hữu Thọ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7425992,
+    "lng": 106.7014496,
+    "avg_price": null,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán nước Win.D Gaming Quận 7 mang đến những trải nghiệm tươi mát, thanh nhiệt với các món nước cơ bản, phù hợp để giải nhiệt sau những giờ game.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870529/quan_an_q7/xhflcgeolhdlbz3l3vnw.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0789884458"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/V-Coffee+B%C3%B9i+V%C4%83n+Ba/data=!4m7!3m6!1s0x31752fafc150c8f7:0x1542df0ba6a25716!8m2!3d10.7504186!4d106.7330307!16s%2Fg%2F11h4d6nwrz!19sChIJ98hQwa8vdTERFleipgvfQhU?authuser=0&hl=vi&rclk=1",
+    "id": "0144",
+    "name": "V-Coffee Bùi Văn Ba",
+    "address": "143 Bùi Văn Ba, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7504186,
+    "lng": 106.7330307,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "V-Coffee Bùi Văn Ba mang đến những tách cà phê thơm ngon, nhẹ nhàng, phù hợp với không gian quán nước thanh lịch.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870530/quan_an_q7/wsvxpgk6htaeexrun7no.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0963647483"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Lekofe+-+Chi+nh%C3%A1nh+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317525fd5369054d:0x959da38d93d03b24!8m2!3d10.7369327!4d106.7310583!16s%2Fg%2F11ssqbgq3x!19sChIJTQVpU_0ldTERJDvQk42jnZU?authuser=0&hl=vi&rclk=1",
+    "id": "0145",
+    "name": "Lekofe - Chi nhánh quận 7",
+    "address": "C1 Nguyễn Văn Quỳ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7369327,
+    "lng": 106.7310583,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lekofe - Chi nhánh quận 7 mang đến những món nước truyền thống thanh mát, phù hợp cho những ngày hè nóng bức.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870532/quan_an_q7/jvczcyropuddppnj6xks.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0909688288"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/M%C3%AC+Rc+Cafe+%7C+Cafe+Xe+%C4%90i%E1%BB%81u+Khi%E1%BB%83n+Qu%E1%BA%ADn+7+%7C+Cafe+Xe+M%C3%A1y+X%C3%BAc+Qu%E1%BA%ADn+7+%7C+Cafe+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f002ca8ce91:0x68e5a2a516a3b508!8m2!3d10.7474907!4d106.7184235!16s%2Fg%2F11m_2gkryz!19sChIJkc6oLAAvdTERCLWjFqWi5Wg?authuser=0&hl=vi&rclk=1",
+    "id": "0146",
+    "name": "Mì Rc Cafe | Cafe Xe Điều Khiển Quận 7 | Cafe Xe Máy Xúc Quận 7 | Cafe Quận 7",
+    "address": "46 Đ. 17, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7474907,
+    "lng": 106.7184235,
+    "avg_price": null,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mì Rc Cafe mang đến hương vị truyền thống với sợi mì tươi ngon và nước dùng đậm đà, phù hợp cho những ai yêu thích sự cân bằng giữa vị cay và ngọt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870533/quan_an_q7/jrh4zr1n7abuhabwmjhz.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0797409291"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%C3%A0+Ph%C3%AA+%C3%94ng+B%E1%BA%A7u/data=!4m7!3m6!1s0x31752f8fc0793af9:0x2a1351c68de92ce6!8m2!3d10.742391!4d106.715775!16s%2Fg%2F11mr29grvc!19sChIJ-Tp5wI8vdTER5izpjcZREyo?authuser=0&hl=vi&rclk=1",
+    "id": "0147",
+    "name": "Cà Phê Ông Bầu",
+    "address": "170A Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.742391,
+    "lng": 106.715775,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà Phê Ông Bầu mang đến hương vị cà phê truyền thống, nhẹ nhàng và thư thái, phù hợp cho những buổi sáng chậm rãi.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870534/quan_an_q7/qkitk3uahl5ogsni7h2g.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0867184180"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Durian+Coffee+Qu%E1%BA%ADn+7+%28C%C3%A0+Ph%C3%AA+S%E1%BA%A7u+Ri%C3%AAng%29/data=!4m7!3m6!1s0x31752fe88e7f94f5:0x4fbe8c6372b5816!8m2!3d10.7429084!4d106.7011312!16s%2Fg%2F11xcxxlfcq!19sChIJ9ZR_jugvdTERFlgrN8bo-wQ?authuser=0&hl=vi&rclk=1",
+    "id": "0148",
+    "name": "Durian Coffee Quận 7 (Cà Phê Sầu Riêng)",
+    "address": "27 Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Chung Cư SunriseCity Lô OT-X0, 01.10, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7429084,
+    "lng": 106.7011312,
+    "avg_price": null,
+    "shu": 1,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà phê sầu riêng mang đến hương vị ngọt ngào, đặc trưng của loại quả sầu riêng, kết hợp hoàn hảo với vị đắng nhẹ của cà phê, tạo nên trải nghiệm độc đáo.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870535/quan_an_q7/ripn7qoxcqpoit1tgz2u.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0768197100"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Cafe+V%C3%95NG+qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fd06bf8f359:0x5d75d9e111924ce1!8m2!3d10.736151!4d106.7167136!16s%2Fg%2F11k3j5s8js!19sChIJWfP4a9AvdTER4UySEeHZdV0?authuser=0&hl=vi&rclk=1",
+    "id": "0149",
+    "name": "Cafe VÕNG quận 7",
+    "address": "134 Đ. số 9, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.736151,
+    "lng": 106.7167136,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Không gian quán Cafe VÕNG quận 7 mang đến những món nước truyền thống thanh mát, phù hợp để thư giãn sau một ngày dài.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870536/quan_an_q7/gvvi9dvyxtsfezycjlkf.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/C%E1%BB%A7i+coffee/data=!4m7!3m6!1s0x31752faf38f45b13:0xb063c76845b6527b!8m2!3d10.7440983!4d106.6980382!16s%2Fg%2F11fnyfm9ty!19sChIJE1v0OK8vdTERe1K2RWjHY7A?authuser=0&hl=vi&rclk=1",
+    "id": "0150",
+    "name": "Củi coffee",
+    "address": "Đ. 3A, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7440983,
+    "lng": 106.6980382,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Củi Coffee mang đến những tách cà phê ấm áp, tinh tế, phù hợp với không gian quán yên bình, thư giãn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870537/quan_an_q7/vsotvmu2d0lc8bwlvucu.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/L@an+coffee+shop/data=!4m7!3m6!1s0x31752f574dbd7b1d:0x7d61aabe5d3b6de8!8m2!3d10.7281881!4d106.7071903!16s%2Fg%2F11rqgbdpzf!19sChIJHXu9TVcvdTER6G07Xb6qYX0?authuser=0&hl=vi&rclk=1",
+    "id": "0151",
+    "name": "L@an coffee shop",
+    "address": "1433 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7281881,
+    "lng": 106.7071903,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "L@an coffee shop mang đến những tách cà phê thơm ngon, nhẹ nhàng, phù hợp với không gian quán yên bình.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870539/quan_an_q7/uiokaivykwbxdygukqtr.jpg",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "02854161010"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Nh%C3%A0+Ng%C3%B3i+Ph%E1%BB%9F%7C+Ph%E1%BB%9F+Ngon+-+B%C3%BAn+ch%E1%BA%A3+ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317525ee1617ef29:0xc677a3ca32619333!8m2!3d10.7235145!4d106.7283083!16s%2Fg%2F11r6xl309l!19sChIJKe8XFu4ldTERM5NhMsqjd8Y?authuser=0&hl=vi&rclk=1",
+    "id": "0152",
+    "name": "Nhà Ngói Phở| Phở Ngon - Bún chả ngon Quận 7",
+    "address": "35 Đường số 16, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7235145,
+    "lng": 106.7283083,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Ngon Quận 7 mang đến trải nghiệm vị phở truyền thống đậm đà, thơm nồng với nước dùng và bánh phở mềm mịn.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870540/quan_an_q7/ybfmzojc5eogouakxisw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933776589"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Nh%E1%BA%A5t+V%E1%BB%8B/data=!4m7!3m6!1s0x31752f0222bdba1f:0xc6ae2ebade2bc7cc!8m2!3d10.7381744!4d106.7206994!16s%2Fg%2F11y5bs8ntm!19sChIJH7q9IgIvdTERzMcr3roursY?authuser=0&hl=vi&rclk=1",
+    "id": "0153",
+    "name": "Phở Nhất Vị",
+    "address": "116 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7381744,
+    "lng": 106.7206994,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Nhất Vị mang đến trải nghiệm phở truyền thống với nước dùng đậm đà và bánh phở mềm mại, thơm ngon.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870541/quan_an_q7/cum3zmyux79ilbpv2zuw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0828066966"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Vi%E1%BB%87t+Nam/data=!4m7!3m6!1s0x31752fab574ac8af:0x93f4b892e5c59313!8m2!3d10.730932!4d106.7086934!16s%2Fg%2F11mvrmtvmh!19sChIJr8hKV6svdTERE5PF5ZK49JM?authuser=0&hl=vi&rclk=1",
+    "id": "0154",
+    "name": "Phở Việt Nam",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.730932,
+    "lng": 106.7086934,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Việt Nam mang đến trải nghiệm hương vị truyền thống với nước dùng đậm đà và bánh phở mềm mại, là món ăn quen thuộc và yêu thích của nhiều thực khách.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870542/quan_an_q7/j7sunbzmk1j5elgh0nyg.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909297400"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%91+b%C3%BAn+h%C3%A0+n%E1%BB%99i/data=!4m7!3m6!1s0x31752fffe408ab0f:0x66b62c419050e2b5!8m2!3d10.7444558!4d106.7144382!16s%2Fg%2F11ph6_1ygt!19sChIJD6sI5P8vdTERteJQkEEstmY?authuser=0&hl=vi&rclk=1",
+    "id": "0155",
+    "name": "Phố bún hà nội",
+    "address": "78A Đ. Số 37, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7444558,
+    "lng": 106.7144382,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bún Hà Nội mang hương vị truyền thống, đậm đà với nước dùng thanh ngọt và sợi bún mềm. Không gian quán giản dị, gần gũi, tái hiện nét đặc trưng của ẩm thực Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870544/quan_an_q7/xtwd78fe9dz5rkvreern.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0814690690"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+X%C3%ADch+%7C+Ph%E1%BB%9F+Ngon+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f8db62c7fd1:0x1f521b66859aa3a4!8m2!3d10.7271169!4d106.7140237!16s%2Fg%2F11cs38tcg1!19sChIJ0X8sto0vdTERpKOahWYbUh8?authuser=0&hl=vi&rclk=1",
+    "id": "0156",
+    "name": "Phở Xích | Phở Ngon Quận 7",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7271169,
+    "lng": 106.7140237,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Xích | Phở Ngon Quận 7 mang đến trải nghiệm phở truyền thống với nước dùng đậm đà và bánh phở mềm mịn, hương vị đặc trưng của thịt bò",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870545/quan_an_q7/rsp2rrnitrd9iemeyprw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0339066666"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Chua+L%E1%BA%A1ng+S%C6%A1n,+V%E1%BB%8Bt+Quay+M%E1%BA%AFc+M%E1%BA%ADt/data=!4m7!3m6!1s0x31752f9e55555555:0x748569345902412c!8m2!3d10.7408567!4d106.7044668!16s%2Fg%2F11lly2bygd!19sChIJVVVVVZ4vdTERLEECWTRphXQ?authuser=0&hl=vi&rclk=1",
+    "id": "0157",
+    "name": "Phở Chua Lạng Sơn, Vịt Quay Mắc Mật",
+    "address": "Chung cư Hoàng Anh Gia Lai, 357 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7408567,
+    "lng": 106.7044668,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Chua Lạng Sơn mang đến hương vị chua thanh đặc trưng, kết hợp cùng thịt bò mềm và nước dùng đậm đà. Vịt Quay Mắc Mật là sự hòa quyện hoàn hảo giữa vị ngọt tự nhiên của thịt và lớp da giòn rụm.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870546/quan_an_q7/pgyjh4purbpldhrtuhnf.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0397450341"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+B%C3%B2+Hu%E1%BA%BF+O+X%C6%B0a/data=!4m7!3m6!1s0x31752f7dea3c2c25:0x28697096274e4482!8m2!3d10.7485159!4d106.7174776!16s%2Fg%2F11t9h21308!19sChIJJSw86n0vdTERgkROJ5ZwaSg?authuser=0&hl=vi&rclk=1",
+    "id": "0158",
+    "name": "Bún Bò Huế O Xưa",
+    "address": "12 Đường số 11N, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7485159,
+    "lng": 106.7174776,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bún Bò Huế O Xưa mang hương vị đậm đà, thanh ngọt với nước dùng đặc trưng và thịt bò mềm. Không gian quán ấm cúng, phù hợp để thưởng thức món ăn truyền thống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870547/quan_an_q7/qqeckobwmczyx0fblygy.png",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937501369"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+-+Bo%CC%80+Kho+H%C6%B0%C6%A1ng+Sen/data=!4m7!3m6!1s0x317525b185987b01:0x3478b585ca826632!8m2!3d10.7374415!4d106.7313761!16s%2Fg%2F11ft_ddcf5!19sChIJAXuYhbEldTERMmaCyoW1eDQ?authuser=0&hl=vi&rclk=1",
+    "id": "0159",
+    "name": "Phở - Bò Kho Hương Sen",
+    "address": "2 lô E, Nguyễn Văn Quỳ, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7374415,
+    "lng": 106.7313761,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Hương Sen mang đến trải nghiệm vị truyền thống đậm đà, nước dùng thanh ngọt kết hợp cùng thịt bò mềm và bánh phở dai ngon.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870548/quan_an_q7/wowzjukzrfspm0iuaxei.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0944331068"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Kim+H%C6%B0ng/data=!4m7!3m6!1s0x31752fed34943acd:0x151f74be1e0e58a6!8m2!3d10.7231888!4d106.7098772!16s%2Fg%2F1tgxfkl2!19sChIJzTqUNO0vdTERplgOHr50HxU?authuser=0&hl=vi&rclk=1",
+    "id": "0160",
+    "name": "Phở Kim Hưng",
+    "address": "Chung Cư Mỹ Phúc, 70 Lý Long Tường, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7231888,
+    "lng": 106.7098772,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Kim Hưng mang đến trải nghiệm phở truyền thống với nước dùng đậm đà và bánh phở mềm mại, là lựa chọn hoàn hảo cho những ai yêu thích hương vị Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870550/quan_an_q7/i9prc3rmti6dqncjwxvr.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02854123775"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+b%C3%B2+Hu%E1%BA%BF+C%C3%B4+Sam/data=!4m7!3m6!1s0x317525dff44517fb:0x3032fbecbf0ce73e!8m2!3d10.7363012!4d106.7061533!16s%2Fg%2F11s8w96dx6!19sChIJ-xdF9N8ldTERPucMv-z7MjA?authuser=0&hl=vi&rclk=1",
+    "id": "0161",
+    "name": "Bún bò Huế Cô Sam",
+    "address": "82 Đ. Số 65, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7363012,
+    "lng": 106.7061533,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Huế đậm đà với nước dùng thơm nồng, vị cay nồng đặc trưng và hương vị truyền thống của vùng miền.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870551/quan_an_q7/ubanlunvdl41bnhuzj2i.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0968699411"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+SOL+-+53N%C4%90C+Q7+%28Ph%E1%BB%9F+%26+C%C3%A1c+M%C3%B3n+Ngon+T%E1%BB%AB+Ph%E1%BB%9F%29/data=!4m7!3m6!1s0x31752f037eec2399:0xea1174b89ea883d2!8m2!3d10.726966!4d106.7088345!16s%2Fg%2F11s8nsxcqd!19sChIJmSPsfgMvdTER0oOonrh0Eeo?authuser=0&hl=vi&rclk=1",
+    "id": "0162",
+    "name": "Phở SOL - 53NĐC Q7 (Phở & Các Món Ngon Từ Phở)",
+    "address": "53 Nguyễn Đức Cảnh, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.726966,
+    "lng": 106.7088345,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở SOL mang đến hương vị truyền thống đậm đà, nước dùng thanh ngọt kết hợp với bánh phở mềm mại, trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870552/quan_an_q7/llfhfoijl8uldrmw4pgg.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0899165353"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%9AN+B%C3%92+HU%E1%BA%BE+C%C3%94+XU%C3%82N+CH%E1%BB%A2+%C4%90%C3%94NG+BA+-+QU%E1%BA%ACN+7/data=!4m7!3m6!1s0x31752f006407c851:0x76c69a6ec7c3b44b!8m2!3d10.7400244!4d106.7098293!16s%2Fg%2F11vxpsxyxw!19sChIJUcgHZAAvdTERS7TDx26axnY?authuser=0&hl=vi&rclk=1",
+    "id": "0163",
+    "name": "BÚN BÒ HUẾ CÔ XUÂN CHỢ ĐÔNG BA - QUẬN 7",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7400244,
+    "lng": 106.7098293,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Huế đậm đà, hương vị thịt bò nạc, mắm thịt thơm ngon, cùng sợi bánh đa xanh mềm mại, là trải nghiệm ẩm thực đặc sắc của vùng đất Cố đô.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870554/quan_an_q7/l9uixyw3rildawpvamxk.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0978930807"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/QU%C3%81N+PH%E1%BB%9E+H%E1%BA%ACU+Q7/data=!4m7!3m6!1s0x31752fab60cf5eb3:0xe00317f68ad8b14b!8m2!3d10.74478!4d106.7111449!16s%2Fg%2F11j336hn68!19sChIJs17PYKsvdTERS7HYivYXA-A?authuser=0&hl=vi&rclk=1",
+    "id": "0164",
+    "name": "QUÁN PHỞ HẬU Q7",
+    "address": "Đường Số 12, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.74478,
+    "lng": 106.7111449,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở tại QUÁN PHỞ HẬU Q7 mang hương vị truyền thống đậm đà, nước dùng thanh ngọt kết hợp với bánh phở mềm mại, trải nghiệm ẩm thực tuyệt vời.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870555/quan_an_q7/fcmkcyo04hpjzkytwr2b.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0785722368"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+T%C3%B9ng+H%C3%A0+N%E1%BB%99i/data=!4m7!3m6!1s0x31752fd45d152d19:0x8a77d68237bb4d0e!8m2!3d10.7266487!4d106.7106341!16s%2Fg%2F11h7prx4s9!19sChIJGS0VXdQvdTERDk27N4LWd4o?authuser=0&hl=vi&rclk=1",
+    "id": "0165",
+    "name": "Phở Tùng Hà Nội",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7266487,
+    "lng": 106.7106341,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Tùng Hà Nội mang đến trải nghiệm hương vị pho truyền thống, nước dùng đậm đà, thơm ngon và bánh phở mềm mại",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870556/quan_an_q7/kh4jcq6htemcalnlulco.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0325686799"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Trang+-+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752f1bed1a44cf:0x1449743f4b0f70ec!8m2!3d10.7274926!4d106.707579!16s%2Fg%2F11jgkht05f!19sChIJz0Qa7RsvdTER7HAPSz90SRQ?authuser=0&hl=vi&rclk=1",
+    "id": "0166",
+    "name": "Phở Trang - Phú Mỹ Hưng",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7274926,
+    "lng": 106.707579,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Trang mang đến hương vị phở truyền thống với nước dùng đậm đà và bánh phở mềm mịn, trải nghiệm ẩm thực Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870557/quan_an_q7/brkffujwirmdus27mvfn.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0922266966"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+Qu%E1%BA%ADy+T%C3%A2m+Qu%C3%A1n+-+L%C3%AA+V%C4%83n+L%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752f5159905de9:0x1990b13201b794c!8m2!3d10.7411959!4d106.703898!16s%2Fg%2F11mpz_2531!19sChIJ6V2QWVEvdTERTHkbIBMLmQE?authuser=0&hl=vi&rclk=1",
+    "id": "0167",
+    "name": "Bún Quậy Tâm Quán - Lê Văn Lương",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7411959,
+    "lng": 106.703898,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bún Quậy Tâm Quán mang đến trải nghiệm vị cay nồng đặc trưng, đậm đà, kích thích vị giác với từng bát bún thơm ngon.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870559/quan_an_q7/xfho1o0g3w6reizk1foh.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0906375290"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Dinh+-+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng/data=!4m7!3m6!1s0x31752591edf39a27:0x2dfda9147df4c72!8m2!3d10.7207339!4d106.7324853!16s%2Fg%2F11kbc_d5nc!19sChIJJ5rz7ZEldTERckzfR5Ha3wI?authuser=0&hl=vi&rclk=1",
+    "id": "0168",
+    "name": "Phở Dinh - Phú Mỹ Hưng",
+    "address": "410 Tân Phú, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7207339,
+    "lng": 106.7324853,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Dinh - Phú Mỹ Hưng mang đến trải nghiệm phở truyền thống với nước dùng đậm đà và bánh phở mềm mịn, hương vị đặc trưng của thịt bò",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870560/quan_an_q7/sy9eiewua40auuhcyy7i.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0948075768"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Trang+Star+Hill/data=!4m7!3m6!1s0x3175258166bb28bd:0x5f75afd7d53caa6c!8m2!3d10.7291014!4d106.7252604!16s%2Fg%2F11lgpg3rtr!19sChIJvSi7ZoEldTERbKo81devdV8?authuser=0&hl=vi&rclk=1",
+    "id": "0169",
+    "name": "Phở Trang Star Hill",
+    "address": "31 số 10, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7291014,
+    "lng": 106.7252604,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Trang Star Hill mang đến hương vị phở truyền thống đậm đà, với nước dùng ninh kỹ và thịt bò mềm ngọt, trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870561/quan_an_q7/pertfsys7lbwv7qdeesm.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0786499699"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+B%C3%B2+Ch%E1%BA%A3+Cua+G%C3%B3c+%C4%90%C3%B4ng+Ba+Q7/data=!4m7!3m6!1s0x31752546afa87e67:0x120dadb428cd134a!8m2!3d10.7222352!4d106.7297253!16s%2Fg%2F11mcpwztz7!19sChIJZ36or0YldTERShPNKLStDRI?authuser=0&hl=vi&rclk=1",
+    "id": "0170",
+    "name": "Bún Bò Chả Cua Góc Đông Ba Q7",
+    "address": "Phố Tiểu Nam/15 Khu Phố Cảnh Viên, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7222352,
+    "lng": 106.7297253,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò chả cua đậm đà, nước dùng thanh ngọt kết hợp cùng thịt chả mềm và cua tươi ngon, mang đến trải nghiệm ẩm thực đặc sắc.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870563/quan_an_q7/fxbgr0cdgstkm3pnwxwv.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0963497969"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+g%C3%A0+Dzai+Nh%C3%A2n/data=!4m7!3m6!1s0x31752fe4b3a3a2ff:0xd431db314f7c059c!8m2!3d10.7289981!4d106.7250907!16s%2Fg%2F11wfp68xqt!19sChIJ_6Kjs-QvdTERnAV8TzHbMdQ?authuser=0&hl=vi&rclk=1",
+    "id": "0171",
+    "name": "Phở gà Dzai Nhân",
+    "address": "35 số 10, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7289981,
+    "lng": 106.7250907,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở gà Dzai Nhân mang đến hương vị gà thanh ngọt kết hợp với nước dùng đậm đà, trải nghiệm ẩm thực truyền thống Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870564/quan_an_q7/dokjbgvehquq7fsswh7d.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0776533535"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+b%C3%B2+V%E1%BB%B9+D%E1%BA%A1+X%C6%B0a+%28kh%C3%B4ng+chi+nh%C3%A1nh%29/data=!4m7!3m6!1s0x31752f91ca419897:0xcf9692e78799f127!8m2!3d10.7311945!4d106.710301!16s%2Fg%2F11fyxfvjn6!19sChIJl5hBypEvdTERJ_GZh-eSls8?authuser=0&hl=vi&rclk=1",
+    "id": "0172",
+    "name": "Bún bò Vỹ Dạ Xưa (không chi nhánh)",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7311945,
+    "lng": 106.710301,
+    "avg_price": 50500.0,
+    "shu": 5,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Vỹ Dạ Xưa mang đến hương vị truyền thống đậm đà, nước dùng bò được ninh kỹ, sợi bún dai ngon, là món ăn quen thuộc của người dân địa phương.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870566/quan_an_q7/zmtomaclfzvxtgaq17ej.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0925157333"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/T.A.T+CORNER+-+B%C3%9AN+CH%E1%BA%A2+H%C3%80+N%E1%BB%98I/data=!4m7!3m6!1s0x31752f6b904ed649:0xb6378344d8563fcc!8m2!3d10.7266202!4d106.7128122!16s%2Fg%2F11s4ymhzb8!19sChIJSdZOkGsvdTERzD9W2ESDN7Y?authuser=0&hl=vi&rclk=1",
+    "id": "0173",
+    "name": "T.A.T CORNER - BÚN CHẢ HÀ NỘI",
+    "address": "8-1B, Hà Huy Tập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7266202,
+    "lng": 106.7128122,
+    "avg_price": 50500.0,
+    "shu": 5,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bún chả Hà Nội tại T.A.T CORNER mang hương vị truyền thống với nước sốt đậm đà, thịt nướng thơm ngon và bánh bún mềm mại.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870568/quan_an_q7/rk1gp23jv44xnvkjes2j.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0979090570"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+B%E1%BA%AFc+H%E1%BA%A3i/data=!4m7!3m6!1s0x31752500650671cf:0x20745a2cd8a00b26!8m2!3d10.7317311!4d106.7315357!16s%2Fg%2F11mcsw4w7w!19sChIJz3EGZQAldTERJgug2CxadCA?authuser=0&hl=vi&rclk=1",
+    "id": "0174",
+    "name": "Phở Bắc Hải",
+    "address": "736 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7317311,
+    "lng": 106.7315357,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Bắc Hải mang đến hương vị phở truyền thống đậm đà, với nước dùng thanh ngọt và thịt bò mềm ngon, trải nghiệm ẩm thực đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870569/quan_an_q7/grqd4oinxq3epznc4far.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0967134639"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+b%C3%B2+Hu%E1%BA%BF+Duy%C3%AAn+Mai/data=!4m7!3m6!1s0x317525fb40520ad9:0xa36e5911f698c9e5!8m2!3d10.7252722!4d106.7291204!16s%2Fg%2F11kpt4vqj7!19sChIJ2QpSQPsldTER5cmY9hFZbqM?authuser=0&hl=vi&rclk=1",
+    "id": "0175",
+    "name": "Bún bò Huế Duyên Mai",
+    "address": "Đường số 16, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7252722,
+    "lng": 106.7291204,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Huế Duyên Mai mang đến trải nghiệm vị cay nồng đặc trưng, cân bằng với vị chua thanh và thơm của thịt bò, là món ăn quen thuộc của miền Trung.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870571/quan_an_q7/s83sbploxug76nvdl1ma.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0984749649"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Th%C3%A0nh/data=!4m7!3m6!1s0x31752f007fb5d28f:0xfcf275bfccb6b086!8m2!3d10.7489032!4d106.7048003!16s%2Fg%2F11yd5dzjj0!19sChIJj9K1fwAvdTERhrC2zL918vw?authuser=0&hl=vi&rclk=1",
+    "id": "0176",
+    "name": "Phở Thành",
+    "address": "118 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7489032,
+    "lng": 106.7048003,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Thành mang đến hương vị pho truyền thống, nước dùng đậm đà, bánh phở mềm mại và thịt bò tươi ngon, trải nghiệm ẩm thực Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870572/quan_an_q7/lihtp50etcshxswohnzr.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0947782439"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Ng%E1%BB%8Dc/data=!4m7!3m6!1s0x31752f83180aa83d:0xffce79a2961ca59a!8m2!3d10.7403818!4d106.7076562!16s%2Fg%2F11kr9793d9!19sChIJPagKGIMvdTERmqUclqJ5zv8?authuser=0&hl=vi&rclk=1",
+    "id": "0177",
+    "name": "Phở Ngọc",
+    "address": "125 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7403818,
+    "lng": 106.7076562,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Ngọc mang đến hương vị phở truyền thống với nước dùng đậm đà và bánh phở mềm mịn, trải nghiệm ẩm thực Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870574/quan_an_q7/ikjt1mv1ladhsuhcqnjw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0343637803"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%B2+t%C6%A1+Nh%C3%A2n+Ph%C3%A1t+-+451+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp,+P.+T%C3%A2n+Phong,+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752fcee3fd0875:0xb0fd15785edab0d7!8m2!3d10.7386082!4d106.7107251!16s%2Fg%2F11qp2v5phr!19sChIJdQj9484vdTER17DaXngV_bA?authuser=0&hl=vi&rclk=1",
+    "id": "0178",
+    "name": "Bò tơ Nhân Phát - 451 Nguyễn Thị Thập, P. Tân Phong, Quận 7",
+    "address": "451 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7386082,
+    "lng": 106.7107251,
+    "avg_price": 300000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bò tơ mềm ngọt, đậm đà hương vị truyền thống, là món ăn không thể bỏ qua tại quán Nhân Phát.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870575/quan_an_q7/ymedt9u4tycszz22t2el.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0888350325"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+ph%E1%BB%9F+Linh+Trang+Anh/data=!4m7!3m6!1s0x31752ffab58ffdc3:0xd71de0e20d162044!8m2!3d10.7407016!4d106.7048689!16s%2Fg%2F11smkr3821!19sChIJw_2PtfovdTERRCAWDeLgHdc?authuser=0&hl=vi&rclk=1",
+    "id": "0179",
+    "name": "Quán phở Linh Trang Anh",
+    "address": "185 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7407016,
+    "lng": 106.7048689,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [],
+    "semantic_text": "Phở Linh Trang Anh mang đến hương vị truyền thống đậm đà, với nước dùng thanh ngọt và bánh phở mềm mại, trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870577/quan_an_q7/tffc8c8nhk5mm0blwbmu.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Wok+of+love+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f72e1ae4369:0x569241ebd2f24d3f!8m2!3d10.7315098!4d106.7067903!16s%2Fg%2F11vsdlh5vc!19sChIJaUOu4XIvdTERP03y0utBklY?authuser=0&hl=vi&rclk=1",
+    "id": "0180",
+    "name": "Wok of love Quận 7",
+    "address": "48 Khu Phố Hưng Phước 2, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7315098,
+    "lng": 106.7067903,
+    "avg_price": 450000.0,
+    "shu": 6,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Wok of love Quận 7 mang đến hương vị Việt Nam đậm đà, với các món xào rau củ và thịt thơm ngon, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870578/quan_an_q7/kowcc5ytotp91hacs1ry.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0815528166"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Th%C3%ACn+13+L%C3%B2+%C4%90%C3%BAc+%28H%C3%A0+N%E1%BB%99i+Ch%C3%ADnh+G%E1%BB%91c%29/data=!4m7!3m6!1s0x31752f2b58a09729:0xeb726329bc4a4fbb!8m2!3d10.7301016!4d106.713896!16s%2Fg%2F11tnm8y24l!19sChIJKZegWCsvdTERu09KvCljcus?authuser=0&hl=vi&rclk=1",
+    "id": "0181",
+    "name": "Phở Thìn 13 Lò Đúc (Hà Nội Chính Gốc)",
+    "address": "H0.01 Happy Valley Chung Cư, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7301016,
+    "lng": 106.713896,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Thìn 13 Lò Đúc mang đến trải nghiệm phở truyền thống với nước dùng đậm đà, thơm ngon và thịt bò mềm ngọt, là món ăn quen thuộc của ẩm thực Hà Nội.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870580/quan_an_q7/rfd69lqqfq4q1oero0ds.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0372680000"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Ho%C3%A0ng+S%C3%A0i+G%C3%B2n.+Chi+nh%C3%A1nh+T%C3%A2n+Quy/data=!4m7!3m6!1s0x31752f9e1ea50f25:0x96161c2ce5d3cee3!8m2!3d10.7448222!4d106.7046567!16s%2Fg%2F1hc3zq419!19sChIJJQ-lHp4vdTER487T5SwcFpY?authuser=0&hl=vi&rclk=1",
+    "id": "0182",
+    "name": "Phở Hoàng Sài Gòn. Chi nhánh Tân Quy",
+    "address": "171 Đường Số 15, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7448222,
+    "lng": 106.7046567,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Phở Hoàng Sài Gòn mang đến trải nghiệm hương vị pho truyền thống với nước dùng đậm đà và bánh phở mềm mịn, là lựa chọn hoàn hảo cho những ai yêu thích món ăn quen thuộc.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870581/quan_an_q7/soiec84q63the53o9u6v.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909912356"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%E1%BA%BFp+Ch%C3%BA+%C4%90%C3%A0o+-+B%C3%BAn+M%E1%BA%AFm+N%C3%AAm+%C4%90%C3%A0+N%E1%BA%B5ng,+Nem+N%C6%B0%E1%BB%9Bng+Nha+Trang/data=!4m7!3m6!1s0x31752f054ab39ebb:0x90cde731049bc1ac!8m2!3d10.733923!4d106.7016503!16s%2Fg%2F11s3wgnqkv!19sChIJu56zSgUvdTERrMGbBDHnzZA?authuser=0&hl=vi&rclk=1",
+    "id": "0183",
+    "name": "Bếp Chú Đào - Bún Mắm Nêm Đà Nẵng, Nem Nướng Nha Trang",
+    "address": "524 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.733923,
+    "lng": 106.7016503,
+    "avg_price": 50500.0,
+    "shu": 5,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún mắm nêm đậm đà, mang hương vị đặc trưng của Đà Nẵng. Không gian quán ấm cúng, tái hiện nét truyền thống của ẩm thực Việt Nam.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870583/quan_an_q7/n9unqawvsfng4hvqojbw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0983463849"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+Th%C3%ACn+Gia+Truy%E1%BB%81n/data=!4m7!3m6!1s0x31752565acc4517f:0x1b5fc0975732ff3a!8m2!3d10.7320917!4d106.731659!16s%2Fg%2F11flt8z11q!19sChIJf1HErGUldTEROv8yV5fAXxs?authuser=0&hl=vi&rclk=1",
+    "id": "0184",
+    "name": "Phở Thìn Gia Truyền",
+    "address": "845 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7320917,
+    "lng": 106.731659,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Thìn Gia Truyền mang đến hương vị phở truyền thống đậm đà, nước dùng ninh kỹ, thơm ngon và thịt bò mềm ngọt, trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870584/quan_an_q7/begxlgyukg9ipjnpjrpd.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+-+B%C3%BAn+B%C3%B2+Hu%E1%BA%BF+Phong+%7C+Ph%E1%BB%9F+Ngon+Qu%E1%BA%ADn+7+%7C+B%C3%BAn+B%C3%B2+Hu%E1%BA%BF+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x317525007bc7bb09:0xee6387e3dcb9c765!8m2!3d10.7200473!4d106.7367564!16s%2Fg%2F11m745g3dz!19sChIJCbvHewAldTERZce53OOHY-4?authuser=0&hl=vi&rclk=1",
+    "id": "0185",
+    "name": "Phở - Bún Bò Huế Phong | Phở Ngon Quận 7 | Bún Bò Huế Quận 7",
+    "address": "1235 Huỳnh Tấn Phát, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7200473,
+    "lng": 106.7367564,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Bún Bò Huế đậm đà, hương vị cay nồng đặc trưng của Huế, cùng với bánh bèo mềm mại, là trải nghiệm ẩm thực khó quên.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870586/quan_an_q7/ijx5mk1sb68yqip35rrv.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933607676"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+B%C3%B2+B%C3%A0+M%E1%BB%B9/data=!4m7!3m6!1s0x31752faf51f87dfd:0xcb58a8298609bb73!8m2!3d10.7390024!4d106.7102195!16s%2Fg%2F11l1p31gxn!19sChIJ_X34Ua8vdTERc7sJhimoWMs?authuser=0&hl=vi&rclk=1",
+    "id": "0186",
+    "name": "Bún Bò Bà Mỹ",
+    "address": "394a Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7390024,
+    "lng": 106.7102195,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Mỹ đậm đà với nước dùng bò kho béo ngậy, sợi bánh phở mềm và thịt bò nạc thơm ngon, là món ăn quen thuộc của người Việt Nam.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870587/quan_an_q7/fbqnnmebhdzrk4oqirvv.png",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0797817399"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+b%C3%B2+Th%C3%A1i+D%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x31752f9786259659:0x69962f8f6f60af58!8m2!3d10.7343588!4d106.70218!16s%2Fg%2F11hczd52w6!19sChIJWZYlhpcvdTERWK9gb48vlmk?authuser=0&hl=vi&rclk=1",
+    "id": "0187",
+    "name": "Bún bò Thái Dương",
+    "address": "545 Lê Văn Lương, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7343588,
+    "lng": 106.70218,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún bò Thái Dương mang đến hương vị đậm đà, cay nồng đặc trưng của món bún bò Thái, kích thích vị giác và làm ấm bụng.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870589/quan_an_q7/k3xvwkceisx9qlc1iygw.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0906981980"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%BAn+Ph%E1%BB%9F+Anh+V%C5%A9/data=!4m7!3m6!1s0x31752fb0d1586ffd:0xfa8d9c03cf1e46ca!8m2!3d10.7402202!4d106.6968446!16s%2Fg%2F11v485j3w_!19sChIJ_W9Y0bAvdTERykYezwOcjfo?authuser=0&hl=vi&rclk=1",
+    "id": "0188",
+    "name": "Tiệm Bún Phở Anh Vũ",
+    "address": "2 Đ. số 7, Khu đô thị Him Lam, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7402202,
+    "lng": 106.6968446,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún phở tại Tiệm Bún Phở Anh Vũ mang hương vị truyền thống, nước dùng đậm đà, sợi bún dai ngon, là món ăn quen thuộc của người Việt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870590/quan_an_q7/mcsfihobgaoy8fby1syg.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+M%E1%BA%AFm+%C3%9At+G%E1%BB%8D/data=!4m7!3m6!1s0x31752f0f7445341f:0x101f840d608eba07!8m2!3d10.7407784!4d106.7063146!16s%2Fg%2F11tx61_n7y!19sChIJHzRFdA8vdTERB7qOYA2EHxA?authuser=0&hl=vi&rclk=1",
+    "id": "0189",
+    "name": "Bún Mắm Út Gọ",
+    "address": "140 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7407784,
+    "lng": 106.7063146,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [],
+    "semantic_text": "Bún Mắm Út Gọ mang hương vị truyền thống, mắm nêm đậm đà kết hợp cùng sợi bún mềm, trải nghiệm ẩm thực Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870591/quan_an_q7/gsc1wi9pocvutgedhziu.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0904940856"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Qu%C3%A1n+Ch%C3%A8+C%C3%A2y+T%C3%A1o.+B%C3%BAn+b%C3%B2+.+B%C3%BAn+m%E1%BA%AFm+.+B%C3%BAn+ri%C3%AAu./data=!4m7!3m6!1s0x317525821eded463:0xd9e19ea4f279de0e!8m2!3d10.7463343!4d106.7297779!16s%2Fg%2F11c0x8rsjw!19sChIJY9TeHoIldTERDt558qSe4dk?authuser=0&hl=vi&rclk=1",
+    "id": "0190",
+    "name": "Quán Chè Cây Táo. Bún bò . Bún mắm . Bún riêu.",
+    "address": "487/1 Huỳnh Tấn Phát, P. Tân Thuận Đông, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7463343,
+    "lng": 106.7297779,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Chè Cây Táo mang đến hương vị thanh mát của chè, kết hợp cùng vị ngọt tự nhiên của táo, rất phù hợp để giải nhiệt.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870592/quan_an_q7/ggdzk8cgsd2gtng9ctgt.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0976838181"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/M%C3%AC+%E1%BB%91c+h%E1%BA%BFn+M%C3%A1+Lan+%28CN+Q.7%29/data=!4m7!3m6!1s0x31752fbf9578ec2d:0x2fab3cbb6ce35590!8m2!3d10.746294!4d106.7061533!16s%2Fg%2F11fkq5gn_t!19sChIJLex4lb8vdTERkFXjbLs8qy8?authuser=0&hl=vi&rclk=1",
+    "id": "0191",
+    "name": "Mì ốc hến Má Lan (CN Q.7)",
+    "address": "91a Số 3, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.746294,
+    "lng": 106.7061533,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mì ốc hến Má Lan mang hương vị đậm đà, béo ngậy với vị cay nồng đặc trưng, kích thích vị giác.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870594/quan_an_q7/sfsfm8krvhfwtasyeixl.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0898514431"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%B2+T%C6%A1+Qu%C3%A1n+M%E1%BB%99c+43-45+Nguy%E1%BB%85n+Th%E1%BB%8B+Th%E1%BA%ADp+,P.T%C3%A2n+H%C6%B0ng/data=!4m7!3m6!1s0x31752f547e0b0ce7:0xb49608f828fbdb93!8m2!3d10.740461!4d106.6987225!16s%2Fg%2F11tdvg_tqn!19sChIJ5wwLflQvdTERk9v7KPgIlrQ?authuser=0&hl=vi&rclk=1",
+    "id": "0192",
+    "name": "Bò Tơ Quán Mộc 43-45 Nguyễn Thị Thập ,P.Tân Hưng",
+    "address": "45 Nguyễn Thị Thập, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.740461,
+    "lng": 106.6987225,
+    "avg_price": 300000.0,
+    "shu": 6,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bò tơ mềm ngọt từ quán Mộc 43-45, hương vị đậm đà, trải nghiệm ẩm thực Việt Nam đích thực.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870595/quan_an_q7/x8ix8uis9vlu123qfkqo.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0858453388"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/Ph%E1%BB%9F+G%C3%A0+Gia+Truy%E1%BB%81n+Ph%E1%BB%91+C%E1%BB%95/data=!4m7!3m6!1s0x31752f00530401f3:0xb0f500637630c3de!8m2!3d10.7407384!4d106.7050395!16s%2Fg%2F11wj0n3v10!19sChIJ8wEEUwAvdTER3sMwdmMA9bA?authuser=0&hl=vi&rclk=1",
+    "id": "0193",
+    "name": "Phở Gà Gia Truyền Phố Cổ",
+    "address": "179 Đường số 79, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7407384,
+    "lng": 106.7050395,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phở Gà Gia Truyền mang hương vị gà đậm đà, nước dùng thanh ngọt, trải nghiệm ẩm thực chuẩn vị phố cổ truyền thống.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870596/quan_an_q7/foxmb9ylw5q4zhhuqyey.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0911091368"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%BAn+B%C3%B2+Hu%E1%BA%BF+%C3%81nh+Sen/data=!4m7!3m6!1s0x31752f6f9de1b901:0x8563b52c1a3e105b!8m2!3d10.7301817!4d106.7068787!16s%2Fg%2F11trwmdm7f!19sChIJAbnhnW8vdTERWxA-Giy1Y4U?authuser=0&hl=vi&rclk=1",
+    "id": "0194",
+    "name": "Bún Bò Huế Ánh Sen",
+    "address": "82 Đường số 6, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7301817,
+    "lng": 106.7068787,
+    "avg_price": 50500.0,
+    "shu": 6,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bún Bò Huế Ánh Sen mang đến trải nghiệm vị cay nồng đặc trưng của Huế, cùng với hương vị béo ngậy của bò và thơm lừng của mắm ruốc.",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870598/quan_an_q7/u2i8roqaj8sa31hrtmws.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0859183939"
+  },
+  {
+    "Link googl": "https://www.google.com/maps/place/B%C3%B2+%C3%94ng+M%E1%BA%ADp/data=!4m7!3m6!1s0x31752feece63726d:0xf5c90dde928c7915!8m2!3d10.7391332!4d106.7158317!16s%2Fg%2F11nfzghrdk!19sChIJbXJjzu4vdTERFXmMkt4NyfU?authuser=0&hl=vi&rclk=1",
+    "id": "0195",
+    "name": "Bò Ông Mập",
+    "address": "212a Đ. Lâm Văn Bền, Quận 7, TP. Hồ Chí Minh",
+    "lat": 10.7391332,
+    "lng": 106.7158317,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.4,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bò Ông Mập mang đến trải nghiệm hương vị đậm đà, thịt bò chín tới mềm ngọt, kết hợp với gia vị nêm nếm truyền thống, rất thích hợp cho những ai yêu thích món bò nướng",
+    "image_url": "https://res.cloudinary.com/dqovodsqf/image/upload/v1779870599/quan_an_q7/smshvjailrga7sytu77x.jpg",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0707050791"
+  }
+]
