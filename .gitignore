@@ -189,4 +189,5 @@ FrontEnd/.env
 
 serviceAccountKey.json
 Back_End/Database/serviceAccountKey.json
+Back_End/Database/chroma_cache_db/
 
