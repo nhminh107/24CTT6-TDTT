@@ -14,7 +14,7 @@ app = FastAPI(
 # Cấu hình CORS để cho phép FrontEnd kết nối
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], # Hoặc ["*"] nếu muốn cho phép tất cả
+    allow_origins=["*"], # Cho phép tất cả các nguồn (dễ dàng khi deploy FE lên Vercel)
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

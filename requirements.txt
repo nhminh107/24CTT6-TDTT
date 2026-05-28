@@ -11,4 +11,4 @@ pytz
 firebase_admin
 numpy>=2.1.0
 tenacity
-sentence-transformers
+sentence-transformersuvicorn\npython-dotenv

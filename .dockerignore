@@ -1,0 +1,27 @@
+# Git
+.git
+.gitignore
+
+# Môi trường ảo Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Các file môi trường (không nên copy trực tiếp vào image)
+.env
+.env.local
+
+# FrontEnd
+FrontEnd/
+node_modules/
+
+# Ignore unused database files as requested
+data/
+Back_End/Database/old_data.json
+Back_End/Database/test.json
+Back_End/Database/chroma_cache_db/
