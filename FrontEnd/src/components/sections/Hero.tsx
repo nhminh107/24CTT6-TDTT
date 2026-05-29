@@ -40,7 +40,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-wrap items-center gap-4">
             <Link
-              href={user ? "/app" : "/login?redirect=/app"}
+              href="/app"
               className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-6 py-3 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
             >
               Bắt đầu lên lịch trình - Miễn phí

@@ -5,6 +5,7 @@ import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useAuth } from "@/context/AuthContext";
+import AuthPromptModal from "@/components/ui/AuthPromptModal";
 type Restaurant = {
   id: string; // 👈 Thêm ID để làm key khi render danh sách
   name: string;
@@ -86,6 +87,7 @@ export default function ChatInterface({
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [errorModal, setErrorModal] = useState({
     open: false,
     code: "",
@@ -241,6 +243,11 @@ export default function ChatInterface({
           restaurants: assistant.restaurants
         }
       ]);
+
+      // Gợi ý đăng nhập nếu là khách và tìm thấy kết quả
+      if (!user && assistant.restaurants.length > 0) {
+        setTimeout(() => setShowLoginSuggestion(true), 1500);
+      }
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
       setErrorModal({
@@ -340,6 +347,14 @@ export default function ChatInterface({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AuthPromptModal
+        open={showLoginSuggestion}
+        onClose={() => setShowLoginSuggestion(false)}
+        title="Trải nghiệm tốt hơn khi đăng nhập"
+        description="Đăng nhập để AI có thể tối ưu lộ trình theo sức khỏe của bạn, lưu lại các lịch trình yêu thích và nhiều đặc quyền khác!"
+      />
+
       <div className="rounded-3xl bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon p-[1px] shadow-glow">
         <div className="glass rounded-3xl p-6">
           <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-brand-flame">
