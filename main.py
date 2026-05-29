@@ -26,7 +26,13 @@ app.include_router(auth_router)
 app.include_router(user_router)
 @app.on_event("startup")
 async def warmup_models():
-    asyncio.create_task(asyncio.to_thread(ChromaDBManager))
+    # Khởi tạo DB Manager
+    db_mng = ChromaDBManager()
+    # Tự động nạp dữ liệu từ data.json vào ChromaDB nếu chưa có
+    # Chạy trong thread riêng để không làm treo server lúc khởi động
+    loop = asyncio.get_event_loop()
+    await loop.run_in_executor(None, db_mng.add)
+    print("✅ Database initialization completed!")
 
 #Cổng phụ
 @app.get("/")
