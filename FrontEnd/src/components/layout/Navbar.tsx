@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MapPin, LogOut, HeartPulse, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
-import { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useProtectedAction } from "@/lib/protected-action";
 import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
+import AuthPromptModal from "@/components/ui/AuthPromptModal";
 
 const links = [
   { label: "Trang chủ", href: "/" },
@@ -30,13 +32,15 @@ const API_BASE_URL =
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const { performAction, showAuthModal, setShowAuthModal } = useProtectedAction();
   const [healthOpen, setHealthOpen] = useState(false);
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
 
   const hasProfile =
+    user && (
     healthProfile.selected_conditions.length > 0 ||
     healthProfile.selected_allergies.length > 0 ||
-    !!healthProfile.more_descriptions;
+    !!healthProfile.more_descriptions);
 
 
 const fetchHealthProfile = async () => {
@@ -106,6 +110,8 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
   useEffect(() => {
     if (user?.uid) {
       fetchHealthProfile();
+    } else {
+      setHealthProfile(DEFAULT_HEALTH_PROFILE);
     }
   }, [user]);
 
@@ -148,70 +154,72 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {user ? (
-              <div className="flex items-center gap-3">
-                {/* Health profile button */}
-                <button
-                  type="button"
-                  onClick={() => setHealthOpen(true)}
-                  title="Hồ sơ sức khỏe"
-                  className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-orange-50 hover:border-orange-300 hover:text-orange-500 shadow-sm"
-                >
-                  <HeartPulse size={18} />
-                  {/* dot indicator nếu đã có profile */}
-                  {hasProfile && (
-                    <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-white bg-orange-500" />
-                  )}
-                </button>
+            <div className="flex items-center gap-3">
+              {/* Health profile button - Moved out of user check to allow public access with login prompt */}
+              <button
+                type="button"
+                onClick={() => performAction(() => setHealthOpen(true))}
+                title="Hồ sơ sức khỏe"
+                className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-orange-50 hover:border-orange-300 hover:text-orange-500 shadow-sm"
+              >
+                <HeartPulse size={18} />
+                {/* dot indicator nếu đã có profile */}
+                {hasProfile && (
+                  <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-white bg-orange-500" />
+                )}
+              </button>
 
-                {/* User Dropdown */}
-                <div className="relative group z-50">
-                  <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pr-3.5 transition hover:bg-slate-50 shadow-sm">
-                    <img 
-                      src={user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=ff6b4a&color=fff`} 
-                      alt="Avatar" 
-                      className="h-8 w-8 rounded-full object-cover bg-slate-100" 
-                      onError={(e) => (e.currentTarget.src = "https://ui-avatars.com/api/?name=U&background=ff6b4a&color=fff")}
-                    />
-                    <div className="hidden flex-col items-start text-left md:flex">
-                      <span className="text-xs font-bold text-slate-800 leading-tight max-w-[100px] truncate">
-                        {user.displayName || "Người dùng"}
-                      </span>
-                    </div>
-                  </button>
-                  
-                  {/* Dropdown Menu (Hover Trigger) */}
-                  <div className="absolute right-0 top-full mt-2 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out rounded-2xl border border-slate-100 bg-white p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
-                    <div className="px-3 py-3 mb-2 border-b border-slate-100 flex flex-col gap-0.5">
-                      <span className="text-sm font-bold text-slate-800 truncate">{user.displayName || "Người dùng"}</span>
-                      <span className="text-[11px] text-slate-500 truncate">{user.email}</span>
-                    </div>
-                    
-                    <Link href="/profile" className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 hover:bg-brand-coral/10 hover:text-brand-coral transition-colors">
-                      <User size={16} /> Hồ sơ cá nhân
-                    </Link>
-                    
-                    <button onClick={() => logout()} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors mt-1">
-                      <LogOut size={16} /> Đăng xuất
+              {user ? (
+                <>
+                  {/* User Dropdown */}
+                  <div className="relative group z-50">
+                    <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pr-3.5 transition hover:bg-slate-50 shadow-sm">
+                      <img 
+                        src={user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=ff6b4a&color=fff`} 
+                        alt="Avatar" 
+                        className="h-8 w-8 rounded-full object-cover bg-slate-100" 
+                        onError={(e) => (e.currentTarget.src = "https://ui-avatars.com/api/?name=U&background=ff6b4a&color=fff")}
+                      />
+                      <div className="hidden flex-col items-start text-left md:flex">
+                        <span className="text-xs font-bold text-slate-800 leading-tight max-w-[100px] truncate">
+                          {user.displayName || "Người dùng"}
+                        </span>
+                      </div>
                     </button>
+                    
+                    {/* Dropdown Menu (Hover Trigger) */}
+                    <div className="absolute right-0 top-full mt-2 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out rounded-2xl border border-slate-100 bg-white p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
+                      <div className="px-3 py-3 mb-2 border-b border-slate-100 flex flex-col gap-0.5">
+                        <span className="text-sm font-bold text-slate-800 truncate">{user.displayName || "Người dùng"}</span>
+                        <span className="text-[11px] text-slate-500 truncate">{user.email}</span>
+                      </div>
+                      
+                      <Link href="/profile" className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 hover:bg-brand-coral/10 hover:text-brand-coral transition-colors">
+                        <User size={16} /> Hồ sơ cá nhân
+                      </Link>
+                      
+                      <button onClick={() => logout()} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors mt-1">
+                        <LogOut size={16} /> Đăng xuất
+                      </button>
+                    </div>
                   </div>
-                </div>
 
+                  <Link
+                    href="/app"
+                    className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+                  >
+                    Vào ứng dụng
+                  </Link>
+                </>
+              ) : (
                 <Link
                   href="/app"
                   className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
                 >
-                  Vào ứng dụng
+                  Dùng ngay
                 </Link>
-              </div>
-            ) : (
-              <Link
-                href="/login?redirect=/app"
-                className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
-              >
-                Dùng ngay
-              </Link>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -222,6 +230,12 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
         onClose={() => setHealthOpen(false)}
         profile={healthProfile}
         onChange={handleSaveHealthProfile}
+      />
+
+      {/* Auth Prompt Modal */}
+      <AuthPromptModal 
+        open={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
       />
     </>
   );
