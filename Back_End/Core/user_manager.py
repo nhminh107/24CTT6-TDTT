@@ -87,6 +87,11 @@ class UserManager:
             if doc.exists:
                 data = doc.to_dict()
                 
+                # Convert timestamps to ISO format
+                for key in ["last_login", "updated_at"]:
+                    if key in data and hasattr(data[key], "isoformat"):
+                        data[key] = data[key].isoformat()
+
                 # Lấy allergies từ subcollection user_health_profile
                 health_doc = col.document(uid).collection("user_health_profile").document("profile").get()
                 if health_doc.exists:

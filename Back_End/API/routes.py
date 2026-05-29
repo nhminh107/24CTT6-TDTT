@@ -23,13 +23,14 @@ from Back_End.Core.weight_update import Weight_Update
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 from Back_End.Core.semantic_cache import SemanticCacheManager
+from Back_End.Core.itinerary_manager import ItineraryManager
 
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
 # KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
 cache_manager = SemanticCacheManager()
+itinerary_manager = ItineraryManager()
 last_results_by_user = {}
-
 
 def _extract_ids_from_result(result):
     if not isinstance(result, list):
@@ -153,31 +154,75 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
 
     return parsed_json
 
-#Định nghĩa cấu trúc dữ liệu (Pydantic Models)
+# Định nghĩa cấu trúc dữ liệu
 class UserRequest(BaseModel):
     prompt: str
-    place_id: Optional[str] = None  #ID địa điểm người dùng chọn từ Maps
-    
-    
-    user_id:str # cái này tôi không biết ae làm login lấy từ đâu
+    place_id: Optional[str] = None
+    user_id: str
 
-#Endpoints xử lý chính
+class SelectionRequest(BaseModel):
+    user_id: str
+    meal: str
+    restaurant_data: dict
+
+@router.post("/itinerary/select")
+async def select_restaurant(request: SelectionRequest):
+    """
+    Chốt 1 quán ăn vào lịch trình.
+    """
+    success = await itinerary_manager.add_to_itinerary(request.user_id, {
+        "meal": request.meal,
+        **request.restaurant_data
+    })
+    if success:
+        return {"status": "success", "message": f"Đã thêm quán vào bữa {request.meal}"}
+    raise HTTPException(status_code=500, detail="Không thể lưu vào lịch trình.")
+
+@router.get("/itinerary/{user_id}")
+async def get_itinerary(user_id: str):
+    """
+    Lấy lịch trình hiện tại của người dùng.
+    """
+    itinerary = await itinerary_manager.get_itinerary(user_id)
+    return {"status": "success", "itinerary": itinerary}
+
+@router.delete("/itinerary/{user_id}")
+async def clear_itinerary(user_id: str):
+    """
+    Xóa toàn bộ lịch trình.
+    """
+    await itinerary_manager.clear_itinerary(user_id)
+    return {"status": "success", "message": "Đã xóa lịch trình."}
+
+@router.delete("/itinerary/{user_id}/{meal}")
+async def delete_itinerary_item(user_id: str, meal: str):
+    """
+    Xóa một bữa cụ thể khỏi lịch trình.
+    """
+    success = await itinerary_manager.remove_from_itinerary(user_id, meal)
+    if success:
+        return {"status": "success", "message": f"Đã xóa bữa {meal} khỏi lịch trình."}
+    raise HTTPException(status_code=500, detail="Không thể xóa bữa này.")
+
+# Endpoints xử lý chính
 
 @router.post("/prompt")
 async def process_prompt(request: UserRequest):
     """
-    Kết nối toàn bộ luồng xử lý từ Prompt đến Lịch trình.
+    Kết nối toàn bộ luồng xử lý từ Prompt đến Lịch trình (Có hỗ trợ Memory & Multi-results).
     """
     print(f"\n[API_LOG] Starting /prompt process for user_id: {request.user_id}")
-    print(f"[API_LOG] User prompt: '{request.prompt}'")
-    if request.place_id:
-        print(f"[API_LOG] Specified place_id: {request.place_id}")
-
+    
     try:
-        # 1. LLM Parsing: Hiểu ý định người dùng
+        # 0. Lấy lịch trình hiện tại để làm context
+        current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
+        
+        # 1. LLM Parsing: Hiểu ý định người dùng với Context
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
-        parse_task = asyncio.create_task(parser.JSON_response(request.prompt))
+        parse_task = asyncio.create_task(parser.JSON_response(request.prompt, current_itinerary=current_itinerary))
+        
+        # ... (giữ nguyên phần xử lý location, budget, health profile, cache)
         loc_task = (
             asyncio.create_task(get_place_detail(request.place_id))
             if request.place_id
@@ -195,16 +240,10 @@ async def process_prompt(request: UserRequest):
         # 2. Xử lý vị trí người dùng (User Location)
         user_lat, user_lng = 10.7769, 106.7009 
         if loc_task:
-            print("[API_LOG] Fetching place details...")
             loc_detail = await loc_task
             if loc_detail.get("status") == "success":
                 user_lat = loc_detail["data"]["lat"]
                 user_lng = loc_detail["data"]["lng"]
-                print(f"[API_LOG] Place coordinates: ({user_lat}, {user_lng})")
-            else:
-                print(f"[API_LOG] Warning: Could not fetch place details, using default coordinates.")
-        else:
-            print(f"[API_LOG] Using default coordinates: ({user_lat}, {user_lng})")
 
         # Normalize budget
         budget_value = parsed_json.get("budget", 0)
@@ -214,14 +253,11 @@ async def process_prompt(request: UserRequest):
             except ValueError: budget_value = 0
         elif isinstance(budget_value, float):
             budget_value = int(budget_value)
-        print(f"[API_LOG] Normalized budget: {budget_value}")
 
         # Fetch health profile
-        print(f"[API_LOG] Fetching health profile for user: {request.user_id}")
         user_health_profile = await fetch_user_health_profile(request.user_id)
         forbidden_tags = user_health_profile.get("forbidden_tags", [])
         health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
-        print(f"[API_LOG] Health key: {health_key}")
 
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
@@ -229,10 +265,8 @@ async def process_prompt(request: UserRequest):
         wants_alternative = _wants_alternative(request.prompt)
         exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
         bypass_cache = wants_alternative and bool(exclude_ids)
-        print(f"[API_LOG] Wants alternative: {wants_alternative}, Bypass cache: {bypass_cache}")
 
         # Check cache
-        print("[API_LOG] Checking semantic cache...")
         cache_task = asyncio.to_thread(
             cache_manager.check_cache,
             prompt=request.prompt,
@@ -243,15 +277,11 @@ async def process_prompt(request: UserRequest):
         )
 
         data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
-        if not os.path.exists(data_path):
-            print(f"[API_LOG] Error: Database file not found at {data_path}")
-            raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
-
         df_task = asyncio.create_task(asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str}))
 
         cached_result = await cache_task
         if cached_result and not bypass_cache:
-            print("[API_LOG] ⚡ CACHE HIT! Returning cached result.")
+            print("[API_LOG] ⚡ CACHE HIT!")
             weight_task.cancel()
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
@@ -260,73 +290,48 @@ async def process_prompt(request: UserRequest):
             return {
                 "status": "success",
                 "parsed_intent": parsed_json,
+                "current_itinerary": current_itinerary,
                 "result": cached_result
             }
         
-        print("[API_LOG] CACHE MISS. Proceeding with filtering and scoring.")
-        
         # 3. Data Filtering
-        print("[API_LOG] Step 3: Filtering restaurants...")
         df_raw = await df_task
-        print(f"[API_LOG] Total restaurants in DB: {len(df_raw)}")
-        
         filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
         filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
-        
-        for m_tag, m_df in filtered_data.items():
-            print(f"[API_LOG] Meal '{m_tag}': found {len(m_df)} candidates after initial filter.")
 
         if exclude_ids:
-            print(f"[API_LOG] Applying exclusions for {len(exclude_ids)} IDs.")
             filtered_data = _apply_exclusions(filtered_data, exclude_ids)
         
         buff_weights = await weight_task
-        print(f"[API_LOG] Weight buffers calculated: {json.dumps(buff_weights, ensure_ascii=False)}")
 
         # 4. Scoring & Optimization
-        print("[API_LOG] Step 4: Scoring candidates...")
         db_manager = ChromaDBManager()
         scorer = RestaurantScorer(user_lat=user_lat, user_lng=user_lng, db=db_manager)
         scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights, diet_mode=user_health_profile.get('diet_mode', None))
         
-        if not scored_candidates.empty:
-            for m_tag in filtered_data.keys():
-                count = len(scored_candidates[scored_candidates['meal'] == m_tag])
-                print(f"[API_LOG] Meal '{m_tag}': {count} candidates scored.")
-        else:
-            print("[API_LOG] Warning: scored_candidates is empty!")
-
-        print("[API_LOG] LLM Selection for final itinerary...")
+        print("[API_LOG] LLM Selection for final itinerary (Multi-results enabled)...")
         selector = FinalResultLLM()
+        # Trả về Top 3 quán mỗi bữa
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
-            parsed_json
+            parsed_json,
+            top_k=3
         )
 
         # 5. Result processing
         if final_itinerary.empty:
-            print("[API_LOG] Result: No suitable restaurants found (Final itinerary empty).")
-            # Check why it might be empty
-            requested_meals = [m.get('meal') for m in parsed_json.get('meals_detail', [])]
-            available_meals = scored_candidates['meal'].unique().tolist() if not scored_candidates.empty else []
-            missing_meals = [m for m in requested_meals if m not in available_meals]
-            if missing_meals:
-                print(f"[API_LOG] Reason: No candidates found for meals: {missing_meals}")
-            
             return {
                 "status": "empty",
-                "message": "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn.",
+                "message": "Không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn.",
+                "current_itinerary": current_itinerary,
                 "result": []
             }
         
-        final_result_json_str = final_itinerary.to_json(orient='records', force_ascii=False)
-        final_result_list = json.loads(final_result_json_str)
-        print(f"[API_LOG] Final itinerary contains {len(final_result_list)} items.")
+        final_result_list = json.loads(final_itinerary.to_json(orient='records', force_ascii=False))
 
         # Save to cache
         if not bypass_cache:
-            print("[API_LOG] Saving result to cache...")
             cache_manager.save_cache(
                 prompt=request.prompt,
                 lat=user_lat,
@@ -337,11 +342,11 @@ async def process_prompt(request: UserRequest):
             )
 
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
-        print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
-
+        
         return {
             "status": "success",
             "parsed_intent": parsed_json,
+            "current_itinerary": current_itinerary,
             "result": final_result_list
         }
         

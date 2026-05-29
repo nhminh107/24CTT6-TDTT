@@ -23,17 +23,24 @@ class LLMParser():
     retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
     )
 
-    async def JSON_response(self, user_prompt: str):
+    async def JSON_response(self, user_prompt: str, current_itinerary: list = None):
         print(f"[LLM_PARSER_LOG] Parsing intent for prompt: '{user_prompt}'")
+        
+        itinerary_context = ""
+        if current_itinerary:
+            itinerary_context = f"\nLịch trình hiện tại của người dùng: {json.dumps(current_itinerary, ensure_ascii=False)}"
+
         prompt = f"""
-        Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài, nếu thông tin quá sơ sài thì trả về null/mảng rỗng ở các field tương ứng.
+        Nhiệm vụ của bạn là trích xuất thông tin từ câu lệnh tìm kiếm quán ăn của người dùng và trả về DUY NHẤT một đối tượng JSON hợp lệ. Không giải thích, không thêm text bên ngoài. {itinerary_context}
 
         Quy tắc trích xuất:
         1. "budget": (Integer) Tổng ngân sách bình quân cho 1 người. Đổi chữ sang số (VD: "1 củ" -> 1000000). Trả về null nếu không đề cập.
-        2. "num_meals": (Integer) Số địa điểm mà người dùng yêu cầu.
+        2. "num_meals": (Integer) Số địa điểm mà người dùng yêu cầu (không tính các bữa đã có trong lịch trình hiện tại trừ khi người dùng muốn thay đổi).
         3. "location_pref": (String) Tên Quận/Huyện, Tên đường hoặc khu vực cụ thể. Trả về null nếu không có.
         4. "shu": (Interger) Mức độ cay người dùng yêu cầu, chia làm 5 mức (Từ 1->5). Bắt buộc phải có nếu người dùng có đề cập đến từ "cay". Trả về null nếu không có
-        5. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Mỗi "meal" chỉ xuất hiện tối đa 1 lần. Số danh sách yêu cầu phải khớp với num_meals. Nếu người dùng đưa ra yêu cầu chung không chỉ định bữa, hãy gán vào bữa phù hợp; riêng "quán nước/tiệm bánh/ăn vặt" mặc định gán vào "xế" nếu không nói rõ bữa. Mỗi object bao gồm:
+        5. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Mỗi "meal" chỉ xuất hiện tối đa 1 lần. 
+            - Nếu người dùng muốn đổi một bữa đã có trong "Lịch trình hiện tại", hãy trích xuất bữa đó.
+            - Nếu người dùng yêu cầu thêm bữa mới, hãy trích xuất bữa đó.
             - "meal": (String) Bắt buộc. Chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya".
             - "type": (Array of Strings) Loại nhà hàng (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về [] nếu không có.
             - "semantic_query": (String) Các từ khóa mô tả cảm xúc, không khí, view, hoặc tiện ích (máy lạnh, wifi...). Các từ cách nhau bằng dấu phẩy. Trả về null nếu không có.

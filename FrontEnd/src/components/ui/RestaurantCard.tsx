@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 type Restaurant = {
+  id: string;
   name: string;
   address: string;
   rating: number;
@@ -23,10 +24,13 @@ type Restaurant = {
   meals?: string[];
   warnings?: string[];
   notes?: string[];
+  assigned_meal?: string;
 };
 
 type RestaurantCardProps = {
   restaurant: Restaurant;
+  onSelect?: (restaurant: Restaurant) => void;
+  isSelected?: boolean;
 };
 
 const formatPhoneNumber = (phone: string | number) => {
@@ -52,6 +56,8 @@ const normalizeImageUrl = (url: string) => url.replace(/\\\//g, "/");
 
 export default function RestaurantCard2({
   restaurant,
+  onSelect,
+  isSelected,
 }: RestaurantCardProps) {
   const [open, setOpen] = useState(false);
 
@@ -114,7 +120,7 @@ export default function RestaurantCard2({
   <div className="group overflow-hidden rounded-[36px] border border-white/20 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(15,23,42,0.18)]">
     
     {/* HERO */}
-    <div className="relative h-[360px] overflow-hidden">
+    <div className="relative h-[240px] overflow-hidden">
       <img
         src={imageUrl}
         alt={restaurant.name}
@@ -291,31 +297,48 @@ export default function RestaurantCard2({
       </div>
 
       {/* actions */}
-      {/* Thay grid thành flex */}
-      <div className="flex w-full gap-3">
-        {phoneLink && (
-          <Link
-            href={`tel:${phoneLink}`}
-            className="inline-flex w-1/2 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 py-3.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-200 transition duration-300 hover:scale-[1.02]"
-          >
-            <Phone size={16} />
-            Gọi ngay
-          </Link>
-        )}
-
-        <Link
-          href={restaurant.mapUrl}
-          target="_blank"
-          className={cn(
-            "inline-flex items-center justify-center gap-2 rounded-2xl border py-3.5 text-center text-sm font-semibold transition duration-300",
-            phoneLink
-              ? "w-1/2 border-blue-200 bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700"
-              : "bg-white border border-slate-200 text-slate-700"
+      <div className="flex w-full flex-col gap-3">
+        <div className="flex w-full gap-3">
+          {phoneLink && (
+            <Link
+              href={`tel:${phoneLink}`}
+              className="inline-flex w-1/2 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 py-3.5 text-center text-sm font-semibold text-white shadow-md shadow-orange-200 transition duration-300 hover:scale-[1.02]"
+            >
+              <Phone size={16} />
+              Gọi ngay
+            </Link>
           )}
-        >
-          <MapPin size={16} className="text-red-500" />
-          Chỉ đường
-        </Link>
+
+          <Link
+            href={restaurant.mapUrl}
+            target="_blank"
+            className={cn(
+              "inline-flex items-center justify-center gap-2 rounded-2xl border py-3.5 text-center text-sm font-semibold transition duration-300",
+              phoneLink
+                ? "w-1/2 border-blue-200 bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700"
+                : "bg-white border border-slate-200 text-slate-700"
+            )}
+          >
+            <MapPin size={16} className="text-red-500" />
+            Chỉ đường
+          </Link>
+        </div>
+
+        {onSelect && (
+          <button
+            onClick={() => onSelect(restaurant)}
+            disabled={isSelected}
+            className={cn(
+              "inline-flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold transition-all duration-300 shadow-glow",
+              isSelected 
+                ? "bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200"
+                : "bg-gradient-to-r from-brand-coral to-brand-flame text-white hover:opacity-90 hover:scale-[1.01]"
+            )}
+          >
+            <ShieldCheck size={18} />
+            {isSelected ? "Đã chọn vào lịch trình" : `Chốt quán này cho bữa ${restaurant.assigned_meal || "..."}`}
+          </button>
+        )}
       </div>
     </div>
 

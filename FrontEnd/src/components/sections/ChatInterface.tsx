@@ -77,13 +77,17 @@ type ChatInterfaceProps = {
   input: string;
   onInputChange: (value: string) => void;
   onPreviewPass?: (restaurants: Restaurant[]) => void;
+  currentItinerary: ApiRestaurant[];
+  setCurrentItinerary: (itinerary: ApiRestaurant[]) => void;
 };
 
 export default function ChatInterface({
   placeId,
   input,
   onInputChange,
-  onPreviewPass
+  onPreviewPass,
+  currentItinerary,
+  setCurrentItinerary
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
@@ -94,6 +98,7 @@ export default function ChatInterface({
     message: ""
   });
   const { user } = useAuth();
+
   const suggestions = useMemo(
     () => [
       "Tối nay tôi muốn ăn hải sản view biển, ngân sách 800k.",
@@ -145,14 +150,54 @@ export default function ChatInterface({
 
       // 👇 QUAN TRỌNG
       warnings: item.warnings ?? [],
-      notes: item.notes ?? []
-    };
+      notes: item.notes ?? [],
+      assigned_meal: item.assigned_meal || item.meal // hỗ trợ cả assigned_meal và meal
+    } as Restaurant;
   });
 
-  const buildAssistantMessage = (response: ApiResponse) => {
+  const handleSelectRestaurant = async (restaurant: Restaurant) => {
+    if (!user?.uid) {
+      setShowLoginSuggestion(true);
+      return;
+    }
 
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/v1/itinerary/select`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: user.uid,
+          meal: restaurant.assigned_meal,
+          restaurant_data: {
+            id: restaurant.id,
+            name: restaurant.name,
+            address: restaurant.address,
+            star: restaurant.rating,
+            avg_price: restaurant.price,
+            image_url: restaurant.imageUrl,
+            semantic_text: restaurant.semanticText,
+            warnings: restaurant.warnings,
+            notes: restaurant.notes
+          }
+        })
+      });
+
+      const data = await response.json();
+      if (data.status === "success") {
+        // Refresh itinerary
+        const res = await fetch(`${API_BASE_URL}/api/v1/itinerary/${user.uid}`);
+        const itData = await res.json();
+        if (itData.status === "success") {
+          setCurrentItinerary(itData.itinerary || []);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to select restaurant:", err);
+    }
+  };
+
+  const buildAssistantMessage = (response: any) => {
     console.log("API RESPONSE:", response);
-
 
     if (!response || response.status !== "success") {
       return {
@@ -161,11 +206,17 @@ export default function ChatInterface({
         restaurants: []
       };
     }
-     const results = response.result || []; // <- sửa ở đây
+    
+    // Cập nhật currentItinerary từ response nếu có
+    if (response.current_itinerary) {
+      setCurrentItinerary(response.current_itinerary);
+    }
+
+    const results = response.result || [];
     const count = results.length;
     const content =
       count > 0
-        ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
+        ? `Dạ, mình tìm thấy một vài lựa chọn hấp dẫn cho bạn nè! Hãy chốt quán bạn thích để mình lưu vào lịch trình nhé.`
         : "Không tìm thấy kết quả.";
     return {
       content,
@@ -405,7 +456,11 @@ export default function ChatInterface({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <RestaurantCard restaurant={restaurant} />
+                    <RestaurantCard 
+                      restaurant={restaurant} 
+                      onSelect={handleSelectRestaurant}
+                      isSelected={currentItinerary.some(it => it.id === restaurant.id)}
+                    />
                   </motion.div>
                 ))}
                 <div className="relative flex">

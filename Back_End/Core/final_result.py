@@ -59,16 +59,16 @@ class FinalResultLLM:
     retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
     )
 
-    async def _select_with_llm(self, candidates_payload: dict, user_prompt: str) -> dict:
+    async def _select_with_llm(self, candidates_payload: dict, user_prompt: str, top_k: int = 3) -> dict:
         prompt = f"""
-        Nhiệm vụ: chọn đúng 1 quán ăn cho mỗi bữa từ danh sách ứng viên.
-        Không tạo mới, chỉ chọn từ danh sách đã cho. Ưu tiên phù hợp yêu cầu người dùng.
+        Nhiệm vụ: Chọn ra {top_k} quán ăn tốt nhất cho mỗi bữa từ danh sách ứng viên.
+        Sắp xếp theo thứ tự ưu tiên giảm dần. Ưu tiên phù hợp yêu cầu người dùng.
         Tránh chọn trùng id giữa các bữa nếu có thể.
 
         Trả về DUY NHẤT JSON hợp lệ theo schema:
         {{
           "selected": [
-            {{"meal": "<meal>", "id": "<id>"}}
+            {{"meal": "<meal>", "ids": ["<id1>", "<id2>", "<id3>"]}}
           ]
         }}
 
@@ -90,40 +90,22 @@ class FinalResultLLM:
             result = {}
             for item in selected:
                 meal = item.get('meal')
-                rid = item.get('id')
-                if meal and rid:
-                    result[meal] = str(rid)
+                rids = item.get('ids', [])
+                if meal and rids:
+                    result[meal] = [str(rid) for rid in rids]
             return result
 
         except Exception as e:
             print(f"DEBUG: Lỗi API trong final_result.py: {type(e).__name__} - {e}")
             raise e
 
-    def _select_unique_combination(self, meal_order: list, candidate_map: dict) -> list:
+    def _select_top_k_combination(self, meal_order: list, candidate_map: dict, top_k: int = 3) -> list:
         selected_rows = []
-        used_ids = set()
-
-        # Chúng ta dùng greedy approach thay vì strict backtracking
-        # Vì nếu có bữa nào không có quán (candidates trống), ta vẫn muốn trả về các bữa khác
+        
         for meal in meal_order:
             candidates = candidate_map.get(meal, [])
-            
-            # Tìm quán tốt nhất cho bữa này mà chưa được chọn
-            best_choice = None
-            for row in candidates:
-                rid = str(row.get('id'))
-                if rid not in used_ids:
-                    best_choice = row
-                    break
-            
-            if best_choice:
-                rid = str(best_choice.get('id'))
-                used_ids.add(rid)
-                selected_rows.append(best_choice)
-            else:
-                # Nếu không tìm được quán nào cho bữa này (do rỗng hoặc đã trùng), 
-                # in ra log cảnh báo nhưng VẪN TIẾP TỤC với bữa tiếp theo
-                print(f"[FINAL_RESULT_LOG] Warning: No available unique restaurants found for meal '{meal}'. Skipping this meal in the final itinerary.")
+            # Lấy tối đa top_k quán cho mỗi bữa
+            selected_rows.extend(candidates[:top_k])
 
         return selected_rows
 
@@ -131,7 +113,8 @@ class FinalResultLLM:
         self,
         candidates_df: pd.DataFrame,
         user_prompt: str,
-        parsed_json: dict | None = None
+        parsed_json: dict | None = None,
+        top_k: int = 3
     ) -> pd.DataFrame:
         if candidates_df is None or candidates_df.empty:
             return pd.DataFrame()
@@ -146,28 +129,28 @@ class FinalResultLLM:
             return pd.DataFrame()
 
         try:
-            selected_map = await self._select_with_llm(candidates_payload, user_prompt)
+            selected_ids_map = await self._select_with_llm(candidates_payload, user_prompt, top_k=top_k)
         except Exception:
-            selected_map = {}
+            selected_ids_map = {}
 
-        if selected_map:
-            for meal, selected_id in selected_map.items():
+        if selected_ids_map:
+            for meal, selected_ids in selected_ids_map.items():
                 if meal not in candidate_map:
                     continue
                 rows = candidate_map[meal]
                 preferred = []
                 fallback = []
+                selected_ids_str = [str(sid) for sid in selected_ids]
+                
+                # Sắp xếp lại candidate_map sao cho các quán được LLM chọn lên đầu
                 for row in rows:
-                    if str(row.get('id')) == str(selected_id):
+                    if str(row.get('id')) in selected_ids_str:
                         preferred.append(row)
                     else:
                         fallback.append(row)
                 candidate_map[meal] = preferred + fallback
 
-        final_rows = self._select_unique_combination(meal_order, candidate_map)
-        if not final_rows:
-            return pd.DataFrame()
-
+        final_rows = self._select_top_k_combination(meal_order, candidate_map, top_k=top_k)
         if not final_rows:
             return pd.DataFrame()
 
