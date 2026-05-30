@@ -6,6 +6,7 @@ import { X, ShieldCheck, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import { useEffect } from "react";
+import Swal from 'sweetalert2';
 import { Loader2 } from "lucide-react";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -118,19 +119,37 @@ const hasDescription =
   const [isSaving, setIsSaving] = useState(false);
 
   const handleSave = async () => {
-    setIsSaving(true); // Bật trạng thái loading nếu muốn tạo cảm giác đang xử lý
+    setIsSaving(true); 
 
     try {
       // 1. Đẩy dữ liệu ra component cha thông qua props onChange.
-      // Nếu component cha truyền vào một hàm async (có await lưu DB), ta thêm await ở đây để đợi nó chạy xong.
       await onChange(local); 
       
-      // 2. Component cha xử lý lưu DB thành công xong xuôi thì mới đóng modal
+      // 🌟 2. BẮN POP-UP HOÀNH TRÁNG GIỮA MÀN HÌNH
+      await Swal.fire({
+        title: 'Thành công!',
+        text: 'Hồ sơ sức khỏe của bạn đã được cập nhật ổn áp.',
+        icon: 'success',
+        confirmButtonText: 'Tuyệt vời',
+        confirmButtonColor: '#3085d6', 
+        timer: 2000, 
+        timerProgressBar: true // 🌟 ĐÃ SỬA TẠI ĐÂY: Dùng dấu // thay vì #
+      });
+
+      // 3. Đóng modal chỉnh sửa sau khi pop-up Swal tắt
       onClose(); 
     } catch (error) {
-      console.error("Lỗi khi cập nhật hồ sơ sức khỏe từ component cha:", error);
+      console.error("Lỗi khi cập nhật hồ sơ sức khỏe:", error);
+      
+      // 🌟 3. BONUS: Bắn pop-up lỗi nếu chẳng may backend sập
+      Swal.fire({
+        title: 'Thất bại!',
+        text: 'Chưa lưu được hồ sơ, bạn kiểm tra lại kết nối mạng xem sao nhé.',
+        icon: 'error',
+        confirmButtonText: 'Thử lại'
+      });
     } finally {
-      setIsSaving(false); // Tắt trạng thái loading
+      setIsSaving(false); 
     }
   };
 
