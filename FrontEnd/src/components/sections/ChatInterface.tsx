@@ -1,11 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
+import { AlertTriangle, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
+import AdaptiveInputBar, { STEPS, type Step } from "@/components/chat/AdaptiveInputBar";
+
+
 type Restaurant = {
   id: string; // 👈 Thêm ID để làm key khi render danh sách
   name: string;
@@ -74,15 +77,17 @@ type ApiResponse = {
 
 type ChatInterfaceProps = {
   placeId: string;
-  input: string;
-  onInputChange: (value: string) => void;
+  onLocationChange?: (location: string) => void;
+  onPlaceIdChange?: (placeId: string) => void;
+  onBudgetChange?: (budget: string) => void;
   onPreviewPass?: (restaurants: Restaurant[]) => void;
 };
 
 export default function ChatInterface({
   placeId,
-  input,
-  onInputChange,
+  onLocationChange,
+  onPlaceIdChange,
+  onBudgetChange,
   onPreviewPass
 }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -93,6 +98,25 @@ export default function ChatInterface({
     code: "",
     message: ""
   });
+  const [currentStep, setCurrentStep] = useState<Step>(STEPS.STEP_LOCATION);
+  const [input, setInput] = useState("");
+  type FormData = {
+  location: string;
+  placeId: string;
+  budget: number;
+  preferences: string[];
+  mealType: string;
+  message?: string;
+};
+
+const [formData, setFormData] =
+  useState<FormData>({
+    location: "",
+    placeId: "",
+    budget: 0,
+    preferences: [],
+    mealType: "",
+  });
   const { user } = useAuth();
   const suggestions = useMemo(
     () => [
@@ -102,6 +126,8 @@ export default function ChatInterface({
     ],
     []
   );
+
+  
 
   const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
   items.map((item, index) => {
@@ -173,100 +199,212 @@ export default function ChatInterface({
     };
   };
 
-  const callRestaurantApi = async (prompt: string) => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt,
-          user_id: user?.uid || "guest_user",
-          ...(placeId ? { place_id: placeId } : {})
-        })
-      });
-      let data: ApiResponse | null = null;
+    const callRestaurantApi = async (prompt: string) => {
+      setIsLoading(true);
       try {
-        data = (await response.json()) as ApiResponse;
+        const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            prompt,
+            user_id: user?.uid || "guest_user",
+            ...(placeId ? { place_id: placeId } : {})
+          })
+        });
+        let data: ApiResponse | null = null;
+        try {
+          data = (await response.json()) as ApiResponse;
+        } catch {
+          data = null;
+        }
+
+        if (response.status !== 200) {
+          const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
+          const detailedMessage =
+            data?.message ||
+            data?.detail ||
+            data?.error?.message ||
+            (data ? JSON.stringify(data) : "Đã có lỗi xảy ra.");
+          const errorCode = data?.error?.code ?? response.status;
+          setErrorModal({
+            open: true,
+            code: String(errorCode),
+            message
+          });
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              content: detailedMessage,
+              restaurants: []
+            }
+          ]);
+          return;
+        }
+
+        if (!data) {
+          const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
+          setErrorModal({
+            open: true,
+            code: String(response.status),
+            message
+          });
+          setMessages((prev) => [
+            ...prev,
+            {
+              role: "assistant",
+              content: message,
+              restaurants: []
+            }
+          ]);
+          return;
+        }
+
+        const assistant = buildAssistantMessage(data);
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: assistant.content,
+            restaurants: assistant.restaurants
+          }
+        ]);
+
+        // Gợi ý đăng nhập nếu là khách và tìm thấy kết quả
+        if (!user && assistant.restaurants.length > 0) {
+          setTimeout(() => setShowLoginSuggestion(true), 1500);
+        }
       } catch {
-        data = null;
-      }
-
-      if (response.status !== 200) {
         const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
-        const detailedMessage =
-          data?.message ||
-          data?.detail ||
-          data?.error?.message ||
-          (data ? JSON.stringify(data) : "Đã có lỗi xảy ra.");
-        const errorCode = data?.error?.code ?? response.status;
         setErrorModal({
           open: true,
-          code: String(errorCode),
+          code: "NETWORK",
           message
         });
         setMessages((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: detailedMessage,
+            content:
+              "Không thể kết nối tới máy chủ. Vui lòng kiểm tra API và thử lại.",
             restaurants: []
           }
         ]);
-        return;
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-      if (!data) {
-        const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
-        setErrorModal({
-          open: true,
-          code: String(response.status),
-          message
-        });
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: message,
-            restaurants: []
-          }
-        ]);
-        return;
-      }
+  
 
-      const assistant = buildAssistantMessage(data);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: assistant.content,
-          restaurants: assistant.restaurants
-        }
-      ]);
+  const buildRestaurantPrompt = (
+    data: FormData
+  ): string => {
+    return `
+  Tìm nhà hàng ${
+      data.location
+        ? `tại ${data.location}`
+        : ""
+    }.
 
-      // Gợi ý đăng nhập nếu là khách và tìm thấy kết quả
-      if (!user && assistant.restaurants.length > 0) {
-        setTimeout(() => setShowLoginSuggestion(true), 1500);
-      }
-    } catch {
-      const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
-      setErrorModal({
-        open: true,
-        code: "NETWORK",
-        message
-      });
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content:
-            "Không thể kết nối tới máy chủ. Vui lòng kiểm tra API và thử lại.",
-          restaurants: []
-        }
-      ]);
-    } finally {
-      setIsLoading(false);
+  ${
+      data.budget
+        ? `Ngân sách khoảng ${data.budget} VNĐ.`
+        : ""
     }
+
+  Sở thích và yêu cầu:
+  ${
+      data.preferences?.length
+        ? data.preferences.join(", ")
+        : "Không có"
+    }.
+
+  ${
+      data.message
+        ? `Yêu cầu chi tiết của người dùng: ${data.message}`
+        : ""
+    }
+  `
+      .trim()
+      .replace(/\s+/g, " ");
+  };
+
+  const handleAdaptiveUpdate = (
+    data: Partial<FormData>
+  ) => {
+    const newData: FormData = {
+      ...formData,
+      ...data,
+    };
+
+    // sync parent callbacks
+    if (data.location) {
+      onLocationChange?.(
+        data.location
+      );
+    }
+
+    if (data.placeId) {
+      onPlaceIdChange?.(
+        data.placeId
+      );
+    }
+
+    if (data.budget) {
+      onBudgetChange?.(
+        String(data.budget)
+      );
+    }
+
+    // STEP cuối
+    if (
+      currentStep ===
+        STEPS.STEP_CHAT_FREE &&
+      data.message
+    ) {
+      const finalData = {
+        ...newData,
+        message: data.message,
+      };
+
+      const prompt =
+        buildRestaurantPrompt(
+          finalData
+        );
+
+      setMessages(prev => [
+        ...prev,
+        {
+          role: "user",
+          content: data.message!,
+        },
+      ]);
+
+      console.log(
+        "Final prompt:",
+        prompt
+      );
+
+      callRestaurantApi(prompt);
+    }
+
+    setFormData(newData);
+  };
+
+  const handleAdaptiveNext = () => {
+    const steps = [
+      STEPS.STEP_LOCATION,
+      STEPS.STEP_BUDGET,
+      STEPS.STEP_PREFERENCES,
+      STEPS.STEP_CHAT_FREE
+    ];
+    const currentIndex = steps.indexOf(currentStep);
+
+    if (currentIndex < steps.length - 1) {
+      setCurrentStep(steps[currentIndex + 1]);
+    }
+    // Khi ở STEP_CHAT_FREE, chỉ cần giữ nguyên (message đã được xử lý ở handleAdaptiveUpdate)
   };
 
   const handleSend = () => {
@@ -278,7 +416,7 @@ export default function ChatInterface({
     }
     const prompt = input.trim();
     setMessages((prev) => [...prev, { role: "user", content: prompt }]);
-    onInputChange("");
+    setInput("");
     callRestaurantApi(prompt);
   };
 
@@ -455,7 +593,7 @@ export default function ChatInterface({
             <button
               key={suggestion}
               type="button"
-              onClick={() => onInputChange(suggestion)}
+              onClick={() => setInput(suggestion)}
               className="rounded-full border border-slate-200/60 bg-white/70 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:text-slate-900"
             >
               {suggestion}
@@ -465,29 +603,15 @@ export default function ChatInterface({
       </div>
 
       <div className="fixed bottom-6 left-0 right-0">
-        <div className="mx-auto flex w-full max-w-4xl items-center gap-3 rounded-full border border-white/60 bg-white/80 px-4 py-3 shadow-soft backdrop-blur">
-          <input
-            value={input}
-            onChange={(event) => onInputChange(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                event.preventDefault();
-                handleSend();
-              }
-            }}
-            placeholder="Nhập yêu cầu của bạn..."
-            className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
+        <div className="mx-auto w-full max-w-4xl px-4">
+          <AdaptiveInputBar
+            currentStep={currentStep}
+            onUpdate={handleAdaptiveUpdate}
+            onNext={handleAdaptiveNext}
           />
-          <button
-            type="button"
-            onClick={handleSend}
-            disabled={isLoading}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame text-white shadow-glow"
-          >
-            <SendHorizontal size={18} />
-          </button>
         </div>
       </div>
+
     </div>
   );
 }
