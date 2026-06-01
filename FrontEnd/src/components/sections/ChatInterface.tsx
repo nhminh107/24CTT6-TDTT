@@ -402,7 +402,7 @@ export default function ChatInterface({
           
           <div className="text-xs text-slate-600 sm:truncate"> 
             {/* sm:truncate sẽ giúp chữ không bị xuống dòng trên màn hình lớn nếu bạn muốn cực kì gọn */}
-            Hãy mô tả rõ món ăn, không gian và mức ngân sách cho từng bữa. Bạn càng chi tiết, BMI càng tối ưu lộ trình.
+            Càng chi tiết về món ăn, không gian & ngân sách, lộ trình BMI càng tối ưu.
           </div>
         </div>
       </div>

@@ -230,9 +230,9 @@ export default function ItineraryPanel({
           {/* Close Button */}
           <button
             onClick={onCloseDetail}
-            className="mb-4 flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-slate-700"
+            className="mb-4 inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-orange-200 hover:bg-orange-50 hover:text-orange-600 shadow-sm"
           >
-            <X size={14} />
+            <X size={14} className="stroke-[2.5]" />
             Đóng chi tiết
           </button>
 
