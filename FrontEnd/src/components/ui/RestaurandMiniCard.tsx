@@ -138,10 +138,17 @@ export default function RestaurantMiniCard({
 
           {/* Bữa ăn phù hợp (Nếu có) */}
           {!!restaurant.meals?.length && (
-            <div className="inline-flex items-center rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-medium text-orange-600 border border-orange-100/50 truncate max-w-[100px]">
-              {restaurant.meals[0]} {/* Chỉ hiện bữa đầu tiên cho đỡ dài */}
+            <div className="flex flex-wrap gap-1">
+                {restaurant.meals.map((meal) => (
+                <span
+                    key={meal}
+                    className="inline-flex items-center rounded-full bg-orange-50 px-2 py-0.5 text-[11px] font-medium text-orange-600 border border-orange-100/50"
+                >
+                    {meal}
+                </span>
+                ))}
             </div>
-          )}
+            )}
         </div>
       </div>
     </button>
