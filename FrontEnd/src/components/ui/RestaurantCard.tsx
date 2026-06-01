@@ -48,7 +48,7 @@ const formatPhoneNumber = (phone: string | number) => {
 const normalizeImageUrl = (url: string) => url.replace(/\\\//g, "/");
 
 
-
+  
 
 export default function RestaurantCard2({
   restaurant,

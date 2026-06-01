@@ -1,5 +1,5 @@
 "use client";
-
+import Swal from 'sweetalert2';
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MapPin, LogOut, HeartPulse, User } from "lucide-react";
@@ -66,7 +66,7 @@ const fetchHealthProfile = async () => {
         more_descriptions: data.more_description || "",
       });
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   };
 
@@ -75,7 +75,7 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
 
   try {
     // update UI trước
-    setHealthProfile(profile);
+    
 
     const response = await fetch(
       `${API_BASE_URL}/api/user/health-profile/${user.uid}`,
@@ -97,12 +97,16 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
     if (!response.ok) {
       throw new Error("Failed to save profile");
     }
+    else {
+      setHealthProfile(profile);
+    }
 
     const data = await response.json();
 
     console.log("Saved profile:", data);
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { MapPin, Search } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MapPin, Search, LocateFixed, Loader2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type LocationOption = {
@@ -26,16 +26,48 @@ type LocationSearchProps = {
   onSelect: (option: LocationOption) => void;
 };
 
+// ─── Reverse geocode (mockup — thay bằng API thật sau) ───────────────────────
+async function reverseGeocode(
+  lat: number,
+  lng: number
+): Promise<LocationOption> {
+  // TODO: thay bằng Google Maps Geocoding / Mapbox / API nội bộ
+  await new Promise((r) => setTimeout(r, 600));
+  return {
+    id: `geo_${lat}_${lng}`,
+    name: `${lat.toFixed(5)}, ${lng.toFixed(5)}`,
+    subtitle: "Vị trí hiện tại của bạn",
+  };
+}
+
 export default function LocationSearch({
   value,
   onChange,
-  onSelect
+  onSelect,
 }: LocationSearchProps) {
   const [options, setOptions] = useState<LocationOption[]>([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
 
+  // GPS state — hoàn toàn nội bộ component
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationError, setLocationError] = useState<string | null>(null);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // ── Close dropdown on outside click ────────────────────────────────────────
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  // ── Autocomplete fetch ──────────────────────────────────────────────────────
   useEffect(() => {
     const trimmed = value.trim();
     if (!trimmed) {
@@ -43,7 +75,6 @@ export default function LocationSearch({
       setOpen(false);
       return;
     }
-
     if (selectedValue && trimmed === selectedValue) {
       setOptions([]);
       setOpen(false);
@@ -71,7 +102,7 @@ export default function LocationSearch({
               .map((item) => ({
                 id: item.place_id || item.description || "",
                 name: item.description || "",
-                subtitle: "Gợi ý từ bản đồ"
+                subtitle: "Gợi ý từ bản đồ",
               }))
           : [];
         setOptions(mapped);
@@ -88,37 +119,117 @@ export default function LocationSearch({
       controller.abort();
       clearTimeout(handle);
     };
-  }, [value]);
+  }, [value, selectedValue]);
 
+  // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (option: LocationOption) => {
     setSelectedValue(option.name);
     onSelect(option);
     setOpen(false);
+    setLocationError(null);
   };
 
   const handleChange = (nextValue: string) => {
-    if (selectedValue) {
-      setSelectedValue("");
-    }
+    if (selectedValue) setSelectedValue("");
+    setLocationError(null);
     onChange(nextValue);
   };
 
+  const handleGetCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationError("Trình duyệt không hỗ trợ định vị.");
+      return;
+    }
+
+    setIsLocating(true);
+    setLocationError(null);
+    setOpen(false);
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const result = await reverseGeocode(latitude, longitude);
+          // Cập nhật input text
+          onChange(result.name);
+          // Thông báo cho parent component giống như chọn từ dropdown
+          handleSelect(result);
+        } catch {
+          setLocationError("Không thể xác định địa chỉ từ vị trí.");
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      (err) => {
+        setIsLocating(false);
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            setLocationError("Bạn đã từ chối quyền định vị.");
+            break;
+          case err.POSITION_UNAVAILABLE:
+            setLocationError("Không lấy được vị trí hiện tại.");
+            break;
+          case err.TIMEOUT:
+            setLocationError("Hết thời gian lấy vị trí.");
+            break;
+          default:
+            setLocationError("Lỗi khi lấy vị trí.");
+        }
+      },
+      { timeout: 10000, maximumAge: 60000 }
+    );
+  };
+
   return (
-    <div className="relative z-30">
-      <label className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-lagoon">
-        Vị trí hiện tại
-      </label>
-      <div className="glass mt-3 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-soft">
-        <MapPin className="text-brand-coral" size={18} />
+    <div ref={containerRef} className="relative z-30">
+      {/* ── Input row ── */}
+      <div className="glass mt-3 flex items-center gap-2 rounded-2xl px-4 py-3 shadow-soft">
+        <MapPin className="shrink-0 text-brand-coral" size={18} />
+
         <input
           value={value}
-          onChange={(event) => handleChange(event.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
           placeholder="Nhập khu vực bạn đang ở"
-          className="w-full min-w-0 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
+          className="min-w-0 flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
         />
-        <Search className="text-slate-400" size={18} />
+
+        {/* GPS button */}
+        <button
+          type="button"
+          onClick={handleGetCurrentLocation}
+          disabled={isLocating}
+          title="Dùng vị trí hiện tại"
+          className="group shrink-0 rounded-xl p-1.5 text-slate-400 transition-all duration-200 hover:bg-brand-lagoon/10 hover:text-brand-lagoon disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {isLocating ? (
+            <Loader2 size={17} className="animate-spin text-brand-lagoon" />
+          ) : (
+            <LocateFixed
+              size={17}
+              className="transition-transform duration-200 group-hover:scale-110"
+            />
+          )}
+        </button>
+
+        <Search className="shrink-0 text-slate-400" size={18} />
       </div>
 
+      {/* ── Error message ── */}
+      <AnimatePresence>
+        {locationError && (
+          <motion.p
+            key="loc-error"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            className="mt-1.5 px-1 text-xs text-red-400"
+          >
+            {locationError}
+          </motion.p>
+        )}
+      </AnimatePresence>
+
+      {/* ── Suggestions dropdown ── */}
       <AnimatePresence>
         {open && (options.length > 0 || loading) && (
           <motion.div
@@ -128,7 +239,8 @@ export default function LocationSearch({
             className="glass absolute left-0 right-0 z-50 mt-3 overflow-hidden rounded-2xl shadow-soft"
           >
             {loading ? (
-              <div className="px-4 py-3 text-sm text-slate-500">
+              <div className="flex items-center gap-2 px-4 py-3 text-sm text-slate-500">
+                <Loader2 size={14} className="animate-spin" />
                 Đang tìm gợi ý phù hợp...
               </div>
             ) : options.length === 0 ? (
@@ -141,7 +253,7 @@ export default function LocationSearch({
                   key={option.id}
                   type="button"
                   onClick={() => handleSelect(option)}
-                  className="flex w-full flex-col gap-1 px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-white/70"
+                  className="flex w-full flex-col gap-0.5 px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-white/70"
                 >
                   <span className="font-semibold text-slate-900">
                     {option.name}
