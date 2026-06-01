@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, MessageSquare, LogOut, HeartPulse, User } from "lucide-react";
+import Link from "next/link";
+import { Home, Plus, MessageSquare, LogOut, HeartPulse, User } from "lucide-react";
 import LocationSearch from "@/components/ui/LocationSearch";
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
@@ -76,6 +77,14 @@ export default function SidebarNav({
           <Plus size={16} />
           Cuộc trò chuyện mới
         </button>
+
+        <Link
+          href="/"
+          className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/80 px-4 py-2.5 text-xs font-semibold text-slate-600 shadow-sm transition hover:border-slate-300 hover:bg-white hover:text-slate-800 md:hidden"
+        >
+          <Home size={14} />
+          Về trang chủ
+        </Link>
 
         {/* ── 2. User Profile ───────────────────────────────── */}
         <div className="mt-4">

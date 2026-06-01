@@ -1,14 +1,8 @@
 "use client";
-import Swal from 'sweetalert2';
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { MapPin, LogOut, HeartPulse, User } from "lucide-react";
+import { MapPin, LogOut, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter, usePathname } from "next/navigation";
-import { useProtectedAction } from "@/lib/protected-action";
-import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
-import AuthPromptModal from "@/components/ui/AuthPromptModal";
 
 const links = [
   { label: "Trang chủ", href: "/" },
@@ -17,107 +11,8 @@ const links = [
   { label: "Hướng dẫn", href: "/guide" },
 ];
 
-// Default profile — export để dùng ở chỗ khác nếu cần
-export const DEFAULT_HEALTH_PROFILE: HealthProfile = {
-  selected_conditions: [],
-  selected_allergies: [],
-  diet_mode: "casual",
-  more_descriptions: "",
-};
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  process.env.NEXT_PUBLIC_API_URL ||
-  "http://127.0.0.1:8000";
-
 export default function Navbar() {
   const { user, logout } = useAuth();
-  const { performAction, showAuthModal, setShowAuthModal } = useProtectedAction();
-  const [healthOpen, setHealthOpen] = useState(false);
-  const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
-
-  const hasProfile =
-    user && (
-    healthProfile.selected_conditions.length > 0 ||
-    healthProfile.selected_allergies.length > 0 ||
-    !!healthProfile.more_descriptions);
-
-
-const fetchHealthProfile = async () => {
-    if (!user?.uid) return;
-
-    try {
-      const response = await fetch(
-        `${API_BASE_URL}/api/user/health-profile/${user.uid}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch profile");
-      }
-
-      const data = await response.json();
-
-      setHealthProfile({
-        selected_conditions:
-          data.raw_selections?.selected_conditions || [],
-        selected_allergies:
-          data.raw_selections?.selected_allergies || [],
-        diet_mode: data.diet_mode || "casual",
-        more_descriptions: data.more_description || "",
-      });
-    } catch (error) {
-      throw error;
-    }
-  };
-
-const handleSaveHealthProfile = async (profile: HealthProfile) => {
-  if (!user?.uid) return;
-
-  try {
-    // update UI trước
-    
-
-    const response = await fetch(
-      `${API_BASE_URL}/api/user/health-profile/${user.uid}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user_id: user.uid,
-          diet_mode: profile.diet_mode,
-          selected_conditions: profile.selected_conditions,
-          selected_allergies: profile.selected_allergies,
-          more_descriptions: profile.more_descriptions,
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to save profile");
-    }
-    else {
-      setHealthProfile(profile);
-    }
-
-    const data = await response.json();
-
-    console.log("Saved profile:", data);
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-
-  useEffect(() => {
-    if (user?.uid) {
-      fetchHealthProfile();
-    } else {
-      setHealthProfile(DEFAULT_HEALTH_PROFILE);
-    }
-  }, [user]);
 
   return (
     <>
@@ -159,29 +54,15 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
           {/* Right side */}
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-3">
-              {/* Health profile button - Moved out of user check to allow public access with login prompt */}
-              <button
-                type="button"
-                onClick={() => performAction(() => setHealthOpen(true))}
-                title="Hồ sơ sức khỏe"
-                className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:bg-orange-50 hover:border-orange-300 hover:text-orange-500 shadow-sm"
-              >
-                <HeartPulse size={18} />
-                {/* dot indicator nếu đã có profile */}
-                {hasProfile && (
-                  <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full border-2 border-white bg-orange-500" />
-                )}
-              </button>
-
               {user ? (
                 <>
                   {/* User Dropdown ... (unchanged) */}
                   <div className="relative group z-50">
-                    <button className="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pr-3.5 transition hover:bg-slate-50 shadow-sm">
+                    <button className="flex h-9 w-9 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white p-1 transition hover:bg-slate-50 shadow-sm sm:h-auto sm:w-auto sm:justify-start sm:pr-3.5">
                       <img 
                         src={user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || "U")}&background=ff6b4a&color=fff`} 
                         alt="Avatar" 
-                        className="h-8 w-8 rounded-full object-cover bg-slate-100" 
+                        className="h-7 w-7 rounded-full object-cover bg-slate-100 sm:h-8 sm:w-8" 
                         onError={(e) => (e.currentTarget.src = "https://ui-avatars.com/api/?name=U&background=ff6b4a&color=fff")}
                       />
                       <div className="hidden flex-col items-start text-left md:flex">
@@ -208,12 +89,12 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
                     </div>
                   </div>
 
-                  <Link
-                    href="/app"
-                    className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
-                  >
-                    Vào ứng dụng
-                  </Link>
+                    <Link
+                      href="/app"
+                      className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+                    >
+                      Dùng ngay
+                    </Link>
                 </>
               ) : (
                 <>
@@ -235,20 +116,6 @@ const handleSaveHealthProfile = async (profile: HealthProfile) => {
           </div>
         </div>
       </motion.nav>
-
-      {/* Health Profile Modal */}
-      <HealthProfileModal
-        open={healthOpen}
-        onClose={() => setHealthOpen(false)}
-        profile={healthProfile}
-        onChange={handleSaveHealthProfile}
-      />
-
-      {/* Auth Prompt Modal */}
-      <AuthPromptModal 
-        open={showAuthModal} 
-        onClose={() => setShowAuthModal(false)} 
-      />
     </>
   );
 }
