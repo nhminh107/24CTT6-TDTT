@@ -29,10 +29,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chiên hải sản",
-            "Sò điệp nướng",
-            "Tôm tỏi",
-            "Bánh xèo"
+            "cơm chiên hải sản",
+            "sò điệp nướng",
+            "tôm tỏi",
+            "bánh xèo"
         ]
     },
     {
@@ -62,11 +62,11 @@
             "Spicy"
         ],
         "menu": [
-            "Hải sản tươi sống",
-            "Cua xào sả ớt",
-            "Tôm nướng mọi vị",
-            "Ò óng xào bún",
-            "Hải sản rang me"
+            "hải sản tươi sống",
+            "cua xào sả ớt",
+            "tôm nướng mọi vị",
+            "ò óng xào bún",
+            "hải sản rang me"
         ]
     },
     {
@@ -98,10 +98,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Mỳ Quảng",
-            "Bánh Xèo",
-            "Bún Thịt Nướng",
-            "Chả Giò"
+            "mỳ quảng",
+            "bánh xèo",
+            "bún thịt nướng",
+            "chả giò"
         ]
     },
     {
@@ -134,10 +134,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh xèo",
-            "Cơm chiên",
-            "Gỏi xoài",
-            "Chả giò cua"
+            "bánh xèo",
+            "cơm chiên",
+            "gỏi xoài",
+            "chả giò cua"
         ]
     },
     {
@@ -167,10 +167,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm bò xào",
-            "Bò kho",
-            "Gà kho sả ớt",
-            "Cơm tấm"
+            "cơm bò xào",
+            "bò kho",
+            "gà kho sả ớt",
+            "cơm tấm"
         ]
     },
     {
@@ -201,10 +201,10 @@
             "Spicy"
         ],
         "menu": [
-            "Tôm Tiêu Đen Nướng",
-            "Sò Điệp Nướng",
-            "Hàu Nướng",
-            "Bánh Xèo"
+            "tôm tiêu đen nướng",
+            "sò điệp nướng",
+            "hàu nướng",
+            "bánh xèo"
         ]
     },
     {
@@ -238,10 +238,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sò điệp nướng",
-            "Hàu nướng",
-            "Tôm hấp gừng",
-            "Cơm chiên trứng"
+            "sò điệp nướng",
+            "hàu nướng",
+            "tôm hấp gừng",
+            "cơm chiên trứng"
         ]
     },
     {
@@ -273,10 +273,10 @@
             "Spicy"
         ],
         "menu": [
-            "Cá Mú Hấp Tỏi Lý Sơn",
-            "Tôm Hùm",
-            "Hàu Tươi",
-            "Bể Hàu"
+            "cá mú hấp tỏi lý sơn",
+            "tôm hùm",
+            "hàu tươi",
+            "bể hàu"
         ]
     },
     {
@@ -310,10 +310,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gạch tôm hùm bơ tỏi",
-            "Cá nướng tươi",
-            "Cơm chiên trứng",
-            "Bánh xèo"
+            "gạch tôm hùm bơ tỏi",
+            "cá nướng tươi",
+            "cơm chiên trứng",
+            "bánh xèo"
         ]
     },
     {
@@ -345,7 +345,7 @@
             "Spicy"
         ],
         "menu": [
-            "Sò Điệp Nướng Yang"
+            "sò điệp nướng yang"
         ]
     },
     {
@@ -378,10 +378,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Ốc xào nghêu",
-            "Chip chip hấp sả",
-            "Bể ốc bơ",
-            "Hải sản nướng"
+            "ốc xào nghêu",
+            "chip chip hấp sả",
+            "bể ốc bơ",
+            "hải sản nướng"
         ]
     },
     {
@@ -415,8 +415,8 @@
             "Red_Meat"
         ],
         "menu": [
-            "Mỳ Quảng Gà",
-            "Mỳ Quảng Ếch"
+            "mỳ quảng gà",
+            "mỳ quảng ếch"
         ]
     },
     {
@@ -448,10 +448,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bún Lưỡi Bò",
-            "Phở Bò",
-            "Cơm Gà"
+            "bún bò huế",
+            "bún lưỡi bò",
+            "phở bò",
+            "cơm gà"
         ]
     },
     {
@@ -485,10 +485,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Phở sườn ngắn",
-            "Cơm dừa",
-            "Tôm bơ tỏi",
-            "Bánh xèo"
+            "phở sườn ngắn",
+            "cơm dừa",
+            "tôm bơ tỏi",
+            "bánh xèo"
         ]
     },
     {
@@ -521,10 +521,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Đặc Biệt",
-            "Bún Chả",
-            "Phở Gà",
-            "Cơm Gà"
+            "phở bò đặc biệt",
+            "bún chả",
+            "phở gà",
+            "cơm gà"
         ]
     },
     {
@@ -556,10 +556,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Bún Chả Hà Nội",
-            "Gỏi cuốn",
-            "Cơm gà rán"
+            "phở bò",
+            "bún chả hà nội",
+            "gỏi cuốn",
+            "cơm gà rán"
         ]
     },
     {
@@ -591,10 +591,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mỳ Quảng",
-            "Xên Thịt Nướng",
-            "Bánh Xèo",
-            "Cơm Gà"
+            "mỳ quảng",
+            "xên thịt nướng",
+            "bánh xèo",
+            "cơm gà"
         ]
     },
     {
@@ -627,10 +627,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cơm Gà Kho",
-            "Mắm Hà Nội",
-            "Bún Chả Cá Kho",
-            "Thịt Kho Tàu Ngư"
+            "cơm gà kho",
+            "mắm hà nội",
+            "bún chả cá kho",
+            "thịt kho tàu ngư"
         ]
     },
     {
@@ -660,10 +660,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Gà Tẩm Chấm",
-            "Cơm Chiên Xíu Xíu",
-            "Cơm Trắng",
-            "Bún Gà"
+            "cơm gà tẩm chấm",
+            "cơm chiên xíu xíu",
+            "cơm trắng",
+            "bún gà"
         ]
     },
     {
@@ -696,10 +696,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm niêu cá kho",
-            "Thịt heo chiên giòn",
-            "Bò xào khoai tây",
-            "Gà rán"
+            "cơm niêu cá kho",
+            "thịt heo chiên giòn",
+            "bò xào khoai tây",
+            "gà rán"
         ]
     },
     {
@@ -729,10 +729,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Cơm Gà Quay",
-            "Gà Xé",
-            "Cơm Gà Ngào",
-            "Cơm Gạo Nếp"
+            "cơm gà quay",
+            "gà xé",
+            "cơm gà ngào",
+            "cơm gạo nếp"
         ]
     },
     {
@@ -767,10 +767,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Chả Giò Hải Sản",
-            "Bánh Xèo",
-            "Gỏi cuốn"
+            "phở bò",
+            "chả giò hải sản",
+            "bánh xèo",
+            "gỏi cuốn"
         ]
     },
     {
@@ -802,10 +802,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cá kho tiêu",
-            "Cơm chiên dứa",
-            "Bánh xèo",
-            "Gà nướng lá lốt"
+            "cá kho tiêu",
+            "cơm chiên dứa",
+            "bánh xèo",
+            "gà nướng lá lốt"
         ]
     },
     {
@@ -839,8 +839,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Canh Ghẹ",
-            "Ghẹ Hàm"
+            "bánh canh ghẹ",
+            "ghẹ hàm"
         ]
     },
     {
@@ -870,10 +870,10 @@
             "Spicy"
         ],
         "menu": [
-            "Ốc xào sả ớt",
-            "Ốc nướng mắm ớt",
-            "Gỏi ngõ ngó",
-            "Bể ốc tươi"
+            "ốc xào sả ớt",
+            "ốc nướng mắm ớt",
+            "gỏi ngõ ngó",
+            "bể ốc tươi"
         ]
     },
     {
@@ -904,10 +904,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Sò điệp nướng",
-            "Hàu hấp gừng",
-            "Cá diêu hồng nướng",
-            "Tôm tít xào sả ớt"
+            "sò điệp nướng",
+            "hàu hấp gừng",
+            "cá diêu hồng nướng",
+            "tôm tít xào sả ớt"
         ]
     },
     {
@@ -945,10 +945,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pizza hải sản",
-            "Bít tết bơ mềm",
-            "Pasta sốt kem",
-            "Sushi tươi ngon"
+            "pizza hải sản",
+            "bít tết bơ mềm",
+            "pasta sốt kem",
+            "sushi tươi ngon"
         ]
     },
     {
@@ -981,10 +981,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Tapas ассорти",
-            "Pizza vỏ mỏng",
-            "Sườn heo nấu chậm",
-            "Bánh mì kẹp thịt"
+            "tapas ассорти",
+            "pizza vỏ mỏng",
+            "sườn heo nấu chậm",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -1017,10 +1017,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Calzone",
-            "Pasta gamberi",
-            "Lasagna",
-            "Pizza vỏ mỏng"
+            "calzone",
+            "pasta gamberi",
+            "lasagna",
+            "pizza vỏ mỏng"
         ]
     },
     {
@@ -1055,10 +1055,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Canard rôti",
-            "Foie gras nhồi",
-            "Mực nhồi sốt rượu vang",
-            "Tôm hùm nướng"
+            "canard rôti",
+            "foie gras nhồi",
+            "mực nhồi sốt rượu vang",
+            "tôm hùm nướng"
         ]
     },
     {
@@ -1093,10 +1093,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bít tết Úc MB5/6",
-            "Tôm nướng",
-            "Pasta kem gà",
-            "Bánh mì kẹp thịt"
+            "bít tết úc mb5/6",
+            "tôm nướng",
+            "pasta kem gà",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -1132,10 +1132,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Súp Tôm Hùm",
-            "Pasta Sò Điệp",
-            "Pizza Margherita",
-            "Risotto Hải Dương"
+            "súp tôm hùm",
+            "pasta sò điệp",
+            "pizza margherita",
+            "risotto hải dương"
         ]
     },
     {
@@ -1169,10 +1169,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Pizza thảo mộc",
-            "Bít tết nướng",
-            "Pizza hải sản",
-            "Steak wagyu"
+            "pizza thảo mộc",
+            "bít tết nướng",
+            "pizza hải sản",
+            "steak wagyu"
         ]
     },
     {
@@ -1210,10 +1210,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Pizza thảo mộc",
-            "Burger bò",
-            "Bánh mì kẹp thịt",
-            "Khoai tây chiên"
+            "pizza thảo mộc",
+            "burger bò",
+            "bánh mì kẹp thịt",
+            "khoai tây chiên"
         ]
     },
     {
@@ -1248,10 +1248,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pizza ham & Camembert",
-            "Seafood pesto pasta",
-            "Burger beef",
-            "Pasta carbonara"
+            "pizza ham & camembert",
+            "seafood pesto pasta",
+            "burger beef",
+            "pasta carbonara"
         ]
     },
     {
@@ -1282,9 +1282,9 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Ớt Chuẩn",
-            "Pizza Neapolitan"
+            "pizza margherita",
+            "pizza ớt chuẩn",
+            "pizza neapolitan"
         ]
     },
     {
@@ -1314,10 +1314,10 @@
             "Spicy"
         ],
         "menu": [
-            "Gà Kimchi Đào",
-            "Bánh mì Pháp",
-            "Salad Caesar",
-            "Sườn Nướng Bí Đỏ"
+            "gà kimchi đào",
+            "bánh mì pháp",
+            "salad caesar",
+            "sườn nướng bí đỏ"
         ]
     },
     {
@@ -1355,10 +1355,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Bò wagyu sốt kem",
-            "Steak T-bone",
-            "Burger Wagyu",
-            "Salad Caesar"
+            "bò wagyu sốt kem",
+            "steak t-bone",
+            "burger wagyu",
+            "salad caesar"
         ]
     },
     {
@@ -1391,8 +1391,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Burger bò",
-            "Khoai tây chiên"
+            "burger bò",
+            "khoai tây chiên"
         ]
     },
     {
@@ -1428,10 +1428,10 @@
             "Red_Meat"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Burger Beef",
-            "Schnitzel Parmigiana",
-            "Bánh mì kẹp thịt"
+            "pizza margherita",
+            "burger beef",
+            "schnitzel parmigiana",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -1466,10 +1466,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thái",
-            "Larb Moo",
-            "Bánh Cá Thái",
-            "Gỏi Xoài Rữa Đắng"
+            "pad thái",
+            "larb moo",
+            "bánh cá thái",
+            "gỏi xoài rữa đắng"
         ]
     },
     {
@@ -1505,10 +1505,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum",
-            "Lẩu Thái",
-            "Cà Ri Thái"
+            "pad thai",
+            "tom yum",
+            "lẩu thái",
+            "cà ri thái"
         ]
     },
     {
@@ -1542,10 +1542,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Gỏi Xanh",
-            "Cà Ri Gà",
-            "Súp Xanh"
+            "pad thai",
+            "gỏi xanh",
+            "cà ri gà",
+            "súp xanh"
         ]
     },
     {
@@ -1577,10 +1577,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh xèo",
-            "Mì udon",
-            "Gà xào sả ớt",
-            "Cơm tấm"
+            "bánh xèo",
+            "mì udon",
+            "gà xào sả ớt",
+            "cơm tấm"
         ]
     },
     {
@@ -1615,10 +1615,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Katsu Curry",
-            "Tuna Salad",
-            "Gà rán",
-            "Bò lá xốt"
+            "katsu curry",
+            "tuna salad",
+            "gà rán",
+            "bò lá xốt"
         ]
     },
     {
@@ -1653,10 +1653,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi",
-            "Sushi",
-            "Thịt Yakiniku",
-            "Hải Sản"
+            "sashimi",
+            "sushi",
+            "thịt yakiniku",
+            "hải sản"
         ]
     },
     {
@@ -1691,10 +1691,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Sushi Sashimi",
-            "Thịt Nướng",
-            "Lẩu Shabu",
-            "Bò Úc"
+            "sushi sashimi",
+            "thịt nướng",
+            "lẩu shabu",
+            "bò úc"
         ]
     },
     {
@@ -1726,10 +1726,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Thịt bò Mỹ nướng",
-            "Thịt heo wagyu nướng",
-            "Sụn bò nướng",
-            "Đùi gà nướng"
+            "thịt bò mỹ nướng",
+            "thịt heo wagyu nướng",
+            "sụn bò nướng",
+            "đùi gà nướng"
         ]
     },
     {
@@ -1762,10 +1762,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Thịt bò nướng",
-            "Thịt heo nướng",
-            "Gà nướng",
-            "Kim chi"
+            "thịt bò nướng",
+            "thịt heo nướng",
+            "gà nướng",
+            "kim chi"
         ]
     },
     {
@@ -1801,10 +1801,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Trung Hoa",
-            "Nướng thịt heo",
-            "Bún chả Nhật Bản",
-            "Gà nướng kiểu Nhật"
+            "lẩu trung hoa",
+            "nướng thịt heo",
+            "bún chả nhật bản",
+            "gà nướng kiểu nhật"
         ]
     },
     {
@@ -1836,10 +1836,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Thịt nướng chả chỉ",
-            "Gà nướng kiểu Saigon",
-            "Lẩu thái",
-            "Bánh xèo cơ cơ"
+            "thịt nướng chả chỉ",
+            "gà nướng kiểu saigon",
+            "lẩu thái",
+            "bánh xèo cơ cơ"
         ]
     },
     {
@@ -1872,9 +1872,9 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Jjajangmyeon",
-            "Mì đen Hàn Quốc",
-            "Bibimbap"
+            "jjajangmyeon",
+            "mì đen hàn quốc",
+            "bibimbap"
         ]
     },
     {
@@ -1908,10 +1908,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lòng bò nướng",
-            "Galbi",
-            "Bắp nướng",
-            "Sò đi kèm"
+            "lòng bò nướng",
+            "galbi",
+            "bắp nướng",
+            "sò đi kèm"
         ]
     },
     {
@@ -1946,10 +1946,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Thịt bò nướng",
-            "Gà nướng",
-            "Lẩu Yakiniku",
-            "Đồ ăn kèm"
+            "thịt bò nướng",
+            "gà nướng",
+            "lẩu yakiniku",
+            "đồ ăn kèm"
         ]
     },
     {
@@ -1980,10 +1980,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Croissant Pháp",
-            "Tiramisu",
-            "Bánh tart trứng",
-            "Cà phê mịn"
+            "croissant pháp",
+            "tiramisu",
+            "bánh tart trứng",
+            "cà phê mịn"
         ]
     },
     {
@@ -2014,10 +2014,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh Croissant",
-            "Bánh Danish",
-            "Bánh ngọt Pháp",
-            "Bánh Tart"
+            "bánh croissant",
+            "bánh danish",
+            "bánh ngọt pháp",
+            "bánh tart"
         ]
     },
     {
@@ -2050,9 +2050,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh tráng Cedric Grolet",
-            "Cinnamon Roll",
-            "Mango Matcha"
+            "bánh tráng cedric grolet",
+            "cinnamon roll",
+            "mango matcha"
         ]
     },
     {
@@ -2086,9 +2086,9 @@
             "Peanuts_Nuts"
         ],
         "menu": [
-            "Bánh cream Biscoff",
-            "Cinnamon roll salted caramel",
-            "Bánh ngọt Hàn"
+            "bánh cream biscoff",
+            "cinnamon roll salted caramel",
+            "bánh ngọt hàn"
         ]
     },
     {
@@ -2122,9 +2122,9 @@
             "Spicy"
         ],
         "menu": [
-            "Croissant matcha xoài",
-            "Bánh phủ matcha",
-            "Bánh ngọt"
+            "croissant matcha xoài",
+            "bánh phủ matcha",
+            "bánh ngọt"
         ]
     },
     {
@@ -2157,8 +2157,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh kem sinh nhật",
-            "Bánh quy tròn"
+            "bánh kem sinh nhật",
+            "bánh quy tròn"
         ]
     },
     {
@@ -2191,9 +2191,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Flan",
-            "Donut Caramel",
-            "Cinnamon Roll"
+            "bánh flan",
+            "donut caramel",
+            "cinnamon roll"
         ]
     },
     {
@@ -2226,10 +2226,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh bông lan mềm",
-            "Bánh mì ngọt",
-            "Bánh quy giòn",
-            "Bánh da lộn"
+            "bánh bông lan mềm",
+            "bánh mì ngọt",
+            "bánh quy giòn",
+            "bánh da lộn"
         ]
     },
     {
@@ -2262,9 +2262,9 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza bốn loại phô mai",
-            "Pizza pepperoni",
-            "Pizza cỡ lớn"
+            "pizza bốn loại phô mai",
+            "pizza pepperoni",
+            "pizza cỡ lớn"
         ]
     },
     {
@@ -2300,10 +2300,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu hải sản",
-            "Cá diêu hồng nướng",
-            "Bể cá"
+            "gỏi cá trích",
+            "lẩu hải sản",
+            "cá diêu hồng nướng",
+            "bể cá"
         ]
     },
     {
@@ -2334,10 +2334,10 @@
             "Spicy"
         ],
         "menu": [
-            "Sò Điệp Nướng",
-            "Tôm Hùm Hấp Rượu",
-            "Cua Hoàng Đế Nướng",
-            "Bể Cá Tự Chọn"
+            "sò điệp nướng",
+            "tôm hùm hấp rượu",
+            "cua hoàng đế nướng",
+            "bể cá tự chọn"
         ]
     },
     {
@@ -2369,10 +2369,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá Nam Ô",
-            "Chả cá thu cuốn rau",
-            "Bánh xèo miền Trung",
-            "Cá kho tộ"
+            "gỏi cá nam ô",
+            "chả cá thu cuốn rau",
+            "bánh xèo miền trung",
+            "cá kho tộ"
         ]
     },
     {
@@ -2401,10 +2401,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm gà Hải Nam",
-            "Canh chua",
-            "Bánh xèo",
-            "Gà kho gừng"
+            "cơm gà hải nam",
+            "canh chua",
+            "bánh xèo",
+            "gà kho gừng"
         ]
     },
     {
@@ -2439,10 +2439,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà lúc lắc",
-            "Tôm hùm sốt kem",
-            "Bò lúc lắc",
-            "Cháo bò loãng"
+            "gà lúc lắc",
+            "tôm hùm sốt kem",
+            "bò lúc lắc",
+            "cháo bò loãng"
         ]
     },
     {
@@ -2475,8 +2475,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Bánh mì chả pate"
+            "bánh mì kẹp thịt",
+            "bánh mì chả pate"
         ]
     },
     {
@@ -2509,10 +2509,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Cơm Tấm Sườn",
-            "Bún Chả",
-            "Chả Giò",
-            "Gỏi Dưa Rém"
+            "cơm tấm sườn",
+            "bún chả",
+            "chả giò",
+            "gỏi dưa rém"
         ]
     },
     {
@@ -2546,8 +2546,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Bánh Xèo"
+            "phở bò",
+            "bánh xèo"
         ]
     },
     {
@@ -2577,10 +2577,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún thịt nướng",
-            "Phở gà",
-            "Cá kho tộ",
-            "Gà nướng nguyên con"
+            "bún thịt nướng",
+            "phở gà",
+            "cá kho tộ",
+            "gà nướng nguyên con"
         ]
     },
     {
@@ -2612,8 +2612,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả Hà Nội",
-            "Chả giò đặc biệt"
+            "bún chả hà nội",
+            "chả giò đặc biệt"
         ]
     },
     {
@@ -2646,10 +2646,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh xèo Nam Bộ",
-            "Cơm tấm ngon",
-            "Gỏi cuốn tôm thịt",
-            "Lẩu mắm cá lóc"
+            "bánh xèo nam bộ",
+            "cơm tấm ngon",
+            "gỏi cuốn tôm thịt",
+            "lẩu mắm cá lóc"
         ]
     },
     {
@@ -2676,10 +2676,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh Xèo",
-            "Phở Bò",
-            "Bún Chả",
-            "Gỏi cuốn"
+            "bánh xèo",
+            "phở bò",
+            "bún chả",
+            "gỏi cuốn"
         ]
     },
     {
@@ -2713,8 +2713,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Mắm Bà Dú",
-            "Bún Chả Cá"
+            "lẩu mắm bà dú",
+            "bún chả cá"
         ]
     },
     {
@@ -2744,10 +2744,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Bún Chả Hà Nội",
-            "Gỏi cuốn",
-            "Cá kho tộ"
+            "phở bò",
+            "bún chả hà nội",
+            "gỏi cuốn",
+            "cá kho tộ"
         ]
     },
     {
@@ -2780,10 +2780,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Gỏi cuốn",
-            "Cá kho tộ",
-            "Sườn nướng"
+            "bún bò huế",
+            "gỏi cuốn",
+            "cá kho tộ",
+            "sườn nướng"
         ]
     },
     {
@@ -2815,10 +2815,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún thịt nướng",
-            "Cà phê cốt dừa",
-            "Phở gà",
-            "Bánh mì"
+            "bún thịt nướng",
+            "cà phê cốt dừa",
+            "phở gà",
+            "bánh mì"
         ]
     },
     {
@@ -2849,10 +2849,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bia Hà Nội",
-            "Cà phê sữa đá",
-            "Bánh mì kẹp thịt",
-            "Trứng chưng"
+            "bia hà nội",
+            "cà phê sữa đá",
+            "bánh mì kẹp thịt",
+            "trứng chưng"
         ]
     },
     {
@@ -2884,10 +2884,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà Đào",
-            "Trà Vải",
-            "Bánh Âu",
-            "Cà Phê Sữa Đá"
+            "trà đào",
+            "trà vải",
+            "bánh âu",
+            "cà phê sữa đá"
         ]
     },
     {
@@ -2919,8 +2919,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê hạt rang",
-            "Latte"
+            "cà phê hạt rang",
+            "latte"
         ]
     },
     {
@@ -2950,10 +2950,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê phin đen",
-            "Trà đá nóng",
-            "Bánh mì ngọt"
+            "cà phê sữa đá",
+            "cà phê phin đen",
+            "trà đá nóng",
+            "bánh mì ngọt"
         ]
     },
     {
@@ -2986,10 +2986,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa socola",
-            "Cà phê muối",
-            "Bánh crepe",
-            "Bánh mì ngọt"
+            "trà sữa socola",
+            "cà phê muối",
+            "bánh crepe",
+            "bánh mì ngọt"
         ]
     },
     {
@@ -3021,9 +3021,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà trái cây",
-            "Bánh mì kẹp thịt"
+            "cà phê sữa đá",
+            "trà trái cây",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -3054,10 +3054,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bia Hà Nội",
-            "Bánh mì kẹp thịt",
-            "Trứng chưng"
+            "cà phê sữa đá",
+            "bia hà nội",
+            "bánh mì kẹp thịt",
+            "trứng chưng"
         ]
     },
     {
@@ -3091,8 +3091,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê phin",
-            "Bánh Toast nướng"
+            "cà phê phin",
+            "bánh toast nướng"
         ]
     },
     {
@@ -3129,10 +3129,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Salad Caesar",
-            "Gà nướng kiểu tây",
-            "Pasta carbonara"
+            "bánh mì kẹp thịt",
+            "salad caesar",
+            "gà nướng kiểu tây",
+            "pasta carbonara"
         ]
     },
     {
@@ -3164,10 +3164,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bánh ngọt Pháp",
-            "Bánh nướng Pháp",
-            "Bánh kem Pháp",
-            "Croissant Pháp"
+            "bánh ngọt pháp",
+            "bánh nướng pháp",
+            "bánh kem pháp",
+            "croissant pháp"
         ]
     },
     {
@@ -3199,9 +3199,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Tiramisu",
-            "Croissant",
-            "Bánh quy táo"
+            "tiramisu",
+            "croissant",
+            "bánh quy táo"
         ]
     },
     {
@@ -3237,8 +3237,8 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh mì Hàn",
-            "Bánh ngọt kem"
+            "bánh mì hàn",
+            "bánh ngọt kem"
         ]
     },
     {
@@ -3272,10 +3272,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Cà phê",
-            "Bánh quy",
-            "Bánh tart"
+            "bánh ngọt",
+            "cà phê",
+            "bánh quy",
+            "bánh tart"
         ]
     },
     {
@@ -3308,8 +3308,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì ngọt",
-            "Bánh gato cơ bản"
+            "bánh mì ngọt",
+            "bánh gato cơ bản"
         ]
     },
     {
@@ -3345,10 +3345,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì thịt nướng",
-            "Bánh trung thu",
-            "Giò chả",
-            "Bánh mì kẹp"
+            "bánh mì thịt nướng",
+            "bánh trung thu",
+            "giò chả",
+            "bánh mì kẹp"
         ]
     },
     {
@@ -3381,10 +3381,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Bœuf bourguignon",
-            "Steak frites",
-            "Salade niçoise",
-            "Soupe à l'oignon"
+            "bœuf bourguignon",
+            "steak frites",
+            "salade niçoise",
+            "soupe à l'oignon"
         ]
     },
     {
@@ -3418,10 +3418,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Bò Tái Sườn",
-            "Bò Thăn Pepper",
-            "Sườn Nướng",
-            "Salad Caesar"
+            "bò tái sườn",
+            "bò thăn pepper",
+            "sườn nướng",
+            "salad caesar"
         ]
     },
     {
@@ -3450,8 +3450,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Pizza nướng lò củi",
-            "Pizza hải sản"
+            "pizza nướng lò củi",
+            "pizza hải sản"
         ]
     },
     {
@@ -3486,10 +3486,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh mì Ý",
-            "Spaghetti Bolognese",
-            "Pizza Margherita",
-            "Risotto hải sản"
+            "bánh mì ý",
+            "spaghetti bolognese",
+            "pizza margherita",
+            "risotto hải sản"
         ]
     },
     {
@@ -3522,8 +3522,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán xốt H&S",
-            "Bánh mì xốt"
+            "gà rán xốt h&s",
+            "bánh mì xốt"
         ]
     },
     {
@@ -3558,10 +3558,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Salad Địa Trung Hải",
-            "Bánh mì kẹp thịt",
-            "Cá hồi áp chảo",
-            "Cá trích sốt kem"
+            "salad địa trung hải",
+            "bánh mì kẹp thịt",
+            "cá hồi áp chảo",
+            "cá trích sốt kem"
         ]
     },
     {
@@ -3591,10 +3591,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Gà nướng kiểu Âu",
-            "Salad Caesar",
-            "Sườn nướng mật ong"
+            "bánh mì kẹp thịt",
+            "gà nướng kiểu âu",
+            "salad caesar",
+            "sườn nướng mật ong"
         ]
     },
     {
@@ -3624,10 +3624,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Pad Thái Xanh",
-            "Súp Tom Yum",
-            "Gỏi Xoài Rau Chanh"
+            "cà ri gà",
+            "pad thái xanh",
+            "súp tom yum",
+            "gỏi xoài rau chanh"
         ]
     },
     {
@@ -3658,8 +3658,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi đu đủ",
-            "Lẩu Isan"
+            "gỏi đu đủ",
+            "lẩu isan"
         ]
     },
     {
@@ -3691,10 +3691,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà cơ xào chua ngọt",
-            "Sườn xào chua ngọt",
-            "Thịt viên xào rau",
-            "Tôm rim mắm tôm"
+            "gà cơ xào chua ngọt",
+            "sườn xào chua ngọt",
+            "thịt viên xào rau",
+            "tôm rim mắm tôm"
         ]
     },
     {
@@ -3726,10 +3726,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi Hải Sản",
-            "Lẩu Cá Hồi",
-            "Tôm Xào Sả Ớt",
-            "Bể Trứng Ngõ Ngửa"
+            "gỏi hải sản",
+            "lẩu cá hồi",
+            "tôm xào sả ớt",
+            "bể trứng ngõ ngửa"
         ]
     },
     {
@@ -3761,10 +3761,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay",
-            "Canh chay",
-            "Bún chay",
-            "Xôi chay"
+            "cơm chay",
+            "canh chay",
+            "bún chay",
+            "xôi chay"
         ]
     },
     {
@@ -3796,10 +3796,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Sườn non kho",
-            "Đậu phụ sốt cà chua",
-            "Cơm chiên rau củ"
+            "cháo yến mạch",
+            "sườn non kho",
+            "đậu phụ sốt cà chua",
+            "cơm chiên rau củ"
         ]
     },
     {
@@ -3831,8 +3831,8 @@
             "Peanuts_Nuts"
         ],
         "menu": [
-            "Mì Tom Yum",
-            "Xôi Xoài"
+            "mì tom yum",
+            "xôi xoài"
         ]
     },
     {
@@ -3867,10 +3867,10 @@
             "Red_Meat"
         ],
         "menu": [
-            "Burger bò",
-            "Gà rán",
-            "Khoai tây chiên",
-            "Milkshake"
+            "burger bò",
+            "gà rán",
+            "khoai tây chiên",
+            "milkshake"
         ]
     },
     {
@@ -3901,8 +3901,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán Kentucky",
-            "Bánh mì Kentucky"
+            "gà rán kentucky",
+            "bánh mì kentucky"
         ]
     },
     {
@@ -3935,8 +3935,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Thức uống đậm đà"
+            "bánh ngọt",
+            "thức uống đậm đà"
         ]
     },
     {
@@ -3968,10 +3968,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Roti gà tandoori",
-            "Butter chicken",
-            "Naan tandoori",
-            "Biryani gà"
+            "roti gà tandoori",
+            "butter chicken",
+            "naan tandoori",
+            "biryani gà"
         ]
     },
     {
@@ -4003,10 +4003,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi cá hồi",
-            "Sushi tấm",
-            "Sashimi cá ngừ",
-            "Sashimi cá tuyết"
+            "sashimi cá hồi",
+            "sushi tấm",
+            "sashimi cá ngừ",
+            "sashimi cá tuyết"
         ]
     },
     {
@@ -4037,8 +4037,8 @@
             "Spicy"
         ],
         "menu": [
-            "Mì Ramen gà",
-            "Mì Ramen bò"
+            "mì ramen gà",
+            "mì ramen bò"
         ]
     },
     {
@@ -4073,10 +4073,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Robatayaki gà",
-            "Robatayaki thịt bò",
-            "Robatayaki hải sản",
-            "Đồ nhậu Nhật Bản"
+            "robatayaki gà",
+            "robatayaki thịt bò",
+            "robatayaki hải sản",
+            "đồ nhậu nhật bản"
         ]
     },
     {
@@ -4109,10 +4109,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn cá hồi",
-            "Sushi cuộn thịt bò",
-            "Sushi cuộn trứng"
+            "sushi tấm",
+            "sushi cuộn cá hồi",
+            "sushi cuộn thịt bò",
+            "sushi cuộn trứng"
         ]
     },
     {
@@ -4145,8 +4145,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè khúc bạch",
-            "Bánh pía"
+            "chè khúc bạch",
+            "bánh pía"
         ]
     },
     {
@@ -4182,10 +4182,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Gà xào sả ớt",
-            "Cá kho tộ",
-            "Sườn nướng mật ong"
+            "bánh mì kẹp thịt",
+            "gà xào sả ớt",
+            "cá kho tộ",
+            "sườn nướng mật ong"
         ]
     },
     {
@@ -4216,8 +4216,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Tái Lăn",
-            "Bún Chả"
+            "phở bò tái lăn",
+            "bún chả"
         ]
     },
     {
@@ -4251,10 +4251,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bún chả Obama",
-            "Nem hải sản",
-            "Chả nướng",
-            "Bánh mì"
+            "bún chả obama",
+            "nem hải sản",
+            "chả nướng",
+            "bánh mì"
         ]
     },
     {
@@ -4285,8 +4285,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Pizza nướng lò củi",
-            "Bánh phô mai tự làm"
+            "pizza nướng lò củi",
+            "bánh phô mai tự làm"
         ]
     },
     {
@@ -4315,8 +4315,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún đậu mắm tôm",
-            "Đậu rán nóng hổi"
+            "bún đậu mắm tôm",
+            "đậu rán nóng hổi"
         ]
     },
     {
@@ -4345,10 +4345,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bò Tơ Tưới Chua",
-            "Bò Tơ Nướng",
-            "Gỏi Bò Tơ",
-            "Cháo Bò Tơ"
+            "bò tơ tưới chua",
+            "bò tơ nướng",
+            "gỏi bò tơ",
+            "cháo bò tơ"
         ]
     },
     {
@@ -4378,9 +4378,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Cà phê sữa đá",
-            "Trứng chim"
+            "bún chả",
+            "cà phê sữa đá",
+            "trứng chim"
         ]
     },
     {
@@ -4413,8 +4413,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi"
+            "sushi tấm",
+            "sashimi cá hồi"
         ]
     },
     {
@@ -4445,8 +4445,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Niêu",
-            "Sốt Bò Tiêu Đen"
+            "cơm niêu",
+            "sốt bò tiêu đen"
         ]
     },
     {
@@ -4477,8 +4477,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê phin",
-            "Latte"
+            "cà phê phin",
+            "latte"
         ]
     },
     {
@@ -4510,10 +4510,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Cháo Gà"
+            "phở bò trắng",
+            "bánh xèo",
+            "gỏi cuốn",
+            "cháo gà"
         ]
     },
     {
@@ -4546,8 +4546,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu nấm Ashima",
-            "Bún bò Huế"
+            "lẩu nấm ashima",
+            "bún bò huế"
         ]
     },
     {
@@ -4578,10 +4578,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Yakiniku",
-            "Lẩu Hotpot",
-            "Gà Nướng",
-            "Thịt Nướng"
+            "lẩu yakiniku",
+            "lẩu hotpot",
+            "gà nướng",
+            "thịt nướng"
         ]
     },
     {
@@ -4609,8 +4609,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh cuốn nhân chả",
-            "Nước chấm đặc biệt"
+            "bánh cuốn nhân chả",
+            "nước chấm đặc biệt"
         ]
     },
     {
@@ -4642,10 +4642,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Kem Trà Xanh",
-            "Kem Dừa",
-            "Kem Chanh Bưởi",
-            "Kem Chocolate"
+            "kem trà xanh",
+            "kem dừa",
+            "kem chanh bưởi",
+            "kem chocolate"
         ]
     },
     {
@@ -4679,10 +4679,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Burger bò",
-            "Gà rán",
-            "Cơm gà Hàn",
-            "Bánh mì kẹp"
+            "burger bò",
+            "gà rán",
+            "cơm gà hàn",
+            "bánh mì kẹp"
         ]
     },
     {
@@ -4713,8 +4713,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Mì Tantanmen",
-            "Cơm Gà Teriyaki"
+            "mì tantanmen",
+            "cơm gà teriyaki"
         ]
     },
     {
@@ -4743,8 +4743,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Bánh khoái Huế"
+            "bún bò huế",
+            "bánh khoái huế"
         ]
     },
     {
@@ -4773,10 +4773,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Gà Rán",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Cơm Chiên Thịt Bò"
+            "cơm gà rán",
+            "bánh xèo",
+            "gỏi cuốn",
+            "cơm chiên thịt bò"
         ]
     },
     {
@@ -4810,10 +4810,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn cá hồi",
-            "Sushi cuộn thịt bò",
-            "Sushi cuộn bạch tuộc"
+            "sushi tấm",
+            "sushi cuộn cá hồi",
+            "sushi cuộn thịt bò",
+            "sushi cuộn bạch tuộc"
         ]
     },
     {
@@ -4847,10 +4847,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bít tết chảo gang",
-            "Bánh mì bò hầm",
-            "Gà nướng cháo trắng",
-            "Salad Caesar"
+            "bít tết chảo gang",
+            "bánh mì bò hầm",
+            "gà nướng cháo trắng",
+            "salad caesar"
         ]
     },
     {
@@ -4880,8 +4880,8 @@
             "Spicy"
         ],
         "menu": [
-            "Mỳ trộn",
-            "Mỳ nước"
+            "mỳ trộn",
+            "mỳ nước"
         ]
     },
     {
@@ -4911,8 +4911,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Topokki",
-            "Gà rán"
+            "lẩu topokki",
+            "gà rán"
         ]
     },
     {
@@ -4944,10 +4944,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chả Cá Lăng",
-            "Rau Luộc",
-            "Bún Không Lá",
-            "Lạc Rang"
+            "chả cá lăng",
+            "rau luộc",
+            "bún không lá",
+            "lạc rang"
         ]
     },
     {
@@ -4980,8 +4980,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Nem cua bể"
+            "bún chả",
+            "nem cua bể"
         ]
     },
     {
@@ -5013,10 +5013,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Bít tết wagyu",
-            "Súp kem bí đỏ",
-            "Salad Caesar",
-            "Gà nướng kiểu Pháp"
+            "bít tết wagyu",
+            "súp kem bí đỏ",
+            "salad caesar",
+            "gà nướng kiểu pháp"
         ]
     },
     {
@@ -5045,10 +5045,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Ốc Đước",
-            "Bánh Đúc Nóng",
-            "Thịt Bằm Mộc Nhĩ",
-            "Nước Sấu"
+            "bánh ốc đước",
+            "bánh đúc nóng",
+            "thịt bằm mộc nhĩ",
+            "nước sấu"
         ]
     },
     {
@@ -5081,10 +5081,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Gà rán giòn",
-            "Burger gà",
-            "Khoai tây chiên",
-            "Bánh mì gà"
+            "gà rán giòn",
+            "burger gà",
+            "khoai tây chiên",
+            "bánh mì gà"
         ]
     },
     {
@@ -5114,10 +5114,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bia Hà Nội",
-            "Phở gà",
-            "Bánh mì pate"
+            "cà phê sữa đá",
+            "bia hà nội",
+            "phở gà",
+            "bánh mì pate"
         ]
     },
     {
@@ -5149,10 +5149,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Chả Cá Lăng",
-            "Bánh Xèo",
-            "Sườn Nước Dùng",
-            "Gỏi Hến"
+            "chả cá lăng",
+            "bánh xèo",
+            "sườn nước dùng",
+            "gỏi hến"
         ]
     },
     {
@@ -5184,8 +5184,8 @@
             "Shellfish"
         ],
         "menu": [
-            "Mỳ Vằn Thắn",
-            "Hoành Thánh Nhân Tôm"
+            "mỳ vằn thắn",
+            "hoành thánh nhân tôm"
         ]
     },
     {
@@ -5214,9 +5214,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Cà phê sữa đá",
-            "Bánh mì kẹp thịt"
+            "bún bò huế",
+            "cà phê sữa đá",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -5247,10 +5247,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê muối",
-            "Trà sữa",
-            "Sinh tố dừa"
+            "cà phê sữa đá",
+            "cà phê muối",
+            "trà sữa",
+            "sinh tố dừa"
         ]
     },
     {
@@ -5279,10 +5279,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Phở gà",
-            "Cá kho tộ",
-            "Gà nướng mật ong"
+            "bún bò huế",
+            "phở gà",
+            "cá kho tộ",
+            "gà nướng mật ong"
         ]
     },
     {
@@ -5315,10 +5315,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh tiramisu",
-            "Bánh chocolate",
-            "Bánh red velvet",
-            "Bánh macaron"
+            "bánh tiramisu",
+            "bánh chocolate",
+            "bánh red velvet",
+            "bánh macaron"
         ]
     },
     {
@@ -5349,10 +5349,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún thịt nướng",
-            "Phở gà",
-            "Cơm tấm",
-            "Bánh xèo"
+            "bún thịt nướng",
+            "phở gà",
+            "cơm tấm",
+            "bánh xèo"
         ]
     },
     {
@@ -5383,8 +5383,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán giòn",
-            "Sốt đặc biệt"
+            "gà rán giòn",
+            "sốt đặc biệt"
         ]
     },
     {
@@ -5414,9 +5414,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Cà phê sữa đá",
-            "Bánh mì kẹp thịt"
+            "bún chả",
+            "cà phê sữa đá",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -5450,10 +5450,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả cá",
-            "Gỏi cuốn",
-            "Chả giò",
-            "Bò kho"
+            "bún chả cá",
+            "gỏi cuốn",
+            "chả giò",
+            "bò kho"
         ]
     },
     {
@@ -5484,10 +5484,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà xanh matcha",
-            "Sinh tố matcha",
-            "Chè matcha",
-            "Bánh matcha"
+            "trà xanh matcha",
+            "sinh tố matcha",
+            "chè matcha",
+            "bánh matcha"
         ]
     },
     {
@@ -5518,10 +5518,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả rau củ",
-            "Gỏi cuốn chay",
-            "Cơm chiên rau củ",
-            "Canh chua chay"
+            "bún chả rau củ",
+            "gỏi cuốn chay",
+            "cơm chiên rau củ",
+            "canh chua chay"
         ]
     },
     {
@@ -5553,10 +5553,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Bò Tự Do",
-            "Bắp bò xào rau cải",
-            "Sườn nướng lá bỏng",
-            "Gỏi cuốn Bò"
+            "lẩu bò tự do",
+            "bắp bò xào rau cải",
+            "sườn nướng lá bỏng",
+            "gỏi cuốn bò"
         ]
     },
     {
@@ -5589,8 +5589,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Gà rán",
-            "Burger"
+            "gà rán",
+            "burger"
         ]
     },
     {
@@ -5619,9 +5619,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở gà",
-            "Bún thang",
-            "Cơm rang Vân Thủy"
+            "phở gà",
+            "bún thang",
+            "cơm rang vân thủy"
         ]
     },
     {
@@ -5650,8 +5650,8 @@
             "Spicy"
         ],
         "menu": [
-            "Phở chay",
-            "Bún chay"
+            "phở chay",
+            "bún chay"
         ]
     },
     {
@@ -5683,10 +5683,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa socola",
-            "Trà trái cây",
-            "Bánh mì sandwich",
-            "Bánh xèo"
+            "trà sữa socola",
+            "trà trái cây",
+            "bánh mì sandwich",
+            "bánh xèo"
         ]
     },
     {
@@ -5718,10 +5718,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa",
-            "Cà phê sữa đá",
-            "Bánh mì ngọt",
-            "Bánh xèo"
+            "trà sữa",
+            "cà phê sữa đá",
+            "bánh mì ngọt",
+            "bánh xèo"
         ]
     },
     {
@@ -5751,10 +5751,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Phở gà",
-            "Cơm tấm",
-            "Bánh xèo"
+            "bún chả",
+            "phở gà",
+            "cơm tấm",
+            "bánh xèo"
         ]
     },
     {
@@ -5784,10 +5784,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà đá nóng",
-            "Bánh mì ngọt",
-            "Bánh xèo"
+            "cà phê sữa đá",
+            "trà đá nóng",
+            "bánh mì ngọt",
+            "bánh xèo"
         ]
     },
     {
@@ -5818,10 +5818,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thangiá",
-            "Canh chay rau củ",
-            "Sườn chay nướng",
-            "Bánh xèo chay"
+            "cơm chay thangiá",
+            "canh chay rau củ",
+            "sườn chay nướng",
+            "bánh xèo chay"
         ]
     },
     {
@@ -5854,8 +5854,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Bún Bò Huế"
+            "phở bò",
+            "bún bò huế"
         ]
     },
     {
@@ -5886,10 +5886,10 @@
             "Spicy"
         ],
         "menu": [
-            "Phở Bát Đàn",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Thịt Nguội"
+            "phở bát đàn",
+            "bánh xèo",
+            "gỏi cuốn",
+            "thịt nguội"
         ]
     },
     {
@@ -5921,10 +5921,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Cháo Gà"
+            "phở bò trắng",
+            "bánh xèo",
+            "gỏi cuốn",
+            "cháo gà"
         ]
     },
     {
@@ -5956,8 +5956,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở tái lăn",
-            "Bún bò Huế"
+            "phở tái lăn",
+            "bún bò huế"
         ]
     },
     {
@@ -5987,8 +5987,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả Hà Nội",
-            "Chả giò tôm"
+            "bún chả hà nội",
+            "chả giò tôm"
         ]
     },
     {
@@ -6023,10 +6023,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Chả Đắc Kim",
-            "Nem Cua Bể Giòn Rụm",
-            "Chả Nướng",
-            "Bún Bò Huế"
+            "bún chả đắc kim",
+            "nem cua bể giòn rụm",
+            "chả nướng",
+            "bún bò huế"
         ]
     },
     {
@@ -6057,10 +6057,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả than hoa",
-            "Chả nướng",
-            "Nước chấm",
-            "Bún chả"
+            "bún chả than hoa",
+            "chả nướng",
+            "nước chấm",
+            "bún chả"
         ]
     },
     {
@@ -6095,8 +6095,8 @@
             "Shellfish"
         ],
         "menu": [
-            "Cá Lăng Chiên",
-            "Bún Lạc Rang"
+            "cá lăng chiên",
+            "bún lạc rang"
         ]
     },
     {
@@ -6129,10 +6129,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chả Cá Thăng Long",
-            "Bún Chả Cá Thăng Long",
-            "Cá Kho Tộ",
-            "Gỏi Ngêu"
+            "chả cá thăng long",
+            "bún chả cá thăng long",
+            "cá kho tộ",
+            "gỏi ngêu"
         ]
     },
     {
@@ -6164,8 +6164,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Riêu Cua",
-            "Cháo Gà"
+            "bún riêu cua",
+            "cháo gà"
         ]
     },
     {
@@ -6195,8 +6195,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Thang",
-            "Cháo Gà Thang"
+            "bún thang",
+            "cháo gà thang"
         ]
     },
     {
@@ -6231,10 +6231,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Xôi Gà Nướng",
-            "Xôi Thịt Kho Tàu",
-            "Xôi Trứng Ốp",
-            "Xôi Chả"
+            "xôi gà nướng",
+            "xôi thịt kho tàu",
+            "xôi trứng ốp",
+            "xôi chả"
         ]
     },
     {
@@ -6267,8 +6267,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Bánh mì pate trứng"
+            "bánh mì kẹp thịt",
+            "bánh mì pate trứng"
         ]
     },
     {
@@ -6299,10 +6299,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh cuốn mộc nhĩ",
-            "Chả quế",
-            "Nước chấm chua ngọt",
-            "Bún chả quế"
+            "bánh cuốn mộc nhĩ",
+            "chả quế",
+            "nước chấm chua ngọt",
+            "bún chả quế"
         ]
     },
     {
@@ -6334,8 +6334,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Nộm bò khô",
-            "Gân bò sụn sật"
+            "nộm bò khô",
+            "gân bò sụn sật"
         ]
     },
     {
@@ -6368,10 +6368,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Nem Nướng Nha Trang",
-            "Rau Sống",
-            "Bánh Đa",
-            "Nước Chấm Đậu Phộng"
+            "nem nướng nha trang",
+            "rau sống",
+            "bánh đa",
+            "nước chấm đậu phộng"
         ]
     },
     {
@@ -6404,10 +6404,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Kem que",
-            "Kem ốc quế",
-            "Kem cốm",
-            "Kem đậu xanh"
+            "kem que",
+            "kem ốc quế",
+            "kem cốm",
+            "kem đậu xanh"
         ]
     },
     {
@@ -6440,8 +6440,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Miến lươn giòn",
-            "Lươn mềm nước dùng"
+            "miến lươn giòn",
+            "lươn mềm nước dùng"
         ]
     },
     {
@@ -6474,10 +6474,10 @@
             "Spicy"
         ],
         "menu": [
-            "Mỳ vằn thắn tôm thịt",
-            "Hủ tiú bò",
-            "Rau cải tươi",
-            "Thịt pate"
+            "mỳ vằn thắn tôm thịt",
+            "hủ tiú bò",
+            "rau cải tươi",
+            "thịt pate"
         ]
     },
     {
@@ -6510,8 +6510,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún ốc",
-            "Ốc xào đậu hiểm"
+            "bún ốc",
+            "ốc xào đậu hiểm"
         ]
     },
     {
@@ -6545,10 +6545,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bún đậu mắm tôm",
-            "Đậu rán giòn",
-            "Nem rán",
-            "Thịt luộc"
+            "bún đậu mắm tôm",
+            "đậu rán giòn",
+            "nem rán",
+            "thịt luộc"
         ]
     },
     {
@@ -6581,8 +6581,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh gối chiên nhân thịt",
-            "Nước chấm chua ngọt"
+            "bánh gối chiên nhân thịt",
+            "nước chấm chua ngọt"
         ]
     },
     {
@@ -6613,8 +6613,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún ngan trộn",
-            "Bún ngan chan"
+            "bún ngan trộn",
+            "bún ngan chan"
         ]
     },
     {
@@ -6646,10 +6646,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò",
-            "Bún thịt nướng",
-            "Gỏi cuốn",
-            "Cơm gà rán"
+            "phở bò",
+            "bún thịt nướng",
+            "gỏi cuốn",
+            "cơm gà rán"
         ]
     },
     {
@@ -6682,8 +6682,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún cá rô đồng",
-            "Bún cá sâm"
+            "bún cá rô đồng",
+            "bún cá sâm"
         ]
     },
     {
@@ -6716,11 +6716,11 @@
             "Shellfish"
         ],
         "menu": [
-            "Gà nướng kiểu Pháp",
-            "Bò sốt kem vang",
-            "Ếch áp chảo",
-            "Canh chua chay",
-            "Sườn rim meadamia"
+            "gà nướng kiểu pháp",
+            "bò sốt kem vang",
+            "ếch áp chảo",
+            "canh chua chay",
+            "sườn rim meadamia"
         ]
     },
     {
@@ -6750,10 +6750,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Gỏi cuốn tôm thịt",
-            "Cá kho tộ",
-            "Sườn nướng mật ong"
+            "bún bò huế",
+            "gỏi cuốn tôm thịt",
+            "cá kho tộ",
+            "sườn nướng mật ong"
         ]
     },
     {
@@ -6783,10 +6783,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Phở gà",
-            "Cơm tấm gà",
-            "Gỏi cuốn cá hồi"
+            "bún bò huế",
+            "phở gà",
+            "cơm tấm gà",
+            "gỏi cuốn cá hồi"
         ]
     },
     {
@@ -6817,10 +6817,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Gỏi cuốn",
-            "Cơm tấm",
-            "Bánh xèo"
+            "bún bò huế",
+            "gỏi cuốn",
+            "cơm tấm",
+            "bánh xèo"
         ]
     },
     {
@@ -6855,10 +6855,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả cây",
-            "Cơm gà chay",
-            "Canh chay thập cẩm",
-            "Gỏi cuốn chay"
+            "bún chả cây",
+            "cơm gà chay",
+            "canh chay thập cẩm",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -6890,8 +6890,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê trứng",
-            "Nước chè khớp cắn"
+            "cà phê trứng",
+            "nước chè khớp cắn"
         ]
     },
     {
@@ -6921,10 +6921,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê đen nóng",
-            "Bánh mì ngọt",
-            "Bánh pía"
+            "cà phê sữa đá",
+            "cà phê đen nóng",
+            "bánh mì ngọt",
+            "bánh pía"
         ]
     },
     {
@@ -6955,10 +6955,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê phin",
-            "Bia Hà Nội",
-            "Trứng chưng",
-            "Bánh mì ngọt"
+            "cà phê phin",
+            "bia hà nội",
+            "trứng chưng",
+            "bánh mì ngọt"
         ]
     },
     {
@@ -6991,10 +6991,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê cốt dừa",
-            "Nước mía đá",
-            "Bánh mì ngọt",
-            "Trà sữa đá"
+            "cà phê cốt dừa",
+            "nước mía đá",
+            "bánh mì ngọt",
+            "trà sữa đá"
         ]
     },
     {
@@ -7027,10 +7027,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà đá",
-            "Đá xay",
-            "Bánh mì"
+            "cà phê sữa đá",
+            "trà đá",
+            "đá xay",
+            "bánh mì"
         ]
     },
     {
@@ -7062,10 +7062,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê phin truyền thống",
-            "Sinh tố trái cây",
-            "Trà chanh nóng"
+            "cà phê sữa đá",
+            "cà phê phin truyền thống",
+            "sinh tố trái cây",
+            "trà chanh nóng"
         ]
     },
     {
@@ -7098,9 +7098,9 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Cà phê Espresso",
-            "Trà Latte",
-            "Đồ uống đá xay"
+            "cà phê espresso",
+            "trà latte",
+            "đồ uống đá xay"
         ]
     },
     {
@@ -7136,10 +7136,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bia Hà Nội",
-            "Gà rán",
-            "Bánh mì",
-            "Miến lươn"
+            "bia hà nội",
+            "gà rán",
+            "bánh mì",
+            "miến lươn"
         ]
     },
     {
@@ -7169,10 +7169,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê trứng",
-            "Sinh tố trái cây",
-            "Bánh mì Pháp",
-            "Mì Quảng"
+            "cà phê trứng",
+            "sinh tố trái cây",
+            "bánh mì pháp",
+            "mì quảng"
         ]
     },
     {
@@ -7205,9 +7205,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà sữa boba",
-            "Bánh ngọt"
+            "cà phê sữa đá",
+            "trà sữa boba",
+            "bánh ngọt"
         ]
     },
     {
@@ -7239,9 +7239,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh mì chocolate",
-            "Cà phê chocolate",
-            "Bánh ngọt chocolate"
+            "bánh mì chocolate",
+            "cà phê chocolate",
+            "bánh ngọt chocolate"
         ]
     },
     {
@@ -7272,10 +7272,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Cà phê sữa đá",
-            "Trà đá",
-            "Bánh mì kẹp thịt"
+            "bún chả",
+            "cà phê sữa đá",
+            "trà đá",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -7306,8 +7306,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Pizza củi nướng",
-            "Bánh mì Ý"
+            "pizza củi nướng",
+            "bánh mì ý"
         ]
     },
     {
@@ -7342,10 +7342,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Bít tết Wagyu",
-            "Bít tết T-bone",
-            "Súp bò truyền thống",
-            "Salad Caesar"
+            "bít tết wagyu",
+            "bít tết t-bone",
+            "súp bò truyền thống",
+            "salad caesar"
         ]
     },
     {
@@ -7381,10 +7381,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bœuf bourguignon",
-            "Coq au vin",
-            "Salade niçoise",
-            "Crème brûlée"
+            "bœuf bourguignon",
+            "coq au vin",
+            "salade niçoise",
+            "crème brûlée"
         ]
     },
     {
@@ -7419,10 +7419,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum",
-            "Cà Ri Xanh",
-            "Cà Ri Đỏ"
+            "pad thai",
+            "tom yum",
+            "cà ri xanh",
+            "cà ri đỏ"
         ]
     },
     {
@@ -7458,10 +7458,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gỏi Xứ",
-            "Cà Ri Gà",
-            "Lẩu Thái",
-            "Sườn Xào Sả Ớt"
+            "gỏi xứ",
+            "cà ri gà",
+            "lẩu thái",
+            "sườn xào sả ớt"
         ]
     },
     {
@@ -7496,10 +7496,10 @@
             "Red_Meat"
         ],
         "menu": [
-            "Burger bò",
-            "Khoai tây chiên",
-            "Gà rán",
-            "Milkshake"
+            "burger bò",
+            "khoai tây chiên",
+            "gà rán",
+            "milkshake"
         ]
     },
     {
@@ -7533,10 +7533,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Gà rán KFC",
-            "Khoai tây chiên",
-            "Burger KFC",
-            "Cơm trộn"
+            "gà rán kfc",
+            "khoai tây chiên",
+            "burger kfc",
+            "cơm trộn"
         ]
     },
     {
@@ -7567,10 +7567,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh Croissant",
-            "Bánh Mì Pháp",
-            "Bánh Flan",
-            "Bánh Cheesecake"
+            "bánh croissant",
+            "bánh mì pháp",
+            "bánh flan",
+            "bánh cheesecake"
         ]
     },
     {
@@ -7602,8 +7602,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh Crepe Kem",
-            "Bánh Crepe Chocolate"
+            "bánh crepe kem",
+            "bánh crepe chocolate"
         ]
     },
     {
@@ -7637,10 +7637,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Khuấy Kem",
-            "Gà Xé Sả Ớt",
-            "Cà Ri Rua",
-            "Súp Bò Xép"
+            "khuấy kem",
+            "gà xé sả ớt",
+            "cà ri rua",
+            "súp bò xép"
         ]
     },
     {
@@ -7673,10 +7673,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh mì ngọt",
-            "Bánh gato chocolate",
-            "Phở gà",
-            "Gỏi cuốn bún chả"
+            "bánh mì ngọt",
+            "bánh gato chocolate",
+            "phở gà",
+            "gỏi cuốn bún chả"
         ]
     },
     {
@@ -7708,8 +7708,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bánh Xèo"
+            "bún bò huế",
+            "bánh xèo"
         ]
     },
     {
@@ -7742,10 +7742,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè bơ",
-            "Kem bơ",
-            "Chè Thái",
-            "Chè xoài"
+            "chè bơ",
+            "kem bơ",
+            "chè thái",
+            "chè xoài"
         ]
     },
     {
@@ -7775,8 +7775,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Hủ Tiếu Mỹ",
-            "Bánh Xèo"
+            "hủ tiếu mỹ",
+            "bánh xèo"
         ]
     },
     {
@@ -7808,8 +7808,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò",
-            "Mì Quảng"
+            "bún bò",
+            "mì quảng"
         ]
     },
     {
@@ -7841,10 +7841,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Canh Chả Cá",
-            "Bún Bò Huế",
-            "Phở Bò",
-            "Bún Mắm Ruốc"
+            "bánh canh chả cá",
+            "bún bò huế",
+            "phở bò",
+            "bún mắm ruốc"
         ]
     },
     {
@@ -7875,8 +7875,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mì Quảng đặc biệt",
-            "Cháo gà Ấnh Sáng"
+            "mì quảng đặc biệt",
+            "cháo gà ấnh sáng"
         ]
     },
     {
@@ -7908,10 +7908,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè Thái",
-            "Chè Chuối",
-            "Chè Ba Màu",
-            "Chè Gà"
+            "chè thái",
+            "chè chuối",
+            "chè ba màu",
+            "chè gà"
         ]
     },
     {
@@ -7942,10 +7942,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh cuốn nhân chả",
-            "Nước mắm chua ngọt",
-            "Chả lụa",
-            "Hành phi thơm"
+            "bánh cuốn nhân chả",
+            "nước mắm chua ngọt",
+            "chả lụa",
+            "hành phi thơm"
         ]
     },
     {
@@ -7976,10 +7976,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Xôi Gà",
-            "Miến Gà",
-            "Thịt Gà Nướng",
-            "Xôi Đậm"
+            "xôi gà",
+            "miến gà",
+            "thịt gà nướng",
+            "xôi đậm"
         ]
     },
     {
@@ -8011,9 +8011,9 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh mì xíu mại",
-            "Bánh mì pate",
-            "Bánh mì thịt nguội"
+            "bánh mì xíu mại",
+            "bánh mì pate",
+            "bánh mì thịt nguội"
         ]
     },
     {
@@ -8045,10 +8045,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Ri Bò",
-            "Cà Ri Gà",
-            "Bún Chả",
-            "Gỏi cuốn"
+            "cà ri bò",
+            "cà ri gà",
+            "bún chả",
+            "gỏi cuốn"
         ]
     },
     {
@@ -8081,8 +8081,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả Hà Nội",
-            "Chả nướng than hoa"
+            "bún chả hà nội",
+            "chả nướng than hoa"
         ]
     },
     {
@@ -8114,9 +8114,9 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Ếch Măng Cay",
-            "Bún Chả Cá He",
-            "Gỏi Ếch Nhồi Thịt Bò"
+            "lẩu ếch măng cay",
+            "bún chả cá he",
+            "gỏi ếch nhồi thịt bò"
         ]
     },
     {
@@ -8147,10 +8147,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà Nướng Mọi",
-            "Cơm Lam",
-            "Bánh Xèo",
-            "Com Ga"
+            "gà nướng mọi",
+            "cơm lam",
+            "bánh xèo",
+            "com ga"
         ]
     },
     {
@@ -8182,9 +8182,9 @@
             "Spicy"
         ],
         "menu": [
-            "Gà rán",
-            "Burger",
-            "Khoai tây chiên"
+            "gà rán",
+            "burger",
+            "khoai tây chiên"
         ]
     },
     {
@@ -8213,10 +8213,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Cơm Niêu Heo Xép",
-            "Bò Kho",
-            "Gà Nướng",
-            "Cháo Gà"
+            "cơm niêu heo xép",
+            "bò kho",
+            "gà nướng",
+            "cháo gà"
         ]
     },
     {
@@ -8247,10 +8247,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Gà",
-            "Nem Nướng",
-            "Bún Thịt Nguội",
-            "Cháo Ngũ Xương"
+            "cơm gà",
+            "nem nướng",
+            "bún thịt nguội",
+            "cháo ngũ xương"
         ]
     },
     {
@@ -8282,8 +8282,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sữa đậu nành nóng",
-            "Bánh ngọt giòn"
+            "sữa đậu nành nóng",
+            "bánh ngọt giòn"
         ]
     },
     {
@@ -8314,10 +8314,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo trắng lá dứa",
-            "Cháo gà lá nhàu",
-            "Cháo bò kho",
-            "Cháo tôm rang muối"
+            "cháo trắng lá dứa",
+            "cháo gà lá nhàu",
+            "cháo bò kho",
+            "cháo tôm rang muối"
         ]
     },
     {
@@ -8352,10 +8352,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Súp bắp tôm gà",
-            "Bánh xèo",
-            "Bún chả cá",
-            "Cơm gà rán"
+            "súp bắp tôm gà",
+            "bánh xèo",
+            "bún chả cá",
+            "cơm gà rán"
         ]
     },
     {
@@ -8387,10 +8387,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Thịt heo nướng",
-            "Bún chả",
-            "Nem rán",
-            "Gà nướng"
+            "thịt heo nướng",
+            "bún chả",
+            "nem rán",
+            "gà nướng"
         ]
     },
     {
@@ -8418,10 +8418,10 @@
             "Spicy"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Bún Chả Cá Thu",
-            "Gỏi cuốn tôm thịt",
-            "Cơm gà Hải Nam"
+            "phở bò trắng",
+            "bún chả cá thu",
+            "gỏi cuốn tôm thịt",
+            "cơm gà hải nam"
         ]
     },
     {
@@ -8455,8 +8455,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh mì thịt nướng",
-            "Ốp bánh mì kẹp thịt"
+            "bánh mì thịt nướng",
+            "ốp bánh mì kẹp thịt"
         ]
     },
     {
@@ -8487,8 +8487,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè thập cẩm",
-            "Chè đậu xanh"
+            "chè thập cẩm",
+            "chè đậu xanh"
         ]
     },
     {
@@ -8521,10 +8521,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Tấm Sườn",
-            "Cơm Tấm Chả Giò",
-            "Cơm Tấm Bì",
-            "Cơm Tấm Thịt Nguội"
+            "cơm tấm sườn",
+            "cơm tấm chả giò",
+            "cơm tấm bì",
+            "cơm tấm thịt nguội"
         ]
     },
     {
@@ -8558,9 +8558,9 @@
             "Shellfish"
         ],
         "menu": [
-            "Mì Hoành Thánh",
-            "Phở",
-            "Hủ Tiếu"
+            "mì hoành thánh",
+            "phở",
+            "hủ tiếu"
         ]
     },
     {
@@ -8593,10 +8593,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Riêu Cua Đồng",
-            "Bún Măng Gà",
-            "Cơm Tấm",
-            "Xôi Gà"
+            "bún riêu cua đồng",
+            "bún măng gà",
+            "cơm tấm",
+            "xôi gà"
         ]
     },
     {
@@ -8626,9 +8626,9 @@
             "Spicy"
         ],
         "menu": [
-            "Chả Ram Bắp",
-            "Rau Sống",
-            "Gỏi Bắp"
+            "chả ram bắp",
+            "rau sống",
+            "gỏi bắp"
         ]
     },
     {
@@ -8660,10 +8660,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Khánh Thy",
-            "Bánh Xèo Trứng",
-            "Gỏi cuốn băm thịt",
-            "Thịt Nguội"
+            "bún bò khánh thy",
+            "bánh xèo trứng",
+            "gỏi cuốn băm thịt",
+            "thịt nguội"
         ]
     },
     {
@@ -8691,10 +8691,10 @@
             "Spicy"
         ],
         "menu": [
-            "Phở gà",
-            "Bún thịt nướng",
-            "Gỏi cuốn",
-            "Cơm tấm"
+            "phở gà",
+            "bún thịt nướng",
+            "gỏi cuốn",
+            "cơm tấm"
         ]
     },
     {
@@ -8725,8 +8725,8 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Sữa đậu nành nóng",
-            "Bánh mì sữa"
+            "sữa đậu nành nóng",
+            "bánh mì sữa"
         ]
     },
     {
@@ -8757,10 +8757,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Chay",
-            "Canh Chua Chay",
-            "Đậu Hũ Chiên",
-            "Bún Chay"
+            "cơm chiên chay",
+            "canh chua chay",
+            "đậu hũ chiên",
+            "bún chay"
         ]
     },
     {
@@ -8790,10 +8790,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Gà",
-            "Bò Kho",
-            "Chả Cá",
-            "Sườn Xào"
+            "cơm gà",
+            "bò kho",
+            "chả cá",
+            "sườn xào"
         ]
     },
     {
@@ -8825,9 +8825,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà sữa boba",
-            "Sinh tố trái cây"
+            "cà phê sữa đá",
+            "trà sữa boba",
+            "sinh tố trái cây"
         ]
     },
     {
@@ -8860,10 +8860,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Bò Ba Toa",
-            "Chao Chua",
-            "Bò Lá Rau",
-            "Sườn Nước Dùng"
+            "lẩu bò ba toa",
+            "chao chua",
+            "bò lá rau",
+            "sườn nước dùng"
         ]
     },
     {
@@ -8895,10 +8895,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê đen nóng",
-            "Cà phê phin",
-            "Trà đá lạnh"
+            "cà phê sữa đá",
+            "cà phê đen nóng",
+            "cà phê phin",
+            "trà đá lạnh"
         ]
     },
     {
@@ -8927,10 +8927,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Gà Nướng Đà Lạt",
-            "Gà Xào Lăn",
-            "Gà Luộc",
-            "Cơm Gà Ngon"
+            "gà nướng đà lạt",
+            "gà xào lăn",
+            "gà luộc",
+            "cơm gà ngon"
         ]
     },
     {
@@ -8958,10 +8958,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Lẩu gà khô cay",
-            "Thịt ngựa xào gừng",
-            "Bún bò Huế",
-            "Gà nướng nguyên con"
+            "lẩu gà khô cay",
+            "thịt ngựa xào gừng",
+            "bún bò huế",
+            "gà nướng nguyên con"
         ]
     },
     {
@@ -8990,10 +8990,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Cháo Ếch Singapore",
-            "Thịt Ếch Cay",
-            "Cháo Gà Hải Nam",
-            "Bánh Xèo"
+            "cháo ếch singapore",
+            "thịt ếch cay",
+            "cháo gà hải nam",
+            "bánh xèo"
         ]
     },
     {
@@ -9025,10 +9025,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Thịt nướng heo combo",
-            "Gà nướng mật ong",
-            "Rau củ nướng",
-            "Sườn nướng"
+            "thịt nướng heo combo",
+            "gà nướng mật ong",
+            "rau củ nướng",
+            "sườn nướng"
         ]
     },
     {
@@ -9058,8 +9058,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Thịt nướng ngói",
-            "Bắp nướng nướng"
+            "thịt nướng ngói",
+            "bắp nướng nướng"
         ]
     },
     {
@@ -9089,10 +9089,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Nem Nướng Trứng",
-            "Bún Chả Đồ Nướng",
-            "Rau Xanh",
-            "Gỏi Ngó Sen"
+            "nem nướng trứng",
+            "bún chả đồ nướng",
+            "rau xanh",
+            "gỏi ngó sen"
         ]
     },
     {
@@ -9124,8 +9124,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm gà xé phay",
-            "Cơm gà chiên dương châu"
+            "cơm gà xé phay",
+            "cơm gà chiên dương châu"
         ]
     },
     {
@@ -9160,10 +9160,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì thịt nguội",
-            "Bánh mì pate",
-            "Bánh mì xíu mại",
-            "Bánh mì trứng tráng"
+            "bánh mì thịt nguội",
+            "bánh mì pate",
+            "bánh mì xíu mại",
+            "bánh mì trứng tráng"
         ]
     },
     {
@@ -9193,8 +9193,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè đậu xanh",
-            "Chè đậu trắng"
+            "chè đậu xanh",
+            "chè đậu trắng"
         ]
     },
     {
@@ -9225,10 +9225,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Bánh mì xíu mại",
-            "Phở gà",
-            "Bún chả",
-            "Cà phê sữa đá"
+            "bánh mì xíu mại",
+            "phở gà",
+            "bún chả",
+            "cà phê sữa đá"
         ]
     },
     {
@@ -9259,8 +9259,8 @@
             "Peanuts_Nuts"
         ],
         "menu": [
-            "Chè Thái",
-            "Bánh Tráng Sầu R riêng"
+            "chè thái",
+            "bánh tráng sầu r riêng"
         ]
     },
     {
@@ -9292,8 +9292,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bún Bò Trắng"
+            "bún bò huế",
+            "bún bò trắng"
         ]
     },
     {
@@ -9327,10 +9327,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu cá ngừ",
-            "Hải sản nướng",
-            "Bể cá"
+            "gỏi cá trích",
+            "lẩu cá ngừ",
+            "hải sản nướng",
+            "bể cá"
         ]
     },
     {
@@ -9363,8 +9363,8 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bánh Khọt Vũng Tàu",
-            "Bánh Đ đổ Giòn Rụm"
+            "bánh khọt vũng tàu",
+            "bánh đ đổ giòn rụm"
         ]
     },
     {
@@ -9394,10 +9394,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Lẩu Cá Đuối",
-            "Cá Đuối Sốt Chua",
-            "Măng Xanh",
-            "Thịt Chả Ngó"
+            "lẩu cá đuối",
+            "cá đuối sốt chua",
+            "măng xanh",
+            "thịt chả ngó"
         ]
     },
     {
@@ -9431,10 +9431,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Khọt Tôm",
-            "Bánh Khọt Mực",
-            "Bánh Khọt Chả Cá",
-            "Bánh Khọt Hải Giã"
+            "bánh khọt tôm",
+            "bánh khọt mực",
+            "bánh khọt chả cá",
+            "bánh khọt hải giã"
         ]
     },
     {
@@ -9467,10 +9467,10 @@
             "Spicy"
         ],
         "menu": [
-            "Hủ Tiếu Mực",
-            "Bánh Xèo Mực",
-            "Cháo Mực",
-            "Mực Nướng"
+            "hủ tiếu mực",
+            "bánh xèo mực",
+            "cháo mực",
+            "mực nướng"
         ]
     },
     {
@@ -9500,10 +9500,10 @@
             "Spicy"
         ],
         "menu": [
-            "Ốc xào rua gừng",
-            "Ốc nướng mắm ớt",
-            "Sò hấp gừng",
-            "Tôm nướng sa tế"
+            "ốc xào rua gừng",
+            "ốc nướng mắm ớt",
+            "sò hấp gừng",
+            "tôm nướng sa tế"
         ]
     },
     {
@@ -9536,8 +9536,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh bông lan nướng",
-            "Bánh bông lan trứng muối"
+            "bánh bông lan nướng",
+            "bánh bông lan trứng muối"
         ]
     },
     {
@@ -9566,8 +9566,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Lẩu Cá Đuối",
-            "Bún Chả Cá Đục"
+            "lẩu cá đuối",
+            "bún chả cá đục"
         ]
     },
     {
@@ -9600,10 +9600,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu hải sản",
-            "Cá viên chiên",
-            "Bể hải sản tươi sống"
+            "gỏi cá trích",
+            "lẩu hải sản",
+            "cá viên chiên",
+            "bể hải sản tươi sống"
         ]
     },
     {
@@ -9636,10 +9636,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh canh ghẹ",
-            "Bánh canh chả cá",
-            "Ghẹ xào xuyên qua",
-            "Bánh canh trứng cút"
+            "bánh canh ghẹ",
+            "bánh canh chả cá",
+            "ghẹ xào xuyên qua",
+            "bánh canh trứng cút"
         ]
     },
     {
@@ -9671,10 +9671,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Cháo hàu",
-            "Lẩu cá ngừ",
-            "Bể ốc"
+            "gỏi cá trích",
+            "cháo hàu",
+            "lẩu cá ngừ",
+            "bể ốc"
         ]
     },
     {
@@ -9704,10 +9704,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh Khọt Tôm",
-            "Bánh Khọt Thịt Bò",
-            "Bánh Khọt Cá",
-            "Bánh Khọt Trứng"
+            "bánh khọt tôm",
+            "bánh khọt thịt bò",
+            "bánh khọt cá",
+            "bánh khọt trứng"
         ]
     },
     {
@@ -9739,10 +9739,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gà nướng mật đắng",
-            "Hàu nướng sa tế",
-            "Tôm nướng mọi",
-            "Chả cá nướng"
+            "gà nướng mật đắng",
+            "hàu nướng sa tế",
+            "tôm nướng mọi",
+            "chả cá nướng"
         ]
     },
     {
@@ -9773,10 +9773,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Bún Súng Vũng Tàu",
-            "Hải Sản Tươi",
-            "Ốc Nướng",
-            "Bánh Xèo"
+            "bún súng vũng tàu",
+            "hải sản tươi",
+            "ốc nướng",
+            "bánh xèo"
         ]
     },
     {
@@ -9809,10 +9809,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu cá ngừ",
-            "Hải sản nướng",
-            "Bún quậy"
+            "gỏi cá trích",
+            "lẩu cá ngừ",
+            "hải sản nướng",
+            "bún quậy"
         ]
     },
     {
@@ -9842,10 +9842,10 @@
             "Spicy"
         ],
         "menu": [
-            "Ốc xào sả ớt",
-            "Ốc nướng mắm ớt",
-            "Ốc luộc",
-            "Gỏi ngõ ngác"
+            "ốc xào sả ớt",
+            "ốc nướng mắm ớt",
+            "ốc luộc",
+            "gỏi ngõ ngác"
         ]
     },
     {
@@ -9877,8 +9877,8 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh mì pate",
-            "Bánh mì thịt nguội"
+            "bánh mì pate",
+            "bánh mì thịt nguội"
         ]
     },
     {
@@ -9908,8 +9908,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Niêu Rau Tập",
-            "Gà Kho Hành Tây"
+            "cơm niêu rau tập",
+            "gà kho hành tây"
         ]
     },
     {
@@ -9939,10 +9939,10 @@
             "Spicy"
         ],
         "menu": [
-            "Mì Thảy Sườn Nón",
-            "Bún Sườn",
-            "Phở Sườn",
-            "Mì Gõ"
+            "mì thảy sườn nón",
+            "bún sườn",
+            "phở sườn",
+            "mì gõ"
         ]
     },
     {
@@ -9975,10 +9975,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu hải sản",
-            "Cá diêu hồng nướng",
-            "Bể đềng"
+            "gỏi cá trích",
+            "lẩu hải sản",
+            "cá diêu hồng nướng",
+            "bể đềng"
         ]
     },
     {
@@ -10013,8 +10013,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả cá Quy Nhơn",
-            "Bún chả cá"
+            "bún chả cá quy nhơn",
+            "bún chả cá"
         ]
     },
     {
@@ -10049,10 +10049,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá Hải Dương",
-            "Lẩu hải sản",
-            "Cá viên chiên",
-            "Sườn nướng mật ong"
+            "gỏi cá hải dương",
+            "lẩu hải sản",
+            "cá viên chiên",
+            "sườn nướng mật ong"
         ]
     },
     {
@@ -10080,8 +10080,8 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Cơm Niêu",
-            "Gỏi Đô"
+            "cơm niêu",
+            "gỏi đô"
         ]
     },
     {
@@ -10116,10 +10116,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Bò Mỹ",
-            "Lẩu Cá Hồi",
-            "Lẩu Tôm",
-            "Lẩu Hải Sản"
+            "lẩu bò mỹ",
+            "lẩu cá hồi",
+            "lẩu tôm",
+            "lẩu hải sản"
         ]
     },
     {
@@ -10151,10 +10151,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bò Né Sốt Ô Kìa",
-            "Bánh Mì ốp La",
-            "Pate",
-            "Bún Chả"
+            "bò né sốt ô kìa",
+            "bánh mì ốp la",
+            "pate",
+            "bún chả"
         ]
     },
     {
@@ -10187,9 +10187,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Bánh Xèo",
-            "Cháo Gà"
+            "phở bò trắng",
+            "bánh xèo",
+            "cháo gà"
         ]
     },
     {
@@ -10221,8 +10221,8 @@
             "Spicy"
         ],
         "menu": [
-            "Súp cua cô Tư",
-            "Bánh mì thịt heo"
+            "súp cua cô tư",
+            "bánh mì thịt heo"
         ]
     },
     {
@@ -10254,8 +10254,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi"
+            "sushi tấm",
+            "sashimi cá hồi"
         ]
     },
     {
@@ -10290,10 +10290,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Tấm Sườn Nướng",
-            "Chả Cá Hà Nội",
-            "Bún Chả Cá",
-            "Cơm Gà Nước Rém"
+            "cơm tấm sườn nướng",
+            "chả cá hà nội",
+            "bún chả cá",
+            "cơm gà nước rém"
         ]
     },
     {
@@ -10330,10 +10330,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bún chả",
-            "Gỏi cuốn",
-            "Cá kho tộ",
-            "Sườn nướng"
+            "bún chả",
+            "gỏi cuốn",
+            "cá kho tộ",
+            "sườn nướng"
         ]
     },
     {
@@ -10365,8 +10365,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá mai",
-            "Bánh xèo Vườn Xoài"
+            "gỏi cá mai",
+            "bánh xèo vườn xoài"
         ]
     },
     {
@@ -10396,8 +10396,8 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh khọt Út Loan",
-            "Rau sống ăn kèm"
+            "bánh khọt út loan",
+            "rau sống ăn kèm"
         ]
     },
     {
@@ -10428,10 +10428,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Hàu hấp gừng",
-            "Cá diêu hồng nướng",
-            "Tôm sú hấp",
-            "Ếch đồng nướng lửa"
+            "hàu hấp gừng",
+            "cá diêu hồng nướng",
+            "tôm sú hấp",
+            "ếch đồng nướng lửa"
         ]
     },
     {
@@ -10465,10 +10465,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Cá Bảy Giai",
-            "Cá Lẩu Ngon",
-            "Bún Cá",
-            "Rau Muối Nhà Làm"
+            "lẩu cá bảy giai",
+            "cá lẩu ngon",
+            "bún cá",
+            "rau muối nhà làm"
         ]
     },
     {
@@ -10501,8 +10501,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh hỏi",
-            "Thịt nướng xiên que"
+            "bánh hỏi",
+            "thịt nướng xiên que"
         ]
     },
     {
@@ -10537,10 +10537,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gà nướng vườn",
-            "Hải sản nướng",
-            "Cháo lòng",
-            "Bánh xèo"
+            "gà nướng vườn",
+            "hải sản nướng",
+            "cháo lòng",
+            "bánh xèo"
         ]
     },
     {
@@ -10573,8 +10573,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Quyền",
-            "Bánh Xèo"
+            "phở quyền",
+            "bánh xèo"
         ]
     },
     {
@@ -10605,8 +10605,8 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì xíu mại",
-            "Xíu mại nước xốt"
+            "bánh mì xíu mại",
+            "xíu mại nước xốt"
         ]
     },
     {
@@ -10638,10 +10638,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Nước rau má Bà Già",
-            "Nước rau má đá",
-            "Nước rau má dừa",
-            "Nước rau má chanh"
+            "nước rau má bà già",
+            "nước rau má đá",
+            "nước rau má dừa",
+            "nước rau má chanh"
         ]
     },
     {
@@ -10674,8 +10674,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sữa chua dẻo",
-            "Trứng gà lòng đào"
+            "sữa chua dẻo",
+            "trứng gà lòng đào"
         ]
     },
     {
@@ -10706,8 +10706,8 @@
             "Spicy"
         ],
         "menu": [
-            "Bún riêu tôm",
-            "Bún chả cá"
+            "bún riêu tôm",
+            "bún chả cá"
         ]
     },
     {
@@ -10739,10 +10739,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bò Kho Cô Bắc",
-            "Bánh Mì Trộn",
-            "Hủ Tiếu Bò",
-            "Cơm Gà"
+            "bò kho cô bắc",
+            "bánh mì trộn",
+            "hủ tiếu bò",
+            "cơm gà"
         ]
     },
     {
@@ -10775,10 +10775,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá Hứa",
-            "Lẩu hải sản",
-            "Cá kho tộ",
-            "Sườn nướng mật ong"
+            "gỏi cá hứa",
+            "lẩu hải sản",
+            "cá kho tộ",
+            "sườn nướng mật ong"
         ]
     },
     {
@@ -10813,10 +10813,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Thái",
-            "Thịt Nướng Xiên",
-            "Bắp Nướng",
-            "Sườn Nướng"
+            "lẩu thái",
+            "thịt nướng xiên",
+            "bắp nướng",
+            "sườn nướng"
         ]
     },
     {
@@ -10848,10 +10848,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi cá trích",
-            "Lẩu hải sản",
-            "Cá kho tộ",
-            "Bún chả cá"
+            "gỏi cá trích",
+            "lẩu hải sản",
+            "cá kho tộ",
+            "bún chả cá"
         ]
     },
     {
@@ -10884,10 +10884,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún mắm",
-            "Bún thịt heo",
-            "Heo quay",
-            "Tôm rang mắm tôm"
+            "bún mắm",
+            "bún thịt heo",
+            "heo quay",
+            "tôm rang mắm tôm"
         ]
     },
     {
@@ -10919,10 +10919,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm tấm sườn nướng",
-            "Mỡ hành ăn kèm",
-            "Đồ chua",
-            "Bánh xèo"
+            "cơm tấm sườn nướng",
+            "mỡ hành ăn kèm",
+            "đồ chua",
+            "bánh xèo"
         ]
     },
     {
@@ -10954,10 +10954,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè Thái",
-            "Chè Chuối",
-            "Chè Ba Màu",
-            "Bánh Flan"
+            "chè thái",
+            "chè chuối",
+            "chè ba màu",
+            "bánh flan"
         ]
     },
     {
@@ -10992,8 +10992,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Hủ Tiếu Nam Vang",
-            "Bánh Xèo Nam Vang"
+            "hủ tiếu nam vang",
+            "bánh xèo nam vang"
         ]
     },
     {
@@ -11025,12 +11025,11 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì xíu mại lạp xưởng",
-            "Trứng ốp la bánh mì",
-            "Chảo xíu mại"
+            "bánh mì xíu mại lạp xưởng",
+            "trứng ốp la bánh mì",
+            "chảo xíu mại"
         ]
     },
-    
     {
         "id": "0319",
         "name": "Sushi Hokkaido Sachi - Nguyễn Trãi",
@@ -11061,10 +11060,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi Hokkaido",
-            "Sashimi cá hồi",
-            "Cá mú Nhật Bản",
-            "Tempura tôm"
+            "sushi hokkaido",
+            "sashimi cá hồi",
+            "cá mú nhật bản",
+            "tempura tôm"
         ]
     },
     {
@@ -11095,10 +11094,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thankyou",
-            "Canh chay rau củ",
-            "Salad rau củ tươi",
-            "Sườn non kho gừng"
+            "cơm chay thankyou",
+            "canh chay rau củ",
+            "salad rau củ tươi",
+            "sườn non kho gừng"
         ]
     },
     {
@@ -11129,10 +11128,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả đậu phụ",
-            "Cơm chiên chay",
-            "Canh chua chay",
-            "Gỏi cuốn chay"
+            "bún chả đậu phụ",
+            "cơm chiên chay",
+            "canh chua chay",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -11163,10 +11162,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Nấm",
-            "Súp Đậu Nành",
-            "Rau Muối Ngọt",
-            "Canh Chua"
+            "cơm chiên nấm",
+            "súp đậu nành",
+            "rau muối ngọt",
+            "canh chua"
         ]
     },
     {
@@ -11197,10 +11196,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay sen",
-            "Canh chay thập cẩm",
-            "Bún chay rau củ",
-            "Gỏi cuốn chay"
+            "cơm chay sen",
+            "canh chay thập cẩm",
+            "bún chay rau củ",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -11231,8 +11230,8 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Mì Udon tươi",
-            "Mì Udon xào gyutan"
+            "mì udon tươi",
+            "mì udon xào gyutan"
         ]
     },
     {
@@ -11265,10 +11264,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả chay",
-            "Cơm gà chay",
-            "Canh chua chay",
-            "Gỏi cuốn chay"
+            "bún chả chay",
+            "cơm gà chay",
+            "canh chua chay",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -11301,10 +11300,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn cá hồi",
-            "Sushi cuộn rong biển",
-            "Sushi cuộn thịt bò"
+            "sushi tấm",
+            "sushi cuộn cá hồi",
+            "sushi cuộn rong biển",
+            "sushi cuộn thịt bò"
         ]
     },
     {
@@ -11340,10 +11339,10 @@
             "Alcohol_Pub"
         ],
         "menu": [
-            "Bít tết wagyu",
-            "Bít tết tẩm ướp Mỹ",
-            "Sườn non áp chảo",
-            "Salad Caesar"
+            "bít tết wagyu",
+            "bít tết tẩm ướp mỹ",
+            "sườn non áp chảo",
+            "salad caesar"
         ]
     },
     {
@@ -11376,10 +11375,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê trứng Tonkin",
-            "Bún chả cá",
-            "Gỏi cuốn tôm thịt",
-            "Bánh xèo miền Trung"
+            "cà phê trứng tonkin",
+            "bún chả cá",
+            "gỏi cuốn tôm thịt",
+            "bánh xèo miền trung"
         ]
     },
     {
@@ -11413,10 +11412,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bít tết wagyu",
-            "Bít tết tẩm ướp",
-            "Bò tatar",
-            "Bia thủ công"
+            "bít tết wagyu",
+            "bít tết tẩm ướp",
+            "bò tatar",
+            "bia thủ công"
         ]
     },
     {
@@ -11448,10 +11447,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bò Yakiniku",
-            "Xá Xíu Nướng",
-            "Gà Nướng",
-            "Salad Nhật Bản"
+            "bò yakiniku",
+            "xá xíu nướng",
+            "gà nướng",
+            "salad nhật bản"
         ]
     },
     {
@@ -11482,10 +11481,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thanki",
-            "Canh chay rau củ",
-            "Bún chay thập cẩm",
-            "Sinh tố rau má"
+            "cơm chay thanki",
+            "canh chay rau củ",
+            "bún chay thập cẩm",
+            "sinh tố rau má"
         ]
     },
     {
@@ -11518,9 +11517,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn đơn",
-            "Sushi combo"
+            "sushi tấm",
+            "sushi cuộn đơn",
+            "sushi combo"
         ]
     },
     {
@@ -11551,10 +11550,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Ramen Tonkotsu",
-            "Ramen Shoyu",
-            "Gyoza",
-            "Pizza Napoli"
+            "ramen tonkotsu",
+            "ramen shoyu",
+            "gyoza",
+            "pizza napoli"
         ]
     },
     {
@@ -11584,8 +11583,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mì Ramen Tonkotsu",
-            "Mì Ramen Xà Lương"
+            "mì ramen tonkotsu",
+            "mì ramen xà lương"
         ]
     },
     {
@@ -11616,10 +11615,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thập cẩm",
-            "Canh chua chay",
-            "Gỏi cuốn chay",
-            "Cháo yến mạch"
+            "cơm chay thập cẩm",
+            "canh chua chay",
+            "gỏi cuốn chay",
+            "cháo yến mạch"
         ]
     },
     {
@@ -11654,10 +11653,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bœuf Bourguignon",
-            "Coq au Vin",
-            "Crème brûlée",
-            "Salade Niçoise"
+            "bœuf bourguignon",
+            "coq au vin",
+            "crème brûlée",
+            "salade niçoise"
         ]
     },
     {
@@ -11690,8 +11689,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mì Ramen cá mòi",
-            "Gà ramen"
+            "mì ramen cá mòi",
+            "gà ramen"
         ]
     },
     {
@@ -11722,10 +11721,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Canh Chua",
-            "Com Chay",
-            "Kho Dua",
-            "Canh Hoa"
+            "canh chua",
+            "com chay",
+            "kho dua",
+            "canh hoa"
         ]
     },
     {
@@ -11759,10 +11758,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sake nóng",
-            "Salad cá ngừ",
-            "Tempura tôm"
+            "sushi tấm",
+            "sake nóng",
+            "salad cá ngừ",
+            "tempura tôm"
         ]
     },
     {
@@ -11794,9 +11793,9 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Udon mì",
-            "Udon mì kani",
-            "Udon mì trứng"
+            "udon mì",
+            "udon mì kani",
+            "udon mì trứng"
         ]
     },
     {
@@ -11829,10 +11828,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gà rán",
-            "Sashimi cá ngừ",
-            "Tempura tôm",
-            "Cá hồi sốt teriyaki"
+            "gà rán",
+            "sashimi cá ngừ",
+            "tempura tôm",
+            "cá hồi sốt teriyaki"
         ]
     },
     {
@@ -11865,10 +11864,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Bít tết bò Mỹ sốt đen",
-            "Bít tết wagyu",
-            "Salad Caesar",
-            "Súp kem nấm"
+            "bít tết bò mỹ sốt đen",
+            "bít tết wagyu",
+            "salad caesar",
+            "súp kem nấm"
         ]
     },
     {
@@ -11901,10 +11900,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cá ngừ sốt cà chua",
-            "Cá lóc rang muối",
-            "Chín càng ghẹ rang muối ớt",
-            "Bể ốc hấp dấm"
+            "cá ngừ sốt cà chua",
+            "cá lóc rang muối",
+            "chín càng ghẹ rang muối ớt",
+            "bể ốc hấp dấm"
         ]
     },
     {
@@ -11938,8 +11937,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phá lấu bò",
-            "Bánh mì phá lấu"
+            "phá lấu bò",
+            "bánh mì phá lấu"
         ]
     },
     {
@@ -11973,10 +11972,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mì ốc hến chua cay",
-            "Hến xào chanh tiêu",
-            "Mì gà ta",
-            "Bánh xèo cơ cơ"
+            "mì ốc hến chua cay",
+            "hến xào chanh tiêu",
+            "mì gà ta",
+            "bánh xèo cơ cơ"
         ]
     },
     {
@@ -12010,8 +12009,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Súp cua",
-            "Bánh mì pate"
+            "súp cua",
+            "bánh mì pate"
         ]
     },
     {
@@ -12043,8 +12042,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh tráng cuốn trứng cút",
-            "Nước sốt bò đen"
+            "bánh tráng cuốn trứng cút",
+            "nước sốt bò đen"
         ]
     },
     {
@@ -12077,8 +12076,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Cuộn cá hồi"
+            "sushi tấm",
+            "cuộn cá hồi"
         ]
     },
     {
@@ -12114,10 +12113,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cơm Bento",
-            "Mì Udon",
-            "Sushi Nướng Lửa",
-            "Bánh Xèo"
+            "cơm bento",
+            "mì udon",
+            "sushi nướng lửa",
+            "bánh xèo"
         ]
     },
     {
@@ -12150,10 +12149,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi",
-            "Cá hồi sốt teriyaki",
-            "Tempura tôm"
+            "sushi tấm",
+            "sashimi cá hồi",
+            "cá hồi sốt teriyaki",
+            "tempura tôm"
         ]
     },
     {
@@ -12186,8 +12185,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi tươi",
-            "Cuộn sushi truyền thống"
+            "sashimi tươi",
+            "cuộn sushi truyền thống"
         ]
     },
     {
@@ -12221,10 +12220,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi cá hồi Na Uy",
-            "Sushi tấm",
-            "Gà Teriyaki",
-            "Tempura tôm"
+            "sashimi cá hồi na uy",
+            "sushi tấm",
+            "gà teriyaki",
+            "tempura tôm"
         ]
     },
     {
@@ -12256,10 +12255,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh xèo chay",
-            "Cơm chay dưa cà",
-            "Canh chay thập cẩm",
-            "Gỏi cuốn chay"
+            "bánh xèo chay",
+            "cơm chay dưa cà",
+            "canh chay thập cẩm",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -12292,10 +12291,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay xào thập cẩm",
-            "Cháo yến mạch chay",
-            "Canh chua chay",
-            "Đậu phụ kho liu riu"
+            "cơm chay xào thập cẩm",
+            "cháo yến mạch chay",
+            "canh chua chay",
+            "đậu phụ kho liu riu"
         ]
     },
     {
@@ -12328,10 +12327,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh mì chay giòn rụm",
-            "Món nước thay đổi",
-            "Cơm chiên chay",
-            "Xôi gấc"
+            "bánh mì chay giòn rụm",
+            "món nước thay đổi",
+            "cơm chiên chay",
+            "xôi gấc"
         ]
     },
     {
@@ -12366,10 +12365,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chiên rau củ",
-            "Mâm cơm chay đặc biệt",
-            "Canh chua chay",
-            "Gỏi cuốn chay"
+            "cơm chiên rau củ",
+            "mâm cơm chay đặc biệt",
+            "canh chua chay",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -12400,8 +12399,8 @@
             "Spicy"
         ],
         "menu": [
-            "Bì cuốn chay",
-            "Đậu hũ non sốt nấm"
+            "bì cuốn chay",
+            "đậu hũ non sốt nấm"
         ]
     },
     {
@@ -12435,10 +12434,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Maki combo",
-            "Sashimi cá hồi",
-            "Tempura tôm"
+            "sushi tấm",
+            "maki combo",
+            "sashimi cá hồi",
+            "tempura tôm"
         ]
     },
     {
@@ -12470,9 +12469,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bento Nhật Bản",
-            "Gà Karaage",
-            "Trứng Cuộn Nhật"
+            "bento nhật bản",
+            "gà karaage",
+            "trứng cuộn nhật"
         ]
     },
     {
@@ -12507,9 +12506,9 @@
             "Shellfish"
         ],
         "menu": [
-            "Cơm Lươn Nhật",
-            "Sashimi",
-            "Maki Platter"
+            "cơm lươn nhật",
+            "sashimi",
+            "maki platter"
         ]
     },
     {
@@ -12543,8 +12542,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Takoiyaki",
-            "Bánh mì Nhật Bản"
+            "takoiyaki",
+            "bánh mì nhật bản"
         ]
     },
     {
@@ -12575,8 +12574,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Nắm Nghe Nướng",
-            "Bánh Xèo Mini"
+            "cơm nắm nghe nướng",
+            "bánh xèo mini"
         ]
     },
     {
@@ -12608,11 +12607,11 @@
             "Spicy"
         ],
         "menu": [
-            "Ramen thịt bò",
-            "Ramen gà",
-            "Ramen hải sản",
-            "Ramen trứng",
-            "Ramen sốt miso"
+            "ramen thịt bò",
+            "ramen gà",
+            "ramen hải sản",
+            "ramen trứng",
+            "ramen sốt miso"
         ]
     },
     {
@@ -12646,10 +12645,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi",
-            "Salad cá ngừ",
-            "Tempura tôm"
+            "sushi tấm",
+            "sashimi cá hồi",
+            "salad cá ngừ",
+            "tempura tôm"
         ]
     },
     {
@@ -12682,8 +12681,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi cá hồi tươi",
-            "Cơm lươn nướng bếp than"
+            "sashimi cá hồi tươi",
+            "cơm lươn nướng bếp than"
         ]
     },
     {
@@ -12714,10 +12713,10 @@
             "Spicy"
         ],
         "menu": [
-            "Ramen thịt bò",
-            "Ramen gà",
-            "Mì trộn hải sản",
-            "Mì xào ớt sô rốt"
+            "ramen thịt bò",
+            "ramen gà",
+            "mì trộn hải sản",
+            "mì xào ớt sô rốt"
         ]
     },
     {
@@ -12750,8 +12749,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Taiyaki bơ",
-            "Bánh cá Momei"
+            "bánh taiyaki bơ",
+            "bánh cá momei"
         ]
     },
     {
@@ -12785,10 +12784,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi cá hồi Na Uy",
-            "Sushi tấm",
-            "Gà Teriyaki",
-            "Tempura tôm"
+            "sashimi cá hồi na uy",
+            "sushi tấm",
+            "gà teriyaki",
+            "tempura tôm"
         ]
     },
     {
@@ -12821,10 +12820,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thập cẩm",
-            "Đậu phụ sốt cà chua",
-            "Canh chua chay",
-            "Xôi gấc"
+            "cơm chay thập cẩm",
+            "đậu phụ sốt cà chua",
+            "canh chua chay",
+            "xôi gấc"
         ]
     },
     {
@@ -12858,8 +12857,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Tấm Chay",
-            "Mìến Thái Xào"
+            "cơm tấm chay",
+            "mìến thái xào"
         ]
     },
     {
@@ -12892,10 +12891,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thập cẩm",
-            "Canh chay bắp sen",
-            "Đậu phụ sốt cà chua",
-            "Gỏi cuốn chay"
+            "cơm chay thập cẩm",
+            "canh chay bắp sen",
+            "đậu phụ sốt cà chua",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -12927,10 +12926,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay than",
-            "Canh chay thập cẩm",
-            "Bún chay rau dưa",
-            "Đậu phụ sốt cà chua"
+            "cơm chay than",
+            "canh chay thập cẩm",
+            "bún chay rau dưa",
+            "đậu phụ sốt cà chua"
         ]
     },
     {
@@ -12962,8 +12961,8 @@
             "Spicy"
         ],
         "menu": [
-            "Bún riêu cua",
-            "Cháo gà nấuấm"
+            "bún riêu cua",
+            "cháo gà nấuấm"
         ]
     },
     {
@@ -12997,10 +12996,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Tấm Sườn Nướng",
-            "Bò Tót Xào",
-            "Gà Nướng",
-            "Chả Cá Hà Nội"
+            "cơm tấm sườn nướng",
+            "bò tót xào",
+            "gà nướng",
+            "chả cá hà nội"
         ]
     },
     {
@@ -13033,10 +13032,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Hủ Tiếu Tôm",
-            "Hủ Tiếu Chay",
-            "Bánh Xèo",
-            "Cháo Gà"
+            "hủ tiếu tôm",
+            "hủ tiếu chay",
+            "bánh xèo",
+            "cháo gà"
         ]
     },
     {
@@ -13068,10 +13067,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bánh canh cua dì",
-            "Chả cua",
-            "Bánh canh sánh nhẹ",
-            "Thịt cua tươi"
+            "bánh canh cua dì",
+            "chả cua",
+            "bánh canh sánh nhẹ",
+            "thịt cua tươi"
         ]
     },
     {
@@ -13100,8 +13099,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Lẩu cá kèo chua cay",
-            "Bánh xèo cơ bản"
+            "lẩu cá kèo chua cay",
+            "bánh xèo cơ bản"
         ]
     },
     {
@@ -13137,10 +13136,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bò Tái Sữa",
-            "Mỳ Ý sốt kem",
-            "Steak chanh leo",
-            "Bánh mì kẹp thịt"
+            "bò tái sữa",
+            "mỳ ý sốt kem",
+            "steak chanh leo",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -13179,10 +13178,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Salad Caesar",
-            "Gà nướng kiểu tây",
-            "Bò tatar",
-            "Bánh mì kẹp thịt"
+            "salad caesar",
+            "gà nướng kiểu tây",
+            "bò tatar",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -13211,10 +13210,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Pizza Napoli",
-            "Pizza hải sản",
-            "Pizza gà tây",
-            "Pizza nấm"
+            "pizza napoli",
+            "pizza hải sản",
+            "pizza gà tây",
+            "pizza nấm"
         ]
     },
     {
@@ -13252,10 +13251,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì kẹp thịt nguội",
-            "Sườn nướng mật ong",
-            "Cà ri xanh",
-            "Mỳ Ý sốt kem"
+            "bánh mì kẹp thịt nguội",
+            "sườn nướng mật ong",
+            "cà ri xanh",
+            "mỳ ý sốt kem"
         ]
     },
     {
@@ -13295,10 +13294,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi",
-            "Salad cá ngừ",
-            "Tempura tôm"
+            "sushi tấm",
+            "sashimi cá hồi",
+            "salad cá ngừ",
+            "tempura tôm"
         ]
     },
     {
@@ -13331,10 +13330,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa matcha",
-            "Trà trái cây",
-            "Bánh crepe",
-            "Sữa đá matcha"
+            "trà sữa matcha",
+            "trà trái cây",
+            "bánh crepe",
+            "sữa đá matcha"
         ]
     },
     {
@@ -13364,10 +13363,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Nước mía",
-            "Bia",
-            "Gutschein",
-            "Cà phê sữa đá"
+            "nước mía",
+            "bia",
+            "gutschein",
+            "cà phê sữa đá"
         ]
     },
     {
@@ -13401,8 +13400,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa đặc biệt",
-            "Viên topping tráng miệng"
+            "trà sữa đặc biệt",
+            "viên topping tráng miệng"
         ]
     },
     {
@@ -13436,9 +13435,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gỏi đu đủ",
-            "Tomyum",
-            "Món nướng Thái"
+            "gỏi đu đủ",
+            "tomyum",
+            "món nướng thái"
         ]
     },
     {
@@ -13473,10 +13472,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Hủ Tiếu Thuyền",
-            "Hủ Tiếu Tomyum",
-            "Cá Kho Tộ",
-            "Sườn Xào Sả Ớt"
+            "hủ tiếu thuyền",
+            "hủ tiếu tomyum",
+            "cá kho tộ",
+            "sườn xào sả ớt"
         ]
     },
     {
@@ -13512,10 +13511,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Xào Tôm Vo Ngon",
-            "Súp Tom Yum",
-            "Rau Xào Tỏi"
+            "cà ri gà",
+            "xào tôm vo ngon",
+            "súp tom yum",
+            "rau xào tỏi"
         ]
     },
     {
@@ -13549,10 +13548,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu cá viên Tomyum",
-            "Nước chấm tự pha",
-            "Cá viên sốt cà chua",
-            "Gỏi cuốn Thái"
+            "lẩu cá viên tomyum",
+            "nước chấm tự pha",
+            "cá viên sốt cà chua",
+            "gỏi cuốn thái"
         ]
     },
     {
@@ -13586,10 +13585,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh kem bắp",
-            "Bánh nướng ngọt",
-            "Bánh lạnh",
-            "Bánh tart trứng"
+            "bánh kem bắp",
+            "bánh nướng ngọt",
+            "bánh lạnh",
+            "bánh tart trứng"
         ]
     },
     {
@@ -13623,10 +13622,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh mì ngọt",
-            "Bánh kem bắp",
-            "Tiramisu",
-            "Bánh tart trứng"
+            "bánh mì ngọt",
+            "bánh kem bắp",
+            "tiramisu",
+            "bánh tart trứng"
         ]
     },
     {
@@ -13660,9 +13659,9 @@
             "Peanuts_Nuts"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Bánh mousse",
-            "Bánh tart"
+            "bánh ngọt",
+            "bánh mousse",
+            "bánh tart"
         ]
     },
     {
@@ -13694,10 +13693,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Flan",
-            "Bánh Dứa",
-            "Sữa Chua Hạt Yến Mạch",
-            "Bánh Croffle"
+            "bánh flan",
+            "bánh dứa",
+            "sữa chua hạt yến mạch",
+            "bánh croffle"
         ]
     },
     {
@@ -13732,8 +13731,8 @@
             "Red_Meat"
         ],
         "menu": [
-            "Bánh mì Thổ Nhĩ Kỳ",
-            "Xèo"
+            "bánh mì thổ nhĩ kỳ",
+            "xèo"
         ]
     },
     {
@@ -13765,9 +13764,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán Hàn Quốc",
-            "Sốt cay bùng nổ",
-            "Sốt bơ tỏi"
+            "gà rán hàn quốc",
+            "sốt cay bùng nổ",
+            "sốt bơ tỏi"
         ]
     },
     {
@@ -13800,9 +13799,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Hot dog kiểu Mỹ",
-            "Bánh mì xào thịt nguội",
-            "Sốt đặc biệt"
+            "hot dog kiểu mỹ",
+            "bánh mì xào thịt nguội",
+            "sốt đặc biệt"
         ]
     },
     {
@@ -13838,10 +13837,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bánh mì Big Mac",
-            "Gà rán",
-            "Hamburger",
-            "McCafé"
+            "bánh mì big mac",
+            "gà rán",
+            "hamburger",
+            "mccafé"
         ]
     },
     {
@@ -13876,9 +13875,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Gà rán sốt đậu",
-            "Burger bò mềm"
+            "bánh mì kẹp thịt",
+            "gà rán sốt đậu",
+            "burger bò mềm"
         ]
     },
     {
@@ -13912,8 +13911,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi combo"
+            "sushi tấm",
+            "sushi combo"
         ]
     },
     {
@@ -13947,10 +13946,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn",
-            "Salmon Nigiri",
-            "Eel teriyaki"
+            "sushi tấm",
+            "sushi cuộn",
+            "salmon nigiri",
+            "eel teriyaki"
         ]
     },
     {
@@ -13985,10 +13984,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn cá hồi",
-            "Sushi cuộn bạch tuộc",
-            "Sushi cuộn salmon"
+            "sushi tấm",
+            "sushi cuộn cá hồi",
+            "sushi cuộn bạch tuộc",
+            "sushi cuộn salmon"
         ]
     },
     {
@@ -14021,10 +14020,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Sashimi Cá Hơi",
-            "Gyoza",
-            "Tempura Tôm",
-            "Yakitori Gà"
+            "sashimi cá hơi",
+            "gyoza",
+            "tempura tôm",
+            "yakitori gà"
         ]
     },
     {
@@ -14055,10 +14054,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gyoza",
-            "Karaage",
-            "Yakitori",
-            "Sushi"
+            "gyoza",
+            "karaage",
+            "yakitori",
+            "sushi"
         ]
     },
     {
@@ -14092,10 +14091,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn cá hồi",
-            "Sushi cuộn rong biển",
-            "Sushi cuộn thịt bò"
+            "sushi tấm",
+            "sushi cuộn cá hồi",
+            "sushi cuộn rong biển",
+            "sushi cuộn thịt bò"
         ]
     },
     {
@@ -14127,10 +14126,10 @@
             "Spicy"
         ],
         "menu": [
-            "Sushi Hokkaido",
-            "Salmon Nigiri",
-            "Eel Rice",
-            "Sea Urchin"
+            "sushi hokkaido",
+            "salmon nigiri",
+            "eel rice",
+            "sea urchin"
         ]
     },
     {
@@ -14163,10 +14162,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi trơn",
-            "Salmon Nigiri",
-            "Eel Nigiri"
+            "sushi tấm",
+            "sushi trơn",
+            "salmon nigiri",
+            "eel nigiri"
         ]
     },
     {
@@ -14196,10 +14195,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sashimi Cá Hơi",
-            "Sushi Cuộn",
-            "Tempura Tôm",
-            "Gà Teriyaki"
+            "sashimi cá hơi",
+            "sushi cuộn",
+            "tempura tôm",
+            "gà teriyaki"
         ]
     },
     {
@@ -14230,10 +14229,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sashimi cá hồi",
-            "Tempura tôm",
-            "Teppanyaki thịt bò"
+            "sushi tấm",
+            "sashimi cá hồi",
+            "tempura tôm",
+            "teppanyaki thịt bò"
         ]
     },
     {
@@ -14266,10 +14265,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi bake",
-            "Salmon Nigiri",
-            "Eel teriyaki"
+            "sushi tấm",
+            "sushi bake",
+            "salmon nigiri",
+            "eel teriyaki"
         ]
     },
     {
@@ -14302,9 +14301,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi ba loại",
-            "Sushi viên"
+            "sushi tấm",
+            "sushi ba loại",
+            "sushi viên"
         ]
     },
     {
@@ -14339,10 +14338,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi cuộn",
-            "Salmon Nigiri",
-            "Eel Nigiri"
+            "sushi tấm",
+            "sushi cuộn",
+            "salmon nigiri",
+            "eel nigiri"
         ]
     },
     {
@@ -14373,10 +14372,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Sushi Cá Trích",
-            "Sushi Rong Biển",
-            "Sushi Gan Ngư",
-            "Sushi Trứng Ng Oval"
+            "sushi cá trích",
+            "sushi rong biển",
+            "sushi gan ngư",
+            "sushi trứng ng oval"
         ]
     },
     {
@@ -14411,10 +14410,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sushi tấm",
-            "Sushi đơn",
-            "Sushi ba",
-            "Sushi combo"
+            "sushi tấm",
+            "sushi đơn",
+            "sushi ba",
+            "sushi combo"
         ]
     },
     {
@@ -14448,10 +14447,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Gaeng Keow Wan",
-            "Som Tam"
+            "pad thai",
+            "tom yum goong",
+            "gaeng keow wan",
+            "som tam"
         ]
     },
     {
@@ -14488,10 +14487,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Gaeng Keow Wan",
-            "Som Tam"
+            "pad thai",
+            "tom yum goong",
+            "gaeng keow wan",
+            "som tam"
         ]
     },
     {
@@ -14524,10 +14523,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Pad Kra Pao Moo",
-            "Xôi Gà",
-            "Súp Tom Yum"
+            "cà ri gà",
+            "pad kra pao moo",
+            "xôi gà",
+            "súp tom yum"
         ]
     },
     {
@@ -14561,10 +14560,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Pad Thái Xào",
-            "Súp Tom Yum",
-            "Com Khao Moo"
+            "cà ri gà",
+            "pad thái xào",
+            "súp tom yum",
+            "com khao moo"
         ]
     },
     {
@@ -14600,10 +14599,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Súp Tom Yum",
-            "Xôi Gà",
-            "Rau Cuộn"
+            "cà ri gà",
+            "súp tom yum",
+            "xôi gà",
+            "rau cuộn"
         ]
     },
     {
@@ -14637,10 +14636,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Soup",
-            "Green Curry",
-            "Mango Sticky Rice"
+            "pad thai",
+            "tom yum soup",
+            "green curry",
+            "mango sticky rice"
         ]
     },
     {
@@ -14676,10 +14675,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Pad Kra Pao Moo",
-            "Xôi Gà",
-            "Súp Tom Yum"
+            "cà ri gà",
+            "pad kra pao moo",
+            "xôi gà",
+            "súp tom yum"
         ]
     },
     {
@@ -14713,10 +14712,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Green Curry",
-            "Mango Sticky Rice"
+            "pad thai",
+            "tom yum goong",
+            "green curry",
+            "mango sticky rice"
         ]
     },
     {
@@ -14750,10 +14749,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Rau Cuộn Trứng",
-            "Chắc Chắn Xanh",
-            "Cà Ri Gà",
-            "S้มตำ ผัก"
+            "rau cuộn trứng",
+            "chắc chắn xanh",
+            "cà ri gà",
+            "s้มตำ ผัก"
         ]
     },
     {
@@ -14786,10 +14785,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Green Curry",
-            "Mango Sticky Rice"
+            "pad thai",
+            "tom yum goong",
+            "green curry",
+            "mango sticky rice"
         ]
     },
     {
@@ -14825,10 +14824,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Green Curry",
-            "Mango Sticky Rice"
+            "pad thai",
+            "tom yum goong",
+            "green curry",
+            "mango sticky rice"
         ]
     },
     {
@@ -14861,10 +14860,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Dê Thái",
-            "Sườn Non Này",
-            "Gà Xào Sả Ớt",
-            "Rau Muối Ngọt"
+            "lẩu dê thái",
+            "sườn non này",
+            "gà xào sả ớt",
+            "rau muối ngọt"
         ]
     },
     {
@@ -14903,10 +14902,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bánh mì kẹp thịt nguội",
-            "Salad Caesar",
-            "Gà nướng kiểu Âu",
-            "Sườn áp chảo"
+            "bánh mì kẹp thịt nguội",
+            "salad caesar",
+            "gà nướng kiểu âu",
+            "sườn áp chảo"
         ]
     },
     {
@@ -14941,10 +14940,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Cà Ri Tôm",
-            "Súp Tom Yum",
-            "Xôi Kai"
+            "cà ri gà",
+            "cà ri tôm",
+            "súp tom yum",
+            "xôi kai"
         ]
     },
     {
@@ -14977,10 +14976,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Gỏi cuốn",
-            "Cà Ri xanh",
-            "Súy xước"
+            "pad thai",
+            "gỏi cuốn",
+            "cà ri xanh",
+            "súy xước"
         ]
     },
     {
@@ -15014,8 +15013,8 @@
             "Shellfish"
         ],
         "menu": [
-            "Lẩu Thái cay",
-            "Sườn nướng Thái"
+            "lẩu thái cay",
+            "sườn nướng thái"
         ]
     },
     {
@@ -15049,10 +15048,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Ri Gà",
-            "Pad Thai",
-            "Xôi Gà",
-            "Súp Tom Yum"
+            "cà ri gà",
+            "pad thai",
+            "xôi gà",
+            "súp tom yum"
         ]
     },
     {
@@ -15087,10 +15086,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Gaeng Keow Wan",
-            "Khao Pad Moo"
+            "pad thai",
+            "tom yum goong",
+            "gaeng keow wan",
+            "khao pad moo"
         ]
     },
     {
@@ -15123,10 +15122,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Pad Thai",
-            "Tom Yum Goong",
-            "Green Curry",
-            "Mango Sticky Rice"
+            "pad thai",
+            "tom yum goong",
+            "green curry",
+            "mango sticky rice"
         ]
     },
     {
@@ -15157,10 +15156,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Tráng Mắm Nêm",
-            "Gỏi Cuốn",
-            "Lẩu Thái",
-            "Cá Kho Tộ"
+            "bánh tráng mắm nêm",
+            "gỏi cuốn",
+            "lẩu thái",
+            "cá kho tộ"
         ]
     },
     {
@@ -15196,10 +15195,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Thai",
-            "Gaeng Keow Wan",
-            "Som Tam",
-            "Tom Yum Khong"
+            "pad thai",
+            "gaeng keow wan",
+            "som tam",
+            "tom yum khong"
         ]
     },
     {
@@ -15235,10 +15234,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Gỏi cuốn Thái",
-            "Cà ri xanh",
-            "Sườn xào chua ngọt",
-            "Mỳ xào hải sản"
+            "gỏi cuốn thái",
+            "cà ri xanh",
+            "sườn xào chua ngọt",
+            "mỳ xào hải sản"
         ]
     },
     {
@@ -15275,10 +15274,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Cá Minh Thái",
-            "Sườn Thái",
-            "Gà Xé Sả Ớt",
-            "Rau Cuộn Tôm"
+            "cá minh thái",
+            "sườn thái",
+            "gà xé sả ớt",
+            "rau cuộn tôm"
         ]
     },
     {
@@ -15313,10 +15312,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Khai Quả Tôm Xiên",
-            "Sườn Non Cay",
-            "Rau Cuộn Thơm",
-            "Cá Kho Cát"
+            "khai quả tôm xiên",
+            "sườn non cay",
+            "rau cuộn thơm",
+            "cá kho cát"
         ]
     },
     {
@@ -15350,10 +15349,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Pad Kra Pao Moo",
-            "Gaeng Keow Wan",
-            "Som Tam",
-            "Tom Yum Goong"
+            "pad kra pao moo",
+            "gaeng keow wan",
+            "som tam",
+            "tom yum goong"
         ]
     },
     {
@@ -15386,8 +15385,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Thái chua cay",
-            "Bún Thái rau luộc"
+            "bún thái chua cay",
+            "bún thái rau luộc"
         ]
     },
     {
@@ -15421,8 +15420,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh kem bông mềm",
-            "Bánh bông lan béo ngậy"
+            "bánh kem bông mềm",
+            "bánh bông lan béo ngậy"
         ]
     },
     {
@@ -15456,10 +15455,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh kem dâu ngập ngập",
-            "Bánh kem phô mai",
-            "Bánh kem socola",
-            "Bánh mousse"
+            "bánh kem dâu ngập ngập",
+            "bánh kem phô mai",
+            "bánh kem socola",
+            "bánh mousse"
         ]
     },
     {
@@ -15492,8 +15491,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Bánh quy"
+            "bánh ngọt",
+            "bánh quy"
         ]
     },
     {
@@ -15525,8 +15524,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh Tiramisu",
-            "Bánh Chưng Trà Cúc"
+            "bánh tiramisu",
+            "bánh chưng trà cúc"
         ]
     },
     {
@@ -15559,10 +15558,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Bánh tart trứng",
-            "Bánh mousse",
-            "Bánh macaron"
+            "bánh ngọt",
+            "bánh tart trứng",
+            "bánh mousse",
+            "bánh macaron"
         ]
     },
     {
@@ -15595,10 +15594,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Croissant",
-            "Bánh Flan",
-            "Bánh Cheesecake",
-            "Bánh Macaron"
+            "bánh croissant",
+            "bánh flan",
+            "bánh cheesecake",
+            "bánh macaron"
         ]
     },
     {
@@ -15631,8 +15630,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Bánh mousse"
+            "bánh ngọt",
+            "bánh mousse"
         ]
     },
     {
@@ -15664,10 +15663,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Bao Xìu",
-            "Bánh Bao Chao",
-            "Bánh Xèo",
-            "Cháo Bò"
+            "bánh bao xìu",
+            "bánh bao chao",
+            "bánh xèo",
+            "cháo bò"
         ]
     },
     {
@@ -15701,10 +15700,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Flan",
-            "Bánh Socola",
-            "Bánh Ngọt Kem",
-            "Bánh Sinh Nhật"
+            "bánh flan",
+            "bánh socola",
+            "bánh ngọt kem",
+            "bánh sinh nhật"
         ]
     },
     {
@@ -15737,10 +15736,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh kem dâu tây",
-            "Bánh kem phô mai",
-            "Bánh kem socola",
-            "Bánh kem matcha"
+            "bánh kem dâu tây",
+            "bánh kem phô mai",
+            "bánh kem socola",
+            "bánh kem matcha"
         ]
     },
     {
@@ -15773,10 +15772,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì pate Hải Phòng",
-            "Bánh mì xíu mại",
-            "Bánh mì giò xép",
-            "Bánh mì chả cá"
+            "bánh mì pate hải phòng",
+            "bánh mì xíu mại",
+            "bánh mì giò xép",
+            "bánh mì chả cá"
         ]
     },
     {
@@ -15809,8 +15808,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh su que",
-            "Bánh pía"
+            "bánh su que",
+            "bánh pía"
         ]
     },
     {
@@ -15843,10 +15842,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Flan",
-            "Bánh Chuối",
-            "Bánh Socola",
-            "Bánh Ngọt"
+            "bánh flan",
+            "bánh chuối",
+            "bánh socola",
+            "bánh ngọt"
         ]
     },
     {
@@ -15878,10 +15877,10 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh Croissant",
-            "Bánh Muffin",
-            "Bánh Flan",
-            "Bánh Cheesecake"
+            "bánh croissant",
+            "bánh muffin",
+            "bánh flan",
+            "bánh cheesecake"
         ]
     },
     {
@@ -15916,8 +15915,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh chuối chiên",
-            "Bánh nướng chuối"
+            "bánh chuối chiên",
+            "bánh nướng chuối"
         ]
     },
     {
@@ -15952,10 +15951,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh Mì Heo Quay",
-            "Bánh Mì Vịt Quay",
-            "Bánh Mì Phu Quoc",
-            "Bánh Mì Xíu Chay"
+            "bánh mì heo quay",
+            "bánh mì vịt quay",
+            "bánh mì phu quoc",
+            "bánh mì xíu chay"
         ]
     },
     {
@@ -15988,8 +15987,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh kem sinh nhật",
-            "Bánh tart trứng"
+            "bánh kem sinh nhật",
+            "bánh tart trứng"
         ]
     },
     {
@@ -16021,9 +16020,9 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bánh ngọt",
-            "Bánh mousse",
-            "Bánh tart trứng"
+            "bánh ngọt",
+            "bánh mousse",
+            "bánh tart trứng"
         ]
     },
     {
@@ -16056,8 +16055,8 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bánh ngọt",
-            "Bánh quy táo"
+            "bánh ngọt",
+            "bánh quy táo"
         ]
     },
     {
@@ -16090,10 +16089,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì pate",
-            "Bánh mì thịt nguội",
-            "Bánh mì xíu mại",
-            "Bánh mì giòn"
+            "bánh mì pate",
+            "bánh mì thịt nguội",
+            "bánh mì xíu mại",
+            "bánh mì giòn"
         ]
     },
     {
@@ -16127,8 +16126,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh ngọt Artisan",
-            "Bánh mousse matcha"
+            "bánh ngọt artisan",
+            "bánh mousse matcha"
         ]
     },
     {
@@ -16164,9 +16163,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Burger thịt bò nướng",
-            "Cocktail",
-            "Bia"
+            "burger thịt bò nướng",
+            "cocktail",
+            "bia"
         ]
     },
     {
@@ -16199,9 +16198,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán Popeyes",
-            "Khoai tây chiên",
-            "Bánh mì gà"
+            "gà rán popeyes",
+            "khoai tây chiên",
+            "bánh mì gà"
         ]
     },
     {
@@ -16234,10 +16233,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Burger bò kiểu Mỹ",
-            "Burger gà kiểu Mỹ",
-            "Burger tôm kiểu Mỹ",
-            "Khoai tây chiên"
+            "burger bò kiểu mỹ",
+            "burger gà kiểu mỹ",
+            "burger tôm kiểu mỹ",
+            "khoai tây chiên"
         ]
     },
     {
@@ -16269,9 +16268,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì thịt bò",
-            "Hamburger",
-            "Steak"
+            "bánh mì thịt bò",
+            "hamburger",
+            "steak"
         ]
     },
     {
@@ -16304,10 +16303,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán giòn",
-            "Bánh mì gà",
-            "Khoai tây chiên",
-            "Nước sốt đặc biệt"
+            "gà rán giòn",
+            "bánh mì gà",
+            "khoai tây chiên",
+            "nước sốt đặc biệt"
         ]
     },
     {
@@ -16340,9 +16339,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán",
-            "Khoai tây chiên",
-            "Bánh mì gà"
+            "gà rán",
+            "khoai tây chiên",
+            "bánh mì gà"
         ]
     },
     {
@@ -16374,9 +16373,9 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Bánh mì kẹp",
-            "Khoai tây chiên",
-            "Hamburger"
+            "bánh mì kẹp",
+            "khoai tây chiên",
+            "hamburger"
         ]
     },
     {
@@ -16409,10 +16408,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán Hàn Quốc",
-            "Gà rán sốt BBQ",
-            "Gà rán tỏi",
-            "Gà rán kem chua ngọt"
+            "gà rán hàn quốc",
+            "gà rán sốt bbq",
+            "gà rán tỏi",
+            "gà rán kem chua ngọt"
         ]
     },
     {
@@ -16447,10 +16446,10 @@
             "Spicy"
         ],
         "menu": [
-            "Burger Bò Classic",
-            "Burger Gà",
-            "Vòng Giò Burger",
-            "Burger Vị Táo Phu Quê"
+            "burger bò classic",
+            "burger gà",
+            "vòng giò burger",
+            "burger vị táo phu quê"
         ]
     },
     {
@@ -16485,9 +16484,9 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Khoai tây chiên",
-            "Nước ngọt"
+            "bánh mì kẹp thịt",
+            "khoai tây chiên",
+            "nước ngọt"
         ]
     },
     {
@@ -16521,10 +16520,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Gôm gà",
-            "Bánh mì kẹp thịt",
-            "Khoai tây chiên",
-            "Nước ngọt"
+            "gôm gà",
+            "bánh mì kẹp thịt",
+            "khoai tây chiên",
+            "nước ngọt"
         ]
     },
     {
@@ -16556,9 +16555,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán KFC",
-            "Khoai tây chiên",
-            "Bánh mì KFC"
+            "gà rán kfc",
+            "khoai tây chiên",
+            "bánh mì kfc"
         ]
     },
     {
@@ -16592,10 +16591,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Gà rán Texas",
-            "Bánh mì Texas",
-            "Burger Texas",
-            "Khoai tây chiên Texas"
+            "gà rán texas",
+            "bánh mì texas",
+            "burger texas",
+            "khoai tây chiên texas"
         ]
     },
     {
@@ -16628,8 +16627,8 @@
             "High_Sugar"
         ],
         "menu": [
-            "Bánh mì kẹp thịt",
-            "Nước ngọt"
+            "bánh mì kẹp thịt",
+            "nước ngọt"
         ]
     },
     {
@@ -16662,9 +16661,9 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Gà rán",
-            "Khoai tây chiên",
-            "Bánh mì kẹp thịt"
+            "gà rán",
+            "khoai tây chiên",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -16698,10 +16697,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán giòn",
-            "Bánh mì Chao",
-            "Gà sốt đặc biệt",
-            "Khoai tây chiên"
+            "gà rán giòn",
+            "bánh mì chao",
+            "gà sốt đặc biệt",
+            "khoai tây chiên"
         ]
     },
     {
@@ -16735,10 +16734,10 @@
             "Dairy_Product"
         ],
         "menu": [
-            "Bánh Burger bò",
-            "Bánh Burger gà",
-            "Khoai tây chiên",
-            "Salad xà lách"
+            "bánh burger bò",
+            "bánh burger gà",
+            "khoai tây chiên",
+            "salad xà lách"
         ]
     },
     {
@@ -16770,10 +16769,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Gà rán giòn",
-            "Bánh mì gà rán",
-            "Khoai tây chiên",
-            "Nước sốt đặc biệt"
+            "gà rán giòn",
+            "bánh mì gà rán",
+            "khoai tây chiên",
+            "nước sốt đặc biệt"
         ]
     },
     {
@@ -16806,10 +16805,10 @@
             "DeepFried_Oily"
         ],
         "menu": [
-            "Gà nướng Chickita",
-            "Gà nướng phô mai",
-            "Burger gà",
-            "Khoai tây chiên"
+            "gà nướng chickita",
+            "gà nướng phô mai",
+            "burger gà",
+            "khoai tây chiên"
         ]
     },
     {
@@ -16842,10 +16841,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Pepperoni",
-            "Pizza Capricciosa",
-            "Pizza Quattro Formaggi"
+            "pizza margherita",
+            "pizza pepperoni",
+            "pizza capricciosa",
+            "pizza quattro formaggi"
         ]
     },
     {
@@ -16878,10 +16877,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza thông hạt",
-            "Pizza nấm truffle",
-            "Pizza pepperoni",
-            "Pizza hải sản"
+            "pizza thông hạt",
+            "pizza nấm truffle",
+            "pizza pepperoni",
+            "pizza hải sản"
         ]
     },
     {
@@ -16916,10 +16915,10 @@
             "High_Sugar"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Pepperoni",
-            "Pizza Hawaii",
-            "Pizza Meat Lovers"
+            "pizza margherita",
+            "pizza pepperoni",
+            "pizza hawaii",
+            "pizza meat lovers"
         ]
     },
     {
@@ -16952,10 +16951,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Pepperoni",
-            "Pizza Capricciosa",
-            "Pizza Quattro Formaggi"
+            "pizza margherita",
+            "pizza pepperoni",
+            "pizza capricciosa",
+            "pizza quattro formaggi"
         ]
     },
     {
@@ -16987,10 +16986,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Mì Ý Bolognese",
-            "Pizza Pepperoni",
-            "Spaghetti Carbonara"
+            "pizza margherita",
+            "mì ý bolognese",
+            "pizza pepperoni",
+            "spaghetti carbonara"
         ]
     },
     {
@@ -17023,10 +17022,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza pepperoni",
-            "Pizza hải sản",
-            "Pizza gà tây",
-            "Pizza phô mai"
+            "pizza pepperoni",
+            "pizza hải sản",
+            "pizza gà tây",
+            "pizza phô mai"
         ]
     },
     {
@@ -17058,10 +17057,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherí",
-            "Pizza Napoli",
-            "Pizza Capricciosa",
-            "Pizza Quattro Formaggi"
+            "pizza margherí",
+            "pizza napoli",
+            "pizza capricciosa",
+            "pizza quattro formaggi"
         ]
     },
     {
@@ -17093,10 +17092,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Pepperoni",
-            "Pizza Capricciosa",
-            "Pizza Quattro Formaggi"
+            "pizza margherita",
+            "pizza pepperoni",
+            "pizza capricciosa",
+            "pizza quattro formaggi"
         ]
     },
     {
@@ -17128,10 +17127,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza Margherita",
-            "Pizza Pepperoni",
-            "Pizza Capricciosa",
-            "Pizza Quattro Formaggi"
+            "pizza margherita",
+            "pizza pepperoni",
+            "pizza capricciosa",
+            "pizza quattro formaggi"
         ]
     },
     {
@@ -17164,10 +17163,10 @@
             "Spicy"
         ],
         "menu": [
-            "Pizza pepperoni",
-            "Pizza hải sản",
-            "Pizza gà tây",
-            "Pizza nấm"
+            "pizza pepperoni",
+            "pizza hải sản",
+            "pizza gà tây",
+            "pizza nấm"
         ]
     },
     {
@@ -17199,10 +17198,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Chay",
-            "Canh Chua Chay",
-            "Bún Chay",
-            "Đậu Hũ Chiên Ngâm"
+            "cơm chiên chay",
+            "canh chua chay",
+            "bún chay",
+            "đậu hũ chiên ngâm"
         ]
     },
     {
@@ -17235,10 +17234,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Nấm",
-            "Canh Chua Nấm",
-            "Đậu Hũ Chiên Giòn",
-            "Cháo Gạo Đeng"
+            "cơm chiên nấm",
+            "canh chua nấm",
+            "đậu hũ chiên giòn",
+            "cháo gạo đeng"
         ]
     },
     {
@@ -17270,10 +17269,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Mộc Qua",
-            "Canh Chua Lần",
-            "Đậu Hũ Sốt Tương",
-            "Bún Đậu"
+            "cơm chiên mộc qua",
+            "canh chua lần",
+            "đậu hũ sốt tương",
+            "bún đậu"
         ]
     },
     {
@@ -17305,10 +17304,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Sinh tố rau củ",
-            "Cơm chiên chay",
-            "Canh chua chay"
+            "cháo yến mạch",
+            "sinh tố rau củ",
+            "cơm chiên chay",
+            "canh chua chay"
         ]
     },
     {
@@ -17340,10 +17339,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Cơm chay rau củ",
-            "Canh chay nấm",
-            "Sườn chay nấm"
+            "cháo yến mạch",
+            "cơm chay rau củ",
+            "canh chay nấm",
+            "sườn chay nấm"
         ]
     },
     {
@@ -17376,10 +17375,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chay Gạo Lứt",
-            "Canh Chua Chay",
-            "Rau Luộc",
-            "Gỏi Đu Đủ Ngộn"
+            "cơm chay gạo lứt",
+            "canh chua chay",
+            "rau luộc",
+            "gỏi đu đủ ngộn"
         ]
     },
     {
@@ -17411,10 +17410,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Sinh tố rau củ",
-            "Cơm chay",
-            "Canh chay thập cẩm"
+            "cháo yến mạch",
+            "sinh tố rau củ",
+            "cơm chay",
+            "canh chay thập cẩm"
         ]
     },
     {
@@ -17447,10 +17446,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm tấm chay",
-            "Đậu phụ sốt cà chua",
-            "Canh chua chay",
-            "Gỏi dưa chuột"
+            "cơm tấm chay",
+            "đậu phụ sốt cà chua",
+            "canh chua chay",
+            "gỏi dưa chuột"
         ]
     },
     {
@@ -17482,10 +17481,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Đậu phụ sốt cà chua",
-            "Canh chay",
-            "Bánh xèo chay"
+            "cháo yến mạch",
+            "đậu phụ sốt cà chua",
+            "canh chay",
+            "bánh xèo chay"
         ]
     },
     {
@@ -17517,10 +17516,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Mộc Qua",
-            "Canh Chua Đậu Đen",
-            "Rau Cuộn Thanh Mộc",
-            "Bún Chay Thắng Hiền"
+            "cơm chiên mộc qua",
+            "canh chua đậu đen",
+            "rau cuộn thanh mộc",
+            "bún chay thắng hiền"
         ]
     },
     {
@@ -17552,10 +17551,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay",
-            "Canh chay",
-            "Xôi gấc",
-            "Bún chay"
+            "cơm chay",
+            "canh chay",
+            "xôi gấc",
+            "bún chay"
         ]
     },
     {
@@ -17587,10 +17586,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo yến mạch",
-            "Đậu phụ sốt cà chua",
-            "Canh bầu",
-            "Bánh xèo chay"
+            "cháo yến mạch",
+            "đậu phụ sốt cà chua",
+            "canh bầu",
+            "bánh xèo chay"
         ]
     },
     {
@@ -17622,10 +17621,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Naro Chay",
-            "Canh Chua Naro",
-            "Gỏi Rau Xin Naro",
-            "Đậu Đen Min Naro"
+            "lẩu naro chay",
+            "canh chua naro",
+            "gỏi rau xin naro",
+            "đậu đen min naro"
         ]
     },
     {
@@ -17656,10 +17655,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sinh Tố Chay",
-            "Salad Rau Củ",
-            "Cơm Chiên Chay",
-            "Gỏi Đậu Đen"
+            "sinh tố chay",
+            "salad rau củ",
+            "cơm chiên chay",
+            "gỏi đậu đen"
         ]
     },
     {
@@ -17691,10 +17690,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay nấm",
-            "Canh chay nấm",
-            "Mì chay nấm",
-            "Gỏi nấm"
+            "cơm chay nấm",
+            "canh chay nấm",
+            "mì chay nấm",
+            "gỏi nấm"
         ]
     },
     {
@@ -17727,10 +17726,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sinh tố rau má",
-            "Cháo yến mạch",
-            "Cơm chiên chay",
-            "Sườn non kho tiêu"
+            "sinh tố rau má",
+            "cháo yến mạch",
+            "cơm chiên chay",
+            "sườn non kho tiêu"
         ]
     },
     {
@@ -17763,10 +17762,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thập cẩm",
-            "Canh chua chay",
-            "Gỏi cuốn chay",
-            "Bánh xèo chay"
+            "cơm chay thập cẩm",
+            "canh chua chay",
+            "gỏi cuốn chay",
+            "bánh xèo chay"
         ]
     },
     {
@@ -17797,10 +17796,10 @@
             "Low_GI_Diet"
         ],
         "menu": [
-            "Ngán Chay Tỏi Quận 7",
-            "Rau Củ Xào",
-            "Đậu Đen Sốt Kem",
-            "Canh Chua Trắng"
+            "ngán chay tỏi quận 7",
+            "rau củ xào",
+            "đậu đen sốt kem",
+            "canh chua trắng"
         ]
     },
     {
@@ -17832,10 +17831,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Mộc Nam",
-            "Canh Chua Chay",
-            "Đậu Hũ Chiên Giòn",
-            "Bún Chay Thanh Mát"
+            "cơm chiên mộc nam",
+            "canh chua chay",
+            "đậu hũ chiên giòn",
+            "bún chay thanh mát"
         ]
     },
     {
@@ -17867,10 +17866,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Chay",
-            "Canh Chua Chay",
-            "Bún Chay",
-            "Gỏi cuốn chay"
+            "cơm chiên chay",
+            "canh chua chay",
+            "bún chay",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -17901,10 +17900,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay",
-            "Canh chay",
-            "Đậu phụ sốt cà chua",
-            "Bánh xèo chay"
+            "cơm chay",
+            "canh chay",
+            "đậu phụ sốt cà chua",
+            "bánh xèo chay"
         ]
     },
     {
@@ -17937,10 +17936,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Lẩu Chay Hoa Ly",
-            "Canh Chua Chay",
-            "Gỏi Đậu Đen Chay",
-            "Cơm Chiên Mộc Qua"
+            "lẩu chay hoa ly",
+            "canh chua chay",
+            "gỏi đậu đen chay",
+            "cơm chiên mộc qua"
         ]
     },
     {
@@ -17973,8 +17972,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở chay",
-            "Cơm chay"
+            "phở chay",
+            "cơm chay"
         ]
     },
     {
@@ -18006,10 +18005,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay thập cẩm",
-            "Canh chay bún riêu",
-            "Xôi gấc",
-            "Chè đậu xanh"
+            "cơm chay thập cẩm",
+            "canh chay bún riêu",
+            "xôi gấc",
+            "chè đậu xanh"
         ]
     },
     {
@@ -18041,10 +18040,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay",
-            "Canh chay",
-            "Đậu phụ sốt cà chua",
-            "Bánh xèo chay"
+            "cơm chay",
+            "canh chay",
+            "đậu phụ sốt cà chua",
+            "bánh xèo chay"
         ]
     },
     {
@@ -18075,10 +18074,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Rau Củ",
-            "Canh Chua Chay",
-            "Bún Đậu Xanh",
-            "Gỏi Đu Đủ Ngó Sen"
+            "cơm chiên rau củ",
+            "canh chua chay",
+            "bún đậu xanh",
+            "gỏi đu đủ ngó sen"
         ]
     },
     {
@@ -18110,10 +18109,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm chay than",
-            "Canh chay rau củ",
-            "Bún chay thập cẩm",
-            "Gỏi cuốn chay"
+            "cơm chay than",
+            "canh chay rau củ",
+            "bún chay thập cẩm",
+            "gỏi cuốn chay"
         ]
     },
     {
@@ -18145,11 +18144,11 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cơm Chiên Chay",
-            "Canh Chua Chay",
-            "Bún Chay",
-            "Đậu Đen Min",
-            "Gỏi Đậu Đen"
+            "cơm chiên chay",
+            "canh chua chay",
+            "bún chay",
+            "đậu đen min",
+            "gỏi đậu đen"
         ]
     },
     {
@@ -18183,10 +18182,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cháo Yến",
-            "Cơm Ngũ Quả",
-            "Canh Chua Lần",
-            "Đậu Hũ Chiên"
+            "cháo yến",
+            "cơm ngũ quả",
+            "canh chua lần",
+            "đậu hũ chiên"
         ]
     },
     {
@@ -18219,10 +18218,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bánh Croissant",
-            "Cà Phê Sữa",
-            "Bánh Flan",
-            "Muffin"
+            "bánh croissant",
+            "cà phê sữa",
+            "bánh flan",
+            "muffin"
         ]
     },
     {
@@ -18255,10 +18254,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà sữa boba",
-            "Bánh mì ngọt",
-            "Bánh xèo"
+            "cà phê sữa đá",
+            "trà sữa boba",
+            "bánh mì ngọt",
+            "bánh xèo"
         ]
     },
     {
@@ -18290,10 +18289,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa",
-            "Cà phê sữa đá",
-            "Bánh mì ngọt",
-            "Sinh tố trái cây"
+            "trà sữa",
+            "cà phê sữa đá",
+            "bánh mì ngọt",
+            "sinh tố trái cây"
         ]
     },
     {
@@ -18324,10 +18323,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Cà phê sữa đá",
-            "Kokeshi",
-            "Phở gà"
+            "bún bò huế",
+            "cà phê sữa đá",
+            "kokeshi",
+            "phở gà"
         ]
     },
     {
@@ -18359,9 +18358,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa",
-            "Sinh tố",
-            "Nước ngọt"
+            "trà sữa",
+            "sinh tố",
+            "nước ngọt"
         ]
     },
     {
@@ -18392,10 +18391,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê muối",
-            "Cà phê đen đá",
-            "Cà phê trứng"
+            "cà phê sữa đá",
+            "cà phê muối",
+            "cà phê đen đá",
+            "cà phê trứng"
         ]
     },
     {
@@ -18427,10 +18426,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê Sumatra",
-            "Bia thủ công",
-            "Bánh mì Cuba",
-            "Gà nướng"
+            "cà phê sumatra",
+            "bia thủ công",
+            "bánh mì cuba",
+            "gà nướng"
         ]
     },
     {
@@ -18462,9 +18461,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bánh mì kẹp thịt",
-            "Trứng chưng"
+            "cà phê sữa đá",
+            "bánh mì kẹp thịt",
+            "trứng chưng"
         ]
     },
     {
@@ -18497,10 +18496,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Trà đá",
-            "Sữa đá",
-            "Cà phê sữa đá"
+            "bún chả",
+            "trà đá",
+            "sữa đá",
+            "cà phê sữa đá"
         ]
     },
     {
@@ -18532,10 +18531,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Nước rau má",
-            "Nước mía",
-            "Bánh mì kẹp thịt",
-            "Trà đá"
+            "nước rau má",
+            "nước mía",
+            "bánh mì kẹp thịt",
+            "trà đá"
         ]
     },
     {
@@ -18568,10 +18567,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Nước mía",
-            "Trà đá",
-            "Phổ mai"
+            "bún chả",
+            "nước mía",
+            "trà đá",
+            "phổ mai"
         ]
     },
     {
@@ -18603,10 +18602,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Nước mía",
-            "Sữa đậu nành",
-            "Trà đá"
+            "bún chả",
+            "nước mía",
+            "sữa đậu nành",
+            "trà đá"
         ]
     },
     {
@@ -18639,10 +18638,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà sữa",
-            "Bánh ngọt",
-            "Cha trắng",
-            "Bánh flan"
+            "trà sữa",
+            "bánh ngọt",
+            "cha trắng",
+            "bánh flan"
         ]
     },
     {
@@ -18675,10 +18674,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bánh mì ngọt",
-            "Bánh xèo",
-            "Trứng rán"
+            "cà phê sữa đá",
+            "bánh mì ngọt",
+            "bánh xèo",
+            "trứng rán"
         ]
     },
     {
@@ -18709,10 +18708,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê đen truyền thống",
-            "Trứng chưng",
-            "Bánh mì Trung Nguyên"
+            "cà phê sữa đá",
+            "cà phê đen truyền thống",
+            "trứng chưng",
+            "bánh mì trung nguyên"
         ]
     },
     {
@@ -18743,10 +18742,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê muối",
-            "Trà sữa",
-            "Bánh mì"
+            "cà phê sữa đá",
+            "cà phê muối",
+            "trà sữa",
+            "bánh mì"
         ]
     },
     {
@@ -18778,8 +18777,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Trà matcha",
-            "Bánhữa matcha"
+            "trà matcha",
+            "bánhữa matcha"
         ]
     },
     {
@@ -18810,10 +18809,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bánh mì ngọt",
-            "Trà đá nóng",
-            "Bánh xèo"
+            "cà phê sữa đá",
+            "bánh mì ngọt",
+            "trà đá nóng",
+            "bánh xèo"
         ]
     },
     {
@@ -18845,10 +18844,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê đen nóng",
-            "Trà đá",
-            "Bánh mì"
+            "cà phê sữa đá",
+            "cà phê đen nóng",
+            "trà đá",
+            "bánh mì"
         ]
     },
     {
@@ -18880,10 +18879,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Cà phê muối",
-            "Cà phê phin đen",
-            "Cà phê trứng"
+            "cà phê sữa đá",
+            "cà phê muối",
+            "cà phê phin đen",
+            "cà phê trứng"
         ]
     },
     {
@@ -18914,10 +18913,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Trà đá nóng",
-            "Bánh mì ngọt",
-            "Bánh pía"
+            "cà phê sữa đá",
+            "trà đá nóng",
+            "bánh mì ngọt",
+            "bánh pía"
         ]
     },
     {
@@ -18949,10 +18948,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Sinh Tố Trái Cây",
-            "Nước É",
-            "Sữa Khoai Mâm",
-            "Nước Chanh Solanum"
+            "sinh tố trái cây",
+            "nước é",
+            "sữa khoai mâm",
+            "nước chanh solanum"
         ]
     },
     {
@@ -18984,10 +18983,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả",
-            "Nước mía",
-            "Sữa đậu nành",
-            "Trà đá"
+            "bún chả",
+            "nước mía",
+            "sữa đậu nành",
+            "trà đá"
         ]
     },
     {
@@ -19018,10 +19017,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bún thịt nướng",
-            "Mì Quảng",
-            "Chè Thái"
+            "cà phê sữa đá",
+            "bún thịt nướng",
+            "mì quảng",
+            "chè thái"
         ]
     },
     {
@@ -19053,8 +19052,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Trắng",
-            "Nước Khoáng"
+            "bún trắng",
+            "nước khoáng"
         ]
     },
     {
@@ -19087,8 +19086,8 @@
             "High_Sugar"
         ],
         "menu": [
-            "Mì Rc",
-            "Bún bò Huế"
+            "mì rc",
+            "bún bò huế"
         ]
     },
     {
@@ -19120,10 +19119,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà Phê Sữa Đá",
-            "Bánh Xèo",
-            "Phở Bò",
-            "Bún Chả"
+            "cà phê sữa đá",
+            "bánh xèo",
+            "phở bò",
+            "bún chả"
         ]
     },
     {
@@ -19152,9 +19151,9 @@
             "High_Sugar"
         ],
         "menu": [
-            "Cà phê sầu riêng",
-            "Sáng",
-            "Trà đá"
+            "cà phê sầu riêng",
+            "sáng",
+            "trà đá"
         ]
     },
     {
@@ -19186,10 +19185,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Phở gà",
-            "Nước mía",
-            "Trà đá"
+            "bún bò huế",
+            "phở gà",
+            "nước mía",
+            "trà đá"
         ]
     },
     {
@@ -19220,10 +19219,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bia Hà Nội",
-            "Phở gà",
-            "Bánh mì kẹp thịt"
+            "cà phê sữa đá",
+            "bia hà nội",
+            "phở gà",
+            "bánh mì kẹp thịt"
         ]
     },
     {
@@ -19255,10 +19254,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cà phê sữa đá",
-            "Bia Hà Nội",
-            "Bánh mì kẹp thịt",
-            "Phở gà"
+            "cà phê sữa đá",
+            "bia hà nội",
+            "bánh mì kẹp thịt",
+            "phở gà"
         ]
     },
     {
@@ -19289,10 +19288,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò",
-            "Bún Chả",
-            "Phở Gà",
-            "Bánh Xèo"
+            "phở bò",
+            "bún chả",
+            "phở gà",
+            "bánh xèo"
         ]
     },
     {
@@ -19324,8 +19323,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh mì phở"
+            "phở bò truyền thống",
+            "bánh mì phở"
         ]
     },
     {
@@ -19356,8 +19355,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh xèo miền Trung"
+            "phở bò truyền thống",
+            "bánh xèo miền trung"
         ]
     },
     {
@@ -19387,8 +19386,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Hà Nội",
-            "Phở Bò"
+            "bún hà nội",
+            "phở bò"
         ]
     },
     {
@@ -19420,10 +19419,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Phở Gà",
-            "Bánh Xèo",
-            "Bún Chả"
+            "phở bò trắng",
+            "phở gà",
+            "bánh xèo",
+            "bún chả"
         ]
     },
     {
@@ -19455,8 +19454,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Chua Lạng Sơn",
-            "Vịt Quay Mắc Mật"
+            "phở chua lạng sơn",
+            "vịt quay mắc mật"
         ]
     },
     {
@@ -19488,8 +19487,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bánh Xèo"
+            "bún bò huế",
+            "bánh xèo"
         ]
     },
     {
@@ -19521,8 +19520,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bò kho Hương Sen"
+            "phở bò truyền thống",
+            "bò kho hương sen"
         ]
     },
     {
@@ -19553,10 +19552,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Kim Hưng",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Cháo gà"
+            "phở kim hưng",
+            "bánh xèo",
+            "gỏi cuốn",
+            "cháo gà"
         ]
     },
     {
@@ -19589,8 +19588,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Bánh xèo"
+            "bún bò huế",
+            "bánh xèo"
         ]
     },
     {
@@ -19622,10 +19621,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trài",
-            "Phở Gà",
-            "Bánh Xèo",
-            "Bún Chả Cá"
+            "phở bò trài",
+            "phở gà",
+            "bánh xèo",
+            "bún chả cá"
         ]
     },
     {
@@ -19658,10 +19657,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Bánh xèo Huế",
-            "Chả tái",
-            "Gỏi cuốn bún"
+            "bún bò huế",
+            "bánh xèo huế",
+            "chả tái",
+            "gỏi cuốn bún"
         ]
     },
     {
@@ -19692,10 +19691,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò",
-            "Phở gà",
-            "Bánh xèo",
-            "Gỏi cuốn"
+            "phở bò",
+            "phở gà",
+            "bánh xèo",
+            "gỏi cuốn"
         ]
     },
     {
@@ -19726,10 +19725,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Tùng",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Cháo gà"
+            "phở tùng",
+            "bánh xèo",
+            "gỏi cuốn",
+            "cháo gà"
         ]
     },
     {
@@ -19761,10 +19760,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Trắng",
-            "Bánh Xèo",
-            "Gỏi cuốn",
-            "Thịt Nướng"
+            "phở trắng",
+            "bánh xèo",
+            "gỏi cuốn",
+            "thịt nướng"
         ]
     },
     {
@@ -19796,10 +19795,10 @@
             "Shellfish"
         ],
         "menu": [
-            "Bún thịt sapi",
-            "Bún chả",
-            "Gỏi cuốn",
-            "Bánh xèo"
+            "bún thịt sapi",
+            "bún chả",
+            "gỏi cuốn",
+            "bánh xèo"
         ]
     },
     {
@@ -19832,10 +19831,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Trắng",
-            "Bánh Xèo Phú Mỹ Hưng",
-            "Gỏi cuốn bún chả",
-            "Cháo gà thanh nhiệt"
+            "phở bò trắng",
+            "bánh xèo phú mỹ hưng",
+            "gỏi cuốn bún chả",
+            "cháo gà thanh nhiệt"
         ]
     },
     {
@@ -19868,8 +19867,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh xèo Trang"
+            "phở bò truyền thống",
+            "bánh xèo trang"
         ]
     },
     {
@@ -19904,10 +19903,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò chả cua",
-            "Chả cá lam",
-            "Gỏi cuốn bún",
-            "Cá kho tộ"
+            "bún bò chả cua",
+            "chả cá lam",
+            "gỏi cuốn bún",
+            "cá kho tộ"
         ]
     },
     {
@@ -19939,10 +19938,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở gà dzai nhân",
-            "Bánh xèo chả gà",
-            "Gà nướng mật ong",
-            "Xôi gà"
+            "phở gà dzai nhân",
+            "bánh xèo chả gà",
+            "gà nướng mật ong",
+            "xôi gà"
         ]
     },
     {
@@ -19975,10 +19974,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Mỹ",
-            "Bún bò Huế",
-            "Bún chả cá",
-            "Bún thịt bò"
+            "bún bò mỹ",
+            "bún bò huế",
+            "bún chả cá",
+            "bún thịt bò"
         ]
     },
     {
@@ -20011,8 +20010,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún chả Hà Nội",
-            "Thịt nướng"
+            "bún chả hà nội",
+            "thịt nướng"
         ]
     },
     {
@@ -20045,9 +20044,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Bắc Hải",
-            "Bánh Xèo",
-            "Gỏi cuốn bún chả"
+            "phở bò bắc hải",
+            "bánh xèo",
+            "gỏi cuốn bún chả"
         ]
     },
     {
@@ -20079,10 +20078,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Huế",
-            "Bún chả Huế",
-            "Chẩm cài",
-            "Thịt bò luộc"
+            "bún bò huế",
+            "bún chả huế",
+            "chẩm cài",
+            "thịt bò luộc"
         ]
     },
     {
@@ -20114,8 +20113,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh mì Phở"
+            "phở bò truyền thống",
+            "bánh mì phở"
         ]
     },
     {
@@ -20145,8 +20144,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh xèo miền Trung"
+            "phở bò truyền thống",
+            "bánh xèo miền trung"
         ]
     },
     {
@@ -20176,10 +20175,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bò tơ nướng",
-            "Bò tơ sốt vang",
-            "Gỏi cuốn bơ",
-            "Cháo bò tơ"
+            "bò tơ nướng",
+            "bò tơ sốt vang",
+            "gỏi cuốn bơ",
+            "cháo bò tơ"
         ]
     },
     {
@@ -20209,8 +20208,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh xèo miền Trung"
+            "phở bò truyền thống",
+            "bánh xèo miền trung"
         ]
     },
     {
@@ -20241,10 +20240,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Cá xào rau cải",
-            "Thịt xào me",
-            "Bún chả",
-            "Gỏi cuốn"
+            "cá xào rau cải",
+            "thịt xào me",
+            "bún chả",
+            "gỏi cuốn"
         ]
     },
     {
@@ -20277,10 +20276,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Bò Thìn",
-            "Bánh Xèo Chả Hà Nội",
-            "Gỏi cuốn tôm thịt",
-            "Bún chả cá"
+            "phở bò thìn",
+            "bánh xèo chả hà nội",
+            "gỏi cuốn tôm thịt",
+            "bún chả cá"
         ]
     },
     {
@@ -20310,8 +20309,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở bò truyền thống",
-            "Bánh mì phở"
+            "phở bò truyền thống",
+            "bánh mì phở"
         ]
     },
     {
@@ -20342,10 +20341,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Mắm Nêm",
-            "Nem Nướng",
-            "Gỏi Bò Đà Nẵng",
-            "Bánh Xèo"
+            "bún mắm nêm",
+            "nem nướng",
+            "gỏi bò đà nẵng",
+            "bánh xèo"
         ]
     },
     {
@@ -20378,8 +20377,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Thìn",
-            "Bánh Xèo"
+            "phở thìn",
+            "bánh xèo"
         ]
     },
     {
@@ -20411,9 +20410,9 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bánh Bèo",
-            "Phở Bò"
+            "bún bò huế",
+            "bánh bèo",
+            "phở bò"
         ]
     },
     {
@@ -20445,8 +20444,8 @@
         ],
         "potential_tag": [],
         "menu": [
-            "Bún bò Mỹ",
-            "Bánh xèo"
+            "bún bò mỹ",
+            "bánh xèo"
         ]
     },
     {
@@ -20480,8 +20479,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún bò Thái",
-            "Gỏi cuốn Thái"
+            "bún bò thái",
+            "gỏi cuốn thái"
         ]
     },
     {
@@ -20513,8 +20512,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Phở",
-            "Phở Bò"
+            "bún phở",
+            "phở bò"
         ]
     },
     {
@@ -20544,8 +20543,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Mắm Út",
-            "Bún Chả Cá"
+            "bún mắm út",
+            "bún chả cá"
         ]
     },
     {
@@ -20577,10 +20576,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Chè Cây Táo",
-            "Bún bò Huế",
-            "Bún mắm",
-            "Bún riêu cua"
+            "chè cây táo",
+            "bún bò huế",
+            "bún mắm",
+            "bún riêu cua"
         ]
     },
     {
@@ -20614,8 +20613,8 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Mì ốc hến",
-            "Bún ốc hến"
+            "mì ốc hến",
+            "bún ốc hến"
         ]
     },
     {
@@ -20646,10 +20645,10 @@
             "Spicy"
         ],
         "menu": [
-            "Bò tơ nướng",
-            "Bò tơ sốt cà chua",
-            "Gà nướng",
-            "Bún bò Huế"
+            "bò tơ nướng",
+            "bò tơ sốt cà chua",
+            "gà nướng",
+            "bún bò huế"
         ]
     },
     {
@@ -20680,10 +20679,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Phở Gà Trắng",
-            "Bánh Xèo",
-            "Gà Nướng",
-            "Cháo Gà"
+            "phở gà trắng",
+            "bánh xèo",
+            "gà nướng",
+            "cháo gà"
         ]
     },
     {
@@ -20716,10 +20715,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bún Bò Huế",
-            "Bánh Xèo",
-            "Cháo Gà",
-            "Mì Quảng"
+            "bún bò huế",
+            "bánh xèo",
+            "cháo gà",
+            "mì quảng"
         ]
     },
     {
@@ -20752,10 +20751,10 @@
             "Gluten_Present"
         ],
         "menu": [
-            "Bò Nướng Lá Dứa",
-            "Bò Xào Bơ",
-            "Gầu Bò Nướng",
-            "Sườn Nướng Trứng"
+            "bò nướng lá dứa",
+            "bò xào bơ",
+            "gầu bò nướng",
+            "sườn nướng trứng"
         ]
     }
 ]

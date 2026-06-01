@@ -37,7 +37,7 @@ class LLMParser():
             - "meal": (String) Bắt buộc. Chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya".
             - "type": (Array of Strings) Loại nhà hàng (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về [] nếu không có.
             - "semantic_query": (String) Các từ khóa mô tả cảm xúc, không khí, view, hoặc tiện ích (máy lạnh, wifi...). Các từ cách nhau bằng dấu phẩy. Trả về null nếu không có.
-            - "dish": (String) Một món ăn duy nhất người dùng yêu cầu trong bữa đó, trả về "" nếu người dùng không yêu cầu
+            - "dish": (String) Một món ăn duy nhất người dùng yêu cầu trong bữa đó (viết thường - lowercase), trả về "" nếu người dùng không yêu cầu
         Input của người dùng: "{user_prompt}"
         Output JSON: 
         """
