@@ -301,7 +301,8 @@ async def process_prompt(request: UserRequest):
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
-            parsed_json
+            parsed_json,
+            max_per_meal = 3 if wants_alternative else 1
         )
 
         # 5. Result processing
