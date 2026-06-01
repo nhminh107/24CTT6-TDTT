@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { ArrowLeft, Menu, X } from "lucide-react";
+import { ArrowLeft, CalendarCheck, Menu, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
 import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
 import ItineraryPanel from "./ItineraryPanel";
+import RestaurantCard from "@/components/ui/RestaurantCard";
 
 type Restaurant = {
   id: string;
@@ -49,6 +50,10 @@ export default function MainDashboard() {
   const { user } = useAuth();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
+  const [restaurantModalOpen, setRestaurantModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [dashboardState, setDashboardState] = useState<DashboardState>({
     location: "",
     placeId: "",
@@ -61,6 +66,17 @@ export default function MainDashboard() {
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+    setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   const budgetDisplay = useMemo(() => {
     const amount = Number(dashboardState.budget);
@@ -97,6 +113,38 @@ export default function MainDashboard() {
     () => buildMealStops(dashboardState.selectedRestaurants),
     [dashboardState.selectedRestaurants]
   );
+
+  const selectedRestaurant = useMemo(
+    () =>
+      dashboardState.selectedRestaurants.find((restaurant) => restaurant.id === selectedRestaurantId) ||
+      null,
+    [dashboardState.selectedRestaurants, selectedRestaurantId]
+  );
+
+  const itineraryCount = dashboardState.selectedRestaurants.length;
+
+  const handleSidebarToggle = () => {
+    if (isMobile) {
+      setMobileSidebarOpen((prev) => !prev);
+      return;
+    }
+    setSidebarOpen((prev) => !prev);
+  };
+
+  const handleRestaurantSelect = (restaurantId: string) => {
+    setSelectedRestaurantId(restaurantId);
+    setItineraryTab("detail");
+    if (isMobile) {
+      setRestaurantModalOpen(true);
+      setMobileItineraryOpen(false);
+    }
+  };
+
+  const handleCloseDetail = () => {
+    setSelectedRestaurantId(null);
+    setItineraryTab("itinerary");
+    setRestaurantModalOpen(false);
+  };
 
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
@@ -167,10 +215,10 @@ export default function MainDashboard() {
       <div className="z-10 flex items-center gap-4">
         <button
           type="button"
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+          onClick={handleSidebarToggle}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-100"
         >
-          {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          {(isMobile ? mobileSidebarOpen : sidebarOpen) ? <X size={20} /> : <Menu size={20} />}
         </button>
         <Link
           href="/"
@@ -197,10 +245,28 @@ export default function MainDashboard() {
       <div className="flex h-[calc(100vh-73px)] w-full overflow-hidden">
         {/* Left Sidebar */}
         <aside
-          className={`${
-            sidebarOpen ? "w-90" : "w-0"
-          } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`}
+          className={
+            isMobile
+              ? `fixed inset-0 z-40 w-full overflow-y-auto bg-white/95 backdrop-blur transition-transform duration-300 ease-out ${
+                  mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+                }`
+              : `${
+                  sidebarOpen ? "w-90" : "w-0"
+                } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
+          }
         >
+          {isMobile && (
+            <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200/60 bg-white/90 px-5 py-4 backdrop-blur md:hidden">
+              <span className="text-sm font-semibold text-slate-900">Menu</span>
+              <button
+                type="button"
+                onClick={() => setMobileSidebarOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-700"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          )}
           <SidebarNav
             state={dashboardState}
             onStateChange={setDashboardState}
@@ -220,10 +286,7 @@ export default function MainDashboard() {
                 selectedRestaurants: restaurants
               }));
             }}
-            onRestaurantSelect={(restaurantId) => {
-              setSelectedRestaurantId(restaurantId);
-              setItineraryTab("detail");
-            }}
+            onRestaurantSelect={handleRestaurantSelect}
           />
         </main>
 
@@ -239,18 +302,65 @@ export default function MainDashboard() {
             restaurants={dashboardState.selectedRestaurants}
             selectedRestaurantId={selectedRestaurantId}
             currentTab={itineraryTab}
-            onSelectRestaurant={(id) => {
-              setSelectedRestaurantId(id);
-              setItineraryTab("detail");
-            }}
+            onSelectRestaurant={handleRestaurantSelect}
             onTabChange={setItineraryTab}
-            onCloseDetail={() => {
-              setSelectedRestaurantId(null);
-              setItineraryTab("itinerary");
-            }}
+            onCloseDetail={handleCloseDetail}
           />
         </aside>
       </div>
+
+      {!mobileItineraryOpen && (
+        <button
+          type="button"
+          onClick={() => {
+            setItineraryTab("itinerary");
+            setMobileItineraryOpen(true);
+          }}
+          className="fixed bottom-24 right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition hover:scale-105 md:hidden"
+        >
+          <span className="relative">
+            <CalendarCheck size={20} />
+            {itineraryCount > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-coral text-[10px] font-semibold text-white shadow">
+                {itineraryCount > 9 ? "9+" : itineraryCount}
+              </span>
+            )}
+          </span>
+        </button>
+      )}
+
+      {mobileItineraryOpen && (
+        <div className="fixed inset-0 z-40 flex flex-col bg-white/95 backdrop-blur md:hidden">
+          <div className="flex items-center justify-between border-b border-slate-200/60 px-4 py-3">
+            <div>
+              <p className="text-sm font-semibold text-slate-900">Lịch trình</p>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+                Tổng hợp
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setMobileItineraryOpen(false)}
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition hover:bg-slate-100 hover:text-slate-700"
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <ItineraryPanel
+              location={dashboardState.location}
+              budget={budgetDisplay}
+              mealStops={mealStops}
+              restaurants={dashboardState.selectedRestaurants}
+              selectedRestaurantId={selectedRestaurantId}
+              currentTab={itineraryTab}
+              onSelectRestaurant={handleRestaurantSelect}
+              onTabChange={setItineraryTab}
+              onCloseDetail={handleCloseDetail}
+            />
+          </div>
+        </div>
+      )}
 
       <HealthProfileModal
         open={healthOpen}
@@ -258,6 +368,23 @@ export default function MainDashboard() {
         profile={healthProfile}
         onChange={handleHealthProfileSave}
       />
+
+      {restaurantModalOpen && selectedRestaurant && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-3 backdrop-blur-sm md:hidden">
+          <div className="relative w-full max-w-md overflow-hidden rounded-[28px] bg-white shadow-2xl">
+            <button
+              type="button"
+              onClick={handleCloseDetail}
+              className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-500 shadow-sm transition hover:bg-slate-100 hover:text-slate-900"
+            >
+              <X size={16} />
+            </button>
+            <div className="max-h-[85vh] overflow-y-auto p-3">
+              <RestaurantCard restaurant={selectedRestaurant} />
+            </div>
+          </div>
+        </div>
+      )}
 
       {profileOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 p-4 backdrop-blur-sm">
