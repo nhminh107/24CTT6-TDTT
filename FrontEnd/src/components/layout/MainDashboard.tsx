@@ -9,6 +9,7 @@ import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
 import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
+import InitialLocationModal from "@/components/ui/InitialLocationModal";
 import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 
@@ -66,6 +67,13 @@ export default function MainDashboard() {
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
+  const [locationPromptOpen, setLocationPromptOpen] = useState(false);
+
+  useEffect(() => {
+    if (!dashboardState.location) {
+      setLocationPromptOpen(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -205,6 +213,17 @@ export default function MainDashboard() {
       console.error(error);
       throw error;
     }
+  };
+
+  const handleLocationPromptClose = (location?: string, placeId?: string) => {
+    if (location) {
+      setDashboardState((prev) => ({
+        ...prev,
+        location,
+        placeId: placeId || ""
+      }));
+    }
+    setLocationPromptOpen(false);
   };
 
   return (
@@ -402,6 +421,11 @@ export default function MainDashboard() {
           </div>
         </div>
       )}
+
+      <InitialLocationModal
+        isOpen={locationPromptOpen}
+        onClose={handleLocationPromptClose}
+      />
     </div>
   );
 }
