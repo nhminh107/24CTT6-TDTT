@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
@@ -77,19 +77,93 @@ type ApiResponse = {
 
 type ChatInterfaceProps = {
   placeId: string;
+  chatId?: string | null;
+  initialMessages?: Message[];
   onRestaurantsSelect?: (restaurants: Restaurant[]) => void;
   onRestaurantSelect?: (restaurantId: string) => void;
+  onRefreshHistory?: () => void;
+  onAutoCreateChat?: () => Promise<string | null>;
 };
+
+const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
+  items.map((item, index) => {
+    const imageUrl = item.image_url
+      ? item.image_url.replace(/\\\//g, "/")
+      : "";
+
+    const mapQuery = [item.name, item.address]
+      .filter(Boolean)
+      .join(" ");
+
+    const mapUrl = mapQuery
+      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          mapQuery
+        )}`
+      : "https://www.google.com/maps";
+
+    const ratingValue =
+      typeof item.star === "number"
+        ? item.star
+        : Number(item.star ?? 0) || 0;
+
+    return {
+      id: item.id ?? `${item.name}-${index}`,
+
+      name: item.name || "Nhà hàng",
+      address: item.address || "Chưa có địa chỉ",
+
+      rating: ratingValue,
+      price: item.avg_price ?? "Chưa cập nhật",
+      phone: item.phone_num ?? "",
+
+      mapUrl,
+      imageUrl,
+
+      semanticText: item.semantic_text
+        ? String(item.semantic_text)
+        : "Chưa có mô tả.",
+
+      meals: item.meals ?? [],
+
+      // 👇 QUAN TRỌNG
+      warnings: item.warnings ?? [],
+      notes: item.notes ?? []
+    };
+  });
 
 export default function ChatInterface({
   placeId,
+  chatId,
+  initialMessages = [],
   onRestaurantsSelect,
-  onRestaurantSelect
+  onRestaurantSelect,
+  onRefreshHistory,
+  onAutoCreateChat
 }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [input, setInput] = useState("");
+
+  // Đồng bộ tin nhắn từ props
+  useEffect(() => {
+    if (initialMessages.length > 0) {
+      setMessages(initialMessages.map((m: any) => ({
+        id: m.timestamp || Math.random().toString(),
+        role: m.role,
+        content: m.content,
+        restaurants: m.metadata?.result ? buildRestaurants(m.metadata.result) : undefined
+      })));
+    } else {
+      setMessages([
+        {
+          id: "initial",
+          role: "assistant",
+          content: "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
+        }
+      ]);
+    }
+  }, [initialMessages]);
   const [errorModal, setErrorModal] = useState({
     open: false,
     code: "",
@@ -182,6 +256,7 @@ export default function ChatInterface({
         body: JSON.stringify({
           prompt,
           user_id: user?.uid || "guest_user",
+          chat_id: chatId,
           ...(placeId ? { place_id: placeId } : {})
         })
       });
@@ -264,6 +339,11 @@ export default function ChatInterface({
           setTimeout(() => setShowLoginSuggestion(true), 1500);
         }
       }
+      
+      // Refresh chat history to update titles/timestamps
+      if (chatId) {
+        onRefreshHistory?.();
+      }
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
       setErrorModal({
@@ -287,15 +367,19 @@ export default function ChatInterface({
     }
   };
 
-  const handleSend = () => {
-    if (!input.trim()) {
-      return;
-    }
-    if (isLoading) {
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) {
       return;
     }
     const prompt = input.trim();
     const messageId = Date.now().toString();
+
+    let activeChatId = chatId;
+    
+    // Nếu chưa có chatId (đang ở trạng thái chào mới) và người dùng bắt đầu chat
+    if (!activeChatId && user && onAutoCreateChat) {
+      activeChatId = await onAutoCreateChat();
+    }
     
     // Compact previous messages
     setMessages((prev) => [
@@ -312,7 +396,7 @@ export default function ChatInterface({
     ]);
     
     setInput("");
-    callRestaurantApi(prompt);
+    callRestaurantApi(prompt, activeChatId);
   };
 
   return (

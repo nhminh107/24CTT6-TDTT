@@ -97,40 +97,24 @@ export default function ItineraryPanel({
           </div>
 
           {/* Summary Card */}
-          {(location || budget) && (
+          {budget && budget !== "Chưa nhập" && (
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               className="rounded-2xl border border-brand-coral/20 bg-gradient-to-br from-brand-coral/5 to-brand-flame/5 p-4"
             >
               <div className="space-y-3">
-                {location && (
-                  <div className="flex items-start gap-2">
-                    <MapPin size={14} className="mt-0.5 flex-shrink-0 text-brand-coral" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[10px] font-semibold uppercase text-slate-500">
-                        Vị trí
-                      </p>
-                      <p className="text-xs font-semibold text-slate-900 truncate">
-                        {location}
-                      </p>
-                    </div>
+                <div className="flex items-start gap-2">
+                  <DollarSign size={14} className="mt-0.5 flex-shrink-0 text-brand-teal" />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-semibold uppercase text-slate-500">
+                      Ngân sách
+                    </p>
+                    <p className="text-xs font-semibold text-slate-900">
+                      {budget}
+                    </p>
                   </div>
-                )}
-
-                {budget && budget !== "Chưa nhập" && (
-                  <div className="flex items-start gap-2">
-                    <DollarSign size={14} className="mt-0.5 flex-shrink-0 text-brand-teal" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[10px] font-semibold uppercase text-slate-500">
-                        Ngân sách
-                      </p>
-                      <p className="text-xs font-semibold text-slate-900">
-                        {budget}
-                      </p>
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             </motion.div>
           )}

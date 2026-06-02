@@ -23,11 +23,13 @@ from Back_End.Core.weight_update import Weight_Update
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 from Back_End.Core.semantic_cache import SemanticCacheManager
+from Back_End.Core.user_manager import UserManager
 
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
 # KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
 cache_manager = SemanticCacheManager()
+user_manager = UserManager()
 last_results_by_user = {}
 
 
@@ -157,9 +159,8 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
 class UserRequest(BaseModel):
     prompt: str
     place_id: Optional[str] = None  #ID địa điểm người dùng chọn từ Maps
-    
-    
-    user_id:str # cái này tôi không biết ae làm login lấy từ đâu
+    user_id: str
+    chat_id: Optional[str] = None # ID session chat hiện tại
 
 #Endpoints xử lý chính
 
@@ -174,6 +175,10 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] Specified place_id: {request.place_id}")
 
     try:
+        # Lưu tin nhắn của user nếu có chat_id
+        if request.chat_id:
+            await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
+
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
@@ -339,6 +344,11 @@ async def process_prompt(request: UserRequest):
 
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
         print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
+
+        # Lưu tin nhắn của assistant nếu có chat_id
+        if request.chat_id:
+            msg_content = f"Tôi đã tìm thấy {len(final_result_list)} quán ăn phù hợp cho bạn."
+            await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"result": final_result_list})
 
         return {
             "status": "success",
@@ -530,3 +540,31 @@ async def fetch_user_health_profile(user_id: str):
         }
 
     return doc.to_dict()
+
+# --- Chat History Endpoints ---
+
+@user_router.post("/chat/new/{user_id}")
+async def create_new_chat(user_id: str):
+    chat_id = await user_manager.create_chat_session(user_id)
+    if chat_id:
+        return {"status": "success", "chat_id": chat_id}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể tạo cuộc trò chuyện mới.")
+
+@user_router.get("/chat/history/{user_id}")
+async def get_chat_history(user_id: str):
+    history = await user_manager.get_chat_history(user_id)
+    return {"status": "success", "history": history}
+
+@user_router.get("/chat/{user_id}/{chat_id}/messages")
+async def get_chat_messages(user_id: str, chat_id: str):
+    messages = await user_manager.get_chat_messages(user_id, chat_id)
+    return {"status": "success", "messages": messages}
+
+@user_router.delete("/chat/{user_id}/{chat_id}")
+async def delete_chat(user_id: str, chat_id: str):
+    success = await user_manager.delete_chat_session(user_id, chat_id)
+    if success:
+        return {"status": "success", "message": "Đã xóa cuộc trò chuyện."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể xóa cuộc trò chuyện.")

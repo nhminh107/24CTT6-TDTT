@@ -2,22 +2,29 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, Plus, MessageSquare, LogOut, HeartPulse, User } from "lucide-react";
+import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, MessageCircle, Trash2 } from "lucide-react";
 import LocationSearch from "@/components/ui/LocationSearch";
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
+import Swal from "sweetalert2";
+
+type ChatSession = {
+  id: string;
+  title: string;
+  updated_at: string;
+};
+
 type SidebarNavProps = {
   state: DashboardState;
   onStateChange: (state: DashboardState) => void;
   availableFilters: string[];
   onOpenHealthProfile: () => void;
   onOpenProfileSettings: () => void;
-};
-
-type ChatHistory = {
-  id: string;
-  title: string;
-  timestamp: Date;
+  chatHistory?: ChatSession[];
+  currentChatId?: string | null;
+  onNewChat?: () => void;
+  onChatSelect?: (id: string) => void;
+  onDeleteChat?: (id: string) => void;
 };
 
 export default function SidebarNav({
@@ -25,41 +32,30 @@ export default function SidebarNav({
   onStateChange,
   availableFilters,
   onOpenHealthProfile,
-  onOpenProfileSettings
+  onOpenProfileSettings,
+  chatHistory = [],
+  currentChatId,
+  onNewChat,
+  onChatSelect,
+  onDeleteChat
 }: SidebarNavProps) {
   const { user, logout } = useAuth();
 
-  const [chatHistory, setChatHistory] = useState<ChatHistory[]>([
-    {
-      id: "1",
-      title: "Ẩm thực Đà Nẵng",
-      timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
-    },
-    {
-      id: "2",
-      title: "Fine dining TP.HCM",
-      timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000)
-    },
-    {
-      id: "3",
-      title: "Street food Hà Nội",
-      timestamp: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000)
-    }
-  ]);
-
-  const handleNewChat = () => {
-    const newChat: ChatHistory = {
-      id: Date.now().toString(),
-      title: "Cuộc trò chuyện mới",
-      timestamp: new Date()
-    };
-    setChatHistory((prev) => [newChat, ...prev]);
-    onStateChange({
-      location: "",
-      placeId: "",
-      budget: "",
-      filters: [],
-      selectedRestaurants: []
+  const handleDelete = (e: React.MouseEvent, chatId: string) => {
+    e.stopPropagation();
+    Swal.fire({
+      title: 'Xác nhận xóa?',
+      text: "Bạn sẽ không thể khôi phục cuộc trò chuyện này!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ff6b4a',
+      cancelButtonColor: '#94a3b8',
+      confirmButtonText: 'Xóa ngay',
+      cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        onDeleteChat?.(chatId);
+      }
     });
   };
 
@@ -71,7 +67,7 @@ export default function SidebarNav({
         {/* ── 1. New Chat Button ─────────────────────────────── */}
         <button
           type="button"
-          onClick={handleNewChat}
+          onClick={onNewChat}
           className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:opacity-90 hover:shadow-glow active:scale-[0.98]"
         >
           <Plus size={16} />
@@ -195,18 +191,37 @@ export default function SidebarNav({
                   <button
                     key={chat.id}
                     type="button"
-                    className="group flex w-full items-start gap-2.5 rounded-xl border border-transparent px-3 py-2.5 text-left transition hover:border-slate-200/60 hover:bg-white/70"
+                    onClick={() => onChatSelect?.(chat.id)}
+                    className={`group flex w-full items-start gap-2.5 rounded-xl border px-3 py-2.5 text-left transition ${
+                      currentChatId === chat.id
+                        ? "border-brand-coral/20 bg-brand-coral/5"
+                        : "border-transparent hover:border-slate-200/60 hover:bg-white/70"
+                    }`}
                   >
                     <MessageSquare
                       size={13}
-                      className="mt-0.5 shrink-0 text-slate-300 transition group-hover:text-brand-coral"
+                      className={`mt-0.5 shrink-0 transition ${
+                        currentChatId === chat.id ? "text-brand-coral" : "text-slate-300 group-hover:text-brand-coral"
+                      }`}
                     />
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-xs font-medium text-slate-600 group-hover:text-slate-800">
-                        {chat.title}
-                      </p>
+                      <div className="flex items-center justify-between gap-2">
+                        <p className={`truncate text-xs font-medium transition ${
+                          currentChatId === chat.id ? "text-brand-coral" : "text-slate-600 group-hover:text-slate-800"
+                        }`}>
+                          {chat.title}
+                        </p>
+                        <button
+                          onClick={(e) => handleDelete(e, chat.id)}
+                          className={`shrink-0 rounded-md p-1 transition-colors hover:bg-red-50 hover:text-red-500 ${
+                            currentChatId === chat.id ? "text-slate-400" : "text-transparent group-hover:text-slate-300"
+                          }`}
+                        >
+                          <Trash2 size={12} />
+                        </button>
+                      </div>
                       <p className="mt-0.5 text-[10px] text-slate-300">
-                        {chat.timestamp.toLocaleDateString("vi-VN")}
+                        {new Date(chat.updated_at).toLocaleDateString("vi-VN")}
                       </p>
                     </div>
                   </button>

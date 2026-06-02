@@ -13,7 +13,13 @@ class ChromaDBManager:
 
     def __init__(self):
         if ChromaDBManager._client is None:
-            ChromaDBManager._client = chromadb.PersistentClient(path=DB_PATH)
+            # Sử dụng đường dẫn tuyệt đối để tránh lỗi Windows file locking
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            chroma_main_path = os.path.join(base_dir, "chroma_main_db")
+            if not os.path.exists(chroma_main_path):
+                os.makedirs(chroma_main_path, exist_ok=True)
+            
+            ChromaDBManager._client = chromadb.PersistentClient(path=chroma_main_path)
         if ChromaDBManager._ef is None:
             ChromaDBManager._ef = embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name="paraphrase-multilingual-MiniLM-L12-v2"
@@ -159,12 +165,16 @@ class ChromaDBManager:
             # Chia nhỏ để add nếu dữ liệu quá lớn (ChromaDB có limit batch size)
             batch_size = 1000
             for i in range(0, len(menu_documents), batch_size):
-                self.menu_collection.upsert(
-                    documents=menu_documents[i:i+batch_size],
-                    ids=menu_ids[i:i+batch_size],
-                    metadatas=menu_metadatas[i:i+batch_size]
-                )
-            print("✅ Menu addition completed!")
+                try:
+                    self.menu_collection.upsert(
+                        documents=menu_documents[i:i+batch_size],
+                        ids=menu_ids[i:i+batch_size],
+                        metadatas=menu_metadatas[i:i+batch_size]
+                    )
+                except Exception as e:
+                    print(f"⚠️ Warning: Failed to add batch {i} due to ChromaDB error: {e}")
+                    # Nếu lỗi là HNSW, có thể bỏ qua batch này để server vẫn chạy được
+            print("✅ Menu addition process finished!")
 
 if __name__ == "__main__": 
     db_mng = ChromaDBManager() 
