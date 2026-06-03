@@ -353,7 +353,6 @@ export default function ChatInterface({
       {/* Chat Messages Container */}
       <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 pb-4">
         <AnimatePresence>
-          {/* Trường hợp cuộc trò chuyện mới hoàn toàn (Trống) */}
           {messages.length === 0 && !isLoading && (
             <motion.div
               key="welcome-message"
@@ -361,8 +360,19 @@ export default function ChatInterface({
               animate={{ opacity: 1, y: 0 }}
               className="flex gap-3 justify-start"
             >
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-xs font-bold text-white">
-                AI
+              <div className="relative h-8 w-8 flex-shrink-0">
+                <img
+                  src="/assets/images/AI.png"
+                  alt="AI Avatar"
+                  className="h-full w-full rounded-full object-cover shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.classList.add('hidden');
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                  AI
+                </div>
               </div>
               <div className="max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft glass text-slate-700">
                 Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn.
@@ -380,15 +390,25 @@ export default function ChatInterface({
               transition={{ duration: 0.3 }}
               className="space-y-2"
             >
-              {/* Message Bubble */}
               <div
                 className={`flex gap-3 ${
                   message.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
                 {message.role === "assistant" && (
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-xs font-bold text-white">
-                    AI
+                  <div className="relative h-8 w-8 flex-shrink-0">
+                    <img
+                      src="/assets/images/AI.png"
+                      alt="AI Avatar"
+                      className="h-full w-full rounded-full object-cover shadow-sm"
+                      onError={(e) => {
+                        e.currentTarget.classList.add('hidden');
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                      AI
+                    </div>
                   </div>
                 )}
 
@@ -406,9 +426,11 @@ export default function ChatInterface({
                 </motion.div>
 
                 {message.role === "user" && (
-                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
-                    U
-                  </div>
+                  <img
+                    src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "U")}&background=0f172a&color=fff`}
+                    alt="User"
+                    className="h-8 w-8 flex-shrink-0 rounded-full object-cover shadow-sm ring-1 ring-slate-100"
+                  />
                 )}
               </div>
 
@@ -453,15 +475,25 @@ export default function ChatInterface({
           ))}
         </AnimatePresence>
 
-        {/* Loading State */}
         {isLoading && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3 text-xs md:text-sm text-slate-500"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white flex-shrink-0">
-              AI
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <img
+                src="/assets/images/AI.png"
+                alt="AI Avatar"
+                className="h-full w-full rounded-full object-cover shadow-sm"
+                onError={(e) => {
+                  e.currentTarget.classList.add('hidden');
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                AI
+              </div>
             </div>
             <div className="glass rounded-2xl px-4 py-3">
               <div className="flex items-center gap-2">
