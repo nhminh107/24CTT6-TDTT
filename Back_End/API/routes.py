@@ -50,17 +50,6 @@ def _extract_ids_from_result(result):
     return list(dict.fromkeys(ids))
 
 
-def _wants_alternative(prompt: str) -> bool:
-    if not prompt:
-        return False
-    text = prompt.strip().lower()
-    keywords = [
-        "khác", "khác đi", "khác nữa", "quán khác",
-        "đổi quán", "đổi chỗ", "tìm quán khác", "thêm quán"
-    ]
-    return any(keyword in text for keyword in keywords)
-
-
 def _apply_exclusions(filtered_data: dict, exclude_ids: list):
     if not filtered_data or not exclude_ids:
         return filtered_data
@@ -212,11 +201,20 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] Specified place_id: {request.place_id}")
 
     try:
-        # Lấy lịch trình hiện tại để cung cấp ngữ cảnh cho AI
+        # Lấy lịch trình hiện tại và các kết quả gợi ý gần nhất để cung cấp ngữ cảnh cho AI
         current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
+        last_suggestions = last_results_by_user.get(request.user_id, [])
+        
         itinerary_context = ""
         if current_itinerary:
-            itinerary_context = f"\nĐây là lịch trình hiện tại của người dùng: {json.dumps(current_itinerary, ensure_ascii=False)}\nNếu người dùng yêu cầu thay đổi một bữa đã có, hãy gợi ý quán mới. Gợi ý các quán tiếp theo dựa trên vị trí và ngân sách của lịch trình này."
+            itinerary_context += f"\nĐây là lịch trình hiện tại của người dùng (đã chọn): {json.dumps(current_itinerary, ensure_ascii=False)}"
+        
+        if last_suggestions:
+            itinerary_context += f"\nĐây là các quán ăn bạn vừa gợi ý ở lượt trước (nhưng người dùng chưa chọn hoặc có thể không thích): {json.dumps(last_suggestions, ensure_ascii=False)}"
+            itinerary_context += "\nNếu người dùng nói 'quán này', 'chỗ này', 'ở đây' kèm theo thái độ tiêu cực, hãy hiểu là họ đang nói về các quán vừa gợi ý trên."
+
+        if itinerary_context:
+            itinerary_context = f"\n[CONTEXT]{itinerary_context}\n[END CONTEXT]"
 
         # Lưu tin nhắn của user nếu có chat_id
         if request.chat_id:
@@ -271,13 +269,15 @@ async def process_prompt(request: UserRequest):
         health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
         print(f"[API_LOG] Health key: {health_key}")
 
-        weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
+        wants_alternative = parsed_json.get("wants_alternative", False)
+        feedback_reason = parsed_json.get("feedback_reason")
+        
+        weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng, feedback_reason=feedback_reason)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
 
-        wants_alternative = _wants_alternative(request.prompt)
         exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
         bypass_cache = wants_alternative and bool(exclude_ids)
-        print(f"[API_LOG] Wants alternative: {wants_alternative}, Bypass cache: {bypass_cache}")
+        print(f"[API_LOG] Wants alternative: {wants_alternative}, Feedback reason: {feedback_reason}, Bypass cache: {bypass_cache}")
 
         # Check cache
         print("[API_LOG] Checking semantic cache...")
@@ -397,6 +397,13 @@ async def process_prompt(request: UserRequest):
 
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
         print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
+
+        # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
+        for meal in final_itinerary['meal'].unique():
+            meal_results = [r for r in final_result_list if r.get('meal') == meal]
+            if meal_results:
+                first_res = meal_results[0]
+                await itinerary_manager.select_restaurant(request.user_id, meal, first_res)
 
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:
@@ -600,6 +607,8 @@ async def fetch_user_health_profile(user_id: str):
 
 @user_router.post("/chat/new/{user_id}")
 async def create_new_chat(user_id: str):
+    # Reset lịch trình khi tạo cuộc trò chuyện mới
+    await itinerary_manager.reset_itinerary(user_id)
     chat_id = await user_manager.create_chat_session(user_id)
     if chat_id:
         return {"status": "success", "chat_id": chat_id}

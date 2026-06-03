@@ -79,8 +79,7 @@ export default function RestaurantMiniCard({
         "group flex w-full flex-col overflow-hidden rounded-2xl border bg-white/80 backdrop-blur-md transition-all duration-300",
         isSelected
           ? "border-orange-500 bg-orange-50/50 shadow-md ring-1 ring-orange-500"
-          : "border-slate-100 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-sm",
-        isInItinerary && "opacity-60"
+          : "border-slate-100 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-sm"
       )}
     >
       <div className="flex w-full gap-3 p-3 text-left" onClick={() => onSelect(restaurant.id)}>

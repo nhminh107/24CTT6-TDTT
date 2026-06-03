@@ -33,7 +33,9 @@ class LLMParser():
         2. "num_meals": (Integer) Số địa điểm mà người dùng yêu cầu.
         3. "location_pref": (String) Tên Quận/Huyện, Tên đường hoặc khu vực cụ thể. Trả về null nếu không có.
         4. "shu": (Interger) Mức độ cay người dùng yêu cầu, chia làm 5 mức (Từ 1->5). Bắt buộc phải có nếu người dùng có đề cập đến từ "cay". Trả về null nếu không có
-        5. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Mỗi "meal" chỉ xuất hiện tối đa 1 lần. Số danh sách yêu cầu phải khớp với num_meals. Nếu người dùng đưa ra yêu cầu chung không chỉ định bữa, hãy gán vào bữa phù hợp; riêng "quán nước/tiệm bánh/ăn vặt" mặc định gán vào "xế" nếu không nói rõ bữa. Mỗi object bao gồm:
+        5. "wants_alternative": (Boolean) Trả về true nếu người dùng muốn đổi quán, tìm quán khác, hoặc bày tỏ sự không hài lòng với quán hiện tại ("không thích", "không ăn quán này", "chỗ này chán"...).
+        6. "feedback_reason": (String) Lý do người dùng không thích hoặc muốn đổi (nếu có). Chỉ chọn từ: "expensive" (đắt), "far" (xa), "unhealthy" (không lành mạnh), "not_style" (không đúng gu/loại hình), "low_rating" (điểm thấp). Trả về null nếu không có lý do cụ thể.
+        7. "meals_detail": (Array of Objects) Danh sách chi tiết từng bữa ăn được yêu cầu. Mỗi "meal" chỉ xuất hiện tối đa 1 lần. Số danh sách yêu cầu phải khớp với num_meals. Nếu người dùng đưa ra yêu cầu chung không chỉ định bữa, hãy gán vào bữa phù hợp; riêng "quán nước/tiệm bánh/ăn vặt" mặc định gán vào "xế" nếu không nói rõ bữa. Mỗi object bao gồm:
             - "meal": (String) Bắt buộc. Chỉ chọn từ: "sáng", "trưa", "xế", "tối", "khuya".
             - "type": (Array of Strings) Loại nhà hàng (chỉ chọn từ: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Trả về [] nếu không có.
             - "semantic_query": (String) Các từ khóa mô tả cảm xúc, không khí, view, hoặc tiện ích (máy lạnh, wifi...). Các từ cách nhau bằng dấu phẩy. Trả về null nếu không có.

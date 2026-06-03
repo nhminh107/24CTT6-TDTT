@@ -20,7 +20,11 @@ export default function BoardingPass({
   const [isExporting, setIsExporting] = useState(false);
 
   const totalBudget = useMemo(() => {
-    return itinerary.reduce((sum, item) => sum + (item.avg_price || 0), 0);
+    return itinerary.reduce((sum, item) => {
+      const p = item.avg_price !== undefined ? item.avg_price : item.price;
+      const numericPrice = typeof p === "number" ? p : 0;
+      return sum + numericPrice;
+    }, 0);
   }, [itinerary]);
 
   const waitForStableLayout = async () => {
@@ -174,10 +178,16 @@ export default function BoardingPass({
                     <div className="text-right">
                       <div className="flex items-center justify-end gap-1">
                         <Star size={10} className="fill-yellow-400 text-yellow-400" />
-                        <span className="text-[10px] font-bold">{stop.star}</span>
+                        <span className="text-[10px] font-bold">{stop.star || stop.rating || 0}</span>
                       </div>
                       <div className="mt-0.5 text-[10px] font-bold text-brand-teal">
-                        {stop.avg_price?.toLocaleString("vi-VN")}đ
+                        {(() => {
+                          const p = stop.avg_price !== undefined ? stop.avg_price : stop.price;
+                          if (typeof p === "number") {
+                            return `${p.toLocaleString("vi-VN")}đ`;
+                          }
+                          return p || "Chưa cập nhật";
+                        })()}
                       </div>
                     </div>
                   </div>
