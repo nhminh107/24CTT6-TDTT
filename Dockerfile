@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # --- TỐI ƯU HÓA: Tải trước Model Embedding để không phải tải lúc runtime ---
 # Sử dụng chính model khai báo trong database.py
-RUN python3 -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')"
+
 
 # Sao chép toàn bộ mã nguồn
 COPY . .
