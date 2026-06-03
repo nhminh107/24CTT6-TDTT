@@ -64,6 +64,48 @@ export default function MainDashboard() {
     filters: [],
     selectedRestaurants: []
   });
+
+  // Load location from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedLocation = localStorage.getItem("bmi_user_location");
+      const savedPlaceId = localStorage.getItem("bmi_user_place_id");
+      
+      if (savedLocation) {
+        setDashboardState(prev => ({
+          ...prev,
+          location: savedLocation,
+          placeId: savedPlaceId || ""
+        }));
+      } else {
+        setLocationPromptOpen(true);
+      }
+    }
+  }, []);
+
+  const handleLocationPromptClose = (location?: string, placeId?: string) => {
+    if (location) {
+      setDashboardState((prev) => ({
+        ...prev,
+        location,
+        placeId: placeId || ""
+      }));
+      // Persist to localStorage
+      localStorage.setItem("bmi_user_location", location);
+      if (placeId) localStorage.setItem("bmi_user_place_id", placeId);
+    }
+    setLocationPromptOpen(false);
+  };
+
+  // Update localStorage when location changes from sidebar
+  const handleStateChange = (newState: DashboardState) => {
+    if (newState.location !== dashboardState.location) {
+      localStorage.setItem("bmi_user_location", newState.location);
+      localStorage.setItem("bmi_user_place_id", newState.placeId);
+    }
+    setDashboardState(newState);
+  };
+
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
@@ -77,11 +119,8 @@ export default function MainDashboard() {
   const [chatHistory, setChatHistory] = useState<ChatSession[]>([]);
   const [currentMessages, setCurrentMessages] = useState<ChatMessage[]>([]);
 
-  useEffect(() => {
-    if (!dashboardState.location) {
-      setLocationPromptOpen(true);
-    }
-  }, []);
+  // Removed old useEffect that always showed location prompt if empty
+  // (Now handled in the mount useEffect with localStorage check)
 
   // Fetch chat history on user login
   useEffect(() => {
@@ -374,17 +413,6 @@ export default function MainDashboard() {
     }
   };
 
-  const handleLocationPromptClose = (location?: string, placeId?: string) => {
-    if (location) {
-      setDashboardState((prev) => ({
-        ...prev,
-        location,
-        placeId: placeId || ""
-      }));
-    }
-    setLocationPromptOpen(false);
-  };
-
   return (
     <div className="h-screen w-screen overflow-hidden bg-white">
       {/* Top Navigation */}
@@ -447,7 +475,7 @@ export default function MainDashboard() {
           )}
           <SidebarNav
             state={dashboardState}
-            onStateChange={setDashboardState}
+            onStateChange={handleStateChange}
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
