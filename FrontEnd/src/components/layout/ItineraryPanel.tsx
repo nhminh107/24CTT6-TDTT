@@ -119,16 +119,24 @@ export default function ItineraryPanel({
                           {stop.address}
                         </p>
 
-                        <div className="flex items-center gap-2">
-                          <div className="flex items-center gap-1">
-                            <Star size={10} className="fill-yellow-400 text-yellow-400" />
-                            <span className="text-[10px] font-bold text-slate-600">{stop.star}</span>
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1">
+                              <Star size={10} className="fill-yellow-400 text-yellow-400" />
+                              <span className="text-[10px] font-bold text-slate-600">
+                                {stop.star || stop.rating || 0}
+                              </span>
+                            </div>
+                            <div className="h-1 w-1 rounded-full bg-slate-300" />
+                            <span className="text-[10px] font-semibold text-brand-teal">
+                              {(() => {
+                                const p = stop.avg_price !== undefined ? stop.avg_price : stop.price;
+                                if (typeof p === "number") {
+                                  return `${p.toLocaleString("vi-VN")}đ`;
+                                }
+                                return p || "Chưa cập nhật";
+                              })()}
+                            </span>
                           </div>
-                          <div className="h-1 w-1 rounded-full bg-slate-300" />
-                          <span className="text-[10px] font-semibold text-brand-teal">
-                            {stop.avg_price?.toLocaleString("vi-VN")}đ
-                          </span>
-                        </div>
                       </div>
                     </button>
                     

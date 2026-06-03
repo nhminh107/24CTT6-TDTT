@@ -47,6 +47,7 @@ type ChatInterfaceProps = {
   onAutoCreateChat?: () => Promise<string | null>;
   currentItinerary?: any[];
   onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
+  fetchItinerary?: () => Promise<void>;
 };
 
 export default function ChatInterface({
@@ -59,7 +60,8 @@ export default function ChatInterface({
   onRefreshHistory,
   onAutoCreateChat,
   currentItinerary = [],
-  onSelectMeal
+  onSelectMeal,
+  fetchItinerary
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
@@ -199,6 +201,11 @@ export default function ChatInterface({
       // Refresh chat history to update titles/timestamps
       if (activeChatId) {
         onRefreshHistory?.();
+      }
+
+      // Sync itinerary from backend (since it's now updated automatically)
+      if (user && fetchItinerary) {
+        fetchItinerary();
       }
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";

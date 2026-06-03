@@ -569,7 +569,8 @@ export default function MainDashboard() {
             onAutoCreateChat={handleNewChat}
             currentItinerary={currentItinerary}
             onSelectMeal={handleSelectMeal}
-          />
+            fetchItinerary={fetchItinerary}
+            />
         </main>
 
         {/* Right Itinerary Panel */}
