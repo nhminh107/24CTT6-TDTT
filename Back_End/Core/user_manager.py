@@ -265,6 +265,7 @@ class UserManager:
             result = []
             for msg in msgs:
                 data = msg.to_dict()
+                data["id"] = msg.id  # Thêm ID của document
                 if "timestamp" in data:
                     data["timestamp"] = data["timestamp"].isoformat()
                 result.append(data)

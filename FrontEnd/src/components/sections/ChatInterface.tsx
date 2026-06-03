@@ -95,7 +95,7 @@ export default function ChatInterface({
     };
   };
 
-  const callRestaurantApi = async (prompt: string, activeChatId: string | null) => {
+  const callRestaurantApi = async (prompt: string, activeChatId: string | null, latestMessages: Message[]) => {
     setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
@@ -130,7 +130,7 @@ export default function ChatInterface({
         });
         const messageId = Date.now().toString();
         onMessagesChange?.([
-          ...messages,
+          ...latestMessages,
           {
             id: messageId,
             role: "assistant",
@@ -150,7 +150,7 @@ export default function ChatInterface({
         });
         const messageId = Date.now().toString();
         onMessagesChange?.([
-          ...messages,
+          ...latestMessages,
           {
             id: messageId,
             role: "assistant",
@@ -165,10 +165,10 @@ export default function ChatInterface({
       const messageId = Date.now().toString();
       
       // Update parent messages
-      const updatedMessages: Message[] = [
-        ...messages.map((msg, idx) => ({
+      const finalMessages: Message[] = [
+        ...latestMessages.map((msg) => ({
           ...msg,
-          isCompact: true // Luôn compact tin nhắn cũ khi có phản hồi mới
+          isCompact: true 
         })),
         {
           id: messageId,
@@ -178,7 +178,7 @@ export default function ChatInterface({
           isCompact: false
         }
       ];
-      onMessagesChange?.(updatedMessages);
+      onMessagesChange?.(finalMessages);
 
       // Call callback to update dashboard state
       if (assistant.restaurants.length > 0) {
@@ -202,7 +202,7 @@ export default function ChatInterface({
       });
       const messageId = Date.now().toString();
       onMessagesChange?.([
-        ...messages,
+        ...latestMessages,
         {
           id: messageId,
           role: "assistant",
@@ -237,15 +237,18 @@ export default function ChatInterface({
       isCompact: false
     };
 
-    // Update parent with optimistic user message
-    const updatedMessages: Message[] = [
+    // Tạo danh sách tin nhắn mới nhất bao gồm tin nhắn vừa nhập
+    const nextMessages: Message[] = [
       ...messages.map((msg) => ({ ...msg, isCompact: true })),
       newUserMessage
     ];
-    onMessagesChange?.(updatedMessages);
+    
+    // Cập nhật lên parent ngay lập tức (optimistic update)
+    onMessagesChange?.(nextMessages);
     
     setInput("");
-    callRestaurantApi(prompt, activeChatId);
+    // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
+    callRestaurantApi(prompt, activeChatId, nextMessages);
   };
 
   return (
@@ -346,6 +349,7 @@ export default function ChatInterface({
           {/* Trường hợp cuộc trò chuyện mới hoàn toàn (Trống) */}
           {messages.length === 0 && !isLoading && (
             <motion.div
+              key="welcome-message"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               className="flex gap-3 justify-start"
@@ -361,7 +365,7 @@ export default function ChatInterface({
 
           {messages.map((message, index) => (
             <motion.div
-              key={message.id}
+              key={message.id || `msg-${index}`}
               layout
               initial={{ opacity: 0, y: 12, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -382,11 +386,8 @@ export default function ChatInterface({
                 )}
 
                 <motion.div
-                  animate={
-                    message.isCompact
-                      ? { scale: 0.85, opacity: 0.7 }
-                      : { scale: 1, opacity: 1 }
-                  }
+                  initial={{ scale: 1, opacity: 1 }}
+                  animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.3 }}
                   className={`max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft origin-bottom-left ${
                     message.role === "user"
@@ -410,15 +411,11 @@ export default function ChatInterface({
                 message.restaurants.length > 0 && (
                   <motion.div
                     className="ml-11 flex flex-col gap-4 origin-top"
-                    animate={
-                      message.isCompact
-                        ? { scale: 0.88, opacity: 0.45 }
-                        : { scale: 1, opacity: 1 }
-                    }
+                    initial={{ scale: 1, opacity: 1 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.35 }}
                     style={{
                       transformOrigin: "top left",
-                      // pointerEvents: message.isCompact ? "none" : "auto"
                     }}
                   >
                     {message.restaurants.map((restaurant, restaurantIndex) => (

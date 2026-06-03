@@ -167,27 +167,26 @@ cython_debug/
 ehthumbs.db
 Thumbs.db
 
+# Node / Next.js
+node_modules/
+**/node_modules/
+.next/
+**/ .next/
+out/
+build/
+dist/
+.env*.local
+
+# ChromaDB related files
+chroma.sqlite3
+**/chroma.sqlite3
+**/chroma_main_db/
+**/chroma_cache_db/
+**/*-*-*-*-*/
+
 Back_End/Database/chroma.sqlite3
 Back_End/Database/*-*-*-*-*/
-
-# Firebase/Google Cloud Service Account Keys
-serviceAccountKey.json
-*/serviceAccountKey.json
-**/serviceAccountKey.json
-*.json.serviceAccount
-service-account-*.json
-
-# ========================
-# FRONTEND (Next.js / Node)
-# ========================
-FrontEnd/node_modules/
-FrontEnd/.next/
-FrontEnd/out/
-FrontEnd/build/
-FrontEnd/.env*.local
-FrontEnd/.env
-
-serviceAccountKey.json
-Back_End/Database/serviceAccountKey.json
 Back_End/Database/chroma_cache_db/
+Back_End/Database/chroma_main_db/
+
 

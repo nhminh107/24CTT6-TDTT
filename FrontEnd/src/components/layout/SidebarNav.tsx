@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, MessageCircle, Trash2 } from "lucide-react";
+import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2 } from "lucide-react";
 import LocationSearch from "@/components/ui/LocationSearch";
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
-import Swal from "sweetalert2";
+import ConfirmModal from "@/components/ui/ConfirmModal";
+import Toast, { ToastType } from "@/components/ui/Toast";
 
 type ChatSession = {
   id: string;
@@ -40,25 +41,31 @@ export default function SidebarNav({
   onDeleteChat
 }: SidebarNavProps) {
   const { user, logout } = useAuth();
+  
+  // Custom UI State
+  const [deleteConfirm, setDeleteConfirm] = useState<{ isOpen: boolean; chatId: string }>({
+    isOpen: false,
+    chatId: ""
+  });
+  const [toast, setToast] = useState<{ show: boolean; type: ToastType; message: string }>({
+    show: false,
+    type: "success",
+    message: ""
+  });
 
-  const handleDelete = (e: React.MouseEvent, chatId: string) => {
+  const handleDeleteClick = (e: React.MouseEvent, chatId: string) => {
     e.stopPropagation();
-    Swal.fire({
-      title: 'Xác nhận xóa?',
-      text: "Bạn sẽ không thể khôi phục cuộc trò chuyện này!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#ff6b4a',
-      cancelButtonColor: '#94a3b8',
-      confirmButtonText: 'Xóa ngay',
-      cancelButtonText: 'Hủy'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        onDeleteChat?.(chatId);
-      }
-    });
+    setDeleteConfirm({ isOpen: true, chatId });
   };
 
+  const handleConfirmDelete = () => {
+    onDeleteChat?.(deleteConfirm.chatId);
+    setToast({
+      show: true,
+      type: "success",
+      message: "Đã xóa cuộc trò chuyện thành công"
+    });
+  };
 
     return (
     <>
@@ -215,7 +222,7 @@ export default function SidebarNav({
                           {chat.title}
                         </p>
                         <button
-                          onClick={(e) => handleDelete(e, chat.id)}
+                          onClick={(e) => handleDeleteClick(e, chat.id)}
                           className={`shrink-0 rounded-md p-1 transition-colors hover:bg-red-50 hover:text-red-500 ${
                             currentChatId === chat.id ? "text-slate-400" : "text-transparent group-hover:text-slate-300"
                           }`}
@@ -236,6 +243,23 @@ export default function SidebarNav({
 
       </div>
 
+      <ConfirmModal 
+        isOpen={deleteConfirm.isOpen}
+        title="Xác nhận xóa?"
+        message="Bạn sẽ không thể khôi phục lại cuộc trò chuyện này sau khi xóa."
+        confirmText="Xóa vĩnh viễn"
+        cancelText="Để sau"
+        onConfirm={handleConfirmDelete}
+        onClose={() => setDeleteConfirm({ isOpen: false, chatId: "" })}
+      />
+
+      <Toast 
+        show={toast.show}
+        type={toast.type}
+        message={toast.message}
+        position="bottom-left"
+        onClose={() => setToast(prev => ({ ...prev, show: false }))}
+      />
     </>
   );
 }
