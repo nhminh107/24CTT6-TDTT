@@ -171,11 +171,12 @@ Thumbs.db
 node_modules/
 **/node_modules/
 .next/
-**/ .next/
+**/.next/
 out/
 build/
 dist/
 .env*.local
+FrontEnd/.env
 
 # ChromaDB related files
 chroma.sqlite3
