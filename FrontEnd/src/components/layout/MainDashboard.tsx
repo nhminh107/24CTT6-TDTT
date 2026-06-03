@@ -31,12 +31,13 @@ type ChatSession = {
 };
 
 type ChatMessage = {
-  id?: string;
+  id: string;
   role: "user" | "assistant";
   content: string;
-  timestamp: string;
+  timestamp?: string;
+  isCompact?: boolean;
+  restaurants?: Restaurant[];
   metadata?: {
-    result?: Restaurant[];
     restaurants?: Restaurant[];
   };
 };

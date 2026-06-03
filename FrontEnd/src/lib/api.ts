@@ -46,4 +46,14 @@ export const itineraryApi = {
     });
     return res.json();
   },
+  share: async (userId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/share/${userId}`, {
+      method: "POST",
+    });
+    return res.json();
+  },
+  getPublic: async (shareId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/public/${shareId}`);
+    return res.json();
+  },
 };
