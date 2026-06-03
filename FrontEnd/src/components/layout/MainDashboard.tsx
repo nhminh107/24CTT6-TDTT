@@ -31,12 +31,13 @@ type ChatSession = {
 };
 
 type ChatMessage = {
-  id?: string;
+  id: string;
   role: "user" | "assistant";
   content: string;
-  timestamp: string;
+  timestamp?: string;
+  isCompact?: boolean;
+  restaurants?: Restaurant[];
   metadata?: {
-    result?: Restaurant[];
     restaurants?: Restaurant[];
   };
 };
@@ -275,6 +276,7 @@ export default function MainDashboard() {
       filters: [],
       selectedRestaurants: []
     }));
+    handleResetItinerary(); // Reset lịch trình khi tạo chat mới local
   };
 
   const handleNewChat = async () => {
@@ -283,6 +285,9 @@ export default function MainDashboard() {
       return null;
     }
     try {
+      // Reset lịch trình khi tạo cuộc trò chuyện mới
+      await handleResetItinerary();
+
       const response = await fetch(`${API_BASE_URL}/api/user/chat/new/${user.uid}`, {
         method: "POST"
       });

@@ -255,7 +255,7 @@ export default function ChatInterface({
     
     setInput("");
     // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
-    callRestaurantApi(prompt, activeChatId, nextMessages);
+    callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
   };
 
   return (

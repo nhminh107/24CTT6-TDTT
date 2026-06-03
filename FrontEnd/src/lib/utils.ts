@@ -13,6 +13,7 @@ export type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  assignedMeal?: string;
   healthTagsDisplay?: {
     warnings?: string[];
     notes?: string[];
@@ -31,6 +32,7 @@ export type ApiRestaurant = {
   image_url?: string;
   semantic_text?: string;
   meals?: string[];
+  meal?: string;
   assigned_meal?: string;
   main_tag?: string[];
   potential_tag?: string[];
@@ -77,6 +79,7 @@ export const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
         : "Chưa có mô tả.",
 
       meals: item.meals ?? [],
+      assignedMeal: item.meal || item.assigned_meal,
 
       // 👇 QUAN TRỌNG
       warnings: item.warnings ?? [],

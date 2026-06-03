@@ -21,6 +21,7 @@ type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  assignedMeal?: string;
   warnings?: string[];
   notes?: string[];
 };

@@ -1,23 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { MapPin, Star, ShieldCheck, AlertTriangle } from "lucide-react";
-import { cn } from "@/lib/utils";
-
-type Restaurant = {
-  id: string; // Thêm id để quản lý việc click chọn
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  warnings?: string[];
-  notes?: string[];
-};
+import { MapPin, Star, ShieldCheck, AlertTriangle, Plus } from "lucide-react";
+import { Restaurant, cn } from "@/lib/utils";
 
 type RestaurantMiniCardProps = {
   restaurant: Restaurant;
@@ -85,6 +70,8 @@ export default function RestaurantMiniCard({
   const meals = restaurant.meals && restaurant.meals.length > 0 
     ? restaurant.meals 
     : ["Sáng", "Trưa", "Xế", "Tối"];
+
+  const assignedMeal = restaurant.assignedMeal;
 
   return (
     <div
@@ -154,27 +141,54 @@ export default function RestaurantMiniCard({
         </div>
       </div>
 
-      {/* 4. SELECT MEAL BUTTONS */}
+      {/* 4. SELECT MEAL BUTTONS / ADD BUTTON */}
       <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/50 px-3 py-2">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chọn bữa:</span>
-        <div className="flex gap-1">
-          {meals.map((meal) => (
+        {assignedMeal ? (
+          <>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Gợi ý cho:</span>
+              <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
+                {assignedMeal}
+              </span>
+            </div>
             <button
-              key={meal}
               disabled={isInItinerary}
               onClick={(e) => {
                 e.stopPropagation();
-                onSelectMeal?.(meal, restaurant);
+                onSelectMeal?.(assignedMeal, restaurant);
               }}
               className={cn(
-                "rounded-lg border border-orange-200 bg-white px-2 py-1 text-[10px] font-bold text-orange-600 transition hover:bg-orange-600 hover:text-white disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400",
+                "flex items-center gap-1 rounded-lg bg-gradient-to-r from-brand-coral to-brand-flame px-3 py-1 text-xs font-bold text-white shadow-md transition hover:scale-105 active:scale-95 disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none disabled:hover:scale-100",
                 isInItinerary && "cursor-not-allowed"
               )}
             >
-              {meal}
+              <Plus size={14} />
+              {isInItinerary ? "Đã thêm" : "Thêm vào lịch trình"}
             </button>
-          ))}
-        </div>
+          </>
+        ) : (
+          <>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chọn bữa:</span>
+            <div className="flex gap-1">
+              {meals.map((meal) => (
+                <button
+                  key={meal}
+                  disabled={isInItinerary}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectMeal?.(meal, restaurant);
+                  }}
+                  className={cn(
+                    "rounded-lg border border-orange-200 bg-white px-2 py-1 text-[10px] font-bold text-orange-600 transition hover:bg-orange-600 hover:text-white disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400",
+                    isInItinerary && "cursor-not-allowed"
+                  )}
+                >
+                  {meal}
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
