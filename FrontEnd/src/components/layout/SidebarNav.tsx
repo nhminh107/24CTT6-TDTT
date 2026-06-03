@@ -164,6 +164,9 @@ export default function SidebarNav({
             )}
 
             <div className="mt-3">
+              <label className="mb-2 block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                Vị trí xuất phát
+              </label>
               <LocationSearch
                 value={state.location}
                 onChange={(value) => onStateChange({ ...state, location: value })}

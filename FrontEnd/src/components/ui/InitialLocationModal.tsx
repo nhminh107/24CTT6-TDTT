@@ -48,15 +48,15 @@ export default function InitialLocationModal({ isOpen, onClose }: InitialLocatio
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          const name = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+          const displayName = "Vị trí hiện tại";
           const id = `geo_${latitude}_${longitude}`;
-          
+
           if (autoSwal) {
             Swal.close();
             await Swal.fire({
               icon: 'success',
               title: 'Đã lấy vị trí hiện tại',
-              text: `Vị trí: ${name}`,
+              text: `Đã xác định vị trí của bạn qua GPS`,
               timer: 1500,
               showConfirmButton: false
             });
@@ -64,14 +64,15 @@ export default function InitialLocationModal({ isOpen, onClose }: InitialLocatio
             Swal.fire({
               icon: 'success',
               title: 'Thành công',
-              text: `Đã xác định vị trí: ${name}`,
+              text: `Đã xác định vị trí của bạn qua GPS`,
               timer: 1500,
               showConfirmButton: false
             });
           }
-          
-          onClose(name, id);
+
+          onClose(displayName, id);
         } catch (error) {
+
           if (autoSwal) Swal.close();
           onClose();
         } finally {
@@ -155,32 +156,41 @@ export default function InitialLocationModal({ isOpen, onClose }: InitialLocatio
             </div>
 
             <div className="flex flex-col gap-3">
-              <button
-                onClick={handleContinue}
-                disabled={isLocating}
-                className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-4 font-bold text-white shadow-glow transition hover:opacity-95 active:scale-[0.98] disabled:opacity-50"
-              >
-                {isLocating ? (
-                  <>
-                    <Loader2 size={20} className="animate-spin" />
-                    Đang xử lý...
-                  </>
-                ) : (
-                  <>
-                    {location ? "Tiếp tục" : "Tiếp tục với GPS"}
-                    <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-                  </>
-                )}
-              </button>
-
-              {!location && (
+              {location ? (
+                <button
+                  onClick={handleContinue}
+                  disabled={isLocating}
+                  className="group flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-4 font-bold text-white shadow-glow transition hover:opacity-95 active:scale-[0.98] disabled:opacity-50"
+                >
+                  {isLocating ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      Đang xử lý...
+                    </>
+                  ) : (
+                    <>
+                      Tiếp tục
+                      <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
+                </button>
+              ) : (
                 <button
                   onClick={() => handleGetCurrentLocation(false)}
                   disabled={isLocating}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 py-4 font-semibold text-slate-600 transition hover:bg-slate-50 active:scale-[0.98] disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-4 font-bold text-white shadow-glow transition hover:opacity-95 active:scale-[0.98] disabled:opacity-50"
                 >
-                  <LocateFixed size={18} className="text-brand-lagoon" />
-                  Sử dụng vị trí hiện tại
+                  {isLocating ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      Đang xử lý...
+                    </>
+                  ) : (
+                    <>
+                      <LocateFixed size={18} />
+                      Sử dụng vị trí hiện tại
+                    </>
+                  )}
                 </button>
               )}
             </div>

@@ -13,23 +13,7 @@ import InitialLocationModal from "@/components/ui/InitialLocationModal";
 import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useRef } from "react";
-
-type Restaurant = {
-  id: string;
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  healthTagsDisplay?: {
-    warnings?: string[];
-    notes?: string[];
-  };
-};
+import { Restaurant, buildRestaurants } from "@/lib/utils";
 
 export type DashboardState = {
   location: string;
@@ -105,9 +89,11 @@ export default function MainDashboard() {
         isInitializingChat.current = true;
 
         const history = await fetchChatHistory();
-        // Nếu là user mới chưa có lịch sử, tự động tạo chat mới để lưu
-        if (history.length === 0 && !currentChatId) {
-          await handleNewChat();
+        if (history.length > 0 && !currentChatId) {
+          // Tự động load cuộc trò chuyện mới nhất
+          const latestChat = history[0];
+          setCurrentChatId(latestChat.id);
+          fetchChatMessages(latestChat.id);
         }
         
         isInitializingChat.current = false;
@@ -152,7 +138,7 @@ export default function MainDashboard() {
         if (assistantMsgsWithResults.length > 0) {
           setDashboardState(prev => ({
             ...prev,
-            selectedRestaurants: assistantMsgsWithResults[0].metadata.result
+            selectedRestaurants: buildRestaurants(assistantMsgsWithResults[0].metadata.result)
           }));
         } else {
           setDashboardState(prev => ({
@@ -164,6 +150,17 @@ export default function MainDashboard() {
     } catch (error) {
       console.error("Error fetching chat messages:", error);
     }
+  };
+
+  const startLocalNewChat = () => {
+    setCurrentChatId(null);
+    setCurrentMessages([]);
+    setDashboardState(prev => ({
+      ...prev,
+      budget: "",
+      filters: [],
+      selectedRestaurants: []
+    }));
   };
 
   const handleNewChat = async () => {
@@ -179,16 +176,8 @@ export default function MainDashboard() {
       if (data.status === "success") {
         setCurrentChatId(data.chat_id);
         fetchChatHistory();
-        fetchChatMessages(data.chat_id);
-        
-        // Reset dashboard state for new chat
-        setDashboardState({
-          location: dashboardState.location, // Keep location
-          placeId: dashboardState.placeId,
-          budget: "",
-          filters: [],
-          selectedRestaurants: []
-        });
+        // Fetch ngay lập tức để lấy câu chào từ AI
+        await fetchChatMessages(data.chat_id);
         return data.chat_id;
       }
     } catch (error) {
@@ -197,8 +186,13 @@ export default function MainDashboard() {
     return null;
   };
 
+  const handleMessagesUpdate = (messages: ChatMessage[]) => {
+    setCurrentMessages(messages);
+  };
+
   const handleChatSelect = (chatId: string) => {
     setCurrentChatId(chatId);
+    setCurrentMessages([]); // Xóa tin nhắn cũ ngay lập tức để tránh hiển thị nhầm
     fetchChatMessages(chatId);
   };
 
@@ -443,7 +437,7 @@ export default function MainDashboard() {
             onOpenProfileSettings={handleProfileOpen}
             chatHistory={chatHistory}
             currentChatId={currentChatId}
-            onNewChat={handleNewChat}
+            onNewChat={startLocalNewChat}
             onChatSelect={handleChatSelect}
             onDeleteChat={handleDeleteChat}
           />
@@ -454,7 +448,8 @@ export default function MainDashboard() {
           <ChatInterface
             placeId={dashboardState.placeId}
             chatId={currentChatId}
-            initialMessages={currentMessages}
+            messages={currentMessages}
+            onMessagesChange={handleMessagesUpdate}
             onRestaurantsSelect={(restaurants) => {
               setDashboardState((prev) => ({
                 ...prev,

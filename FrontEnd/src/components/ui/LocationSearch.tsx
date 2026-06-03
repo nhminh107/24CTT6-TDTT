@@ -49,6 +49,8 @@ export default function LocationSearch({
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const [hiddenQuery, setHiddenQuery] = useState("");
 
   // GPS state — hoàn toàn nội bộ component
   const [isLocating, setIsLocating] = useState(false);
@@ -75,7 +77,7 @@ export default function LocationSearch({
       setOpen(false);
       return;
     }
-    if (selectedValue && trimmed === selectedValue) {
+    if (selectedValue && trimmed === selectedValue && !isFocused) {
       setOptions([]);
       setOpen(false);
       setLoading(false);
@@ -86,8 +88,11 @@ export default function LocationSearch({
     const controller = new AbortController();
     const handle = setTimeout(async () => {
       try {
+        // Nếu value là "Vị trí hiện tại", dùng hiddenQuery (tọa độ) để search gợi ý
+        const queryToSearch = trimmed === "Vị trí hiện tại" && hiddenQuery ? hiddenQuery : trimmed;
+        
         const response = await fetch(
-          `${API_BASE_URL}/api/v1/maps/suggestions?q=${encodeURIComponent(trimmed)}`,
+          `${API_BASE_URL}/api/v1/maps/suggestions?q=${encodeURIComponent(queryToSearch)}`,
           { signal: controller.signal }
         );
         if (!response.ok) {
@@ -106,10 +111,10 @@ export default function LocationSearch({
               }))
           : [];
         setOptions(mapped);
-        setOpen(true);
+        if (isFocused) setOpen(true);
       } catch {
         setOptions([]);
-        setOpen(true);
+        if (isFocused) setOpen(true);
       } finally {
         setLoading(false);
       }
@@ -119,11 +124,14 @@ export default function LocationSearch({
       controller.abort();
       clearTimeout(handle);
     };
-  }, [value, selectedValue]);
+  }, [value, selectedValue, isFocused, hiddenQuery]);
 
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (option: LocationOption) => {
     setSelectedValue(option.name);
+    if (option.name !== "Vị trí hiện tại") {
+      setHiddenQuery(""); // Xóa hidden query nếu chọn địa chỉ thật
+    }
     onSelect(option);
     setOpen(false);
     setLocationError(null);
@@ -131,6 +139,9 @@ export default function LocationSearch({
 
   const handleChange = (nextValue: string) => {
     if (selectedValue) setSelectedValue("");
+    if (nextValue !== "Vị trí hiện tại") {
+      setHiddenQuery("");
+    }
     setLocationError(null);
     onChange(nextValue);
   };
@@ -149,11 +160,16 @@ export default function LocationSearch({
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          const result = await reverseGeocode(latitude, longitude);
+          const displayName = "Vị trí hiện tại";
+          const id = `geo_${latitude}_${longitude}`;
+          const coordsString = `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+          
+          setHiddenQuery(coordsString);
+          
           // Cập nhật input text
-          onChange(result.name);
+          onChange(displayName);
           // Thông báo cho parent component giống như chọn từ dropdown
-          handleSelect(result);
+          handleSelect({ id, name: displayName, subtitle: coordsString });
         } catch {
           setLocationError("Không thể xác định địa chỉ từ vị trí.");
         } finally {
@@ -189,6 +205,11 @@ export default function LocationSearch({
         <input
           value={value}
           onChange={(e) => handleChange(e.target.value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => {
+            // Delay để kịp nhận event onClick từ danh sách gợi ý
+            setTimeout(() => setIsFocused(false), 200);
+          }}
           placeholder="Nhập khu vực bạn đang ở"
           className="min-w-0 flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
         />

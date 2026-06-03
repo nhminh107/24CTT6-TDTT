@@ -6,23 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
 import RestaurantMiniCard from "@/components/ui/RestaurandMiniCard";
-
-type Restaurant = {
-  id: string;
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  healthTagsDisplay?: {
-    warnings?: string[];
-    notes?: string[];
-  };
-};
+import { Restaurant, ApiRestaurant, buildRestaurants } from "@/lib/utils";
 
 type Message = {
   id: string;
@@ -32,36 +16,10 @@ type Message = {
   isCompact?: boolean;
 };
 
-const initialMessages: Message[] = [
-  {
-    id: "initial",
-    role: "assistant",
-    content:
-      "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
-  }
-];
-
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
   "http://127.0.0.1:8000";
-
-type ApiRestaurant = {
-  id?: string;
-  name?: string;
-  address?: string;
-  star?: number;
-  avg_price?: number;
-  phone_num?: string | number;
-  image_url?: string;
-  semantic_text?: string;
-  meals?: string[];
-  assigned_meal?: string;
-  main_tag?: string[];
-  potential_tag?: string[];
-  warnings?: string[];
-  notes?: string[];
-};
 
 type ApiResponse = {
   status?: string;
@@ -78,92 +36,28 @@ type ApiResponse = {
 type ChatInterfaceProps = {
   placeId: string;
   chatId?: string | null;
-  initialMessages?: Message[];
+  messages?: Message[];
+  onMessagesChange?: (messages: Message[]) => void;
   onRestaurantsSelect?: (restaurants: Restaurant[]) => void;
   onRestaurantSelect?: (restaurantId: string) => void;
   onRefreshHistory?: () => void;
   onAutoCreateChat?: () => Promise<string | null>;
 };
 
-const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
-  items.map((item, index) => {
-    const imageUrl = item.image_url
-      ? item.image_url.replace(/\\\//g, "/")
-      : "";
-
-    const mapQuery = [item.name, item.address]
-      .filter(Boolean)
-      .join(" ");
-
-    const mapUrl = mapQuery
-      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-          mapQuery
-        )}`
-      : "https://www.google.com/maps";
-
-    const ratingValue =
-      typeof item.star === "number"
-        ? item.star
-        : Number(item.star ?? 0) || 0;
-
-    return {
-      id: item.id ?? `${item.name}-${index}`,
-
-      name: item.name || "Nhà hàng",
-      address: item.address || "Chưa có địa chỉ",
-
-      rating: ratingValue,
-      price: item.avg_price ?? "Chưa cập nhật",
-      phone: item.phone_num ?? "",
-
-      mapUrl,
-      imageUrl,
-
-      semanticText: item.semantic_text
-        ? String(item.semantic_text)
-        : "Chưa có mô tả.",
-
-      meals: item.meals ?? [],
-
-      // 👇 QUAN TRỌNG
-      warnings: item.warnings ?? [],
-      notes: item.notes ?? []
-    };
-  });
-
 export default function ChatInterface({
   placeId,
   chatId,
-  initialMessages = [],
+  messages = [],
+  onMessagesChange,
   onRestaurantsSelect,
   onRestaurantSelect,
   onRefreshHistory,
   onAutoCreateChat
 }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [input, setInput] = useState("");
 
-  // Đồng bộ tin nhắn từ props
-  useEffect(() => {
-    if (initialMessages.length > 0) {
-      setMessages(initialMessages.map((m: any) => ({
-        id: m.timestamp || Math.random().toString(),
-        role: m.role,
-        content: m.content,
-        restaurants: m.metadata?.result ? buildRestaurants(m.metadata.result) : undefined
-      })));
-    } else {
-      setMessages([
-        {
-          id: "initial",
-          role: "assistant",
-          content: "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
-        }
-      ]);
-    }
-  }, [initialMessages]);
   const [errorModal, setErrorModal] = useState({
     open: false,
     code: "",
@@ -178,52 +72,6 @@ export default function ChatInterface({
     ],
     []
   );
-
-  const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
-  items.map((item, index) => {
-    const imageUrl = item.image_url
-      ? item.image_url.replace(/\\\//g, "/")
-      : "";
-
-    const mapQuery = [item.name, item.address]
-      .filter(Boolean)
-      .join(" ");
-
-    const mapUrl = mapQuery
-      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-          mapQuery
-        )}`
-      : "https://www.google.com/maps";
-
-    const ratingValue =
-      typeof item.star === "number"
-        ? item.star
-        : Number(item.star ?? 0) || 0;
-
-    return {
-      id: item.id ?? `${item.name}-${index}`,
-
-      name: item.name || "Nhà hàng",
-      address: item.address || "Chưa có địa chỉ",
-
-      rating: ratingValue,
-      price: item.avg_price ?? "Chưa cập nhật",
-      phone: item.phone_num ?? "",
-
-      mapUrl,
-      imageUrl,
-
-      semanticText: item.semantic_text
-        ? String(item.semantic_text)
-        : "Chưa có mô tả.",
-
-      meals: item.meals ?? [],
-
-      // 👇 QUAN TRỌNG
-      warnings: item.warnings ?? [],
-      notes: item.notes ?? []
-    };
-  });
 
   const buildAssistantMessage = (response: ApiResponse) => {
     console.log("API RESPONSE:", response);
@@ -247,7 +95,7 @@ export default function ChatInterface({
     };
   };
 
-  const callRestaurantApi = async (prompt: string) => {
+  const callRestaurantApi = async (prompt: string, activeChatId: string | null) => {
     setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
@@ -256,7 +104,7 @@ export default function ChatInterface({
         body: JSON.stringify({
           prompt,
           user_id: user?.uid || "guest_user",
-          chat_id: chatId,
+          chat_id: activeChatId,
           ...(placeId ? { place_id: placeId } : {})
         })
       });
@@ -281,8 +129,8 @@ export default function ChatInterface({
           message
         });
         const messageId = Date.now().toString();
-        setMessages((prev) => [
-          ...prev,
+        onMessagesChange?.([
+          ...messages,
           {
             id: messageId,
             role: "assistant",
@@ -301,8 +149,8 @@ export default function ChatInterface({
           message
         });
         const messageId = Date.now().toString();
-        setMessages((prev) => [
-          ...prev,
+        onMessagesChange?.([
+          ...messages,
           {
             id: messageId,
             role: "assistant",
@@ -316,11 +164,11 @@ export default function ChatInterface({
       const assistant = buildAssistantMessage(data);
       const messageId = Date.now().toString();
       
-      // Compact previous messages
-      setMessages((prev) => [
-        ...prev.map((msg, idx) => ({
+      // Update parent messages
+      const updatedMessages: Message[] = [
+        ...messages.map((msg, idx) => ({
           ...msg,
-          isCompact: idx < prev.length - 1
+          isCompact: true // Luôn compact tin nhắn cũ khi có phản hồi mới
         })),
         {
           id: messageId,
@@ -329,7 +177,8 @@ export default function ChatInterface({
           restaurants: assistant.restaurants,
           isCompact: false
         }
-      ]);
+      ];
+      onMessagesChange?.(updatedMessages);
 
       // Call callback to update dashboard state
       if (assistant.restaurants.length > 0) {
@@ -341,7 +190,7 @@ export default function ChatInterface({
       }
       
       // Refresh chat history to update titles/timestamps
-      if (chatId) {
+      if (activeChatId) {
         onRefreshHistory?.();
       }
     } catch {
@@ -352,8 +201,8 @@ export default function ChatInterface({
         message
       });
       const messageId = Date.now().toString();
-      setMessages((prev) => [
-        ...prev,
+      onMessagesChange?.([
+        ...messages,
         {
           id: messageId,
           role: "assistant",
@@ -381,19 +230,19 @@ export default function ChatInterface({
       activeChatId = await onAutoCreateChat();
     }
     
-    // Compact previous messages
-    setMessages((prev) => [
-      ...prev.map((msg, idx) => ({
-        ...msg,
-        isCompact: idx < prev.length - 1
-      })),
-      {
-        id: messageId,
-        role: "user",
-        content: prompt,
-        isCompact: false
-      }
-    ]);
+    const newUserMessage: Message = {
+      id: messageId,
+      role: "user",
+      content: prompt,
+      isCompact: false
+    };
+
+    // Update parent with optimistic user message
+    const updatedMessages: Message[] = [
+      ...messages.map((msg) => ({ ...msg, isCompact: true })),
+      newUserMessage
+    ];
+    onMessagesChange?.(updatedMessages);
     
     setInput("");
     callRestaurantApi(prompt, activeChatId);
@@ -494,6 +343,22 @@ export default function ChatInterface({
       {/* Chat Messages Container */}
       <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 pb-4">
         <AnimatePresence>
+          {/* Trường hợp cuộc trò chuyện mới hoàn toàn (Trống) */}
+          {messages.length === 0 && !isLoading && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex gap-3 justify-start"
+            >
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-xs font-bold text-white">
+                AI
+              </div>
+              <div className="max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft glass text-slate-700">
+                Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn.
+              </div>
+            </motion.div>
+          )}
+
           {messages.map((message, index) => (
             <motion.div
               key={message.id}
@@ -607,7 +472,7 @@ export default function ChatInterface({
       </div>
 
       {/* Suggestions */}
-      {messages.length === 1 && !isLoading && (
+      {messages.length === 0 && !isLoading && (
         <div className="flex flex-wrap gap-2">
           {suggestions.map((suggestion) => (
             <button
