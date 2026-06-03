@@ -36,6 +36,7 @@ type ChatMessage = {
   timestamp: string;
   metadata?: {
     result?: Restaurant[];
+    restaurants?: Restaurant[];
   };
 };
 
@@ -129,17 +130,31 @@ export default function MainDashboard() {
       const response = await fetch(`${API_BASE_URL}/api/user/chat/${user.uid}/${chatId}/messages`);
       const data = await response.json();
       if (data.status === "success") {
-        setCurrentMessages(data.messages);
+        // Chuẩn hóa tin nhắn từ history: Nếu có metadata.restaurants, chạy qua buildRestaurants
+        const processedMessages = data.messages.map((msg: any) => {
+          if (msg.role === "assistant" && msg.metadata) {
+            const rawItems = msg.metadata.restaurants || msg.metadata.result || [];
+            if (rawItems.length > 0) {
+              return {
+                ...msg,
+                restaurants: buildRestaurants(rawItems)
+              };
+            }
+          }
+          return msg;
+        });
+
+        setCurrentMessages(processedMessages);
         
         // Cập nhật nhà hàng từ tin nhắn assistant cuối cùng có metadata
-        const assistantMsgsWithResults = data.messages
-          .filter((m: any) => m.role === "assistant" && m.metadata?.result)
+        const assistantMsgsWithResults = processedMessages
+          .filter((m: any) => m.role === "assistant" && m.restaurants)
           .reverse();
         
         if (assistantMsgsWithResults.length > 0) {
           setDashboardState(prev => ({
             ...prev,
-            selectedRestaurants: buildRestaurants(assistantMsgsWithResults[0].metadata.result)
+            selectedRestaurants: assistantMsgsWithResults[0].restaurants
           }));
         } else {
           setDashboardState(prev => ({

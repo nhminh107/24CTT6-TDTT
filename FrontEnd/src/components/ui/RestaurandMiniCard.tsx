@@ -33,7 +33,10 @@ const formatPhoneNumber = (phone: string | number) => {
   return raw;
 };
 
-const normalizeImageUrl = (url: string) => url.replace(/\\\//g, "/");
+const normalizeImageUrl = (url: string | undefined | null) => {
+  if (!url) return "";
+  return url.replace(/\\\//g, "/");
+};
 
 export default function RestaurantMiniCard({
   restaurant,
@@ -44,6 +47,10 @@ export default function RestaurantMiniCard({
     () => normalizeImageUrl(restaurant.imageUrl),
     [restaurant.imageUrl]
   );
+
+  const name = restaurant.name || "Chưa có tên";
+  const address = restaurant.address || "Chưa có địa chỉ";
+  const rating = typeof restaurant.rating === "number" ? restaurant.rating : 0;
 
   const warnings = restaurant.warnings ?? [];
   const severity =
@@ -111,13 +118,13 @@ export default function RestaurantMiniCard({
             "text-sm font-bold leading-tight text-slate-900 truncate transition-colors",
             isSelected ? "text-orange-600" : "group-hover:text-orange-600"
           )}>
-            {restaurant.name}
+            {name}
           </h4>
 
           {/* Địa chỉ rút gọn */}
           <div className="mt-1 flex items-center text-xs text-slate-500">
             <MapPin size={12} className="mr-1 shrink-0 text-slate-400" />
-            <span className="truncate">{restaurant.address}</span>
+            <span className="truncate">{address}</span>
           </div>
         </div>
 
@@ -126,7 +133,7 @@ export default function RestaurantMiniCard({
           {/* Rating */}
           <div className="inline-flex items-center gap-1 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700 border border-amber-100">
             <Star size={11} className="fill-amber-500 text-amber-500" />
-            <span>{restaurant.rating.toFixed(1)}</span>
+            <span>{rating.toFixed(1)}</span>
           </div>
 
           {/* Price */}

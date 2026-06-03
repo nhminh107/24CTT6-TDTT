@@ -348,7 +348,7 @@ async def process_prompt(request: UserRequest):
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:
             msg_content = f"Tôi đã tìm thấy {len(final_result_list)} quán ăn phù hợp cho bạn."
-            await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"result": final_result_list})
+            await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"restaurants": final_result_list})
 
         return {
             "status": "success",

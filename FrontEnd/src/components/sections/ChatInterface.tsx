@@ -14,6 +14,9 @@ type Message = {
   content: string;
   restaurants?: Restaurant[];
   isCompact?: boolean;
+  metadata?: {
+    restaurants?: Restaurant[];
+  };
 };
 
 const API_BASE_URL =
