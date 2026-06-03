@@ -9,25 +9,12 @@ import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
 import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfileModal";
+import InitialLocationModal from "@/components/ui/InitialLocationModal";
 import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
-
-type Restaurant = {
-  id: string;
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  healthTagsDisplay?: {
-    warnings?: string[];
-    notes?: string[];
-  };
-};
+import { useRef } from "react";
+import { Restaurant, buildRestaurants } from "@/lib/utils";
+import { itineraryApi } from "@/lib/api";
 
 export type DashboardState = {
   location: string;
@@ -35,6 +22,23 @@ export type DashboardState = {
   budget: string;
   filters: string[];
   selectedRestaurants: Restaurant[];
+};
+
+type ChatSession = {
+  id: string;
+  title: string;
+  updated_at: string;
+};
+
+type ChatMessage = {
+  id?: string;
+  role: "user" | "assistant";
+  content: string;
+  timestamp: string;
+  metadata?: {
+    result?: Restaurant[];
+    restaurants?: Restaurant[];
+  };
 };
 
 const filters = ["Lãng mạn", "Cay", "Hải sản", "View biển", "Chay", "Gia đình"];
@@ -61,11 +65,276 @@ export default function MainDashboard() {
     filters: [],
     selectedRestaurants: []
   });
+
+  // Load location from localStorage on mount
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedLocation = localStorage.getItem("bmi_user_location");
+      const savedPlaceId = localStorage.getItem("bmi_user_place_id");
+      
+      if (savedLocation) {
+        setDashboardState(prev => ({
+          ...prev,
+          location: savedLocation,
+          placeId: savedPlaceId || ""
+        }));
+      } else {
+        setLocationPromptOpen(true);
+      }
+    }
+  }, []);
+
+  const handleLocationPromptClose = (location?: string, placeId?: string) => {
+    if (location) {
+      setDashboardState((prev) => ({
+        ...prev,
+        location,
+        placeId: placeId || ""
+      }));
+      // Persist to localStorage
+      localStorage.setItem("bmi_user_location", location);
+      if (placeId) localStorage.setItem("bmi_user_place_id", placeId);
+    }
+    setLocationPromptOpen(false);
+  };
+
+  // Update localStorage when location changes from sidebar
+  const handleStateChange = (newState: DashboardState) => {
+    if (newState.location !== dashboardState.location) {
+      localStorage.setItem("bmi_user_location", newState.location);
+      localStorage.setItem("bmi_user_place_id", newState.placeId);
+    }
+    setDashboardState(newState);
+  };
+
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
+  const [locationPromptOpen, setLocationPromptOpen] = useState(false);
+  const isInitializingChat = useRef(false);
+
+  // Chat History States
+  const [currentChatId, setCurrentChatId] = useState<string | null>(null);
+  const [chatHistory, setChatHistory] = useState<ChatSession[]>([]);
+  const [currentMessages, setCurrentMessages] = useState<ChatMessage[]>([]);
+  const [currentItinerary, setCurrentItinerary] = useState<any[]>([]);
+
+  const fetchItinerary = async () => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.get(user.uid);
+      if (data.status === "success") {
+        setCurrentItinerary(data.itinerary);
+      }
+    } catch (error) {
+      console.error("Error fetching itinerary:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user?.uid) {
+      fetchItinerary();
+    }
+  }, [user?.uid]);
+
+  const handleSelectMeal = async (meal: string, restaurant: Restaurant) => {
+    if (!user?.uid) {
+      router.push("/login");
+      return;
+    }
+    try {
+      const data = await itineraryApi.select(user.uid, meal, restaurant);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error selecting meal:", error);
+    }
+  };
+
+  const handleDeleteMeal = async (meal: string) => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.deleteMeal(user.uid, meal);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error deleting meal:", error);
+    }
+  };
+
+  const handleResetItinerary = async () => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.reset(user.uid);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error resetting itinerary:", error);
+    }
+  };
+
+  // Removed old useEffect that always showed location prompt if empty
+  // (Now handled in the mount useEffect with localStorage check)
+
+  // Fetch chat history on user login
+  useEffect(() => {
+    const initChat = async () => {
+      if (user?.uid) {
+        if (isInitializingChat.current) return;
+        isInitializingChat.current = true;
+
+        const history = await fetchChatHistory();
+        if (history.length > 0 && !currentChatId) {
+          // Tự động load cuộc trò chuyện mới nhất
+          const latestChat = history[0];
+          setCurrentChatId(latestChat.id);
+          fetchChatMessages(latestChat.id);
+        }
+        
+        isInitializingChat.current = false;
+      } else {
+        setChatHistory([]);
+        setCurrentChatId(null);
+        setCurrentMessages([]);
+        isInitializingChat.current = false;
+      }
+    };
+    initChat();
+  }, [user?.uid]);
+
+  const fetchChatHistory = async () => {
+    if (!user?.uid) return [];
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/user/chat/history/${user.uid}`);
+      const data = await response.json();
+      if (data.status === "success") {
+        setChatHistory(data.history);
+        return data.history;
+      }
+    } catch (error) {
+      console.error("Error fetching chat history:", error);
+    }
+    return [];
+  };
+
+  const fetchChatMessages = async (chatId: string) => {
+    if (!user?.uid) return;
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/user/chat/${user.uid}/${chatId}/messages`);
+      const data = await response.json();
+      if (data.status === "success") {
+        // Chuẩn hóa tin nhắn từ history: Nếu có metadata.restaurants, chạy qua buildRestaurants
+        const processedMessages = data.messages.map((msg: any) => {
+          if (msg.role === "assistant" && msg.metadata) {
+            const rawItems = msg.metadata.restaurants || msg.metadata.result || [];
+            if (rawItems.length > 0) {
+              return {
+                ...msg,
+                restaurants: buildRestaurants(rawItems)
+              };
+            }
+          }
+          return msg;
+        });
+
+        setCurrentMessages(processedMessages);
+        
+        // Cập nhật nhà hàng từ tin nhắn assistant cuối cùng có metadata
+        const assistantMsgsWithResults = processedMessages
+          .filter((m: any) => m.role === "assistant" && m.restaurants)
+          .reverse();
+        
+        if (assistantMsgsWithResults.length > 0) {
+          setDashboardState(prev => ({
+            ...prev,
+            selectedRestaurants: assistantMsgsWithResults[0].restaurants
+          }));
+        } else {
+          setDashboardState(prev => ({
+            ...prev,
+            selectedRestaurants: []
+          }));
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching chat messages:", error);
+    }
+  };
+
+  const startLocalNewChat = () => {
+    setCurrentChatId(null);
+    setCurrentMessages([]);
+    setDashboardState(prev => ({
+      ...prev,
+      budget: "",
+      filters: [],
+      selectedRestaurants: []
+    }));
+    handleResetItinerary(); // Reset lịch trình khi tạo chat mới local
+  };
+
+  const handleNewChat = async () => {
+    if (!user?.uid) {
+      router.push("/login");
+      return null;
+    }
+    try {
+      // Reset lịch trình khi tạo cuộc trò chuyện mới
+      await handleResetItinerary();
+
+      const response = await fetch(`${API_BASE_URL}/api/user/chat/new/${user.uid}`, {
+        method: "POST"
+      });
+      const data = await response.json();
+      if (data.status === "success") {
+        setCurrentChatId(data.chat_id);
+        fetchChatHistory();
+        // Fetch ngay lập tức để lấy câu chào từ AI
+        await fetchChatMessages(data.chat_id);
+        return data.chat_id;
+      }
+    } catch (error) {
+      console.error("Error creating new chat:", error);
+    }
+    return null;
+  };
+
+  const handleMessagesUpdate = (messages: ChatMessage[]) => {
+    setCurrentMessages(messages);
+  };
+
+  const handleChatSelect = (chatId: string) => {
+    setCurrentChatId(chatId);
+    setCurrentMessages([]); // Xóa tin nhắn cũ ngay lập tức để tránh hiển thị nhầm
+    fetchChatMessages(chatId);
+  };
+
+  const handleDeleteChat = async (chatId: string) => {
+    if (!user?.uid) return;
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/user/chat/${user.uid}/${chatId}`, {
+        method: "DELETE"
+      });
+      const data = await response.json();
+      if (data.status === "success") {
+        // Cập nhật lại lịch sử
+        fetchChatHistory();
+        // Nếu đang ở chat vừa xóa, chuyển sang chat khác hoặc reset
+        if (currentChatId === chatId) {
+          setCurrentChatId(null);
+          setCurrentMessages([]);
+          setDashboardState(prev => ({ ...prev, selectedRestaurants: [] }));
+        }
+      }
+    } catch (error) {
+      console.error("Error deleting chat:", error);
+    }
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -269,10 +538,15 @@ export default function MainDashboard() {
           )}
           <SidebarNav
             state={dashboardState}
-            onStateChange={setDashboardState}
+            onStateChange={handleStateChange}
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
+            chatHistory={chatHistory}
+            currentChatId={currentChatId}
+            onNewChat={startLocalNewChat}
+            onChatSelect={handleChatSelect}
+            onDeleteChat={handleDeleteChat}
           />
         </aside>
 
@@ -280,6 +554,9 @@ export default function MainDashboard() {
         <main className="flex-1 overflow-y-auto bg-white/70">
           <ChatInterface
             placeId={dashboardState.placeId}
+            chatId={currentChatId}
+            messages={currentMessages}
+            onMessagesChange={handleMessagesUpdate}
             onRestaurantsSelect={(restaurants) => {
               setDashboardState((prev) => ({
                 ...prev,
@@ -287,6 +564,10 @@ export default function MainDashboard() {
               }));
             }}
             onRestaurantSelect={handleRestaurantSelect}
+            onRefreshHistory={fetchChatHistory}
+            onAutoCreateChat={handleNewChat}
+            currentItinerary={currentItinerary}
+            onSelectMeal={handleSelectMeal}
           />
         </main>
 
@@ -305,6 +586,9 @@ export default function MainDashboard() {
             onSelectRestaurant={handleRestaurantSelect}
             onTabChange={setItineraryTab}
             onCloseDetail={handleCloseDetail}
+            currentItinerary={currentItinerary}
+            onDeleteMeal={handleDeleteMeal}
+            onResetItinerary={handleResetItinerary}
           />
         </aside>
       </div>
@@ -320,9 +604,9 @@ export default function MainDashboard() {
         >
           <span className="relative">
             <CalendarCheck size={20} />
-            {itineraryCount > 0 && (
+            {currentItinerary.length > 0 && (
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-coral text-[10px] font-semibold text-white shadow">
-                {itineraryCount > 9 ? "9+" : itineraryCount}
+                {currentItinerary.length > 9 ? "9+" : currentItinerary.length}
               </span>
             )}
           </span>
@@ -357,6 +641,9 @@ export default function MainDashboard() {
               onSelectRestaurant={handleRestaurantSelect}
               onTabChange={setItineraryTab}
               onCloseDetail={handleCloseDetail}
+              currentItinerary={currentItinerary}
+              onDeleteMeal={handleDeleteMeal}
+              onResetItinerary={handleResetItinerary}
             />
           </div>
         </div>
@@ -402,6 +689,11 @@ export default function MainDashboard() {
           </div>
         </div>
       )}
+
+      <InitialLocationModal
+        isOpen={locationPromptOpen}
+        onClose={handleLocationPromptClose}
+      />
     </div>
   );
 }

@@ -23,13 +23,24 @@ if not firebase_admin._apps:
         print(f">>> ERROR initializing Firebase Admin: {e}")
 
 # Khởi tạo Firestore client
-db = None
-try:
-    if firebase_admin._apps:
-        db = firestore.client()
-        print(">>> Firestore connected successfully.")
-except Exception as e:
-    print(f">>> ERROR connecting to Firestore: {e}")
+def get_db():
+    global db
+    if 'db' not in globals() or db is None:
+        try:
+            if firebase_admin._apps:
+                from firebase_admin import firestore
+                globals()['db'] = firestore.client()
+                print(">>> Firestore connected successfully.")
+            else:
+                print(">>> WARNING: Firebase Admin not initialized, cannot get Firestore client.")
+                return None
+        except Exception as e:
+            print(f">>> ERROR connecting to Firestore: {e}")
+            return None
+    return globals()['db']
+
+# Initialize it immediately if possible
+db = get_db()
 
 security = HTTPBearer()
 
