@@ -7,7 +7,9 @@ export const apiFetch = async (input: RequestInfo, init: RequestInit = {}) => {
 
   if (googleUid) {
     headers.set("x-user-id", googleUid);
-  } else if (idToken) {
+  }
+  
+  if (idToken) {
     headers.set("Authorization", `Bearer ${idToken}`);
   }
 
@@ -15,4 +17,33 @@ export const apiFetch = async (input: RequestInfo, init: RequestInit = {}) => {
     ...init,
     headers
   });
+};
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+
+export const itineraryApi = {
+  get: async (userId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/${userId}`);
+    return res.json();
+  },
+  select: async (userId: string, meal: string, restaurantData: any) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/select`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId, meal, restaurant_data: restaurantData }),
+    });
+    return res.json();
+  },
+  deleteMeal: async (userId: string, meal: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/${userId}/${meal}`, {
+      method: "DELETE",
+    });
+    return res.json();
+  },
+  reset: async (userId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/${userId}`, {
+      method: "DELETE",
+    });
+    return res.json();
+  },
 };

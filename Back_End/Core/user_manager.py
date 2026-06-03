@@ -2,16 +2,20 @@ from datetime import datetime
 from typing import Optional, Dict, Any, List
 import asyncio
 from firebase_admin import firestore
-from Back_End.Core.auth_handler import db
+from Back_End.Core.auth_handler import get_db
 
 class UserManager:
     def __init__(self):
-        self._db = db
+        pass
+
+    def _get_db(self):
+        db = get_db()
+        if db is None:
+            raise Exception("Firestore client is not initialized.")
+        return db
 
     def _get_collection(self):
-        if self._db is None:
-            raise Exception("Firestore client is not initialized.")
-        return self._db.collection("users")
+        return self._get_db().collection("users")
 
     async def sync_user(self, uid: str, email: str, name: Optional[str] = None, photo_url: Optional[str] = None) -> bool:
         """

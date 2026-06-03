@@ -45,6 +45,8 @@ type ChatInterfaceProps = {
   onRestaurantSelect?: (restaurantId: string) => void;
   onRefreshHistory?: () => void;
   onAutoCreateChat?: () => Promise<string | null>;
+  currentItinerary?: any[];
+  onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
 };
 
 export default function ChatInterface({
@@ -55,7 +57,9 @@ export default function ChatInterface({
   onRestaurantsSelect,
   onRestaurantSelect,
   onRefreshHistory,
-  onAutoCreateChat
+  onAutoCreateChat,
+  currentItinerary = [],
+  onSelectMeal
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
@@ -434,10 +438,12 @@ export default function ChatInterface({
                       >
                         <RestaurantMiniCard
                           restaurant={restaurant}
+                          isInItinerary={currentItinerary.some(item => item.id === restaurant.id)}
                           onSelect={(id) => {
                             onRestaurantsSelect?.(message.restaurants || []);
                             onRestaurantSelect?.(id);
                           }}
+                          onSelectMeal={onSelectMeal}
                         />
                       </motion.div>
                     ))}

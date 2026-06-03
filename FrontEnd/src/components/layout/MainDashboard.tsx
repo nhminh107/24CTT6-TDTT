@@ -14,6 +14,7 @@ import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useRef } from "react";
 import { Restaurant, buildRestaurants } from "@/lib/utils";
+import { itineraryApi } from "@/lib/api";
 
 export type DashboardState = {
   location: string;
@@ -118,6 +119,64 @@ export default function MainDashboard() {
   const [currentChatId, setCurrentChatId] = useState<string | null>(null);
   const [chatHistory, setChatHistory] = useState<ChatSession[]>([]);
   const [currentMessages, setCurrentMessages] = useState<ChatMessage[]>([]);
+  const [currentItinerary, setCurrentItinerary] = useState<any[]>([]);
+
+  const fetchItinerary = async () => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.get(user.uid);
+      if (data.status === "success") {
+        setCurrentItinerary(data.itinerary);
+      }
+    } catch (error) {
+      console.error("Error fetching itinerary:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user?.uid) {
+      fetchItinerary();
+    }
+  }, [user?.uid]);
+
+  const handleSelectMeal = async (meal: string, restaurant: Restaurant) => {
+    if (!user?.uid) {
+      router.push("/login");
+      return;
+    }
+    try {
+      const data = await itineraryApi.select(user.uid, meal, restaurant);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error selecting meal:", error);
+    }
+  };
+
+  const handleDeleteMeal = async (meal: string) => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.deleteMeal(user.uid, meal);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error deleting meal:", error);
+    }
+  };
+
+  const handleResetItinerary = async () => {
+    if (!user?.uid) return;
+    try {
+      const data = await itineraryApi.reset(user.uid);
+      if (data.status === "success") {
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error resetting itinerary:", error);
+    }
+  };
 
   // Removed old useEffect that always showed location prompt if empty
   // (Now handled in the mount useEffect with localStorage check)
@@ -503,6 +562,8 @@ export default function MainDashboard() {
             onRestaurantSelect={handleRestaurantSelect}
             onRefreshHistory={fetchChatHistory}
             onAutoCreateChat={handleNewChat}
+            currentItinerary={currentItinerary}
+            onSelectMeal={handleSelectMeal}
           />
         </main>
 
@@ -521,6 +582,9 @@ export default function MainDashboard() {
             onSelectRestaurant={handleRestaurantSelect}
             onTabChange={setItineraryTab}
             onCloseDetail={handleCloseDetail}
+            currentItinerary={currentItinerary}
+            onDeleteMeal={handleDeleteMeal}
+            onResetItinerary={handleResetItinerary}
           />
         </aside>
       </div>
@@ -536,9 +600,9 @@ export default function MainDashboard() {
         >
           <span className="relative">
             <CalendarCheck size={20} />
-            {itineraryCount > 0 && (
+            {currentItinerary.length > 0 && (
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-brand-coral text-[10px] font-semibold text-white shadow">
-                {itineraryCount > 9 ? "9+" : itineraryCount}
+                {currentItinerary.length > 9 ? "9+" : currentItinerary.length}
               </span>
             )}
           </span>
@@ -573,6 +637,9 @@ export default function MainDashboard() {
               onSelectRestaurant={handleRestaurantSelect}
               onTabChange={setItineraryTab}
               onCloseDetail={handleCloseDetail}
+              currentItinerary={currentItinerary}
+              onDeleteMeal={handleDeleteMeal}
+              onResetItinerary={handleResetItinerary}
             />
           </div>
         </div>

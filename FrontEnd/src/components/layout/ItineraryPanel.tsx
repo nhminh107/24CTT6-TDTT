@@ -1,48 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Clock, DollarSign, Star, X } from "lucide-react";
-import { useMemo } from "react";
+import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket } from "lucide-react";
+import { useMemo, useState } from "react";
 import RestaurantCard from "@/components/ui/RestaurantCard";
-
-type MealStop = {
-  label: string;
-  name: string;
-  time: string;
-  price: string;
-  type: string;
-  rating: number;
-};
-
-type Restaurant = {
-  id: string;
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  healthTagsDisplay?: {
-    warnings?: string[];
-    notes?: string[];
-  };
-  warnings?: string[];
-  notes?: string[];
-};
+import BoardingPass from "@/components/ui/BoardingPass";
 
 type ItineraryPanelProps = {
   location: string;
   budget: string;
-  mealStops: MealStop[];
-  restaurants: Restaurant[];
+  mealStops: any[];
+  restaurants: any[];
   selectedRestaurantId: string | null;
   currentTab: "itinerary" | "detail";
   onSelectRestaurant: (id: string) => void;
   onTabChange: (tab: "itinerary" | "detail") => void;
   onCloseDetail: () => void;
+  currentItinerary?: any[];
+  onDeleteMeal?: (meal: string) => void;
+  onResetItinerary?: () => void;
 };
 
 export default function ItineraryPanel({
@@ -54,12 +30,19 @@ export default function ItineraryPanel({
   currentTab,
   onSelectRestaurant,
   onTabChange,
-  onCloseDetail
+  onCloseDetail,
+  currentItinerary = [],
+  onDeleteMeal,
+  onResetItinerary
 }: ItineraryPanelProps) {
+  const [showBoardingPass, setShowBoardingPass] = useState(false);
+
   const selectedRestaurant = useMemo(
-    () => restaurants.find((r) => r.id === selectedRestaurantId) || null,
-    [restaurants, selectedRestaurantId]
+    () => restaurants.find((r) => r.id === selectedRestaurantId) || 
+          currentItinerary.find((r) => r.id === selectedRestaurantId) || null,
+    [restaurants, currentItinerary, selectedRestaurantId]
   );
+
   return (
     <div className="flex h-full flex-col gap-4 p-4">
       {/* Tab Buttons */}
@@ -88,127 +71,108 @@ export default function ItineraryPanel({
 
       {/* Content */}
       {currentTab === "itinerary" ? (
-        <>
-          {/* Header */}
-          <div>
+        <div className="flex flex-1 flex-col gap-4 overflow-hidden">
+          <div className="flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-flame">
-              Lịch trình được đề xuất
+              Lịch trình của bạn
             </h2>
+            {currentItinerary.length > 0 && (
+              <button
+                onClick={onResetItinerary}
+                className="text-[10px] font-bold text-slate-400 hover:text-rose-500"
+              >
+                Đặt lại
+              </button>
+            )}
           </div>
 
-          {/* Summary Card */}
-          {budget && budget !== "Chưa nhập" && (
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="rounded-2xl border border-brand-coral/20 bg-gradient-to-br from-brand-coral/5 to-brand-flame/5 p-4"
-            >
+          <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+            {/* Meal Stops Timeline */}
+            {currentItinerary.length > 0 ? (
               <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <DollarSign size={14} className="mt-0.5 flex-shrink-0 text-brand-teal" />
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[10px] font-semibold uppercase text-slate-500">
-                      Ngân sách
-                    </p>
-                    <p className="text-xs font-semibold text-slate-900">
-                      {budget}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Meal Stops Timeline */}
-          {mealStops.length > 0 && (
-            <div className="space-y-3">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                Dừng chân
-              </h3>
-              <div className="space-y-2.5">
-                {mealStops.map((stop, index) => (
-                  <motion.button
-                    key={index}
-                    type="button"
-                    onClick={() => {
-                      const restaurant = restaurants[index];
-                      if (restaurant) {
-                        onSelectRestaurant(restaurant.id);
-                      }
-                    }}
+                {currentItinerary.map((stop, index) => (
+                  <motion.div
+                    key={stop.meal}
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    className="group w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 transition hover:border-slate-300 hover:bg-white"
+                    className="group relative"
                   >
-                    {/* Stop Label */}
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
-                        {stop.label}
-                      </span>
-                      <span className="text-[10px] font-semibold text-slate-500">
-                        {stop.type}
-                      </span>
-                    </div>
-
-                    {/* Restaurant Info */}
-                    <div className="space-y-1.5">
-                      <p className="text-xs font-bold text-slate-900 line-clamp-2">
-                        {stop.name}
-                      </p>
-
-                      {/* Time & Price */}
-                      <div className="flex items-center gap-2 text-[10px]">
-                        <div className="flex items-center gap-1 text-slate-500">
-                          <Clock size={12} />
-                          <span>{stop.time}</span>
-                        </div>
-                        <div className="h-1 w-1 rounded-full bg-slate-300" />
-                        <span className="font-semibold text-slate-600">
-                          {stop.price}
+                    <button
+                      type="button"
+                      onClick={() => onSelectRestaurant(stop.id)}
+                      className="w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 transition hover:border-brand-coral hover:bg-white"
+                    >
+                      {/* Stop Label */}
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
+                          {stop.meal}
                         </span>
                       </div>
 
-                      {/* Rating */}
-                      {stop.rating > 0 && (
-                        <div className="flex items-center gap-1">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              size={12}
-                              className={
-                                i < Math.round(stop.rating)
-                                  ? "fill-yellow-400 text-yellow-400"
-                                  : "text-slate-300"
-                              }
-                            />
-                          ))}
-                          <span className="text-[10px] font-semibold text-slate-500">
-                            {stop.rating.toFixed(1)}
+                      {/* Restaurant Info */}
+                      <div className="space-y-1.5">
+                        <p className="text-xs font-bold text-slate-900 line-clamp-2 pr-6">
+                          {stop.name}
+                        </p>
+                        <p className="text-[10px] text-slate-500 line-clamp-1">
+                          {stop.address}
+                        </p>
+
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-1">
+                            <Star size={10} className="fill-yellow-400 text-yellow-400" />
+                            <span className="text-[10px] font-bold text-slate-600">{stop.star}</span>
+                          </div>
+                          <div className="h-1 w-1 rounded-full bg-slate-300" />
+                          <span className="text-[10px] font-semibold text-brand-teal">
+                            {stop.avg_price?.toLocaleString("vi-VN")}đ
                           </span>
                         </div>
-                      )}
-                    </div>
-                  </motion.button>
+                      </div>
+                    </button>
+                    
+                    <button
+                      onClick={() => onDeleteMeal?.(stop.meal)}
+                      className="absolute right-2 top-2 rounded-lg p-1.5 text-slate-300 transition hover:bg-rose-50 hover:text-rose-500"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            ) : (
+              <div className="flex h-40 items-center justify-center rounded-2xl border border-dashed border-slate-200/60 bg-white/30 p-4 text-center">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold text-slate-500">
+                    Chưa có quán nào
+                  </p>
+                  <p className="text-[11px] text-slate-400">
+                    Bấm "Chọn" ở các quán AI gợi ý để lên lịch trình
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Export Button */}
+          {currentItinerary.length > 0 && (
+            <button
+              onClick={() => setShowBoardingPass(true)}
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-3 text-sm font-bold text-white shadow-glow transition hover:opacity-90"
+            >
+              <Ticket size={18} />
+              Xuất vé ẩm thực
+            </button>
           )}
 
-          {/* Empty State */}
-          {mealStops.length === 0 && (
-            <div className="flex flex-1 items-center justify-center rounded-2xl border border-dashed border-slate-200/60 bg-white/30 p-4 text-center">
-              <div className="space-y-2">
-                <p className="text-xs font-semibold text-slate-500">
-                  Chưa có lịch trình
-                </p>
-                <p className="text-[11px] text-slate-400">
-                  Bắt đầu chat để AI gợi ý cho bạn
-                </p>
-              </div>
-            </div>
+          {showBoardingPass && (
+            <BoardingPass 
+              itinerary={currentItinerary} 
+              onClose={() => setShowBoardingPass(false)} 
+            />
           )}
-        </>
+        </div>
       ) : selectedRestaurant ? (
         <div className="flex-1 overflow-y-auto">
           {/* Close Button */}
