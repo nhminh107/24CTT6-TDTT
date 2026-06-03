@@ -24,6 +24,9 @@ type LocationSearchProps = {
   value: string;
   onChange: (value: string) => void;
   onSelect: (option: LocationOption) => void;
+  openOnFocus?: boolean;
+  forceOpen?: boolean;
+  onForceOpenComplete?: () => void;
 };
 
 // ─── Reverse geocode (mockup — thay bằng API thật sau) ───────────────────────
@@ -44,6 +47,9 @@ export default function LocationSearch({
   value,
   onChange,
   onSelect,
+  openOnFocus = true,
+  forceOpen = false,
+  onForceOpenComplete,
 }: LocationSearchProps) {
   const [options, setOptions] = useState<LocationOption[]>([]);
   const [open, setOpen] = useState(false);
@@ -52,11 +58,22 @@ export default function LocationSearch({
   const [isFocused, setIsFocused] = useState(false);
   const [hiddenQuery, setHiddenQuery] = useState("");
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // ── Handle external force open ─────────────────────────────────────────────
+  useEffect(() => {
+    if (forceOpen) {
+      inputRef.current?.focus();
+      setIsFocused(true);
+      setOpen(true);
+      onForceOpenComplete?.();
+    }
+  }, [forceOpen, onForceOpenComplete]);
+
   // GPS state — hoàn toàn nội bộ component
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
-
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // ── Close dropdown on outside click ────────────────────────────────────────
   useEffect(() => {
@@ -111,10 +128,10 @@ export default function LocationSearch({
               }))
           : [];
         setOptions(mapped);
-        if (isFocused) setOpen(true);
+        if (isFocused && (openOnFocus || trimmed !== selectedValue)) setOpen(true);
       } catch {
         setOptions([]);
-        if (isFocused) setOpen(true);
+        if (isFocused && (openOnFocus || trimmed !== selectedValue)) setOpen(true);
       } finally {
         setLoading(false);
       }
@@ -124,7 +141,7 @@ export default function LocationSearch({
       controller.abort();
       clearTimeout(handle);
     };
-  }, [value, selectedValue, isFocused, hiddenQuery]);
+  }, [value, selectedValue, isFocused, hiddenQuery, openOnFocus]);
 
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (option: LocationOption) => {
@@ -203,6 +220,7 @@ export default function LocationSearch({
         <MapPin className="shrink-0 text-brand-coral" size={18} />
 
         <input
+          ref={inputRef}
           value={value}
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setIsFocused(true)}

@@ -483,6 +483,12 @@ export default function MainDashboard() {
       <nav className="relative flex items-center justify-between border-b border-slate-200/60 bg-white/70 px-6 py-3 backdrop-blur">
       {/* Khối bên trái: Nút Menu và Quay lại */}
       <div className="z-10 flex items-center gap-4">
+        <Link
+          href="/"
+          className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 md:flex"
+        >
+          Quay lại trang chính
+        </Link>
         <button
           type="button"
           onClick={handleSidebarToggle}
@@ -490,13 +496,6 @@ export default function MainDashboard() {
         >
           {(isMobile ? mobileSidebarOpen : sidebarOpen) ? <X size={20} /> : <Menu size={20} />}
         </button>
-        <Link
-          href="/"
-          className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 md:flex"
-        >
-          <ArrowLeft size={16} />
-          Quay lại trang chính
-        </Link>
       </div>
 
       {/* Khối ở giữa: Logo BMI (Căn giữa tuyệt đối dựa trên toàn bộ chiều rộng nav) */}

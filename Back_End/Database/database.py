@@ -119,10 +119,13 @@ class ChromaDBManager:
         
         if restaurant_count == 0 or force:
             print(f"Adding {len(ids)} restaurants to collection...")
-            self.collection.upsert( # Dùng upsert để tránh trùng và cho phép cập nhật
-                documents=documents,
-                ids=ids
-            )
+            try:
+                self.collection.upsert( # Dùng upsert để tránh trùng và cho phép cập nhật
+                    documents=documents,
+                    ids=ids
+                )
+            except Exception as e:
+                print(f"⚠️ Warning: Failed to add restaurants due to ChromaDB error: {e}")
         else:
             print(f"Restaurant collection already has {restaurant_count} items. Skipping.")
 
