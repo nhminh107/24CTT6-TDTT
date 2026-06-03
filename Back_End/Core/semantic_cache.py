@@ -6,7 +6,12 @@ from chromadb.utils import embedding_functions
 
 class SemanticCacheManager:
     def __init__(self):
-        cache_path = os.path.join(os.getcwd(), "Back_End", "Database", "chroma_cache_db")
+        # Sử dụng đường dẫn tuyệt đối để tránh xung đột
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        cache_path = os.path.join(base_dir, "Database", "chroma_cache_db")
+        if not os.path.exists(cache_path):
+            os.makedirs(cache_path, exist_ok=True)
+            
         self.client = chromadb.PersistentClient(path=cache_path)
         
         # Đổi model sang all-mpnet-base-v2 (chính xác cao hơn)

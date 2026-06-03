@@ -11,8 +11,11 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     // Nếu không loading và không có user, chuyển hướng về login
-    // Chỉ áp dụng cho các route bảo mật (ví dụ /app)
-    if (!loading && !user && pathname.startsWith("/app")) {
+    // Chỉ áp dụng cho các route bắt buộc bảo mật (ví dụ /profile)
+    const protectedRoutes = ["/profile"];
+    const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+
+    if (!loading && !user && isProtectedRoute) {
       router.push(`/login?redirect=${pathname}`);
     }
   }, [user, loading, router, pathname]);
@@ -25,8 +28,10 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
     );
   }
 
-  // Nếu là route /app và chưa login, không render children để tránh flash nội dung
-  if (!user && pathname.startsWith("/app")) {
+  // Nếu là route bảo mật và chưa login, không render children để tránh flash nội dung
+  const protectedRoutes = ["/profile"];
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+  if (!user && isProtectedRoute) {
     return null;
   }
 

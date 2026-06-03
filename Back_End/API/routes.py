@@ -23,11 +23,16 @@ from Back_End.Core.weight_update import Weight_Update
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 from Back_End.Core.semantic_cache import SemanticCacheManager
+from Back_End.Core.auth_handler import get_db
+from Back_End.Core.user_manager import UserManager
+from Back_End.Core.itinerary_manager import ItineraryManager
 
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
 # KHỞI TẠO ĐỐI TƯỢNG CACHE MANAGER (Khởi tạo 1 lần dùng chung)
 cache_manager = SemanticCacheManager()
+user_manager = UserManager()
+itinerary_manager = ItineraryManager()
 last_results_by_user = {}
 
 
@@ -157,11 +162,46 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
 class UserRequest(BaseModel):
     prompt: str
     place_id: Optional[str] = None  #ID địa điểm người dùng chọn từ Maps
-    
-    
-    user_id:str # cái này tôi không biết ae làm login lấy từ đâu
+    lat: Optional[float] = None     # Vĩ độ GPS
+    lng: Optional[float] = None     # Kinh độ GPS
+    user_id: str
+    chat_id: Optional[str] = None # ID session chat hiện tại
+
+class ItinerarySelectRequest(BaseModel):
+    user_id: str
+    meal: str
+    restaurant_data: dict
 
 #Endpoints xử lý chính
+
+@router.get("/itinerary/{user_id}")
+async def get_itinerary(user_id: str):
+    itinerary = await itinerary_manager.get_itinerary(user_id)
+    return {"status": "success", "itinerary": itinerary}
+
+@router.post("/itinerary/select")
+async def select_restaurant(request: ItinerarySelectRequest):
+    success = await itinerary_manager.select_restaurant(request.user_id, request.meal, request.restaurant_data)
+    if success:
+        return {"status": "success", "message": f"Đã thêm quán vào bữa {request.meal}."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể lưu lựa chọn.")
+
+@router.delete("/itinerary/{user_id}/{meal}")
+async def delete_meal(user_id: str, meal: str):
+    success = await itinerary_manager.delete_meal(user_id, meal)
+    if success:
+        return {"status": "success", "message": f"Đã xóa bữa {meal}."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể xóa bữa ăn.")
+
+@router.delete("/itinerary/{user_id}")
+async def reset_itinerary(user_id: str):
+    success = await itinerary_manager.reset_itinerary(user_id)
+    if success:
+        return {"status": "success", "message": "Đã đặt lại lịch trình."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể đặt lại lịch trình.")
 
 @router.post("/prompt")
 async def process_prompt(request: UserRequest):
@@ -174,10 +214,20 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] Specified place_id: {request.place_id}")
 
     try:
+        # Lấy lịch trình hiện tại để cung cấp ngữ cảnh cho AI
+        current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
+        itinerary_context = ""
+        if current_itinerary:
+            itinerary_context = f"\nĐây là lịch trình hiện tại của người dùng: {json.dumps(current_itinerary, ensure_ascii=False)}\nNếu người dùng yêu cầu thay đổi một bữa đã có, hãy gợi ý quán mới. Gợi ý các quán tiếp theo dựa trên vị trí và ngân sách của lịch trình này."
+
+        # Lưu tin nhắn của user nếu có chat_id
+        if request.chat_id:
+            await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
+
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
-        parse_task = asyncio.create_task(parser.JSON_response(request.prompt))
+        parse_task = asyncio.create_task(parser.JSON_response(request.prompt + itinerary_context))
         loc_task = (
             asyncio.create_task(get_place_detail(request.place_id))
             if request.place_id
@@ -194,7 +244,12 @@ async def process_prompt(request: UserRequest):
 
         # 2. Xử lý vị trí người dùng (User Location)
         user_lat, user_lng = 10.7769, 106.7009 
-        if loc_task:
+        
+        if request.lat is not None and request.lng is not None:
+            user_lat = request.lat
+            user_lng = request.lng
+            print(f"[API_LOG] Using User GPS coordinates: ({user_lat}, {user_lng})")
+        elif loc_task:
             print("[API_LOG] Fetching place details...")
             loc_detail = await loc_task
             if loc_detail.get("status") == "success":
@@ -257,6 +312,12 @@ async def process_prompt(request: UserRequest):
             with contextlib.suppress(asyncio.CancelledError): await weight_task
             with contextlib.suppress(asyncio.CancelledError): await df_task
             last_results_by_user[request.user_id] = _extract_ids_from_result(cached_result)
+
+            # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
+            if request.chat_id:
+                msg_content = f"Dạ, tôi đã tìm thấy kết quả phù hợp từ bộ nhớ tạm cho bạn."
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"restaurants": cached_result})
+
             return {
                 "status": "success",
                 "parsed_intent": parsed_json,
@@ -301,7 +362,8 @@ async def process_prompt(request: UserRequest):
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
-            parsed_json
+            parsed_json,
+            max_per_meal = 3 if wants_alternative else 1
         )
 
         # 5. Result processing
@@ -314,9 +376,13 @@ async def process_prompt(request: UserRequest):
             if missing_meals:
                 print(f"[API_LOG] Reason: No candidates found for meals: {missing_meals}")
             
+            error_msg = "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn."
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", error_msg)
+
             return {
                 "status": "empty",
-                "message": "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn.",
+                "message": error_msg,
                 "result": []
             }
         
@@ -338,6 +404,13 @@ async def process_prompt(request: UserRequest):
 
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
         print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
+
+        # Lưu tin nhắn của assistant nếu có chat_id
+        if request.chat_id:
+            meals_found = final_itinerary['meal'].unique().tolist()
+            meals_str = ", ".join(meals_found)
+            msg_content = f"Dạ, tôi đã tìm thấy các quán ăn phù hợp cho bữa {meals_str} theo yêu cầu của bạn. Bạn xem qua nhé!"
+            await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"restaurants": final_result_list})
 
         return {
             "status": "success",
@@ -529,3 +602,31 @@ async def fetch_user_health_profile(user_id: str):
         }
 
     return doc.to_dict()
+
+# --- Chat History Endpoints ---
+
+@user_router.post("/chat/new/{user_id}")
+async def create_new_chat(user_id: str):
+    chat_id = await user_manager.create_chat_session(user_id)
+    if chat_id:
+        return {"status": "success", "chat_id": chat_id}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể tạo cuộc trò chuyện mới.")
+
+@user_router.get("/chat/history/{user_id}")
+async def get_chat_history(user_id: str):
+    history = await user_manager.get_chat_history(user_id)
+    return {"status": "success", "history": history}
+
+@user_router.get("/chat/{user_id}/{chat_id}/messages")
+async def get_chat_messages(user_id: str, chat_id: str):
+    messages = await user_manager.get_chat_messages(user_id, chat_id)
+    return {"status": "success", "messages": messages}
+
+@user_router.delete("/chat/{user_id}/{chat_id}")
+async def delete_chat(user_id: str, chat_id: str):
+    success = await user_manager.delete_chat_session(user_id, chat_id)
+    if success:
+        return {"status": "success", "message": "Đã xóa cuộc trò chuyện."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể xóa cuộc trò chuyện.")

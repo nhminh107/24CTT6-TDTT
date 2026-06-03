@@ -21,6 +21,7 @@ type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  assignedMeal?: string;
   warnings?: string[];
   notes?: string[];
 };
@@ -45,9 +46,10 @@ const formatPhoneNumber = (phone: string | number) => {
 
 
 
-const normalizeImageUrl = (url: string) => url.replace(/\\\//g, "/");
-
-
+const normalizeImageUrl = (url: string | undefined | null) => {
+  if (!url) return "";
+  return url.replace(/\\\//g, "/");
+};
 
 
 export default function RestaurantCard2({
@@ -70,7 +72,11 @@ export default function RestaurantCard2({
     [restaurant.imageUrl]
   );
 
-
+  const name = restaurant.name || "Chưa có tên";
+  const address = restaurant.address || "Chưa có địa chỉ";
+  const rating = typeof restaurant.rating === "number" ? restaurant.rating : 0;
+  const semanticText = restaurant.semanticText || "";
+  const mapUrl = restaurant.mapUrl || "https://www.google.com/maps";
     
   const [isOpenWarnings, setIsOpenWarnings] = useState(true);
 
@@ -142,7 +148,7 @@ export default function RestaurantCard2({
           
       <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
         <h2 className="text-3xl font-bold tracking-tight drop-shadow-md">
-          {restaurant.name}
+          {name}
         </h2>
 
         {/* unified badges */}
@@ -153,7 +159,7 @@ export default function RestaurantCard2({
               size={15}
               className="fill-yellow-400 text-yellow-400"
             />
-            <span>{restaurant.rating.toFixed(1)}</span>
+            <span>{rating.toFixed(1)}</span>
           </div>
 
           {/* price */}
@@ -181,7 +187,7 @@ export default function RestaurantCard2({
           />
 
           <span className="leading-6">
-            {restaurant.address}
+            {address}
           </span>
         </div>
       </div>
@@ -285,7 +291,7 @@ export default function RestaurantCard2({
             <span>📖</span> Không gian & Hương vị
           </div>
           <p className="text-[14px] font-normal leading-relaxed text-slate-600">
-            {restaurant.semanticText}
+            {semanticText}
           </p>
         </div>
       </div>
@@ -304,7 +310,7 @@ export default function RestaurantCard2({
         )}
 
         <Link
-          href={restaurant.mapUrl}
+          href={mapUrl}
           target="_blank"
           className={cn(
             "inline-flex items-center justify-center gap-2 rounded-2xl border py-3.5 text-center text-sm font-semibold transition duration-300",

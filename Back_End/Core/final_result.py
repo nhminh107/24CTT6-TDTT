@@ -99,30 +99,25 @@ class FinalResultLLM:
             print(f"DEBUG: Lỗi API trong final_result.py: {type(e).__name__} - {e}")
             raise e
 
-    def _select_unique_combination(self, meal_order: list, candidate_map: dict) -> list:
+    def _select_unique_combination(self, meal_order: list, candidate_map: dict, max_per_meal: int = 1) -> list:
         selected_rows = []
         used_ids = set()
 
-        # Chúng ta dùng greedy approach thay vì strict backtracking
-        # Vì nếu có bữa nào không có quán (candidates trống), ta vẫn muốn trả về các bữa khác
         for meal in meal_order:
             candidates = candidate_map.get(meal, [])
+            count = 0  # Biến đếm số lượng quán đã chọn cho bữa này
             
-            # Tìm quán tốt nhất cho bữa này mà chưa được chọn
-            best_choice = None
             for row in candidates:
+                if count >= max_per_meal: # Dừng khi đã đủ số lượng (ví dụ: 3)
+                    break
+                    
                 rid = str(row.get('id'))
                 if rid not in used_ids:
-                    best_choice = row
-                    break
-            
-            if best_choice:
-                rid = str(best_choice.get('id'))
-                used_ids.add(rid)
-                selected_rows.append(best_choice)
-            else:
-                # Nếu không tìm được quán nào cho bữa này (do rỗng hoặc đã trùng), 
-                # in ra log cảnh báo nhưng VẪN TIẾP TỤC với bữa tiếp theo
+                    selected_rows.append(row)
+                    used_ids.add(rid)
+                    count += 1
+                    
+            if count == 0:
                 print(f"[FINAL_RESULT_LOG] Warning: No available unique restaurants found for meal '{meal}'. Skipping this meal in the final itinerary.")
 
         return selected_rows
@@ -131,7 +126,8 @@ class FinalResultLLM:
         self,
         candidates_df: pd.DataFrame,
         user_prompt: str,
-        parsed_json: dict | None = None
+        parsed_json: dict | None = None,
+        max_per_meal: int = 1
     ) -> pd.DataFrame:
         if candidates_df is None or candidates_df.empty:
             return pd.DataFrame()
@@ -164,7 +160,7 @@ class FinalResultLLM:
                         fallback.append(row)
                 candidate_map[meal] = preferred + fallback
 
-        final_rows = self._select_unique_combination(meal_order, candidate_map)
+        final_rows = self._select_unique_combination(meal_order, candidate_map, max_per_meal=max_per_meal)
         if not final_rows:
             return pd.DataFrame()
 

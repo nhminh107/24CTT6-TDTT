@@ -97,17 +97,39 @@ class RestaurantFilter:
     def menu_filter(self, meal_df, menu_query):
         if meal_df is None or meal_df.empty:
             return meal_df
-        menu_query = self._normalize_menu_query(menu_query)
+        menu_query = self._normalize_menu_query(menu_query).lower()
         if not menu_query:
             return meal_df
         if 'id' not in meal_df.columns:
             return meal_df
 
+        # --- Bước 1: Lọc cứng dựa trên subset tokens ---
+        query_tokens = set(menu_query.split())
+        matched_ids_subset = set()
+        
+        if 'menu' in meal_df.columns:
+            for _, row in meal_df.iterrows():
+                menu_list = row['menu']
+                if isinstance(menu_list, list):
+                    for item in menu_list:
+                        item_lower = str(item).lower()
+                        item_tokens = set(item_lower.split())
+                        # Kiểm tra subset xuôi hoặc ngược
+                        if query_tokens.issubset(item_tokens) or item_tokens.issubset(query_tokens):
+                            matched_ids_subset.add(str(row['id']))
+                            break
+        
+        if matched_ids_subset:
+            print(f"[MENU_FILTER_DEBUG] Found {len(matched_ids_subset)} matches via SUBSET MATCHING for '{menu_query}'.")
+            return meal_df[meal_df['id'].astype(str).isin(matched_ids_subset)]
+
+        # --- Bước 2: Nếu lọc cứng không có kết quả, dùng ChromaDB (Semantic Search) ---
+        print(f"[MENU_FILTER_DEBUG] No subset match found for '{menu_query}'. Falling back to ChromaDB.")
+
         candidate_ids = meal_df['id'].astype(str).dropna().unique().tolist()
         if not candidate_ids:
             return meal_df
 
-        # Ép trả về số lượng hợp lý: lấy top 15-20 kết quả liên quan nhất thay vì nhân 3
         n_results = 20 
         where = {"restaurant_id": {"$in": candidate_ids}}
 
@@ -157,7 +179,7 @@ class RestaurantFilter:
             return meal_df.iloc[0:0]
 
         filtered = meal_df[meal_df['id'].astype(str).isin(matched_ids)]
-        print(f"[MENU_FILTER_DEBUG] Found relevant matches for '{menu_query}': {len(filtered)} restaurants.")
+        print(f"[MENU_FILTER_DEBUG] Found relevant matches for '{menu_query}' via ChromaDB: {len(filtered)} restaurants.")
         return filtered
 
     def _calculate_distance(self, df):
