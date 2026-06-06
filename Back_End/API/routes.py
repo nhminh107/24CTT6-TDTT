@@ -16,6 +16,7 @@ from firebase_admin import credentials, firestore
 
 
 from Back_End.Core.parsing import LLMParser
+from Back_End.Core.QA_Chatbot import ChatBot
 from Back_End.Core.Filter import RestaurantFilter
 from Back_End.Core.scoring_class import RestaurantScorer
 from Back_End.Core.final_result import FinalResultLLM
@@ -219,6 +220,26 @@ async def process_prompt(request: UserRequest):
         # Lưu tin nhắn của user nếu có chat_id
         if request.chat_id:
             await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
+
+        # 0. Intent Routing: Phân luồng ý định
+        print("[API_LOG] Step 0: Intent Routing started...")
+        chatbot = ChatBot()
+        routing_res_json = await chatbot.routing(request.prompt)
+        routing_res = json.loads(routing_res_json)
+        
+        user_intent = routing_res.get("user_intent")
+        is_poor_info = routing_res.get("isPoorInfo", 0)
+
+        if user_intent == "Search" and is_poor_info == 1:
+            print("[API_LOG] User intent: Search, but info is poor. Asking for more info.")
+            poor_info_msg = "Dạ, tôi chưa hiểu rõ ý định tìm kiếm của bạn. Bạn có thể cho tôi thêm thông tin như: bạn muốn ăn món gì, ở đâu, hoặc ngân sách khoảng bao nhiêu không ạ?"
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", poor_info_msg)
+            return {
+                "status": "poor_info",
+                "message": poor_info_msg,
+                "result": []
+            }
 
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
