@@ -27,54 +27,47 @@ class ChatBot():
 
     async def routing(self, user_prompt: str, history: list = None) -> str:
         """
-        Phân loại ý định người dùng thành một trong ba nhãn:
+        Phân loại ý định người dùng thành một trong bốn nhãn:
           - "Search"      : Tìm kiếm quán ăn / địa điểm ăn uống.
           - "System_QA"   : Hỏi về cách dùng ứng dụng, tính năng, báo lỗi.
           - "Knowledge_QA": Hỏi về dinh dưỡng, sức khỏe, kiến thức ẩm thực.
+          - "Out_Scope"   : Các nội dung không liên quan (chính trị, tôn giáo, toán học, coding, v.v.)
 
         Trả về chuỗi JSON: {"user_intent": "...", "isPoorInfo": 0 | 1}
         """
         system_prompt = """
-        You are a routing assistant for a Vietnamese food-recommendation application.
-        Your ONLY task is to classify the user's message into exactly one of three intents
+        You are a routing assistant for BMI (Bite Mapping Intelligent), a Vietnamese food and health application.
+        Your ONLY task is to classify the user's message into exactly one of FOUR intents
         and return a JSON object — nothing else.
 
-        Use the provided chat history to understand context for ambiguous terms like "nó", "đó", "quán này", "món đó".
+        Use the provided chat history to understand context for ambiguous terms.
 
         ### INTENT DEFINITIONS
 
         1. "Search"
-        - The user wants to FIND a specific restaurant, food stall, café, or eating spot.
-        - Includes requests based on location, dish type, budget, distance, rating, etc.
-        - CRITICAL RULE (Priority for Meal Plans): If the user lists a series of dishes or food styles assigned to specific times of the day (e.g., breakfast, lunch, dinner, morning, noon, evening), even WITHOUT explicit action verbs like "find", "suggest", or "where to eat", you MUST classify this as "Search". The system assumes they want to find places to eat for those meals.
-        - Examples: 
-            * "Tìm quán phở gần quận 1"
-            * "Cho tôi quán bún bò Huế ngon"
-            * "Nhà hàng hải sản không quá 200k"
-            * "ăn sáng bằng món thái ăn trưa bằng món âu và ăn tối bằng món việt" -> This is a meal plan to be executed. MUST BE "Search" with isPoorInfo = 0.
-        - For this intent you MUST also evaluate `isPoorInfo`:
-            * isPoorInfo = 1 → The prompt is extremely vague and lacks any specific actionable detail. This usually applies to single-word inputs that are just general adjectives or abstract concepts with no specific food or intent (e.g., "ngon", "rẻ", "cay", "đắt", "ăn uống", "đói").
-            * isPoorInfo = 0 → The prompt contains at least one specific piece of information that the system can use to start a search. This includes a dish name, a specific type of cuisine, a meal time, a location, or a phrase expressing a desire for a specific food (e.g., "bánh canh", "tôi muốn ăn phở", "tìm quán ăn sáng", "quán nào gần đây", "ăn gì ở quận 1"). A dish name alone is SUFFICIENT info.
+        - The user wants to FIND restaurants, food, or places to eat.
+        - Examples: "bánh canh", "tôi muốn ăn phở", "tìm quán ăn sáng", "quán nào gần đây", "ăn gì ở quận 1".
+        - For this intent evaluate `isPoorInfo`:
+            * isPoorInfo = 1 → Extremely vague (e.g., "ngon", "rẻ", "cay", "đói").
+            * isPoorInfo = 0 → Contains specific food, meal, or location. A dish name alone is SUFFICIENT.
 
         2. "System_QA"
-        - The user is asking HOW TO USE the application, about its features, reporting a bug,
-            or requesting guidance on navigating the UI.
-        - Examples: "App này dùng như thế nào?", "Làm sao để chọn cho lịch trình?",
-            "Tôi không đăng nhập được", "Tính năng lọc theo giá ở đâu?", "Nhập vị trí chỗ nào thế"
-        - Always set isPoorInfo = 0.
+        - Asking HOW TO USE the BMI app or reporting bugs.
+        - Examples: "App này dùng sao?", "Làm sao chọn lịch trình?", "Tính năng lọc ở đâu?"
 
         3. "Knowledge_QA"
-        - The user is asking about general food knowledge, medical/nutrition advice, health benefits, calories,
-            ingredients, cooking methods, historical origins, or general theoretical restaurant/dish discussions.
-        - DO NOT classify simple meal listings or menu planning here unless they explicitly ask a question about health, mechanism, or factual verification.
-        - Examples: "Tiểu đường ăn bún riêu được không?",
-            "Phở bò có bao nhiêu calo?", "Món này ngon không?",
-            "Nước mắm có lợi ích gì cho sức khỏe?", "Nguồn gốc của món phở Nam Định"
-        - Always set isPoorInfo = 0.
+        - Asking about nutrition, health benefits of food, calories, or general culinary knowledge.
+        - Examples: "Tiểu đường ăn bún riêu được không?", "Phở có bao nhiêu calo?", "Món này có tốt cho da không?"
 
-        ### OUTPUT FORMAT (strict JSON, no extra text)
+        4. "Out_Scope"
+        - The prompt is COMPLETELY UNRELATED to food, restaurants, nutrition, health, or the BMI application.
+        - Includes: general knowledge (non-food), coding, math, politics, religion, translation of non-food text, or generic chatting that doesn't lead to eating.
+        - WARNING: If the prompt mentions ANY food or physical health condition, it is likely "Knowledge_QA" or "Search", NOT "Out_Scope".
+        - Examples: "Chào bạn", "1+1 bằng mấy?", "Viết code Python", "Thời tiết hôm nay thế nào?", "Ai là tổng thống Mỹ?"
+
+        ### OUTPUT FORMAT (strict JSON)
         {
-            "user_intent": "Search" | "System_QA" | "Knowledge_QA",
+            "user_intent": "Search" | "System_QA" | "Knowledge_QA" | "Out_Scope",
             "isPoorInfo": 0 | 1
         }
         """

@@ -119,7 +119,15 @@ export default function ChatInterface({
       };
     }
 
-    if(response.status === "success_qa") {
+    if (response.status === "out_scope") {
+      return {
+        content: response.message || "Dạ, câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Bạn vui lòng hỏi về ẩm thực, sức khỏe hoặc du lịch nhé!",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "success_qa") {
+
       return {
         content: response.message || "Hệ thống không thể trả lời câu hỏi của bạn, bạn vui lòng liên hệ admin để được hỗ trợ nhé.",
         restaurants: []

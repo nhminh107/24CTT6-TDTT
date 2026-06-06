@@ -280,6 +280,17 @@ async def process_prompt(request: UserRequest):
             }
             
 
+        if user_intent == "Out_Scope":
+            print("[API_LOG] User intent: Out_Scope. Refusing to answer...")
+            out_scope_msg = "Dạ, hiện tại tôi là trợ lý chuyên sâu về ẩm thực, sức khỏe và du lịch. Tôi xin phép không trả lời các nội dung ngoài phạm vi này ạ. Bạn có muốn tìm quán ăn hay hỏi gì về dinh dưỡng không?"
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", out_scope_msg)
+            return {
+                "status": "out_scope",
+                "message": out_scope_msg,
+                "result": []
+            }
+
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
