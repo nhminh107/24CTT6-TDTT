@@ -119,6 +119,13 @@ export default function ChatInterface({
       };
     }
 
+    if(response.status === "success_qa") {
+      return {
+        content: response.message || "Hệ thống không thể trả lời câu hỏi của bạn, bạn vui lòng liên hệ admin để được hỗ trợ nhé.",
+        restaurants: []
+      };
+    }
+
     return {
       content: response.message || response.detail || "Lỗi hệ thống. Vui lòng thử lại.",
       restaurants: []

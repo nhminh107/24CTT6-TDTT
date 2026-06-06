@@ -240,6 +240,29 @@ async def process_prompt(request: UserRequest):
                 "message": poor_info_msg,
                 "result": []
             }
+            
+        if user_intent == "System_QA":
+            print("[API_LOG] User intent: System_QA. Handling system guidance...")
+            system_qa_response = await chatbot.handle_system_qa(request.prompt)
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", system_qa_response)
+            return {
+                "status": "success_qa",
+                "message": system_qa_response,
+                "result": []
+            }
+
+        if user_intent == "Knowledge_QA":
+            print("[API_LOG] User intent: Knowledge_QA. Handling nutrition/food knowledge...")
+            knowledge_qa_response = await chatbot.handle_knowledge_qa(request.prompt)
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", knowledge_qa_response)
+            return {
+                "status": "success_qa",
+                "message": knowledge_qa_response,
+                "result": []
+            }
+            
 
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
