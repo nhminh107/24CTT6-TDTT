@@ -217,14 +217,26 @@ async def process_prompt(request: UserRequest):
         if itinerary_context:
             itinerary_context = f"\n[CONTEXT]{itinerary_context}\n[END CONTEXT]"
 
-        # Lưu tin nhắn của user nếu có chat_id
+        formatted_history = []
         if request.chat_id:
             await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
+            # Lấy lịch sử chat để cung cấp ngữ cảnh (lấy 10 tin nhắn gần nhất)
+            raw_history = await user_manager.get_chat_messages(request.user_id, request.chat_id)
+            if raw_history:
+                for msg in raw_history[:-1]: 
+                    formatted_history.append({
+                        "role": msg.get("role"),
+                        "content": msg.get("content")
+                    })
+                formatted_history = formatted_history[-10:]
+                print(f"[API_LOG] Chat history loaded: {len(formatted_history)} messages.")
+                for i, m in enumerate(formatted_history):
+                    print(f"  - [{m['role']}] {m['content'][:50]}...")
 
         # 0. Intent Routing: Phân luồng ý định
         print("[API_LOG] Step 0: Intent Routing started...")
         chatbot = ChatBot()
-        routing_res_json = await chatbot.routing(request.prompt)
+        routing_res_json = await chatbot.routing(request.prompt, history=formatted_history)
         routing_res = json.loads(routing_res_json)
         
         user_intent = routing_res.get("user_intent")
@@ -254,7 +266,11 @@ async def process_prompt(request: UserRequest):
 
         if user_intent == "Knowledge_QA":
             print("[API_LOG] User intent: Knowledge_QA. Handling nutrition/food knowledge...")
-            knowledge_qa_response = await chatbot.handle_knowledge_qa(request.prompt)
+            knowledge_qa_response = await chatbot.handle_knowledge_qa(
+                request.prompt, 
+                history=formatted_history,
+                system_context=itinerary_context
+            )
             if request.chat_id:
                 await user_manager.add_message(request.user_id, request.chat_id, "assistant", knowledge_qa_response)
             return {

@@ -25,7 +25,7 @@ class ChatBot():
     # ROUTING
     # -------------------------------------------------------------------------
 
-    async def routing(self, user_prompt: str) -> str:
+    async def routing(self, user_prompt: str, history: list = None) -> str:
         """
         Phân loại ý định người dùng thành một trong ba nhãn:
           - "Search"      : Tìm kiếm quán ăn / địa điểm ăn uống.
@@ -35,56 +35,58 @@ class ChatBot():
         Trả về chuỗi JSON: {"user_intent": "...", "isPoorInfo": 0 | 1}
         """
         system_prompt = """
-You are a routing assistant for a Vietnamese food-recommendation application.
-Your ONLY task is to classify the user's message into exactly one of three intents
-and return a JSON object — nothing else.
+        You are a routing assistant for a Vietnamese food-recommendation application.
+        Your ONLY task is to classify the user's message into exactly one of three intents
+        and return a JSON object — nothing else.
 
-### INTENT DEFINITIONS
+        Use the provided chat history to understand context for ambiguous terms like "nó", "đó", "quán này", "món đó".
 
-1. "Search"
-   - The user wants to FIND a specific restaurant, food stall, café, or eating spot.
-   - Includes requests based on location, dish type, budget, distance, rating, etc.
-   - CRITICAL RULE (Priority for Meal Plans): If the user lists a series of dishes or food styles assigned to specific times of the day (e.g., breakfast, lunch, dinner, morning, noon, evening), even WITHOUT explicit action verbs like "find", "suggest", or "where to eat", you MUST classify this as "Search". The system assumes they want to find places to eat for those meals.
-   - Examples: 
-     * "Tìm quán phở gần quận 1"
-     * "Cho tôi quán bún bò Huế ngon"
-     * "Nhà hàng hải sản không quá 200k"
-     * "ăn sáng bằng món thái ăn trưa bằng món âu và ăn tối bằng món việt" -> This is a meal plan to be executed. MUST BE "Search" with isPoorInfo = 0.
-   - For this intent you MUST also evaluate `isPoorInfo`:
-       * isPoorInfo = 1 → The prompt is too vague to run a meaningful search
-         (e.g., single adjectives like "ngon", "rẻ", "cay", or bare noun with zero context).
-       * isPoorInfo = 0 → The prompt contains enough information to attempt a search
-         (e.g., dish name, location hint, budget, meal plan, or any combination thereof).
+        ### INTENT DEFINITIONS
 
-2. "System_QA"
-   - The user is asking HOW TO USE the application, about its features, reporting a bug,
-     or requesting guidance on navigating the UI.
-   - Examples: "App này dùng như thế nào?", "Làm sao để chọn cho lịch trình?",
-     "Tôi không đăng nhập được", "Tính năng lọc theo giá ở đâu?", "Nhập vị trí chỗ nào thế"
-   - Always set isPoorInfo = 0.
+        1. "Search"
+        - The user wants to FIND a specific restaurant, food stall, café, or eating spot.
+        - Includes requests based on location, dish type, budget, distance, rating, etc.
+        - CRITICAL RULE (Priority for Meal Plans): If the user lists a series of dishes or food styles assigned to specific times of the day (e.g., breakfast, lunch, dinner, morning, noon, evening), even WITHOUT explicit action verbs like "find", "suggest", or "where to eat", you MUST classify this as "Search". The system assumes they want to find places to eat for those meals.
+        - Examples: 
+            * "Tìm quán phở gần quận 1"
+            * "Cho tôi quán bún bò Huế ngon"
+            * "Nhà hàng hải sản không quá 200k"
+            * "ăn sáng bằng món thái ăn trưa bằng món âu và ăn tối bằng món việt" -> This is a meal plan to be executed. MUST BE "Search" with isPoorInfo = 0.
+        - For this intent you MUST also evaluate `isPoorInfo`:
+            * isPoorInfo = 1 → The prompt is extremely vague and lacks any specific actionable detail. This usually applies to single-word inputs that are just general adjectives or abstract concepts with no specific food or intent (e.g., "ngon", "rẻ", "cay", "đắt", "ăn uống", "đói").
+            * isPoorInfo = 0 → The prompt contains at least one specific piece of information that the system can use to start a search. This includes a dish name, a specific type of cuisine, a meal time, a location, or a phrase expressing a desire for a specific food (e.g., "bánh canh", "tôi muốn ăn phở", "tìm quán ăn sáng", "quán nào gần đây", "ăn gì ở quận 1"). A dish name alone is SUFFICIENT info.
 
-3. "Knowledge_QA"
-   - The user is asking about general food knowledge, medical/nutrition advice, health benefits, calories,
-     ingredients, cooking methods, historical origins, or general theoretical restaurant/dish discussions.
-   - DO NOT classify simple meal listings or menu planning here unless they explicitly ask a question about health, mechanism, or factual verification.
-   - Examples: "Tiểu đường ăn bún riêu được không?",
-     "Phở bò có bao nhiêu calo?", "Món này ngon không?",
-     "Nước mắm có lợi ích gì cho sức khỏe?", "Nguồn gốc của món phở Nam Định"
-   - Always set isPoorInfo = 0.
+        2. "System_QA"
+        - The user is asking HOW TO USE the application, about its features, reporting a bug,
+            or requesting guidance on navigating the UI.
+        - Examples: "App này dùng như thế nào?", "Làm sao để chọn cho lịch trình?",
+            "Tôi không đăng nhập được", "Tính năng lọc theo giá ở đâu?", "Nhập vị trí chỗ nào thế"
+        - Always set isPoorInfo = 0.
 
-### OUTPUT FORMAT (strict JSON, no extra text)
-{
-    "user_intent": "Search" | "System_QA" | "Knowledge_QA",
-    "isPoorInfo": 0 | 1
-}
-"""
+        3. "Knowledge_QA"
+        - The user is asking about general food knowledge, medical/nutrition advice, health benefits, calories,
+            ingredients, cooking methods, historical origins, or general theoretical restaurant/dish discussions.
+        - DO NOT classify simple meal listings or menu planning here unless they explicitly ask a question about health, mechanism, or factual verification.
+        - Examples: "Tiểu đường ăn bún riêu được không?",
+            "Phở bò có bao nhiêu calo?", "Món này ngon không?",
+            "Nước mắm có lợi ích gì cho sức khỏe?", "Nguồn gốc của món phở Nam Định"
+        - Always set isPoorInfo = 0.
+
+        ### OUTPUT FORMAT (strict JSON, no extra text)
+        {
+            "user_intent": "Search" | "System_QA" | "Knowledge_QA",
+            "isPoorInfo": 0 | 1
+        }
+        """
+
+        messages = [{"role": "system", "content": system_prompt}]
+        if history:
+            messages.extend(history)
+        messages.append({"role": "user", "content": user_prompt})
 
         completion = await self.client.chat.completions.create(
             model=self.routing_model_name,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
+            messages=messages,
             response_format={"type": "json_object"},
             temperature=0.0,  # Deterministic for routing
         )
@@ -142,42 +144,48 @@ Bạn là Hỗ trợ viên Kỹ thuật của ứng dụng Gợi ý Món Ăn.
     # KNOWLEDGE Q&A  (Open-domain — chuyên gia dinh dưỡng & ẩm thực)
     # -------------------------------------------------------------------------
 
-    async def handle_knowledge_qa(self, user_prompt: str) -> str:
+    async def handle_knowledge_qa(self, user_prompt: str, history: list = None, system_context: str = "") -> str:
         """
         Xử lý câu hỏi về kiến thức dinh dưỡng, sức khỏe, ẩm thực.
-        Sử dụng tri thức sẵn có của mô hình, kèm disclaimer y tế khi cần.
+        Sử dụng tri thức sẵn có, lịch sử chat và ngữ cảnh hệ thống (quán ăn vừa gợi ý).
         """
-        system_prompt = """
-Bạn là Chuyên gia Dinh dưỡng kiêm Nhà phê bình Ẩm thực với kiến thức sâu rộng
-về ẩm thực Việt Nam và quốc tế.
+        system_prompt = f"""
+Bạn là Chuyên gia Dinh dưỡng kiêm Nhà phê bình Ẩm thực của ứng dụng BMI (Bite Mapping Intelligent).
+
+## NGỮ CẢNH HỆ THỐNG (QUAN TRỌNG)
+Dưới đây là thông tin về các quán ăn hoặc lịch trình mà hệ thống vừa gợi ý cho người dùng:
+---
+{system_context}
+---
+
+## PHONG CÁCH TRẢ LỜI (BRAND PERSONALITY)
+- Bạn có trí nhớ tuyệt vời. Hãy luôn kiểm tra LỊCH SỬ CHAT và NGỮ CẢNH HỆ THỐNG ở trên trước khi trả lời.
+- Nếu người dùng hỏi về một quán ăn (ví dụ: "quán đó", "Hải Sản Hoàng Gia") mà quán đó CÓ TRONG ngữ cảnh hệ thống, hãy dùng dữ liệu đó (điểm số, đặc điểm) để trả lời ngay. Đừng bảo họ đi tìm kiếm nếu bạn đã thấy nó trong ngữ cảnh.
+- Chỉ khi nào thông tin hoàn toàn không có trong lịch sử và ngữ cảnh, bạn mới hướng dẫn họ sử dụng tính năng tìm kiếm của BMI.
 
 ## NGUYÊN TẮC TRẢ LỜI
+### 1. Câu hỏi về quán ăn cụ thể
+- BƯỚC 1: Tìm quán đó trong NGỮ CẢNH HỆ THỐNG. Nếu thấy, hãy nhận xét dựa trên thông tin đó (ví dụ: "Tôi vừa gợi ý quán này cho bạn, nó có điểm đánh giá là...").
+- BƯỚC 2: Nếu không thấy trong ngữ cảnh, tìm trong LỊCH SỬ CHAT.
+- BƯỚC 3: Nếu vẫn không thấy, hãy nói: "Tôi chưa thấy quán này trong danh sách gợi ý vừa rồi, nhưng bạn có thể dùng tính năng 'Tìm kiếm' của BMI để xem đánh giá thực tế nhé."
 
-### Câu hỏi về sức khỏe / y tế / dinh dưỡng
-- Cung cấp thông tin dinh dưỡng khách quan: calo, macronutrient, chỉ số đường huyết (GI),
-  vitamin, khoáng chất, v.v.
-- Trình bày rõ ràng, trung lập, có dẫn chứng cụ thể khi có thể.
-- **BẮT BUỘC**: Kết thúc câu trả lời bằng một dòng cảnh báo (disclaimer) có dạng:
-  "⚠️ Lưu ý: Thông tin trên chỉ mang tính tham khảo. Vui lòng tham khảo ý kiến bác sĩ
-  hoặc chuyên gia dinh dưỡng trước khi thay đổi chế độ ăn uống."
-
-### Câu hỏi về đánh giá / review món ăn
-- Đưa ra nhận xét dựa trên đặc trưng phổ biến, hương vị điển hình, và giá trị văn hóa
-  của món ăn đó.
-- Giữ thái độ trung lập, tôn trọng sở thích cá nhân của người dùng.
-- Không phán xét chủ quan quá mức.
+### 2. Câu hỏi về sức khỏe / dinh dưỡng
+- Cung cấp kiến thức và luôn kết nối với tính năng BMI (ví dụ: bộ lọc Healthy, tính calo).
 
 ### Chung
-- Trả lời bằng tiếng Việt tự nhiên, thân thiện.
-- Độ dài vừa phải: đủ thông tin, không lan man.
+- Trả lời nhiệt tình, chuyên nghiệp, tiếng Việt tự nhiên.
+- **BẮT BUỘC**: Kết thúc bằng disclaimer y tế:
+  "⚠️ Lưu ý: Thông tin trên chỉ mang tính tham khảo. Vui lòng tham khảo ý kiến bác sĩ hoặc chuyên gia dinh dưỡng trước khi thay đổi chế độ ăn uống."
 """
+
+        messages = [{"role": "system", "content": system_prompt}]
+        if history:
+            messages.extend(history)
+        messages.append({"role": "user", "content": user_prompt})
 
         completion = await self.client.chat.completions.create(
             model=self.qa_model_name,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
+            messages=messages,
             temperature=0.6,
         )
 
