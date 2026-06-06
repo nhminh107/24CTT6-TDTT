@@ -4671,7 +4671,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -5073,7 +5074,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -5582,7 +5584,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -7489,7 +7492,8 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "High_Sugar",
@@ -7525,7 +7529,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -13831,7 +13836,8 @@
             "Refined_Carbs",
             "Red_Meat",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "High_Sugar"
@@ -16156,7 +16162,8 @@
             "Refined_Carbs",
             "Red_Meat",
             "Alcohol_Pub",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -16195,7 +16202,8 @@
         "potential_tag": [
             "Spicy",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "menu": [
             "gà rán popeyes",
@@ -16226,7 +16234,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Red_Meat",
@@ -16261,7 +16270,8 @@
         "main_tag": [
             "Refined_Carbs",
             "Red_Meat",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -16296,7 +16306,8 @@
         "Link googl": "https://www.google.com/maps/place/Hoolala+Chicken/data=!4m7!3m6!1s0x317525e98a77e1d7:0xcfa8cac833edd18a!8m2!3d10.724946!4d106.7279911!16s%2Fg%2F11srylrbn2!19sChIJ1-F3iukldTERitHtM8jKqM8?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "Spicy",
-            "DeepFried_Oily"
+            "DeepFried_Oily",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Refined_Carbs",
@@ -16336,7 +16347,8 @@
         "potential_tag": [
             "Refined_Carbs",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "menu": [
             "gà rán",
@@ -16367,7 +16379,8 @@
         "Link googl": "https://www.google.com/maps/place/Lotteria+LOTTE+Mart+Qu%E1%BA%ADn+7/data=!4m7!3m6!1s0x31752f9f4be80c8f:0x8a577c38f0b1f7!8m2!3d10.7409715!4d106.7020071!16s%2Fg%2F11dzs_d93t!19sChIJjwzoS58vdTER97HwOHxXigA?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "DeepFried_Oily"
@@ -16401,7 +16414,8 @@
         "Link googl": "https://www.google.com/maps/place/Chicken+Talk+%EC%B9%98%ED%82%A8%ED%86%A1+-+Qu%C3%A1n+G%C3%A0+r%C3%A1n+H%C3%A0n+Qu%E1%BB%91c/data=!4m7!3m6!1s0x31752f4b86a563db:0x21c6050608abf11d!8m2!3d10.7363466!4d106.7030901!16s%2Fg%2F11lkjlk_rc!19sChIJ22OlhksvdTERHfGrCAYFxiE?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "Spicy",
-            "DeepFried_Oily"
+            "DeepFried_Oily",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Refined_Carbs",
@@ -16440,7 +16454,8 @@
             "Refined_Carbs",
             "Red_Meat",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy"
@@ -16476,7 +16491,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -16513,7 +16529,8 @@
         "main_tag": [
             "DeepFried_Oily",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "High_Sugar",
@@ -16583,7 +16600,8 @@
         "Link googl": "https://www.google.com/maps/place/Texas+Chicken/data=!4m7!3m6!1s0x317525685f9abf8f:0x12eaeae9437deeba!8m2!3d10.7373991!4d106.7250202!16s%2Fg%2F11h10vbcvh!19sChIJj7-aX2gldTERuu59Q-nq6hI?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "DeepFried_Oily",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -16620,7 +16638,8 @@
         "Link googl": "https://www.google.com/maps/place/Lotteria+Crescent+Mall/data=!4m7!3m6!1s0x31752f830629d877:0xf43fd4eb04fd4ad6!8m2!3d10.7290836!4d106.7188731!16s%2Fg%2F11kk8_gd5n!19sChIJd9gpBoMvdTER1kr9BOvUP_Q?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "DeepFried_Oily",
@@ -16654,7 +16673,7 @@
         "Link googl": "https://www.google.com/maps/place/Lotteria+Ph%C3%BA+M%E1%BB%B9+H%C6%B0ng+GRAB+%26+GO/data=!4m7!3m6!1s0x3175255918c1b793:0x4b16be1622010d8d!8m2!3d10.7272923!4d106.7087658!16s%2Fg%2F1thq7ccg!19sChIJk7fBGFkldTERjQ0BIha-Fks?authuser=0&hl=vi&rclk=1",
         "main_tag": [
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present","High_Sodium"
         ],
         "potential_tag": [
             "Spicy",
@@ -16694,7 +16713,8 @@
         "potential_tag": [
             "Refined_Carbs",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "menu": [
             "gà rán giòn",
@@ -16728,7 +16748,7 @@
             "DeepFried_Oily",
             "Refined_Carbs",
             "Red_Meat",
-            "Gluten_Present"
+            "Gluten_Present","High_Sodium"
         ],
         "potential_tag": [
             "Dairy_Product"
@@ -16766,7 +16786,8 @@
         "potential_tag": [
             "Refined_Carbs",
             "Dairy_Product",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "menu": [
             "gà rán giòn",
@@ -16799,7 +16820,8 @@
         "main_tag": [
             "Spicy",
             "Refined_Carbs",
-            "Gluten_Present"
+            "Gluten_Present",
+            "High_Sodium"
         ],
         "potential_tag": [
             "DeepFried_Oily"
