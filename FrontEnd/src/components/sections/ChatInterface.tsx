@@ -85,22 +85,58 @@ export default function ChatInterface({
   const buildAssistantMessage = (response: ApiResponse) => {
     console.log("API RESPONSE:", response);
 
-    if (!response || response.status !== "success") {
+    if (!response) {
       return {
-        content:
-          response?.message || response?.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+        content: "Lỗi hệ thống. Vui lòng thử lại.",
         restaurants: []
       };
     }
-    const results = response.result || [];
-    const count = results.length;
-    const content =
-      count > 0
-        ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
-        : "Không tìm thấy kết quả.";
+
+    if (response.status === "success") {
+      const results = response.result || [];
+      const count = results.length;
+      const content =
+        count > 0
+          ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
+          : "Không tìm thấy kết quả.";
+      return {
+        content,
+        restaurants: buildRestaurants(results)
+      };
+    }
+
+    if (response.status === "poor_info") {
+      return {
+        content: response.message || "Bạn vui lòng cung cấp thêm thông tin để tôi có thể hỗ trợ tìm kiếm tốt hơn nhé.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "empty") {
+      return {
+        content: response.message || "Rất tiếc, tôi không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "out_scope") {
+      return {
+        content: response.message || "Dạ, câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Bạn vui lòng hỏi về ẩm thực, sức khỏe hoặc du lịch nhé!",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "success_qa") {
+
+      return {
+        content: response.message || "Hệ thống không thể trả lời câu hỏi của bạn, bạn vui lòng liên hệ admin để được hỗ trợ nhé.",
+        restaurants: []
+      };
+    }
+
     return {
-      content,
-      restaurants: buildRestaurants(results)
+      content: response.message || response.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+      restaurants: []
     };
   };
 
