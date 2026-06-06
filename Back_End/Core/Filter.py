@@ -32,9 +32,9 @@ class RestaurantFilter:
                 "potential": "Tinh bột tinh chế (Tiềm ẩn): Quán chủ yếu dùng bún, mì trắng, bánh mì. Hãy hỏi nhân viên xem có thể đổi sang bún lứt hoặc rau không.",
                 "main": "Tinh bột nhanh (Chủ đạo): Thực đơn nhiều tinh bột hấp thu nhanh. Bạn nên ăn kèm nhiều rau xanh để tránh làm tăng đường huyết đột ngột."
             },
-            "Low_GI_Diet": {
-                "potential": "Chế độ Low-GI (Gợi ý): Có sẵn các lựa chọn thực phẩm nguyên cám. Hãy nhờ nhân viên tư vấn các món ít tinh bột hoặc không đường.",
-                "main": "Chế độ ăn lành mạnh (Điểm cộng): Thực đơn chuẩn ăn kiêng, rất tốt cho việc ổn định đường huyết và duy trì vóc dáng."
+            "Hight_Sodium": {
+                "potential": "Thực phần chứa nhiều muối (Tiềm ẩn): Một số món có thể có nhiều muối. Hãy nhờ nhân viên tư vấn thêm",
+                "main": "Thực phần chứa nhiều muối (Chủ đao): Thực đơn chính và phong cách ẩm thực có thể chứa nhiều muốn nên cân nhắc khi gọi món."
             },
             "Red_Meat": {
                 "potential": "Thịt đỏ (Tiềm ẩn): Có thể có món chứa thịt bò, heo. Bạn nên nhờ nhân viên kiểm tra xem nước dùng hoặc món xào có lẫn thịt đỏ không.",
