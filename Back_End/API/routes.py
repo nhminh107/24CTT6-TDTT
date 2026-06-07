@@ -160,6 +160,10 @@ class ItinerarySelectRequest(BaseModel):
     meal: str
     restaurant_data: dict
 
+class ItineraryReorderRequest(BaseModel):
+    user_id: str
+    ordered_meals: List[str]
+
 #Endpoints xử lý chính
 
 @router.get("/itinerary/{user_id}")
@@ -174,6 +178,14 @@ async def select_restaurant(request: ItinerarySelectRequest):
         return {"status": "success", "message": f"Đã thêm quán vào bữa {request.meal}."}
     else:
         raise HTTPException(status_code=500, detail="Không thể lưu lựa chọn.")
+
+@router.post("/itinerary/reorder")
+async def reorder_itinerary(request: ItineraryReorderRequest):
+    success = await itinerary_manager.reorder_itinerary(request.user_id, request.ordered_meals)
+    if success:
+        return {"status": "success", "message": "Đã cập nhật thứ tự lịch trình."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể cập nhật thứ tự.")
 
 @router.delete("/itinerary/{user_id}/{meal}")
 async def delete_meal(user_id: str, meal: str):

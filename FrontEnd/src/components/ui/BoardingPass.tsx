@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import { Compass, Clock, PlaneTakeoff, QrCode, Sparkles, Download, X, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatMealDisplay } from "@/lib/utils";
 
 type BoardingPassProps = {
   itinerary: any[];
@@ -164,8 +164,8 @@ export default function BoardingPass({
                 </div>
                 {itinerary.map((stop, index) => (
                   <div key={`${stop.meal}-${index}`} className="flex items-center gap-4 border-b border-slate-100 pb-3 last:border-0">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-[10px] font-bold text-orange-600">
-                      {stop.meal}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-[10px] font-bold text-orange-600 text-center px-1">
+                      {formatMealDisplay(stop.meal)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="text-sm font-bold text-[#0B3C5D] truncate">

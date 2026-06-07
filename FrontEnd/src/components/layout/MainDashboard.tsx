@@ -194,6 +194,25 @@ export default function MainDashboard() {
     }
   };
 
+  const handleReorder = async (orderedMeals: string[]) => {
+    if (!user?.uid) return;
+    try {
+      // Optimistic update
+      const mealMap = new Map(currentItinerary.map(item => [item.meal, item]));
+      const newItinerary = orderedMeals.map(meal => mealMap.get(meal)).filter(Boolean);
+      setCurrentItinerary(newItinerary);
+
+      const data = await itineraryApi.reorder(user.uid, orderedMeals);
+      if (data.status !== "success") {
+        // Fallback if failed
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error reordering itinerary:", error);
+      await fetchItinerary();
+    }
+  };
+
   // Removed old useEffect that always showed location prompt if empty
   // (Now handled in the mount useEffect with localStorage check)
 
@@ -607,6 +626,7 @@ export default function MainDashboard() {
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
             onResetItinerary={handleResetItinerary}
+            onReorder={handleReorder}
             userPlaceId={dashboardState.placeId}
             onItineraryChange={fetchItinerary}
             onUserLocationChange={handleUserLocationChange}
@@ -665,6 +685,7 @@ export default function MainDashboard() {
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
               onResetItinerary={handleResetItinerary}
+              onReorder={handleReorder}
               userPlaceId={dashboardState.placeId}
               onItineraryChange={fetchItinerary}
               onUserLocationChange={handleUserLocationChange}

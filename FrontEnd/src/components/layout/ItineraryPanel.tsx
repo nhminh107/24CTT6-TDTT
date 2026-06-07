@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket, ArrowLeft, Map as MapIcon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { motion, Reorder } from "framer-motion";
+import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket, ArrowLeft, Map as MapIcon, GripVertical } from "lucide-react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import BoardingPass from "@/components/ui/BoardingPass";
 import MapExplore from "@/components/ui/MapExplore";
+import { formatMealDisplay } from "@/lib/utils";
 
 type ItineraryPanelProps = {
   location: string;
@@ -21,6 +22,7 @@ type ItineraryPanelProps = {
   currentItinerary?: any[];
   onDeleteMeal?: (meal: string) => void;
   onResetItinerary?: () => void;
+  onReorder?: (orderedMeals: string[]) => void;
   userPlaceId?: string;
   onItineraryChange?: () => void;
   onUserLocationChange?: (location: { location: string; placeId: string }) => void;
@@ -39,11 +41,25 @@ export default function ItineraryPanel({
   currentItinerary = [],
   onDeleteMeal,
   onResetItinerary,
+  onReorder,
   userPlaceId,
   onItineraryChange,
   onUserLocationChange,
 }: ItineraryPanelProps) {
   const [showBoardingPass, setShowBoardingPass] = useState(false);
+  const [localItinerary, setLocalItinerary] = useState(currentItinerary);
+
+  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn)
+  useEffect(() => {
+    setLocalItinerary(currentItinerary);
+  }, [currentItinerary]);
+
+  const handleReorder = (newOrder: any[]) => {
+    setLocalItinerary(newOrder);
+    if (onReorder) {
+      onReorder(newOrder.map(item => item.meal));
+    }
+  };
 
   const selectedRestaurant = useMemo(
     () => restaurants.find((r) => r.id === selectedRestaurantId) || 
@@ -94,7 +110,6 @@ export default function ItineraryPanel({
               currentItinerary={currentItinerary}
               onItineraryChange={onItineraryChange}
               onUserLocationChange={onUserLocationChange}
-              onUserLocationChange={onUserLocationChange}
             />
           </div>
         </div>
@@ -124,25 +139,33 @@ export default function ItineraryPanel({
 
           <div className="flex-1 overflow-y-auto space-y-4 pr-1">
             {/* Meal Stops Timeline */}
-            {currentItinerary.length > 0 ? (
-              <div className="space-y-3">
-                {currentItinerary.map((stop, index) => (
-                  <motion.div
+            {localItinerary.length > 0 ? (
+              <Reorder.Group
+                axis="y"
+                values={localItinerary}
+                onReorder={handleReorder}
+                className="space-y-3"
+              >
+                {localItinerary.map((stop) => (
+                  <Reorder.Item
                     key={stop.meal}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    value={stop}
                     className="group relative"
                   >
                     <button
                       type="button"
                       onClick={() => onSelectRestaurant(stop.id)}
-                      className="w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 transition hover:border-brand-coral hover:bg-white"
+                      className="w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 pl-8 transition hover:border-brand-coral hover:bg-white"
                     >
+                      {/* Drag Handle */}
+                      <div className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-300 cursor-grab active:cursor-grabbing">
+                        <GripVertical size={16} />
+                      </div>
+
                       {/* Stop Label */}
                       <div className="mb-2 flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
-                          {stop.meal}
+                          {formatMealDisplay(stop.meal)}
                         </span>
                       </div>
 
@@ -182,9 +205,9 @@ export default function ItineraryPanel({
                     >
                       <Trash2 size={14} />
                     </button>
-                  </motion.div>
+                  </Reorder.Item>
                 ))}
-              </div>
+              </Reorder.Group>
             ) : (
               <div className="flex h-40 items-center justify-center rounded-2xl border border-dashed border-slate-200/60 bg-white/30 p-4 text-center">
                 <div className="space-y-2">

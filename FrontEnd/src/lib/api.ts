@@ -46,6 +46,14 @@ export const itineraryApi = {
     });
     return res.json();
   },
+  reorder: async (userId: string, orderedMeals: string[]) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/reorder`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId, ordered_meals: orderedMeals }),
+    });
+    return res.json();
+  },
   share: async (userId: string) => {
     const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/share/${userId}`, {
       method: "POST",

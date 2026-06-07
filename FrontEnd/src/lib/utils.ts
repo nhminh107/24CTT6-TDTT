@@ -168,3 +168,14 @@ export function inferMealFromRestaurant(item: ApiRestaurant, refDate?: Date): st
 
   return null;
 }
+
+/**
+ * Format meal names for UI display (e.g., 'xế' -> 'Bữa phụ')
+ */
+export function formatMealDisplay(meal: string | undefined | null): string {
+  if (!meal) return "";
+  const m = meal.trim().toLowerCase();
+  if (m === "xế") return "Bữa phụ";
+  // Capitalize first letter, rest lowercase
+  return meal.charAt(0).toUpperCase() + meal.slice(1).toLowerCase();
+}
