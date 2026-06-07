@@ -160,6 +160,10 @@ class ItinerarySelectRequest(BaseModel):
     meal: str
     restaurant_data: dict
 
+class ItineraryReorderRequest(BaseModel):
+    user_id: str
+    ordered_meals: List[str]
+
 #Endpoints xử lý chính
 
 @router.get("/itinerary/{user_id}")
@@ -174,6 +178,14 @@ async def select_restaurant(request: ItinerarySelectRequest):
         return {"status": "success", "message": f"Đã thêm quán vào bữa {request.meal}."}
     else:
         raise HTTPException(status_code=500, detail="Không thể lưu lựa chọn.")
+
+@router.post("/itinerary/reorder")
+async def reorder_itinerary(request: ItineraryReorderRequest):
+    success = await itinerary_manager.reorder_itinerary(request.user_id, request.ordered_meals)
+    if success:
+        return {"status": "success", "message": "Đã cập nhật thứ tự lịch trình."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể cập nhật thứ tự.")
 
 @router.delete("/itinerary/{user_id}/{meal}")
 async def delete_meal(user_id: str, meal: str):
@@ -500,10 +512,31 @@ async def process_prompt(request: UserRequest):
 
 # --- Các Endpoints hỗ trợ Maps ---
 
+@router.get("/restaurants/all")
+async def get_all_restaurants():
+    """
+    Trả về toàn bộ danh sách quán ăn để hiển thị trên bản đồ.
+    """
+    data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
+    if not os.path.exists(data_path):
+        raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
+    
+    try:
+        with open(data_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return {"status": "success", "data": data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi khi đọc dữ liệu: {str(e)}")
+
 @router.get("/maps/suggestions")
 async def get_map_suggestions(q: str):
     results = await suggest_locations(q)
     return [{"description": d, "place_id": p} for d, p in results]
+
+@router.get("/maps/place-detail")
+async def get_map_place_detail(place_id: str):
+    result = await get_place_detail(place_id)
+    return result
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { MapPin, Star, ShieldCheck, AlertTriangle, Plus } from "lucide-react";
-import { Restaurant, cn } from "@/lib/utils";
+import { Restaurant, cn, formatMealDisplay } from "@/lib/utils";
 
 type RestaurantMiniCardProps = {
   restaurant: Restaurant;
@@ -147,7 +147,7 @@ export default function RestaurantMiniCard({
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Gợi ý cho:</span>
               <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
-                {assignedMeal}
+                {formatMealDisplay(assignedMeal)}
               </span>
             </div>
             <button
@@ -182,7 +182,7 @@ export default function RestaurantMiniCard({
                     isInItinerary && "cursor-not-allowed"
                   )}
                 >
-                  {meal}
+                  {formatMealDisplay(meal)}
                 </button>
               ))}
             </div>

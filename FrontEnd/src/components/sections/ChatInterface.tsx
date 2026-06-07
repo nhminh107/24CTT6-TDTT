@@ -48,6 +48,8 @@ type ChatInterfaceProps = {
   currentItinerary?: any[];
   onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
   fetchItinerary?: () => Promise<void>;
+  input?: string;
+  onInputChange?: (value: string) => void;
 };
 
 export default function ChatInterface({
@@ -61,11 +63,13 @@ export default function ChatInterface({
   onAutoCreateChat,
   currentItinerary = [],
   onSelectMeal,
-  fetchItinerary
+  fetchItinerary,
+  input: inputProp,
+  onInputChange,
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
-  const [input, setInput] = useState("");
+  const [internalInput, setInternalInput] = useState("");
 
   const [errorModal, setErrorModal] = useState({
     open: false,
@@ -81,6 +85,17 @@ export default function ChatInterface({
     ],
     []
   );
+
+  const input = inputProp ?? internalInput;
+
+  const setInputValue = (value: string) => {
+    if (onInputChange) {
+      onInputChange(value);
+    }
+    if (inputProp === undefined) {
+      setInternalInput(value);
+    }
+  };
 
   const buildAssistantMessage = (response: ApiResponse) => {
     console.log("API RESPONSE:", response);
@@ -296,7 +311,7 @@ export default function ChatInterface({
     // Cập nhật lên parent ngay lập tức (optimistic update)
     onMessagesChange?.(nextMessages);
     
-    setInput("");
+    setInputValue("");
     // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
     callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
   };
@@ -559,7 +574,7 @@ export default function ChatInterface({
             <button
               key={suggestion}
               type="button"
-              onClick={() => setInput(suggestion)}
+              onClick={() => setInputValue(suggestion)}
               className="rounded-full border border-slate-200/60 bg-white/70 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:text-slate-900"
             >
               {suggestion}
@@ -573,7 +588,7 @@ export default function ChatInterface({
         <input
           type="text"
           value={input}
-          onChange={(event) => setInput(event.target.value)}
+          onChange={(event) => setInputValue(event.target.value)}
           onKeyDown={(event) => {
             if (event.key === "Enter" && !event.shiftKey) {
               event.preventDefault();

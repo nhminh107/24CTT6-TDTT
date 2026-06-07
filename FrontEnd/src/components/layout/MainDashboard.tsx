@@ -108,10 +108,25 @@ export default function MainDashboard() {
     setDashboardState(newState);
   };
 
+  const handleUserLocationChange = (nextLocation: { location: string; placeId: string }) => {
+    setDashboardState((prev) => {
+      const nextState = {
+        ...prev,
+        location: nextLocation.location,
+        placeId: nextLocation.placeId
+      };
+
+      localStorage.setItem("bmi_user_location", nextState.location);
+      localStorage.setItem("bmi_user_place_id", nextState.placeId);
+
+      return nextState;
+    });
+  };
+
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
-  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
+  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
   const isInitializingChat = useRef(false);
@@ -176,6 +191,25 @@ export default function MainDashboard() {
       }
     } catch (error) {
       console.error("Error resetting itinerary:", error);
+    }
+  };
+
+  const handleReorder = async (orderedMeals: string[]) => {
+    if (!user?.uid) return;
+    try {
+      // Optimistic update
+      const mealMap = new Map(currentItinerary.map(item => [item.meal, item]));
+      const newItinerary = orderedMeals.map(meal => mealMap.get(meal)).filter(Boolean);
+      setCurrentItinerary(newItinerary);
+
+      const data = await itineraryApi.reorder(user.uid, orderedMeals);
+      if (data.status !== "success") {
+        // Fallback if failed
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error reordering itinerary:", error);
+      await fetchItinerary();
     }
   };
 
@@ -544,7 +578,7 @@ export default function MainDashboard() {
                   mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 }`
               : `${
-                  sidebarOpen ? "w-90" : "w-0"
+                  sidebarOpen ? "w-80 flex-shrink-0" : "w-0"
                 } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
           }
         >
@@ -566,6 +600,8 @@ export default function MainDashboard() {
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
+            onOpenLocationPrompt={() => setLocationPromptOpen(true)}
+            onTabChange={setItineraryTab}
             chatHistory={chatHistory}
             currentChatId={currentChatId}
             onNewChat={startLocalNewChat}
@@ -614,6 +650,10 @@ export default function MainDashboard() {
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
             onResetItinerary={handleResetItinerary}
+            onReorder={handleReorder}
+            userPlaceId={dashboardState.placeId}
+            onItineraryChange={fetchItinerary}
+            onUserLocationChange={handleUserLocationChange}
           />
         </aside>
       </div>
@@ -669,6 +709,10 @@ export default function MainDashboard() {
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
               onResetItinerary={handleResetItinerary}
+              onReorder={handleReorder}
+              userPlaceId={dashboardState.placeId}
+              onItineraryChange={fetchItinerary}
+              onUserLocationChange={handleUserLocationChange}
             />
           </div>
         </div>

@@ -6,6 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const links = [
   { label: "Trang chủ", href: "/" },
+  { label: "Bản đồ", href: "/explore" },
   { label: "Về chúng tôi", href: "/about" },
   { label: "Tính năng", href: "/#features" },
   { label: "Hướng dẫn", href: "/guide" },
