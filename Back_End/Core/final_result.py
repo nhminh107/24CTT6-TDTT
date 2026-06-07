@@ -3,21 +3,40 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from groq import AsyncGroq
 import pandas as pd
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-from google.api_core import exceptions # Import thêm error của google để bắt cho chuẩn
+from google.api_core import exceptions
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
+groq_api_key = os.getenv("GROQ_API_KEY_MAIN")
 
 _client = genai.Client(api_key=api_key)
 _model_name = 'gemini-2.5-flash-lite'
+
+_groq_client = AsyncGroq(api_key=groq_api_key)
+_groq_model_name = "llama-3.3-70b-versatile"
 
 
 class FinalResultLLM:
     def __init__(self):
         self.client = _client
         self.model_name = _model_name
+        self.groq_client = _groq_client
+        self.groq_model = _groq_model_name
+
+    async def _call_groq_json(self, prompt: str):
+        print("[FINAL_RESULT_LOG] Gemini limit reached. Falling back to GROQ...")
+        completion = await self.groq_client.chat.completions.create(
+            model=self.groq_model,
+            messages=[
+                {"role": "system", "content": "You are a selection assistant for a food itinerary. Return ONLY valid JSON."},
+                {"role": "user", "content": prompt}
+            ],
+            response_format={"type": "json_object"}
+        )
+        return json.loads(completion.choices[0].message.content)
 
     def _meal_order(self, candidates_df: pd.DataFrame, parsed_json: dict | None) -> list:
         if parsed_json and parsed_json.get('meals_detail'):
@@ -86,18 +105,19 @@ class FinalResultLLM:
                 )
             )
             data = json.loads(response.text)
-            selected = data.get('selected', []) if isinstance(data, dict) else []
-            result = {}
-            for item in selected:
-                meal = item.get('meal')
-                rid = item.get('id')
-                if meal and rid:
-                    result[meal] = str(rid)
-            return result
-
         except Exception as e:
-            print(f"DEBUG: Lỗi API trong final_result.py: {type(e).__name__} - {e}")
-            raise e
+            # Bắt mọi lỗi (bao gồm lỗi Key sai khi bạn test) để chuyển sang Groq
+            print(f"[FINAL_RESULT_LOG] Gemini failed or limit reached: {type(e).__name__}. Falling back to GROQ...")
+            data = await self._call_groq_json(prompt)
+
+        selected = data.get('selected', []) if isinstance(data, dict) else []
+        result = {}
+        for item in selected:
+            meal = item.get('meal')
+            rid = item.get('id')
+            if meal and rid:
+                result[meal] = str(rid)
+        return result
 
     def _select_unique_combination(self, meal_order: list, candidate_map: dict, max_per_meal: int = 1) -> list:
         selected_rows = []

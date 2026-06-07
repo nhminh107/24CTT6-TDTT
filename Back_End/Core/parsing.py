@@ -3,30 +3,47 @@ import os
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from groq import AsyncGroq
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-from google.api_core import exceptions # Import thêm error của google để bắt cho chuẩn
+from google.api_core import exceptions
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API")
+groq_api_key = os.getenv("GROQ_API_KEY_MAIN")
 
 _client = genai.Client(api_key=api_key)
 _model_name = 'gemini-2.5-flash-lite'
+
+_groq_client = AsyncGroq(api_key=groq_api_key)
+_groq_model_name = "llama-3.3-70b-versatile"
 
 class LLMParser():
     def __init__(self):
         self.client = _client
         self.model_name = _model_name
+        self.groq_client = _groq_client
+        self.groq_model = _groq_model_name
+
+    async def _call_groq_json(self, system_instruction: str, user_prompt: str):
+        print("[LLM_PARSER_LOG] Gemini limit reached. Falling back to GROQ...")
+        completion = await self.groq_client.chat.completions.create(
+            model=self.groq_model,
+            messages=[
+                {"role": "system", "content": system_instruction},
+                {"role": "user", "content": user_prompt}
+            ],
+            response_format={"type": "json_object"}
+        )
+        return json.loads(completion.choices[0].message.content)
 
     @retry(
     stop=stop_after_attempt(3), 
     wait=wait_exponential(multiplier=1, min=2, max=10),
     retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
     )
-
     async def JSON_response(self, user_prompt: str, system_context: str = ""):
         print(f"[LLM_PARSER_LOG] Parsing intent for prompt: '{user_prompt}'")
         
-        # System instruction in English to optimize token usage and reasoning
         system_instruction = f"""
         Your task is to extract information from the user's food/restaurant search query and return ONLY a valid JSON object matching the requested structure.
         
@@ -74,8 +91,9 @@ class LLMParser():
             return json.loads(content)
         
         except Exception as e:
-            print(f"[LLM_PARSER_LOG] Error in Gemini API (JSON_response): {type(e).__name__} - {e}")
-            raise e
+            # Bắt mọi lỗi (bao gồm lỗi Key sai khi bạn test) để chuyển sang Groq
+            print(f"[LLM_PARSER_LOG] Gemini failed or limit reached: {type(e).__name__}. Falling back to GROQ...")
+            return await self._call_groq_json(system_instruction, prompt)
 
     async def phrase_health_description(self, user_prompt: str):
         print(f"[LLM_PARSER_LOG] Phrasing health description for: '{user_prompt}'")
@@ -85,10 +103,8 @@ class LLMParser():
             "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present"
         ]
 
+        system_instruction = "You are an expert medical and dietary restriction parser. Return ONLY a JSON array of matching tags."
         prompt = f"""
-            You are an expert medical and dietary restriction parser.
-
-            Your task:
             Analyze the user's health condition, symptoms, or dietary descriptions. 
             Use your general medical and nutrition knowledge to infer which dietary restriction tags apply to them, then return ONLY a JSON array of matching tags.
 
@@ -111,26 +127,7 @@ class LLMParser():
             - Output must be a valid JSON array.
             - If nothing matches or applies, return [].
 
-            Examples:
-
-            User:
-            "Tôi hay bị đau bụng và đôi khi là đau dạ dày"
-            Output:
-            ["Spicy", "DeepFried_Oily"]
-
-            User:
-            "Bác sĩ bảo tôi có chỉ số đường huyết cao và cần giảm cân"
-            Output:
-            ["High_Sugar", "Refined_Carbs", "DeepFried_Oily"]
-
-            User:
-            "Tôi bị gout khớp ngón chân cái sưng to"
-            Output:
-            ["Red_Meat", "Seafood", "Shellfish", "Alcohol_Pub"]
-
-            User:
-            "{user_prompt}"
-
+            User: "{user_prompt}"
             Output:
             """
 
@@ -139,37 +136,28 @@ class LLMParser():
                 model=self.model_name,
                 contents=prompt,
                 config=types.GenerateContentConfig(
+                    system_instruction=system_instruction,
                     response_mime_type="application/json",
-                    temperature=0  # Giữ bằng 0 để đảm bảo suy luận nhất quán, không đoán mò lung tung
+                    temperature=0
                 )
             )
 
             content = response.text.strip()
             print(f"[LLM_PARSER_LOG] Raw Gemini response (phrase_health_description): {content}")
-
-            try:
-                data = json.loads(content)
-
-                if not isinstance(data, list):
-                    print(f"[LLM_PARSER_LOG] Warning: Response is not a list: {data}")
-                    return []
-
-                # Lọc lại một lần nữa bằng Python cho chắc chắn
-                filtered_tags = list({
-                    tag for tag in data
-                    if tag in ALL_AVAILABLE_TAGS
-                })
-                print(f"[LLM_PARSER_LOG] Extracted tags: {filtered_tags}")
-
-                return filtered_tags
-
-            except json.JSONDecodeError:
-                print(f"[LLM_PARSER_LOG] JSON Decode Error: {content}")
-                return []
-
+            data = json.loads(content)
         except Exception as e:
-            print(f"[LLM_PARSER_LOG] !!! Error in phrase_health_description: {e}")
-            return []
+            print(f"[LLM_PARSER_LOG] Gemini failed (health description): {type(e).__name__}. Falling back to GROQ...")
+            data = await self._call_groq_json(system_instruction, prompt)
+
+        # Lọc lại một lần nữa bằng Python cho chắc chắn
+        if isinstance(data, list):
+            filtered_tags = list({
+                tag for tag in data
+                if tag in ALL_AVAILABLE_TAGS
+            })
+            print(f"[LLM_PARSER_LOG] Extracted tags: {filtered_tags}")
+            return filtered_tags
+        return []
     
 if __name__ == "__main__":
     parser = LLMParser()
