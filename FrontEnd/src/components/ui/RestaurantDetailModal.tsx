@@ -96,11 +96,11 @@ export default function RestaurantDetailModal({
           </div>
 
           {/* Health Analysis Section */}
-          {(restaurant.warnings?.length > 0 || restaurant.notes?.length > 0) && (
+          {((restaurant.warnings?.length ?? 0) > 0 || (restaurant.notes?.length ?? 0) > 0) && (
             <div className="space-y-4 pt-6 border-t border-slate-100">
               <h3 className="text-xl font-bold text-slate-800">Phân tích sức khỏe</h3>
               
-              {restaurant.warnings?.length > 0 && (
+              {restaurant.warnings && restaurant.warnings.length > 0 && (
                 <div className="space-y-3">
                   {restaurant.warnings.map((warning, idx) => (
                     <div
@@ -116,7 +116,7 @@ export default function RestaurantDetailModal({
                 </div>
               )}
 
-              {restaurant.notes?.length > 0 && (
+              {restaurant.notes && restaurant.notes.length > 0 && (
                 <div className="space-y-3">
                   {restaurant.notes.map((note, idx) => (
                     <div

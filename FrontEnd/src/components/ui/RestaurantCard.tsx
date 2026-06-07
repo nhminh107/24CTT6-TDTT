@@ -179,7 +179,7 @@ export default function RestaurantCard2({
           </div>
 
           {/* meal time */}
-          {!!restaurant.meals?.length && (
+          {restaurant.meals && restaurant.meals.length > 0 && (
             <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
               {restaurant.meals.join(" • ")}
             </div>
