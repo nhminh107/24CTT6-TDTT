@@ -21,6 +21,9 @@ type ItineraryPanelProps = {
   currentItinerary?: any[];
   onDeleteMeal?: (meal: string) => void;
   onResetItinerary?: () => void;
+  userPlaceId?: string;
+  onItineraryChange?: () => void;
+  onUserLocationChange?: (location: { location: string; placeId: string }) => void;
 };
 
 export default function ItineraryPanel({
@@ -35,7 +38,10 @@ export default function ItineraryPanel({
   onCloseDetail,
   currentItinerary = [],
   onDeleteMeal,
-  onResetItinerary
+  onResetItinerary,
+  userPlaceId,
+  onItineraryChange,
+  onUserLocationChange,
 }: ItineraryPanelProps) {
   const [showBoardingPass, setShowBoardingPass] = useState(false);
 
@@ -82,7 +88,14 @@ export default function ItineraryPanel({
             Quay lại lịch trình
           </button>
           <div className="flex-1 overflow-hidden rounded-2xl border border-slate-100 shadow-inner">
-            <MapExplore />
+            <MapExplore
+              userPlaceId={userPlaceId}
+              userLocationText={location}
+              currentItinerary={currentItinerary}
+              onItineraryChange={onItineraryChange}
+              onUserLocationChange={onUserLocationChange}
+              onUserLocationChange={onUserLocationChange}
+            />
           </div>
         </div>
       ) : currentTab === "itinerary" ? (

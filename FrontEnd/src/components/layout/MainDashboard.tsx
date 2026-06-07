@@ -108,6 +108,21 @@ export default function MainDashboard() {
     setDashboardState(newState);
   };
 
+  const handleUserLocationChange = (nextLocation: { location: string; placeId: string }) => {
+    setDashboardState((prev) => {
+      const nextState = {
+        ...prev,
+        location: nextLocation.location,
+        placeId: nextLocation.placeId
+      };
+
+      localStorage.setItem("bmi_user_location", nextState.location);
+      localStorage.setItem("bmi_user_place_id", nextState.placeId);
+
+      return nextState;
+    });
+  };
+
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
@@ -591,6 +606,9 @@ export default function MainDashboard() {
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
             onResetItinerary={handleResetItinerary}
+            userPlaceId={dashboardState.placeId}
+            onItineraryChange={fetchItinerary}
+            onUserLocationChange={handleUserLocationChange}
           />
         </aside>
       </div>
@@ -646,6 +664,9 @@ export default function MainDashboard() {
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
               onResetItinerary={handleResetItinerary}
+              userPlaceId={dashboardState.placeId}
+              onItineraryChange={fetchItinerary}
+              onUserLocationChange={handleUserLocationChange}
             />
           </div>
         </div>

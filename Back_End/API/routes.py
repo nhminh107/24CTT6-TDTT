@@ -520,6 +520,11 @@ async def get_map_suggestions(q: str):
     results = await suggest_locations(q)
     return [{"description": d, "place_id": p} for d, p in results]
 
+@router.get("/maps/place-detail")
+async def get_map_place_detail(place_id: str):
+    result = await get_place_detail(place_id)
+    return result
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 # Quay lại 1 cấp vào Back_End, sau đó vào Database

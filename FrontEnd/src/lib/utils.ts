@@ -122,3 +122,49 @@ export const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
       notes: item.notes ?? []
     };
   });
+
+/**
+ * Infer a meal slot (Bữa sáng/Trưa/Tối/Phụ) for a restaurant based on
+ * the restaurant `meals` field and a reference time (defaults to now).
+ * Returns one of the strings used in the UI: "Bữa sáng", "Bữa trưa",
+ * "Bữa tối", "Bữa phụ" or null if no suitable mapping.
+ */
+export function inferMealFromRestaurant(item: ApiRestaurant, refDate?: Date): string | null {
+  const now = refDate || new Date();
+  const hour = now.getHours();
+
+  // Preferred meal by hour (local time)
+  let preferred = "Bữa phụ";
+  if (hour >= 5 && hour < 10) preferred = "Bữa sáng";
+  else if (hour >= 10 && hour < 14) preferred = "Bữa trưa";
+  else if ((hour >= 17 && hour < 23) || (hour >= 14 && hour < 17)) preferred = "Bữa tối";
+
+  const available = (item.meals || []).map((m) => String(m || "").trim().toLowerCase());
+
+  const mapToMealLabel = (m: string) => {
+    if (!m) return null;
+    m = m.toLowerCase();
+    if (m.includes("sáng")) return "Bữa sáng";
+    if (m.includes("trưa")) return "Bữa trưa";
+    if (m.includes("tối") || m.includes("tối")) return "Bữa tối";
+    if (m.includes("khuya")) return "Bữa phụ";
+    return null;
+  };
+
+  // If restaurant explicitly supports preferred meal, return it
+  for (const raw of available) {
+    const label = mapToMealLabel(raw);
+    if (label === preferred) return preferred;
+  }
+
+  // Otherwise, try a sensible fallback order: trưa -> tối -> sáng -> phụ
+  const fallbackOrder = ["Bữa trưa", "Bữa tối", "Bữa sáng", "Bữa phụ"];
+  for (const f of fallbackOrder) {
+    for (const raw of available) {
+      const label = mapToMealLabel(raw);
+      if (label === f) return f;
+    }
+  }
+
+  return null;
+}
