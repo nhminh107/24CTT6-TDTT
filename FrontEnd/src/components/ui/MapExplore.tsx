@@ -15,7 +15,7 @@ import { useAuth } from "@/context/AuthContext";
 const DEFAULT_VIEW_STATE = {
   latitude: 10.7769,
   longitude: 106.7009,
-  zoom: 12,
+  zoom: 16,
 };
 
 const MAP_KEY = process.env.NEXT_PUBLIC_GOONG_MAP_API_KEY;
@@ -184,7 +184,7 @@ export default function MapExplore({
   // 4. Thực hiện flyTo SAU KHI map đã load và có tọa độ
   useEffect(() => {
     if (mapLoaded && pendingFlyTo && mapRef.current) {
-      mapRef.current.flyTo({ center: [pendingFlyTo.lng, pendingFlyTo.lat], zoom: 14 });
+      mapRef.current.flyTo({ center: [pendingFlyTo.lng, pendingFlyTo.lat], zoom: 16 });
       setPendingFlyTo(null);
     }
   }, [mapLoaded, pendingFlyTo]);
