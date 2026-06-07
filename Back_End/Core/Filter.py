@@ -32,9 +32,9 @@ class RestaurantFilter:
                 "potential": "Tinh bột tinh chế (Tiềm ẩn): Quán chủ yếu dùng bún, mì trắng, bánh mì. Hãy hỏi nhân viên xem có thể đổi sang bún lứt hoặc rau không.",
                 "main": "Tinh bột nhanh (Chủ đạo): Thực đơn nhiều tinh bột hấp thu nhanh. Bạn nên ăn kèm nhiều rau xanh để tránh làm tăng đường huyết đột ngột."
             },
-            "Low_GI_Diet": {
-                "potential": "Chế độ Low-GI (Gợi ý): Có sẵn các lựa chọn thực phẩm nguyên cám. Hãy nhờ nhân viên tư vấn các món ít tinh bột hoặc không đường.",
-                "main": "Chế độ ăn lành mạnh (Điểm cộng): Thực đơn chuẩn ăn kiêng, rất tốt cho việc ổn định đường huyết và duy trì vóc dáng."
+            "High_Sodium": {
+                "potential": "Thực phần chứa nhiều muối (Tiềm ẩn): Một số món có thể có nhiều muối. Hãy nhờ nhân viên tư vấn thêm",
+                "main": "Thực phần chứa nhiều muối (Chủ đao): Thực đơn chính và phong cách ẩm thực có thể chứa nhiều muốn nên cân nhắc khi gọi món."
             },
             "Red_Meat": {
                 "potential": "Thịt đỏ (Tiềm ẩn): Có thể có món chứa thịt bò, heo. Bạn nên nhờ nhân viên kiểm tra xem nước dùng hoặc món xào có lẫn thịt đỏ không.",
@@ -97,17 +97,39 @@ class RestaurantFilter:
     def menu_filter(self, meal_df, menu_query):
         if meal_df is None or meal_df.empty:
             return meal_df
-        menu_query = self._normalize_menu_query(menu_query)
+        menu_query = self._normalize_menu_query(menu_query).lower()
         if not menu_query:
             return meal_df
         if 'id' not in meal_df.columns:
             return meal_df
 
+        # --- Bước 1: Lọc cứng dựa trên subset tokens ---
+        query_tokens = set(menu_query.split())
+        matched_ids_subset = set()
+        
+        if 'menu' in meal_df.columns:
+            for _, row in meal_df.iterrows():
+                menu_list = row['menu']
+                if isinstance(menu_list, list):
+                    for item in menu_list:
+                        item_lower = str(item).lower()
+                        item_tokens = set(item_lower.split())
+                        # Kiểm tra subset xuôi hoặc ngược
+                        if query_tokens.issubset(item_tokens) or item_tokens.issubset(query_tokens):
+                            matched_ids_subset.add(str(row['id']))
+                            break
+        
+        if matched_ids_subset:
+            print(f"[MENU_FILTER_DEBUG] Found {len(matched_ids_subset)} matches via SUBSET MATCHING for '{menu_query}'.")
+            return meal_df[meal_df['id'].astype(str).isin(matched_ids_subset)]
+
+        # --- Bước 2: Nếu lọc cứng không có kết quả, dùng ChromaDB (Semantic Search) ---
+        print(f"[MENU_FILTER_DEBUG] No subset match found for '{menu_query}'. Falling back to ChromaDB.")
+
         candidate_ids = meal_df['id'].astype(str).dropna().unique().tolist()
         if not candidate_ids:
             return meal_df
 
-        # Ép trả về số lượng hợp lý: lấy top 15-20 kết quả liên quan nhất thay vì nhân 3
         n_results = 20 
         where = {"restaurant_id": {"$in": candidate_ids}}
 
@@ -157,7 +179,7 @@ class RestaurantFilter:
             return meal_df.iloc[0:0]
 
         filtered = meal_df[meal_df['id'].astype(str).isin(matched_ids)]
-        print(f"[MENU_FILTER_DEBUG] Found relevant matches for '{menu_query}': {len(filtered)} restaurants.")
+        print(f"[MENU_FILTER_DEBUG] Found relevant matches for '{menu_query}' via ChromaDB: {len(filtered)} restaurants.")
         return filtered
 
     def _calculate_distance(self, df):

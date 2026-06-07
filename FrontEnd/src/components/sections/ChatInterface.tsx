@@ -1,63 +1,28 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import RestaurantCard from "@/components/ui/RestaurantCard";
 import { useAuth } from "@/context/AuthContext";
-type Restaurant = {
-  id: string; // 👈 Thêm ID để làm key khi render danh sách
-  name: string;
-  address: string;
-  rating: number;
-  price: string | number;
-  phone: string | number;
-  mapUrl: string;
-  imageUrl: string;
-  semanticText: string;
-  meals?: string[];
-  // 👈 Bổ sung vào đây để Component RestaurantCard nhận được dữ liệu
-  healthTagsDisplay?: {
-    warnings?: string[];
-    notes?: string[];
-  };
-};
+import AuthPromptModal from "@/components/ui/AuthPromptModal";
+import RestaurantMiniCard from "@/components/ui/RestaurandMiniCard";
+import { Restaurant, ApiRestaurant, buildRestaurants } from "@/lib/utils";
 
 type Message = {
+  id: string;
   role: "user" | "assistant";
   content: string;
   restaurants?: Restaurant[];
+  isCompact?: boolean;
+  metadata?: {
+    restaurants?: Restaurant[];
+  };
 };
 
-const initialMessages: Message[] = [
-  {
-    role: "assistant",
-    content:
-      "Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn."
-  }
-];
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://127.0.0.1:8000";
-
-type ApiRestaurant = {
-  id?: string;
-  name?: string;
-  address?: string;
-  star?: number;
-  avg_price?: number;
-  phone_num?: string | number;
-  image_url?: string;
-  semantic_text?: string;
-  meals?: string[];
-  assigned_meal?: string;
-  main_tag?: string[];
-  potential_tag?: string[];
-  // Bổ sung cấu trúc chứa cảnh báo và ghi chú từ Backend
-    warnings?: string[];
-    notes?: string[];
-};
+  "https://api.bmi-foodtour.io.vn";
 
 type ApiResponse = {
   status?: string;
@@ -68,24 +33,44 @@ type ApiResponse = {
     message?: string;
     status?: string;
   };
-  result?: ApiRestaurant[]; // ⚠️ LƯU Ý: Đổi từ 'result' thành 'results' cho đúng với JSON mới của bạn
+  result?: ApiRestaurant[];
 };
 
 type ChatInterfaceProps = {
   placeId: string;
-  input: string;
-  onInputChange: (value: string) => void;
-  onPreviewPass?: (restaurants: Restaurant[]) => void;
+  chatId?: string | null;
+  messages?: Message[];
+  onMessagesChange?: (messages: Message[]) => void;
+  onRestaurantsSelect?: (restaurants: Restaurant[]) => void;
+  onRestaurantSelect?: (restaurantId: string) => void;
+  onRefreshHistory?: () => void;
+  onAutoCreateChat?: () => Promise<string | null>;
+  currentItinerary?: any[];
+  onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
+  fetchItinerary?: () => Promise<void>;
+  input?: string;
+  onInputChange?: (value: string) => void;
 };
 
 export default function ChatInterface({
   placeId,
-  input,
+  chatId,
+  messages = [],
+  onMessagesChange,
+  onRestaurantsSelect,
+  onRestaurantSelect,
+  onRefreshHistory,
+  onAutoCreateChat,
+  currentItinerary = [],
+  onSelectMeal,
+  fetchItinerary,
+  input: inputProp,
   onInputChange,
-  onPreviewPass
 }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
+  const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
+  const [internalInput, setInternalInput] = useState("");
+
   const [errorModal, setErrorModal] = useState({
     open: false,
     code: "",
@@ -101,77 +86,76 @@ export default function ChatInterface({
     []
   );
 
-  const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
-  items.map((item, index) => {
-    const imageUrl = item.image_url
-      ? item.image_url.replace(/\\\//g, "/")
-      : "";
+  const input = inputProp ?? internalInput;
 
-    const mapQuery = [item.name, item.address]
-      .filter(Boolean)
-      .join(" ");
-
-    const mapUrl = mapQuery
-      ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-          mapQuery
-        )}`
-      : "https://www.google.com/maps";
-
-    const ratingValue =
-      typeof item.star === "number"
-        ? item.star
-        : Number(item.star ?? 0) || 0;
-
-    return {
-      id: item.id ?? `${item.name}-${index}`,
-
-      name: item.name || "Nhà hàng",
-      address: item.address || "Chưa có địa chỉ",
-
-      rating: ratingValue,
-      price: item.avg_price ?? "Chưa cập nhật",
-      phone: item.phone_num ?? "",
-
-      mapUrl,
-      imageUrl,
-
-      semanticText: item.semantic_text
-        ? String(item.semantic_text)
-        : "Chưa có mô tả.",
-
-      meals: item.meals ?? [],
-
-      // 👇 QUAN TRỌNG
-      warnings: item.warnings ?? [],
-      notes: item.notes ?? []
-    };
-  });
+  const setInputValue = (value: string) => {
+    if (onInputChange) {
+      onInputChange(value);
+    }
+    if (inputProp === undefined) {
+      setInternalInput(value);
+    }
+  };
 
   const buildAssistantMessage = (response: ApiResponse) => {
-
     console.log("API RESPONSE:", response);
 
-
-    if (!response || response.status !== "success") {
+    if (!response) {
       return {
-        content:
-          response?.message || response?.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+        content: "Lỗi hệ thống. Vui lòng thử lại.",
         restaurants: []
       };
     }
-     const results = response.result || []; // <- sửa ở đây
-    const count = results.length;
-    const content =
-      count > 0
-        ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
-        : "Không tìm thấy kết quả.";
+
+    if (response.status === "success") {
+      const results = response.result || [];
+      const count = results.length;
+      const content =
+        count > 0
+          ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
+          : "Không tìm thấy kết quả.";
+      return {
+        content,
+        restaurants: buildRestaurants(results)
+      };
+    }
+
+    if (response.status === "poor_info") {
+      return {
+        content: response.message || "Bạn vui lòng cung cấp thêm thông tin để tôi có thể hỗ trợ tìm kiếm tốt hơn nhé.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "empty") {
+      return {
+        content: response.message || "Rất tiếc, tôi không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "out_scope") {
+      return {
+        content: response.message || "Dạ, câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Bạn vui lòng hỏi về ẩm thực, sức khỏe hoặc du lịch nhé!",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "success_qa") {
+
+      return {
+        content: response.message || "Hệ thống không thể trả lời câu hỏi của bạn, bạn vui lòng liên hệ admin để được hỗ trợ nhé.",
+        restaurants: []
+      };
+    }
+
     return {
-      content,
-      restaurants: buildRestaurants(results)
+      content: response.message || response.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+      restaurants: []
     };
   };
 
-  const callRestaurantApi = async (prompt: string) => {
+  const callRestaurantApi = async (prompt: string, activeChatId: string | null, latestMessages: Message[]) => {
     setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
@@ -180,6 +164,7 @@ export default function ChatInterface({
         body: JSON.stringify({
           prompt,
           user_id: user?.uid || "guest_user",
+          chat_id: activeChatId,
           ...(placeId ? { place_id: placeId } : {})
         })
       });
@@ -203,9 +188,11 @@ export default function ChatInterface({
           code: String(errorCode),
           message
         });
-        setMessages((prev) => [
-          ...prev,
+        const messageId = Date.now().toString();
+        onMessagesChange?.([
+          ...latestMessages,
           {
+            id: messageId,
             role: "assistant",
             content: detailedMessage,
             restaurants: []
@@ -221,9 +208,11 @@ export default function ChatInterface({
           code: String(response.status),
           message
         });
-        setMessages((prev) => [
-          ...prev,
+        const messageId = Date.now().toString();
+        onMessagesChange?.([
+          ...latestMessages,
           {
+            id: messageId,
             role: "assistant",
             content: message,
             restaurants: []
@@ -233,14 +222,42 @@ export default function ChatInterface({
       }
 
       const assistant = buildAssistantMessage(data);
-      setMessages((prev) => [
-        ...prev,
+      const messageId = Date.now().toString();
+      
+      // Update parent messages
+      const finalMessages: Message[] = [
+        ...latestMessages.map((msg) => ({
+          ...msg,
+          isCompact: true 
+        })),
         {
+          id: messageId,
           role: "assistant",
           content: assistant.content,
-          restaurants: assistant.restaurants
+          restaurants: assistant.restaurants,
+          isCompact: false
         }
-      ]);
+      ];
+      onMessagesChange?.(finalMessages);
+
+      // Call callback to update dashboard state
+      if (assistant.restaurants.length > 0) {
+        onRestaurantsSelect?.(assistant.restaurants);
+        // Suggest login if guest user
+        if (!user) {
+          setTimeout(() => setShowLoginSuggestion(true), 1500);
+        }
+      }
+      
+      // Refresh chat history to update titles/timestamps
+      if (activeChatId) {
+        onRefreshHistory?.();
+      }
+
+      // Sync itinerary from backend (since it's now updated automatically)
+      if (user && fetchItinerary) {
+        fetchItinerary();
+      }
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
       setErrorModal({
@@ -248,9 +265,11 @@ export default function ChatInterface({
         code: "NETWORK",
         message
       });
-      setMessages((prev) => [
-        ...prev,
+      const messageId = Date.now().toString();
+      onMessagesChange?.([
+        ...latestMessages,
         {
+          id: messageId,
           role: "assistant",
           content:
             "Không thể kết nối tới máy chủ. Vui lòng kiểm tra API và thử lại.",
@@ -262,21 +281,44 @@ export default function ChatInterface({
     }
   };
 
-  const handleSend = () => {
-    if (!input.trim()) {
-      return;
-    }
-    if (isLoading) {
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) {
       return;
     }
     const prompt = input.trim();
-    setMessages((prev) => [...prev, { role: "user", content: prompt }]);
-    onInputChange("");
-    callRestaurantApi(prompt);
+    const messageId = Date.now().toString();
+
+    let activeChatId = chatId;
+    
+    // Nếu chưa có chatId (đang ở trạng thái chào mới) và người dùng bắt đầu chat
+    if (!activeChatId && user && onAutoCreateChat) {
+      activeChatId = await onAutoCreateChat();
+    }
+    
+    const newUserMessage: Message = {
+      id: messageId,
+      role: "user",
+      content: prompt,
+      isCompact: false
+    };
+
+    // Tạo danh sách tin nhắn mới nhất bao gồm tin nhắn vừa nhập
+    const nextMessages: Message[] = [
+      ...messages.map((msg) => ({ ...msg, isCompact: true })),
+      newUserMessage
+    ];
+    
+    // Cập nhật lên parent ngay lập tức (optimistic update)
+    onMessagesChange?.(nextMessages);
+    
+    setInputValue("");
+    // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
+    callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
   };
 
   return (
-    <div className="flex h-full flex-col gap-6">
+    <div className="flex h-full flex-col gap-4 p-4 md:p-6">
+      {/* Error Modal */}
       <AnimatePresence>
         {errorModal.open && (
           <motion.div
@@ -340,89 +382,178 @@ export default function ChatInterface({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="rounded-3xl bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon p-[1px] shadow-glow">
-        <div className="glass rounded-3xl p-6">
-          <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-brand-flame">
-            <Sparkles size={16} />
-            Lời khuyên của AI
+
+      {/* Login Prompt Modal */}
+      <AuthPromptModal
+        open={showLoginSuggestion}
+        onClose={() => setShowLoginSuggestion(false)}
+        title="Trải nghiệm tốt hơn khi đăng nhập"
+        description="Đăng nhập để AI có thể tối ưu lộ trình theo sức khỏe của bạn, lưu lại các lịch trình yêu thích và nhiều đặc quyền khác!"
+      />
+
+      {/* AI Tips Card */}
+      <div className="w-full rounded-2xl bg-gradient-to-r from-brand-coral via-brand-flame to-brand-lagoon p-[1px] shadow-glow">
+        <div className="glass rounded-2xl px-4 py-2 flex flex-col sm:flex-row sm:items-center gap-2"> 
+          {/* Dùng py-2 để giảm chiều cao, flex-row để đưa lên cùng một dòng trên màn hình máy tính */}
+          
+          <div className="flex shrink-0 items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-flame">
+            <Sparkles size={14} />
+            <span>Lời khuyên của AI:</span>
           </div>
-          <div className="mt-4 text-sm leading-relaxed text-slate-600">
-            Hãy mô tả rõ món ăn, không gian và mức ngân sách cho từng bữa. Bạn càng chi tiết, BMI càng tối ưu lộ trình.
+          
+          <div className="text-xs text-slate-600 sm:truncate"> 
+            {/* sm:truncate sẽ giúp chữ không bị xuống dòng trên màn hình lớn nếu bạn muốn cực kì gọn */}
+            Càng chi tiết về món ăn, không gian & ngân sách, lộ trình BMI càng tối ưu.
           </div>
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 pb-32">
-        {messages.map((message, index) => (
-          <div key={`${message.role}-${index}`} className="space-y-4">
-            <div
-              className={`flex gap-4 ${
-                message.role === "user" ? "justify-end" : "justify-start"
-              }`}
+      {/* Chat Messages Container */}
+      <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 pb-4">
+        <AnimatePresence>
+          {messages.length === 0 && !isLoading && (
+            <motion.div
+              key="welcome-message"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex gap-3 justify-start"
             >
-              {message.role === "assistant" && (
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
+              <div className="relative h-8 w-8 flex-shrink-0">
+                <img
+                  src="/assets/images/AI.png"
+                  alt="AI Avatar"
+                  className="h-full w-full rounded-full object-cover shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.classList.add('hidden');
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
                   AI
                 </div>
-              )}
+              </div>
+              <div className="max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft glass text-slate-700">
+                Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn.
+              </div>
+            </motion.div>
+          )}
+
+          {messages.map((message, index) => (
+            <motion.div
+              key={message.id || `msg-${index}`}
+              layout
+              initial={{ opacity: 0, y: 12, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-2"
+            >
               <div
-                className={`max-w-[520px] rounded-3xl px-5 py-4 text-sm shadow-soft ${
-                  message.role === "user"
-                    ? "bg-gradient-to-r from-brand-coral to-brand-flame text-white"
-                    : "glass text-slate-700"
+                className={`flex gap-3 ${
+                  message.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
-                {message.content}
-              </div>
-              {message.role === "user" && (
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
-                  U
-                </div>
-              )}
-            </div>
+                {message.role === "assistant" && (
+                  <div className="relative h-8 w-8 flex-shrink-0">
+                    <img
+                      src="/assets/images/AI.png"
+                      alt="AI Avatar"
+                      className="h-full w-full rounded-full object-cover shadow-sm"
+                      onError={(e) => {
+                        e.currentTarget.classList.add('hidden');
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                      AI
+                    </div>
+                  </div>
+                )}
 
-            {message.role === "assistant" && message.restaurants?.length ? (
-              <div className="space-y-4">
-                {message.restaurants.map((restaurant, restaurantIndex) => (
-                  <motion.div
-                    key={`${index}-${restaurant.name}-${restaurantIndex}`}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <RestaurantCard restaurant={restaurant} />
-                  </motion.div>
-                ))}
-                <div className="relative flex">
-                  <motion.div
-                    animate={{ y: [0, -6, 0], opacity: [0.85, 1, 0.85] }}
-                    transition={{ duration: 2.2, repeat: Infinity }}
-                    className="absolute -top-11 left-0 rounded-2xl border border-brand-coral/30 bg-white/90 px-3 py-2 text-xs font-semibold text-brand-flame shadow-soft"
-                  >
-                    Khoe vé sang chảnh ngay
-                  </motion.div>
-                  <motion.button
-                    type="button"
-                    onClick={() => onPreviewPass?.(message.restaurants || [])}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-3 text-sm font-semibold text-white shadow-glow"
-                  >
-                    <Sparkles size={16} />
-                    Khoe lịch trình
-                  </motion.button>
-                </div>
+                <motion.div
+                  initial={{ scale: 1, opacity: 1 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className={`max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft origin-bottom-left ${
+                    message.role === "user"
+                      ? "bg-gradient-to-r from-brand-coral to-brand-flame text-white"
+                      : "glass text-slate-700"
+                  }`}
+                >
+                  {message.content}
+                </motion.div>
+
+                {message.role === "user" && (
+                  <img
+                    src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "U")}&background=0f172a&color=fff`}
+                    alt="User"
+                    className="h-8 w-8 flex-shrink-0 rounded-full object-cover shadow-sm ring-1 ring-slate-100"
+                  />
+                )}
               </div>
-            ) : null}
-          </div>
-        ))}
+
+              {/* Restaurant Names List */}
+              {message.role === "assistant" &&
+                message.restaurants &&
+                message.restaurants.length > 0 && (
+                  <motion.div
+                    className="ml-11 flex flex-col gap-4 origin-top"
+                    initial={{ scale: 1, opacity: 1 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.35 }}
+                    style={{
+                      transformOrigin: "top left",
+                    }}
+                  >
+                    {message.restaurants.map((restaurant, restaurantIndex) => (
+                      <motion.div
+                        key={`${message.id}-${restaurant.id}-${restaurantIndex}`}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: message.isCompact ? 0 : restaurantIndex * 0.1
+                        }}
+                        className="space-y-3"
+                      >
+                        <RestaurantMiniCard
+                          restaurant={restaurant}
+                          isInItinerary={currentItinerary.some(item => item.id === restaurant.id)}
+                          onSelect={(id) => {
+                            onRestaurantsSelect?.(message.restaurants || []);
+                            onRestaurantSelect?.(id);
+                          }}
+                          onSelectMeal={onSelectMeal}
+                        />
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+            </motion.div>
+          ))}
+        </AnimatePresence>
 
         {isLoading && (
-          <div className="flex items-center gap-3 text-sm text-slate-500">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
-              AI
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-3 text-xs md:text-sm text-slate-500"
+          >
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <img
+                src="/assets/images/AI.png"
+                alt="AI Avatar"
+                className="h-full w-full rounded-full object-cover shadow-sm"
+                onError={(e) => {
+                  e.currentTarget.classList.add('hidden');
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                AI
+              </div>
             </div>
-            <div className="glass rounded-3xl px-5 py-4">
+            <div className="glass rounded-2xl px-4 py-3">
               <div className="flex items-center gap-2">
                 <span className="text-slate-600">Đang suy nghĩ</span>
                 <span className="flex items-center gap-1">
@@ -432,46 +563,50 @@ export default function ChatInterface({
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
+      </div>
 
-        <div className="flex flex-wrap gap-3">
+      {/* Suggestions */}
+      {messages.length === 0 && !isLoading && (
+        <div className="flex flex-wrap gap-2">
           {suggestions.map((suggestion) => (
             <button
               key={suggestion}
               type="button"
-              onClick={() => onInputChange(suggestion)}
-              className="rounded-full border border-slate-200/60 bg-white/70 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:text-slate-900"
+              onClick={() => setInputValue(suggestion)}
+              className="rounded-full border border-slate-200/60 bg-white/70 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:text-slate-900"
             >
               {suggestion}
             </button>
           ))}
         </div>
-      </div>
+      )}
 
-      <div className="fixed bottom-6 left-0 right-0">
-        <div className="mx-auto flex w-full max-w-4xl items-center gap-3 rounded-full border border-white/60 bg-white/80 px-4 py-3 shadow-soft backdrop-blur">
-          <input
-            value={input}
-            onChange={(event) => onInputChange(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                event.preventDefault();
-                handleSend();
-              }
-            }}
-            placeholder="Nhập yêu cầu của bạn..."
-            className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-          />
-          <button
-            type="button"
-            onClick={handleSend}
-            disabled={isLoading}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame text-white shadow-glow"
-          >
-            <SendHorizontal size={18} />
-          </button>
-        </div>
+      {/* Input Area */}
+      <div className="flex items-center gap-2 rounded-full border border-white/60 bg-white/80 px-3 py-2.5 shadow-soft backdrop-blur">
+        <input
+          type="text"
+          value={input}
+          onChange={(event) => setInputValue(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && !event.shiftKey) {
+              event.preventDefault();
+              handleSend();
+            }
+          }}
+          placeholder="Nhập yêu cầu của bạn..."
+          className="flex-1 bg-transparent text-xs md:text-sm text-slate-700 outline-none placeholder:text-slate-400"
+          disabled={isLoading}
+        />
+        <button
+          type="button"
+          onClick={handleSend}
+          disabled={isLoading || !input.trim()}
+          className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame text-white shadow-glow disabled:opacity-50 disabled:cursor-not-allowed transition"
+        >
+          <SendHorizontal size={16} />
+        </button>
       </div>
     </div>
   );

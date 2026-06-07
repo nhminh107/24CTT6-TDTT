@@ -8,9 +8,10 @@ load_dotenv()
 api_key = os.getenv("OPEN_WEATHER_API")
 
 class Weight_Update:
-    def __init__(self, user_lat, user_lng):
+    def __init__(self, user_lat, user_lng, feedback_reason: str = None):
         self.user_lat = user_lat
         self.user_lng = user_lng
+        self.feedback_reason = feedback_reason
         
         self.buff_star_weight = 0
         self.buff_price_weight = 0 
@@ -97,6 +98,29 @@ class Weight_Update:
             self.buff_distance_weight -= 0.03
             self.buff_price_weight -= 0.02
 
+    def _apply_feedback_rules(self):
+        if not self.feedback_reason:
+            return
+            
+        reason = self.feedback_reason.lower()
+        if reason == "expensive":
+            # Ưu tiên cực cao cho giá cả (tìm quán rẻ hơn)
+            self.buff_price_weight += 0.20
+            self.buff_star_weight -= 0.05
+        elif reason == "far":
+            # Ưu tiên cực cao cho khoảng cách (tìm quán gần hơn)
+            self.buff_distance_weight += 0.25
+        elif reason == "low_rating":
+            # Ưu tiên quán có điểm cao
+            self.buff_star_weight += 0.15
+        elif reason == "unhealthy":
+            # Ưu tiên các yếu tố semantic (liên quan đến tag sức khỏe)
+            self.buff_semantic_weight += 0.15
+        elif reason == "not_style":
+            # Tìm kiếm phong cách khác thông qua semantic
+            self.buff_semantic_weight += 0.10
+            self.buff_star_weight += 0.05
+
     def _normalize_buffs(self):
         total = (
             self.buff_star_weight
@@ -120,6 +144,7 @@ class Weight_Update:
         self._apply_weather_rules(weather)
         self._apply_time_rules(time_slot)
         self._apply_weekend_rules(local_time)
+        self._apply_feedback_rules()
         self._normalize_buffs()
 
         return {
