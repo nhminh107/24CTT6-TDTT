@@ -58,7 +58,8 @@ class ChatBot():
         - Asking HOW TO USE the BMI app or reporting bugs.
 
         3. "Knowledge_QA"
-        - Asking about nutrition, health benefits, calories, or general culinary knowledge.
+        - Asking about nutrition, health benefits, calories, OR details about a SPECIFIC restaurant's menu, quality, and offerings.
+        - If the user asks "Quán đó có món X không?", "Thực đơn quán này có gì?", "Quán này ăn ngon không?" -> This is "Knowledge_QA".
 
         4. "Out_Scope"
         - Completely unrelated to food, health, travel, or the BMI app.

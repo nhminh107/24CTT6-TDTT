@@ -241,6 +241,7 @@ async def process_prompt(request: UserRequest):
         
         user_intent = routing_res.get("user_intent")
         is_poor_info = routing_res.get("isPoorInfo", 0)
+        print(f"[API_LOG] Intent detected: {user_intent} | isPoorInfo: {is_poor_info}")
 
         if user_intent == "Search" and is_poor_info == 1:
             print("[API_LOG] User intent: Search, but info is poor. Asking for more info.")
