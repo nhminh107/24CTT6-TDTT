@@ -38,6 +38,7 @@ export type ApiRestaurant = {
   potential_tag?: string[];
   warnings?: string[];
   notes?: string[];
+  type?: string[];
   lat?: number;
   lng?: number;
 };
