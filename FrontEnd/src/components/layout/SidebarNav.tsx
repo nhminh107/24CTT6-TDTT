@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2 } from "lucide-react";
+import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2, Compass } from "lucide-react";
 import LocationSearch from "@/components/ui/LocationSearch";
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
@@ -88,6 +88,14 @@ export default function SidebarNav({
         >
           <Home size={14} />
           Về trang chủ
+        </Link>
+
+        <Link
+          href="/explore"
+          className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-brand-coral/20 bg-brand-coral/5 px-4 py-3 text-sm font-bold text-brand-coral shadow-sm transition hover:bg-brand-coral/10 hover:shadow-md active:scale-[0.98]"
+        >
+          <Compass size={16} />
+          Bản đồ khám phá
         </Link>
 
         {/* ── 2. User & Location ───────────────────────────────── */}

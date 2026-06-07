@@ -499,6 +499,22 @@ async def process_prompt(request: UserRequest):
 
 # --- Các Endpoints hỗ trợ Maps ---
 
+@router.get("/restaurants/all")
+async def get_all_restaurants():
+    """
+    Trả về toàn bộ danh sách quán ăn để hiển thị trên bản đồ.
+    """
+    data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
+    if not os.path.exists(data_path):
+        raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
+    
+    try:
+        with open(data_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return {"status": "success", "data": data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi khi đọc dữ liệu: {str(e)}")
+
 @router.get("/maps/suggestions")
 async def get_map_suggestions(q: str):
     results = await suggest_locations(q)
