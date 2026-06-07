@@ -535,7 +535,7 @@ export default function MainDashboard() {
                   mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 }`
               : `${
-                  sidebarOpen ? "w-90" : "w-0"
+                  sidebarOpen ? "w-80 flex-shrink-0" : "w-0"
                 } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
           }
         >
@@ -557,6 +557,7 @@ export default function MainDashboard() {
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
+            onOpenLocationPrompt={() => setLocationPromptOpen(true)}
             onTabChange={setItineraryTab}
             chatHistory={chatHistory}
             currentChatId={currentChatId}

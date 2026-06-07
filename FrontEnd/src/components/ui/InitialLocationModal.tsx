@@ -101,7 +101,7 @@ export default function InitialLocationModal({ isOpen, onClose }: InitialLocatio
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-lg overflow-hidden rounded-[32px] bg-white shadow-2xl"
+            className="relative w-full max-w-lg rounded-[32px] bg-white shadow-2xl"
           >
             {/* Background Decorative Element */}
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-coral/5 blur-3xl" />

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2, Compass } from "lucide-react";
-import LocationSearch from "@/components/ui/LocationSearch";
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
 import ConfirmModal from "@/components/ui/ConfirmModal";
@@ -21,6 +20,7 @@ type SidebarNavProps = {
   availableFilters: string[];
   onOpenHealthProfile: () => void;
   onOpenProfileSettings: () => void;
+  onOpenLocationPrompt?: () => void;
   onTabChange?: (tab: "itinerary" | "detail" | "map") => void;
   chatHistory?: ChatSession[];
   currentChatId?: string | null;
@@ -35,6 +35,7 @@ export default function SidebarNav({
   availableFilters,
   onOpenHealthProfile,
   onOpenProfileSettings,
+  onOpenLocationPrompt,
   onTabChange,
   chatHistory = [],
   currentChatId,
@@ -43,7 +44,6 @@ export default function SidebarNav({
   onDeleteChat
 }: SidebarNavProps) {
   const { user, logout } = useAuth();
-  const [forceLocationOpen, setForceLocationOpen] = useState(false);
   
   // Custom UI State
   const [deleteConfirm, setDeleteConfirm] = useState<{ isOpen: boolean; chatId: string }>({
@@ -182,28 +182,21 @@ export default function SidebarNav({
             )}
 
             <div className="mt-3">
-              <div className="mb-2 flex items-center justify-between">
-                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+              <div className="mb-1 flex items-center justify-between">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                   Vị trí xuất phát
-                </label>
+                </span>
                 <button
                   type="button"
-                  onClick={() => setForceLocationOpen(true)}
-                  className="text-[10px] font-bold uppercase tracking-[0.1em] text-brand-coral hover:underline"
+                  onClick={() => onOpenLocationPrompt?.()}
+                  className="text-[10px] font-bold uppercase tracking-[0.1em] text-brand-coral transition-colors hover:text-brand-flame hover:underline"
                 >
                   Thay đổi
                 </button>
               </div>
-              <LocationSearch
-                value={state.location}
-                onChange={(value) => onStateChange({ ...state, location: value })}
-                onSelect={(option) =>
-                  onStateChange({ ...state, location: option.name, placeId: option.id })
-                }
-                openOnFocus={false}
-                forceOpen={forceLocationOpen}
-                onForceOpenComplete={() => setForceLocationOpen(false)}
-              />
+              <p className="truncate text-sm font-semibold text-slate-700">
+                {state.location || "Chưa xác định"}
+              </p>
             </div>
           </div>
         </div>
