@@ -189,12 +189,27 @@ export default function MainDashboard() {
         if (isInitializingChat.current) return;
         isInitializingChat.current = true;
 
-        const history = await fetchChatHistory();
-        if (history.length > 0 && !currentChatId) {
-          // Tự động load cuộc trò chuyện mới nhất
-          const latestChat = history[0];
-          setCurrentChatId(latestChat.id);
-          fetchChatMessages(latestChat.id);
+        // Fetch history to populate sidebar
+        await fetchChatHistory();
+        
+        // Kiểm tra xem trong phiên trình duyệt này đã khởi tạo chat chưa
+        const sessionKey = `bmi_chat_init_${user.uid}`;
+        const isSessionInitialized = sessionStorage.getItem(sessionKey);
+
+        if (!isSessionInitialized) {
+          console.log("[DASHBOARD] New session detected. Creating auto-new chat...");
+          await handleNewChat();
+          sessionStorage.setItem(sessionKey, "true");
+        } else if (!currentChatId) {
+          // Nếu đã init rồi (ví dụ reload trang) nhưng chưa có chat hoạt động trong state
+          // thì có thể load lại chat cuối cùng hoặc cứ để trống. 
+          // Ở đây ta chọn load lại chat cuối để tránh bị mất context khi F5.
+          const history = await fetchChatHistory();
+          if (history.length > 0) {
+            const latestChat = history[0];
+            setCurrentChatId(latestChat.id);
+            fetchChatMessages(latestChat.id);
+          }
         }
         
         isInitializingChat.current = false;
@@ -203,6 +218,15 @@ export default function MainDashboard() {
         setCurrentChatId(null);
         setCurrentMessages([]);
         isInitializingChat.current = false;
+        // Xóa sạch flag session khi logout để lần sau login lại sẽ tạo mới
+        if (typeof window !== "undefined") {
+          // Tìm và xóa các key bắt đầu bằng bmi_chat_init_
+          Object.keys(sessionStorage).forEach(key => {
+            if (key.startsWith("bmi_chat_init_")) {
+              sessionStorage.removeItem(key);
+            }
+          });
+        }
       }
     };
     initChat();
