@@ -21,6 +21,7 @@ type SidebarNavProps = {
   availableFilters: string[];
   onOpenHealthProfile: () => void;
   onOpenProfileSettings: () => void;
+  onTabChange?: (tab: "itinerary" | "detail" | "map") => void;
   chatHistory?: ChatSession[];
   currentChatId?: string | null;
   onNewChat?: () => void;
@@ -34,6 +35,7 @@ export default function SidebarNav({
   availableFilters,
   onOpenHealthProfile,
   onOpenProfileSettings,
+  onTabChange,
   chatHistory = [],
   currentChatId,
   onNewChat,
@@ -68,11 +70,11 @@ export default function SidebarNav({
     });
   };
 
-    return (
+  return (
     <>
       <div className="flex h-full flex-1 flex-col p-5">
 
-        {/* ── 1. New Chat Button ─────────────────────────────── */}
+        {/* ── 1. Action Buttons ─────────────────────────────── */}
         <button
           type="button"
           onClick={onNewChat}

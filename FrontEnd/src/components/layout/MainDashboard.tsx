@@ -111,7 +111,7 @@ export default function MainDashboard() {
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
-  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
+  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
   const isInitializingChat = useRef(false);
@@ -542,6 +542,7 @@ export default function MainDashboard() {
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
+            onTabChange={setItineraryTab}
             chatHistory={chatHistory}
             currentChatId={currentChatId}
             onNewChat={startLocalNewChat}

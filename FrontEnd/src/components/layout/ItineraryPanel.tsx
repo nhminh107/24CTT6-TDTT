@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket } from "lucide-react";
+import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket, ArrowLeft, Map as MapIcon } from "lucide-react";
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import BoardingPass from "@/components/ui/BoardingPass";
+import MapExplore from "@/components/ui/MapExplore";
 
 type ItineraryPanelProps = {
   location: string;
@@ -12,9 +14,9 @@ type ItineraryPanelProps = {
   mealStops: any[];
   restaurants: any[];
   selectedRestaurantId: string | null;
-  currentTab: "itinerary" | "detail";
+  currentTab: "itinerary" | "detail" | "map";
   onSelectRestaurant: (id: string) => void;
-  onTabChange: (tab: "itinerary" | "detail") => void;
+  onTabChange: (tab: "itinerary" | "detail" | "map") => void;
   onCloseDetail: () => void;
   currentItinerary?: any[];
   onDeleteMeal?: (meal: string) => void;
@@ -70,7 +72,20 @@ export default function ItineraryPanel({
       </div>
 
       {/* Content */}
-      {currentTab === "itinerary" ? (
+      {currentTab === "map" ? (
+        <div className="flex-1 flex flex-col gap-3 overflow-hidden">
+          <button
+            onClick={() => onTabChange("itinerary")}
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-brand-coral hover:bg-orange-50 hover:text-brand-coral shadow-sm w-fit"
+          >
+            <ArrowLeft size={14} />
+            Quay lại lịch trình
+          </button>
+          <div className="flex-1 overflow-hidden rounded-2xl border border-slate-100 shadow-inner">
+            <MapExplore />
+          </div>
+        </div>
+      ) : currentTab === "itinerary" ? (
         <div className="flex flex-1 flex-col gap-4 overflow-hidden">
           <div className="flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-flame">
@@ -85,6 +100,14 @@ export default function ItineraryPanel({
               </button>
             )}
           </div>
+
+          <Link
+            href="/explore"
+            className="flex items-center gap-2 w-full justify-center py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-bold text-slate-600 hover:bg-white hover:border-brand-coral hover:text-brand-coral transition-all shadow-sm active:scale-[0.98] group"
+          >
+            <MapIcon size={14} className="text-slate-400 group-hover:text-brand-coral transition-colors" />
+            XEM BẢN ĐỒ KHÁM PHÁ
+          </Link>
 
           <div className="flex-1 overflow-y-auto space-y-4 pr-1">
             {/* Meal Stops Timeline */}

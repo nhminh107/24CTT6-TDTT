@@ -39,7 +39,6 @@ export default function MapExplore() {
         if (style.layers) {
           style.layers = style.layers.filter((layer: any) => {
             const id = layer.id.toLowerCase();
-            // Chỉ lọc bỏ các layer nhãn (symbol) của các địa điểm không mong muốn
             const isPOI = ["poi", "transit", "landmark", "attraction", "business", "food"].some(key => id.includes(key));
             const isSymbol = layer.type === "symbol";
             return !(isPOI && isSymbol);
@@ -69,11 +68,17 @@ export default function MapExplore() {
     fetchAll();
   }, []);
 
-  // 3. Geolocation
+  // 3. Geolocation (Tự động bay tới vị trí người dùng khi vào trang riêng)
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
-        (p) => setUserLocation({ lat: p.coords.latitude, lng: p.coords.longitude }),
+        (p) => {
+          const { latitude, longitude } = p.coords;
+          setUserLocation({ lat: latitude, lng: longitude });
+          if (mapRef.current) {
+            mapRef.current.flyTo({ center: [longitude, latitude], zoom: 14 });
+          }
+        },
         (e) => console.warn(e)
       );
     }
@@ -81,7 +86,6 @@ export default function MapExplore() {
 
   const geoJsonData = useMemo(() => convertToGeoJSON(restaurants), [restaurants]);
 
-  // Cluster Layers (Giữ nguyên cho hiệu năng)
   const clusterLayer: any = {
     id: "clusters",
     type: "circle",
@@ -107,7 +111,6 @@ export default function MapExplore() {
     },
   };
 
-  // Hàm xử lý click cụm
   const onMapClick = (event: any) => {
     const feature = event.features?.[0];
     if (feature && feature.layer.id === "clusters") {
@@ -132,9 +135,6 @@ export default function MapExplore() {
       </div>
     );
   }
-
-  // Lấy danh sách các điểm không bị cluster để render Marker thủ công (khi zoom > 13)
-  const unclusteredFeatures = geoJsonData.features.filter(f => restaurants.length > 0);
 
   return (
     <div className="relative w-full h-screen">
@@ -163,7 +163,7 @@ export default function MapExplore() {
           <Layer {...clusterCountLayer} />
         </Source>
 
-        {/* RENDER CUSTOM MARKERS (Google Maps Style with colored emojis) */}
+        {/* GOOGLE MAPS STYLE MARKERS */}
         {zoom > 13 && restaurants.map((res: any, idx) => (
           <Marker
             key={res.id || idx}
@@ -176,16 +176,14 @@ export default function MapExplore() {
             }}
           >
             <div className="flex flex-col items-center group cursor-pointer">
-              {/* Ô tròn chứa icon */}
               <div 
-                className="w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-lg transition-transform group-hover:scale-125"
+                className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-white shadow-xl transition-transform group-hover:scale-125"
                 style={{ backgroundColor: convertToGeoJSON([res]).features[0].properties.mapColor }}
               >
-                <span className="text-sm">{convertToGeoJSON([res]).features[0].properties.mapIcon}</span>
+                <span className="text-lg">{convertToGeoJSON([res]).features[0].properties.mapIcon}</span>
               </div>
-              {/* Tên quán */}
-              <div className="mt-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded shadow-sm border border-slate-100">
-                <p className="text-[10px] font-bold text-slate-800 whitespace-nowrap">{res.name}</p>
+              <div className="mt-1.5 px-2.5 py-1 bg-white/95 backdrop-blur-sm rounded-lg shadow-md border border-slate-100">
+                <p className="text-[11px] font-black text-slate-800 whitespace-nowrap">{res.name}</p>
               </div>
             </div>
           </Marker>
@@ -194,8 +192,8 @@ export default function MapExplore() {
         {userLocation && (
           <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="center">
             <div className="relative flex items-center justify-center">
-              <div className="absolute w-8 h-8 bg-blue-500/20 rounded-full animate-ping" />
-              <div className="relative w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-lg" />
+              <div className="absolute w-10 h-10 bg-blue-500/20 rounded-full animate-ping" />
+              <div className="relative w-5 h-5 bg-blue-600 rounded-full border-2 border-white shadow-2xl" />
             </div>
           </Marker>
         )}
@@ -210,22 +208,28 @@ export default function MapExplore() {
             closeButton={false}
             className="z-50"
           >
-            <div className="p-0 min-w-[220px] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-100">
-              <img src={popupInfo.image_url || "/assets/images/AI.png"} className="w-full h-28 object-cover" />
+            <div className="p-0 min-w-[240px] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-100">
+              <img src={popupInfo.image_url || "/assets/images/AI.png"} className="w-full h-32 object-cover" />
               <div className="p-4 space-y-3">
-                <h3 className="font-bold text-slate-800 text-sm leading-tight">{popupInfo.name}</h3>
-                <div className="flex items-center gap-1.5">
-                  <div className="flex items-center text-xs font-bold text-yellow-500">
-                    <Star className="w-3 h-3 fill-current mr-0.5" /> {popupInfo.star}
+                <div>
+                  <h3 className="font-bold text-slate-800 text-base leading-tight line-clamp-2">{popupInfo.name}</h3>
+                  <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center text-xs font-bold text-yellow-500">
+                        <Star className="w-3.5 h-3.5 fill-current mr-0.5" /> {popupInfo.star}
+                      </div>
+                      <span className="text-xs text-slate-300">|</span>
+                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{popupInfo.type?.[0]}</span>
                   </div>
-                  <span className="text-[10px] text-slate-400">•</span>
-                  <span className="text-[10px] font-bold text-slate-500">{popupInfo.type?.[0]}</span>
+                </div>
+                <div className="flex items-start text-[11px] text-slate-500 italic">
+                  <MapPin className="w-3.5 h-3.5 mr-1.5 shrink-0" />
+                  <span>{popupInfo.address}</span>
                 </div>
                 <button
                   onClick={() => handleOpenModal(popupInfo)}
-                  className="w-full py-2 bg-rose-500 text-white text-[11px] font-bold rounded-xl shadow-md flex items-center justify-center gap-2"
+                  className="w-full py-2.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold rounded-xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2"
                 >
-                  <Info className="w-3.5 h-3.5" /> Chi tiết nhà hàng
+                  <Info className="w-4 h-4" /> Xem chi tiết nhà hàng
                 </button>
               </div>
             </div>
@@ -233,18 +237,24 @@ export default function MapExplore() {
         )}
       </Map>
 
-      {/* Floating Header UI */}
-      <div className="absolute top-6 left-6 z-10 flex flex-col gap-3">
-        <div className="bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/40">
-          <h1 className="text-xl font-black text-slate-800 flex items-center gap-2">
-            <Navigation className="w-5 h-5 text-rose-500 fill-current" /> Khám phá Ẩm thực
+      {/* Floating Header UI (Dành cho trang rộng) */}
+      <div className="absolute top-8 left-8 z-10 flex flex-col gap-4">
+        <div className="bg-white/80 backdrop-blur-xl p-5 rounded-[24px] shadow-2xl border border-white/40">
+          <h1 className="text-2xl font-black text-slate-800 flex items-center gap-3">
+            <Navigation className="w-7 h-7 text-rose-500 fill-current" />
+            Khám phá Ẩm thực
           </h1>
-          <p className="text-[11px] text-slate-500 font-bold uppercase tracking-[0.1em]">
+          <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.2em] mt-1 ml-10">
             Dữ liệu độc quyền • {restaurants.length} địa điểm
           </p>
         </div>
-        <Link href="/app" className="flex items-center gap-2 w-fit bg-slate-900 text-white px-5 py-3.5 rounded-2xl font-bold text-sm shadow-2xl transition-all group border border-white/10">
-          <MessageSquare className="w-4 h-4 text-rose-400" /> Quay lại Chat AI
+
+        <Link
+          href="/app"
+          className="flex items-center gap-3 w-fit bg-slate-900 hover:bg-slate-800 text-white px-7 py-4 rounded-[20px] font-bold text-sm shadow-2xl transition-all active:scale-95 group border border-white/10"
+        >
+          <MessageSquare className="w-5 h-5 text-rose-400 group-hover:scale-110 transition-transform" />
+          Quay lại Chat AI
         </Link>
       </div>
 
