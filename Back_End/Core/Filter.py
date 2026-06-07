@@ -32,7 +32,7 @@ class RestaurantFilter:
                 "potential": "Tinh bột tinh chế (Tiềm ẩn): Quán chủ yếu dùng bún, mì trắng, bánh mì. Hãy hỏi nhân viên xem có thể đổi sang bún lứt hoặc rau không.",
                 "main": "Tinh bột nhanh (Chủ đạo): Thực đơn nhiều tinh bột hấp thu nhanh. Bạn nên ăn kèm nhiều rau xanh để tránh làm tăng đường huyết đột ngột."
             },
-            "Hight_Sodium": {
+            "High_Sodium": {
                 "potential": "Thực phần chứa nhiều muối (Tiềm ẩn): Một số món có thể có nhiều muối. Hãy nhờ nhân viên tư vấn thêm",
                 "main": "Thực phần chứa nhiều muối (Chủ đao): Thực đơn chính và phong cách ẩm thực có thể chứa nhiều muốn nên cân nhắc khi gọi món."
             },

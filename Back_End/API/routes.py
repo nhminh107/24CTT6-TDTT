@@ -527,7 +527,17 @@ CONDITION_MAP = {
     "Dạ dày / Đại tràng": {"main": ["Spicy"], "potential": ["DeepFried_Oily", "Alcohol_Pub"]},
     "Tiểu đường (Diabetes)": {"main": ["High_Sugar", "Refined_Carbs"], "potential": ["DeepFried_Oily"]},
     "Béo phì / Giảm cân": {"main": ["DeepFried_Oily", "High_Sugar", "Refined_Carbs"], "potential": ["Alcohol_Pub"]},
-    "Low GI Diet": {"main": [], "potential": ["Low_GI_Diet"]}
+    "Cao huyết áp": {
+    "main": [
+        "High_Sodium",
+        "DeepFried_Oily",
+        "Processed_Food"
+    ],
+    "potential": [
+        "Alcohol_Pub",
+        "High_Sugar"
+    ]
+    }
 }
 
 ALLERGY_MAP = {
@@ -542,7 +552,7 @@ ALLERGY_MAP = {
 
 ALL_AVAILABLE_TAGS = [
     "Red_Meat", "Seafood", "Alcohol_Pub", "Shellfish", "Spicy", "DeepFried_Oily",
-    "High_Sugar", "Refined_Carbs", "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present"
+    "High_Sugar", "Refined_Carbs", "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present","High_Sodium"
 ]
 
 

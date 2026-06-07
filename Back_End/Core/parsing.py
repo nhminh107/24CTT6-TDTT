@@ -115,7 +115,7 @@ class LLMParser():
             - Spicy: Avoid for Stomach issues (dạ dày), gastritis, reflux (trào ngược), digestive pains.
             - DeepFried_Oily: Avoid for Stomach issues, weight loss, obesity, fatty liver.
             - High_Sugar / Refined_Carbs: Avoid for Diabetes (tiểu đường), weight loss, obesity.
-            - Low_GI_Diet: Suitable for Diabetes, low GI requirements.
+            - High_Sodium: Fast food, hotpot and another dish with same semantic.
             - Peanuts_Nuts: Avoid for peanut/nut allergies.
             - Dairy_Product: Avoid for lactose intolerance (bất dung nạp lactose), milk allergy.
             - Gluten_Present: Avoid for Celiac disease, gluten allergy/intolerance.
