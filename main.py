@@ -37,4 +37,4 @@ async def warmup_models():
 #Cổng phụ
 @app.get("/")
 async def root():
-    return {"message": "Server đang chạy thành công! Hãy truy cập http://127.0.0.1:8000/docs để test."}
+    return {"message": "Server đang chạy thành công! Hãy truy cập https://api.bmi-foodtour.io.vn/docs để test."}

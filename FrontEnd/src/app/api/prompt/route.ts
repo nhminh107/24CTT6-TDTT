@@ -4,7 +4,7 @@ const apiBaseUrl =
   process.env.API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://127.0.0.1:8000/api/v1";
+  "https://api.bmi-foodtour.io.vn/api/v1";
 
 export async function POST(request: Request) {
   const timestamp = new Date().toISOString();

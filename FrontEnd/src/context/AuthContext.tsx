@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           const apiBaseUrl =
             process.env.NEXT_PUBLIC_API_BASE_URL ||
             process.env.NEXT_PUBLIC_API_URL ||
-            "http://127.0.0.1:8000";
+            "https://api.bmi-foodtour.io.vn";
           await fetch(`${apiBaseUrl}/api/v1/auth/sync`, {
             method: "POST",
             headers: {

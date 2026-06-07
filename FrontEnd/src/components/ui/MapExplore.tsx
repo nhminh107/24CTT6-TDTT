@@ -90,7 +90,7 @@ export default function MapExplore({
   useEffect(() => {
     async function fetchAll() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000"}/api/v1/restaurants/all`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://api.bmi-foodtour.io.vn"}/api/v1/restaurants/all`);
         const data = await res.json();
         if (data.status === "success") setRestaurants(data.data);
       } catch (error) {
