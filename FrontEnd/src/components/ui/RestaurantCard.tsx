@@ -74,8 +74,22 @@ export default function RestaurantCard2({
 
   const name = restaurant.name || "Chưa có tên";
   const address = restaurant.address || "Chưa có địa chỉ";
+<<<<<<< HEAD
   const rating = typeof restaurant.rating === "number" ? restaurant.rating : 0;
   const semanticText = restaurant.semanticText || "";
+=======
+  
+  const rating = useMemo(() => {
+    const r = restaurant.rating !== undefined ? restaurant.rating : (restaurant as any).star;
+    return typeof r === "number" ? r : Number(r) || 0;
+  }, [restaurant.rating, (restaurant as any).star]);
+
+  const price = useMemo(() => {
+    return restaurant.price !== undefined ? restaurant.price : (restaurant as any).avg_price;
+  }, [restaurant.price, (restaurant as any).avg_price]);
+
+  const semanticText = restaurant.semanticText || (restaurant as any).semantic_text || "";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   const mapUrl = restaurant.mapUrl || "https://www.google.com/maps";
     
   const [isOpenWarnings, setIsOpenWarnings] = useState(true);
@@ -164,15 +178,13 @@ export default function RestaurantCard2({
 
           {/* price */}
           <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
-            {typeof restaurant.price === "number"
-              ? `${restaurant.price.toLocaleString(
-                  "vi-VN"
-                )}đ`
-              : restaurant.price}
+            {typeof price === "number"
+              ? `${price.toLocaleString("vi-VN")}đ`
+              : price || "Chưa cập nhật"}
           </div>
 
           {/* meal time */}
-          {!!restaurant.meals?.length && (
+          {restaurant.meals && restaurant.meals.length > 0 && (
             <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
               {restaurant.meals.join(" • ")}
             </div>
@@ -316,7 +328,7 @@ export default function RestaurantCard2({
             "inline-flex items-center justify-center gap-2 rounded-2xl border py-3.5 text-center text-sm font-semibold transition duration-300",
             phoneLink
               ? "w-1/2 border-blue-200 bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700"
-              : "bg-white border border-slate-200 text-slate-700"
+              : "w-full bg-white border border-slate-200 text-slate-700 shadow-sm hover:bg-slate-50"
           )}
         >
           <MapPin size={16} className="text-red-500" />

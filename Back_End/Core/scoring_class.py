@@ -70,7 +70,7 @@ class RestaurantScorer:
              * cos(radians(end_lat))
              * sin(dlng / 2) ** 2)
         dist_km = R * 2 * atan2(sqrt(a), sqrt(1 - a))
-        base = 1 / (1 + dist_km)
+        base =  1/(1 + dist_km)
         return round(max(0.0, min(1.0, base + buff_weight)), 4)
 
 

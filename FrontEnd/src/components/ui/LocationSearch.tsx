@@ -18,12 +18,15 @@ type ApiSuggestion = {
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
-  "http://127.0.0.1:8000";
+  "https://api.bmi-foodtour.io.vn";
 
 type LocationSearchProps = {
   value: string;
   onChange: (value: string) => void;
   onSelect: (option: LocationOption) => void;
+  openOnFocus?: boolean;
+  forceOpen?: boolean;
+  onForceOpenComplete?: () => void;
 };
 
 // ─── Reverse geocode (mockup — thay bằng API thật sau) ───────────────────────
@@ -44,6 +47,12 @@ export default function LocationSearch({
   value,
   onChange,
   onSelect,
+<<<<<<< HEAD
+=======
+  openOnFocus = true,
+  forceOpen = false,
+  onForceOpenComplete,
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 }: LocationSearchProps) {
   const [options, setOptions] = useState<LocationOption[]>([]);
   const [open, setOpen] = useState(false);
@@ -52,12 +61,31 @@ export default function LocationSearch({
   const [isFocused, setIsFocused] = useState(false);
   const [hiddenQuery, setHiddenQuery] = useState("");
 
+<<<<<<< HEAD
+=======
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // ── Handle external force open ─────────────────────────────────────────────
+  useEffect(() => {
+    if (forceOpen) {
+      inputRef.current?.focus();
+      setIsFocused(true);
+      setOpen(true);
+      onForceOpenComplete?.();
+    }
+  }, [forceOpen, onForceOpenComplete]);
+
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   // GPS state — hoàn toàn nội bộ component
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState<string | null>(null);
 
+<<<<<<< HEAD
   const containerRef = useRef<HTMLDivElement>(null);
 
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   // ── Close dropdown on outside click ────────────────────────────────────────
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -111,10 +139,17 @@ export default function LocationSearch({
               }))
           : [];
         setOptions(mapped);
+<<<<<<< HEAD
         if (isFocused) setOpen(true);
       } catch {
         setOptions([]);
         if (isFocused) setOpen(true);
+=======
+        if (isFocused && (openOnFocus || trimmed !== selectedValue)) setOpen(true);
+      } catch {
+        setOptions([]);
+        if (isFocused && (openOnFocus || trimmed !== selectedValue)) setOpen(true);
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
       } finally {
         setLoading(false);
       }
@@ -124,7 +159,11 @@ export default function LocationSearch({
       controller.abort();
       clearTimeout(handle);
     };
+<<<<<<< HEAD
   }, [value, selectedValue, isFocused, hiddenQuery]);
+=======
+  }, [value, selectedValue, isFocused, hiddenQuery, openOnFocus]);
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
   // ── Handlers ────────────────────────────────────────────────────────────────
   const handleSelect = (option: LocationOption) => {
@@ -203,6 +242,7 @@ export default function LocationSearch({
         <MapPin className="shrink-0 text-brand-coral" size={18} />
 
         <input
+          ref={inputRef}
           value={value}
           onChange={(e) => handleChange(e.target.value)}
           onFocus={() => setIsFocused(true)}

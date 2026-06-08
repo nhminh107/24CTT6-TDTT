@@ -108,10 +108,32 @@ export default function MainDashboard() {
     setDashboardState(newState);
   };
 
+<<<<<<< HEAD
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
+=======
+  const handleUserLocationChange = (nextLocation: { location: string; placeId: string }) => {
+    setDashboardState((prev) => {
+      const nextState = {
+        ...prev,
+        location: nextLocation.location,
+        placeId: nextLocation.placeId
+      };
+
+      localStorage.setItem("bmi_user_location", nextState.location);
+      localStorage.setItem("bmi_user_place_id", nextState.placeId);
+
+      return nextState;
+    });
+  };
+
+  const [healthOpen, setHealthOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
+  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
   const isInitializingChat = useRef(false);
@@ -179,6 +201,28 @@ export default function MainDashboard() {
     }
   };
 
+<<<<<<< HEAD
+=======
+  const handleReorder = async (orderedMeals: string[]) => {
+    if (!user?.uid) return;
+    try {
+      // Optimistic update
+      const mealMap = new Map(currentItinerary.map(item => [item.meal, item]));
+      const newItinerary = orderedMeals.map(meal => mealMap.get(meal)).filter(Boolean);
+      setCurrentItinerary(newItinerary);
+
+      const data = await itineraryApi.reorder(user.uid, orderedMeals);
+      if (data.status !== "success") {
+        // Fallback if failed
+        await fetchItinerary();
+      }
+    } catch (error) {
+      console.error("Error reordering itinerary:", error);
+      await fetchItinerary();
+    }
+  };
+
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   // Removed old useEffect that always showed location prompt if empty
   // (Now handled in the mount useEffect with localStorage check)
 
@@ -189,12 +233,36 @@ export default function MainDashboard() {
         if (isInitializingChat.current) return;
         isInitializingChat.current = true;
 
+<<<<<<< HEAD
         const history = await fetchChatHistory();
         if (history.length > 0 && !currentChatId) {
           // Tự động load cuộc trò chuyện mới nhất
           const latestChat = history[0];
           setCurrentChatId(latestChat.id);
           fetchChatMessages(latestChat.id);
+=======
+        // Fetch history to populate sidebar
+        await fetchChatHistory();
+        
+        // Kiểm tra xem trong phiên trình duyệt này đã khởi tạo chat chưa
+        const sessionKey = `bmi_chat_init_${user.uid}`;
+        const isSessionInitialized = sessionStorage.getItem(sessionKey);
+
+        if (!isSessionInitialized) {
+          console.log("[DASHBOARD] New session detected. Creating auto-new chat...");
+          await handleNewChat();
+          sessionStorage.setItem(sessionKey, "true");
+        } else if (!currentChatId) {
+          // Nếu đã init rồi (ví dụ reload trang) nhưng chưa có chat hoạt động trong state
+          // thì có thể load lại chat cuối cùng hoặc cứ để trống. 
+          // Ở đây ta chọn load lại chat cuối để tránh bị mất context khi F5.
+          const history = await fetchChatHistory();
+          if (history.length > 0) {
+            const latestChat = history[0];
+            setCurrentChatId(latestChat.id);
+            fetchChatMessages(latestChat.id);
+          }
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         }
         
         isInitializingChat.current = false;
@@ -203,6 +271,18 @@ export default function MainDashboard() {
         setCurrentChatId(null);
         setCurrentMessages([]);
         isInitializingChat.current = false;
+<<<<<<< HEAD
+=======
+        // Xóa sạch flag session khi logout để lần sau login lại sẽ tạo mới
+        if (typeof window !== "undefined") {
+          // Tìm và xóa các key bắt đầu bằng bmi_chat_init_
+          Object.keys(sessionStorage).forEach(key => {
+            if (key.startsWith("bmi_chat_init_")) {
+              sessionStorage.removeItem(key);
+            }
+          });
+        }
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
       }
     };
     initChat();
@@ -419,7 +499,11 @@ export default function MainDashboard() {
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
     process.env.NEXT_PUBLIC_API_URL ||
+<<<<<<< HEAD
     "http://127.0.0.1:8000";
+=======
+    "https://api.bmi-foodtour.io.vn";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
   const fetchHealthProfile = async () => {
     if (!user?.uid) return;
@@ -483,6 +567,15 @@ export default function MainDashboard() {
       <nav className="relative flex items-center justify-between border-b border-slate-200/60 bg-white/70 px-6 py-3 backdrop-blur">
       {/* Khối bên trái: Nút Menu và Quay lại */}
       <div className="z-10 flex items-center gap-4">
+<<<<<<< HEAD
+=======
+        <Link
+          href="/"
+          className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 md:flex"
+        >
+          Quay lại trang chính
+        </Link>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         <button
           type="button"
           onClick={handleSidebarToggle}
@@ -490,6 +583,7 @@ export default function MainDashboard() {
         >
           {(isMobile ? mobileSidebarOpen : sidebarOpen) ? <X size={20} /> : <Menu size={20} />}
         </button>
+<<<<<<< HEAD
         <Link
           href="/"
           className="hidden items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 md:flex"
@@ -497,6 +591,8 @@ export default function MainDashboard() {
           <ArrowLeft size={16} />
           Quay lại trang chính
         </Link>
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
       </div>
 
       {/* Khối ở giữa: Logo BMI (Căn giữa tuyệt đối dựa trên toàn bộ chiều rộng nav) */}
@@ -521,7 +617,11 @@ export default function MainDashboard() {
                   mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 }`
               : `${
+<<<<<<< HEAD
                   sidebarOpen ? "w-90" : "w-0"
+=======
+                  sidebarOpen ? "w-80 flex-shrink-0" : "w-0"
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                 } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
           }
         >
@@ -543,6 +643,11 @@ export default function MainDashboard() {
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
+<<<<<<< HEAD
+=======
+            onOpenLocationPrompt={() => setLocationPromptOpen(true)}
+            onTabChange={setItineraryTab}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
             chatHistory={chatHistory}
             currentChatId={currentChatId}
             onNewChat={startLocalNewChat}
@@ -569,7 +674,12 @@ export default function MainDashboard() {
             onAutoCreateChat={handleNewChat}
             currentItinerary={currentItinerary}
             onSelectMeal={handleSelectMeal}
+<<<<<<< HEAD
           />
+=======
+            fetchItinerary={fetchItinerary}
+            />
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         </main>
 
         {/* Right Itinerary Panel */}
@@ -590,6 +700,13 @@ export default function MainDashboard() {
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
             onResetItinerary={handleResetItinerary}
+<<<<<<< HEAD
+=======
+            onReorder={handleReorder}
+            userPlaceId={dashboardState.placeId}
+            onItineraryChange={fetchItinerary}
+            onUserLocationChange={handleUserLocationChange}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
           />
         </aside>
       </div>
@@ -645,6 +762,13 @@ export default function MainDashboard() {
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
               onResetItinerary={handleResetItinerary}
+<<<<<<< HEAD
+=======
+              onReorder={handleReorder}
+              userPlaceId={dashboardState.placeId}
+              onItineraryChange={fetchItinerary}
+              onUserLocationChange={handleUserLocationChange}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
             />
           </div>
         </div>

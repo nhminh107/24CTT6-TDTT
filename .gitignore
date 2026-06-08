@@ -184,6 +184,15 @@ chroma.sqlite3
 **/chroma_main_db/
 **/chroma_cache_db/
 **/*-*-*-*-*/
+<<<<<<< HEAD
+
+Back_End/Database/chroma.sqlite3
+Back_End/Database/*-*-*-*-*/
+Back_End/Database/chroma_cache_db/
+Back_End/Database/chroma_main_db/
+
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
 Back_End/Database/chroma.sqlite3
 Back_End/Database/*-*-*-*-*/
@@ -191,3 +200,4 @@ Back_End/Database/chroma_cache_db/
 Back_End/Database/chroma_main_db/
 
 
+serviceAccountKey.json

@@ -2,7 +2,11 @@
 
 import { useMemo } from "react";
 import { MapPin, Star, ShieldCheck, AlertTriangle, Plus } from "lucide-react";
+<<<<<<< HEAD
 import { Restaurant, cn } from "@/lib/utils";
+=======
+import { Restaurant, cn, formatMealDisplay } from "@/lib/utils";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
 type RestaurantMiniCardProps = {
   restaurant: Restaurant;
@@ -79,8 +83,12 @@ export default function RestaurantMiniCard({
         "group flex w-full flex-col overflow-hidden rounded-2xl border bg-white/80 backdrop-blur-md transition-all duration-300",
         isSelected
           ? "border-orange-500 bg-orange-50/50 shadow-md ring-1 ring-orange-500"
+<<<<<<< HEAD
           : "border-slate-100 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-sm",
         isInItinerary && "opacity-60"
+=======
+          : "border-slate-100 hover:border-orange-300 hover:bg-orange-50/20 hover:shadow-sm"
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
       )}
     >
       <div className="flex w-full gap-3 p-3 text-left" onClick={() => onSelect(restaurant.id)}>
@@ -148,7 +156,11 @@ export default function RestaurantMiniCard({
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Gợi ý cho:</span>
               <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
+<<<<<<< HEAD
                 {assignedMeal}
+=======
+                {formatMealDisplay(assignedMeal)}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
               </span>
             </div>
             <button
@@ -183,7 +195,11 @@ export default function RestaurantMiniCard({
                     isInItinerary && "cursor-not-allowed"
                   )}
                 >
+<<<<<<< HEAD
                   {meal}
+=======
+                  {formatMealDisplay(meal)}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                 </button>
               ))}
             </div>

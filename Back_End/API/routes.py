@@ -16,6 +16,7 @@ from firebase_admin import credentials, firestore
 
 
 from Back_End.Core.parsing import LLMParser
+from Back_End.Core.QA_Chatbot import ChatBot
 from Back_End.Core.Filter import RestaurantFilter
 from Back_End.Core.scoring_class import RestaurantScorer
 from Back_End.Core.final_result import FinalResultLLM
@@ -48,17 +49,6 @@ def _extract_ids_from_result(result):
             continue
         ids.append(str(rid))
     return list(dict.fromkeys(ids))
-
-
-def _wants_alternative(prompt: str) -> bool:
-    if not prompt:
-        return False
-    text = prompt.strip().lower()
-    keywords = [
-        "khác", "khác đi", "khác nữa", "quán khác",
-        "đổi quán", "đổi chỗ", "tìm quán khác", "thêm quán"
-    ]
-    return any(keyword in text for keyword in keywords)
 
 
 def _apply_exclusions(filtered_data: dict, exclude_ids: list):
@@ -171,6 +161,9 @@ class ItinerarySelectRequest(BaseModel):
     user_id: str
     meal: str
     restaurant_data: dict
+class ItineraryReorderRequest(BaseModel):
+    user_id: str
+    ordered_meals: List[str]
 
 #Endpoints xử lý chính
 
@@ -187,6 +180,13 @@ async def select_restaurant(request: ItinerarySelectRequest):
     else:
         raise HTTPException(status_code=500, detail="Không thể lưu lựa chọn.")
 
+@router.post("/itinerary/reorder")
+async def reorder_itinerary(request: ItineraryReorderRequest):
+    success = await itinerary_manager.reorder_itinerary(request.user_id, request.ordered_meals)
+    if success:
+        return {"status": "success", "message": "Đã cập nhật thứ tự lịch trình."}
+    else:
+        raise HTTPException(status_code=500, detail="Không thể cập nhật thứ tự.")
 @router.delete("/itinerary/{user_id}/{meal}")
 async def delete_meal(user_id: str, meal: str):
     success = await itinerary_manager.delete_meal(user_id, meal)
@@ -214,20 +214,80 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] Specified place_id: {request.place_id}")
 
     try:
-        # Lấy lịch trình hiện tại để cung cấp ngữ cảnh cho AI
+        # Lấy lịch trình hiện tại và các kết quả gợi ý gần nhất để cung cấp ngữ cảnh cho AI
         current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
+        last_suggestions = last_results_by_user.get(request.user_id, [])
+        
         itinerary_context = ""
         if current_itinerary:
-            itinerary_context = f"\nĐây là lịch trình hiện tại của người dùng: {json.dumps(current_itinerary, ensure_ascii=False)}\nNếu người dùng yêu cầu thay đổi một bữa đã có, hãy gợi ý quán mới. Gợi ý các quán tiếp theo dựa trên vị trí và ngân sách của lịch trình này."
+            itinerary_context += f"\nĐây là lịch trình hiện tại của người dùng (đã chọn): {json.dumps(current_itinerary, ensure_ascii=False)}"
+        
+        if last_suggestions:
+            itinerary_context += f"\nĐây là các quán ăn bạn vừa gợi ý ở lượt trước (nhưng người dùng chưa chọn hoặc có thể không thích): {json.dumps(last_suggestions, ensure_ascii=False)}"
+            itinerary_context += "\nNếu người dùng nói 'quán này', 'chỗ này', 'ở đây' kèm theo thái độ tiêu cực, hãy hiểu là họ đang nói về các quán vừa gợi ý trên."
 
-        # Lưu tin nhắn của user nếu có chat_id
+        if itinerary_context:
+            itinerary_context = f"\n[CONTEXT]{itinerary_context}\n[END CONTEXT]"
+
+        formatted_history = []
         if request.chat_id:
             await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
+            # Lấy lịch sử chat để cung cấp ngữ cảnh (lấy 10 tin nhắn gần nhất)
+            raw_history = await user_manager.get_chat_messages(request.user_id, request.chat_id)
+            if raw_history:
+                for msg in raw_history[:-1]: 
+                    formatted_history.append({
+                        "role": msg.get("role"),
+                        "content": msg.get("content")
+                    })
+                formatted_history = formatted_history[-10:]
+                print(f"[API_LOG] Chat history loaded: {len(formatted_history)} messages.")
+
+        # 0. Intent Routing: Phân luồng ý định
+        print("[API_LOG] Step 0: Intent Routing started...")
+        chatbot = ChatBot()
+        routing_res_json = await chatbot.routing(request.prompt, history=formatted_history)
+        routing_res = json.loads(routing_res_json)
+        
+        user_intent = routing_res.get("user_intent")
+        is_poor_info = routing_res.get("isPoorInfo", 0)
+        print(f"[API_LOG] Intent detected: {user_intent} | isPoorInfo: {is_poor_info}")
+
+        if user_intent == "Search" and is_poor_info == 1:
+            poor_info_msg = "Dạ, tôi chưa hiểu rõ ý định tìm kiếm của bạn. Bạn có thể cho tôi thêm thông tin như: bạn muốn ăn món gì, ở đâu, hoặc ngân sách khoảng bao nhiêu không ạ?"
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", poor_info_msg)
+            return {"status": "poor_info", "message": poor_info_msg, "result": []}
+            
+        if user_intent == "System_QA":
+            system_qa_response = await chatbot.handle_system_qa(request.prompt)
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", system_qa_response)
+            return {"status": "success_qa", "message": system_qa_response, "result": []}
+
+        if user_intent == "Knowledge_QA":
+            knowledge_qa_response = await chatbot.handle_knowledge_qa(
+                request.prompt, 
+                history=formatted_history,
+                system_context=itinerary_context
+            )
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", knowledge_qa_response)
+            return {"status": "success_qa", "message": knowledge_qa_response, "result": []}
+            
+        if user_intent == "Out_Scope":
+            out_scope_msg = "Dạ, hiện tại tôi là trợ lý chuyên sâu về ẩm thực, sức khỏe và du lịch. Tôi xin phép không trả lời các nội dung ngoài phạm vi này ạ."
+            if request.chat_id:
+                await user_manager.add_message(request.user_id, request.chat_id, "assistant", out_scope_msg)
+            return {"status": "out_scope", "message": out_scope_msg, "result": []}
 
         # 1. LLM Parsing: Hiểu ý định người dùng
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
-        parse_task = asyncio.create_task(parser.JSON_response(request.prompt + itinerary_context))
+        parse_task = asyncio.create_task(parser.JSON_response(
+            user_prompt=request.prompt, 
+            system_context=itinerary_context
+        ))
         loc_task = (
             asyncio.create_task(get_place_detail(request.place_id))
             if request.place_id
@@ -278,13 +338,15 @@ async def process_prompt(request: UserRequest):
         health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
         print(f"[API_LOG] Health key: {health_key}")
 
-        weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng)
+        wants_alternative = parsed_json.get("wants_alternative", False)
+        feedback_reason = parsed_json.get("feedback_reason")
+        
+        weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng, feedback_reason=feedback_reason)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
 
-        wants_alternative = _wants_alternative(request.prompt)
         exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
         bypass_cache = wants_alternative and bool(exclude_ids)
-        print(f"[API_LOG] Wants alternative: {wants_alternative}, Bypass cache: {bypass_cache}")
+        print(f"[API_LOG] Wants alternative: {wants_alternative}, Feedback reason: {feedback_reason}, Bypass cache: {bypass_cache}")
 
         # Check cache
         print("[API_LOG] Checking semantic cache...")
@@ -405,6 +467,12 @@ async def process_prompt(request: UserRequest):
         last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
         print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
 
+        # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
+        for meal in final_itinerary['meal'].unique():
+            meal_results = [r for r in final_result_list if r.get('meal') == meal]
+            if meal_results:
+                first_res = meal_results[0]
+                await itinerary_manager.select_restaurant(request.user_id, meal, first_res)
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:
             meals_found = final_itinerary['meal'].unique().tolist()
@@ -425,10 +493,31 @@ async def process_prompt(request: UserRequest):
 
 # --- Các Endpoints hỗ trợ Maps ---
 
+@router.get("/restaurants/all")
+async def get_all_restaurants():
+    """
+    Trả về toàn bộ danh sách quán ăn để hiển thị trên bản đồ.
+    """
+    data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
+    if not os.path.exists(data_path):
+        raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
+    
+    try:
+        with open(data_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return {"status": "success", "data": data}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi khi đọc dữ liệu: {str(e)}")
+
 @router.get("/maps/suggestions")
 async def get_map_suggestions(q: str):
     results = await suggest_locations(q)
     return [{"description": d, "place_id": p} for d, p in results]
+
+@router.get("/maps/place-detail")
+async def get_map_place_detail(place_id: str):
+    result = await get_place_detail(place_id)
+    return result
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -452,7 +541,17 @@ CONDITION_MAP = {
     "Dạ dày / Đại tràng": {"main": ["Spicy"], "potential": ["DeepFried_Oily", "Alcohol_Pub"]},
     "Tiểu đường (Diabetes)": {"main": ["High_Sugar", "Refined_Carbs"], "potential": ["DeepFried_Oily"]},
     "Béo phì / Giảm cân": {"main": ["DeepFried_Oily", "High_Sugar", "Refined_Carbs"], "potential": ["Alcohol_Pub"]},
-    "Low GI Diet": {"main": [], "potential": ["Low_GI_Diet"]}
+    "Cao huyết áp": {
+    "main": [
+        "High_Sodium",
+        "DeepFried_Oily",
+        "Processed_Food"
+    ],
+    "potential": [
+        "Alcohol_Pub",
+        "High_Sugar"
+    ]
+    }
 }
 
 ALLERGY_MAP = {
@@ -467,7 +566,7 @@ ALLERGY_MAP = {
 
 ALL_AVAILABLE_TAGS = [
     "Red_Meat", "Seafood", "Alcohol_Pub", "Shellfish", "Spicy", "DeepFried_Oily",
-    "High_Sugar", "Refined_Carbs", "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present"
+    "High_Sugar", "Refined_Carbs", "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present","High_Sodium"
 ]
 
 
@@ -607,6 +706,8 @@ async def fetch_user_health_profile(user_id: str):
 
 @user_router.post("/chat/new/{user_id}")
 async def create_new_chat(user_id: str):
+    # Reset lịch trình khi tạo cuộc trò chuyện mới
+    await itinerary_manager.reset_itinerary(user_id)
     chat_id = await user_manager.create_chat_session(user_id)
     if chat_id:
         return {"status": "success", "chat_id": chat_id}

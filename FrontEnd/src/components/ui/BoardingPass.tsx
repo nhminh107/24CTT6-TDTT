@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import { Compass, Clock, PlaneTakeoff, QrCode, Sparkles, Download, X, Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, formatMealDisplay } from "@/lib/utils";
+import { QRCodeSVG } from "qrcode.react";
+import { authStorage } from "@/lib/auth";
 
 type BoardingPassProps = {
   itinerary: any[];
@@ -18,9 +20,42 @@ export default function BoardingPass({
 }: BoardingPassProps) {
   const passRef = useRef<HTMLDivElement | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+
+  useEffect(() => {
+    const fetchShareId = async () => {
+      const userId = authStorage.getGoogleUid();
+      if (!userId) {
+        setShareUrl(`${window.location.origin}/share/guest`);
+        return;
+      }
+      
+      try {
+        // Tạm thời gọi API từ api.ts mà chúng ta đã setup
+        // Note: Cần import itineraryApi từ "@/lib/api"
+        const { itineraryApi } = await import("@/lib/api");
+        const res = await itineraryApi.share(userId);
+        
+        if (res.share_id) {
+          setShareUrl(`${window.location.origin}/share/${res.share_id}`);
+        } else {
+          setShareUrl(`${window.location.origin}/share/${userId}`);
+        }
+      } catch (err) {
+        console.error("Failed to generate share link", err);
+        setShareUrl(`${window.location.origin}/share/${userId}`);
+      }
+    };
+    
+    fetchShareId();
+  }, []);
 
   const totalBudget = useMemo(() => {
-    return itinerary.reduce((sum, item) => sum + (item.avg_price || 0), 0);
+    return itinerary.reduce((sum, item) => {
+      const p = item.avg_price !== undefined ? item.avg_price : item.price;
+      const numericPrice = typeof p === "number" ? p : 0;
+      return sum + numericPrice;
+    }, 0);
   }, [itinerary]);
 
   const waitForStableLayout = async () => {
@@ -160,8 +195,8 @@ export default function BoardingPass({
                 </div>
                 {itinerary.map((stop, index) => (
                   <div key={`${stop.meal}-${index}`} className="flex items-center gap-4 border-b border-slate-100 pb-3 last:border-0">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-[10px] font-bold text-orange-600">
-                      {stop.meal}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-[10px] font-bold text-orange-600 text-center px-1">
+                      {formatMealDisplay(stop.meal)}
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="text-sm font-bold text-[#0B3C5D] truncate">
@@ -174,10 +209,16 @@ export default function BoardingPass({
                     <div className="text-right">
                       <div className="flex items-center justify-end gap-1">
                         <Star size={10} className="fill-yellow-400 text-yellow-400" />
-                        <span className="text-[10px] font-bold">{stop.star}</span>
+                        <span className="text-[10px] font-bold">{stop.star || stop.rating || 0}</span>
                       </div>
                       <div className="mt-0.5 text-[10px] font-bold text-brand-teal">
-                        {stop.avg_price?.toLocaleString("vi-VN")}đ
+                        {(() => {
+                          const p = stop.avg_price !== undefined ? stop.avg_price : stop.price;
+                          if (typeof p === "number") {
+                            return `${p.toLocaleString("vi-VN")}đ`;
+                          }
+                          return p || "Chưa cập nhật";
+                        })()}
                       </div>
                     </div>
                   </div>
@@ -195,8 +236,14 @@ export default function BoardingPass({
                     ))}
                   </div>
                 </div>
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-soft">
-                  <QrCode size={40} className="text-[#0B3C5D]" />
+                <div className="flex p-1.5 items-center justify-center rounded-2xl bg-white shadow-soft">
+                  <QRCodeSVG 
+                    value={shareUrl || "https://bmi.com"} 
+                    size={52} 
+                    level="Q" 
+                    fgColor="#0B3C5D" 
+                    bgColor="#ffffff" 
+                  />
                 </div>
               </div>
             </div>

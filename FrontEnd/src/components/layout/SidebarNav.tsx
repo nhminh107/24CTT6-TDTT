@@ -2,8 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+<<<<<<< HEAD
 import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2 } from "lucide-react";
 import LocationSearch from "@/components/ui/LocationSearch";
+=======
+import { Home, Plus, MessageSquare, LogOut, HeartPulse, User, Trash2, Compass } from "lucide-react";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 import { useAuth } from "@/context/AuthContext";
 import { DashboardState } from "./MainDashboard";
 import ConfirmModal from "@/components/ui/ConfirmModal";
@@ -21,6 +25,11 @@ type SidebarNavProps = {
   availableFilters: string[];
   onOpenHealthProfile: () => void;
   onOpenProfileSettings: () => void;
+<<<<<<< HEAD
+=======
+  onOpenLocationPrompt?: () => void;
+  onTabChange?: (tab: "itinerary" | "detail" | "map") => void;
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   chatHistory?: ChatSession[];
   currentChatId?: string | null;
   onNewChat?: () => void;
@@ -34,6 +43,11 @@ export default function SidebarNav({
   availableFilters,
   onOpenHealthProfile,
   onOpenProfileSettings,
+<<<<<<< HEAD
+=======
+  onOpenLocationPrompt,
+  onTabChange,
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   chatHistory = [],
   currentChatId,
   onNewChat,
@@ -67,11 +81,19 @@ export default function SidebarNav({
     });
   };
 
+<<<<<<< HEAD
     return (
     <>
       <div className="flex h-full flex-1 flex-col p-5">
 
         {/* ── 1. New Chat Button ─────────────────────────────── */}
+=======
+  return (
+    <>
+      <div className="flex h-full flex-1 flex-col p-5">
+
+        {/* ── 1. Action Buttons ─────────────────────────────── */}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         <button
           type="button"
           onClick={onNewChat}
@@ -89,6 +111,17 @@ export default function SidebarNav({
           Về trang chủ
         </Link>
 
+<<<<<<< HEAD
+=======
+        <Link
+          href="/explore"
+          className="mt-3 flex items-center justify-center gap-2 rounded-xl border border-brand-coral/20 bg-brand-coral/5 px-4 py-3 text-sm font-bold text-brand-coral shadow-sm transition hover:bg-brand-coral/10 hover:shadow-md active:scale-[0.98]"
+        >
+          <Compass size={16} />
+          Bản đồ khám phá
+        </Link>
+
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         {/* ── 2. User & Location ───────────────────────────────── */}
         <div className="mt-4">
           <div className="rounded-2xl border border-slate-200/60 bg-white/60 p-4 shadow-sm backdrop-blur-sm">
@@ -171,6 +204,7 @@ export default function SidebarNav({
             )}
 
             <div className="mt-3">
+<<<<<<< HEAD
               <label className="mb-2 block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                 Vị trí xuất phát
               </label>
@@ -181,6 +215,23 @@ export default function SidebarNav({
                   onStateChange({ ...state, location: option.name, placeId: option.id })
                 }
               />
+=======
+              <div className="mb-1 flex items-center justify-between">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  Vị trí xuất phát
+                </span>
+                <button
+                  type="button"
+                  onClick={() => onOpenLocationPrompt?.()}
+                  className="text-[10px] font-bold uppercase tracking-[0.1em] text-brand-coral transition-colors hover:text-brand-flame hover:underline"
+                >
+                  Thay đổi
+                </button>
+              </div>
+              <p className="truncate text-sm font-semibold text-slate-700">
+                {state.location || "Chưa xác định"}
+              </p>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
             </div>
           </div>
         </div>

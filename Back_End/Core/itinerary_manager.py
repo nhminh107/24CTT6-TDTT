@@ -32,9 +32,9 @@ class ItineraryManager:
                     data["timestamp"] = data["timestamp"].isoformat()
                 itinerary.append(data)
             
-            # Sắp xếp theo thứ tự bữa ăn (Sáng -> Trưa -> Xế -> Tối)
+            # Sắp xếp: Ưu tiên trường 'order', sau đó mới đến thứ tự bữa ăn mặc định
             meal_order = {"Sáng": 1, "Trưa": 2, "Xế": 3, "Tối": 4}
-            itinerary.sort(key=lambda x: meal_order.get(x.get("meal", ""), 99))
+            itinerary.sort(key=lambda x: (x.get("order", 999), meal_order.get(x.get("meal", ""), 99)))
             
             return itinerary
         except Exception as e:
@@ -49,12 +49,34 @@ class ItineraryManager:
             col = self._get_itinerary_collection(user_id)
             restaurant_data["meal"] = meal
             restaurant_data["timestamp"] = datetime.now()
+            # Nếu chưa có order, gán theo mặc định
+            if "order" not in restaurant_data:
+                meal_order = {"Sáng": 1, "Trưa": 2, "Xế": 3, "Tối": 4}
+                restaurant_data["order"] = meal_order.get(meal, 99)
             col.document(meal).set(restaurant_data)
             return True
         except Exception as e:
             print(f">>> ItineraryManager Error (select_restaurant): {e}")
             return False
 
+    async def reorder_itinerary(self, user_id: str, ordered_meals: List[str]) -> bool:
+        return await asyncio.to_thread(self._reorder_itinerary_sync, user_id, ordered_meals)
+
+    def _reorder_itinerary_sync(self, user_id: str, ordered_meals: List[str]) -> bool:
+        try:
+            db = self._get_db()
+            col = self._get_itinerary_collection(user_id)
+            
+            batch = db.batch()
+            for index, meal in enumerate(ordered_meals):
+                doc_ref = col.document(meal)
+                batch.update(doc_ref, {"order": index})
+            
+            batch.commit()
+            return True
+        except Exception as e:
+            print(f">>> ItineraryManager Error (reorder_itinerary): {e}")
+            return False
     async def delete_meal(self, user_id: str, meal: str) -> bool:
         return await asyncio.to_thread(self._delete_meal_sync, user_id, meal)
 

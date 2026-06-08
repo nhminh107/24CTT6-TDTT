@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
 import RestaurantMiniCard from "@/components/ui/RestaurandMiniCard";
 import { Restaurant, ApiRestaurant, buildRestaurants } from "@/lib/utils";
+<<<<<<< HEAD
 
 const getCurrentLocation = (): Promise<{ lat: number; lng: number } | null> => {
   return new Promise((resolve) => {
@@ -29,6 +30,8 @@ const getCurrentLocation = (): Promise<{ lat: number; lng: number } | null> => {
     );
   });
 };
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
 type Message = {
   id: string;
@@ -44,7 +47,11 @@ type Message = {
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
+<<<<<<< HEAD
   "http://127.0.0.1:8000";
+=======
+  "https://api.bmi-foodtour.io.vn";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
 type ApiResponse = {
   status?: string;
@@ -69,6 +76,12 @@ type ChatInterfaceProps = {
   onAutoCreateChat?: () => Promise<string | null>;
   currentItinerary?: any[];
   onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
+<<<<<<< HEAD
+=======
+  fetchItinerary?: () => Promise<void>;
+  input?: string;
+  onInputChange?: (value: string) => void;
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 };
 
 export default function ChatInterface({
@@ -81,11 +94,22 @@ export default function ChatInterface({
   onRefreshHistory,
   onAutoCreateChat,
   currentItinerary = [],
+<<<<<<< HEAD
   onSelectMeal
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [input, setInput] = useState("");
+=======
+  onSelectMeal,
+  fetchItinerary,
+  input: inputProp,
+  onInputChange,
+}: ChatInterfaceProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
+  const [internalInput, setInternalInput] = useState("");
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
   const [errorModal, setErrorModal] = useState({
     open: false,
@@ -102,34 +126,101 @@ export default function ChatInterface({
     []
   );
 
+<<<<<<< HEAD
   const buildAssistantMessage = (response: ApiResponse) => {
     console.log("API RESPONSE:", response);
 
     if (!response || response.status !== "success") {
+=======
+  const input = inputProp ?? internalInput;
+
+  const setInputValue = (value: string) => {
+    if (onInputChange) {
+      onInputChange(value);
+    }
+    if (inputProp === undefined) {
+      setInternalInput(value);
+    }
+  };
+
+  const buildAssistantMessage = (response: ApiResponse) => {
+    console.log("API RESPONSE:", response);
+
+    if (!response) {
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
       return {
-        content:
-          response?.message || response?.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+        content: "Lỗi hệ thống. Vui lòng thử lại.",
         restaurants: []
       };
     }
+<<<<<<< HEAD
     const results = response.result || [];
     const count = results.length;
     const content =
       count > 0
         ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
         : "Không tìm thấy kết quả.";
+=======
+
+    if (response.status === "success") {
+      const results = response.result || [];
+      const count = results.length;
+      const content =
+        count > 0
+          ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
+          : "Không tìm thấy kết quả.";
+      return {
+        content,
+        restaurants: buildRestaurants(results)
+      };
+    }
+
+    if (response.status === "poor_info") {
+      return {
+        content: response.message || "Bạn vui lòng cung cấp thêm thông tin để tôi có thể hỗ trợ tìm kiếm tốt hơn nhé.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "empty") {
+      return {
+        content: response.message || "Rất tiếc, tôi không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn.",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "out_scope") {
+      return {
+        content: response.message || "Dạ, câu hỏi này nằm ngoài phạm vi hỗ trợ của tôi. Bạn vui lòng hỏi về ẩm thực, sức khỏe hoặc du lịch nhé!",
+        restaurants: []
+      };
+    }
+
+    if (response.status === "success_qa") {
+
+      return {
+        content: response.message || "Hệ thống không thể trả lời câu hỏi của bạn, bạn vui lòng liên hệ admin để được hỗ trợ nhé.",
+        restaurants: []
+      };
+    }
+
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
     return {
-      content,
-      restaurants: buildRestaurants(results)
+      content: response.message || response.detail || "Lỗi hệ thống. Vui lòng thử lại.",
+      restaurants: []
     };
   };
 
+<<<<<<< HEAD
   const callRestaurantApi = async (
     prompt: string, 
     activeChatId: string | null, 
     latestMessages: Message[],
     locationParams: { lat?: number; lng?: number } = {}
   ) => {
+=======
+  const callRestaurantApi = async (prompt: string, activeChatId: string | null, latestMessages: Message[]) => {
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
     setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
@@ -139,8 +230,12 @@ export default function ChatInterface({
           prompt,
           user_id: user?.uid || "guest_user",
           chat_id: activeChatId,
+<<<<<<< HEAD
           ...(placeId ? { place_id: placeId } : {}),
           ...locationParams
+=======
+          ...(placeId ? { place_id: placeId } : {})
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         })
       });
       let data: ApiResponse | null = null;
@@ -228,6 +323,14 @@ export default function ChatInterface({
       if (activeChatId) {
         onRefreshHistory?.();
       }
+<<<<<<< HEAD
+=======
+
+      // Sync itinerary from backend (since it's now updated automatically)
+      if (user && fetchItinerary) {
+        fetchItinerary();
+      }
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
       setErrorModal({
@@ -281,6 +384,7 @@ export default function ChatInterface({
     // Cập nhật lên parent ngay lập tức (optimistic update)
     onMessagesChange?.(nextMessages);
     
+<<<<<<< HEAD
     setInput("");
     setIsLoading(true);
 
@@ -294,6 +398,11 @@ export default function ChatInterface({
 
     // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
     callRestaurantApi(prompt, activeChatId ?? null, nextMessages, locationParams);
+=======
+    setInputValue("");
+    // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
+    callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   };
 
   return (
@@ -391,7 +500,10 @@ export default function ChatInterface({
       {/* Chat Messages Container */}
       <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 pb-4">
         <AnimatePresence>
+<<<<<<< HEAD
           {/* Trường hợp cuộc trò chuyện mới hoàn toàn (Trống) */}
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
           {messages.length === 0 && !isLoading && (
             <motion.div
               key="welcome-message"
@@ -399,8 +511,24 @@ export default function ChatInterface({
               animate={{ opacity: 1, y: 0 }}
               className="flex gap-3 justify-start"
             >
+<<<<<<< HEAD
               <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-xs font-bold text-white">
                 AI
+=======
+              <div className="relative h-8 w-8 flex-shrink-0">
+                <img
+                  src="/assets/images/AI.png"
+                  alt="AI Avatar"
+                  className="h-full w-full rounded-full object-cover shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.classList.add('hidden');
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+                <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                  AI
+                </div>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
               </div>
               <div className="max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft glass text-slate-700">
                 Chào bạn! Hãy cho BMI biết khẩu vị, ngân sách và phong cách bạn mong muốn.
@@ -418,15 +546,34 @@ export default function ChatInterface({
               transition={{ duration: 0.3 }}
               className="space-y-2"
             >
+<<<<<<< HEAD
               {/* Message Bubble */}
+=======
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
               <div
                 className={`flex gap-3 ${
                   message.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
                 {message.role === "assistant" && (
+<<<<<<< HEAD
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-xs font-bold text-white">
                     AI
+=======
+                  <div className="relative h-8 w-8 flex-shrink-0">
+                    <img
+                      src="/assets/images/AI.png"
+                      alt="AI Avatar"
+                      className="h-full w-full rounded-full object-cover shadow-sm"
+                      onError={(e) => {
+                        e.currentTarget.classList.add('hidden');
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                      AI
+                    </div>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                   </div>
                 )}
 
@@ -442,6 +589,59 @@ export default function ChatInterface({
                 >
                   {message.content}
                 </motion.div>
+<<<<<<< HEAD
+=======
+
+                {message.role === "user" && (
+                  <img
+                    src={user?.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.displayName || "U")}&background=0f172a&color=fff`}
+                    alt="User"
+                    className="h-8 w-8 flex-shrink-0 rounded-full object-cover shadow-sm ring-1 ring-slate-100"
+                  />
+                )}
+              </div>
+
+              {/* Restaurant Names List */}
+              {message.role === "assistant" &&
+                message.restaurants &&
+                message.restaurants.length > 0 && (
+                  <motion.div
+                    className="ml-11 flex flex-col gap-4 origin-top"
+                    initial={{ scale: 1, opacity: 1 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.35 }}
+                    style={{
+                      transformOrigin: "top left",
+                    }}
+                  >
+                    {message.restaurants.map((restaurant, restaurantIndex) => (
+                      <motion.div
+                        key={`${message.id}-${restaurant.id}-${restaurantIndex}`}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.4,
+                          delay: message.isCompact ? 0 : restaurantIndex * 0.1
+                        }}
+                        className="space-y-3"
+                      >
+                        <RestaurantMiniCard
+                          restaurant={restaurant}
+                          isInItinerary={currentItinerary.some(item => item.id === restaurant.id)}
+                          onSelect={(id) => {
+                            onRestaurantsSelect?.(message.restaurants || []);
+                            onRestaurantSelect?.(id);
+                          }}
+                          onSelectMeal={onSelectMeal}
+                        />
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
                 {message.role === "user" && (
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
@@ -498,8 +698,24 @@ export default function ChatInterface({
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3 text-xs md:text-sm text-slate-500"
           >
+<<<<<<< HEAD
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white flex-shrink-0">
               AI
+=======
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <img
+                src="/assets/images/AI.png"
+                alt="AI Avatar"
+                className="h-full w-full rounded-full object-cover shadow-sm"
+                onError={(e) => {
+                  e.currentTarget.classList.add('hidden');
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="hidden h-full w-full flex items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-[10px] font-bold text-white">
+                AI
+              </div>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
             </div>
             <div className="glass rounded-2xl px-4 py-3">
               <div className="flex items-center gap-2">
@@ -522,7 +738,11 @@ export default function ChatInterface({
             <button
               key={suggestion}
               type="button"
+<<<<<<< HEAD
               onClick={() => setInput(suggestion)}
+=======
+              onClick={() => setInputValue(suggestion)}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
               className="rounded-full border border-slate-200/60 bg-white/70 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:text-slate-900"
             >
               {suggestion}
@@ -536,7 +756,11 @@ export default function ChatInterface({
         <input
           type="text"
           value={input}
+<<<<<<< HEAD
           onChange={(event) => setInput(event.target.value)}
+=======
+          onChange={(event) => setInputValue(event.target.value)}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
           onKeyDown={(event) => {
             if (event.key === "Enter" && !event.shiftKey) {
               event.preventDefault();

@@ -2,8 +2,6 @@ google.genai
 chromadb
 sentence-transformers
 pandas
-streamlit
-streamlit_searchbox
 pyarrow
 fastapi
 timezonefinder
@@ -13,3 +11,6 @@ numpy>=2.1.0
 tenacity
 uvicorn
 python-dotenv
+httpx
+requests
+groq

@@ -33,7 +33,7 @@ const CONDITIONS = [
   "Dạ dày / Đại tràng", 
   "Tiểu đường (Diabetes)", 
   "Béo phì / Giảm cân", 
-  "Low GI Diet"
+  "Cao huyết áp"
 ];
 
 const ALLERGIES = [

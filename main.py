@@ -5,6 +5,8 @@ from Back_End.Database.database import ChromaDBManager
 from Back_End.API.routes import router as main_router
 from Back_End.API.auth_routes import router as auth_router
 from Back_End.API.routes import user_router
+from Back_End.API.share_routes import share_router
+
 app = FastAPI(
     title="Trợ lý du lịch thông minh",
     description="Lên lịch trình ăn uống",
@@ -24,6 +26,7 @@ app.add_middleware(
 app.include_router(main_router)
 app.include_router(auth_router)
 app.include_router(user_router)
+app.include_router(share_router)
 @app.on_event("startup")
 async def warmup_models():
     # Khởi tạo DB Manager
@@ -37,4 +40,4 @@ async def warmup_models():
 #Cổng phụ
 @app.get("/")
 async def root():
-    return {"message": "Server đang chạy thành công! Hãy truy cập http://127.0.0.1:8000/docs để test."}
+    return {"message": "Server đang chạy thành công! Hãy truy cập https://api.bmi-foodtour.io.vn/docs để test."}

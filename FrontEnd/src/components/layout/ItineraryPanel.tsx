@@ -1,10 +1,21 @@
 "use client";
 
+<<<<<<< HEAD
 import { motion } from "framer-motion";
 import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket } from "lucide-react";
 import { useMemo, useState } from "react";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import BoardingPass from "@/components/ui/BoardingPass";
+=======
+import { motion, Reorder } from "framer-motion";
+import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket, ArrowLeft, Map as MapIcon, GripVertical } from "lucide-react";
+import { useRef, useMemo, useState, useEffect } from "react";
+import Link from "next/link";
+import RestaurantCard from "@/components/ui/RestaurantCard";
+import BoardingPass from "@/components/ui/BoardingPass";
+import MapExplore from "@/components/ui/MapExplore";
+import { formatMealDisplay } from "@/lib/utils";
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
 type ItineraryPanelProps = {
   location: string;
@@ -12,13 +23,26 @@ type ItineraryPanelProps = {
   mealStops: any[];
   restaurants: any[];
   selectedRestaurantId: string | null;
+<<<<<<< HEAD
   currentTab: "itinerary" | "detail";
   onSelectRestaurant: (id: string) => void;
   onTabChange: (tab: "itinerary" | "detail") => void;
+=======
+  currentTab: "itinerary" | "detail" | "map";
+  onSelectRestaurant: (id: string) => void;
+  onTabChange: (tab: "itinerary" | "detail" | "map") => void;
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
   onCloseDetail: () => void;
   currentItinerary?: any[];
   onDeleteMeal?: (meal: string) => void;
   onResetItinerary?: () => void;
+<<<<<<< HEAD
+=======
+  onReorder?: (orderedMeals: string[]) => void;
+  userPlaceId?: string;
+  onItineraryChange?: () => void;
+  onUserLocationChange?: (location: { location: string; placeId: string }) => void;
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 };
 
 export default function ItineraryPanel({
@@ -33,9 +57,32 @@ export default function ItineraryPanel({
   onCloseDetail,
   currentItinerary = [],
   onDeleteMeal,
+<<<<<<< HEAD
   onResetItinerary
 }: ItineraryPanelProps) {
   const [showBoardingPass, setShowBoardingPass] = useState(false);
+=======
+  onResetItinerary,
+  onReorder,
+  userPlaceId,
+  onItineraryChange,
+  onUserLocationChange,
+}: ItineraryPanelProps) {
+  const [showBoardingPass, setShowBoardingPass] = useState(false);
+  const [localItinerary, setLocalItinerary] = useState(currentItinerary);
+
+  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn)
+  useEffect(() => {
+    setLocalItinerary(currentItinerary);
+  }, [currentItinerary]);
+
+  const handleReorder = (newOrder: any[]) => {
+    setLocalItinerary(newOrder);
+    if (onReorder) {
+      onReorder(newOrder.map(item => item.meal));
+    }
+  };
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
 
   const selectedRestaurant = useMemo(
     () => restaurants.find((r) => r.id === selectedRestaurantId) || 
@@ -70,7 +117,30 @@ export default function ItineraryPanel({
       </div>
 
       {/* Content */}
+<<<<<<< HEAD
       {currentTab === "itinerary" ? (
+=======
+      {currentTab === "map" ? (
+        <div className="flex-1 flex flex-col gap-3 overflow-hidden">
+          <button
+            onClick={() => onTabChange("itinerary")}
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-brand-coral hover:bg-orange-50 hover:text-brand-coral shadow-sm w-fit"
+          >
+            <ArrowLeft size={14} />
+            Quay lại lịch trình
+          </button>
+          <div className="flex-1 overflow-hidden rounded-2xl border border-slate-100 shadow-inner">
+            <MapExplore
+              userPlaceId={userPlaceId}
+              userLocationText={location}
+              currentItinerary={currentItinerary}
+              onItineraryChange={onItineraryChange}
+              onUserLocationChange={onUserLocationChange}
+            />
+          </div>
+        </div>
+      ) : currentTab === "itinerary" ? (
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
         <div className="flex flex-1 flex-col gap-4 overflow-hidden">
           <div className="flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-flame">
@@ -86,6 +156,7 @@ export default function ItineraryPanel({
             )}
           </div>
 
+<<<<<<< HEAD
           <div className="flex-1 overflow-y-auto space-y-4 pr-1">
             {/* Meal Stops Timeline */}
             {currentItinerary.length > 0 ? (
@@ -96,17 +167,54 @@ export default function ItineraryPanel({
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
+=======
+          <Link
+            href="/explore"
+            className="flex items-center gap-2 w-full justify-center py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-bold text-slate-600 hover:bg-white hover:border-brand-coral hover:text-brand-coral transition-all shadow-sm active:scale-[0.98] group"
+          >
+            <MapIcon size={14} className="text-slate-400 group-hover:text-brand-coral transition-colors" />
+            XEM BẢN ĐỒ KHÁM PHÁ
+          </Link>
+
+          <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+            {/* Meal Stops Timeline */}
+            {localItinerary.length > 0 ? (
+              <Reorder.Group
+                axis="y"
+                values={localItinerary}
+                onReorder={handleReorder}
+                className="space-y-3"
+              >
+                {localItinerary.map((stop) => (
+                  <Reorder.Item
+                    key={stop.meal}
+                    value={stop}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                     className="group relative"
                   >
                     <button
                       type="button"
                       onClick={() => onSelectRestaurant(stop.id)}
+<<<<<<< HEAD
                       className="w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 transition hover:border-brand-coral hover:bg-white"
                     >
                       {/* Stop Label */}
                       <div className="mb-2 flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
                           {stop.meal}
+=======
+                      className="w-full text-left rounded-xl border border-slate-200/60 bg-white/50 p-3 pl-8 transition hover:border-brand-coral hover:bg-white"
+                    >
+                      {/* Drag Handle */}
+                      <div className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-300 cursor-grab active:cursor-grabbing">
+                        <GripVertical size={16} />
+                      </div>
+
+                      {/* Stop Label */}
+                      <div className="mb-2 flex items-center justify-between">
+                        <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
+                          {formatMealDisplay(stop.meal)}
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                         </span>
                       </div>
 
@@ -119,6 +227,7 @@ export default function ItineraryPanel({
                           {stop.address}
                         </p>
 
+<<<<<<< HEAD
                         <div className="flex items-center gap-2">
                           <div className="flex items-center gap-1">
                             <Star size={10} className="fill-yellow-400 text-yellow-400" />
@@ -129,6 +238,26 @@ export default function ItineraryPanel({
                             {stop.avg_price?.toLocaleString("vi-VN")}đ
                           </span>
                         </div>
+=======
+                          <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1">
+                              <Star size={10} className="fill-yellow-400 text-yellow-400" />
+                              <span className="text-[10px] font-bold text-slate-600">
+                                {stop.star || stop.rating || 0}
+                              </span>
+                            </div>
+                            <div className="h-1 w-1 rounded-full bg-slate-300" />
+                            <span className="text-[10px] font-semibold text-brand-teal">
+                              {(() => {
+                                const p = stop.avg_price !== undefined ? stop.avg_price : stop.price;
+                                if (typeof p === "number") {
+                                  return `${p.toLocaleString("vi-VN")}đ`;
+                                }
+                                return p || "Chưa cập nhật";
+                              })()}
+                            </span>
+                          </div>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
                       </div>
                     </button>
                     
@@ -138,9 +267,15 @@ export default function ItineraryPanel({
                     >
                       <Trash2 size={14} />
                     </button>
+<<<<<<< HEAD
                   </motion.div>
                 ))}
               </div>
+=======
+                  </Reorder.Item>
+                ))}
+              </Reorder.Group>
+>>>>>>> 1ea4ce362ae7331d10cb92d299b0c231d8033e14
             ) : (
               <div className="flex h-40 items-center justify-center rounded-2xl border border-dashed border-slate-200/60 bg-white/30 p-4 text-center">
                 <div className="space-y-2">
