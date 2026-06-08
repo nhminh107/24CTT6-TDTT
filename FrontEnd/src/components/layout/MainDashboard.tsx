@@ -127,6 +127,7 @@ export default function MainDashboard() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
+  const [showBoardingPass, setShowBoardingPass] = useState(false);
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
   const isInitializingChat = useRef(false);
@@ -461,6 +462,7 @@ export default function MainDashboard() {
 
   const handleRestaurantSelect = (restaurantId: string) => {
     setSelectedRestaurantId(restaurantId);
+    setShowBoardingPass(false);
     setItineraryTab("detail");
     if (isMobile) {
       setRestaurantModalOpen(true);
@@ -473,6 +475,19 @@ export default function MainDashboard() {
     setItineraryTab("itinerary");
     setRestaurantModalOpen(false);
   };
+
+  const handleItineraryTabChange = (tab: "itinerary" | "detail" | "map") => {
+    if (tab !== "detail") {
+      setSelectedRestaurantId(null);
+    }
+    if (tab !== "itinerary") {
+      setShowBoardingPass(false);
+    }
+    setItineraryTab(tab);
+  };
+
+  const isRightPanelExpanded =
+    (itineraryTab === "detail" && !!selectedRestaurantId) || showBoardingPass;
 
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
@@ -601,7 +616,7 @@ export default function MainDashboard() {
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
             onOpenLocationPrompt={() => setLocationPromptOpen(true)}
-            onTabChange={setItineraryTab}
+            onTabChange={handleItineraryTabChange}
             chatHistory={chatHistory}
             currentChatId={currentChatId}
             onNewChat={startLocalNewChat}
@@ -635,7 +650,7 @@ export default function MainDashboard() {
         {/* Right Itinerary Panel */}
         <aside 
           className={`hidden overflow-y-auto border-l border-slate-200/60 bg-white/70 backdrop-blur lg:block transition-all duration-300
-            ${selectedRestaurantId ? 'w-[450px]' : 'w-80'}`}
+            ${isRightPanelExpanded ? 'w-[450px]' : 'w-80'}`}
         >
           <ItineraryPanel
             location={dashboardState.location}
@@ -645,7 +660,7 @@ export default function MainDashboard() {
             selectedRestaurantId={selectedRestaurantId}
             currentTab={itineraryTab}
             onSelectRestaurant={handleRestaurantSelect}
-            onTabChange={setItineraryTab}
+            onTabChange={handleItineraryTabChange}
             onCloseDetail={handleCloseDetail}
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
@@ -654,6 +669,8 @@ export default function MainDashboard() {
             userPlaceId={dashboardState.placeId}
             onItineraryChange={fetchItinerary}
             onUserLocationChange={handleUserLocationChange}
+            showBoardingPass={showBoardingPass}
+            onShowBoardingPassChange={setShowBoardingPass}
           />
         </aside>
       </div>
@@ -704,7 +721,7 @@ export default function MainDashboard() {
               selectedRestaurantId={selectedRestaurantId}
               currentTab={itineraryTab}
               onSelectRestaurant={handleRestaurantSelect}
-              onTabChange={setItineraryTab}
+              onTabChange={handleItineraryTabChange}
               onCloseDetail={handleCloseDetail}
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
@@ -713,6 +730,8 @@ export default function MainDashboard() {
               userPlaceId={dashboardState.placeId}
               onItineraryChange={fetchItinerary}
               onUserLocationChange={handleUserLocationChange}
+              showBoardingPass={showBoardingPass}
+              onShowBoardingPassChange={setShowBoardingPass}
             />
           </div>
         </div>

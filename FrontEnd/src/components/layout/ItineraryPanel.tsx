@@ -26,6 +26,8 @@ type ItineraryPanelProps = {
   userPlaceId?: string;
   onItineraryChange?: () => void;
   onUserLocationChange?: (location: { location: string; placeId: string }) => void;
+  showBoardingPass?: boolean;
+  onShowBoardingPassChange?: (open: boolean) => void;
 };
 
 export default function ItineraryPanel({
@@ -45,8 +47,9 @@ export default function ItineraryPanel({
   userPlaceId,
   onItineraryChange,
   onUserLocationChange,
+  showBoardingPass = false,
+  onShowBoardingPassChange,
 }: ItineraryPanelProps) {
-  const [showBoardingPass, setShowBoardingPass] = useState(false);
   const [localItinerary, setLocalItinerary] = useState(currentItinerary);
 
   // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn)
@@ -114,6 +117,15 @@ export default function ItineraryPanel({
           </div>
         </div>
       ) : currentTab === "itinerary" ? (
+        showBoardingPass ? (
+          <div className="flex min-h-0 min-w-0 w-full max-w-full flex-1 flex-col overflow-hidden">
+            <BoardingPass
+              variant="inline"
+              itinerary={currentItinerary}
+              onClose={() => onShowBoardingPassChange?.(false)}
+            />
+          </div>
+        ) : (
         <div className="flex flex-1 flex-col gap-4 overflow-hidden">
           <div className="flex items-center justify-between">
             <h2 className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-flame">
@@ -225,7 +237,7 @@ export default function ItineraryPanel({
           {/* Export Button */}
           {currentItinerary.length > 0 && (
             <button
-              onClick={() => setShowBoardingPass(true)}
+              onClick={() => onShowBoardingPassChange?.(true)}
               className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame py-3 text-sm font-bold text-white shadow-glow transition hover:opacity-90"
             >
               <Ticket size={18} />
@@ -233,13 +245,8 @@ export default function ItineraryPanel({
             </button>
           )}
 
-          {showBoardingPass && (
-            <BoardingPass 
-              itinerary={currentItinerary} 
-              onClose={() => setShowBoardingPass(false)} 
-            />
-          )}
         </div>
+        )
       ) : selectedRestaurant ? (
         <div className="flex-1 overflow-y-auto">
           {/* Close Button */}
