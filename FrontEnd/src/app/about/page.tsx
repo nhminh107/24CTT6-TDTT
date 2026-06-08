@@ -28,7 +28,7 @@ const members = [
     name: "Ngô Hoàng Minh",
     role: "Project Leader | App Developer",
     image: "/assets/images/NgoHoangMinh.jpg",
-    tags: ["System Design", "Core Algorithm", "AI Chatbot", "Database & Deploy"]
+    tags: ["System Design", "Core Algorithm", "AI Chatbot", "Database & Deploy", "UX/UI"]
   },
   {
     name: "Lưu Đình Quân",
