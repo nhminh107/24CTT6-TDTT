@@ -5,6 +5,10 @@ import { createPortal } from "react-dom";
 import html2canvas from "html2canvas";
 import { Download, X } from "lucide-react";
 import { cn, formatMealDisplay } from "@/lib/utils";
+import { QRCodeSVG } from "qrcode.react";
+import { useEffect } from "react";
+import { itineraryApi } from "@/lib/api";
+import { authStorage } from "@/lib/auth";
 
 const TICKET_WIDTH = 450;
 
@@ -86,8 +90,9 @@ const BoardingPassTicket = forwardRef<
     totalBudget: number;
     nowLabel: string;
     ticketNumber: string;
+    shareUrl: string;
   }
->(function BoardingPassTicket({ itinerary, totalBudget, nowLabel, ticketNumber }, ref) {
+>(function BoardingPassTicket({ itinerary, totalBudget, nowLabel, ticketNumber, shareUrl }, ref) {
   const stopTier = getStopTier(itinerary.length);
   const isMedium = stopTier === "medium";
   const isCompact = stopTier === "compact";
@@ -242,7 +247,18 @@ const BoardingPassTicket = forwardRef<
             </div>
           </div>
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-soft">
-            <TicketSvgIcon name="qr" size={40} />
+            {shareUrl ? (
+              <QRCodeSVG 
+                value={shareUrl} 
+                size={54}
+                bgColor={"#ffffff"}
+                fgColor={"#0B3C5D"}
+                level={"L"}
+                includeMargin={false}
+              />
+            ) : (
+              <TicketSvgIcon name="qr" size={40} />
+            )}
           </div>
         </div>
       </div>
@@ -258,6 +274,25 @@ export default function BoardingPass({
 }: BoardingPassProps) {
   const ticketRef = useRef<HTMLDivElement | null>(null);
   const [isExporting, setIsExporting] = useState(false);
+  const [shareUrl, setShareUrl] = useState<string>("");
+
+  useEffect(() => {
+    const fetchShareUrl = async () => {
+      try {
+        const uid = authStorage.getGoogleUid();
+        if (!uid) return;
+        
+        const response = await itineraryApi.share(uid, itinerary);
+        if (response.success && response.share_id) {
+          const origin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
+          setShareUrl(`${origin}/share/${response.share_id}`);
+        }
+      } catch (error) {
+        console.error("Error creating share link:", error);
+      }
+    };
+    fetchShareUrl();
+  }, [itinerary]);
 
   const ticketNumber = useMemo(
     () => Math.random().toString(36).substr(2, 6).toUpperCase(),
@@ -397,6 +432,7 @@ export default function BoardingPass({
           totalBudget={totalBudget}
           nowLabel={nowLabel}
           ticketNumber={ticketNumber}
+          shareUrl={shareUrl}
         />
       </div>
     </div>
