@@ -1,0 +1,2999 @@
+[
+  {
+    "Link google": "https://www.google.com/maps/place/QU%C3%81N+%C4%82N+GIA+%C4%90%C3%8CNH+%E1%BA%A8M+TH%E1%BB%B0C+CH%E1%BB%A2%7C+%E1%BA%A8M+TH%E1%BB%B0C+NGON+H%C3%93C+M%C3%94N%7C+QU%C3%81N+%C4%82N+B%C3%8CNH+D%C3%82N+H%C3%93C+M%C3%94N/data=!4m7!3m6!1s0x31752b0043991b93:0xddea1f70791cc7b5!8m2!3d10.8588051!4d106.5979163!16s%2Fg%2F11vygdrwbt!19sChIJkxuZQwArdTERtccceXAf6t0?authuser=0&hl=vi&rclk=1",
+    "id": "0001",
+    "name": "QUÁN ĂN GIA ĐÌNH ẨM THỰC CHỢ| ẨM THỰC NGON HÓC MÔN| QUÁN ĂN BÌNH DÂN HÓC MÔN",
+    "address": "5E 61 Tổ 20, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8588051,
+    "lng": 106.5979163,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ăn gia đình này hứa hẹn những món ăn Việt truyền thống với hương vị gần gũi, bình dân. Không gian quán ấm cúng, phù hợp cho các bữa cơm gia đình. Đồ ăn có món tươi có món không tươi 3 sao thôi, điều này gợi ý về sự đa dạng trong nguyên liệu và cách chế biến. Mặc dù không tập trung vào sự cầu kỳ, hương vị vẫn đảm bảo được sự ngon miệng, đáp ứng nhu cầu của thực khách yêu thích ẩm thực Việt Nam.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXnATINMeM3JjZ05p4ryAVcfxMlzwmm8axoNZWWOs2ZxcshGU8G9D0t1Nj1dygqB-OyHFRror0kLyUQcmEKH2R_VSVWpJE-pth9miKKZuHT0ven3GHkfh8L5OAR0K5xCzJCpfX=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0707779879",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%90%C3%88N+D%E1%BA%A6U+T%E1%BB%9Bi+B%E1%BA%BFn+Qu%C3%A1n/data=!4m7!3m6!1s0x31752b1a67da305d:0xc6bbdfad2c454501!8m2!3d10.869297!4d106.6001035!16s%2Fg%2F11sbbty0g8!19sChIJXTDaZxordTERAUVFLK3fu8Y?authuser=0&hl=vi&rclk=1",
+    "id": "0002",
+    "name": "ĐÈN DẦU Tới Bến Quán",
+    "address": "232 Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.869297,
+    "lng": 106.6001035,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Quán ĐÈN DẦU Tới Bến Quán là một lựa chọn phù hợp cho những ai muốn thưởng thức ẩm thực Việt Nam với hương vị truyền thống. Các món ăn tại đây thường tập trung vào sự cân bằng giữa các nguyên liệu tươi ngon và cách chế biến giản dị, mang đến trải nghiệm gần gũi với khẩu vị quê nhà. Không gian quán khá thoáng đãng, tạo cảm giác thoải mái để khách hàng thư giãn và trò chuyện cùng bạn bè. Đặc biệt, quán có không khí náo nhiệt, phù hợp cho các buổi tụ tập cuối tuần. Sự kết hợp này làm tăng thêm giá trị trải nghiệm ẩm thực tại đây.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG5kFrLBbffPV9HNmvMEwyk9uxf2LY3f-XRQItRG3N4GPqj1nZ84lw8yO8z4aqZOxcK4uCQ_XXF1l0GY6kv44jeNgW_05OfLDx-v8XLkxE7OV7wngmZWOA_UrfHFeLeb-qPH2qDtw=w99-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0963207777",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+c%C6%A1m+Ngon+-+C%C6%A1m+b%C3%ACnh+d%C3%A2n/data=!4m7!3m6!1s0x31752b35b8b28639:0x952b8ca07f57f0d0!8m2!3d10.8770767!4d106.5991988!16s%2Fg%2F11rznqd3bz!19sChIJOYayuDUrdTER0PBXf6CMK5U?authuser=0&hl=vi&rclk=1",
+    "id": "0003",
+    "name": "Quán cơm Ngon - Cơm bình dân",
+    "address": "111 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8770767,
+    "lng": 106.5991988,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cơm Ngon là một địa điểm quen thuộc với nhiều người dân địa phương. Không gian quán nhỏ nhắn, ấm cúng, phù hợp để thưởng thức những bát cơm nóng hổi cùng các món ăn truyền thống. Hương vị cơm được làm từ gạo tươi ngon, kết hợp hài hòa với nước dùng thanh ngọt và các loại rau xanh. Đặc biệt, quán có thêm một vài món ăn kèm đơn giản nhưng vẫn đủ sức hấp dẫn khách. 'Ngon rất ngon anh em nên đến thử.' là lời khẳng định của nhiều thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH0UpONsxGWzAO3vzK1okubjltnvFqssaIEihgL44exQbv_vDC_G_n-0L5fL6tNdfvmpIgAtyclsB4QAURnHLnq1NhWKEc7mGy6HtxH0sKrimYd31o1H-FURkCGZyY3Rel9bjPung=w80-h177-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0918604292",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+N%C6%B0%E1%BB%9Bng+Th%C6%B0%C6%A1ng+M%E1%BB%99t+Ch%C3%BAt+-+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b0050ea5425:0x27fd5376a5da808!8m2!3d10.8800564!4d106.6090407!16s%2Fg%2F11y7bv17lk!19sChIJJVTqUAArdTERCKhdajfVfwI?authuser=0&hl=vi&rclk=1",
+    "id": "0004",
+    "name": "Tiệm Nướng Thương Một Chút - Hóc Môn",
+    "address": "Đ. Tô Ký/209A Phạm Thị Vàng, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8800564,
+    "lng": 106.6090407,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "Tiệm Nướng Thương Một Chút - Hóc Môn hứa hẹn một trải nghiệm ẩm thực thư thái với các món nướng tươi ngon. Không gian quán được thiết kế rộng rãi, thoáng đãng, tạo cảm giác thoải mái cho khách hàng. Các loại thịt và hải sản được chế biến đa dạng, từ nướng trực tiếp đến nướng thơm, mang lại hương vị đậm đà. Điểm nhấn của quán là sự kết hợp hài hòa giữa đồ ăn ngon và không gian âm nhạc sống động, tạo nên một buổi tối đáng nhớ. Thân thiện với túi tiền, giá cả phải chăng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEmoAUt1JhL5vftcPq9KMMUL2my-h92YSOTQxy5E4rTrQr6LVqvjx6NPKe5tFwjxkCJKvqdyMt5vwKhANmBcdB_-3X6gQckmO_XOnC5EYyX-V-_oNIyzPU2dEEM0ddfgmJj4pp3bSt9lqQ=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0908762489",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Thong+Dong+Qu%C3%A1n+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d55dbb2e5813:0x6e56e2db5fb76517!8m2!3d10.8980711!4d106.5890264!16s%2Fg%2F11ym_h74wt!19sChIJE1guu13VdDERF2W3X9viVm4?authuser=0&hl=vi&rclk=1",
+    "id": "0005",
+    "name": "Thong Dong Quán Hóc Môn",
+    "address": "Ấp Tân Thới 2/142/1 Ấp 7, Xã, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8980711,
+    "lng": 106.5890264,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Thong Dong Quán Hóc Môn là một quán ăn Việt Nam mang đến hương vị truyền thống gần gũi. Không gian quán ấm cúng và bình dân, phù hợp cho những bữa ăn gia đình hoặc tụ tập bạn bè. Các món ăn được chế biến với nguyên liệu tươi ngon, đảm bảo vệ sinh an toàn thực phẩm. Đặc biệt, quán nổi bật với các món ăn quen thuộc của vùng miền Hóc Môn, mang lại trải nghiệm ẩm thực chân thật và đáng nhớ. Sự thân thiện của nhân viên cũng góp phần làm tăng thêm sự hài lòng cho khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHPInO9bqGMz9LlEEpDASgUj8t5bToF6tLpgXEqAcOfKfFgfJmuJ6Um39YL5Y1PNyj19HP0Mj9qbipHOK40QpO47VFAbjR4By4O0noMZ0STr-ryx_eOsZVvT6ozHFcV5NdXlIOn-LYHPGNf=w92-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0966269439",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+t%E1%BA%A5m+Nam+Ph%C3%A1t/data=!4m7!3m6!1s0x3174d543ee0d3617:0x4af30af73cf71021!8m2!3d10.8864375!4d106.5876875!16s%2Fg%2F11x65bncxn!19sChIJFzYN7kPVdDERIRD3PPcK80o?authuser=0&hl=vi&rclk=1",
+    "id": "0006",
+    "name": "Cơm tấm Nam Phát",
+    "address": "VHPQ+H3P, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8864375,
+    "lng": 106.5876875,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Cơm tấm Nam Phát là một quán ăn Việt quen thuộc với nhiều thực khách địa phương. Quán nổi tiếng với những suất cơm tấm truyền thống được chế biến đơn giản nhưng vẫn giữ trọn hương vị gạo thơm và thịt nạc mềm. Đặc biệt món sườn cọng bao ngon, nghe nói signature của quán là một lựa chọn hấp dẫn. Không gian quán khá nhỏ nhắn, phù hợp cho bữa ăn nhanh hoặc tụ tập bạn bè. Giá cả bình dân, dễ chịu.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF_wjpakG85UaZj77Bkxyfvz_msQUtqP8a_RpQKcJVmLw-NdV80vq-VQs3D3VjB7R_TZbniNPT73mi9Q2qnjCyoDm-GWl-N1iJKjngH6ibi7-UC1N0K7lmY89dfqSpV3XmbiUyOjRmIIFc=w80-h103-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0904936825",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Li%C3%AAn/data=!4m7!3m6!1s0x3174d584320419d1:0xfcef4cb55432bd91!8m2!3d10.8885576!4d106.5904776!16s%2Fg%2F11b6t54n8v!19sChIJ0RkEMoTVdDERkb0yVLVM7_w?authuser=0&hl=vi&rclk=1",
+    "id": "0007",
+    "name": "Quán Liên",
+    "address": "34 4 Khu Phố 8-14, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8885576,
+    "lng": 106.5904776,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Liên là một quán ăn Việt phục vụ các món ăn quen thuộc, mang đậm hương vị truyền thống. Thực khách có thể thưởng thức những món ăn chế biến vừa miệng, phù hợp với không khí nhộn nhịp của quán. Với mức giá trung bình 250.000 đồng, quán hứa hẹn sẽ là lựa chọn tốt cho bữa ăn nhanh hoặc khi bạn muốn tìm kiếm một địa điểm quen thuộc. \"Thức ăn chế biến vừa miệng Quán nhậu nên ô nhiễm tiếng ồn là bt\" gợi ý về sự thoải mái và gần gũi.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3giFrFQ-YsSjs3Qs-8q_ifE2hkei5MfiaWEpy6W6ash26ZMzdKi8txTiaAKSOiVhvphFYqAL5abqKeB-vADBUFogVCPYqHvbubNrc2HZQFQS2c4W7DyGd6Elgw33eWf5qzi8W=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02837100086",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d5894aaa1991:0x21b04780a2fa6269!8m2!3d10.8874335!4d106.5983357!16s%2Fg%2F11yq4dc9f!19sChIJkRmqSonVdDERaWL6ooBHsCE?authuser=0&hl=vi&rclk=1",
+    "id": "0008",
+    "name": "Quán Ăn Hóc Môn",
+    "address": "31 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8874335,
+    "lng": 106.5983357,
+    "avg_price": 150000.0,
+    "shu": 4,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Hóc Môn mang đến hương vị truyền thống của vùng miền Tây sông nước. Các món ăn đậm đà với sự kết hợp hài hòa giữa các loại gia vị đặc trưng, tạo nên những trải nghiệm ẩm thực độc đáo. Không gian quán ấm cúng, thân thiện, phù hợp cho cả bữa trưa, tối hoặc thưởng thức đồ ăn mang đi. Đặc biệt, quán phục vụ cả ăn tại chỗ, giao hàng tận nơi, đáp ứng mọi nhu cầu của khách hàng. Hãy khám phá và đắm mình vào những món ăn ngon tuyệt vời tại Quán Ăn Hóc Môn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHGDXzj3pSDutZ5O1sod4iGt4ZNyuEE1a4KONLr02UzX0d66C7UnwcNbhA6LAz-MyrongzsScOcgtGLOYEcZMMQAuOq_MkN3JrTtKopyXcJnMCTr25qQS4WrWFTmGaBZkUmMFpK=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02837100258",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/L%C3%A0ng+%E1%BA%A8m+Th%E1%BB%B1c+66+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752a6b65a27ef1:0xf70ce7706106d200!8m2!3d10.8643538!4d106.6034666!16s%2Fg%2F11f10dst1s!19sChIJ8X6iZWsqdTERANIGYXDnDPc?authuser=0&hl=vi&rclk=1",
+    "id": "0009",
+    "name": "Làng Ẩm Thực 66 Hóc Môn",
+    "address": "66/5B Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8643538,
+    "lng": 106.6034666,
+    "avg_price": 550000.0,
+    "shu": 4,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Làng Ẩm Thực 66 Hóc Môn là một quán ăn Việt Nam mang đến trải nghiệm ẩm thực gần gũi với hương vị truyền thống. Các món ăn được chế biến với nguyên liệu tươi ngon, tạo nên sự cân bằng trong từng bát. Không gian quán ấm cúng và thoải mái, phù hợp cho các bữa ăn gia đình hoặc bạn bè. Dù đánh giá chung là 'khá', nhưng vẫn có thể cảm nhận được sự tỉ mỉ trong cách trình bày món ăn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJUFth12QbOS1-SCetu9IKDThGSNfQLSRQ-JFvVyU4dHEGL69G2snfAvN9ahczUJdskQqhOoAfEh_rxYqP97wQ5tOHurbqsJu8r1pfwzPmquHWR1uGr9v4yB5rxMu1zbNxfQY=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0944684466",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C6%A1m+Ngon/data=!4m7!3m6!1s0x3174d506efdc6f3d:0xf8c110800421aa6a!8m2!3d10.8899395!4d106.5934903!16s%2Fg%2F11vdth607h!19sChIJPW_c7wbVdDERaqohBIAQwfg?authuser=0&hl=vi&rclk=1",
+    "id": "0010",
+    "name": "Quán Cơm Ngon",
+    "address": "31 Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8899395,
+    "lng": 106.5934903,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Quán Cơm Ngon mang đến trải nghiệm ẩm thực Việt Nam gần gũi và quen thuộc. Các món cơm được chế biến với nguyên liệu tươi ngon, hương vị truyền thống đậm đà. Không gian quán bình dân, phù hợp để thưởng thức cùng bạn bè hoặc gia đình. Đặc biệt, đồ ăn luôn mới mỗi ngày, ngon, đậm đà, giá và chất lượng rất hợp lý.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF8Q39WMnC6frnu8ygh0Y7XXOw-kYoT1KRD_q8-gllfcAcHjYnZcHsK3W1fbru8y_B-ifbM00l58fsRErQU2dLBpCXv-tRXj9EJSwozp6fvGN5icsUJtoMqwSZYyMZxQeWZLfU=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/X%C3%93M+NH%E1%BA%ACU+%C4%90%E1%BA%B6C+S%E1%BA%A2N+PH%C3%9A+QU%E1%BB%90C+H%C3%93C+M%C3%94N/data=!4m7!3m6!1s0x31752bff0686095d:0x9556162748544001!8m2!3d10.8698965!4d106.599689!16s%2Fg%2F11t76049k0!19sChIJXQmGBv8rdTERAUBUSCcWVpU?authuser=0&hl=vi&rclk=1",
+    "id": "0011",
+    "name": "XÓM NHẬU ĐẶC SẢN PHÚ QUỐC HÓC MÔN",
+    "address": "18/8Y Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8698965,
+    "lng": 106.599689,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Xóm Nhậu Đặc Sản Phú Quốc Hóc Môn là một quán ăn Việt quen thuộc, mang đến trải nghiệm thưởng thức hải sản tươi ngon. Không gian quán ấm cúng, phù hợp cho các buổi tụ tập bạn bè hoặc gia đình. Các món ăn được chế biến đơn giản nhưng vẫn giữ trọn hương vị truyền thống của miền biển Phú Quốc. Đặc biệt, mực trứng là một lựa chọn hấp dẫn với lớp vỏ ngoài giòn tan và phần thịt ngọt mềm. Hay ăn ở đây Mực trứng to 10đ tươi nhất trong những quán từng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGGyRnotUE-bYcjuqdxYak4Y_npNpeRb0gfJNOL93dNx8Q9GT3BNCxClD0ilfz0VY6FBeyan_7hAmqh-AxW_z3rMy8B9IqB8WnHICvQjSoXr4qKDFumtspnuSsPJB7aTYs-04kS=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0932162500",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+%E1%BA%A8m+Th%E1%BB%B1c+C%C3%A1nh+%C4%90%E1%BB%93ng+Hoang/data=!4m7!3m6!1s0x3174d5eeaaaaaaab:0x83e9153af13b403f!8m2!3d10.9051194!4d106.6144825!16s%2Fg%2F11c5ssxnjt!19sChIJq6qqqu7VdDERP0A78ToV6YM?authuser=0&hl=vi&rclk=1",
+    "id": "0012",
+    "name": "Nhà Hàng Ẩm Thực Cánh Đồng Hoang",
+    "address": "32/5 Đường Trung Đông 7, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9051194,
+    "lng": 106.6144825,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà Hàng Ẩm Thực Cánh Đồng Hoang mang đến hương vị truyền thống Việt Nam với những món ăn giản dị, đậm chất quê nhà. Các nguyên liệu tươi ngon được chế biến theo cách làm của người nông dân, tạo nên sự thanh mát và tinh tế. Không gian quán ấm cúng, mộc mạc, gợi nhớ về những ký ức tuổi thơ. Mỗi bát cơm là một câu chuyện về làng quê yên bình, nơi cuộc sống chậm rãi và đầy yêu thương. Quán nhỏ thôi, không cầu kỳ nhưng sạch sẽ, mộc mạc đúng kiểu quê nhà.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFJbalwlW2_srcnREtb0j4mJhELWOZ0iscVAe1pP6rpHIJFlBJmBN5Ks-YgwYK9qsR0V0Cpt8bRpt5igJ0OumVkGhiwUnZE0geLwN8hTsuz-_ULo2xqRsunJKNM_RFjW6g0TIYWew=w92-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0983867786",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+Gia+%C4%90%C3%ACnh+Thanh+Thy+-+Qu%C3%A1n+%C4%82n+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d55a70e29b23:0xf2d839f2e4341ef6!8m2!3d10.8964406!4d106.549767!16s%2Fg%2F11ms1qgyz_!19sChIJI5vicFrVdDER9h405PI52PI?authuser=0&hl=vi&rclk=1",
+    "id": "0013",
+    "name": "Quán Ăn Gia Đình Thanh Thy - Quán Ăn Hóc Môn",
+    "address": "4/241 ấp 73, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8964406,
+    "lng": 106.549767,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Gia Đình Thanh Thy - Quán Ăn Hóc Môn hứa hẹn mang đến những hương vị truyền thống của vùng đất Hóc Môn. Không gian quán ấm cúng, phù hợp cho các bữa ăn gia đình hoặc tụ tập bạn bè. Các món ăn được chế biến với nguyên liệu tươi ngon và cách làm lâu đời, tạo nên sự quen thuộc và gần gũi. Đặc biệt, quán nổi tiếng với những món ăn dân dã, đậm chất quê hương. Với phong cách phục vụ thân thiện, khách hàng có thể tận hưởng một bữa ăn ấm cúng và đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG2to2NGOBYlwo-QN8SdfJdhjFSAawNbMIPElZOcyR3OV1WVLrOPzJMjiXL0O9fESDJ2j0YDK_l3OQvXObCEyj-p1UbPAlngmm6qNjZ2eUYA0zRM4MUccEWDi-JxpGmly_JXzSe29QC89g=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0903423479",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/D%E1%BB%91c+M%C6%A1+Qu%C3%A1n/data=!4m7!3m6!1s0x31752a475f6c4037:0x45cb917c1d4884ef!8m2!3d10.8530422!4d106.6054397!16s%2Fg%2F11f1461c1n!19sChIJN0BsX0cqdTER74RIHXyRy0U?authuser=0&hl=vi&rclk=1",
+    "id": "0014",
+    "name": "Dốc Mơ Quán",
+    "address": "22 Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8530422,
+    "lng": 106.6054397,
+    "avg_price": 150000.0,
+    "shu": 4,
+    "star": 4.4,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Dốc Mơ Quán là một quán ăn Việt Nam mang đến trải nghiệm ẩm thực gần gũi và ấm cúng. Các món ăn được chế biến với hương vị truyền thống, cân bằng giữa ngọt, bùi và chút cay nhẹ, phù hợp cho nhiều khẩu vị. Không gian quán được trang trí đơn giản, tạo cảm giác thư giãn và dễ chịu. Quán tập trung vào sự tươi ngon của nguyên liệu và cách trình bày hấp dẫn. Thường thấy khách hàng đánh giá cao về sự hài hòa trong từng món ăn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEcV6p-tdxbskp5EOEfYJ8YHDV_J-WsnCOYfl1VvbKW-mTTRI5_QY9Ft1JAudNKMJ8UXYQB8PIqL5lPk3_C7muG-__SYt_02T_ivW05xED2w1_eRfotXCJsZN5rk1zYcg4q5vrQ=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0984586248",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%E1%BA%A8m+Th%E1%BB%B1c+V%C6%B0%E1%BB%9Dn+Mai+H%C3%B3c+M%C3%B4n+%7C+B%C3%B2+T%C6%A1+Ngon+H%C3%B3c+M%C3%B4n+%7C+Qu%C3%A1n+%C4%82n+Ngon+H%C3%B3c+M%C3%B4n+%7C+%E1%BA%A8m+Th%E1%BB%B1c+C%E1%BB%A7+Chi./data=!4m7!3m6!1s0x3174d58a8eaf0f03:0x91e283009702cffc!8m2!3d10.899469!4d106.5768268!16s%2Fg%2F11sc926p3d!19sChIJAw-vjorVdDER_M8ClwCD4pE?authuser=0&hl=vi&rclk=1",
+    "id": "0015",
+    "name": "Ẩm Thực Vườn Mai Hóc Môn | Bò Tơ Ngon Hóc Môn | Quán Ăn Ngon Hóc Môn | Ẩm Thực Củ Chi.",
+    "address": "499 Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.899469,
+    "lng": 106.5768268,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán nằm ở khu vực Hóc Môn, mang đến trải nghiệm ẩm thực Việt Nam gần gũi và đậm đà. Các món ăn tập trung vào hương vị truyền thống với nguyên liệu tươi ngon, đảm bảo sự cân bằng trong từng bữa ăn. Không gian quán ấm cúng, thân thiện, phù hợp để thưởng thức cùng những lời nhận xét tốt từ khách hàng về thái độ phục vụ nhiệt tình.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEkWWPEFtkjEOtl6-5LF0myvUcqz5rzF-zKxp2WiwnYCeXcv3-cS6vy5p8FmRAO8NhV5qBAHg9EPKowvXV6pQQZNGzm78SYiGi7ukQ3yhLKcPODI7hfdK51vYVSxJh6TxMC-QWN=w138-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0896537971",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+B%E1%BB%95+D%C6%B0%E1%BB%A1ng+%7C+Qu%C3%A1n+%C4%82n+H%C3%A0n+Qu%E1%BB%91c+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b00760f00f1:0x9b0ce47a992b5ddb!8m2!3d10.8777928!4d106.5991751!16s%2Fg%2F11yml_f0kk!19sChIJ8QAPdgArdTER210rmXrkDJs?authuser=0&hl=vi&rclk=1",
+    "id": "0016",
+    "name": "Quán Ăn Bổ Dưỡng | Quán Ăn Hàn Quốc Hóc Môn",
+    "address": "179 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8777928,
+    "lng": 106.5991751,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Bổ Dưỡng | Quán Ăn Hàn Quốc Hóc Môn là một địa điểm quen thuộc với nhiều thực khách tại khu vực Hóc Môn. Với phong cách ẩm thực Việt Nam kết hợp các yếu tố của món ăn Hàn Quốc, quán mang đến những lựa chọn đa dạng cho bữa ăn hàng ngày. Không gian quán được thiết kế đơn giản, phù hợp để thưởng thức các món ăn nhẹ nhàng. Đáng chú ý là sự yêu thích đối với mì tương đen, như một khách hàng đã chia sẻ, thể hiện hương vị truyền thống và chất lượng nguyên liệu tốt.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEEJpgO7wcb52CwMbYH7o_s6eLWtXR3rhRz2hXyMwNOP3zUQz3RUdF2FWPl56Gd-uhYPUTdV5BiQwxfWJlDTCtfGLMnCB4qRwFegRSJKaW5M6krVAlVuHWRhvyTdOYhUEyJcvKq1tFJjNOY=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0939762363",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C6%A1m+A.T%E1%BB%B7/data=!4m7!3m6!1s0x3174d58f0047bc87:0x8e2fae2cdb765b69!8m2!3d10.8899275!4d106.5965277!16s%2Fg%2F1hc29b1m9!19sChIJh7xHAI_VdDERaVt22yyuL44?authuser=0&hl=vi&rclk=1",
+    "id": "0017",
+    "name": "Quán Cơm A.Tỷ",
+    "address": "31 Trưng Nữ Vương, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8899275,
+    "lng": 106.5965277,
+    "avg_price": 50500.0,
+    "shu": 5,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Quán Cơm A.Tỷ là một địa điểm quen thuộc với nhiều người yêu thích hương vị cơm trưa Việt Nam truyền thống. Các món cơm tại đây nổi bật với cách nêm nếm đậm đà, sử dụng gia vị hài hòa để tạo nên sự cân bằng tuyệt hảo giữa ngọt, bùi và chút cay nhẹ. Không gian quán ấm cúng, phù hợp cho những bữa ăn nhanh hoặc tụ tập bạn bè. Đặc biệt, hương thơm của cơm mới luộc cùng các món ăn kèm luôn khiến thực khách cảm thấy ngon miệng. Quán có thể đáp ứng tốt nhu cầu của những ai thích trải nghiệm ẩm thực Việt Nam với phong cách truyền thống.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEq3w87tD5mknJOKSJxnFdaHuohzF51vNJiE6qZncEPojuTG61gcmLJ8optYYg9uKJ-zbJ3VrICeaLy38duz3zZBgWmN4h8EICBwA9-OAvjmfAqBb_IjT4nE0eC-g7uT9CHMx8bog=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02838913908",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+6+V%C4%A9nh/data=!4m7!3m6!1s0x31752a7728eec5d3:0x9762517001981138!8m2!3d10.8772029!4d106.5964944!16s%2Fg%2F11c1n9g76b!19sChIJ08XuKHcqdTEROBGYAXBRYpc?authuser=0&hl=vi&rclk=1",
+    "id": "0018",
+    "name": "Quán 6 Vĩnh",
+    "address": "Ấp Đình/1/132B Đường Tân Tiến 12, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8772029,
+    "lng": 106.5964944,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán 6 Vĩnh là một địa điểm quen thuộc với những món ăn Việt Nam truyền thống. Không gian quán ấm cúng, phù hợp để thưởng thức các bữa ăn đơn giản. Thực khách có thể tìm thấy nhiều lựa chọn từ các món ăn nhẹ nhàng đến các món chính đặc trưng của ẩm thực Việt. Quán làm đồ ăn mang đến hương vị gần gũi, thân thiện với khẩu phần vừa đủ cho một buổi chiều thư giãn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFx5RB3plvkhs5192JgCUDCpb6iJ687DFFSRtklaPQW9oHZSImo1tnAhVoTkZmZuZ52fv2J4-tx_B2YJTchTIWerZh1PNFdiy5D-JdZP5NLpq0Onnwu1D5uMPgsNnrDIG6aA3Wp=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02822101672",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%83n+C%C3%A1nh+%C4%91%E1%BB%93ng+Sen/data=!4m7!3m6!1s0x3174d5c59274d561:0x5c96a0518b37a549!8m2!3d10.9148894!4d106.5949825!16s%2Fg%2F11v3vb81y1!19sChIJYdV0ksXVdDERSaU3i1Ggllw?authuser=0&hl=vi&rclk=1",
+    "id": "0019",
+    "name": "Quán ăn Cánh đồng Sen",
+    "address": "10/6 Tân Hiệp 39, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9148894,
+    "lng": 106.5949825,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ăn Cánh đồng Sen mang đến những hương vị Việt Nam truyền thống, tinh tế và gần gũi. Các món ăn được chế biến với nguyên liệu tươi ngon, tập trung vào sự cân bằng giữa các vị ngọt, chua, mặn và cay nhẹ. Không gian quán ấm cúng, yên tĩnh, rất phù hợp để nhóm bạn tụ họp thưởng thức ẩm thực và trò chuyện. Quán lý tưởng để nhóm nhỏ đi chơi ăn, mang đến trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHLuBlcWg-HiXjvyVQegN6JyRY2J43-hI9cagW3Rqk-3fqWRD5Rt5peJWAhHdMXV2W4qqlHHtWgPSJVhuLBM4Ny1RoBmqEoAGj_32HAHc_z75dvSVN4wE_q80k8-9LrVCpQDcvwu8bnXIBU=w140-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0764393039",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+G%C3%A0+B%C6%A1+T%E1%BB%8Fi+Minh+Chang/data=!4m7!3m6!1s0x31752d8a95e95af3:0xcd44d914f912410d!8m2!3d10.8824651!4d106.5942033!16s%2Fg%2F11vwtjqxk1!19sChIJ81rplYotdTERDUES-RTZRM0?authuser=0&hl=vi&rclk=1",
+    "id": "0020",
+    "name": "Cơm Gà Bơ Tỏi Minh Chang",
+    "address": "77/1b, Bà Triệu, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8824651,
+    "lng": 106.5942033,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm Gà Bơ Tỏi Minh Chang là một quán ăn Việt quen thuộc với nhiều thực khách. Không gian quán đơn giản, ấm cúng, phù hợp để thưởng thức các món cơm truyền thống. Hương vị chủ đạo của quán tập trung vào sự hài hòa giữa gà mềm tan, tỏi thơm và bơ dịu nhẹ. Đặc biệt, giá cả phải chăng khiến đây là lựa chọn lý tưởng cho những bữa ăn nhanh chóng và ngon miệng. Với tagline \"cơm rẻ, ngon đồ ăn\", quán hứa hẹn mang đến trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGHjXoq3KsHMeAZxxPCZVj-HK5Ll3Ln0gjedWbWGVbm2ZBkK1dMULa260R5l0cdR514ZnFdvtixWMVYkkRggXrD1Sm2DATyi1fdHTq2ULF88CXasUM6XtDIdu6L1xgi1x2qhik=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0388998660",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%E1%BB%90c+Hai+H%C3%B9ng/data=!4m7!3m6!1s0x31752bf603fffbbf:0x31b10f9ea5305876!8m2!3d10.8795422!4d106.5983777!16s%2Fg%2F11f9zz91c6!19sChIJv_v_A_YrdTERdlgwpZ4PsTE?authuser=0&hl=vi&rclk=1",
+    "id": "0021",
+    "name": "Quán Ốc Hai Hùng",
+    "address": "1/57A, Lê Thị Hà/đường Ấp Đình, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8795422,
+    "lng": 106.5983777,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Ốc Hai Hùng là một địa điểm quen thuộc với những ai yêu thích ẩm thực Việt Nam. Không gian quán được trang trí đơn giản, ấm cúng, phù hợp để thưởng thức các món ốc và hải sản tươi ngon. Hương vị của các món ốc tại đây mang đậm nét truyền thống, không quá nồng nếm nhưng vẫn đủ để làm hài lòng khẩu vị của nhiều người. Đặc biệt, nếu đến vào giờ cao điểm, nên đặt bàn trước để không phải chờ lâu.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGjtncLR6vj2NnBXrx9jwECX5teOsrc_fN2lX_cjAMELCAQpASTD5JK0ShSlnHCpr-kSChGqwp3T2BySE7J62US4qM-7YckDN4SQbdqejkWX8MWP6SeY4GGotYfFAmt05NN6DHR=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02838913779",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%E1%BA%A8M+TH%E1%BB%B0C+VEN+S%C3%94NG+%7C+QU%C3%81N+%C4%82N+GIA+%C4%90%C3%8CNH+H%C3%93C+M%C3%94N/data=!4m7!3m6!1s0x3174d5003d47cc55:0x5bef5034218c6f8c!8m2!3d10.9104555!4d106.6094045!16s%2Fg%2F11wg5tyjk1!19sChIJVcxHPQDVdDERjG-MITRQ71s?authuser=0&hl=vi&rclk=1",
+    "id": "0022",
+    "name": "ẨM THỰC VEN SÔNG | QUÁN ĂN GIA ĐÌNH HÓC MÔN",
+    "address": "Đường Trung Đông 8, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9104555,
+    "lng": 106.6094045,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán nằm dọc theo bờ sông, mang đến không khí trong lành và thư thái. Thực khách có thể thưởng thức các món ăn Việt Nam truyền thống với hương vị nhẹ nhàng, cân bằng, phù hợp cho cả gia đình. Đồ ăn được chế biến vừa miệng, dễ tiêu hóa, đi kèm với thông điệp 'có chỗ câu cá giải trí cho mấy bé' gợi ý về một trải nghiệm ngoài trời vui vẻ. Không gian quán ấm cúng và thân thiện, tạo cảm giác thoải mái khi tụ tập bạn bè hoặc gia đình.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEoZEgT_ytn-gv004rV-RpUKvceBCdViSRbP-uEKvjbbfzte599Y4_ScwnU7IjeebQWVunlHYDi3yUskUmhRRLUk3dC9E0M7t9shCtOJuu2bZ1qbjg__ja9WTx6j8l_-hXz2nxR-WhZk46k=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0912926622",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/G%C3%A0+H%E1%BA%A5p+H%C3%A8m+34/data=!4m7!3m6!1s0x31752a897c5564d3:0xb90c8a9b5a9d97ce!8m2!3d10.8678404!4d106.5791549!16s%2Fg%2F11g_vwbbr!19sChIJ02RVfIkqdTERzpedWpuKDLk?authuser=0&hl=vi&rclk=1",
+    "id": "0023",
+    "name": "Gà Hấp Hèm 34",
+    "address": "34 Nguyễn Thị Thử, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8678404,
+    "lng": 106.5791549,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gà Hấp Hèm 34 là một quán ăn Việt Nam bình dân với hương vị truyền thống. Gà được hầm từ lâu trong nước cốt lá dứa và các loại gia vị, tạo nên món hấp hèm mềm ngọt đậm đà. Không gian quán thanh lịch, phù hợp để thư giãn hoặc tụ tập bạn bè. Giá cả phải chăng, dễ chịu lòng người tiêu dùng. Sự kết hợp với nhận xét về không gian yên tĩnh và nhân viên nhiệt tình càng làm tăng thêm trải nghiệm ẩm thực tại đây.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGQ2OZ1OIg0f2HDPhxVtyGoxVbtOV7IE25CSW8z2NykdcJ0-CSGi1z1A1I6HjK4xUBFVyNW6hWUqfPFDtYS2vhAkEHO-qCeWD8-lc7zhA_PmNMYogXD2LJy-YLUtIB0yZNKf0lE1g=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02837139725",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+V%E1%BB%8B+Ng%E1%BB%8Dt/data=!4m7!3m6!1s0x31752b567f3020a9:0x656a988b135b6931!8m2!3d10.8740926!4d106.5966552!16s%2Fg%2F11fwjtfs8_!19sChIJqSAwf1YrdTERMWlbE4uYamU?authuser=0&hl=vi&rclk=1",
+    "id": "0024",
+    "name": "Quán Vị Ngọt",
+    "address": "Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8740926,
+    "lng": 106.5966552,
+    "avg_price": 300000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Vị Ngọt là một địa điểm lý tưởng để thưởng thức ẩm thực Việt Nam với những món ăn nhỏ xinh, phù hợp để nhâm nhi cùng cốc bia. Không gian quán ấm cúng, yên tĩnh, tạo cảm giác thoải mái cho khách hàng. Các món ăn được chế biến đơn giản, tập trung vào hương vị truyền thống của Việt Nam. Đặc biệt, quán có nhiều lựa chọn vừa miệng, rất thích hợp cho những buổi chiều hoặc tối thư giãn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHUhYFgcPrLKuqA442omL4L3e4aYRAoKZHkC_TtwOCLpU4FwpTlSYHLFMiMCZ4Ri3KSjJov5I5etl3BQXhP6TbTfdpa9zdm5s8YBvesSZ_YcvIWwu3DKFZAyk-UMA12AgaL1thhcg=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938831099",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/N%C6%B0%E1%BB%9Bng+%26+L%E1%BA%A9u+Nh%C3%A0+Long+%7C+L%E1%BA%A9u+ngon+H%C3%B3c+M%C3%B4n+%7C+Qu%C3%A1n+N%C6%B0%E1%BB%9Bng+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d51c2a9c59af:0xe6383619f1b050c!8m2!3d10.8708536!4d106.5989983!16s%2Fg%2F11xtlrsv7j!19sChIJr1mcKhzVdDERDAUbn2GDYw4?authuser=0&hl=vi&rclk=1",
+    "id": "0025",
+    "name": "Nướng & Lẩu Nhà Long | Lẩu ngon Hóc Môn | Quán Nướng Hóc Môn",
+    "address": "Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8708536,
+    "lng": 106.5989983,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Nướng & Lẩu Nhà Long là một quán Việt quen thuộc ở khu vực Hóc Môn. Không gian quán ấm cúng, phù hợp để tụ tập bạn bè hoặc gia đình. Các món nướng được chế biến với nguyên liệu tươi ngon, kết hợp cùng nước lẩu đậm đà. Đặc biệt, quán nổi bật với sự chu đáo của chủ nhà, mang lại trải nghiệm ẩm thực gần gũi và đáng nhớ. Nước lẩu ngon , đồ ăn tươi , chủ",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFAiQazhqOm_su4gZO7ikedtlPKpEddhPtuZVPeuAmObSbrIWtH6BxvEw24UqkeqSk3-dPdeJyKVTPSwy0z4eMNnOCzVaufuS1JhAZW_sLrPZLN1nF1-3V7j0UhO0dgKSrdq6XM9SwPV58M=w92-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909012192",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+H%E1%BA%A3i+S%E1%BA%A3n+C%C3%B4+Ch%E1%BB%A7+Nh%E1%BB%8F/data=!4m7!3m6!1s0x31752a0b28509e53:0x74c59ca3d440eb9b!8m2!3d10.8785129!4d106.6062095!16s%2Fg%2F11ysrqcty!19sChIJU55QKAsqdTERm-tA1KOcxXQ?authuser=0&hl=vi&rclk=1",
+    "id": "0026",
+    "name": "Quán Hải Sản Cô Chủ Nhỏ",
+    "address": "6/7B Đ. Tân Xuân 2, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8785129,
+    "lng": 106.6062095,
+    "avg_price": 350000.0,
+    "shu": 3,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Hải Sản Cô Chủ Nhỏ là một quán hải sản Việt Nam bình dân, mang đến trải nghiệm ẩm thực gần gũi với hương vị tươi ngon của biển. Các món ăn tập trung vào sự đơn giản, làm nổi bật chất ngọt tự nhiên của hải sản. Không gian quán được thiết kế ấm cúng, phù hợp cho bữa ăn gia đình hoặc bạn bè. Dù có một vài góp ý về thái độ phục vụ, nhưng những món hải sản ở đây vẫn đủ ngon để khách hàng cảm thấy hài lòng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFwa_Yk7DBlbB3X_ulLIbI7nA42vuPFkDZOxZhXHsj_-6zr0-fUjSUaYSiMyV7xvHWizrQEisgD3nCUzuqJau5OkSh0Ps6CcpWihcmzcDDPkDhD60J-CBnkg9Pc6lpDr8RVzf4V=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02862511566",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%82n+v%E1%BA%B7t+C%C3%B4+Py/data=!4m7!3m6!1s0x31752bd3e801013d:0x4c3a1d8eb2ddba40!8m2!3d10.8621533!4d106.6098201!16s%2Fg%2F11rn78zh2f!19sChIJPQEB6NMrdTERQLrdso4dOkw?authuser=0&hl=vi&rclk=1",
+    "id": "0027",
+    "name": "Ăn vặt Cô Py",
+    "address": "83/1 Đ. Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8621533,
+    "lng": 106.6098201,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Ăn vặt Cô Py là một quán ăn Việt nhỏ nhắn, ấm cúng. Không gian quán mang đậm chất bình dân với những chiếc bàn gỗ đơn giản và ánh đèn vàng dịu nhẹ. Thực khách có thể thưởng thức các món ăn quen thuộc như phở, bún chả hoặc gỏi cuốn với hương vị truyền thống, không quá nồng nếm. Mặc dù không cầu kỳ trong cách trình bày, nhưng chất lượng nguyên liệu vẫn được đánh giá khá tốt. Quán đồ thì càng thêm hấp dẫn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEeyb45Q7K4-nVTQMR77-suWWQvzP_AP0RiRLDa4yYLsblkq4H45ZB8wAPRQ4VtvM0CbRp5NC-_-6AvdYC5DHAEieIwM0Jlcd41zFo8N-Rma7wJuMbiXrtNVJ3bppiubEoc5fskSUJBP6B9=w92-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0366888968",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Tre+V%C3%A0ng/data=!4m7!3m6!1s0x31752b6221205933:0xa234ab065287ef81!8m2!3d10.8704409!4d106.599355!16s%2Fg%2F11qsw3bq4v!19sChIJM1kgIWIrdTERge-HUgarNKI?authuser=0&hl=vi&rclk=1",
+    "id": "0028",
+    "name": "Quán Tre Vàng",
+    "address": "18/5C Ấp Chánh 2, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8704409,
+    "lng": 106.599355,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Tre Vàng là một lựa chọn phù hợp cho những ai tìm kiếm hương vị ẩm thực Việt Nam truyền thống với mức giá bình dân. Các món ăn tập trung vào sự thanh đạm và tinh tế, sử dụng nhiều rau củ tươi ngon cùng các loại nước dùng được pha chế tỉ mỉ. Không gian quán ấm cúng, mang đậm nét văn hóa làng quê Việt Nam, tạo cảm giác thoải mái cho thực khách. Đặc biệt, việc đặt trước giúp giảm thời gian chờ đợi, đặc biệt vào giờ cao điểm như đã được nhiều người đánh giá.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHMjcP_aGGKcKZTRl3oqCG5WNo8jm9PFhC_Qlq9ZcmEf2IBoPszyjLc46-2zZOgMLJD7RmDqiwZYEB1KRNMw2H3hQRnVNvo31wZm951e-vn0-KWPj20S08MujZTLXvhxlLxKSU=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0792139199",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+M%C3%AC+V%E1%BB%8Bt+Ti%E1%BB%81m/data=!4m7!3m6!1s0x3174d5894a653157:0x5a512eecdaf46e53!8m2!3d10.8873871!4d106.5982347!16s%2Fg%2F11c57cdsnd!19sChIJVzFlSonVdDERU2702uwuUVo?authuser=0&hl=vi&rclk=1",
+    "id": "0029",
+    "name": "Quán Mì Vịt Tiềm",
+    "address": "34/12 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8873871,
+    "lng": 106.5982347,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Mì Vịt Tiềm là một quán ăn Việt nhỏ nhắn, ấm cúng. Không gian tuy đơn giản nhưng vẫn mang nét truyền thống. Đặc biệt, hủ tiếu mì xương ở đây được chế biến với nước dùng thanh ngọt, sợi mì dai ngon và thịt heo mềm mại. Đây là lựa chọn phù hợp cho những bữa sáng hoặc giờ trưa khi bạn muốn thưởng thức một món ăn Việt quen thuộc. Sự kết hợp giữa hủ tiếu và mì vịt tiềm (nếu có) tạo nên sự đa dạng trong thực đơn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGIZA2YqHv76nkBl-e7Gogzxv1sw7IvFkh3iX_Xw4pxwQK0SvfNrC249p6zpHhh36V0cyoBcE_UutrJ2OOnFg2k97VkkagYNw5DmD9wgXWug2zl2AXNphJBd4NpuDpBY5Z-JRtn=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937687582",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%9AN+CH%E1%BA%A2-C%C6%A0M+NI%C3%8AU+M%C6%AF%E1%BB%9CI+D%C5%A8NG/data=!4m7!3m6!1s0x3174d5c48f7ac03f:0x563f53eb23a5b10b!8m2!3d10.8828163!4d106.5998646!16s%2Fg%2F11fn1dvrdn!19sChIJP8B6j8TVdDERC7GlI-tTP1Y?authuser=0&hl=vi&rclk=1",
+    "id": "0030",
+    "name": "BÚN CHẢ-CƠM NIÊU MƯỜI DŨNG",
+    "address": "Lê Thị Hà/262/25 Ấp Chánh 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8828163,
+    "lng": 106.5998646,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "BÚN CHẢ-CƠM NIÊU MƯỜI DŨNG là một quán ăn Việt Nam bình dân, phù hợp cho những bữa trưa hoặc tối nhanh nhẹn. Không gian quán khá đơn giản, tập trung vào việc phục vụ các món ăn truyền thống như bún chả và cơm niêu. Hương vị của các món ăn được làm theo công thức gia truyền, với nước dùng thanh ngọt và nguyên liệu tươi ngon. Với giá cả phải chăng, đây là một lựa chọn tốt cho những ai muốn thưởng thức ẩm thực Việt Nam tại khu vực này.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGoxJzxjzReJ8yITh_IGprm-OloAMDbcZRMMk1mLg5XAxnFwb5KqYerwhxAxFTCZx6IW9FhqrJ6M0k5J6_4Y1FpkG43ExCTulmII3WZRQVvVCjD9sKdJj1z-yqNasbNyBV6YTAt=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909222760",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%BAn+gi%C3%B2+heo+MINH+QU%C3%9D/data=!4m7!3m6!1s0x3174d5afa614d259:0x5fe9e98de9e2b32c!8m2!3d10.8990175!4d106.57673!16s%2Fg%2F11rvhh_pcf!19sChIJWdIUpq_VdDERLLPi6Y3p6V8?authuser=0&hl=vi&rclk=1",
+    "id": "0031",
+    "name": "Bún giò heo MINH QUÝ",
+    "address": "27 QL22, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8990175,
+    "lng": 106.57673,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [],
+    "semantic_text": "Bún giò heo Minh Quý là một quán ăn Việt Nam bình dân, nổi bật với món bún giò đặc trưng. Bún thường được ăn kèm với nước dùng thanh ngọt, cùng các loại rau sống tươi mát và thịt heo đã được chế biến kỹ lưỡng. Hương vị bún giò mang đến sự cân bằng giữa vị ngọt của giò, vị mặn của nước dùng và vị chua nhẹ của rau. Không gian quán khá đơn giản, phù hợp cho những bữa ăn nhanh hoặc khi bạn muốn thưởng thức món bún giò truyền thống.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEBwoWuKKELTBJj7WoMUFVKr3mBsv7BnTPuPJQCKifk2Jv3YmhjV13b0Fc2WqY4UOnVAWu50-hdewx4dwgyPZRc6W-e2Nq2I3Lp_7hEZOsGLxV7yUONUCF3YsjSKAxqj2vshgVE=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0775606061",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%A1nh+Canh+Ng%C3%A3+t%C6%B0+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d53a60378775:0x92f584610aed1786!8m2!3d10.8843344!4d106.586514!16s%2Fg%2F11f9j8kgbf!19sChIJdYc3YDrVdDERhhftCmGE9ZI?authuser=0&hl=vi&rclk=1",
+    "id": "0032",
+    "name": "Bánh Canh Ngã tư Hóc Môn",
+    "address": "51 QL22, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8843344,
+    "lng": 106.586514,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Bánh Canh Ngã tư Hóc Môn là một địa điểm quen thuộc với nhiều người dân Sài Gòn. Bánh canh ở đây mang hương vị truyền thống, đậm đà với nước dùng thanh ngọt và sợi bánh canh dai ngon. Các loại topping như thịt heo, tôm, mọc góp được chế biến vừa đủ để cân bằng vị giác. Không gian quán đơn giản, gần gũi, phù hợp cho những bữa ăn nhanh hoặc khi bạn muốn thưởng thức món bánh canh đặc trưng này ở ngay khu vực đông đúc.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEAUQ5CAQdvHd4CExLboeQiR47lYfV90Y2F1nxDoODvHU1AE6sP2FOFU160Fvcvrb_aFLFbgcJswTHhPHJ3OICcoSnQP8IOvbjiki--mLQQzV8U_uyu_r-dvlZt2i5LvEG6EmhJyw=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C6%A1m+27+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752a39c3dfdae9:0x7233588b24d6b508!8m2!3d10.8501722!4d106.6100743!16s%2Fg%2F11fy4sq4t_!19sChIJ6drfwzkqdTERCLXWJItYM3I?authuser=0&hl=vi&rclk=1",
+    "id": "0033",
+    "name": "Quán Cơm 27 Hóc Môn",
+    "address": "27A Cư Xá, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8501722,
+    "lng": 106.6100743,
+    "avg_price": 150000.0,
+    "shu": 4,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cơm 27 Hóc Môn là một địa điểm quen thuộc với những tín đồ yêu thích hương vị cơm tấm truyền thống. Không gian quán ấm cúng, phù hợp để thưởng thức bữa trưa hoặc tối cùng bạn bè và gia đình. Các món ăn được chế biến với nguyên liệu tươi ngon, đậm đà, đặc biệt là lớp thịt kho tàu mềm ngọt và dồi thắng thơm lừng. Quán phục vụ cả đồ ăn tại chỗ và mang đi, đáp ứng mọi nhu cầu của khách hàng. Với mức giá bình dân, đây là một lựa chọn lý tưởng cho những bữa cơm gia đình.",
+    "image_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=8TQ3AwZdFzNItoZrc5V4pg&cb_client=search.gws-prod.gps&w=80&h=92&yaw=268.91708&pitch=0&thumbfov=100",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0902382492",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+chay+di%E1%BB%87u+th%E1%BA%ADt+2/data=!4m7!3m6!1s0x3174d546e305b235:0x49747ab8b81fdb51!8m2!3d10.8863063!4d106.5887043!16s%2Fg%2F11wc4c1mgm!19sChIJNbIF40bVdDERUdsfuLh6dEk?authuser=0&hl=vi&rclk=1",
+    "id": "0034",
+    "name": "Cơm chay diệu thật 2",
+    "address": "50/9 đường Lý Thường Kiệt, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8863063,
+    "lng": 106.5887043,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "Cơm Chay Diệu Thật 2 là một quán ăn Việt quen thuộc với nhiều món chay được chế biến đơn giản nhưng vẫn giữ trọn hương vị truyền thống. Các món thường thấy bao gồm cơm chay nóng hổi, canh rau củ nấu chậm, đậu phụ sốt cà chua và các món xào rau thơm. Không gian quán khá nhỏ nhắn, ấm cúng, phù hợp cho bữa ăn thân mật hoặc khi bạn muốn tìm một nơi yên tĩnh để thưởng thức đồ chay. Đặc biệt, giá cả vô cùng phải chăng, khiến nhiều người dân địa phương lựa chọn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFoKBtM-mQ0SeC9ZIz7FdgMLTs9r5EOSLh9aUywxniFeu-u2t47eVU48Eojn5Zr0PGlEUiuWeacmWbiad0uoQaGlnEvWlPqvvAz8EGh67KBxVhxXgKBb_VnmMTsH2WUmyKvS5HQ=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0963800220",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+l%E1%BA%A9u+-+n%C6%B0%E1%BB%9Bng+C%C3%B4+Ba+S%C3%A0i+G%C3%B2n+%28H%C3%B3c+M%C3%B4n%29/data=!4m7!3m6!1s0x3174d5d4466747e5:0x8194575ca2a73953!8m2!3d10.9015512!4d106.6065065!16s%2Fg%2F11q99f9d5g!19sChIJ5UdnRtTVdDERUzmnolxXlIE?authuser=0&hl=vi&rclk=1",
+    "id": "0035",
+    "name": "Tiệm lẩu - nướng Cô Ba Sài Gòn (Hóc Môn)",
+    "address": "8/7 Đường Nguyễn Thị Ngâu, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9015512,
+    "lng": 106.6065065,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Tiệm lẩu - nướng Cô Ba Sài Gòn tại Hóc Môn hứa hẹn một trải nghiệm ẩm thực Việt Nam gần gũi. Quán tập trung vào các món nướng đậm chất thôn quê, cùng với những món mì xào hấp dẫn và đa dạng đồ uống. Với đánh giá của khách hàng về bữa ăn 600k cho 3 người, có thể đoán đây là một địa điểm lý tưởng để tụ tập bạn bè hoặc gia đình. Không gian quán ấm cúng, phù hợp cho các buổi chiều cuối tuần thư giãn. Đặc biệt, sự kết hợp giữa nướng và lẩu tạo nên những hương vị độc đáo.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFuy_YG8pEaWHkx57djlSMoewXFTjtc0Pin_ussPiuQNkna9fsFCjnJ4wABeFN1rp4M2uHQXOTw0Y9-sxy8tQsvpThsU0HNp32XgWs1JuFPjdzH_LQvCAWeb4zF47ITSHeoVVy9=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0972772362",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ch%C3%A1o+B%E1%BA%A7u+S%C3%A1u+Qu%E1%BA%BBn+%7C+Ch%C3%A1o+B%E1%BA%A7u+H%C3%B3c+M%C3%B4n+%7C+%E1%BA%A8m+th%E1%BB%B1c+%C4%91%E1%BB%93ng+qu%C3%AA+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d594b40fe481:0xc0355d2d248ec779!8m2!3d10.9046579!4d106.6160384!16s%2Fg%2F11rfrtttqh!19sChIJgeQPtJTVdDEReceOJC1dNcA?authuser=0&hl=vi&rclk=1",
+    "id": "0036",
+    "name": "Cháo Bầu Sáu Quẻn | Cháo Bầu Hóc Môn | Ẩm thực đồng quê Hóc Môn",
+    "address": "WJ37+3FJ, 34/2b Đường Trung Đông 7, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9046579,
+    "lng": 106.6160384,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cháo Bầu Sáu Quẻn mang đến hương vị đồng quê Hóc Môn thanh đạm với cháo bầu mềm mại, kết hợp cùng các gia vị truyền thống. Không gian quán được thiết kế ấm cúng, đặc biệt là những chiếc chòi riêng biệt tạo sự thoải mái cho thực khách. Các món ăn tập trung vào nguyên liệu tươi ngon và cách chế biến giản dị, phản ánh nét chân chất của ẩm thực quê hương. Đây là lựa chọn lý tưởng để thưởng thức bữa trưa hoặc tối với gia đình và bạn bè. Không gian quán ổn, phù hợp cho những buổi tụ họp nhỏ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGjZrLUldoofmq2v3YdiGBCl-ZBoXFEJA3oN6D4eFJ3bX7lcerNmQCB0--2-X8cEqLKtVm4yfvlwy6fG7pa5Hegz2spkdNboQe9IXPOrca6wteI0TuwFcyHWQXzfkWYcE1ufnve=w100-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0908751425",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%A1nh+B%C3%A8o+B%C3%AC+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d585b5c25565:0xbf7f37fb6eeaff97!8m2!3d10.8893609!4d106.5936476!16s%2Fg%2F11fb0vqd73!19sChIJZVXCtYXVdDERl__qbvs3f78?authuser=0&hl=vi&rclk=1",
+    "id": "0037",
+    "name": "Bánh Bèo Bì Hóc Môn",
+    "address": "18/6B, Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8893609,
+    "lng": 106.5936476,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "Bánh bèo bì Hóc Môn là một trải nghiệm ẩm thực đặc trưng của miền Tây Nam Bộ. Những chiếc bánh nhỏ xinh với lớp vỏ giòn tan, bên trong là nhân thịt heo mềm mại và nước cốt dừa béo ngậy tạo nên sự hài hòa tuyệt vời. Hương vị thanh mát của lá dứa cùng chút mặn ngọt cân bằng đã chinh phục nhiều thực khách. Quán có không gian ấm cúng, mang đậm nét truyền thống, phù hợp để thưởng thức những món ăn này cùng gia đình và bạn bè. Sự kết hợp giữa hương vị đặc trưng và cách bài trí giản dị khiến Bánh Bèo Bì Hóc Môn trở nên đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEiT8Hu4dz4VAd2rZyt_Ok3mL2iT8G8thb2rFCskkKhBe3krE0JAE3TrCrn0Zyj8wC2eb_-1cNLBprGyBrnS7LfgLCanuan5Z1pUtWblqENyi_5X87W_v96nOfy7iv5LQG0mvqoKw=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909626989",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+h%E1%BA%A3i+s%E1%BA%A3n+Nha+Trang+2/data=!4m7!3m6!1s0x31752a769cdb709b:0xa492ed18a21276c4!8m2!3d10.8782291!4d106.5995106!16s%2Fg%2F11f0wl_3l8!19sChIJm3DbnHYqdTERxHYSohjtkqQ?authuser=0&hl=vi&rclk=1",
+    "id": "0038",
+    "name": "Quán hải sản Nha Trang 2",
+    "address": "VHHX+7RR, Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8782291,
+    "lng": 106.5995106,
+    "avg_price": 1000.0,
+    "shu": 3,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán hải sản Nha Trang 2 là một lựa chọn quen thuộc với những ai yêu thích hương vị tươi ngon của biển cả. Các món hải sản được chế biến đơn giản nhưng vẫn giữ trọn vẹn chất ngọt tự nhiên của cá tôm, mực và các loại hải sản khác. Không gian quán thanh lịch, phù hợp cho bữa ăn gia đình hoặc bạn bè. Thực khách đánh giá cao sự đa dạng trong thực đơn và đặc biệt là hương vị truyền thống, gần gũi. Đã ăn nhiều lần, chất lượng đồ rất ổn định.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFzQo26FJmvfGeOG0kvaDP-QHzZ6H-IrS077WQfBtnjWhImOHVQRk5XVZ38Mdz2m-ZVHUY3W8CkIuMj0NvNwk82cbYg8dpMEykzzB2C8NhStvr6mFG6_Om1TYSSQlUtlkvO2j1J=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938381201",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+T%E1%BA%A5m+Ngh%C4%A9a/data=!4m7!3m6!1s0x31752a4b7cea601b:0xb7e9b06a8192871d!8m2!3d10.8403381!4d106.5998825!16s%2Fg%2F11ggshtk62!19sChIJG2DqfEsqdTERHYeSgWqw6bc?authuser=0&hl=vi&rclk=1",
+    "id": "0039",
+    "name": "Cơm Tấm Nghĩa",
+    "address": "15/3 ấp Trung Lân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8403381,
+    "lng": 106.5998825,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Cơm Tấm Nghĩa là một quán cơm Việt Nam bình dân, mang đến trải nghiệm ẩm thực quen thuộc. Quán nổi bật với các món cơm tấm truyền thống, đặc biệt là sườn và chả được chế biến tỉ mỉ. Hương vị đậm đà, cân bằng giữa ngọt thịt và gia vị, phù hợp cho những bữa ăn nhanh nhẹn hoặc khi muốn thưởng thức một phần cơm tấm đầy đủ dinh dưỡng. Không gian quán đơn giản, sạch sẽ, tạo cảm giác thoải mái cho thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEP8pJ_4vyBREpDVKGtA_pUf_EpybecdYDXxr8bWwL5IQ1YEEcAkZaJOTRLFOcmJQgMeA2EYS723VuFn9skW-y8EsNFliWjzQ9plZ_aenjpc8ejU4tMYwfNZMB8aOJmksxUHGA=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Ph%E1%BB%9F+%C3%99/data=!4m7!3m6!1s0x31752a706513989d:0x2506824d2145d6e9!8m2!3d10.8734722!4d106.5946469!16s%2Fg%2F11bccm07f0!19sChIJnZgTZXAqdTER6dZFIU2CBiU?authuser=0&hl=vi&rclk=1",
+    "id": "0040",
+    "name": "Quán Phở Ù",
+    "address": "QL22/3/ 54 Ấp Đình, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8734722,
+    "lng": 106.5946469,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng"
+    ],
+    "semantic_text": "Quán Phở Ù là một địa điểm quen thuộc với những tín đồ phở tại khu vực này. Không gian quán đơn giản, thanh lịch, phù hợp để thưởng thức tô phở thơm ngon và đậm đà. Đặc biệt, các tô phở được phục vụ lớn, đáp ứng tốt nhu cầu của thực khách. Bên cạnh đó, bò kho và bún bò cũng là những lựa chọn hấp dẫn, mang đến hương vị truyền thống Việt Nam. Với giá cả phải chăng, quán là một điểm dừng chân lý tưởng cho bữa trưa hoặc tối.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH8l7fv-pP6HG7ouF30EoOCQrqMdGtwEOk4sxAXoAR1FD9Y2xs5RneoNburrASKPwkFtguwW2AsBN26SSgoZfA5ATC1ZFCCHzxhaLj7gdmnl60o7VU-4uI9oIm3X1VPj3g_q4MU=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937970301",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+G%C3%A0+H%E1%BB%93ng+Ph%C3%BAc/data=!4m7!3m6!1s0x3174d585e26a4dad:0xfc26e8b4a7af760b!8m2!3d10.8878249!4d106.5927448!16s%2Fg%2F11y5qc8bkt!19sChIJrU1q4oXVdDERC3avp7ToJvw?authuser=0&hl=vi&rclk=1",
+    "id": "0041",
+    "name": "Cơm Gà Hồng Phúc",
+    "address": "VHQV+43H, Lý Thường Kiệt, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8878249,
+    "lng": 106.5927448,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [],
+    "semantic_text": "Cơm Gà Hồng Phúc là một quán cơm Việt Nam bình dân, mang đến hương vị truyền thống với những món ăn được chế biến từ gà tươi ngon và gạo chất lượng. Các bát cơm thường có gà luộc hoặc gà kho, kèm theo các món phụ như rau muống xào, đậu đỗ xào và canh chua thanh mát. Không gian quán khá đơn giản, phù hợp cho bữa trưa hoặc tối cùng gia đình và bạn bè. Quán nằm vị trí dễ tìm, nhân viên và chủ luôn niềm nở.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG8I2O9EgPZE9NtH-2VBJwEXm51FO9zW2_RL5kqUIML4fx8oC7Ql2rOGqdWugi8XsstNwTrRJT_crEAyKoSd8xw-k2QalAh073jNctqngXVoxjQSt0i4_kejpwDAE1BGosF3_Y7=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%83n+B%E1%BA%A3y+T%C3%A0i/data=!4m7!3m6!1s0x31752b2149ac19cf:0x450b540712071bb0!8m2!3d10.876201!4d106.606041!16s%2Fg%2F11gjw1d3jp!19sChIJzxmsSSErdTERsBsHEgdUC0U?authuser=0&hl=vi&rclk=1",
+    "id": "0042",
+    "name": "Quán ăn Bảy Tài",
+    "address": "VJG4+FCM, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.876201,
+    "lng": 106.606041,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ăn Bảy Tài là một lựa chọn quen thuộc cho những bữa cơm gia đình. Không gian quán ấm cúng, phù hợp để tụ tập bạn bè hoặc thưởng thức các món ăn truyền thống Việt Nam. Thực khách đánh giá cao sự bình dân và hương vị đậm đà của các món ăn được chế biến với nguyên liệu tươi ngon. Đặc biệt, quán nổi tiếng với lượng khách đông đúc vào cuối tuần, cho thấy đây là một địa điểm đáng tin cậy để trải nghiệm ẩm thực Việt.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHmKApcqVuKKpYFhfzdfmoyf_RL5D0e9deeZP_Jz7ejET_0Q4WP3tewn5gEep9sjU7JRfpYCm6GD2e7P02yoTeB5IVfRoVew2CygAW-Oy4csJNK5iXNpxty0p1InT5FJCMGJ-WJALPJ0lpo=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0775153656",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+H%C6%AFNG+PH%C3%81T+-+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b709af98b6d:0xc0bfa0b0501d0ed9!8m2!3d10.8770379!4d106.6104869!16s%2Fg%2F11vj3xd7rc!19sChIJbYv5mnArdTER2Q4dULCgv8A?authuser=0&hl=vi&rclk=1",
+    "id": "0043",
+    "name": "Nhà Hàng HƯNG PHÁT - Hóc Môn",
+    "address": "219 Đ. Tô Ký, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8770379,
+    "lng": 106.6104869,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà Hàng HƯNG PHÁT - Hóc Môn là một quán ăn Việt Nam quen thuộc với hương vị truyền thống. Các món ăn tại đây tập trung vào sự cân bằng giữa các nguyên liệu tươi ngon và cách chế biến giản dị. Không gian quán ấm cúng, phù hợp cho bữa cơm gia đình hoặc tụ tập bạn bè. Đặc biệt, nhân viên luôn niềm nở, sẵn sàng tư vấn và phục vụ khách hàng một cách chu đáo như lời review đã ghi nhận. Quán sẽ là lựa chọn đáng tin cậy khi bạn muốn thưởng thức những món ăn Việt Nam đích thực.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGyMU97Ds2xl9Mjd8aDeALP6DRLeH4yRgwJMrate8LczYLyqtRS3_KVzDDdi6bam9wFc_arv-BNeOszO5BT_pBAVN_buiO2418FhMZgRl1k9tWmnYqOCEoANayDEfc2paFsv7iB=w92-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0769611786",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+C%C6%A1m+Ba+Ri/data=!4m7!3m6!1s0x3174d58f01a40725:0x646ff53168cc1859!8m2!3d10.890017!4d106.5965045!16s%2Fg%2F11k4k3pqbw!19sChIJJQekAY_VdDERWRjMaDH1b2Q?authuser=0&hl=vi&rclk=1",
+    "id": "0044",
+    "name": "Tiệm Cơm Ba Ri",
+    "address": "VHRW+2J2, Trưng Nữ Vương, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.890017,
+    "lng": 106.5965045,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 2.9,
+    "meals": [],
+    "semantic_text": "Tiệm Cơm Ba Ri là một quán cơm Việt quen thuộc với hương vị truyền thống. Các món cơm được chế biến tinh tế, tập trung vào sự cân bằng giữa các nguyên liệu tươi ngon và cách nấu ăn gia truyền. Đặc biệt, gạo thơm ngon kết hợp cùng thịt kho tàu đậm đà là điểm nhấn đáng nhớ. Không gian quán ấm cúng, phù hợp cho bữa trưa hoặc tối với bạn bè và gia đình. Tuy nhiên, cần lưu ý đến vấn đề nướng thịt khói để điều chỉnh lượng khói trong quá trình chế biến.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFBCyy4jiTp_XES_E8SFfYfr4-q-G2mIfUoUwNyDz9IwjyNxR8PyLLTgRtLkeT4FKmrOeVNvVpwY5iN7YEoNxrvwxwYH-zYTv7f7TCg8nFZ4_UZ0k_8Y-VsLNrYNDxA8f7LVe9qSA=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Th%E1%BB%8D+K%C3%BD+M%E1%BB%B3+Gia/data=!4m7!3m6!1s0x3174d5d1962ac5e1:0x12bcd6f4435a2bce!8m2!3d10.8924223!4d106.5889382!16s%2Fg%2F11pp9hs5l6!19sChIJ4cUqltHVdDERzitaQ_TWvBI?authuser=0&hl=vi&rclk=1",
+    "id": "0045",
+    "name": "Thọ Ký Mỳ Gia",
+    "address": "127/1a Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8924223,
+    "lng": 106.5889382,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Thọ Ký Mỳ Gia là một quán ăn Việt Nam bình dân, mang đến những món ăn truyền thống với hương vị giản dị và tinh tế. Các món mì được chế biến với nước dùng thanh ngọt, kết hợp cùng các loại rau thơm tươi ngon. Không gian quán ấm cúng, phù hợp cho bữa ăn gia đình hoặc bạn bè. Sự hài lòng của khách hàng về chất lượng món ăn và thái độ phục vụ nhiệt tình là điểm cộng lớn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHdEug8NOunD5hmS4Lc7DL4xq9j8COaCWEoCTpfNIv31m40k04jWyewLlo80Xzb3ZDMeYzOkRcRxFLIMXGLmyTIoOgpuBOqaHrhvvm6EvnrHbR6QvQ-TmNWLK6-r28mBCgclYYF=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937921714",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C6%A1m+D%C3%AC+B%E1%BA%A3y/data=!4m7!3m6!1s0x3174d57b412e0781:0xe80eec6f9c498a!8m2!3d10.8877349!4d106.5996122!16s%2Fg%2F11hhn6kx54!19sChIJgQcuQXvVdDERikmcb-wO6AA?authuser=0&hl=vi&rclk=1",
+    "id": "0046",
+    "name": "Quán Cơm Dì Bảy",
+    "address": "61 Đ. Quang Trung, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8877349,
+    "lng": 106.5996122,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Cơm Dì Bảy là một lựa chọn đơn giản cho bữa trưa hoặc tối. Không gian quán mang phong cách truyền thống Việt Nam với những chiếc bàn gỗ nhỏ và ánh sáng dịu nhẹ. Các món cơm được chế biến với hương vị đặc trưng, đồ ăn nêm nếm hơi ngọt, phù hợp với khẩu vị quen thuộc của nhiều người. Giá cả phải chăng là một điểm cộng lớn, khiến quán trở nên hấp dẫn hơn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFg4MRQfuKF94fuiGE5h1UnjsV77meqfXGJFWzwQ0NVyIw6_0tGh00uQYP20f79mtdHsDcMwYV9Y9CKDqIJYiaI1UAGW8X23oea765UlDXjsj-CXSUKgV43uNgfrct1nRvfqFQ=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02837103794",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/T%C6%AFNG+B%E1%BB%AANG+QU%C3%81N/data=!4m7!3m6!1s0x31752a71c1f1d86d:0x5a9f96c38d8b4fe7!8m2!3d10.8714982!4d106.5985266!16s%2Fg%2F11c6s3r24c!19sChIJbdjxwXEqdTER50-LjcOWn1o?authuser=0&hl=vi&rclk=1",
+    "id": "0047",
+    "name": "TƯNG BỪNG QUÁN",
+    "address": "QL 22/Đ. Song Hành/27/6 Tân Xuân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8714982,
+    "lng": 106.5985266,
+    "avg_price": 150500.0,
+    "shu": 3,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tưng Bừng Quán là một quán ăn Việt Nam ấm cúng, mang đến trải nghiệm ẩm thực gần gũi với hương vị truyền thống. Thực khách có thể thưởng thức các món ăn được chế biến từ nguyên liệu tươi ngon, đảm bảo sự tinh tế trong từng bát đĩa. Không gian quán rộng rãi, thiết kế đơn giản tạo cảm giác thoải mái, phù hợp cho cả gia đình và bạn bè. Đặc biệt, việc kết hợp với lời nhận xét \"Món ăn ngon nha, nhiều nữa.\" thể hiện rõ mong muốn của nhà hàng về một trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHv9I7fsrh5YDgQBwIXEiKwxVmemLsyujvXv4vTIMAuFtUSFFs8Y2DxNKDNf9WAKRZ_Vg4fBHXIhtJ5XWUJ3S7hXEYXC_oEvxFIS-K6K9KVZPJJOIW7FpZpQm65Buco6sr0g0ce=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909559582",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+T%E1%BA%A5m+Nam+Th%C3%B4ng%7C+C%C6%A1m+T%E1%BA%A5m+Ngon+H%C3%B3c+M%C3%B4n+%7C+C%C6%A1m+T%E1%BA%A5m+B%C3%ACnh+D%C3%A2n+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b0da3c97efb:0x2cdd7249eba07d3!8m2!3d10.862568!4d106.587727!16s%2Fg%2F11shsvjyg0!19sChIJ-37Jow0rdTER0we6niTXzQI?authuser=0&hl=vi&rclk=1",
+    "id": "0048",
+    "name": "Cơm Tấm Nam Thông| Cơm Tấm Ngon Hóc Môn | Cơm Tấm Bình Dân Hóc Môn",
+    "address": "1F Khu Nhà Ở Nam Thông, Xuân Thới Đông 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.862568,
+    "lng": 106.587727,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Cơm Tấm Nam Thông mang đến trải nghiệm ẩm thực Việt Nam gần gũi với hương vị miền Tây sông nước. Các món cơm tấm được chế biến đơn giản, tập trung vào nguyên liệu tươi ngon và cách nấu truyền thống. Không gian quán bình dân, phù hợp cho những bữa ăn nhanh chóng hoặc tụ tập bạn bè. Giá cả phải chăng là một điểm cộng lớn, giúp thực khách có thể thưởng thức ẩm thực chất lượng mà không quá 부담. Sự thân thiện của chủ quán cũng góp phần làm tăng thêm sự ấm cúng.",
+    "image_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=0ZIQY9vAzcLg8IfSm4cXmA&cb_client=search.gws-prod.gps&w=80&h=92&yaw=171.90518&pitch=0&thumbfov=100",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%83n+Nguy%E1%BB%85n+K%C3%BD/data=!4m7!3m6!1s0x31752a0bc3782d15:0xed6d109f62c4220!8m2!3d10.8773945!4d106.610723!16s%2Fg%2F11bw5t6nw2!19sChIJFS14wwsqdTERIEIs9gnR1g4?authuser=0&hl=vi&rclk=1",
+    "id": "0049",
+    "name": "Quán ăn Nguyễn Ký",
+    "address": "VJG6+X75, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8773945,
+    "lng": 106.610723,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán ăn Nguyễn Ký là một lựa chọn quen thuộc với thực khách địa phương. Không gian quán mang phong cách Việt Nam truyền thống, ấm cúng và bình dân. Các món ăn tại đây tập trung vào hương vị tự nhiên của nguyên liệu, cùng với sự hỗ trợ của nước tương, tương ớt, tỏi ngâm và dưa leo tươi mát, tạo nên trải nghiệm ẩm thực đa dạng. Đặc biệt, việc có đầy đủ các loại gia vị kèm theo giúp khách hàng tùy chỉnh khẩu vị theo sở thích cá nhân. Đây là nơi lý tưởng để thưởng thức những món ăn Việt Nam quen thuộc.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEY0JlBG1oN_1-Zr_evuMKVSQDeYEOlDTZuBCNXbWmZmJHz_v1YzC2xV3kXZ8fx_DS7LaAHnZXDsfUyDqnIiEVZAkmwIUQ_WO6pOEkwAynRGPn2-QtUye6Q7c5N1pgObQG6Ct3EOg=w184-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0826789717",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ch%E1%BA%B3ng+d%E1%BB%ABng+n%C6%B0%E1%BB%9Bng+h%E1%BA%BBm/data=!4m7!3m6!1s0x3174d58df0b24b53:0xa474ecf5254b854b!8m2!3d10.8867404!4d106.5915795!16s%2Fg%2F11kpst0tr7!19sChIJU0uy8I3VdDERS4VLJfXsdKQ?authuser=0&hl=vi&rclk=1",
+    "id": "0050",
+    "name": "Chẳng dừng nướng hẻm",
+    "address": "VHPR+MJW, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8867404,
+    "lng": 106.5915795,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [],
+    "semantic_text": "Quán 'Chẳng dừng nướng hẻm' là một lựa chọn phù hợp cho những ai thích hương vị ẩm thực Việt Nam truyền thống. Các món thịt nướng được chế biến với cách tẩm ướp vừa miệng, không quá đậm đà nhưng vẫn đủ để làm hài lòng khẩu vị. Không gian quán mang phong cách bình dân, ấm cúng, tạo cảm giác gần gũi và thân thiện. Với hương vị quen thuộc này, quán sẽ là nơi dừng chân lý tưởng cho những bữa ăn đơn giản nhưng đầy chất lượng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGQL79m0oW24_L-_tKgSV72K5jT9bLiVOUyr_F7SAPoF3vBuekv81MHGw-bhVITnoERmhfDy9Aa5lPFU7mLL5BvfEWC-XrqmY6dAKkiU0xcvk7RFY0wS5vnuowACV_pGDE1nxKsNA=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0967206682",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%82n+V%E1%BA%B7t+Kim+Tuy%E1%BB%81n+Song+H%C3%A0nh+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b8e013e0ec1:0x595b9826e1f80fb4!8m2!3d10.8730999!4d106.5973198!16s%2Fg%2F11h1yh0qqp!19sChIJwQ4-AY4rdTERtA_44SaYW1k?authuser=0&hl=vi&rclk=1",
+    "id": "0051",
+    "name": "Ăn Vặt Kim Tuyền Song Hành Hóc Môn",
+    "address": "Đ. Song Hành/2/133E Ấp Đình, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8730999,
+    "lng": 106.5973198,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Vặt Kim Tuyền Song Hành Hóc Môn mang đến những món ăn quen thuộc của ẩm thực đường phố miền Tây. Hương vị truyền thống được thể hiện qua các món nem, bánh xèo và chè. Không gian quán tuy đơn giản nhưng vẫn đảm bảo sự thoải mái cho khách hàng. Điểm cộng là đa dạng lựa chọn để khám phá. Tuy nhiên, việc bố trí chỗ ngồi có thể cần được tối ưu hơn nữa.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGNH1G_TvyjFxRplPAFb3-6sDKHTJIcdnFvr7-TuWMUSpRxvbzDB1thZsOR4iuLVpS1oaEVhyoaeNrz69ySSnh8TlfHLdBXTadNzm9tXEppmKP4RIyinWLaZIZCLEyab46IQe2rmA=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0931452063",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+t%E1%BA%A5m+Th%E1%BA%A3o/data=!4m7!3m6!1s0x3174d5a86ac8e261:0xea0fd524fa045b93!8m2!3d10.8846255!4d106.5983749!16s%2Fg%2F11g3y0zy1m!19sChIJYeLIaqjVdDERk1sE-iTVD-o?authuser=0&hl=vi&rclk=1",
+    "id": "0052",
+    "name": "Cơm tấm Thảo",
+    "address": "21 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8846255,
+    "lng": 106.5983749,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Cơm tấm Thảo là một quán ăn Việt quen thuộc, nổi tiếng với hương vị cơm tấm truyền thống. Cơm dẻo thơm hòa quyện cùng nước mắm pha đậm đà, tạo nên sự cân bằng hoàn hảo. Điểm nhấn của món ăn chính là các loại đồ chua tươi mát, góp phần làm tăng thêm vị ngon và kích thích khẩu vị. Không gian quán đơn giản, ấm cúng, phù hợp cho bữa trưa hoặc tối với gia đình và bạn bè. 'Từ cơm , nước mắm cho đến đồ chua gì cũng ngon.' thể hiện rõ nét đặc trưng của món ăn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGqwVHY34_9769yOHMm7okg80YYXB35YSjIRf3UPz0rEtDj5uuSXV7nLXCBWEnkS_y3CQpa52er0FZaoWDY4yivuscBLTsuOn_s3mtfelJtuXFIwtMdZX-gok0dgi4d9CInnt6j=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+t%E1%BA%A5m+%C4%91%C3%AAm/data=!4m7!3m6!1s0x3174d598b14e0e6d:0x725309c9350b8bf6!8m2!3d10.8901251!4d106.5949734!16s%2Fg%2F11jp012p0g!19sChIJbQ5OsZjVdDER9osLNckJU3I?authuser=0&hl=vi&rclk=1",
+    "id": "0053",
+    "name": "Cơm tấm đêm",
+    "address": "33 Đ. Liên Xã Thị Trấn-Tân Hiệp, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8901251,
+    "lng": 106.5949734,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm tấm đêm là một quán ăn Việt Nam bình dân, phù hợp cho những bữa tối nhanh nhẹn. Cơm được nấu đúng vị truyền thống, dẻo thơm và thấm đều nước mắm pha vừa miệng. Điểm nhấn của món ăn là sườn nướng mềm ngọt, hòa quyện cùng các loại bì, chả đậm đà. Không gian quán đơn giản, sạch sẽ, mang đến sự thoải mái cho thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGC5fFeAbVJTXtOIZvtMmdHM-LKIY3wadvwlLtk1a3SYMV-RVtEB-KJWIVV9KLRfeF1yBxhETUW2g4Wka2HGnsQgc2rwt2coLneHYdwQDjuRbkGx1vPkOm1kTxdvZaYsEGuWu7d=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+Gia+%C4%90%C3%ACnh+G%C3%A0+N%E1%BA%A5u+Cua+%C4%90%E1%BB%93ng/data=!4m7!3m6!1s0x31752bea140cadf5:0x17392d056d4c4fe6!8m2!3d10.8713559!4d106.5823093!16s%2Fg%2F11fqzn0gsj!19sChIJ9a0MFOordTER5k9MbQUtORc?authuser=0&hl=vi&rclk=1",
+    "id": "0054",
+    "name": "Quán Ăn Gia Đình Gà Nấu Cua Đồng",
+    "address": "Xuân Thới Sơn 20, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8713559,
+    "lng": 106.5823093,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Gia Đình Gà Nấu Cua Đồng là một địa điểm quen thuộc với nhiều gia đình. Không gian quán ấm cúng, mang đậm nét truyền thống Việt Nam. Các món ăn được chế biến với nguyên liệu tươi ngon, hương vị giản dị nhưng vẫn đảm bảo sự cân bằng và hài hòa. Đặc biệt, gà nấu cua là món nổi bật nhất, mang đến trải nghiệm ẩm thực đáng nhớ. \"Đồ ăn ngon, mình đã\"",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEKufZqAl9GEOlGS3YylY70TVe-1eFZQ1ETYUO9RdQl_7D3LoF6QKVC1B17HxsPHmolJvry6xmcsLMpGx-MXFrejNkrwoCkzXaAs_QE7l8ZUO2-lJKpKht44MqZKBX3QAwv2r6I=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0947701018",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/CON+G%C3%80+%C4%90EN/data=!4m7!3m6!1s0x31752b1ab4689b27:0xb3b75a3eee7c536a!8m2!3d10.8693946!4d106.599769!16s%2Fg%2F11j0jf2yjk!19sChIJJ5totBordTERalN87j5at7M?authuser=0&hl=vi&rclk=1",
+    "id": "0055",
+    "name": "CON GÀ ĐEN",
+    "address": "17/3C Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8693946,
+    "lng": 106.599769,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán gà đen mang đến trải nghiệm ẩm thực Việt Nam truyền thống với các món gà được chế biến đa dạng. Hương vị chủ đạo tập trung vào sự cân bằng giữa ngọt và bùi của thịt gà, cùng với gia vị tinh tế. Không gian quán ấm cúng, phù hợp cho bữa ăn gia đình hoặc bạn bè. Mặc dù đồ ăn ngon nhưng có phần hơi đơn giản, cần thêm chút sáng tạo để tăng thêm điểm nhấn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGL9IMv8NFdLnmGv04p7q8IfpbcH-nrVVP2vi4JrzHybfQ4dh_qr2_zDOatz3Tm6M2HoxjTHAZah9Ri5m7B_ak3dCpBt7SHICqG4pcahz9pZiSiAXsjeQiH5Itc9UOg8QnVwSoA=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0798598668",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/G%E1%BB%8Fi+v%E1%BB%8Bt+Kh%C3%A1nh+Vy/data=!4m7!3m6!1s0x3174d50016f7e621:0x3383526fd3a5d346!8m2!3d10.8847908!4d106.5948824!16s%2Fg%2F11yzm6czpx!19sChIJIeb3FgDVdDERRtOl029SgzM?authuser=0&hl=vi&rclk=1",
+    "id": "0056",
+    "name": "Gỏi vịt Khánh Vy",
+    "address": "22 Bà Triệu, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8847908,
+    "lng": 106.5948824,
+    "avg_price": 250000.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Gỏi vịt Khánh Vy là một quán Việt nhỏ xinh, nổi bật với các món gỏi tươi ngon. Với phong cách gỏi bóp truyền thống, quán sử dụng nhiều rau xanh đa dạng, mang lại hương vị thanh mát và không bị ngán. Món gỏi được chế biến cầu thận, cân bằng giữa vị ngọt tự nhiên của thịt vịt và vị chua thanh của giấm. Không gian quán ấm cúng, phù hợp để thưởng thức các món ăn này cùng bạn bè hoặc gia đình. Sự kết hợp hài hòa này làm cho Gỏi vịt Khánh Vy trở thành một lựa chọn hấp dẫn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEX7bLVaItupLmWW6hO7OtxIX9pTcmB12CN1uTmrG6liTNxnq4G_q-_lQ5OUYug0VYw7sNNvdUEei_vy3805dWuWJla7bbkRoQBvZMGAkSbp1yycTMUh25cSDzAXmwXBD_IJgLsMVSUx5QD=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0947677687",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+V%E1%BB%8Dng+C%C3%A1c/data=!4m7!3m6!1s0x3174d57fb47d6211:0x380b7faa5722aae6!8m2!3d10.8842043!4d106.5775274!16s%2Fg%2F11btrqvqt0!19sChIJEWJ9tH_VdDER5qoiV6p_Czg?authuser=0&hl=vi&rclk=1",
+    "id": "0057",
+    "name": "Quán Ăn Vọng Các",
+    "address": "VHMH+M2J, Nguyễn Thị Đành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8842043,
+    "lng": 106.5775274,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Ăn Vọng Các hân hạnh được đón tiếp quý khách với không gian ấm cúng, thanh lịch. Thực đơn đa dạng các món ăn truyền thống Việt Nam, mang đến trải nghiệm ẩm thực gần gũi và quen thuộc. Hương vị tinh tế của từng món ăn được chế biến tỉ mỉ, phù hợp với khẩu vị của nhiều người. Quán tuong đối, nơi quý khách có thể thư giãn và tận hưởng những khoảnh khắc bình yên bên gia đình và bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsb2muJOjLozTdx6QgWqM4ZBUZoGbAbHEhSk36aS9FMswA4qUqi5JeaWvACCxeu9dx-r_PSp1PW1sJ0LMpHwYg8yPFdjd3KCKaGpi5hA4LPAVb7qRdSpXu11i5t9TO3xZ_7nM=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933592677",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ch%C3%A1o+b%E1%BA%A7u+C%C3%B4+Ba+N%E1%BB%AF/data=!4m7!3m6!1s0x3174d5315bbfbc8b:0x7379780fde920272!8m2!3d10.9049762!4d106.6163891!16s%2Fg%2F11ljnv0t0v!19sChIJi7y_WzHVdDERcgKS3g94eXM?authuser=0&hl=vi&rclk=1",
+    "id": "0058",
+    "name": "Cháo bầu Cô Ba Nữ",
+    "address": "Đường Trung Đông 7, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9049762,
+    "lng": 106.6163891,
+    "avg_price": 300000.0,
+    "shu": 1,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cháo Bầu Cô Ba Nữ là một địa điểm quen thuộc với những tín đồ yêu thích hương vị thanh đạm của cháo bầu. Không gian quán mang đậm nét truyền thống Việt Nam với cách bày trí đơn giản, ấm cúng. Món cháo bầu được chế biến theo công thức gia truyền, tập trung vào sự tinh tế trong từng nguyên liệu và cách nấu chậm để giữ trọn vẹn hương vị tự nhiên. Điểm đặc biệt là sự thân thiện của nhân viên, tạo cảm giác thoải mái cho thực khách. Kết hợp với đánh giá \"Đồ ăn ngon, lên món nhanh, nhiệt tình, vui vẻ, giá bình dân\" thì đây là một lựa chọn lý tưởng cho bữa trưa hoặc tối.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-tXunD6VJgNVNIxh3Xlpl7Cvqmr1eg73FCHWMxO67xm7jlevgXotRsI2Bsjupgp68IaeVOvVneLhV5JL-qN2S-SwvHirL0ZNURCGxg25hK5wxP9pDeujanGxlbShqHy0GzioE=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933686468",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+chi%C3%AAn+Anh+K%C3%BD/data=!4m7!3m6!1s0x3174d5aa26fd2633:0x6b3489baa672a55b!8m2!3d10.8893308!4d106.5993735!16s%2Fg%2F11r1vqkr42!19sChIJMyb9JqrVdDERW6VyprqJNGs?authuser=0&hl=vi&rclk=1",
+    "id": "0059",
+    "name": "Cơm chiên Anh Ký",
+    "address": "VHQX+PPQ, Trần Khắc Chân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8893308,
+    "lng": 106.5993735,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm chiên Anh Ký là một quán cơm Việt quen thuộc với nhiều người. Không gian quán đơn giản, thanh lịch, mang đến cảm giác thoải mái khi thưởng thức. Cơm chiên ở đây được chế biến với nguyên liệu tươi ngon, hương vị vừa đủ để làm hài lòng khẩu vị của cả gia đình. Đặc biệt, món ăn này phù hợp để tận hưởng khi Ăn tại chỗ hoặc Mua hàng ngay trên xe Giao hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH7NdVDwEr1iKhXrtwgQA2Jh5__eHnuUtJCQ_3dj69N-jxwlRnZ9FqHANRnDmeDHN-MguGxSOw0bqmHreIbqe77Zfl9KcxJ-jPjrVwWK9Y6eVmRh6Al9lPQfev0NcNL5TK2mBDh=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938121403",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+t%E1%BA%A5m+126+B%C3%A0+%C4%90i%E1%BB%83m/data=!4m7!3m6!1s0x31752b0b6c40c597:0x6a698e6b8b9693b0!8m2!3d10.8423505!4d106.599978!16s%2Fg%2F11h__hgy1y!19sChIJl8VAbAsrdTERsJOWi2uOaWo?authuser=0&hl=vi&rclk=1",
+    "id": "0060",
+    "name": "Cơm tấm 126 Bà Điểm",
+    "address": "RHRX+WXX, Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8423505,
+    "lng": 106.599978,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "Sáng"
+    ],
+    "semantic_text": "Cơm tấm 126 Bà Điểm là một quán ăn bình dân với hương vị truyền thống. Cơm trắng dẻo được kết hợp hài hòa cùng thịt móng giò mềm, bì lợn thơm và nước sốt đậm đà. Không gian quán khá đơn giản, phù hợp để thưởng thức bữa trưa hoặc tối nhanh nhẹn. Đặc biệt, phần chả cốm thêm vào làm tăng thêm vị béo ngậy cho món ăn. Cơm ở đây thì cũng ổn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEI1Pemuh8BNUpvWldvtkTyBaqPpFicVSrR6jbvb5NPorBIifbLZRVjlWret8bbX8JqC3a3uerVB_g-jfs17uw_0coUOv1sJ_QIzoPBGrQpeT_V4j32s768E092jOnMH5k2Iwez=w182-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%E1%BB%91c+168/data=!4m7!3m6!1s0x3174d526a582c6e1:0x60555dfa06bf8fff!8m2!3d10.889689!4d106.587999!16s%2Fg%2F11fq8s8r1b!19sChIJ4caCpSbVdDER_4-_BvpdVWA?authuser=0&hl=vi&rclk=1",
+    "id": "0061",
+    "name": "Quán ốc 168",
+    "address": "77/3c Tổ 4 KP4, Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.889689,
+    "lng": 106.587999,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.6,
+    "meals": [],
+    "semantic_text": "Quán ốc 168 là một quán ăn Việt Nam bình dân với hương vị truyền thống. Các món ăn tại đây tập trung vào sự thanh đạm và tinh tế trong cách chế biến, sử dụng nhiều nguyên liệu tươi ngon địa phương. Không gian quán khá đơn giản, phù hợp cho những bữa ăn nhanh hoặc tụ tập bạn bè. Đặc biệt, quán được đánh giá cao về mức giá phải chăng, mang lại trải nghiệm ẩm thực chất lượng với số tiền không quá lớn. \"Quán ngon còn rẻ đồ\"",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFg5-0019xMvONifzBj6hRBcy43r0MORtVN4P9HKM-mQnpC7Cv3qH2MWupz6LkeihJFLZ4WOXku1HlU9m1nZJGtKz1227nbX04r3jLG11cxL0ybqzt0QvqzdVGkO86HFFT4rdCr=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0901194168",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/QU%C3%81N+G%E1%BB%8EI+V%E1%BB%8AT+C%C3%94+L%E1%BB%86/data=!4m7!3m6!1s0x31752a49499b01f5:0x40e48e1f01dfa403!8m2!3d10.8448412!4d106.6000147!16s%2Fg%2F11_tdv24_!19sChIJ9QGbSUkqdTERA6TfAR-O5EA?authuser=0&hl=vi&rclk=1",
+    "id": "0062",
+    "name": "QUÁN GỎI VỊT CÔ LỆ",
+    "address": "56 Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8448412,
+    "lng": 106.6000147,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Gỏi Vịt Cô Lệ hứa hẹn mang đến trải nghiệm ẩm thực Việt Nam thanh mát với gỏi vịt tươi ngon. Món gỏi vịt được chế biến tỉ mỉ, thịt vịt mềm ngọt hòa quyện cùng các loại rau thơm và gia vị cân bằng. Nước dùng trong vắt, thanh lành, có thể là nước dùng từ xương vịt hoặc các loại thảo mộc. Điểm nhấn của quán là món miến gỏi vịt, tạo nên sự kết hợp hài hòa giữa vị béo ngậy của thịt vịt và hương vị tươi mát của miến. Không gian quán được thiết kế đơn giản, phù hợp để thưởng thức các món ăn ngon.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGdyoabCUIhJbZVI_tepUY5uWjESc4Q78dac4-GOlgklPP-Otme7uaO1s9h_n2Q_5xxytFR-FNo2eFL-A8LZuUMB2_qjh3jov5vydx5jiT91uJ9chiU6yOKbu3tblz8cDYluMOR=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0907217215",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+T%E1%BA%A5m+B%C3%B4ng+-+L%C3%AA+Th%E1%BB%8B+H%C3%A0,+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d51293a6997f:0xfbfcfaf62d625eb9!8m2!3d10.8831149!4d106.5985109!16s%2Fg%2F11sst_vy14!19sChIJf5mmkxLVdDERuV5iLfb6_Ps?authuser=0&hl=vi&rclk=1",
+    "id": "0063",
+    "name": "Cơm Tấm Bông - Lê Thị Hà, Hóc Môn",
+    "address": "Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8831149,
+    "lng": 106.5985109,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm Tấm Bông - Lê Thị Hà là một quán cơm tấm bình dân ở Hóc Môn. Không gian quán khá nhỏ nhắn, ấm cúng, phù hợp cho bữa trưa gia đình hoặc bạn bè. Cơm tấm tại đây được phục vụ với phần ăn đầy ắp, đủ để no bụng. Hương vị cơm tấm truyền thống, không quá cầu kỳ nhưng vẫn đảm bảo sự hài hòa giữa cơm và thịt kho tàu mềm tan, rau sống tươi ngon. Mình ghé ăn trưa mà ai cũng no cho phần",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEb1tQDgX4-SKwBOczVKSaXGCkkIzMFH25QW3IJAxdn2bryAhpn9Du-fUuhcxr8na97UTnlEtTTjdcWcUfQ1_bV-72zVYRS_ZyojGsVru5pjCc3cQRh7Wf6B9KwdQ3HWUBkFfdG=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909493777",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C3%A2y+Xo%C3%A0i/data=!4m7!3m6!1s0x31752a73d032962f:0x953c4722182ce9e8!8m2!3d10.8743033!4d106.6004387!16s%2Fg%2F11c1w0qwfz!19sChIJL5Yy0HMqdTER6OksGCJHPJU?authuser=0&hl=vi&rclk=1",
+    "id": "0064",
+    "name": "Quán Cây Xoài",
+    "address": "20/4A Tân Xuân 4, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8743033,
+    "lng": 106.6004387,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cây Xoài là một địa điểm quen thuộc với những món ăn Việt Nam truyền thống. Không gian quán được trang trí đơn giản, ấm cúng, mang đến cảm giác thoải mái cho thực khách. Các món ăn tại đây thường có hương vị thanh đạm, nêm nếm vừa ăn, phù hợp với nhiều khẩu vị khác nhau. Đặc biệt, quán nổi bật với các món ăn quen thuộc và giá cả phải chăng. Đây là một lựa chọn tốt cho những bữa ăn bình dân.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFLlYCfDkRFDH-TLcZ6HTLMEXxPpQyQQjyZOJ5iULD-mmvx-V1FftYhZgKYpIiq-gnInt-1gow0mSx852afnH1x27kHV9c49PMyZI_Ui4IMJLCJ0nwg4LL0rS2AvIZ0B-Ugebkx=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0909471905",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ph%C3%A1+L%E1%BA%A5u+C%C3%B4+Mai/data=!4m7!3m6!1s0x31752a7142fa08c3:0xb9888886dbe1cbc8!8m2!3d10.8755495!4d106.5969591!16s%2Fg%2F11c58tsbw8!19sChIJwwj6QnEqdTERyMvh24aIiLk?authuser=0&hl=vi&rclk=1",
+    "id": "0065",
+    "name": "Phá Lấu Cô Mai",
+    "address": "VHGW+6Q8, Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8755495,
+    "lng": 106.5969591,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Phá Lấu Cô Mai là một quán ăn Việt Nam bình dân với không gian ấm cúng. Các món phá lấu được chế biến theo công thức truyền thống, tập trung vào hương vị đậm đà của thịt và nước dùng. Mặc dù có những đánh giá về đồ ăn ngon nhưng...",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFNy9ODHFOORBuwC20rvRQEKVs5Kg26u726IvlQKz7bOVK2XFEFGSPRKxOKx9Jl4kieRNZgGTvy6n7uwiABnH8hint78SXuCfoAa9zYzx8kzV1sNS9fIHXSWoWpQ7ziIchUXXhkLw=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0833005868",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Pi+Cha+-+Qu%C3%A1n+%C4%83n+Th%C3%A1i/data=!4m7!3m6!1s0x31752b4d5bed2f15:0x9ec9d6194605f680!8m2!3d10.8492191!4d106.6030527!16s%2Fg%2F11shpg1mm9!19sChIJFS_tW00rdTERgPYFRhnWyZ4?authuser=0&hl=vi&rclk=1",
+    "id": "0066",
+    "name": "Pi Cha - Quán ăn Thái",
+    "address": "Đ. Nguyễn Ảnh Thủ/43/2 Hậu Lân 1, ấp Hậu Lân, Bà Điểm, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8492191,
+    "lng": 106.6030527,
+    "avg_price": 150000.0,
+    "shu": 4,
+    "star": 4.9,
+    "meals": [],
+    "semantic_text": "Pi Cha mang đến trải nghiệm ẩm thực Thái Lan gần gũi và tinh tế. Hương vị đậm đà của các món ăn được cân bằng giữa vị chua, ngọt, cay và mặn, đặc trưng cho nền ẩm thực này. Không gian quán được thiết kế ấm cúng, tạo cảm giác thư giãn và thoải mái, phù hợp để thưởng thức những món ăn ngon. Các nguyên liệu tươi mới và cách chế biến tỉ mỉ góp phần làm nên thành công của Pi Cha. Đây là một lựa chọn tuyệt vời cho những ai yêu thích hương vị Thái Lan.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG4-rFRy34171VWYQnU5Qo2qoUbvEcj4cRDzIVn4M7qnknhVyuHpN2aXk1z5lwcYdJomFKUNY4NRUbpOMsRTEJDPGcCYUnd4IVRQIAZpAMmAPU02ioJAvorN3nwaQsPlszo40fVZiNv3RlI=w80-h106-k-no",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0949885088",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Mee+Th%C3%A1i/data=!4m7!3m6!1s0x31752bcb9d972bbf:0xcddf3543e2ff2055!8m2!3d10.8775406!4d106.5940787!16s%2Fg%2F11wh_1mffg!19sChIJvyuXncsrdTERVSD_4kM1380?authuser=0&hl=vi&rclk=1",
+    "id": "0067",
+    "name": "Mee Thái",
+    "address": "520 Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8775406,
+    "lng": 106.5940787,
+    "avg_price": 150000.0,
+    "shu": 6,
+    "star": 4.5,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Mee Thái là một quán ăn Thái nhỏ với hương vị đậm đà, đặc trưng. Các món ăn tại đây mang đến trải nghiệm ẩm thực thú vị, với sự cân bằng giữa các loại gia vị cay nồng và thơm ngon. Không gian quán được trang trí đơn giản, ấm cúng, phù hợp cho bữa ăn thân mật hoặc gặp gỡ bạn bè. Thực khách có thể thưởng thức những món ăn Thái truyền thống với nguyên liệu tươi ngon. Quán bán đồ ăn ngon, đồ thì rất đáng để trải nghiệm.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGRZunD8KKnPKepD1xsxKPP25mH1kk1nrNO5jOyRSWB0QU6S3HWh4xHj1bOUI9zOO2BLyJLX4dVZKSu5_Rx5S9f_TnG2l1M-PzkI34cwLVhPk17RzC1Z7TaGmcp3teRuhdIyqptzb2Nl9Gd=w122-h92-k-no",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0869469832",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Trung+Th%C3%A1i+T%E1%BB%AD/data=!4m7!3m6!1s0x31752b0047b2eabd:0xeeb1b1755ca50631!8m2!3d10.85507!4d106.604!16s%2Fg%2F11xmcsfc7v!19sChIJveqyRwArdTERMQalXHWxse4?authuser=0&hl=vi&rclk=1",
+    "id": "0068",
+    "name": "Quán Trung Thái Tử",
+    "address": "17/8 Ấp Hưng Lân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": null,
+    "lng": null,
+    "avg_price": 250000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Trung Thái Tử là một quán Thái mang đến trải nghiệm ẩm thực nhẹ nhàng và tinh tế. Các món ăn tập trung vào hương vị truyền thống của Thái Lan với sự cân bằng giữa các loại gia vị, đặc biệt chú trọng đến rau củ tươi ngon. Không gian quán được thiết kế ấm cúng, phù hợp để thưởng thức các món ăn này cùng bạn bè hoặc người thân. Hương vị chủ đạo là thơm ngon, không quá nồng và dễ chịu, mang lại cảm giác thư thái sau một ngày dài. Ngoài việc khó tìm đường đến quán thì còn lại mình đánh giá quán rất ok!",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHDOaG67_VyebKnuEi47gXEPk-lhYbiDu25PnBnHSXxPTKoKcE94Ey5zkwSNm1j-IIsGOn6knaGAebmknpx7QgL85_hE6ngqDkPNUCqhho5-nEqGls-3TCu4w7L4jnNoDISEMmPmevxge4=w98-h92-k-no",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0908676740",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/G%E1%BB%8Fi+Th%C3%A1i+Ng%C3%A2n+V%C5%A9/data=!4m7!3m6!1s0x31752b95df0bb159:0x7f31b0771ec741df!8m2!3d10.8694831!4d106.5999448!16s%2Fg%2F11y1c8rgkk!19sChIJWbEL35UrdTER30HHHnewMX8?authuser=0&hl=vi&rclk=1",
+    "id": "0069",
+    "name": "Gỏi Thái Ngân Vũ",
+    "address": "19/7 Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8694831,
+    "lng": 106.5999448,
+    "avg_price": 150500.0,
+    "shu": 4,
+    "star": 4.3,
+    "meals": [],
+    "semantic_text": "Gỏi Thái Ngân Vũ là một quán chuyên về ẩm thực Thái Lan, mang đến hương vị chua ngọt đặc trưng của xứ sở này. Các món gỏi thường có sự cân bằng giữa vị cay nhẹ, vị chua thanh mát và vị ngọt dịu, tạo nên trải nghiệm thú vị cho người thưởng thức. Không gian quán được trang trí đơn giản, ấm cúng, phù hợp để cả gia đình hoặc bạn bè tụ tập. Đặc biệt, khách hàng đánh giá cao về sự tươi ngon của nguyên liệu và cách chế biến tinh tế.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFeBXgJFYPm7AYqDckq9EewkC43MY9lt8ygqEMXuj8IjsD0Dt0Jh6Fl_aw_mhTzFEUbQaef1ffpuX1Mlw8PnCD2_UeD9lp2-ldbWdnPsaEWtjZ4olawML1xHPOAj5h9sIcE8lyH=w122-h92-k-no",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0345299919",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+Th%C3%A1i+Hu%E1%BB%B3nh+Th%E1%BA%A3o/data=!4m7!3m6!1s0x31752b1aca064297:0xc2ce0fa29cb55a4b!8m2!3d10.8786225!4d106.5994108!16s%2Fg%2F11n08ym9w8!19sChIJl0IGyhordTERS1q1nKIPzsI?authuser=0&hl=vi&rclk=1",
+    "id": "0070",
+    "name": "Nhà Hàng Thái Huỳnh Thảo",
+    "address": "45/1A Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8786225,
+    "lng": 106.5994108,
+    "avg_price": 150500.0,
+    "shu": 6,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Nhà Hàng Thái Huỳnh Thảo hứa hẹn một trải nghiệm ẩm thực Thái Lan đậm đà và tinh tế. Quán tập trung vào các món ăn truyền thống với hương vị cay nồng đặc trưng, kết hợp hài hòa giữa vị chua, ngọt, mặn và thơm của các loại thảo mắm. Không gian quán được thiết kế ấm cúng, mang phong cách Thái quen thuộc, tạo cảm giác thư thái cho thực khách. Đặc biệt, việc có cả ",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEqZbh5O2VxZNIEcUu2KcxTueON7895EEcI811FbcGHcjG7HzqM4Q7dJGDsHJ9rhU6WOKXetuONkBcyjVvck0SCORKVz96GJgaQ2bi4xm1zbbTl92h5mKtwjQinuR3G5-enndLYyw=w122-h92-k-no",
+    "type": [
+      "Quán Thái"
+    ],
+    "phone_num": "0927697989",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/KFC/data=!4m7!3m6!1s0x3174d500362caf6d:0xb369a351ae7b1d72!8m2!3d10.8821604!4d106.5988495!16s%2Fg%2F11lnpmfbbw!19sChIJba8sNgDVdDERch17rlGjabM?authuser=0&hl=vi&rclk=1",
+    "id": "0071",
+    "name": "KFC",
+    "address": "296 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8821604,
+    "lng": 106.5988495,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KFC là một lựa chọn quen thuộc với món gà rán chiên giòn đặc trưng. Hương vị gà được đánh giá ở mức vừa phải, không quá nồng hoặc cay, phù hợp với nhiều khẩu vị khác nhau. Không gian quán khá rộng rãi và sạch sẽ, tạo cảm giác thoải mái khi ăn uống. Điểm cộng nữa là nhân viên phục vụ nhiệt tình và chu đáo, góp phần làm tăng thêm trải nghiệm của khách hàng. Với những đánh giá này, KFC vẫn là một địa điểm đáng để thưởng thức.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGni3bxuGqrpfgLFQFf5s0SuSkepViqu3BpxGDaaA_E-csh3D4BYfDMcYk2noR6itBY30_fkI7cAQ8tLxg0_yOcenwc9BBzScTbFn_0qfBzle3qzS8rNIYg0UBUQkDXIu123jKvWg=w122-h92-k-no",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/G%C3%A0+R%C3%A1n+Mr+Bin/data=!4m7!3m6!1s0x3174d900430fb671:0x1d182670d74769c1!8m2!3d10.8890122!4d106.7833255!16s%2Fg%2F11x238t5kq!19sChIJcbYPQwDZdDERwWlH13AmGB0?authuser=0&hl=vi&rclk=1",
+    "id": "0072",
+    "name": "Gà Rán Mr Bin",
+    "address": "39/3 Tô Vĩnh Diện, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8890122,
+    "lng": 106.7833255,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gà Rán Mr Bin là một quán đồ ăn nhanh chuyên về gà rán. Món gà rán tại đây có hương vị truyền thống, giòn rụm bên ngoài và thịt gà mềm ngọt bên trong. Không gian quán đơn giản, sạch sẽ, phù hợp để thưởng thức nhanh sau một ngày dài. Sự nhiệt tình của nhân viên cũng góp phần làm tăng thêm trải nghiệm cho thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEjDq946HZMzzyDT4Rzhs9ZFOQ0QnQEcG94p-FXspct3wk6rm-9wrT-EhnLrs7w0G8sOIDssVXs1bY5-ZmwMIWlW4mt8CXiH0Xo1XbdFPQ-QO-UyaO3wB9k9tn4Yavf4Y2-rNVCk2ybETX5=w92-h92-k-no",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0904422125",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Texas+Chicken+Nguy%E1%BB%85n+%E1%BA%A2nh+Th%E1%BB%A7/data=!4m7!3m6!1s0x31752b4c2f556fc9:0x705813b7b060d1a0!8m2!3d10.862335!4d106.6117529!16s%2Fg%2F11t8p057p1!19sChIJyW9VL0wrdTERoNFgsLcTWHA?authuser=0&hl=vi&rclk=1",
+    "id": "0073",
+    "name": "Texas Chicken Nguyễn Ảnh Thủ",
+    "address": "119/2-119/3 Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.862335,
+    "lng": 106.6117529,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Texas Chicken Nguyễn Ảnh Thủ là một quán đồ ăn nhanh chuyên về các món gà chiên. Khách hàng có thể thưởng thức gà chiên giòn nóng, đặc biệt là bánh cuộn gà được trình bày đẹp mắt và ngon miệng. Không gian quán khá đơn giản, phù hợp để nhâm nhi một bữa ăn nhanh giữa công việc hoặc học tập. Hương vị gà ở đây mang đậm chất Mỹ, với độ giòn và thơm ngon được đánh giá cao. Điểm nổi bật nhất là sự kết hợp hài hòa giữa gà chiên giòn và bánh cuộn hấp dẫn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEaFnEFpb2fbSmE4yvTszGhZmQ-l0heqvGZZzNih9Rkr9yt80ANhXn3oakDYBY3zKWnOBNTN6OxpzhjzMfDQAHA0CdquxWEnbaE_-mDeJAvB42blCvdb_WZO-lgrxzp6RCZN9PCpaU8uao=w122-h92-k-no",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "02866588345",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Coffee+2k5+%7C+Coffee+view+%C4%91%E1%BA%B9p+h%C3%B3c+m%C3%B4n/data=!4m7!3m6!1s0x3174d50031658a95:0xaecaf3f9b97f5dcf!8m2!3d10.887364!4d106.5879198!16s%2Fg%2F11y6khp1k0!19sChIJlYplMQDVdDERz11_ufnzyq4?authuser=0&hl=vi&rclk=1",
+    "id": "0074",
+    "name": "Coffee 2k5 | Coffee view đẹp hóc môn",
+    "address": "718 Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.887364,
+    "lng": 106.5879198,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Coffee 2k5 là một quán cà phê nhỏ nhắn tại Hóc Môn, mang đến không gian yên bình với tầm view đẹp. Quán nổi bật với các loại đồ uống cơ bản như cà phê sữa đá, cà phê đen, và có thể thêm vào một vài món bánh ngọt đơn giản để tăng trải nghiệm. Hương vị chủ yếu tập trung vào sự cân bằng giữa vị đắng của cà phê và độ ngọt nhẹ của sữa, phù hợp cho những buổi chiều thư giãn. Nhân viên quán được mô tả nhiệt tình và dễ thương, góp phần làm ấm không khí tại địa điểm này.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFRGXx5joDLNs0Jwx5q3ZZTtxYngFVtqPniUOph6DLR-P8bLYOVVi4tKY0rD_4lX2NJBwM_nAfJkFyK-fuTSXx2ZJDrSlAc8A8HTuMVI1t1MVTw57z1LmwXy6FheQBN6IDS8C52T92pq4p-=w163-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0908518050",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+Ph%E1%BB%91+X%C6%B0a/data=!4m7!3m6!1s0x31752a48c7371b07:0xb875b5c7faadc474!8m2!3d10.8613408!4d106.6108397!16s%2Fg%2F1tyytm4v!19sChIJBxs3x0gqdTERdMSt-se1dbg?authuser=0&hl=vi&rclk=1",
+    "id": "0075",
+    "name": "Cafe Phố Xưa",
+    "address": "126 8 Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8613408,
+    "lng": 106.6108397,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Phố Xưa là một không gian yên bình, lý tưởng để thưởng thức những tách cà phê sữa. Hương vị cà phê sữa được pha chế nhẹ nhàng, không quá ngọt, phù hợp với nhiều đối tượng khách hàng. Quán mang đến cảm giác thư thái với không gian thoáng mát, thiết kế mang đậm nét truyền thống Việt Nam. Sự kết hợp giữa hương vị cà phê và bầu không khí ấm cúng tạo nên một trải nghiệm độc đáo. Điểm cộng cho dịch vụ giữ xe miễn phí.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHGBz7gf5_-W0--ptZxz7ABPpEIiFfLqNJ7UL3N5Dy9f2NwkD0mwVPuxOOUcX0lgLDvndo4_8uUv2XqaIWhB0kMg-PViFRSan8BSQkWAOYpSs-QJ25_85M7COE02XUwyU0TFpqy=w138-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "02862534079",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+Ph%C3%AA+Kem+HP+%7C+C%C3%A0+Ph%C3%AA+View+%C4%90%E1%BA%B9p+H%C3%B3c+M%C3%B4n+%7C+Kem+Ngon+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752bd17c6fb23f:0xd006f7b341d322d9!8m2!3d10.8813514!4d106.6083013!16s%2Fg%2F11l2s2hzhg!19sChIJP7JvfNErdTER2SLTQbP3BtA?authuser=0&hl=vi&rclk=1",
+    "id": "0076",
+    "name": "Cà Phê Kem HP | Cà Phê View Đẹp Hóc Môn | Kem Ngon Hóc Môn",
+    "address": "307l Đ. Tô Ký, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8813514,
+    "lng": 106.6083013,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán cà phê mang đến không gian thư giãn với phong cách trang trí nhẹ nhàng, tập trung vào sự tươi mát. Thức uống chủ đạo là các loại cà phê và kem, được đánh giá là có hương vị dịu nhẹ, phù hợp để thưởng thức trong những buổi chiều yên tĩnh. Kem ở đây có độ ngọt vừa phải, kết hợp hài hòa với vị cà phê. Không gian quán cũng khá thoáng đãng, mang đến cảm giác thoải mái cho thực khách. Sự lựa chọn này rất thích hợp cho những ai muốn tìm kiếm một nơi dừng chân thú vị tại Hóc Môn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGELxqAdoB7wUo65rwd7tRWrCJgfcbg11z-4sYlt17HzfArOFo7j1xg1fl_0iSVeYZIHmA9i-2Zz1LC9pISqM4Ha7AcTwHyhBdpqhOUzXFI-736rvo8IOJS3H1zz49y5cW42pfI=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/The+Bis+Coffee/data=!4m7!3m6!1s0x3174d577842ac679:0x29a34c28328bc008!8m2!3d10.8896186!4d106.593216!16s%2Fg%2F11st0pdhwr!19sChIJecYqhHfVdDERCMCLMihMoyk?authuser=0&hl=vi&rclk=1",
+    "id": "0077",
+    "name": "The Bis Coffee",
+    "address": "45/15 Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8896186,
+    "lng": 106.593216,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "The Bis Coffee là một quán cà phê nhỏ nhắn, ấm cúng với không gian được trang trí theo phong cách vintage. Các món đồ uống chủ yếu tập trung vào các loại coffee truyền thống và một vài lựa chọn đặc biệt như latte nghệ tây hoặc mocha sô-côla. Không khí yên tĩnh, phù hợp để đọc sách, làm việc hoặc trò chuyện cùng bạn bè. Đặc biệt, câu chuyện về quán \"quán 10 điểm mà tui phải lòng bạn nữ có hình xăm be bé dth gòi\" gợi thêm sự thú vị và độc đáo cho trải nghiệm của khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGdOF5Io_hYnQGHrUIvMNHaFMUY95rtJqDzAx-pWBnRegfeBsVe2E11NvKRKbtyXOz6-mFnYKDxVHlII0NO_Q2wqNXenbnzyK54_itH21cw3VVQkn1RT8SCMsdLeERE3jMY5Yj_=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0936774498",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+T%C4%A9nh+L%E1%BA%B7ng/data=!4m7!3m6!1s0x31752a0e36431027:0x1eedc676fb81cf9a!8m2!3d10.8713903!4d106.6139063!16s%2Fg%2F1hc2d6jpw!19sChIJJxBDNg4qdTERms-B-3bG7R4?authuser=0&hl=vi&rclk=1",
+    "id": "0078",
+    "name": "Cafe Tĩnh Lặng",
+    "address": "4/4, Đ. Tô Ký, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8713903,
+    "lng": 106.6139063,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Tĩnh Lặng là một quán cà phê nhỏ nhắn với không gian yên bình, thích hợp để thư giãn và tận hưởng tách cà phê. Các món đồ uống được pha chế đơn giản, tập trung vào hương vị truyền thống của cà phê Việt Nam. Không gian quán mang đến cảm giác tĩnh lặng, phù hợp cho những ai muốn tìm kiếm sự thoải mái. Với mức giá phải chăng, đây là một lựa chọn tốt để tạm dừng chân giữa lòng thành phố.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHjJhmv7dlBu3Tzi6uDpfJMdd21lyd4lsqwo6dCm3aDn7IuFtJGJpHr_HzUfLNTG6D96crhMgGn7IV7fWIPcH1-_A-j3x6VBbwOarynSdCp4cWW82pUcE5r6oUv2WUPf6nbarc=w163-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+c%C3%A0+ph%C3%AA+T%C4%A9nh+1/data=!4m7!3m6!1s0x31752b39f542c137:0xdb894c01568d7d5e!8m2!3d10.8635661!4d106.6095305!16s%2Fg%2F11lhfhsxmk!19sChIJN8FC9TkrdTERXn2NVgFMids?authuser=0&hl=vi&rclk=1",
+    "id": "0079",
+    "name": "Tiệm cà phê Tĩnh 1",
+    "address": "45 Đồng Tâm, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8635661,
+    "lng": 106.6095305,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm cà phê Tĩnh 1 là một địa điểm lý tưởng để thư giãn với không gian ấm cúng và yên bình. Thức uống tại đây được pha chế tỉ mỉ, mang lại hương vị cân bằng, phù hợp với nhiều khẩu vị khác nhau. Không gian quán tạo cảm giác thoải mái, thích hợp cho việc trò chuyện hoặc làm việc. Nhân viên luôn niềm nở và sẵn sàng hỗ trợ khách hàng. Sự kết hợp hài hòa này khiến Tiệm cà phê Tĩnh 1 trở thành một lựa chọn đáng cân nhắc.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFiKMLPejg-VzhG78pCMSCPx9irh6IaJoWqQea0U9gOZF6vKQCCYtfdH6K4q0xY-IxDOx1RDc40oCFQiwDl0JuE4yrmuCkIowO7Vem8sFVSlxAz9LSpJKuRNx59xdg08m-DyUY=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0962144868",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/T+%26+H+Coffee+-+Qu%C3%A1n+c%C3%A0+ph%C3%AA+H%C3%B3c+M%C3%B4n,+Coffee+B%C3%A0+%C4%90i%E1%BB%83m/data=!4m7!3m6!1s0x31752bb742132bd5:0x7e0a543c6891a28!8m2!3d10.8566246!4d106.5712011!16s%2Fg%2F11ys5jzsbf!19sChIJ1SsTQrcrdTERKBqJxkOl4Ac?authuser=0&hl=vi&rclk=1",
+    "id": "0080",
+    "name": "T & H Coffee - Quán cà phê Hóc Môn, Coffee Bà Điểm",
+    "address": "Xã, 67/11 Tổ 6 ấp 4, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8566246,
+    "lng": 106.5712011,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "T & H Coffee - Quán cà phê Hóc Môn, Coffee Bà Điểm là một địa điểm lý tưởng để thư giãn với những tách cà phê thơm ngon. Không gian quán được thiết kế nhẹ nhàng, thoáng đãng, phù hợp cho việc trò chuyện hoặc làm việc. Hương vị cà phê tập trung vào sự cân bằng, không quá đậm đà hay ngọt ngào, mang đến trải nghiệm dịu dàng. Sự thân thiện của nhân viên cùng với không khí yên bình tại đây tạo nên một bầu không khí ấm cúng và dễ chịu. Kết hợp với nhận xét \"Quán đẹp ,không gian thoáng mát,nhân viên nhiệt tình dễ thương!\"",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGAWx37qF6Z8mCjh9E4_I6hNpJ2wgFY9m23vNYlFilJA_ijFkj0iShNC9x-r69dbgnqJWiyH7TKqIeNFVKjW2M9XAt4zOwU4DkbgKvfpwZOOGd31ULeeC2EiCVAB019-4SC2Lo08NbZK5jE=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0936363879",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Zen+Coffee+and+Tea+House/data=!4m7!3m6!1s0x3174d5004db8f5b3:0x31c411bb5ad5ae2b!8m2!3d10.8879406!4d106.5997698!16s%2Fg%2F11y8zz4m02!19sChIJs_W4TQDVdDERK67VWrsRxDE?authuser=0&hl=vi&rclk=1",
+    "id": "0081",
+    "name": "Zen Coffee and Tea House",
+    "address": "60 Đ. Quang Trung, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8879406,
+    "lng": 106.5997698,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Zen Coffee and Tea House là một không gian yên bình, phù hợp để thư giãn và thưởng thức tách trà hoặc cà phê. Quán tập trung vào các loại đồ uống truyền thống với hương vị nhẹ nhàng, tinh tế. Không gian được trang trí đơn giản, ấm cúng, tạo cảm giác thoải mái cho khách hàng. Sự kết hợp giữa quán cà phê và quán trà mang đến nhiều lựa chọn thú vị. Nhìn chung, đây là một địa điểm lý tưởng để tận hưởng những khoảnh khắc tĩnh lặng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHVcDfekJNu9dKUSg14WfvKJe8DupQl66t8Xw6BXj0J6f9mIGSTk_7XuE0-mT50xapoWa2pilt_CAbPPmgmEB_hjE6qSWCxPC9diMGz1pCy_Sl-tXv3ysWEroTiz3UH9Vb_qFC0=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0937136144",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/SAPA+COFFEE+24H/data=!4m7!3m6!1s0x3174d5577a9f747d:0xf42dcd29289623e1!8m2!3d10.8862196!4d106.595658!16s%2Fg%2F11sycf_5kj!19sChIJfXSfelfVdDER4SOWKCnNLfQ?authuser=0&hl=vi&rclk=1",
+    "id": "0082",
+    "name": "SAPA COFFEE 24H",
+    "address": "62 Bà Triệu, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8862196,
+    "lng": 106.595658,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.3,
+    "meals": [],
+    "semantic_text": "SAPA COFFEE 24H là một quán cà phê mang đến trải nghiệm thư giãn với không gian rộng rãi, thoáng mát. Quán tập trung vào các loại cà phê và đồ ngọt, phù hợp để thưởng thức trong nhiều giờ của ngày. Hương vị cà phê được pha chế tỉ mỉ, kết hợp cùng những món bánh ngọt thanh nhẹ tạo nên sự cân bằng hoàn hảo. Nhân viên thân thiện luôn sẵn sàng phục vụ khách hàng một cách chu đáo. Không gian quán còn có thể làm nơi lý tưởng để đọc sách hoặc trò chuyện với bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHvEIYvfza4B04SG2VAbKWnQW0I4Inqevn2x4pHh82LAK6NvS_9xpcyRs-i-wFxNbgxmYikAHHZ0Z_ukMUhQz96A88bUIZ0ZIDcQcducfBci3y4yPqnQ_sfZuLBK5aWLM2QnxnFrw=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0981641711",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+Tri+K%E1%BB%B7/data=!4m7!3m6!1s0x31752a77104dbffb:0xeffbe1687d6be220!8m2!3d10.8788319!4d106.5952133!16s%2Fg%2F11y22yyl4!19sChIJ-79NEHcqdTERIOJrfWjh--8?authuser=0&hl=vi&rclk=1",
+    "id": "0083",
+    "name": "Cafe Tri Kỷ",
+    "address": "1/33D, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8788319,
+    "lng": 106.5952133,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Tri Kỷ là một quán cà phê ấm cúng, mang đến không gian thư giãn với nhiều lựa chọn đồ uống. Menu tập trung vào các loại thức uống truyền thống và hiện đại, phù hợp cho mọi sở thích. Không gian quán được trang trí theo phong cách cổ điển, gợi nhớ về những kỷ niệm xưa cũ. Sự thân thiện của nhân viên cùng với hương vị đồ uống nhẹ nhàng là điểm nhấn đặc biệt của địa điểm này. Đây là nơi lý tưởng để bạn dừng chân và tận hưởng một khoảng thời gian yên bình.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEu_Yot06RlNN7_wpUQ0xQiZ1yOnpFPZ_x_1BYDgCCG1fuqnpezN8m1qy1i3-h67Eq-onGgGuSPv6dVV0yJ77BkUkhPHrJEHMdfoRHzRhM5UN5j94YFiFwR5K4ot2Sy9RQ7YZWD=w163-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0909598939",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/V%C6%B0%E1%BB%9DnC%E1%BB%A7aGi%C3%B3/data=!4m7!3m6!1s0x3174d50017fabb39:0x671ed347dadd7ea6!8m2!3d10.894029!4d106.5894197!16s%2Fg%2F11y455ghgj!19sChIJObv6FwDVdDERpn7d2kfTHmc?authuser=0&hl=vi&rclk=1",
+    "id": "0084",
+    "name": "VườnCủaGió",
+    "address": "11 Đ. tân hiệp 46, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.894029,
+    "lng": 106.5894197,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "VườnCủaGió là một quán cà phê nhỏ nhắn, ấm cúng với không gian yên tĩnh. Các món đồ uống tại đây được pha chế tỉ mỉ, mang lại hương vị nhẹ nhàng và thư giãn. Không gian quán trang trí đơn giản nhưng vẫn tạo cảm giác thoải mái, phù hợp để bạn ngồi đọc sách hoặc trò chuyện cùng bạn bè. Sự thân thiện của chị chủ cũng góp phần làm tăng thêm điểm cộng cho quán.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFPFPQpnKMkjE5SQthXzZnDXszemphtlkExFyhT1mPvxG8cVg1wr3UimYbNGDPZgZ3U9JYe0UnTexONPDo14-jrPYwPVD3xJyy_DuNTVu3kB5Zb96LKyP8TAC09Q_cOrAIRZkjpww=w163-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0909309980",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+X%C6%B0a+V%C3%A0+Nay/data=!4m7!3m6!1s0x31752bda79bbb981:0xccf9874b1ffd226c!8m2!3d10.8748473!4d106.5983919!16s%2Fg%2F11j7dz4w48!19sChIJgbm7edordTERbCL9H0uH-cw?authuser=0&hl=vi&rclk=1",
+    "id": "0085",
+    "name": "Cafe Xưa Và Nay",
+    "address": "2 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8748473,
+    "lng": 106.5983919,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Xưa Và Nay là một quán cà phê mang đến không gian yên bình với những nét kiến trúc cổ điển. Các món đồ uống được pha chế tỉ mỉ, tạo nên hương vị nhẹ nhàng, phù hợp để thư giãn hoặc trò chuyện cùng bạn bè. Không gian quán được trang trí tinh tế, kết hợp giữa yếu tố truyền thống và hiện đại. Tuy nhiên, giá cả có phần cao hơn so với mặt bằng chung.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGPSScpQLuLN4vtFgnSSAjaXcIzYnX1vRxV8qTxRfnMr4-0gJmeHMsl4AnkewXvIvnnlQTiB8kIW752TWXKI-ct1ZoLkqe3MCqVqlZHw7Vq5CHoawxE_eEBYwOXnHFK8pf9An0Y=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0918176294",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/CaCam-Ti%E1%BB%87m+Caf%C3%A9+%26+B%C3%A1nh+Cr%C3%AApe/data=!4m7!3m6!1s0x3174d500096bc2a3:0xff210c219fd7b2ae!8m2!3d10.8902018!4d106.5924246!16s%2Fg%2F11w8ypmtdj!19sChIJo8JrCQDVdDERrrLXnyEMIf8?authuser=0&hl=vi&rclk=1",
+    "id": "0086",
+    "name": "CaCam-Tiệm Café & Bánh Crêpe",
+    "address": "67 Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8902018,
+    "lng": 106.5924246,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "CaCam-Tiệm Café & Bánh Crêpe là một không gian quán cà phê ấm cúng, phù hợp để thư giãn và trò chuyện. Các món bánh crêpe được chế biến với nguyên liệu tươi ngon, mang đến hương vị nhẹ nhàng, thanh mát. Nước uống tại đây đa dạng từ các loại coffee truyền thống đến những thức uống hiện đại, đáp ứng sở thích của nhiều thực khách. Không gian quán được trang trí đơn giản, tạo cảm giác thoải mái và dễ chịu. Đây là một lựa chọn tốt cho những ai tìm kiếm một nơi dừng chân lý tưởng để thưởng thức cà phê và bánh.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEqfIJp4bnh4vPBcTz6OE1CUFaI7BGpAwnYefqBMAk98KB54U2MiOJTBVOvYREY9ZjEclv_2CAbFwH2R_2ufDA9WA-OOa2OeWxInigxdXsKyxLyST0NwyC9tTj8W3Y92uNoBptehw=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0932678811",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Eun+coffee/data=!4m7!3m6!1s0x3174d5aaf2b2327f:0xc88a4ad3c602958e!8m2!3d10.8831624!4d106.5985012!16s%2Fg%2F11ssz0q27x!19sChIJfzKy8qrVdDERjpUCxtNKisg?authuser=0&hl=vi&rclk=1",
+    "id": "0087",
+    "name": "Eun coffee",
+    "address": "60/6M, Lê Thị Hà Ấp Chánh 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8831624,
+    "lng": 106.5985012,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Eun Coffee là một quán cà phê nhỏ nhắn, yên bình tại Quận 3. Không gian được trang trí đơn giản với những chiếc bàn gỗ ấm cúng và ánh sáng dịu nhẹ. Menu chủ yếu tập trung vào các loại đồ uống như latte, matcha, và một số bánh ngọt cơ bản. Giá cả hợp lý, phù hợp cho những buổi thư giãn cuối tuần hoặc làm việc tại chỗ. Dựa trên nhận xét của khách hàng, mức độ cay của quán cà phê này rất thấp.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE7kqtX9_UlNbH1cpMD-6PBQC8eBjH19YCy1SoY_hQKPT23PillUww0hTVeBNlatYh-1CSateAkoK8CiB4x9vR4iFxD0m-PZY2tcEKYDs5IBZU_jl-IU7Sw9w_nYZwnmTiDRbwk=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0846987898",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+24H/data=!4m7!3m6!1s0x31752a79cc27a67d:0xcae7c9ca9076c91d!8m2!3d10.879197!4d106.5928293!16s%2Fg%2F11h0xs7qb!19sChIJfaYnzHkqdTERHcl2kMrJ58o?authuser=0&hl=vi&rclk=1",
+    "id": "0088",
+    "name": "Cafe 24H",
+    "address": "1 Bà Triệu, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.879197,
+    "lng": 106.5928293,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe 24H là một quán cà phê với không gian rộng rãi, mang đến sự thoải mái cho khách hàng. Nơi đây có tầm view khá ổn, phù hợp để thư giãn hoặc làm việc. Các món nước ép được pha chế khá cơ bản, đáp ứng nhu cầu giải khát nhẹ nhàng. Không gian quán còn được hỗ trợ bởi việc rộng rãi, tạo cảm giác thoáng đãng và dễ chịu.  Thích hợp cho những ai muốn tìm một nơi dừng chân yên tĩnh.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHcZUjNkYblzRhiS5QRxsBgORBojPJ7wQ1a1UB6xWrHc---Mh9LenlpsFDPcmLB0jw2r_VEwioa3RjxthqxLXssBM0SgcgncbOG60wwvKOSsTW9lwJ-EunDPNKSJmwU2L-IeTk=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0984111947",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Key+Coffee+-+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d5b2cdf8eea9:0xce16ec79fd33730f!8m2!3d10.8902786!4d106.5931326!16s%2Fg%2F11t9t7j2jh!19sChIJqe74zbLVdDERD3Mz_XnsFs4?authuser=0&hl=vi&rclk=1",
+    "id": "0089",
+    "name": "Key Coffee - Hóc Môn",
+    "address": "44 Đ Lê Lợi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8902786,
+    "lng": 106.5931326,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Key Coffee - Hóc Môn là một quán cà phê nhỏ nhắn, ấm cúng với không gian được trang trí theo phong cách miền Tây truyền thống. Bạn có thể thưởng thức những tách cà phê thơm ngon cùng các món ăn vặt đơn giản như bánh ngọt và trà sữa. Không gian quán mang đến cảm giác thư giãn, gần gũi, phù hợp để bạn ngồi nhâm nhi một chút đồ uống và trò chuyện với bạn bè. Đặc biệt, quán decor dthw a chủ vui tíh tạo nên sự độc đáo và thú vị.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGPSuKBysmQc28UkcrBzk7t-meSS4MuJqaJUHFO4mueSUDkkVYcbMS5KsPVwFpUF11nMChqQkOgjfxf_AnpDdEBHKoCHV4uQKWS_JhsKv4Kxmz2BnfQcrzXP4KOPCeUF2aNwmCZ=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0866664424",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Highlands+Coffee+L%C3%BD+Th%C6%B0%E1%BB%9Dng+Ki%E1%BB%87t/data=!4m7!3m6!1s0x3174d590c7ab79c9:0x60391af698a15876!8m2!3d10.8881375!4d106.5936453!16s%2Fg%2F11fn75q1hb!19sChIJyXmrx5DVdDERdlihmPYaOWA?authuser=0&hl=vi&rclk=1",
+    "id": "0090",
+    "name": "Highlands Coffee Lý Thường Kiệt",
+    "address": "27/5A Đường Lý Thường Kiệt, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8881375,
+    "lng": 106.5936453,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Highlands Coffee Lý Thường Kiệt là một không gian quán cà phê nhỏ nhắn, ấm cúng. Không gian được trang trí đơn giản với nhiều cây xanh tạo cảm giác thư thái. Các loại đồ uống tại đây có hương vị nhẹ nhàng, phù hợp để giải nhiệt hoặc trò chuyện cùng bạn bè. Giá cả cũng khá phải chăng, phù hợp với sinh viên và dân văn phòng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHts3bIvlcWQxN_kRmAfaWe9t60Ga8d_IQSogfNqMO6rh01eBGiQKQcc279GoG7b9sdfFrifkKmNngofE0iFutfgaT69ORbuNyKwPWIaSaaf3AG9Cz-2YBMiL5ulRQjyzBlxfr_=w163-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "02871023322",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+Ph%C3%AA+Th%E1%BB%A7y+Ti%C3%AAn/data=!4m7!3m6!1s0x3174d5873e95ca9d:0x52e42960e7d4d549!8m2!3d10.8841793!4d106.5890788!16s%2Fg%2F11c6cf_jcr!19sChIJncqVPofVdDERSdXU52Ap5FI?authuser=0&hl=vi&rclk=1",
+    "id": "0091",
+    "name": "Cà Phê Thủy Tiên",
+    "address": "Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8841793,
+    "lng": 106.5890788,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà Phê Thủy Tiên là một quán cà phê nhỏ nhắn, yên bình với không gian thoáng đãng, thích hợp để thư giãn và ngắm nhìn dòng xe cộ qua lại. Quán nổi bật với các loại đồ uống giải nhiệt như cà phê sữa đá, sinh tố trái cây tươi mát. Hương vị nhẹ nhàng, thanh tao của cà phê kết hợp cùng không khí trong lành tạo nên trải nghiệm thú vị. Không gian quán được trang trí đơn giản, ấm cúng, phù hợp cho những buổi chiều tà hoặc tối đến.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9ldgIizf4OCnUj3l7DyHJe587FHWWi1_94QHHgD62RFcy3s4Tu5LcaS9YG6qLwKmbzPj9gWfOHFJp7C3NJDDohpprufxrATTrUneTaVn7fBYy1ND9YiFO2ysXkaQ65FDzOv7j=w184-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0931987097",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+Kh%C3%B4ng+Gian+Vi%E1%BB%87t/data=!4m7!3m6!1s0x3174d58b1658ef7d:0x8ab58ef5f47f6e1b!8m2!3d10.9080104!4d106.5857228!16s%2Fg%2F11f7bdkmnx!19sChIJfe9YFovVdDERG25_9PWOtYo?authuser=0&hl=vi&rclk=1",
+    "id": "0092",
+    "name": "Cafe Không Gian Việt",
+    "address": "WH5P+675, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9080104,
+    "lng": 106.5857228,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Không Gian Việt là một không gian quán cà phê ấm cúng, phù hợp để thư giãn và trò chuyện. Các món đồ uống được pha chế với hương vị nhẹ nhàng, tập trung vào sự tươi mát của trà và café. Không gian quán mang đậm nét truyền thống Việt Nam, tạo cảm giác thoải mái và yên bình. Dù có một vài lưu ý về thời gian chờ đợi, nhưng tổng thể vẫn là một trải nghiệm cà phê đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHvFzwJxNiIA7HnO2BjJDEqwC50gIoaAn1kYrZmcIGX1hsclRymwhoQ4uXcPeIBOkplpuTtVLZ8gDz-QdrwosnZcSx1eniLFx68ZzVXdTaMgjU_gm86djFMjw-lDrz0JC9elqpHjA=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+Song+H%C3%A0nh+%28%C4%90%C3%BAng+v%E1%BB%8B+tr%C3%AD%29/data=!4m7!3m6!1s0x31752b10fd245a13:0x7756a63978ffafc!8m2!3d10.8782166!4d106.5934736!16s%2Fg%2F11mv4_fp4g!19sChIJE1ok_RArdTER_PqPl2NqdQc?authuser=0&hl=vi&rclk=1",
+    "id": "0093",
+    "name": "Cafe Song Hành (Đúng vị trí)",
+    "address": "17.5E Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8782166,
+    "lng": 106.5934736,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Song Hành (Đúng vị trí) là một quán cà phê bình dân với không gian ấm cúng, phù hợp để thư giãn hoặc làm việc. Các món đồ uống được pha chế đơn giản, tập trung vào hương vị truyền thống. Không gian quán mang đến cảm giác gần gũi, thân thiện, tạo sự thoải mái cho khách hàng. Đây là một lựa chọn tốt cho những ai tìm kiếm nơi dừng chân yên tĩnh trong ngày.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGKHg6ZRzDiAGoVcGvqN9BGmlRVQuIWDQjVa07nhvXIGZeai_LTOx3QtbYsUVf4PDfucFrV4prV3c9xVU50f_QWrK6UBApD1crFjnNYMpukC3fry5t5cBO_IIWRSzUHFE8gEYOziw=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+ph%C3%AA+T%C3%ACnh+B%E1%BA%B1ng+H%E1%BB%AFu/data=!4m7!3m6!1s0x3174d58f018785b3:0xf5275037ec0eaabc!8m2!3d10.8916558!4d106.5968305!16s%2Fg%2F1hc5353n_!19sChIJs4WHAY_VdDERvKoO7DdQJ_U?authuser=0&hl=vi&rclk=1",
+    "id": "0094",
+    "name": "Cà phê Tình Bằng Hữu",
+    "address": "37 Trưng Nữ Vương, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8916558,
+    "lng": 106.5968305,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà phê Tình Bằng Hữu là một không gian lý tưởng để thư giãn và tận hưởng tách cà phê. Quán mang đến sự thoải mái với nhiều góc ngồi rộng rãi, phù hợp cho những buổi nghỉ trưa hoặc đơn giản chỉ để trò chuyện cùng bạn bè. Hương vị cà phê được pha chế tỉ mỉ, kết hợp với không gian quán khá thoáng đãng tạo nên một trải nghiệm thư thái đáng nhớ. Nước uống tại đây cũng được đánh giá tốt, đa dạng các loại lựa chọn. Sự kết hợp hài hòa này khiến cho quán trở thành điểm dừng chân lý tưởng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGxmAIUr0q1y9Jz71zKAJw3bwjk6Qrmd518FgcADc9yfWFmLOfogWr5SOj9QTs9JES24NEztzbgxeHJ8Adir1ZntnH1UqygfYFmcqHhIxYnaTV_Yd_zQFvHO_ulOOYyA2Qt2nrZ=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "02862707453",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+G%E1%BA%A7n+%C4%90%C3%A2y/data=!4m7!3m6!1s0x3174d5001348ee75:0x6689c329140d2c00!8m2!3d10.9093165!4d106.5908796!16s%2Fg%2F11xdt69fvn!19sChIJde5IEwDVdDERACwNFCnDiWY?authuser=0&hl=vi&rclk=1",
+    "id": "0095",
+    "name": "Cafe Gần Đây",
+    "address": "174 D. Công Khi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9093165,
+    "lng": 106.5908796,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe Gần Đây là một quán cà phê nhỏ nhắn, ấm cúng, phù hợp để thư giãn sau giờ làm việc hoặc gặp gỡ bạn bè. Không gian yên tĩnh với những chiếc bàn đơn giản và ánh sáng dịu nhẹ tạo cảm giác thoải mái. Các món đồ uống được đánh giá ngon miệng, phù hợp với khẩu vị của nhiều người. Sự thân thiện của nhân viên cũng là một điểm cộng lớn, góp phần làm tăng thêm trải nghiệm thú vị tại quán.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFTfPyd4H3Gg6NgrgFOwQ_MXLYlSrnz1eGst8WhYrgTf7Rx_1yseFcJu0HzLt4yKn_QA27VNPYNe_A8Qg-Sj1N8sd1X1FP1UEvBZ9TOJWn9VKAdlpC_4jPt2SN3OjG-4nHF0Dm-ct1RT47Z=w80-h106-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Zippo+Coffee/data=!4m7!3m6!1s0x31752b07266ddac7:0xc6f4e3dbed3bbcfb!8m2!3d10.8618366!4d106.6049133!16s%2Fg%2F11jmqgb488!19sChIJx9ptJgcrdTER-7w77dvj9MY?authuser=0&hl=vi&rclk=1",
+    "id": "0096",
+    "name": "Zippo Coffee",
+    "address": "4B Ấp Mỹ Hòa 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8618366,
+    "lng": 106.6049133,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Zippo Coffee là một quán cà phê nhỏ nhắn, ấm cúng, phù hợp để thư giãn hoặc làm việc. Không gian yên tĩnh với ánh sáng dịu nhẹ tạo cảm giác thoải mái. Menu tập trung vào các loại đồ uống như cà phê và trà, cùng với một vài món bánh ngọt cơ bản. Nhân viên phục vụ chu đáo, nhiệt tình nhưng không quá ồn ào. Sự kết hợp này mang đến trải nghiệm thư giãn, bình yên.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHlmBX6Y4r0U3FHw4cu7mGrCru2jGQBwR5ae8zS0KKzJE_QuRFSoeO9Hx03T506gi7CBTn2-5ZNfQAZ-1nCTEV8nE3tLM4kCD5RHZBMB2CA7NUidQNtjdt7_-4z2dAgA7fzU4rwVg=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0867891039",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+c%C3%A0+ph%C3%AA+Qu%E1%BB%91c+Vi%E1%BB%87t/data=!4m7!3m6!1s0x3174d58976c1ea89:0x2b6533fa517b8f00!8m2!3d10.8849446!4d106.5985997!16s%2Fg%2F11cscc8pb0!19sChIJierBdonVdDERAI97UfozZSs?authuser=0&hl=vi&rclk=1",
+    "id": "0097",
+    "name": "Quán cà phê Quốc Việt",
+    "address": "40/2 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8849446,
+    "lng": 106.5985997,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán cà phê Quốc Việt mang đến không gian bình dị với những món uống truyền thống. Sự lựa chọn đa dạng từ các loại trà, chè và cà phê sẽ làm hài lòng nhiều vị giác. Không gian quán được thiết kế đơn giản, ấm cúng, phù hợp để thư giãn hoặc trò chuyện cùng bạn bè. Điểm đặc biệt là cách phục vụ, dù không cầu kỳ nhưng vẫn đảm bảo sự tận tình. Kết hợp với chi tiết \"Còn mua trái dừa uống thì nhân viên chặt bị đổ 1/3 nước trong đó.\", quán mang đến trải nghiệm độc đáo và gần gũi.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGmV_rUvuuMIiWNnbr4M7ZnERdCydnLB524A5q2n7mjExSeAeLT-JOv3qW9_cWPK0J9Mrn9LoX6fZ0ZBzsPAZXmQTG_GgKIvQHxdNKHzBBv_91_bRZk1bI7IRYFf4OriO1BhVs=w189-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0398783430",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Coffee+Ph%C3%B2ng+Tr%C3%A0+T%26T+24H/data=!4m7!3m6!1s0x31752bec199d21ef:0xee49e72d026f854b!8m2!3d10.8623889!4d106.6051084!16s%2Fg%2F11jz253r2j!19sChIJ7yGdGewrdTERS4VvAi3nSe4?authuser=0&hl=vi&rclk=1",
+    "id": "0098",
+    "name": "Coffee Phòng Trà T&T 24H",
+    "address": "44/3A Đ. Ống Nước E, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8623889,
+    "lng": 106.6051084,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [],
+    "semantic_text": "Coffee Phòng Trà T&T 24H là một không gian quán cà phê nhỏ nhắn, ấm cúng. Không gian yên tĩnh, thích hợp để thư giãn hoặc trò chuyện với bạn bè. Các món đồ uống được pha chế tỉ mỉ, mang lại hương vị truyền thống của trà và cà phê. Nhân viên luôn niềm nở, sẵn sàng phục vụ khách hàng một cách chu đáo. Quán view đẹp là điểm cộng lớn cho trải nghiệm của thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEpd7n2r9_1ZfJ7WDakggvEFjHDLhPVuES5Ub1L2LRyM7Kcy2AXTDZ1nGpHOGtlxG7SCIFQAB6SXEB8H6IKJ7HDZFlmuD6JYqu2RaOPwv7eKCW780i8-O7EANs7XONNvESU0K1Y5A=w122-h92-k-no",
+    "type": [
+      "Quán cà phê"
+    ],
+    "phone_num": "0936822779",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%A1nh+Kem+HUY%E1%BB%80N+MY/data=!4m7!3m6!1s0x31752b2833df36df:0x7baa0e5627ff62c2!8m2!3d10.8400998!4d106.5994908!16s%2Fg%2F11n5t_fgjy!19sChIJ3zbfMygrdTERwmL_J1YOqns?authuser=0&hl=vi&rclk=1",
+    "id": "0099",
+    "name": "Bánh Kem HUYỀN MY",
+    "address": "14 Đ. Phan Văn Hớn, Bà Điểm, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8400998,
+    "lng": 106.5994908,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh Kem HUYỀN MY là một tiệm bánh nhỏ nhắn với không gian ấm cúng. Các loại bánh ngọt tại đây mang hương vị truyền thống, nhẹ nhàng và tinh tế, phù hợp để thưởng thức trong những buổi chiều yên tĩnh. Bánh thường được làm từ nguyên liệu tươi ngon, tạo nên sự mềm mịn và thơm ngon đặc trưng. Không gian tiệm được trang trí đơn giản nhưng vẫn rất dễ chịu, tạo cảm giác thư thái cho khách hàng. Sự đánh giá '10 điểm ko có nhưng🥰🥰' gợi ý về một trải nghiệm bánh ngọt mang tính chất cổ điển và đáng yêu.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFg711z2ieHRgn9nQUzyfZXUXX7rv1C1m4hRRJPWva8Rt1ezAZcsm2Y5wuFphlNaKQftVUJsNDlhdREt5Q44jT5F56L8ffm83L2J3r8awbHbgd_0rbl-ZOwegG9HWz4te73hquc=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0969573895",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Kem+Minh+Ch%C3%A2u/data=!4m7!3m6!1s0x3174d58ebaca9b01:0x45e66fee8ff714b7!8m2!3d10.888262!4d106.5987899!16s%2Fg%2F1hc61vkvc!19sChIJAZvKuo7VdDERtxT3j-5v5kU?authuser=0&hl=vi&rclk=1",
+    "id": "0100",
+    "name": "Tiệm Bánh Kem Minh Châu",
+    "address": "1/8 B, Đ. Quang Trung, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.888262,
+    "lng": 106.5987899,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Bánh Kem Minh Châu là một không gian nhỏ nhắn, ấm cúng với những chiếc bánh ngọt được trang trí tỉ mỉ. Các loại bánh chủ yếu tập trung vào hương vị truyền thống như kem tươi, socola và vani, mang đến trải nghiệm thưởng thức dịu nhẹ, thanh mát. Không gian quán phù hợp cho các buổi cà phê thư giãn hoặc gặp gỡ bạn bè. Sự kết hợp hài hòa giữa bánh ngọt và không khí yên tĩnh tạo nên một điểm dừng chân thú vị. Nhắc lại lời nhận xét \"Tiệm bánh rất ngon và uy tín nhé\" để nhấn mạnh sự đáng tin cậy của quán.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrCgssOX6mOLAsGUog-Oj8G9CWKr7ArA0-B7JDM3GnKyhJ6cTwzo8I0vF-lDkRsY29wizUG_rRR4CV1m7BCMuEh8ZmCahC-SHfgsG4QkQBVZD6I_2kv1c3VYvBETDwpWOJkwbJwCsjQuE=w122-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0902144811",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/NGUY%C3%8AN+PH%C3%9AC+BAKERY/data=!4m7!3m6!1s0x3174d58f5633387d:0x211d77b36dd92233!8m2!3d10.8881684!4d106.5936396!16s%2Fg%2F11f9v9jvgy!19sChIJfTgzVo_VdDERMyLZbbN3HSE?authuser=0&hl=vi&rclk=1",
+    "id": "0101",
+    "name": "NGUYÊN PHÚC BAKERY",
+    "address": "14/5 Lý Thường Kiệt, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8881684,
+    "lng": 106.5936396,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nguyên Phúc Bakery là một tiệm bánh nhỏ nhắn với không gian ấm cúng, phù hợp để thưởng thức những chiếc bánh ngọt đơn giản. Các loại bánh tại đây tập trung vào hương vị truyền thống, nhẹ nhàng và tinh tế. Bánh thường được làm từ nguyên liệu tươi ngon, kết cấu mềm mịn. Không có sự cầu kỳ trong cách chế biến, nhưng vẫn đủ để mang lại trải nghiệm ẩm thực đáng nhớ cho khách hàng. Sự hài lòng của khách hàng về bánh kem bắp là một điểm cộng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG-BJNp4OEeJTQqURT3tS9UeQ7rW6vfVOS6y8rhku9nqkBgWOxPQMq6ovdkpySD5LPLp5-UypsXH5JtjoHchNHW1uxjE_NtCaNJf6E9WHo6X4ecScLIHs865cICYHO81kNeRFiP=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0778608968",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Kami+Cake+%7C+Ti%E1%BB%87m+B%C3%A1nh+H%C3%B3c+M%C3%B4n+%7C+B%C3%A1nh+Kem+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752f0c38bb4361:0x234a681bf794d9e2!8m2!3d10.8470197!4d106.6091825!16s%2Fg%2F11pxnm7yb6!19sChIJYUO7OAwvdTER4tmU9xtoSiM?authuser=0&hl=vi&rclk=1",
+    "id": "0102",
+    "name": "Kami Cake | Tiệm Bánh Hóc Môn | Bánh Kem Hóc Môn",
+    "address": "28/1 Thái Thị Giữ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8470197,
+    "lng": 106.6091825,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Kami Cake là một tiệm bánh Hóc Môn nhỏ nhắn với những chiếc bánh ngọt được làm theo công thức truyền thống. Hương vị bánh nhẹ nhàng, thanh mát, phù hợp để thưởng thức vào những ngày hè nóng bức. Không gian quán ấm cúng, mang đậm nét văn hóa miền Tây. Nhân viên luôn niềm nở và chu đáo, tạo cảm giác thoải mái cho thực khách. Sự kết hợp giữa hương vị bánh ngọt và không khí thân thiện khiến Kami Cake trở thành một địa điểm lý tưởng để giải trí hoặc thưởng thức đồ ngọt.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFgDPUyv3U6ncdeVXhTm_TbaRXLIF0Ottj8CpSAIKRKwmxoODBW27ssjdKuQmtddsNMxeQ-Yr7WflCLGsH6jFEGVe4el4QJMhHnnBvHZSw6UdpdFWJWKWqoqv7JAx2JATmmFTuHjTgmodw=w80-h120-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0902550183",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/TI%E1%BB%86M+B%C3%81NH+YOUME+1/data=!4m7!3m6!1s0x3174d5ed5328c095:0xb5f671818a105ea8!8m2!3d10.8969936!4d106.5969649!16s%2Fg%2F11rycqqfhv!19sChIJlcAoU-3VdDERqF4QioFx9rU?authuser=0&hl=vi&rclk=1",
+    "id": "0103",
+    "name": "TIỆM BÁNH YOUME 1",
+    "address": "64/3K ấp Tân Thới 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8969936,
+    "lng": 106.5969649,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Yоume 1 là một không gian nhỏ nhắn, ấm cúng với những chiếc bánh ngọt được làm mới mỗi sáng. Hương vị chủ đạo của các loại bánh ở đây tập trung vào sự tinh tế và nhẹ nhàng, phù hợp để thưởng thức trong những buổi chiều yên tĩnh. Đặc biệt, việc bánh được làm tại tiệm và bán hết trong ngày tạo nên cảm giác tươi ngon và hấp dẫn. Không gian trang trí đơn giản với tông màu pastel giúp khách hàng thư giãn và tận hưởng hương vị ngọt ngào. Đây là một lựa chọn lý tưởng cho những ai yêu thích bánh ngọt truyền thống.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGg2J7-OHIbx5CR8r84oWj5ufIW0cayRjo2AH8iL91_kY1i8OZHiFzpCy7o0NWcI18gwdRH_45PlNxU2s3D_ZJgWYHDiw-umkQun5eye0RJutWdfdOZsuM5smxQvy1Zi9DFeSe7hQ=w122-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0901209911",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Th%E1%BA%A3o+Nguy%C3%AAn+%7C+B%C3%A1nh+Ng%E1%BB%8Dt+Ngon+G%E1%BA%A7n+%C4%90%C3%A2y+%7C+B%C3%A1nh+Ng%E1%BB%8Dt+H%C3%B3c+M%C3%B4n+%7C+B%C3%A1nh+Kem+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x31752b004ffb19d1:0x4785cb6de2a712d2!8m2!3d10.8674377!4d106.6106991!16s%2Fg%2F11vk56s4g5!19sChIJ0Rn7TwArdTER0hKn4m3LhUc?authuser=0&hl=vi&rclk=1",
+    "id": "0104",
+    "name": "Tiệm Bánh Thảo Nguyên | Bánh Ngọt Ngon Gần Đây | Bánh Ngọt Hóc Môn | Bánh Kem Hóc Môn",
+    "address": "42/4 Đ. Trung Mỹ - Tân Xuân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8674377,
+    "lng": 106.6106991,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Bánh Thảo Nguyên là một địa điểm quen thuộc với nhiều người yêu thích bánh ngọt và đặc biệt là các loại bánh kem Hóc Môn. Quán nổi bật với những chiếc bánh được làm tỉ mỉ, nguyên liệu tươi ngon và hương vị truyền thống. Không gian quán ấm cúng, phù hợp để thưởng thức bánh cùng bạn bè hoặc gia đình. Bánh tại đây mang đến sự thanh mát, nhẹ nhàng, hoàn hảo cho một buổi chiều thư giãn. Sự kết hợp giữa các loại nhân và lớp vỏ bánh được thực hiện tinh tế.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEm3mhRcPrwnu0tZ5_Thnv4gm26XD3-ZrmV4hNi4m63OfeCvozZe2bcgFz1rScwUTAWQbByCIemH1_BuynZ9uJNfoTjPvDELpJOAXzJ4xk5pjxzJCwEhn-6-Yc-6n-mWC6B37oXdQ=w204-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0989901861",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+b%C3%A1nh+Chu%C3%B4ng+Gi%C3%B3/data=!4m7!3m6!1s0x31752bac4d728525:0xe2eee2b9de6b5f27!8m2!3d10.8456727!4d106.6104053!16s%2Fg%2F11h045t3x8!19sChIJJYVyTawrdTERJ19r3rni7uI?authuser=0&hl=vi&rclk=1",
+    "id": "0105",
+    "name": "Tiệm bánh Chuông Gió",
+    "address": "30/4A Đ. Nguyễn Thị Huê, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8456727,
+    "lng": 106.6104053,
+    "avg_price": 100500.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Chuông Gió là một không gian ấm cúng, phù hợp để thưởng thức những chiếc bánh ngọt. Hương vị bánh tại đây tập trung vào sự tinh tế, nhẹ nhàng, đặc biệt là các loại bánh ngọt truyền thống. Không gian quán mang đến cảm giác thư thái, yên bình, rất thích hợp cho buổi chiều cuối tuần hoặc khi bạn muốn tìm một nơi dừng chân để tận hưởng chút ngọt ngào. Bánh ở đây rất ngon 😋 như tiramisu, bán h su",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFiamFzLlgQIlkXjlLyzdWKdCj2am_yWOOGbl6DIEYGo4JytKteguRz02BTIlFZfb2oMQmG6q6MMMy3l1TCieVSJqgcr0FX6gV8uguV0o2PTHv_JM5wI-_iXE2ecyCqCJnsJ3fmgHf1fe4u=w103-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0971512363",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%A1nh+Kem+D%C3%A2u+T%C3%A2y+%7C+D%C3%A2u+T%C3%A2y+Bakery+-+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d50053e29507:0xc53f9423d9fee06c!8m2!3d10.8884212!4d106.5976183!16s%2Fg%2F11vhj3jvhz!19sChIJB5XiUwDVdDERbOD-2SOUP8U?authuser=0&hl=vi&rclk=1",
+    "id": "0106",
+    "name": "Bánh Kem Dâu Tây | Dâu Tây Bakery - Hóc Môn",
+    "address": "1/32 Đ. Quang Trung, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8884212,
+    "lng": 106.5976183,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bánh Kem Dâu Tây - Dâu Tây Bakery là một tiệm bánh nhỏ nhắn tại Hóc Môn, nổi bật với những chiếc bánh ngọt được trang trí tỉ mỉ và đậm chất truyền thống. Không gian quán ấm cúng, phù hợp để thưởng thức bánh cùng bạn bè hoặc gia đình. Hương vị bánh chủ yếu tập trung vào sự tinh tế của kem và dâu tây tươi mát, mang đến trải nghiệm dịu nhẹ, thanh lịch. Dù có vẻ ngoài cầu kỳ, bánh vẫn giữ được hương vị tự nhiên của nguyên liệu, tạo cảm giác thư thái sau mỗi miếng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE3Z-X4Jx1UfLkPRWD3jYPMIp_bPu459bPQHA6MDVKk_BnNfB1N5GKhxy3pvXMKcVkttC6EaIlYLa6Yl2MdKvmkIscswLzCdCxyHZcMgRUeYtcgaIhqQ20NhFqO-9dFqVIcXOhMjZKlyk5z=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0977289894",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Ch%E1%BB%8B+Na+%28China%29/data=!4m7!3m6!1s0x31752a14398580a1:0xb9ba3fe817d05169!8m2!3d10.8883528!4d106.5986657!16s%2Fg%2F1hc3dq84b!19sChIJoYCFORQqdTERaVHQF-g_urk?authuser=0&hl=vi&rclk=1",
+    "id": "0107",
+    "name": "Tiệm Bánh Chị Na (China)",
+    "address": "114 Đ. Quang Trung, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8883528,
+    "lng": 106.5986657,
+    "avg_price": 350000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Bánh Chị Na là một quán tiệm bánh nhỏ nhắn, ấm cúng với không gian trang trí mang đậm phong cách truyền thống Việt Nam. Thực khách có thể thưởng thức các món bánh ngọt và đồ uống đơn giản, phù hợp cho buổi chiều nghỉ ngơi hoặc gặp gỡ bạn bè. Hương vị bánh được làm theo công thức cổ điển, nhẹ nhàng và tinh tế, không quá cầu kỳ. Quán còn cung cấp dịch vụ giao hàng tận nơi, giúp khách hàng tiện lợi hơn trong việc lựa chọn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGWqhYzhFTfkj5Al7pyT0dJCwTfgT_4C8tg67qaiMwuQqjeiRSAlzmgol9dzQwm_Mi6KzHco0ixMJfkS4ugYdOMssBIHFpuTWT-QF2Sn_SkQ16meT8PYnog4m5cooV9fO7ca5cNFQ=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0798238823",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/KAORI+JAPANESE+CAKE+%26+COFFEE/data=!4m7!3m6!1s0x3174d58c6fd04e79:0xbd82bcc5262c41c!8m2!3d10.8778082!4d106.5951395!16s%2Fg%2F11c1rsytg1!19sChIJeU7Qb4zVdDERHMRiUswr2As?authuser=0&hl=vi&rclk=1",
+    "id": "0108",
+    "name": "KAORI JAPANESE CAKE & COFFEE",
+    "address": "E10 ĐẠT GIA GARDEN, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8778082,
+    "lng": 106.5951395,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KAORI JAPANESE CAKE & COFFEE là một không gian nhỏ nhắn, ấm cúng với phong cách trang trí hiện đại pha chút truyền thống Nhật Bản. Tiệm nổi bật với những chiếc bánh ngọt tinh tế, được chế biến tỉ mỉ từ nguyên liệu tươi ngon. Hương vị bánh nhẹ nhàng, thanh mát, phù hợp để thưởng thức cùng tách cà phê thơm lừng. Không gian yên tĩnh, lý tưởng cho việc thư giãn hoặc trò chuyện với bạn bè. Sự kết hợp hài hòa giữa bánh và cà phê tạo nên một trải nghiệm ẩm thực thú vị.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHgWSFCGI3YuKf-d_horc6vYx6woqmI9DYWKsViHbSMlbz65u5Y2L1B7-E6uQiQP4d-BzZ-jcleGt42YmAFKBBwPPPepfLnyyY571gHIGwz42ZWLnztcV1WtOxNVjN_3ycz17wc4Q=w92-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0909398808",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Hoa+t%C6%B0%C6%A1i+-+m%C3%A2m+qu%E1%BA%A3+c%C6%B0%E1%BB%9Bi+h%E1%BB%8Fi+-+qu%E1%BA%ADn+12,+h%C3%B3c+m%C3%B4n/data=!4m7!3m6!1s0x31752f51893907ed:0x739d9c74cdd2f8f!8m2!3d10.8646563!4d106.613418!16s%2Fg%2F11w4s891dv!19sChIJ7Qc5iVEvdTERjy_dTMfZOQc?authuser=0&hl=vi&rclk=1",
+    "id": "0109",
+    "name": "Hoa tươi - mâm quả cưới hỏi - quận 12, hóc môn",
+    "address": "4/4 Đ. Nguyễn Ảnh Thủ, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8646563,
+    "lng": 106.613418,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh 'Hoa tươi - mâm quả cưới hỏi' tọa lạc tại quận 12, Hóc Môn, mang đến không gian ấm cúng với những chiếc bánh ngọt tinh tế. Quán tập trung vào các loại bánh truyền thống và bánh ngọt cơ bản, phù hợp cho bữa sáng hoặc giải trí nhẹ nhàng. Hương vị bánh thường được chú trọng sự cân bằng, không quá ngọt gắt hay có nhiều hương liệu nồng. Chủ tiệm luôn sẵn lòng tư vấn lựa chọn bánh theo sở thích của khách hàng, tạo nên trải nghiệm thân thiện và đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGLB-tXeStuxsvDXFs5-UTI3pTR4fJGe-nI6_P7z76mnL1qlmVQYszdkdGRijOqNxDBn-wASYjVhWPtha8SXwQzgc8WKTQ_zflpp1VtreXm9H9rfVHZMLNxFXUGYqTMCtn3yEC-yA=w83-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0792226969",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Tiramisu+Douyin+-+H%C3%93C+M%C3%94N/data=!4m7!3m6!1s0x31752b002524effb:0x4f78cd96458f356c!8m2!3d10.8630652!4d106.6043025!16s%2Fg%2F11xyyp01qz!19sChIJ--8kJQArdTERbDWPRZbNeE8?authuser=0&hl=vi&rclk=1",
+    "id": "0110",
+    "name": "Tiramisu Douyin - HÓC MÔN",
+    "address": "QL22/Đ. Song Hành/45/2Z Ấp Mỹ Hòa 1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8630652,
+    "lng": 106.6043025,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 3.9,
+    "meals": [
+      "Sáng"
+    ],
+    "semantic_text": "Tiramisu Douyin - HÓC MÔN là một tiệm bánh nhỏ nhắn với không gian ấm cúng, tập trung vào các loại bánh ngọt truyền thống. Hương vị chủ đạo của quán mang đến sự thanh mát, nhẹ nhàng, phù hợp cho những buổi chiều thưởng thức. Các nguyên liệu tươi ngon được lựa chọn kỹ lưỡng góp phần tạo nên trải nghiệm ẩm thực đáng nhớ. Sự kết hợp giữa hương vị cổ điển và cách trình bày tỉ mỉ khiến mỗi chiếc bánh trở thành một tác phẩm nghệ thuật nhỏ. Đặc biệt, lời nhận xét \"Bánh ngon, đẹp, đáng tiền, nên thử 1 lần trong đời😘💕\" cho thấy sự yêu thích của nhiều thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH5bYgAhF_qlXAI9mUnhvTBJ40vCF5zXQAHfBN1w7GS4A-5KPmyXWH29DX3eDu8Jh0SgZsy86vFPMYuuCyRoeJukL4-RIFgKdCwirQnZ0IXYOxX6o4y1G1tqSzF-3RWOJnAann1Tq5nbwf4=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Min+Bakery+-+B%C3%A1nh+kem+H%C3%B3c+M%C3%B4n/data=!4m7!3m6!1s0x3174d7ac49c8353b:0xe9aed9bea6a1df9a!8m2!3d10.9046964!4d106.6473159!16s%2Fg%2F11sr8m7s32!19sChIJOzXISazXdDERmt-hpr7Zruk?authuser=0&hl=vi&rclk=1",
+    "id": "0111",
+    "name": "Min Bakery - Bánh kem Hóc Môn",
+    "address": "206 Đường Đông Thạnh 6-1, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9046964,
+    "lng": 106.6473159,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Min Bakery - Bánh kem Hóc Môn là một tiệm bánh nhỏ nhắn với không gian ấm cúng, mang đậm nét truyền thống. Quán nổi bật với những chiếc bánh kem được trang trí tỉ mỉ, tinh tế, thể hiện sự cầu kỳ trong từng chi tiết. Hương vị bánh nhẹ nhàng, thanh mát, phù hợp cho những dịp đặc biệt hoặc thưởng thức sau bữa ăn. Sự kết hợp giữa nguyên liệu tươi ngon và kỹ thuật làm bánh truyền thống tạo nên một trải nghiệm ẩm thực đáng nhớ. Với lời nhận xét \"Mình đặt bánh kem tại tiệm cũng được hơn 1 năm rồi.\", có thể thấy quán đã được nhiều khách hàng tin tưởng lựa chọn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAF5J7oAh98BQpER4tMGK4nbK22dksz9Ga46jsnh3iAMtyu3Jsd3FLoGdyzY3UUVqB76CLDbAgTMOqkDLp1Zl3pntg4d0xL_zAGADkh8GYQNyLsdw_taUihBTCwEInb08CdhDqjUm9tlnwkA=w92-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0334107707",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+b%C3%A1nh+th%C3%A1ng+Gi%C3%AAng+-+January+Bakery+%26+Tea/data=!4m7!3m6!1s0x3174d5ea45058a93:0x417be8d1a48b6ec4!8m2!3d10.9012868!4d106.6092216!16s%2Fg%2F11c3s95rps!19sChIJk4oFRerVdDERxG6LpNHoe0E?authuser=0&hl=vi&rclk=1",
+    "id": "0112",
+    "name": "Tiệm bánh tháng Giêng - January Bakery & Tea",
+    "address": "Đường Nguyễn Thị Ngâu/40/9a 40/9A Ấp Trung Đông 2, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.9012868,
+    "lng": 106.6092216,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.5,
+    "meals": [],
+    "semantic_text": "Tiệm bánh tháng Giêng - January Bakery & Tea là một không gian nhỏ nhắn, ấm cúng, gợi nhớ đến những quán trà truyền thống. Không gian trang trí nhẹ nhàng với tông màu pastel và ánh đèn vàng dịu tạo cảm giác thư thái, yên bình. Các loại bánh tại đây nổi bật với hương vị thanh mát, tập trung vào sự tinh tế của nguyên liệu. Đặc biệt, như ghi nhận từ review \"Bánh Buffle cream ăn không ngọt\", các sản phẩm được chế biến theo phong cách cổ điển, mang đến trải nghiệm ẩm thực nhẹ nhàng và thư giãn. Đây là nơi lý tưởng để thưởng thức một tách trà thơm và những chiếc bánh ngon.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFnlCz6xPc1YSYF7Nku8IYwujZpA1uuojIa7Fxj03mC_R1YSweuCAavs9u2h9ZGpRXY6CxZooqrDPU1JSnFrFRUDOgXyZVTe0j3wvb9bNuoGtTUScH_xOOP_PBuLHwYRLD0VCu0=w122-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0898899752",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Gon+Cake/data=!4m7!3m6!1s0x31752bd01d3e403f:0x43ccfef7ff47f3b5!8m2!3d10.8463873!4d106.6004653!16s%2Fg%2F11rhbs4n4c!19sChIJP0A-HdArdTERtfNH__f-zEM?authuser=0&hl=vi&rclk=1",
+    "id": "0113",
+    "name": "Gon Cake",
+    "address": "Đ. Nguyễn Ảnh Thủ/60/8 ấp Trung Lân, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8463873,
+    "lng": 106.6004653,
+    "avg_price": 100500.0,
+    "shu": 1,
+    "star": 3.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gon Cake là một tiệm bánh nhỏ xinh với không gian ấm cúng, phù hợp để thưởng thức những chiếc bánh ngọt. Các loại bánh tại đây có hương vị nhẹ nhàng, thanh mát, tập trung vào các nguyên liệu tươi ngon như sữa, trái cây và kem. Thường thấy các loại bánh bông lan, tiramisu hoặc bánh mousse. Không gian quán tạo cảm giác thư giãn, lý tưởng cho việc hẹn hò hoặc gặp gỡ bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHlexsUybKRJVpsxzpnYTcepSDoc2SJX3SELDlSv-2bAh_IGnrQ2n9DTxw2CAyy-F4T78LB45Abz6-wWyp0AUHXjUp4sg_VQY9OiCaBHJJRLXYz-bHZ6vg5JZY_QXXHhyYc-QaC=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0936653293",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+shushi+h%C3%B3c+m%C3%B4n+%7C+%C4%91i%E1%BB%83m+t%C3%A2m+s%C3%A1ng+h%C3%B3c+m%C3%B4n/data=!4m7!3m6!1s0x3174d59165e2b45d:0x4c07da837cb19583!8m2!3d10.8903543!4d106.596513!16s%2Fg%2F11sw4kftpl!19sChIJXbTiZZHVdDERg5WxfIPaB0w?authuser=0&hl=vi&rclk=1",
+    "id": "0114",
+    "name": "Quán shushi hóc môn | điểm tâm sáng hóc môn",
+    "address": "7B 29 Tổ 51, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8903543,
+    "lng": 106.596513,
+    "avg_price": 100500.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán shushi hóc môn là một địa điểm lý tưởng để thưởng thức những món sushi truyền thống. Không gian quán được thiết kế đơn giản, thanh lịch, phù hợp với phong cách ẩm thực Nhật Bản. Các nguyên liệu tươi ngon và cách chế biến tỉ mỉ mang đến hương vị tinh tế, cân bằng giữa ngọt, béo và umami. Đặc biệt, việc luôn cảm thấy được tôn trọng và chăm sóc khi đến đây góp phần làm tăng thêm trải nghiệm thú vị cho mỗi lần ghé thăm.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsmObvFhkPCufBvEkPLGacDisKmGb89xgdOvUjS0FU7AHRG_tKlG_ODqVvnzcaMrGguk8B8Xm7bvg3LFm7YZqobk32yjJ1sgl3eUPo4wkoJ2E8U5NSQa-y1MB8wuhrFDP9zq2i8w=w80-h106-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0788286813",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/NG%E1%BB%8C+SUSHI+%7C+SUSHI+H%C3%93C+M%C3%94N/data=!4m7!3m6!1s0x31752b0019d0d3eb:0x5e22eac1cb9f5104!8m2!3d10.8232542!4d106.6876916!16s%2Fg%2F11xcfk44gh!19sChIJ69PQGQArdTERBFGfy8HqIl4?authuser=0&hl=vi&rclk=1",
+    "id": "0115",
+    "name": "NGỌ SUSHI | SUSHI HÓC MÔN",
+    "address": "120 Đ.Nguyễn Văn Nghi, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8232542,
+    "lng": 106.6876916,
+    "avg_price": 100500.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [],
+    "semantic_text": "NGỌ SUSHI | SUSHI HÓC MÔN là một quán sushi nhỏ nhắn, ấm cúng. Không gian được trang trí đơn giản với tông màu trầm, mang đến cảm giác thư thái. Các món sushi tại đây tập trung vào sự tinh tế của hương vị truyền thống Nhật Bản, chú trọng vào nguyên liệu tươi ngon và cách chế biến tỉ mỉ. Mùi thơm của cơm trộn các loại gia vị hòa quyện cùng vị ngọt tự nhiên của hải sản là một trải nghiệm thú vị. Quán thích hợp cho những ai muốn tìm hiểu về ẩm thực sushi cơ bản.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHG98HolFR6TlP5GBbn5Dzx5Q_IpAc9ZD6Ao5pT74TL0SxJ7dK-vBNVZOSGfa8YL49a_U3nTVJy7fp6avtoU9GKJZF79AzuJKmM50voQP3A0vTmITLOle_OunPtprx0IHfJ8R7Vj7gF4Xyc=w80-h106-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Sushi+%C4%90%C6%B0%E1%BB%9Dng+Ph%E1%BB%91+Nguy%E1%BB%85n+%E1%BA%A2nh+Th%E1%BB%A7/data=!4m7!3m6!1s0x31752beb7d252511:0x9e430339559d5147!8m2!3d10.8495165!4d106.6023553!16s%2Fg%2F11qhfjt6v9!19sChIJESUlfesrdTERR1GdVTkDQ54?authuser=0&hl=vi&rclk=1",
+    "id": "0116",
+    "name": "Sushi Đường Phố Nguyễn Ảnh Thủ",
+    "address": "Đ. Nguyễn Ảnh Thủ, Bà Điểm, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8495165,
+    "lng": 106.6023553,
+    "avg_price": 100500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Sushi Đường Phố Nguyễn Ảnh Thủ là một quán sushi nhỏ nhắn, ấm cúng với phong cách hiện đại. Các món sushi ở đây tập trung vào sự tươi ngon của hải sản, kết hợp hài hòa với các loại nước sốt đặc trưng. Hương vị chủ yếu là thanh mát, không quá nồng hoặc cay, phù hợp với khẩu vị quen thuộc của nhiều người. Không gian quán đơn giản, tiện nghi, tạo cảm giác thoải mái khi thưởng thức. Mình gọi 6 món cả · và nhận thấy sự đa dạng trong các loại hình sushi.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFgpmEQtK_GYUZZuuoCQQBEh0xHeJWIW3aXQLmYFz8xUG_jIwW222dZVqFjxWotWw3loM8l3M41eJYpLPcfM18UxsHuhierNR9S_X0kvi7B-Il-CKwkf8vhZZIGdiPF47yZVQ6V=w138-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0767644499",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Tencha+Izakaya/data=!4m7!3m6!1s0x3174d5ba3874eebd:0x2baa3758a58db777!8m2!3d10.8827454!4d106.5982964!16s%2Fg%2F11ys7lqkpp!19sChIJve50OLrVdDERd7eNpVg3qis?authuser=0&hl=vi&rclk=1",
+    "id": "0117",
+    "name": "Tencha Izakaya",
+    "address": "1/70B, Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8827454,
+    "lng": 106.5982964,
+    "avg_price": 100500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tencha Izakaya là một quán Nhật nhỏ nhắn, ấm cúng với không gian thiết kế tối giản. Các món ăn tập trung vào sự tươi ngon của hải sản và rau củ, được chế biến theo phong cách truyền thống Nhật Bản. Hương vị chủ yếu là thanh mát, nhẹ nhàng, phù hợp để thưởng thức trong những buổi chiều hoặc tối thư giãn. Quán mang đến trải nghiệm ẩm thực gần gũi, dễ chịu, không quá cầu kỳ về mặt trình bày.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHhdevObMocm3ZpaQnBs1pWnOZnDIsF6EVUxUcNfHlhnCaGDLLOrupAOAb18YFI7-PTpN0N4VwliskZ4gjfqGtQYqXvWCq1NqidKeMsVtWZEmFWkzwxlwwkhvmozuCb0mlwJmUakUuuFBBK=w122-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0784482981",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/NewMoon+Bingsu%26Takoyaki/data=!4m7!3m6!1s0x31752b412c3849f5:0x7b34119b3d7233a3!8m2!3d10.8637276!4d106.6036513!16s%2Fg%2F11kr6znwn2!19sChIJ9Uk4LEErdTERozNyPZsRNHs?authuser=0&hl=vi&rclk=1",
+    "id": "0118",
+    "name": "NewMoon Bingsu&Takoyaki",
+    "address": "66/3L Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8637276,
+    "lng": 106.6036513,
+    "avg_price": 100500.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "NewMoon Bingsu&Takoyaki là một quán Nhật nhỏ nhắn với không gian ấm cúng. Thực khách có thể thưởng thức các món bingsu mát lạnh và takoyaki giòn tan. Hương vị chủ đạo của các món ăn tại đây khá nhẹ nhàng, phù hợp cho những ai mới làm quen với ẩm thực Nhật Bản. \"Menu k nhiều món lắm nhưng món nào cũng ngon.\" là một lời khẳng định đáng tin cậy về chất lượng sản phẩm.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGDm-NS6Fb3XW5k9rWmhVuSRO6Ap8k-ic14FVoBWA6w1sBpjuScu8lsHDUfM1YyCmfoinBNZ1zqeBaHKJQqEyFNZFOB7X_aPgzNPLnJygMA_nxz1Zb3DXRKRtF5y5N4u2nMn0j5=w92-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0908303465",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Tengoku+Sushi/data=!4m7!3m6!1s0x3174d5004c4361a9:0x2f3e7367244e927!8m2!3d10.8971802!4d106.5887241!16s%2Fg%2F11yg943py8!19sChIJqWFDTADVdDERJ-lEcjbn8wI?authuser=0&hl=vi&rclk=1",
+    "id": "0119",
+    "name": "Tengoku Sushi",
+    "address": "141 8G, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8971802,
+    "lng": 106.5887241,
+    "avg_price": 100500.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [],
+    "semantic_text": "Tengoku Sushi là một quán sushi Nhật Bản mang đến trải nghiệm ẩm thực tinh tế và thư thái. Các món sushi được chế biến với nguyên liệu tươi ngon cùng kỹ thuật tỉ mỉ, tạo nên hương vị truyền thống của Nhật Bản. Không gian quán ấm cúng, trang trí đơn giản với ánh sáng dịu nhẹ, phù hợp để thưởng thức sushi cùng bạn bè hoặc người thân. Tengoku Sushi tập trung vào sự cân bằng giữa hương vị và hình thức, mang đến cho thực khách những món ăn vừa ngon miệng lại đẹp mắt.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGWD6Jt9VWku2ByqhlaLMOMdb-WpEJ7ZuaNvkyZWlvoBDY06SIv-WlDORA-iehAgUTyB9Yviz-y97TN8XluhX6YZZC_msHMwvvnC9_NCkYrW2qFXHya3-bvgVSDi6xJq1IuvfZqyyhrtOE=w80-h106-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Kichi-Kichi+L%C3%AA+Th%E1%BB%8B+H%C3%A0/data=!4m7!3m6!1s0x3174d5a475d9fded:0x9a0c471e21a9b994!8m2!3d10.8872101!4d106.5980763!16s%2Fg%2F11t9pxmwk4!19sChIJ7f3ZdaTVdDERlLmpIR5HDJo?authuser=0&hl=vi&rclk=1",
+    "id": "0120",
+    "name": "Kichi-Kichi Lê Thị Hà",
+    "address": "479 Đường Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8872101,
+    "lng": 106.5980763,
+    "avg_price": 350000.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Kichi-Kichi Lê Thị Hà là một quán Nhật nhỏ nhắn, ấm cúng với không gian được trang trí theo phong cách truyền thống. Thực khách có thể thưởng thức các món ăn Nhật Bản với hương vị tinh tế, tập trung vào sự tươi ngon của nguyên liệu. Mặc dù không quá nồng nàn, nhưng vẫn đảm bảo đủ độ hấp dẫn cho thực khách. Nhân viên quán luôn niềm nở và chu đáo, góp phần làm tăng thêm trải nghiệm ẩm thực tại đây.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFnX4NjIAgUw5_HkAt4BtdQiyuwmuzBM7cpQSV6iCKaAZdbTVcockYSt2ZTFCl1Mi9XTp-Tzqyx3pubziW-6GXtGtP7pG-f-Fk5Gd75zyg964zitllnv_9_Ckt7EyMsk44CQHUV=w122-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "02873004786",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Y%C3%AAn+Garden+-+H%E1%BA%A3i+s%E1%BA%A3n,+n%C6%B0%E1%BB%9Bng+v%C3%A0+l%E1%BA%A9u/data=!4m7!3m6!1s0x31752b005d123d3f:0xe467e1805f213a6e!8m2!3d10.8780918!4d106.599395!16s%2Fg%2F11w7l3_22d!19sChIJPz0SXQArdTERbjohX4DhZ-Q?authuser=0&hl=vi&rclk=1",
+    "id": "0121",
+    "name": "Yên Garden - Hải sản, nướng và lẩu",
+    "address": "45/2B Ấp 2 Lê Thị Hà, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8780918,
+    "lng": 106.599395,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Yên Garden là một quán Nhật ấm cúng, mang đến trải nghiệm ẩm thực hải sản tươi ngon. Quán tập trung vào các món nướng và lẩu, với hương vị đậm đà, tinh tế của hải sản biển. Không gian quán được thiết kế đơn giản, thanh lịch, tạo cảm giác thư thái, lý tưởng cho bữa ăn cùng gia đình hoặc bạn bè. Thực khách có thể thưởng thức những món ăn được chế biến tỉ mỉ, kết hợp hài hòa giữa truyền thống và hiện đại. Thức ăn được chuẩn bị và phục vụ nhanh, kèm sự chăm chút của nhân viên.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHSYgijIVRWc1HYhWeD4LkDRwTMXgoeUiFsxLZSoBgqXpfpLyHMNL2WE-Hagw5IcR3Ssji7J_1-bpJmdtoCigV9-JA-2VRRpFu0wBo1sub30uOAplIfJAe6JoeMQjPGHlJCiA2vhA=w163-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0931313175",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Sushi+v%C3%A2n/data=!4m7!3m6!1s0x3174d5360bdcd98d:0x738fcee3d35e8fe9!8m2!3d10.905401!4d106.6384881!16s%2Fg%2F11l71gw30s!19sChIJjdncCzbVdDER6Y9e0-POj3M?authuser=0&hl=vi&rclk=1",
+    "id": "0122",
+    "name": "Sushi vân",
+    "address": "05 Đ. Đặng Thúc Vịnh, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.905401,
+    "lng": 106.6384881,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Sushi vân là một quán sushi nhỏ nhắn, ấm cúng mang đậm phong cách Nhật Bản. Không gian được trang trí đơn giản với ánh đèn vàng dịu nhẹ, tạo cảm giác thư thái và gần gũi. Thực khách có thể thưởng thức các món sushi tươi ngon với giá cả phải chăng, đặc biệt phù hợp cho những bữa ăn nhanh hoặc khi đi cùng bạn bè. 'Đi 2 người ăn no luôn chỉ có 260k' gợi ý một trải nghiệm đầy đủ dinh dưỡng mà vẫn tiết kiệm.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGxc_QoKNbnNfIT3PtNjmk7JclEWGlikHA9pn-fvf0CxptL6NRxmTKy3a9aHM5MLkW7pm0fOrP6rom2-WnJaj7j9hx9ckqEJrvgvebbXT2fnUcvs-SISHJckyqcmVy8R-asbYsmxQ=w163-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0769531348",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/TL+SUSHI/data=!4m7!3m6!1s0x317529b18b7075ed:0x80eca52e15606a3b!8m2!3d10.8428985!4d106.638188!16s%2Fg%2F11f6kx758n!19sChIJ7XVwi7EpdTERO2pgFS6l7IA?authuser=0&hl=vi&rclk=1",
+    "id": "0123",
+    "name": "TL SUSHI",
+    "address": "34 Đ. 45, An Hội Tây, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8428985,
+    "lng": 106.638188,
+    "avg_price": 200000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "TL Sushi là một quán Nhật mang đến trải nghiệm ẩm thực tinh tế với các món sushi và sashimi tươi ngon. Không gian quán được thiết kế ấm cúng, phù hợp để thưởng thức những món ăn này cùng bạn bè hoặc gia đình. Hương vị của các món ăn tập trung vào sự tươi mát của hải sản kết hợp với cơm sushi chuẩn xác. Nhân viên phục vụ luôn niềm nở và chu đáo, góp phần làm tăng thêm sự hài lòng cho thực khách. Quán thích hợp cho những ai yêu thích ẩm thực Nhật Bản đơn giản, thanh lịch.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHb4TB3qV3GjJHNKBaF4czVt0LRWYSwyykDpbzpXExApomQcdN-sBKtEyTeudRr6fUkONIjE7nQn8n5QHYXkBlOvqmpOKRnsJSazQ1pUc8R9wtjylRYOTYHvyh3pxIqYxZEOu5N=w122-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0935862379",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%90%C3%88N+D%E1%BA%A6U+T%E1%BB%9Bi+B%E1%BA%BFn+Qu%C3%A1n/data=!4m7!3m6!1s0x31752b1a67da305d:0xc6bbdfad2c454501!8m2!3d10.869297!4d106.6001035!16s%2Fg%2F11sbbty0g8!19sChIJXTDaZxordTERAUVFLK3fu8Y?authuser=0&hl=vi&rclk=1",
+    "id": "0124",
+    "name": "ĐÈN DẦU Tới Bến Quán",
+    "address": "232 Đ. Song Hành, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.869297,
+    "lng": 106.6001035,
+    "avg_price": 300000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "ĐÈN DẦU Tới Bến Quán là một quán Nhật nhỏ nhắn, ấm cúng với không gian được trang trí theo phong cách truyền thống. Thực khách có thể thưởng thức nhiều món ăn đa dạng, từ các món sushi, sashimi quen thuộc đến những món lạ miệng hơn như mì ramen hoặc các loại salad. Hương vị của các món ăn khá cân bằng, không quá nồng hay cay, phù hợp với khẩu vị của nhiều người. Quán được đánh giá là có đồ ăn chế biến khá ngon và đa dạng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHktPQNJlPo92zttXSyXJhysgw3WW3tJDQQzh5YiEQBq9Uumc92M8M4zFRFEIcPtq6F8XUAZG6fyAqcOUvJ6dAjh2_SFC79MDbhTZLjE9dF4OdlDMUlZAnwaEjkAFLxmJKIpyIH=w80-h106-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0963207777",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/33MaMa/data=!4m7!3m6!1s0x31752b6f45dfcde7:0xb6f4972d1af02272!8m2!3d10.8735552!4d106.5969869!16s%2Fg%2F11ptn5p62j!19sChIJ583fRW8rdTERciLwGi2X9LY?authuser=0&hl=vi&rclk=1",
+    "id": "0125",
+    "name": "33MaMa",
+    "address": "Đ. Song Hành Ấp Đình, Hóc Môn, TP. Hồ Chí Minh",
+    "lat": 10.8735552,
+    "lng": 106.5969869,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "33MaMa là một quán Nhật nhỏ nhắn, ấm cúng với không gian được trang trí theo phong cách hiện đại. Thực khách có thể thưởng thức các món ăn truyền thống của Nhật Bản với hương vị tinh tế và tươi ngon. Mặc dù không quá cầu kỳ trong cách bày trí, nhưng sự chú trọng vào nguyên liệu chất lượng cao đã tạo nên những trải nghiệm ẩm thực đáng nhớ. Đặc biệt, quán được nhiều người đánh giá cao về sự thân thiện và dịch vụ chu đáo.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGRrVqYB8dHgcSitkiXJuf3_rftkc4wRz-Kbfq4fHgYLF2vmz_IPQ_RFNxjSRwQeY1FDA-3H-ju6KPS4KyerKdqLNSo4II2KLRdCiSi5fznRg9HUivOFdRl6Lm3KKviDo7adOqV=w122-h92-k-no",
+    "type": [
+      "Quán Nhật"
+    ],
+    "phone_num": "0967175839",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  }
+]

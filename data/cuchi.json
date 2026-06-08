@@ -1,0 +1,1669 @@
+[
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%BAn+gi%C3%B2+heo+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x3174d5de514080af:0x41bb4a99f54f8463!8m2!3d10.9374102!4d106.5438155!16s%2Fg%2F11t2b9r7xx!19sChIJr4BAUd7VdDERY4RP9ZlKu0E?authuser=0&hl=vi&rclk=1",
+    "id": "0001",
+    "name": "Bún giò heo Củ Chi",
+    "address": "229 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9374102,
+    "lng": 106.5438155,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Bún giò heo Củ Chi là một địa điểm quen thuộc với những người sành ăn tìm kiếm hương vị truyền thống. Với bún giò heo, phần thịt được chế biến mềm mại, thơm ngon, kết hợp hài hòa với sợi bánh và nước dùng thanh mát. Không gian quán bình dân, gần gũi, phù hợp để thưởng thức một bữa trưa hoặc tối đơn giản. Sự lựa chọn này hứa hẹn sẽ mang đến trải nghiệm ẩm thực đáng nhớ cho khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE4dODRwNchAARv-flocfRzwFvR3gY9vk12_vuPWCVxtGo3kadToh3sB62hmYpdpLvHl6vTUyloo9gJXDfzgLKLrWysWxqMEU1hG224VRlYhRanVa5hLQNs0o0nssNt7OuEL1kIRBnWcavi=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Kim+Huy%E1%BB%81n/data=!4m7!3m6!1s0x3174d57617bed96b:0x59da3a2c7ed88d4b!8m2!3d10.9326313!4d106.5436557!16s%2Fg%2F11j10qr6fd!19sChIJa9m-F3bVdDERS43Yfiw62lk?authuser=0&hl=vi&rclk=1",
+    "id": "0002",
+    "name": "Quán Kim Huyền",
+    "address": "Ngã tư, Đ. Số 99, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9326313,
+    "lng": 106.5436557,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Kim Huyền là một quán ăn Việt bình dân với không gian ấm cúng, phù hợp cho các bữa ăn gia đình hoặc tụ tập bạn bè. Thực khách đánh giá cao sự đơn giản trong cách chế biến, hương vị truyền thống được giữ trọn vẹn. Đặc biệt, quán nổi tiếng với những món ăn quen thuộc, mang đậm chất quê nhà. Mặc dù không có nhiều yếu tố đặc sắc, nhưng Quán Kim Huyền vẫn là một lựa chọn đáng cân nhắc cho những ai tìm kiếm sự thoải mái và hương vị Việt Nam đích thực.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH0n2ZW3HgIf7z3bKMI8woA7__oOArrLRNVB9QTu95SKf2KxA1ASDCOoMD48XOZxXjObPidaokHazTzRIi2lFTqJAj8yKJNUc1xoCYsNmHquhxljrExZ7gJXRZmiL7Pq5XLryc=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938551328",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ph%E1%BB%9F+Qu%E1%BB%B3nh+Mai/data=!4m7!3m6!1s0x310b2b41dc972789:0x66c25d20756f8305!8m2!3d10.9561281!4d106.5120162!16s%2Fg%2F11b7vy5hkh!19sChIJiSeX3EErCzERBYNvdSBdwmY?authuser=0&hl=vi&rclk=1",
+    "id": "0003",
+    "name": "Phở Quỳnh Mai",
+    "address": "256 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9561281,
+    "lng": 106.5120162,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Phở Quỳnh Mai là một lựa chọn quen thuộc cho những ai tìm kiếm bữa sáng trên tuyến đường đến Củ Chi. Quán nổi bật với tô phở truyền thống, nước dùng thanh ngọt và bánh phở mềm mại. Không gian quán khá đơn giản, phù hợp để thưởng thức nhanh sau buổi ăn sáng. Hương vị phở tại đây mang đậm nét hương vị miền Nam, tạo cảm giác ấm bụng cho ngày mới.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGoTDhMOYzoTexNSCYlJR6l5BGU67PpqVv56d6eamjbXCiL1nlc15lsGz9AinBNS_0YbgA-06Jd_WSesVzxA-q5jF_ZF-_7-kO9KfyQ2jCkRmb-yczypflITpsF-XYZ_rHQLBf817VdmfM=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0937865696",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/B%C3%B2+T%C6%A1+H%E1%BB%93ng+%C4%90%C3%A0o/data=!4m7!3m6!1s0x3174d4da6bde7e99:0x8071a61d96bdf07b!8m2!3d10.9509163!4d106.5182521!16s%2Fg%2F11h7s4th3g!19sChIJmX7ea9rUdDERe_C9lh2mcYA?authuser=0&hl=vi&rclk=1",
+    "id": "0004",
+    "name": "Bò Tơ Hồng Đào",
+    "address": "171 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9509163,
+    "lng": 106.5182521,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Bò Tơ Hồng Đào là một quán Việt nhỏ nhắn với không gian chòi bố trí theo kiểu cổ điển, tạo cảm giác ấm cúng và yên bình. Các món ăn tập trung vào sự tinh tế trong hương vị, sử dụng nguyên liệu tươi ngon để chế biến. Mặc dù không có nhiều vị cay nồng, quán vẫn mang đến trải nghiệm ẩm thực thanh đạm, phù hợp với những ai thích khám phá các món thịt bò mềm ngọt được nấu theo phong cách truyền thống. Không gian chòi kết hợp với ánh sáng dịu nhẹ tạo nên một bầu không khí thư giãn, lý tưởng cho bữa ăn cuối tuần.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGeY6AsceBiMveOmI2fVE2LPeFkbOOcu4yateXrjeiai0dDOECAvjrUOgUhVDSbMlyVk-xOmJ0rD-ZNC90A9USVba9XTQVsAmRgXxVZcYwQ3aPrZNKPd7Vxmyj68QhoSdbPLt9g=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02822454654",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nha%CC%80+ha%CC%80ng+Cu%CC%89+Mi%CC%80/data=!4m7!3m6!1s0x3174d4dbde5a2f33:0xb14a4b5ef5c6b4b6!8m2!3d10.9339076!4d106.5508953!16s%2Fg%2F11btrrdr_6!19sChIJMy9a3tvUdDERtrTG9V5LSrE?authuser=0&hl=vi&rclk=1",
+    "id": "0005",
+    "name": "Nhà hàng Củ Mì",
+    "address": "129 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9339076,
+    "lng": 106.5508953,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng Củ Mì là một điểm dựa tuyệt lý cho các bạn muốn tìm đặc sỹ hương vị truyền thống. Không gian quán nhẹ nhàng, ấm cúng, phù hợp để thưởng thức các món ăn Việt Nam quen thuộc. Mặc dù không có sự đột phá nào trong cách chế biến, nhưng chất lượng nguyên liệu tươi ngon và cách trình bày tinh tế vẫn làm tăng thêm trải nghiệm ẩm thực. Đặc biệt, việc kết hợp với dòng review \"Mình được bạn mời tham dự tiệc cưới ở đây.\" tạo nên một bầu không khí thân thiện và lãng mạn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrD2ONCFOkD3tR9ilSMnTIBOgoPRHehQ5vlIdJqgdWKJydc2lvm6Qpjp33mp7sQku--Y4zzFNSP7MYUZxQs_JA49-ZF3nsx763vrj0_50FOVdp9UvWDAU_uTvkqwTux8a2ODY=w163-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0918344722",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Hai+Ngh%E1%BA%B9o/data=!4m7!3m6!1s0x310b2cb261763a53:0x657be91ab0af25b3!8m2!3d10.9851671!4d106.5318326!16s%2Fg%2F1hc1qpfgn!19sChIJUzp2YbIsCzERsyWvsBrpe2U?authuser=0&hl=vi&rclk=1",
+    "id": "0006",
+    "name": "Quán Hai Nghẹo",
+    "address": "663 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9851671,
+    "lng": 106.5318326,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Hai Nghẹo là một lựa chọn phù hợp cho những ai muốn thưởng thức các món ăn truyền thống Việt Nam. Không gian quán khá thoáng đãng, tạo cảm giác thoải mái khi dùng bữa. Đặc biệt, quán nổi tiếng với các món bò tơ, được chế biến theo phong cách dân dã, đậm đà hương vị. Bánh mì và các món nước giải khát cũng là những lựa chọn hấp dẫn để hoàn thiện bữa ăn tại đây. Với bãi đậu xe rộng rãi, việc di chuyển đến quán cũng rất thuận tiện.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGLpaajecdlOO2_SyTa3vYXYVaBWufquaihBP07JIpC3PoFhhQemXaLA0F00JiYDQMlzl_lKSqDNB6QngJqfdvyWTN0fK-_S_wRw9j5gkpHWAzs5dDRl8tTww4mFgW2kaeQohh2=w138-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02837921823",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%E1%BA%ADu+Ba+L%E1%BB%A5c+B%C3%ACnh+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b007dce727f:0x5735268b07f401be!8m2!3d10.958344!4d106.4758994!16s%2Fg%2F11vwlpws6b!19sChIJf3LOfQArCzERvgH0B4smNVc?authuser=0&hl=vi&rclk=1",
+    "id": "0007",
+    "name": "Cậu Ba Lục Bình Củ Chi",
+    "address": "39a Trần Thị Dư, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.958344,
+    "lng": 106.4758994,
+    "avg_price": 150000.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cậu Ba Lục Bình Củ Chi là một quán ăn bình dân đậm chất địa phương. Không gian quán khá thoáng đãng, mang phong cách rustic với những bức tường gạch và bàn ghế gỗ đơn giản. Các món ăn tại đây tập trung vào các món Việt Nam truyền thống, hương vị vừa phải, không quá nồng hoặc cay. Đặc biệt, giá cả rất hợp lý, phù hợp cho một bữa ăn nhanh hoặc tụ tập bạn bè. Sự kết hợp với thông tin \"Quán local củ chi , dẫn bạn bè đi ăn ai cũng khen với rẻ .\" càng làm tăng thêm nét quyến rũ của quán.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGeLkiUsPkTBPxtKzi_OQ3TEY0IelHs7zcnTSMKnhepe8NQrv6_LHQPHKHTao_o02hatW53z7lKWiVS4d_z4cQbOvmXCnJtaDvE9ywSdO4nVk_kAWOXGM2O9QyqTn_vgYCJ5-mcCD8IM6U=w80-h142-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0336604451",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+B%C3%BAn+gi%C3%B2+heo+Ph%C6%B0%E1%BB%A3ng/data=!4m7!3m6!1s0x310b2b78ae0fcd23:0xcc8697d6d341892!8m2!3d10.9696058!4d106.4883044!16s%2Fg%2F11cs31txx5!19sChIJI80PrngrCzERkhg0bX1pyAw?authuser=0&hl=vi&rclk=1",
+    "id": "0008",
+    "name": "Quán Bún giò heo Phượng",
+    "address": "XF9Q+R8V, TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9696058,
+    "lng": 106.4883044,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa"
+    ],
+    "semantic_text": "Quán Bún giò heo Phượng là một địa điểm quen thuộc với những tín đồ yêu thích món bún giò. Bún giò được chế biến cầu công, nước dùng thanh ngọt làm nổi bật vị béo ngậy của thịt heo và sự mềm mại của bánh giò. Không gian quán tuy đơn giản nhưng vẫn đảm bảo sự thoải mái cho thực khách. Việc tìm chỗ đậu xe máy khá thuận tiện, tuy nhiên những người lái xe ô tô cần lưu ý khu vực đỗ xe lề đường Tỉnh Lộ 8 có thể hơi bất trắc.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH-7v1KBGLka12HJMs3IFLchVB3tlk8eR8qej_njKkpcoZTot-Ax5a7KzOcvcHGZsMCGL0yAae2JoXJDG-28D9DIOttUvtdlKUusnU3vduKVnPLoDGSKws4pCSSiUmOIwLbOYmapw=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02838921867",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+b%C3%BAn+m%C4%83ng+v%E1%BB%8Bt+H%C6%B0%C6%A1ng/data=!4m7!3m6!1s0x310b2b3768363ff7:0xb7dda23ec20279a9!8m2!3d10.947578!4d106.523963!16s%2Fg%2F11c0px9yj3!19sChIJ9z82aDcrCzERqXkCwj6i3bc?authuser=0&hl=vi&rclk=1",
+    "id": "0009",
+    "name": "Quán bún măng vịt Hương",
+    "address": "WGXF+2HP, Xuyên Á, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.947578,
+    "lng": 106.523963,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.0,
+    "meals": [],
+    "semantic_text": "Quán bún măng vịt Hương là một địa điểm quen thuộc với những tín đồ ẩm thực sành ăn tại khu vực này. Bún măng ở đây nổi bật với sợi bánh đa dai ngon, nước dùng thanh ngọt được ninh từ xương vịt hầm cùng các loại gia vị truyền thống. Măng tươi xanh ngắt, mềm sừn so sánh rất hợp khẩu vị. Không gian quán tuy nhỏ nhắn nhưng vẫn đảm bảo sự ấm cúng, phù hợp để thưởng thức một bữa trưa hoặc tối đơn giản. Đặc biệt, việc có thể ăn tại chỗ giúp khách hàng cảm nhận trọn vẹn hương vị của món ăn.",
+    "image_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=GDtU7Rlmb_jQsi7TUEsTLA&cb_client=search.gws-prod.gps&w=80&h=92&yaw=36.86578&pitch=0&thumbfov=100",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+ni%C3%AAu+B%C3%A0u+%C4%90%C3%A1/data=!4m7!3m6!1s0x3174d53403e5f8b7:0xc26a893b09c00be9!8m2!3d10.9426084!4d106.5432056!16s%2Fg%2F11kb8cm4fn!19sChIJt_jlAzTVdDER6QvACTuJasI?authuser=0&hl=vi&rclk=1",
+    "id": "0010",
+    "name": "Cơm niêu Bàu Đá",
+    "address": "96 HL2, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9426084,
+    "lng": 106.5432056,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm niêu Bàu Đá là một lựa chọn quen thuộc cho những bữa cơm đơn giản. Quán nổi bật với hương vị cơm thơm mềm hòa quyện cùng thịt và rau gia vị được chế biến theo công thức truyền thống. Rau khoa quẹt đặc biệt ngon, mang đến sự tươi mát cân bằng cho món ăn. Không gian quán bình dân, phù hợp để thưởng thức các món ăn đậm chất Việt Nam. Giá cả phải chăng khiến nhiều thực khách lựa chọn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEnxF2bg7DRtlQPKls68oGQoad69F7z-v8KHuupiGrBuoj6AQrB2rQPg5M5PwXgUov5_H7tKBesZFtpW9tjT6OyYEGPJdJZeoNE8Lm_iVLrD3LCP2utFMtjS0i9kIyoZMDFt5Bo=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0797392939",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+ni%C3%AAu+TR%E1%BA%A6N/data=!4m7!3m6!1s0x310b2ba9e740de89:0xe55f28410b81064!8m2!3d10.9696538!4d106.5078076!16s%2Fg%2F11s7vmyr5x!19sChIJid5A56krCzERZBC4EITyVQ4?authuser=0&hl=vi&rclk=1",
+    "id": "0011",
+    "name": "Cơm niêu TRẦN",
+    "address": "85a Đường số 9, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9696538,
+    "lng": 106.5078076,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm niêu TRẦN là một lựa chọn quen thuộc cho những bữa cơm đơn giản. Quán nổi bật với các món cơm niêu được chế biến công thức truyền thống, hương vị vừa đủ để làm ấm bụng. Món ăn thường có độ mềm của gạo và sự hòa quyện của nước dùng đậm đà. Không gian quán thanh lịch, phù hợp để thưởng thức cùng đồ ăn phong phú, món ăn trình bày đẹp, ngon, vừa miệng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGg-N6rwBdMYfRbkB5SUfWBx7UaTs0t93O0X_GYIOL8KJi4Zv_sia_1ghDEYLFS87qrdIFdfJLwGn3cUN22jBsq6mNMIMLdzVOVvOjAzLnc1AvdixU33s99asFydQaxWOzlCgniSAfJpvU6=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "02866865939",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Kim+Huy%E1%BB%81n/data=!4m7!3m6!1s0x3174d57617bed96b:0x59da3a2c7ed88d4b!8m2!3d10.9326313!4d106.5436557!16s%2Fg%2F11j10qr6fd!19sChIJa9m-F3bVdDERS43Yfiw62lk?authuser=0&hl=vi&rclk=1",
+    "id": "0012",
+    "name": "Quán Kim Huyền",
+    "address": "Ngã tư, Đ. Số 99, ấp giữa, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9326313,
+    "lng": 106.5436557,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Kim Huyền là một quán ăn Việt với không gian ấm cúng, phù hợp cho những bữa ăn gia đình hoặc bạn bè. Thực đơn đa dạng các món ăn truyền thống, tập trung vào hương vị thanh đạm và tinh tế. Các nguyên liệu tươi ngon được chế biến tỉ mỉ để mang đến trải nghiệm ẩm thực gần gũi. Mặc dù không có sự đặc sắc quá nổi bật, quán vẫn là một lựa chọn tốt cho những ai tìm kiếm nơi dừng chân để thưởng thức các món ăn Việt quen thuộc.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH0n2ZW3HgIf7z3bKMI8woA7__oOArrLRNVB9QTu95SKf2KxA1ASDCOoMD48XOZxXjObPidaokHazTzRIi2lFTqJAj8yKJNUc1xoCYsNmHquhxljrExZ7gJXRZmiL7Pq5XLryc=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938551328",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+%C4%82n+Gia+Ch%C3%A1nh/data=!4m7!3m6!1s0x310b2b6a1a5c6c9d:0x676a63ae55788e52!8m2!3d10.9576166!4d106.5102796!16s%2Fg%2F11btrrsvc5!19sChIJnWxcGmorCzERUo54Va5jamc?authuser=0&hl=vi&rclk=1",
+    "id": "0013",
+    "name": "Quán Ăn Gia Chánh",
+    "address": "01 Trần Văn Chẩm, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9576166,
+    "lng": 106.5102796,
+    "avg_price": 200000.0,
+    "shu": 5,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Quán Ăn Gia Chánh là một địa điểm quen thuộc với những tín đồ ẩm thực yêu thích hương vị Việt Nam truyền thống. Không gian quán ấm cúng, mang đậm nét gia đình, tạo cảm giác thoải mái cho thực khách. Các món ăn được chế biến tỉ mỉ với nguyên liệu tươi ngon, đảm bảo sự cân bằng giữa vị ngọt, vị chua, vị cay và vị umami. Đặc biệt, hương vị đặc trưng của từng món ăn khiến thực khách không thể quên. Quán này phù hợp để thưởng thức một bữa trưa hoặc tối ấm cúng cùng gia đình và bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE5FCImUljR6ydrp54K6lxf-gzPrHjDMGPRdTpZw2raO20ujbhSxeuLv-LzSs5uusknWulXN4Q_Ak4NVDHfndLlX-oCcgyPLRk1vl_nyaxwgOMiMtCEzpovO4XzDFd3cng-C_KM2A=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0907712990",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+T%E1%BA%A5m+S%C6%B0%E1%BB%9Dn+C%E1%BB%8Dng+B%C3%AC+Ch%E1%BA%A3+A+Ho%C3%B3n/data=!4m7!3m6!1s0x310b2b481411d625:0xb7142fd445a5319!8m2!3d10.9571211!4d106.5098561!16s%2Fg%2F11h5lw72vg!19sChIJJdYRFEgrCzERGVNaRP1CcQs?authuser=0&hl=vi&rclk=1",
+    "id": "0014",
+    "name": "Cơm Tấm Sườn Cọng Bì Chả A Hoón",
+    "address": "270A QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9571211,
+    "lng": 106.5098561,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cơm Tấm Sườn Cọng Bì Chả A Hoón mang đến hương vị truyền thống Việt Nam với cơm tấm nóng hổi và các món thịt chế biến đặc trưng. Sườn cọng bì mềm ngọt, chả a hoốn đậm đà thấm gia vị, là lựa chọn quen thuộc của nhiều thực khách. Không gian quán khá đông vui náo nhiệt, phù hợp cho bữa ăn cùng bạn bè hoặc gia đình. Giá cả bình dân, dễ chịu, đáp ứng nhu cầu của nhiều đối tượng khách hàng. Thức ăn ngon, giá hợp lý, có chỗ cho xe ô tô, khách đông lắm nha.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEqcejJlNO7rybfiAAllH5ohBQVATyA-5oqRVaJriGIS99erF9l9LOfQrCine0HZEpidSJn6RuB5aL3xuaW50hXx8x4nYC68HkC8ftySRJEle1BsnpYDruvs1EB4vCSzQ0Exx1p=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0933324523",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nha%CC%80+ha%CC%80ng+Cu%CC%89+Mi%CC%80/data=!4m7!3m6!1s0x3174d4dbde5a2f33:0xb14a4b5ef5c6b4b6!8m2!3d10.9339076!4d106.5508953!16s%2Fg%2F11btrrdr_6!19sChIJMy9a3tvUdDERtrTG9V5LSrE?authuser=0&hl=vi&rclk=1",
+    "id": "0015",
+    "name": "Nhà hàng Củ Mì",
+    "address": "129 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9339076,
+    "lng": 106.5508953,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng Củ Mì là một điểm dựa tuyệt lý cho các bạn yêu thích hương vị củ mì truyền thống. Quán có tác phẩm này được chuẩn biến bằi bản, sợi mì dai ngon, giáp các loại nước dùng đậm đà. Không gian quán khá nhỏ nhắn, ấm cúng, phù hợp cho bữa ăn nhanh hoặc tụ tập bạn bè. Đặc biệt, nhà hàng còn bổ sung thêm các món bì và chả với phụ phí 5k, mang lại nhiều lựa chọn hơn cho thực khách.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEv9JiNRu0MwbWvtKhi5yPBQztkY_9d2onoT7f3pg3Mr2_DVouQOf2qeMh-XqJZmkJFyLMECqZlSs431faNjb8M2kJhmN0VhyGI4rUlSAziVQQyO12ebh98GpE1HnTEQW0hpC25=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0918344722",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+8+Nh%E1%BB%9B/data=!4m7!3m6!1s0x3174d5cca48af8c9:0x78f60f0fb3d92e0b!8m2!3d10.9296551!4d106.5353485!16s%2Fg%2F11s0zfc4cq!19sChIJyfiKpMzVdDERCy7Zsw8P9ng?authuser=0&hl=vi&rclk=1",
+    "id": "0016",
+    "name": "Quán 8 Nhớ",
+    "address": "149/1 đường 92 ấp bến đò 2 xã tân phú trung, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9296551,
+    "lng": 106.5353485,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán 8 Nhớ mang đến trải nghiệm ẩm thực Việt Nam ấm cúng. Các món ăn tập trung vào hương vị truyền thống với sự cân bằng giữa các nguyên liệu tươi ngon và cách chế biến tinh tế. Không gian quán được thiết kế đơn giản, thanh lịch, tạo cảm giác thoải mái cho khách hàng. Thường thấy đây là nơi lý tưởng để thưởng thức những bữa ăn bình dân, kết hợp cùng tiếng nhạc nhẹ nhàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH7tj6uj9_4t1_W6HTP4EnmxpOW0bmL8z9iGd5eR8jvmbnyfPEefQ-TjQp30FALGMx72BcT3Xm5LV47XcUPKHHmih-oe0cPec7kdkQvkruHNU3o5xbZPmw7ATRk_LE0IN_EgO_mmA=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0339500127",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%83n+s%C3%A1ng+ngon/data=!4m7!3m6!1s0x3174d5ff08643c0b:0xe1c8482d4725bd70!8m2!3d10.9394907!4d106.5413245!16s%2Fg%2F11gjn91vl4!19sChIJCzxkCP_VdDERcL0lRy1IyOE?authuser=0&hl=vi&rclk=1",
+    "id": "0017",
+    "name": "ăn sáng ngon",
+    "address": "WGQR+QGW, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9394907,
+    "lng": 106.5413245,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "ăn sáng ngon là một quán ăn nhanh quen thuộc với nhiều người dân địa phương. Quán tập trung vào các món ăn truyền thống Việt Nam được chế biến đơn giản, tươi mới và đảm bảo vệ sinh an toàn thực phẩm. Không gian quán rộng rãi, thoáng mát, phù hợp cho những bữa sáng hoặc giờ trưa thoải mái. Sự kết hợp giữa đồ ăn nhanh, sạch sẽ tạo nên một trải nghiệm ẩm thực gần gũi và dễ chịu. Thường thấy khách hàng là nhân viên văn phòng hoặc học sinh, sinh viên.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGL89hNx_J7GOeIz_bTpkiNBjieeEXeZSx-Z57lF_MBaeASEwxDE2KbonRXIxXef_d0p1oirV1GSx_MVw-2iwBzpgvFEj2j0rHtcWyZ6jc8X8p2rNsUrDEYVoH7PmMzM3TzCfKCWA=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%E1%BA%ADu+Ba+L%E1%BB%A5c+B%C3%ACnh+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b007dce727f:0x5735268b07f401be!8m2!3d10.958344!4d106.4758994!16s%2Fg%2F11vwlpws6b!19sChIJf3LOfQArCzERvgH0B4smNVc?authuser=0&hl=vi&rclk=1",
+    "id": "0018",
+    "name": "Cậu Ba Lục Bình Củ Chi",
+    "address": "39a Trần Thị Dư, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.958344,
+    "lng": 106.4758994,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.8,
+    "meals": [
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cậu Ba Lục Bình Củ Chi là một quán ăn Việt quen thuộc, mang đến trải nghiệm ẩm thực gần gũi và ấm cúng. Không gian quán rộng rãi, thoáng đãng, phù hợp cho cả gia đình và bạn bè tụ tập. Các món nướng tại đây được chế biến với nguyên liệu tươi ngon, đảm bảo hương vị chuẩn vị truyền thống. Đặc biệt, cách trình bày món ăn khá tỉ mỉ, tạo cảm giác ngon miệng. Mức độ cay của các món ăn không quá cao, thích hợp cho cả người lớn và trẻ em.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGeLkiUsPkTBPxtKzi_OQ3TEY0IelHs7zcnTSMKnhepe8NQrv6_LHQPHKHTao_o02hatW53z7lKWiVS4d_z4cQbOvmXCnJtaDvE9ywSdO4nVk_kAWOXGM2O9QyqTn_vgYCJ5-mcCD8IM6U=w80-h142-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0336604451",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+N%C6%B0%E1%BB%9Bng+79/data=!4m7!3m6!1s0x310b2bdcc5883673:0x74376f388d528afc!8m2!3d10.9737612!4d106.5020818!16s%2Fg%2F11f5vcs6yf!19sChIJczaIxdwrCzER_IpSjThvN3Q?authuser=0&hl=vi&rclk=1",
+    "id": "0019",
+    "name": "Quán Nướng 79",
+    "address": "27 Nhữ Tiến Hiến, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9737612,
+    "lng": 106.5020818,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Nướng 79 là một không gian ấm cúng, phù hợp để thưởng thức các món nướng Việt Nam. Các loại thịt được chế biến khá chuẩn vị, với hương thơm đặc trưng của than hoa. Ở đây được cái rộng, tạo cảm giác thoải mái cho thực khách. Mặc dù không quá cầu kỳ trong cách trình bày, nhưng chất lượng nguyên liệu và cách làm vẫn khiến nhiều người hài lòng. Đây là một lựa chọn tốt cho những bữa ăn đơn giản cùng bạn bè hoặc gia đình.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHQ4V8t24MTSJKvXZFyXkFXtNjrqEbWgEgQxGB3Eej7uuYEHGf1UrFtRHO6l09d0tG_fBDaK4GJC_j9aFs30zCm6e62pMRPkknyQzOLx370Lt9GKZm4xo4EMIwNsPuxoplIg5guQYJ1m7c=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0938465599",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+C%C6%A1m+T%E1%BA%A5m+C%E1%BB%A7+M%C3%AC/data=!4m7!3m6!1s0x310b2d81ab5be35b:0xa1536e87a9a41176!8m2!3d10.9825653!4d106.5111226!16s%2Fg%2F11fl7645l_!19sChIJW-Nbq4EtCzERdhGkqYduU6E?authuser=0&hl=vi&rclk=1",
+    "id": "0020",
+    "name": "Quán Cơm Tấm Củ Mì",
+    "address": "439 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9825653,
+    "lng": 106.5111226,
+    "avg_price": 150000.0,
+    "shu": 4,
+    "star": 3.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán Cơm Tấm Củ Mì là một địa điểm quen thuộc với những tín đồ ẩm thực Việt Nam. Không gian quán ấm cúng, mang đậm nét truyền thống, phù hợp để thưởng thức các món cơm tấm nóng hổi. Hương vị cơm tấm ở đây cân bằng giữa độ mềm của thịt và cơm, cùng với sự thơm ngon của nước cốt dừa. Đặc biệt, các loại mứt đảm bảo sẽ là điểm nhấn hoàn hảo cho bữa ăn. Thật tuyệt vời khi được trải nghiệm những hương vị quen thuộc tại quán.",
+    "image_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=llQADM0EQ__PkhIgxqSyKw&cb_client=search.gws-prod.gps&w=80&h=92&yaw=359.1069&pitch=0&thumbfov=100",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0388196079",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+%E1%BA%A8m+th%E1%BB%B1c+H%C6%B0%C6%A1ng+Cau/data=!4m7!3m6!1s0x3174d3a36544d305:0x34b5317a83b750df!8m2!3d10.9859797!4d106.5373952!16s%2Fg%2F11vctxbdcf!19sChIJBdNEZaPTdDER31C3g3oxtTQ?authuser=0&hl=vi&rclk=1",
+    "id": "0021",
+    "name": "Nhà Hàng Ẩm thực Hương Cau",
+    "address": "693 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9859797,
+    "lng": 106.5373952,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà Hàng Ẩm thực Hương Cau là một quán Việt ấm cúng với không gian thiết kế mang đậm nét truyền thống. Các món ăn tại đây tập trung vào sự thanh đạm và tinh tế trong hương vị, phù hợp cho những bữa trưa thư thái. Mặc dù chưa có nhiều trải nghiệm đặc biệt do buổi trưa, nhưng hương vị nhẹ nhàng của các món ăn vẫn làm hài lòng vị giác. Sự kết hợp giữa nguyên liệu tươi ngon và cách chế biến tỉ mỉ tạo nên sự cân bằng hoàn hảo. Vì đi buổi trưa nên chưa trải nghiệm đồ ăn nhiều.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG7Tck0SQaVwpiRaNP8HkX_f9wujV6gEbrvwkRxBTPfXWNK0sFfmS_TfeAgEmyjvoQz1UEjQ3Bo0udUvAJprWzkYp2RXpx1ZSvpbzPSb1Ssv3M11Z0_FXvf1OTViA_e8PIFXq34=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0345688017",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Nh%C3%A0+H%C3%A0ng+%E1%BA%A8m+Th%E1%BB%B1c+L%E1%BB%99c+V%E1%BB%ABng+%7C+Nh%C3%A0+H%C3%A0ng+C%E1%BB%A7+Chi+%7C+Nh%C3%A0+H%C3%A0ng+L%C3%AA+V%C4%A9nh+Huy/data=!4m7!3m6!1s0x310b2d29f75f6b7b:0x68358b37ceb51d54!8m2!3d10.9780618!4d106.4928137!16s%2Fg%2F11l2phx6pc!19sChIJe2tf9yktCzERVB21zjeLNWg?authuser=0&hl=vi&rclk=1",
+    "id": "0022",
+    "name": "Nhà Hàng Ẩm Thực Lộc Vừng | Nhà Hàng Củ Chi | Nhà Hàng Lê Vĩnh Huy",
+    "address": "23 Đường Lê Vĩnh Huy, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9780618,
+    "lng": 106.4928137,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nhà hàng Lộc Vừng tọa lạc tại Củ Chi là một lựa chọn quen thuộc cho những ai tìm kiếm hương vị ẩm thực Việt Nam truyền thống. Không gian quán bình dân, sạch sẽ, phù hợp với nhiều đối tượng khách hàng. Các món ăn được chế biến đơn giản, tập trung vào nguyên liệu tươi ngon và cách làm lâu đời. Đặc biệt, quán nổi tiếng với các món ăn mang đậm chất quê nhà, gợi nhớ những kỷ niệm ấm áp. Sự tận tâm của nhân viên cũng góp phần tạo nên trải nghiệm ẩm thực đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsAUN-m-JKYbSCNmS6owufeCIx_5km-zmdI09lbKR-mK2WSGrrUFXcIMdDtmiOpEk90ocm7Ehy3uhPdj91EM1_LqUiPrVm-KOmu4wnNm8Cvz_Ze2M7cOe9dv9Ca7DNS-tLJ4jJ=w122-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0868881882",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+t%E1%BA%A5m+T%C6%B0+R%C3%A2u/data=!4m7!3m6!1s0x310b2b7992a99067:0x1062657c39640d26!8m2!3d10.9655628!4d106.4927902!16s%2Fg%2F11g8ktmv5y!19sChIJZ5CpknkrCzERJg1kOXxlYhA?authuser=0&hl=vi&rclk=1",
+    "id": "0023",
+    "name": "Cơm tấm Tư Râu",
+    "address": "512 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9655628,
+    "lng": 106.4927902,
+    "avg_price": null,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cơm tấm Tư Râu là một quán ăn Việt phục vụ món cơm tấm truyền thống. Hương vị cơm được nấu đúng cách, dẻo thơm và kết hợp hài hòa với thịt kho tàu mềm mại, bì ngọt thanh lịch. Điểm nhấn của quán là mắm chua hủ ngon, dù có vẻ như nhiều người đã phải chạy xa để thưởng thức. Không gian quán khá đơn giản, phù hợp cho những bữa ăn nhanh nhẹn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHYzu7oTs5R7VgWebIUlbbYIa-0d4AzrcE0mK1FCSv2Gr8LZUUPJjHjkvp0o6lhRdhQ6aBDup4NCHOzwF-7DyAe1LxuQF7MxR5C5B9WG67WN804Cyo79nUkbHDCjRpE_T-xvGKS2A=w164-h92-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/S%C6%A1n+L%C3%A2m+Farm/data=!4m7!3m6!1s0x310b2bbc8533d847:0x7a8aa9ba5cc7eb67!8m2!3d10.9437487!4d106.5236009!16s%2Fg%2F11n0rvm880!19sChIJR9gzhbwrCzERZ-vHXLqpino?authuser=0&hl=vi&rclk=1",
+    "id": "0024",
+    "name": "Sơn Lâm Farm",
+    "address": "Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9437487,
+    "lng": 106.5236009,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Sơn Lâm Farm là một quán ăn Việt ấm cúng, mang đến trải nghiệm ẩm thực gần gũi với nông thôn. Quán tập trung vào các món ăn truyền thống được chế biến từ nguyên liệu tươi ngon, đảm bảo hương vị tinh tế và đậm đà. Không gian quán yên bình, trang trí giản dị tạo cảm giác thư thái, lý tưởng cho bữa trưa hoặc tối cuối tuần. Đặc biệt, những món ăn tại đây mang đến sự cân bằng giữa hương vị truyền thống và cách chế biến hiện đại. Với việc ăn tại chỗ, bạn có thể tận hưởng trọn vẹn hương vị và không khí của quán.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGRJWLS4exepzQiCtrgg4qLD_-ThjAeHvg4Aaqy-FEmWakHDYqJ9CU7VGjeopDnB8OIoFdYUsGAn2SbFa6Lt3NSETLpGCHUBqrcxDY4AoO3VbmjMFzI12dVSbicIrOgS7z0LHy9=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+H%C3%A0u+Chery/data=!4m7!3m6!1s0x310b2df5f1472219:0xfff3354e288e6e25!8m2!3d10.9756828!4d106.5186466!16s%2Fg%2F11vbwdkx8z!19sChIJGSJH8fUtCzERJW6OKE418_8?authuser=0&hl=vi&rclk=1",
+    "id": "0025",
+    "name": "Quán Hàu Chery",
+    "address": "146 Trần Văn Chẩm, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9756828,
+    "lng": 106.5186466,
+    "avg_price": 150500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Tối"
+    ],
+    "semantic_text": "Quán Hàu Chery là một quán Việt ấm cúng, mang đến trải nghiệm ẩm thực gần gũi với hương vị truyền thống. Không gian quán được thiết kế đơn giản, thanh lịch, phù hợp cho những buổi tụ tập bạn bè hoặc gia đình. Các món ăn tại đây chú trọng vào sự tươi ngon của nguyên liệu và cách chế biến tinh tế, tạo nên sự cân bằng hài hòa giữa các hương vị. Đặc biệt, cá nướng cuốn bánh tráng cũng rất ngon.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEP_7h8Gn-mhZdsGUhGtZHgnQtrbZFeQLa2Om3J2hJIyiSTDWROit7CL2e0bazStq2eWruA5oMCNFSOMReiTWNan5AQmENks5PcrXkVPA31rVAtQLdOoVxgz1O9cj5bxs-tgsyXW4k15sI=w80-h106-k-no",
+    "type": [
+      "Quán Việt"
+    ],
+    "phone_num": "0355570422",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Mini%27s+Cake+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2d06070bebad:0x9f3656b767a91312!8m2!3d10.9747378!4d106.5042852!16s%2Fg%2F11nhm26h23!19sChIJresLBwYtCzEREhOpZ7dWNp8?authuser=0&hl=vi&rclk=1",
+    "id": "0026",
+    "name": "Tiệm Bánh Mini's Cake Củ Chi",
+    "address": "224 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9747378,
+    "lng": 106.5042852,
+    "avg_price": 400000.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Mini's Cake Củ Chi là một không gian nhỏ nhắn, ấm cúng, mang đến những chiếc bánh ngọt truyền thống. Hương vị bánh tập trung vào sự tinh tế của nguyên liệu, với độ ngọt vừa phải và kết cấu mềm mịn. Không gian quán được trang trí đơn giản, tạo cảm giác thư giãn và yên bình. Chủ tiệm luôn sẵn lòng tư vấn, giúp khách hàng lựa chọn loại bánh phù hợp nhất với sở thích.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE7ht67Xnu0saGUSvHEFfbKjORC-wYll9Kt13l6I_D_bMcXT-A0hfX-sSiDtN7FeGCCYISNqEypWTB5FHt9XXgxsZHLriJJgeBWTsCNgsYzKzgCImEeHmxVliCAOyEPIRyVFJ6s4gXmYiw=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ho%C3%A0ng+Ch%C3%A2u+Bakery+%7C+%C4%90%E1%BA%B7t+B%C3%A1nh+Sinh+Nh%E1%BA%ADt+%7C+B%C3%A1nh+Kem+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b0bfd541aa3:0x13f94af92fced645!8m2!3d10.9717754!4d106.4925669!16s%2Fg%2F11jgxyfzwh!19sChIJoxpU_QsrCzERRdbOL_lK-RM?authuser=0&hl=vi&rclk=1",
+    "id": "0027",
+    "name": "Hoàng Châu Bakery | Đặt Bánh Sinh Nhật | Bánh Kem Củ Chi",
+    "address": "TL8/144 Tổ 1, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9717754,
+    "lng": 106.4925669,
+    "avg_price": 250000.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Hoàng Châu Bakery là một tiệm bánh nhỏ nhắn, ấm cúng tại Củ Chi. Quán nổi bật với những chiếc bánh kem được trang trí tỉ mỉ, đa dạng mẫu mã và hương vị ngọt ngào quen thuộc. Bánh kem ngon đủ loại hứa hẹn sẽ làm hài lòng mọi tín đồ yêu thích bánh ngọt. Không gian quán đơn giản nhưng vẫn đảm bảo sự thoải mái để thưởng thức bánh. Đặc biệt, dịch vụ đặt bánh nhanh đẹp là điểm cộng lớn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFcpsqeCyLtcKgyuT3X2MgSxMNPIDlWwsYWnTKvUqvekZLPTBmDIyUMPk4ZZNn4uouRobL8q0BCatcrGczetCXuXX3IjvdFMSPq-cpnEN1ceNSZrmqzvwEFxSzu7Ker2WvegA=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0865886137",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+B%C3%A1nh+Thanh+An/data=!4m7!3m6!1s0x310b2b6f05b869b5:0x34e73918a3d2733d!8m2!3d10.9613042!4d106.5026335!16s%2Fg%2F11f1wchxv5!19sChIJtWm4BW8rCzERPXPSoxg55zQ?authuser=0&hl=vi&rclk=1",
+    "id": "0028",
+    "name": "Tiệm Bánh Thanh An",
+    "address": "21 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9613042,
+    "lng": 106.5026335,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Bánh Thanh An là một địa điểm quen thuộc với nhiều người dân địa phương. Quán nổi bật với những chiếc bánh ngọt và các món tráng miệng được chế biến đơn giản nhưng vẫn giữ nguyên hương vị truyền thống. Không gian quán nhỏ nhắn, ấm cúng, phù hợp để thưởng thức bánh cùng bạn bè hoặc gia đình. Giá cả ở mức bình dân, dễ chịu, đáp ứng nhu cầu của nhiều đối tượng khách hàng. Sự kết hợp giữa bánh ngon và dịch vụ tốt tạo nên một trải nghiệm đáng nhớ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfwA1TZc7uJV3JOPkObTCgk_YnhZuWmhZcA0CJbQxo3etDkieytB-6CWdGEerK4Ii-NuhGfj7NoT2md8_1TrawBTfgYCvaOth5Xk-kFvMBQbxEaVw0ZBAmR4iiDqnLitgEkrToJA=w122-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0901294788",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Th%C3%AA+Gi%E1%BB%9Bi+B%C3%A1nh+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b663e53b831:0x79f91f2a06447198!8m2!3d10.960866!4d106.5026877!16s%2Fg%2F11t3m46b4m!19sChIJMbhTPmYrCzERmHFEBiof-Xk?authuser=0&hl=vi&rclk=1",
+    "id": "0029",
+    "name": "Thê Giới Bánh Củ Chi",
+    "address": "8 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.960866,
+    "lng": 106.5026877,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 2.5,
+    "meals": [],
+    "semantic_text": "Thê Giới Bánh Củ Chi là một tiệm bánh nhỏ nhắn, ấm cúng mang đến những món bánh ngọt truyền thống với hương vị dịu nhẹ. Các loại bánh thường được làm từ nguyên liệu tươi ngon, kết hợp hài hòa giữa các loại trái cây và sữa tạo nên sự thanh mát. Không gian quán đơn giản, trang trí nhẹ nhàng, phù hợp để thưởng thức bánh cùng bạn bè hoặc người thân. Bánh kem đẹp mẫu mã sáng tạo đa dạng là điểm nhấn đặc biệt của quán, góp phần làm tăng thêm trải nghiệm thú vị cho thực khách. Nhân viên luôn niềm nở, sẵn sàng tư vấn và phục vụ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEk1JCFyfqDs4aZDRLQE4arbTNm9EmNtYO6gKzyLfGkyNdL6YcJZ44FXMsT2AJw3oXe1WwkJ8P-0dOVjLKQ85oW6pKEMGBM0tyrT_6fvcWx1N-JBbixWZoAzeX_apNK-1ItEqTT-g=w80-h98-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0869188486",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/M%C3%B9i+C%E1%BB%A7a+B%C3%A1nh+Cake+%26+Dessert/data=!4m7!3m6!1s0x310b2b0048cb17ff:0x1e8ee25a871796a7!8m2!3d10.9714054!4d106.4921484!16s%2Fg%2F11zjmgxshl!19sChIJ_xfLSAArCzERp5YXh1rijh4?authuser=0&hl=vi&rclk=1",
+    "id": "0030",
+    "name": "Mùi Của Bánh Cake & Dessert",
+    "address": "134 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9714054,
+    "lng": 106.4921484,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Mùi Của Bánh Cake & Dessert là một tiệm bánh nhỏ xinh với không gian ấm cúng. Các loại bánh được trình bày tỉ mỉ, tạo cảm giác ngon miệng ngay từ cái nhìn. Hương vị bánh chủ yếu tập trung vào sự tinh tế của các nguyên liệu như vani, chocolate hoặc kem tươi, mang đến trải nghiệm ngọt ngào nhẹ nhàng. Quán thích hợp cho những buổi thưởng thức bánh đơn giản, thư giãn cùng bạn bè hoặc người thân.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEbIyqEwBHnw6Zin2NltryL2fEJTwTEZ3ShWjRpGGR8j4ewQcWfd1Lz8CFfiWuFLbgcwgLDOXIX08jInRS2Trb_9KSXxHqCJVLXL3GTnvRKPGjVsEVrhN-rF_UYH9Oj4yrHqbNZvHqLTDE=w92-h92-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ki%E1%BA%BFn+Th%C3%A0nh+Bakery/data=!4m7!3m6!1s0x3174d46c38810f17:0x200657ef4a41653b!8m2!3d10.9547485!4d106.6010145!16s%2Fg%2F11crt6w7rf!19sChIJFw-BOGzUdDERO2VBSu9XBiA?authuser=0&hl=vi&rclk=1",
+    "id": "0031",
+    "name": "Kiến Thành Bakery",
+    "address": "Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9547485,
+    "lng": 106.6010145,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Kiến Thành Bakery là một tiệm bánh nhỏ nhắn với không gian ấm cúng. Quán nổi bật với những chiếc bánh ngọt và bánh nướng thơm ngon, mang hương vị truyền thống dễ chịu. Các loại bánh đa dạng từ bánh quy, bánh bông lan đến bánh ngọt ngào, phù hợp cho nhiều đối tượng khách hàng. Không khí tại quán thường ồn ào do lượng khách đông đúc, đặc biệt vào buổi sáng sớm. Giá cả bình dân, hợp túi tiền khiến quán trở nên hấp dẫn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHP0IYfpPrKl_LxfUsa4IP4-ukFnKu0CvanejF1OxzFbMNYay5a3yPAN3cXtWhPx_vKGi4qcebX0VaVd1g8566H29h3IUxHIEsTxnW8rzIdBWSrwYvja4fXWYBS2bAECosRxhgm=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0332979790",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+b%C3%A1nh+Hoa+C%C3%BAc/data=!4m7!3m6!1s0x310b2b1017dbbbb7:0x4e5a9a2c9c24edeb!8m2!3d10.9749933!4d106.5012282!16s%2Fg%2F11qnsw1qrc!19sChIJt7vbFxArCzER6-0knCyaWk4?authuser=0&hl=vi&rclk=1",
+    "id": "0032",
+    "name": "Tiệm bánh Hoa Cúc",
+    "address": "18 Nhữ Tiến Hiến, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9749933,
+    "lng": 106.5012282,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.9,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm bánh Hoa Cúc là một không gian nhỏ nhắn, ấm cúng với những chiếc bánh ngọt được trang trí tỉ mỉ. Hương vị chủ đạo của các loại bánh tại đây mang đến trải nghiệm nhẹ nhàng, thanh mát, phù hợp cho những buổi chiều thư giãn hoặc thưởng thức cùng tách trà. Sự kết hợp giữa vẻ đẹp thẩm mỹ của bánh và chất lượng nguyên liệu tươi ngon tạo nên sự hài lòng cho thực khách. Không gian shop được thiết kế theo phong cách dễ thương, thân thiện, góp phần tăng thêm trải nghiệm thú vị.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGozQJZIChZIc0zYLKVMBcqPGcLS4yIRscFo9h4yU3kNhNAIGFmXLTy4gNDI-8o3hGzwvTfFmY6Y8JE9MQsfFipDBZbkMPCNCYsp9r_Neph2mxSKgunThYjs5EszLCQ7MNaQfn7=w80-h106-k-no",
+    "type": [
+      "Tiệm bánh"
+    ],
+    "phone_num": "0937386226",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/KFC+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x3174d35daf755247:0x16befb2125321466!8m2!3d10.9839494!4d106.579602!16s%2Fg%2F11hy_56vcm!19sChIJR1J1r13TdDERZhQyJSH7vhY?authuser=0&hl=vi&rclk=1",
+    "id": "0033",
+    "name": "KFC Củ Chi",
+    "address": "Centre Mall, 1239 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9839494,
+    "lng": 106.579602,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "KFC Củ Chi là một lựa chọn quen thuộc với những ai yêu thích hương vị gà rán truyền thống. Không gian quán đơn giản, tiện nghi, phù hợp cho các bữa ăn nhanh chóng. Gà được chế biến đúng công thức, giữ trọn vị thơm ngon đặc trưng. Đặc biệt, nước sốt ướp gà ở đây cân bằng vừa đủ giữa ngọt và mặn, tạo nên trải nghiệm ẩm thực đáng nhớ. Với những đánh giá này, KFC Củ Chi là một địa điểm lý tưởng để thưởng thức món gà rán vào cuối tuần.",
+    "image_url": "https://ssl.gstatic.com/local/servicebusiness/default_user.png",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Lotteria+Coopmart+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b814d2ab4e9:0x63bfed9bf1c08a3c!8m2!3d10.9590789!4d106.5046985!16s%2Fg%2F1jky2j_2d!19sChIJ6bQqTYErCzERPIrA8Zvtv2M?authuser=0&hl=vi&rclk=1",
+    "id": "0034",
+    "name": "Lotteria Coopmart Củ Chi",
+    "address": "357 QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9590789,
+    "lng": 106.5046985,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Lotteria Coopmart Củ Chi là một lựa chọn tiện lợi cho những bữa ăn nhanh tại khu vực ngoại thành. Quán tập trung vào các món đồ ăn nhẹ và đồ uống giải khát, phù hợp với phong cách đồ ăn nhanh truyền thống. Không gian quán khá thoáng đãng, sạch sẽ và được thiết kế đơn giản. Nhân viên phục vụ nhiệt tình, chu đáo, sẵn sàng hỗ trợ khách hàng. Thêm cái món ăn ngon, không gian sạch sẽ, thái độ nhân viên tốt là những yếu tố góp phần làm nên trải nghiệm ẩm thực tại đây.",
+    "image_url": "https://ssl.gstatic.com/local/servicebusiness/default_user.png",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/G%C3%A0+R%C3%A1n+FKT+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b00743118f1:0x78e9fe2813928049!8m2!3d10.971341!4d106.4875874!16s%2Fg%2F11v_89swlt!19sChIJ8RgxdAArCzERSYCSEyj-6Xg?authuser=0&hl=vi&rclk=1",
+    "id": "0035",
+    "name": "Gà Rán FKT Củ Chi",
+    "address": "8 Nguyễn Văn Khạ, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.971341,
+    "lng": 106.4875874,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 2.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Gà Rán FKT Củ Chi là một quán đồ ăn nhanh chuyên về các món gà rán. Không gian quán khá đơn giản, phù hợp để nhâm nhi trong những buổi chiều nóng bức. Các món gà rán được chế biến với hương vị truyền thống, không quá đặc biệt nhưng vẫn đáp ứng nhu cầu cơ bản của thực khách. Giá cả bình dân, dễ chịu trên túi tiền. Mặc dù có một vài đánh giá cho rằng hương vị chưa thực sự nổi bật, quán vẫn là một lựa chọn ổn định.",
+    "image_url": "https://ssl.gstatic.com/local/servicebusiness/default_user.png",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0336040288",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Chicken+Plus+T%E1%BB%89nh+L%E1%BB%99+8/data=!4m7!3m6!1s0x310b2d981b21765b:0x48027a1d3ccf466d!8m2!3d10.9823778!4d106.5108614!16s%2Fg%2F11sb088y7l!19sChIJW3YhG5gtCzERbUbPPB16Akg?authuser=0&hl=vi&rclk=1",
+    "id": "0036",
+    "name": "Chicken Plus Tỉnh Lộ 8",
+    "address": "419F TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9823778,
+    "lng": 106.5108614,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Chicken Plus Tỉnh Lộ 8 là một quán đồ ăn nhanh với không gian khá rộng rãi, phù hợp cho các bữa ăn gia đình hoặc nhóm bạn. Thực đơn chủ yếu tập trung vào các món gà chiên, rán, và các loại nước sốt đặc biệt. Hương vị của các món ăn được chế biến khá ổn định, không quá nồng nếm nhưng vẫn đủ để làm hài lòng khẩu vị của nhiều người. Không gian quán sạch sẽ, thoáng mát, tuy nhiên cần có thêm một vài điểm nhấn về trang trí để tăng tính thẩm mỹ.",
+    "image_url": "https://ssl.gstatic.com/local/servicebusiness/default_user.png",
+    "type": [
+      "Đồ ăn nhanh"
+    ],
+    "phone_num": "0983408030",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ti%E1%BB%87m+C%C3%A0+Ph%C3%AA+C%C3%B3+C%C3%A1i+Th%C3%A1c+-+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2db0671de865:0x363420f4d82c1946!8m2!3d10.9759714!4d106.5284879!16s%2Fg%2F11yzl_yrdg!19sChIJZegdZ7AtCzERRhks2PQgNDY?authuser=0&hl=vi&rclk=1",
+    "id": "0037",
+    "name": "Tiệm Cà Phê Có Cái Thác - Củ Chi",
+    "address": "397 Nguyễn Thị Lắng, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9759714,
+    "lng": 106.5284879,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Cà Phê Có Cái Thác - Củ Chi là một quán nước bình dân mang đến không khí yên tĩnh, thư thái giữa vùng ngoại ô. Quán nổi bật với các món đồ uống giải nhiệt như cà phê và trà, cùng với những món ăn nhẹ đơn giản như bánh ngọt hoặc chè. Hương vị của các món ăn khá nhẹ nhàng, phù hợp để thưởng thức trong một buổi chiều nắng ấm. Không gian quán được trang trí mang phong cách làng quê Việt Nam, tạo cảm giác gần gũi và ấm cúng. Kết hợp với nhận xét \"nước khá oke, nhân viên nhiệt tình :>\" cho thấy đây là địa điểm lý tưởng để thư giãn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGoTfTLLIZPSBMq3UTZ57DXesgHZog5LZ8ZPIhujCOSxG2J8jpCORcw2D_SYNEub-RmMG1Q6VUx53OqVywxm-HFtG8E7v1E_-DAAvXVCGlmjJ8YKfyKWdJ002OaxD9RM4ug6RbbmGUdLZs=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0388894394",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Huong+Xua+Garden+Coffee/data=!4m7!3m6!1s0x310b2b65e9c96f97:0xecbe8318579cc98f!8m2!3d10.9686769!4d106.5064361!16s%2Fg%2F11g07951q5!19sChIJl2_J6WUrCzERj8mcVxiDvuw?authuser=0&hl=vi&rclk=1",
+    "id": "0038",
+    "name": "Huong Xua Garden Coffee",
+    "address": "114 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9686769,
+    "lng": 106.5064361,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Huong Xua Garden Coffee là một quán nước thanh bình với không gian đậm chất cổ điển. Quán nổi bật với những món chè và bánh ngọt truyền thống, mang đến hương vị dịu nhẹ, phù hợp cho những buổi chiều thư thái. Sự yên tĩnh của quán có thể do phong cách trang trí không được hiện đại, tạo nên một bầu không khí riêng biệt. Hương vị chủ đạo là sự tinh tế, cân bằng giữa các nguyên liệu, gợi nhớ về những kỷ niệm xưa cũ. Đây là nơi lý tưởng để tận hưởng tách trà hoặc bánh ngọt sau một ngày dài.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAG4no22XAp39ovekW3Dtx-ebklG52uOW0SKImsMRdVUcLRT9K_IW5Nh7rw_FtWmK_LZNhQkWDuOk9pbJcS1-rB2g_yPfknm3Ec8AuHBlfHlN0O9BCSJ92Fc5aibMeU0w89N4z9H=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0903736249",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Trung+Nguy%C3%AAn+E-Coffee+%28TPT%29/data=!4m7!3m6!1s0x310b2bf2a4c6e24b:0xf0d8eae97d610fb6!8m2!3d10.9428298!4d106.5431063!16s%2Fg%2F11s2hj5488!19sChIJS-LGpPIrCzERtg9hfenq2PA?authuser=0&hl=vi&rclk=1",
+    "id": "0039",
+    "name": "Trung Nguyên E-Coffee (TPT)",
+    "address": "116 ĐTL2, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9428298,
+    "lng": 106.5431063,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Trung Nguyên E-Coffee mang đến một không gian thư giãn với nhiều góc nhỏ xinh, phù hợp để bạn thưởng thức các loại cà phê và đồ uống giải khát. Hương vị của nước uống tập trung vào sự tươi mát và thanh lành, đặc biệt thích hợp cho những ngày hè nóng bức. Không gian quán được thiết kế đơn giản, hiện đại, kết hợp với cảnh quan xung quanh tạo nên một trải nghiệm thoải mái. Quán nước này phù hợp để bạn dừng chân nghỉ ngơi hoặc gặp gỡ bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGVPgEU6aApfz-hb9X0OJ1EqPC5tSMrlOr4DTTwiJ2SNVHpngNd7RrjdaWmKNWgraI3KYB_lDXkQZruySpDAVy0oxOqxrqbT-7RZckTCQTzpJxofo1Tmguy15A-vLgj3Xvg3RxLTwg2r-q3=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0906757676",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/An+%C4%90i%E1%BB%81n+coffee/data=!4m7!3m6!1s0x3174d59a74ba33ab:0xfc8b2088a6f2b888!8m2!3d10.9605297!4d106.5431764!16s%2Fg%2F11jzhpf05y!19sChIJqzO6dJrVdDERiLjypoggi_w?authuser=0&hl=vi&rclk=1",
+    "id": "0040",
+    "name": "An Điền coffee",
+    "address": "84 Đường số 89, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9605297,
+    "lng": 106.5431764,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "An Điền Coffee là một quán nước bình dân, phù hợp để thư giãn hoặc trò chuyện với bạn bè. Không gian thoáng đãng, rộng rãi, được trang trí đơn giản tạo cảm giác thoải mái. Nước uống tại đây được đánh giá tốt, kết hợp hài hòa với không khí yên tĩnh của quán. Nhân viên nhiệt tình và chu đáo, góp phần làm tăng thêm trải nghiệm cho khách hàng. Sự kết hợp này mang đến một lựa chọn lý tưởng cho những buổi chiều hoặc tối nhẹ nhàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGl8AfwURHugop9N2OnS--gjkSpz-3CoEO8ey7tdTe5U52fEwaMhiglI_HtpZCCY_Zfg9A1Z2TI0_7jYnDrzNZVlwZ5ODF0Ey9ybqM2tDAMvCWHdpuSkhl5VDXI75rqPmFJDLw=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0937859259",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/%C4%90%C3%94NG+D%C6%AF%C6%A0NG+Coffee/data=!4m7!3m6!1s0x310b2b0d508376ab:0x3cec5b2cd993788e!8m2!3d10.9730842!4d106.488773!16s%2Fg%2F11vdz955ds!19sChIJq3aDUA0rCzERjniT2Sxb7Dw?authuser=0&hl=vi&rclk=1",
+    "id": "0041",
+    "name": "ĐÔNG DƯƠNG Coffee",
+    "address": "42 Nguyễn Văn Khạ, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9730842,
+    "lng": 106.488773,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "ĐÔNG DƯƠNG Coffee là một quán nước bình dân với không gian thoáng đãng, thích hợp để thư giãn. Sân vườn rộng rãi tạo cảm giác gần gũi với thiên nhiên, còn việc đậu xe hơi thoải mái là một điểm cộng lớn. Các món đồ uống tại đây tập trung vào cà phê, cùng với một số lựa chọn nhẹ nhàng khác. Không gian decor đơn giản nhưng vẫn đảm bảo sự ấm cúng và dễ chịu. ",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6xuNK9-n5EEY_b_G0j6SkJkjD5d5rLpEXChtEEVIotiknJbh9gekfFavtiQBOX7XHVICXC5-A-YRxnPI1purR3nFHXbkHlPdm60AMl5BY3ibcjozS0lwd0aiBOyA82Ce0nHf3=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0375035551",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cathy%27s+coffee/data=!4m7!3m6!1s0x310b2d67ca50496d:0x7f9c6699ff79b888!8m2!3d10.9745614!4d106.5288022!16s%2Fg%2F11lgqgbwt4!19sChIJbUlQymctCzERiLh5_5lmnH8?authuser=0&hl=vi&rclk=1",
+    "id": "0042",
+    "name": "Cathy's coffee",
+    "address": "147A Suối Lội, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9745614,
+    "lng": 106.5288022,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cathy's Coffee là một quán nước nhỏ nhắn, yên bình với không gian thoáng đãng. Các loại đồ uống chủ yếu tập trung vào cà phê và trà, mang đến hương vị nhẹ nhàng, thư giãn. Mặc dù không có nhiều sự lựa chọn đặc sắc, nhưng vẫn đáp ứng được nhu cầu của những ai tìm kiếm nơi trú chân để thưởng thức một tách cà phê hoặc trà mát lành. Không gian quán được trang trí đơn giản, ấm cúng, phù hợp cho việc đọc sách hoặc trò chuyện với bạn bè. Sự kết hợp giữa không gian thoáng đãng và hương vị truyền thống tạo nên trải nghiệm thú vị.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGJ6FmrKlarhPzRKiq8EwTqcm0SyNOdAHZctaGd2DG3ava_tryTGDQLc2rf4999vB0ACGSTKXrVQTHyVysmyeFucVtnSVddlrrK-cpdq8cprcf7C7WBCtBPNgGK9_ImdGCYBWYs=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/L%C3%80+CAFE/data=!4m7!3m6!1s0x310b2d1efd0efe7b:0x5807c9dd7c4ea88b!8m2!3d10.9723737!4d106.5060517!16s%2Fg%2F11y0y5h6wm!19sChIJe_4O_R4tCzERi6hOfN3JB1g?authuser=0&hl=vi&rclk=1",
+    "id": "0043",
+    "name": "LÀ CAFE",
+    "address": "168-170 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9723737,
+    "lng": 106.5060517,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "LÀ CAFE là một quán nước bình dân với không gian ấm cúng, phù hợp để thưởng thức những món ăn quen thuộc. Thực khách có thể lựa chọn giữa các món ăn mang đi hoặc dùng bữa tại chỗ. Quán tập trung vào sự đơn giản trong hương vị, tạo cảm giác thoải mái cho mọi lứa tuổi. Sự kết hợp của 'Ăn tại chỗ Đồ ăn mang đi Giao hàng' mở ra nhiều tiện lợi cho khách hàng.",
+    "image_url": "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid=q3XFOOYbkZPXK117cNOzIg&cb_client=search.gws-prod.gps&w=80&h=92&yaw=51.90035&pitch=0&thumbfov=100",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0963383287",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Passio+Coffee+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2b0dbac7234f:0xa39c019d16f3ad9c!8m2!3d10.9735476!4d106.4957076!16s%2Fg%2F11fhvn1fz2!19sChIJTyPHug0rCzERnK3zFp0BnKM?authuser=0&hl=vi&rclk=1",
+    "id": "0044",
+    "name": "Passio Coffee Củ Chi",
+    "address": "184 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9735476,
+    "lng": 106.4957076,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Passio Coffee Củ Chi là một quán nước bình dân tại khu vực Củ Chi. Không gian quán khá thoáng đãng, phù hợp để ngồi nhâm nhi tách cà phê hoặc thưởng thức các món ăn nhẹ nhàng. Các món được phục vụ chủ yếu tập trung vào đồ uống và các món ăn vặt đơn giản như bánh ngọt, chè,... Hương vị chung của quán mang tính truyền thống, không quá cầu kỳ nhưng vẫn đủ để đáp ứng nhu cầu giải trí cơ bản.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE6YaCmIkRX_WMSetnyPKFOT_Pecw8Mn6Vm_kW9g8HQ4VXrHkiBi51gCIscJbleq7Fv7P0-hh3FlMlgUAJFgpdiP0lRd6hLVTViH2QUIWZUhRnS2guqTxOP2pNgU1g5jApcDUE=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0898155184",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/V%C6%B0%E1%BB%9Dn+Lan+Coffee+%26+Tea+%7C+C%C3%A0+ph%C3%AA+ngon+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x3174d3900733c885:0x87cf2c31771196ce!8m2!3d10.9841144!4d106.5688606!16s%2Fg%2F11h9p7rrbr!19sChIJhcgzB5DTdDERzpYRdzEsz4c?authuser=0&hl=vi&rclk=1",
+    "id": "0045",
+    "name": "Vườn Lan Coffee & Tea | Cà phê ngon Củ Chi",
+    "address": "153B TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9841144,
+    "lng": 106.5688606,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Vườn Lan Coffee & Tea là một quán nước nhỏ nhắn với không gian thoáng đãng, tận dụng tối đa view cảnh quan xung quanh. Quán tập trung vào các loại cà phê và trà, mang đến trải nghiệm thư giãn nhẹ nhàng. Không gian được thiết kế đơn giản, ấm cúng, phù hợp để ngồi nhâm nhi tách cà phê hoặc trà cùng bạn bè. Sự hiện diện của đội ngũ tiếp viên nhiệt tình sẽ góp phần làm tăng thêm sự thoải mái cho khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGjkEEKUQKcwwA-EWVwCbe5lEux0ldCgY8YaUPWrl3EPDATXufos8bWoI3pi5OjgmwiJVi-wUNamaDuG37DeEtNiB2t0ATesQYSuJbvPoFht-Mt679mTda0Gue7NvPO-rAZcHc=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0907790353",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+%26+Bida+C%C3%B5i+Ri%C3%AAng+-+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x31752e5de3be3f3d:0xbeebda9a81465d8d!8m2!3d10.9846614!4d106.5197146!16s%2Fg%2F1hc2hcvxp!19sChIJPT--410udTERjV1GgZra674?authuser=0&hl=vi&rclk=1",
+    "id": "0046",
+    "name": "Cafe & Bida Cõi Riêng - Củ Chi",
+    "address": "539a TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9846614,
+    "lng": 106.5197146,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cafe & Bida Cõi Riêng - Củ Chi là một quán nước bình dân với không gian thoáng đãng, phù hợp để thư giãn và chơi bida. Quán tập trung vào các món ăn quen thuộc như phở, bánh mì, chè,... cùng bia lạnh để giải nhiệt. Sự kết hợp giữa trò chơi bida và đồ uống tạo nên một trải nghiệm thoải mái cho khách hàng. Với mức giá phải chăng, quán hứa hẹn là điểm dừng chân lý tưởng cho những buổi chiều cuối tuần hoặc tối giản.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFv-qrdN5ETrxssnZm3KPb2TzAIVaw1tS9ANkslhII7tUCuD2yYHYvbxXjqDo0QcZkc4HRPV8vClbpPWYIx0MmLUBgMEALe8aayN90ZJhKFonI33T6kF8nEbyRKXEW8yF3rpLk=w152-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0975665739",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/M%C3%99I+concept+-+coffee+%26+tea+house/data=!4m7!3m6!1s0x310b2bbd4e08875f:0xed2ebfac96ad5e01!8m2!3d10.9768117!4d106.5013282!16s%2Fg%2F11w9r4t730!19sChIJX4cITr0rCzERAV6tlqy_Lu0?authuser=0&hl=vi&rclk=1",
+    "id": "0047",
+    "name": "MÙI concept - coffee & tea house",
+    "address": "đối diện bia tươi đầm sen, 354 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9768117,
+    "lng": 106.5013282,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "MÙI concept - coffee & tea house là một không gian ấm cúng, phù hợp để thư giãn và thưởng thức. Quán nước này tập trung vào các món bánh ngọt và đồ uống như cà phê, trà với hương vị nhẹ nhàng. Không gian được thiết kế đơn giản, thanh lịch, tạo cảm giác thoải mái cho khách hàng. Dựa trên đánh giá, có thể thấy quán chú trọng đến chất lượng bánh hơn là sự đặc sắc trong các loại thức uống. Sự kết hợp giữa 'Quán đẹp, hơi khó tìm chút, nước tạm dc, bánh ngon' gợi ý một trải nghiệm ẩm thực tập trung vào những món ngọt ngào.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHqcOGwljnJ06bUy2rskddrUdSdKTlPmvBPsbed2L4bUOrt_pEAckNs4UA7a35yUo50wE_beIvZBO5f2UZPjMlM-QkP2_QKPSl6HbRsqbl2r__XkDNeYeIBs9tYX3aNO3F043IkTsdieAZ0=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Coconut+coffee/data=!4m7!3m6!1s0x310b2baa1ecbdd17:0x1c129c4fe07b3894!8m2!3d10.9665634!4d106.5049218!16s%2Fg%2F11hdqk4nt9!19sChIJF93LHqorCzERlDh74E-cEhw?authuser=0&hl=vi&rclk=1",
+    "id": "0048",
+    "name": "Coconut coffee",
+    "address": "137 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9665634,
+    "lng": 106.5049218,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Coconut Coffee là một quán nước bình dân với không gian thoáng đãng. Sân sau nhỏ xinh mang đến chút xanh mát, dù không quá rộng nhưng vẫn đủ để khách thưởng thức đồ uống thư giãn. Quán nổi bật với các loại nước giải khát truyền thống và hiện đại, hương vị nhẹ nhàng, phù hợp cho những buổi chiều nắng ấm. Nước được đánh giá ngon, tạo cảm giác tươi mát. Đây là một địa điểm lý tưởng để tránh nóng và tận hưởng khoảnh khắc yên bình.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFp9z61owHUBDz6mfMRgJNj1U5xg-dtq3OjfzKmTMGuGDlglm778MFd6b1Us_RjAxdSWeT5NIwwEYxwX7ut8qynaMJelVh5TrnmrzTIXcWZ1XH6GaB8kAU_QaYecc15_Icaw-zw=w163-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0898866167",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+Ph%C3%AA+Phin+Nh%C3%A0+M%E1%BB%B3+-+V%C3%B5ng+S%C3%A2n+v%C6%B0%E1%BB%9Dn/data=!4m7!3m6!1s0x310b2b502b8a77e1:0x8827ac3b671df11b!8m2!3d10.9534531!4d106.5254719!16s%2Fg%2F11kjzq98nf!19sChIJ4XeKK1ArCzERG_EdZzusJ4g?authuser=0&hl=vi&rclk=1",
+    "id": "0049",
+    "name": "Cà Phê Phin Nhà Mỳ - Võng Sân vườn",
+    "address": "55c Suối Lội, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9534531,
+    "lng": 106.5254719,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 5.0,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Quán nước Cà Phê Phin Nhà Mỳ - Võng Sân vườn mang đến không khí yên bình với những món đồ uống đơn giản. Thường thấy các loại trà, cà phê pha theo kiểu truyền thống, cùng một vài món ăn nhẹ như bánh ngọt hoặc chè. Không gian thoáng mát, phù hợp để thư giãn sau giờ làm việc hoặc gặp gỡ bạn bè. Giá cả phải chăng, dễ chịu lòng người tiêu dùng. Sự kết hợp giữa không gian và đồ uống tạo nên một trải nghiệm bình dân.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9DHtMFeBq5Wy4bCQ1FmyETIV3hAarpU-5yG4P0mRhq2jl-F8YLydIxlYUwTwS-BfWE2yoqdTW6YrS-vJ09EG11niLUAwJy_wtI2gPYVQB1YMEA1ptNP-aLEslkkFHSs2_ylQjg5wefIQR=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0335290085",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/THE+2P+COFFEE/data=!4m7!3m6!1s0x310b2b0013f5d7bd:0x8e327591360cb702!8m2!3d10.9711968!4d106.4915275!16s%2Fg%2F11vy_7mlns!19sChIJvdf1EwArCzERArcMNpF1Mo4?authuser=0&hl=vi&rclk=1",
+    "id": "0050",
+    "name": "THE 2P COFFEE",
+    "address": "124a TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9711968,
+    "lng": 106.4915275,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [],
+    "semantic_text": "THE 2P COFFEE là một quán nước nhỏ nhắn với không gian được thiết kế lại khá bắt mắt. Nơi đây nổi bật với những món bánh ngọt và đồ uống giải khát đơn giản nhưng vẫn đủ để khách hàng thư giãn. Không gian yên tĩnh, phù hợp cho việc đọc sách hoặc trò chuyện cùng bạn bè. Hương vị chủ yếu tập trung vào sự thanh mát của các loại nước ép và vị ngọt dịu của bánh, tạo cảm giác thoải mái. Sự kết hợp giữa view đẹp và đồ uống/bánh ngon là điểm cộng lớn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGvT3hjlUSl1nD2cKC0yOjFvXZb9gfW_CsGawfMYdg9sWKGaAA0TZqc83d_SimFFR0tHrfRDHpr62dqX6YRJns8jrxWkMn55D1_LMzTlaEIQF7UcugW4Jj6OHA5wm2lteoUk_s=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+H%C3%AA+v%C3%A0+B%E1%BA%A1n+B%C3%A8/data=!4m7!3m6!1s0x310b2b177400bfe1:0x53ded8dc83ce7cd6!8m2!3d10.9705368!4d106.5034573!16s%2Fg%2F11y7fnchjm!19sChIJ4b8AdBcrCzER1nzOg9zY3lM?authuser=0&hl=vi&rclk=1",
+    "id": "0051",
+    "name": "Cà Hê và Bạn Bè",
+    "address": "Số 66, đường 31, Tân Thành, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9705368,
+    "lng": 106.5034573,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Cà Hê và Bạn Bè là một quán nước bình dân, mang đến không khí thư giãn, phù hợp để trò chuyện cùng bạn bè. Các món đồ uống chủ yếu tập trung vào cà phê và các loại trà, kèm theo một số bánh ngọt cơ bản. Hương vị được làm nổi bật với sự cân bằng giữa vị đắng của cà phê và sweetness nhẹ nhàng của bánh. Không gian quán đơn giản, ấm cúng, phù hợp với phong cách \"vẫn gọi là ổn áp\" như mô tả.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEvC0Bp9w6shy1GvAXHWLWukKCF-3sYObzwjcrvyv5LGW9r9kvofUkBo9eKbj2DK_ryDQCPTs_ItwsRaaYNCh2zmaAXqc8Owf9YXQcv8h3ImUTuIJ7Lfdxvg7SB7YDqYBLZ2ZafphinSrUi=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/HONEST+COFFEE+%7C+C%C3%80+PH%C3%8A+NGON+C%E1%BB%A6+CHI/data=!4m7!3m6!1s0x310b2bfd54824471:0x2f358cb0310a1648!8m2!3d10.9742058!4d106.4894283!16s%2Fg%2F11jr_ts_g1!19sChIJcUSCVP0rCzERSBYKMbCMNS8?authuser=0&hl=vi&rclk=1",
+    "id": "0052",
+    "name": "HONEST COFFEE | CÀ PHÊ NGON CỦ CHI",
+    "address": "50 Nguyễn Văn Khạ, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9742058,
+    "lng": 106.4894283,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.2,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "HONEST COFFEE | CÀ PHÊ NGON CỦ CHI là một quán nước nhỏ nhắn, yên bình tại khu vực Sài Gòn. Không gian được trang trí đơn giản với bàn ghế gỗ và ánh sáng dịu nhẹ, tạo cảm giác thư thái, lý tưởng để thưởng thức một tách cà phê. Hương vị cà phê ở đây tập trung vào sự tinh tế, cân bằng, không quá đậm đà hay nồng gắt. Điểm đặc biệt là giá cả phải chăng, phù hợp với nhiều đối tượng khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGalm904hs5W_BFZFKzbaMW1vU2wBj9ppS4wai1PAISkDcTl11hB4cANRKsQPbAcN2YipVX1OiOJXXYlgOpk9RyNxaF2ygNqcb5HtWUcKYwQi0ku-A6L3GI7ZzNWcFmKR26xoN-rA=w163-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0968766629",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/TI%E1%BB%86M+C%C3%80F%C6%A0/data=!4m7!3m6!1s0x310b2b8410e150cb:0x3d50872640174a6d!8m2!3d10.9748652!4d106.4919937!16s%2Fg%2F11vbbs_jrw!19sChIJy1DhEIQrCzERbUoXQCaHUD0?authuser=0&hl=vi&rclk=1",
+    "id": "0053",
+    "name": "TIỆM CÀFƠ",
+    "address": "Nguyễn Thị Sảng, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9748652,
+    "lng": 106.4919937,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.6,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tiệm Càfơ là một quán nước nhỏ nhắn, ấm cúng với không gian được thiết kế đơn giản, gần gũi. Menu tập trung vào các món ăn nhẹ như bánh ngọt và đồ uống giải khát, phù hợp để thư giãn sau giờ làm việc hoặc tụ tập bạn bè. Hương vị của các món ăn tại đây khá thanh nhạt, mang đến trải nghiệm ẩm thực dịu dàng. Không gian quán tạo cảm giác thoải mái, dễ chịu, rất thích hợp cho những buổi chiều yên tĩnh.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-pPaxXA6iXgxCXybdsBDhhc0nDRQUcuk8orpC6w6rLLp4B5rIRdQGoeLLV_hscSdq1CGyKt4ZI723pKD4mMOchRCilipSz9tWS7AV8gwgGtZJC5R5CjyctVH_dtXf8mDcHyY28tVsTa4R=w80-h120-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0353156661",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Luna+Cafe/data=!4m7!3m6!1s0x310b2b782775de37:0xcd91c2355addce43!8m2!3d10.964024!4d106.4899773!16s%2Fg%2F11dxf142st!19sChIJN951J3grCzERQ87dWjXCkc0?authuser=0&hl=vi&rclk=1",
+    "id": "0054",
+    "name": "Luna Cafe",
+    "address": "44 Đ. 361, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.964024,
+    "lng": 106.4899773,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Luna Cafe là một quán nước bình dân với không gian thoáng đãng, mang đến cảm giác thư thái. Quán nổi bật với các món nước giải khát đơn giản, phù hợp để tận hưởng buổi chiều hoặc tối. Hương vị chủ yếu tập trung vào sự tươi mát và thanh lành, đặc biệt thích hợp cho những ngày hè nóng bức. 'Nước rẻ cảnh đẹp nên ghé quán nhé mn'  gợi ý về một nơi dừng chân lý tưởng để giải nhiệt và ngắm nhìn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGsvSGmAhk8LV9jMSC5Zu0xxUmsnhbM4fVxcpZuNF6WxWbZCcQULN8cqSM13o2yRMj0IRH9XFI9QGKIQKfzKwgX1Rd4sf__SSEtGbAib_MBHQ89bJ66r_hXWQYR2g9jjS1mN8xRyQ=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0797444477",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/SUN+CAFE/data=!4m7!3m6!1s0x310b2beb2e750039:0x6abd510ff51d44b6!8m2!3d10.9749141!4d106.4923282!16s%2Fg%2F11mvsh68hk!19sChIJOQB1LusrCzERtkQd9Q9RvWo?authuser=0&hl=vi&rclk=1",
+    "id": "0055",
+    "name": "SUN CAFE",
+    "address": "16 Nguyễn Thị Sảng, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9749141,
+    "lng": 106.4923282,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "SUN CAFE là một quán nước bình dân với không gian thoáng đãng, phù hợp để thư giãn vào những buổi chiều. Các món đồ được chuẩn bị khá ổn định, đáp ứng nhu cầu cơ bản của khách hàng. Đặc biệt, hương vị đồ uống tại đây mang đến cảm giác tươi mát và dễ chịu, đi đôi với nhận xét \"nước ngon đồ ok mình thích vibe ở đây lắm\". Quán có thể phát triển thêm các lựa chọn đồ ăn nhẹ đơn giản để tăng tính đa dạng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGs99QDR7RGr6HAylgwTyF03xdXXysnUGl_J8DZv0eZiwL33pSIG9sX62GkIV0c2FTYxyQ3jgDht4LK0biY2RrXt_SKjWFgjYJ9PjYz5uv1Nnj86v0Fh8z0sQaGO4zHbKmGVHGs=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0359747492",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Green+Caf%C3%A9+PD/data=!4m7!3m6!1s0x310b2baad8c81ccb:0xc85a1ced33dde127!8m2!3d10.9659262!4d106.5124958!16s%2Fg%2F11v40ddyx5!19sChIJyxzI2KorCzERJ-HdM-0cWsg?authuser=0&hl=vi&rclk=1",
+    "id": "0056",
+    "name": "Green Café PD",
+    "address": "49 Trần Văn Chẩm, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9659262,
+    "lng": 106.5124958,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.3,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Green Café PD là một quán nước bình dân với không gian thoáng đãng, phù hợp để thư giãn hoặc tụ tập bạn bè. Menu đa dạng các món ăn nhẹ và đồ uống giải khát, tập trung vào hương vị tự nhiên của nguyên liệu tươi ngon. Khách hàng có thể tìm thấy những lựa chọn như sandwich, salad, sinh tố và cà phê. Điểm đặc biệt là quán mang đến sự thoải mái và tiện lợi với mức giá phải chăng, phù hợp cho mọi đối tượng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHi9NDFH6Rq_YLzhd8MAO4QLJytufDp9DMFRTx5hz95p0RNRPE0HvtWJRs_JCIGSSdHu7Pr5juVfvKZpjlK1Zl7ooiLdyzMSLdU_fnuBohihPC3AylDjnmkSUx38TpirNPCz0q6HQ=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0902694664",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/T%C3%A2n+Quy+Coffee+-+%C4%90%E1%BB%93+%C4%82n+Th%E1%BB%A9c+U%E1%BB%91ng/data=!4m7!3m6!1s0x3174d3ca00fc5921:0x4f04f8b8d5f74037!8m2!3d10.9839306!4d106.5714803!16s%2Fg%2F11t812t_j8!19sChIJIVn8AMrTdDERN0D31bj4BE8?authuser=0&hl=vi&rclk=1",
+    "id": "0057",
+    "name": "Tân Quy Coffee - Đồ Ăn Thức Uống",
+    "address": "115 TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9839306,
+    "lng": 106.5714803,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.7,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Tân Quy Coffee - Đồ Ăn Thức Uống là một quán nước bình dân với không gian ấm cúng, phù hợp để thư giãn và thưởng thức tách cà phê. Quán tập trung vào các món ăn nhẹ, đồ ăn sáng đơn giản như bún, cùng với những món ăn kèm truyền thống. Việc sử dụng bún sạch Hùng Mạnh cho thấy sự chú trọng đến nguồn nguyên liệu tươi ngon. Không gian quán mang đậm nét Hà Nội, tạo cảm giác gần gũi và dễ chịu.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEDDVIERF9EWk_9LLByscY3qYBBILzGM_Jucjz6xDZZLS-Pwr2aUVM0v4lDtOT0HcnXM61lWYk1dccbH5p-XEfyM4oYu5UJdHLjw2cwkPR7dqSM7O0md26IDBc8FBO6ghKUdmFs=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0563955955",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Cafe+L%E1%BB%99c+V%E1%BB%ABng+C%E1%BB%A7+Chi/data=!4m7!3m6!1s0x310b2d8bdfd03d87:0xf4d8260773c02445!8m2!3d10.9854291!4d106.4977434!16s%2Fg%2F11t54pc5fq!19sChIJhz3Q34stCzERRSTAcwcm2PQ?authuser=0&hl=vi&rclk=1",
+    "id": "0058",
+    "name": "Cafe Lộc Vừng Củ Chi",
+    "address": "218a Nguyễn Văn Khạ, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9854291,
+    "lng": 106.4977434,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.0,
+    "meals": [],
+    "semantic_text": "Cafe Lộc Vừng Củ Chi là một quán nước bình dân với không gian thoáng đãng, phù hợp để giải nhiệt vào những ngày hè nóng bức. Các món đồ uống được pha chế đơn giản, tập trung vào các loại nước ngọt truyền thống và trà đá. Hương vị chủ yếu dịu nhẹ, mang đến cảm giác thư giãn. Quán nước sạch sẽ đồ uống ngon nhất là điểm nhấn đáng chú ý.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH3Sqe_sYcMXySA-B0k1p4j_Q0DmBMiLJ2d6UGVWKeHrKl3EfWz5kNxhzCWYQqKyjM16Scvb4p6a51F5c_9jQC8g9epkyLctwecFqEvPAr7zSSxrbxPNI2R-DVPLfzm_KAIBcIyAA=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0972820369",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ery/data=!4m7!3m6!1s0x310b2b8290a436df:0xbb0366e5da98a327!8m2!3d10.9661374!4d106.4870129!16s%2Fg%2F11bcclqsb0!19sChIJ3zakkIIrCzERJ6OY2uVmA7s?authuser=0&hl=vi&rclk=1",
+    "id": "0059",
+    "name": "Ery",
+    "address": "15 Hà Văn Lao, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9661374,
+    "lng": 106.4870129,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.1,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Ery là một quán nước nhỏ xinh với không gian ấm cúng, phù hợp để thư giãn sau giờ làm việc hoặc tụ tập bạn bè. Các món đồ uống chủ yếu tập trung vào các loại trà và sinh tố tươi mát, cùng với một số kem và bánh ngọt cơ bản. Hương vị nhẹ nhàng, thanh tao, thích hợp cho những ai ưa chuộng sự tinh tế trong thưởng thức. Điểm nhấn của quán là không gian được thiết kế bắt mắt, tạo điều kiện để khách hàng có những bức ảnh đẹp lưu giữ kỷ niệm.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFukC_EVwHTmovK0TbLzmI7zVO164roecTdgw9FIymxPpjb3t26Y0ctCpVQ9L0AvyAAcw_wkZohFwUjm0R8yg41o_QnxKs4_Ba7_nP8ilWR6ngTUvKcsi_XGyXp4CVsFA5fEQXTHQ=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/ENERGY+COFFEE/data=!4m7!3m6!1s0x3174d3c57b357967:0x9e364347a30b0458!8m2!3d10.9759946!4d106.5827103!16s%2Fg%2F11t2_6g44f!19sChIJZ3k1e8XTdDERWAQLo0dDNp4?authuser=0&hl=vi&rclk=1",
+    "id": "0060",
+    "name": "ENERGY COFFEE",
+    "address": "844 Đ. Tỉnh Lộ 15, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9759946,
+    "lng": 106.5827103,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.7,
+    "meals": [],
+    "semantic_text": "ENERGY COFFEE là một quán nước nhỏ nhắn với không gian được thiết kế hiện đại và khá thoáng. Các loại đồ uống tại đây tập trung vào cà phê và các thức uống giải khát khác, mang đến hương vị tươi mát và dễ chịu. Không gian sạch sẽ, gọn gàng tạo cảm giác thư giãn, phù hợp để ngồi đọc sách hoặc trò chuyện với bạn bè. Đồ uống được pha chế tỉ mỉ, sử dụng nguyên liệu chất lượng, góp phần làm tăng thêm trải nghiệm cho khách hàng.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFjkLydk-VEUCiW_iCP2tfYm_yWd1Y0mRcKfuqHpBXyThSRX2e4sCToXQb0BnFrSEGrwLjpQR5xdMYKhaMF9PRvzu_dzns2VvI7GPnNsndK8Zg4YDlr48gYHdzSEWd-3D-XFaYY=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0944425553",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/N%C6%B0%E1%BB%9Bc+m%C3%ADa+V%C6%B0%E1%BB%9Dn+Cau/data=!4m7!3m6!1s0x310b2b8ddd855ac7:0x8891d02dc849eac7!8m2!3d10.9547087!4d106.512598!16s%2Fg%2F11vdkbxb6d!19sChIJx1qF3Y0rCzERx-pJyC3QkYg?authuser=0&hl=vi&rclk=1",
+    "id": "0061",
+    "name": "Nước mía Vườn Cau",
+    "address": "259A Phan Văn Khải, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9547087,
+    "lng": 106.512598,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.5,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Nước mía Vườn Cau là một quán nước bình dân mang đến hương vị giản dị của miền quê. Không gian thoáng đãng, mát mẻ với những chiếc bàn ghế gỗ đơn sơ tạo cảm giác gần gũi. Đặc biệt, hai món tủ như Nước mía đậu xanh và Khoai mì nước cốt dừa được đánh giá cao về sự thanh nhiệt, ngọt ngào. Đây là nơi lý tưởng để giải khát giữa tiết trời oi ả hoặc thưởng thức một chút dịu dàng vào buổi chiều.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGT9Pzq7VSjYN9UXPVWY8JLWrbbYDThjSRTdtZ9W9WtXMr63w6x56wgzXn09Qi6ZBHCJp-qnkUDckEymRr4GAcLu6f1LCtpEwNhoJffYxmY4AJvmHLyTr6u_vSzZmm0KXBJ_a9vM7VXn2Ra=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0906933039",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Tr%E1%BA%A1m+D%E1%BB%ABng+90/data=!4m7!3m6!1s0x310b2ca2876a9c4b:0x35ad8e8964b12541!8m2!3d10.982414!4d106.5116543!16s%2Fg%2F11cpffylvb!19sChIJS5xqh6IsCzERQSWxZImOrTU?authuser=0&hl=vi&rclk=1",
+    "id": "0062",
+    "name": "Trạm Dừng 90",
+    "address": "540A TL8, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.982414,
+    "lng": 106.5116543,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [
+      "Sáng",
+      "Trưa",
+      "Tối"
+    ],
+    "semantic_text": "Trạm Dừng 90 là một quán nước bình dân với không gian thoáng đãng, phù hợp để dừng chân nghỉ ngơi. Menu đa dạng từ cà phê, trà sữa đến các loại nước trái cây tươi mát, đáp ứng nhu cầu của nhiều thực khách. Hương vị chủ đạo tập trung vào sự thanh lành và nhẹ nhàng, đặc biệt thích hợp cho những ngày hè nóng bức. Quán có vẻ hướng tới đối tượng học sinh, sinh viên và người đi làm tìm kiếm một nơi dừng chân quen thuộc.  Menu đa dạng từ cà phê , trà sữa cho đến các loại nước trái cây.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE-ACLom3DyKN9SIcY8PLAUFNlwdlF9HC2H9SDdVw3farXEKqcrzroc_7879scjl0lpGHVhakcPiM9NbzYqtz-kzU3MiVNjHuSjB5lKN5G-iitHBF7k42iPNj4RMeknsFWPggl3NNCy1t8d=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": "0901078318",
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Ng%E1%BA%A1n+Cafe/data=!4m7!3m6!1s0x310b330027e48ad7:0x38a0a122a20fcff6!8m2!3d11.0920872!4d106.513539!16s%2Fg%2F11x2qgjx4s!19sChIJ14rkJwAzCzER9s8PoiKhoDg?authuser=0&hl=vi&rclk=1",
+    "id": "0063",
+    "name": "Ngạn Cafe",
+    "address": "1000 Đường Tỉnh Lộ 15 ấp chợ củ 2, 1000 Đ. Tỉnh Lộ 15, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 11.0920872,
+    "lng": 106.513539,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.8,
+    "meals": [],
+    "semantic_text": "Ngạn Cafe là một quán nước mang đến trải nghiệm thư giãn với không gian vừa cổ kính vừa hiện đại. Các món ăn tập trung vào sự thanh mát và hương vị truyền thống, phù hợp cho những buổi chiều nắng ấm. Đặc biệt, bánh tráng tại đây được đánh giá cao về sự ngon miệng và giá cả phải chăng. Quán có view đẹp, góp phần làm tăng thêm sự quyến rũ.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGkug2XNEpgq7hRQz8sl8cCz7gj-c5V-erwhZR_FcfhMG5l5z62JsG1KO6wXKEjSKahq-Prty2r_tMTErw_3gzc8l6lLRIGaPRB2xOAn8YUuiLxvoxh0PwsNL4zEGO1DSrgQKuw6pe6GpVE=w138-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C3%A0+Ph%C3%AA+vi%E1%BB%87t+pha+m%C3%A1y+%28+m%C5%A9i+t%C3%A0u%29/data=!4m7!3m6!1s0x310b2c9d9684f23d:0xa2d3c3301a5c5ea7!8m2!3d10.9756686!4d106.5035489!16s%2Fg%2F11hhzct09f!19sChIJPfKElp0sCzERp15cGjDD06I?authuser=0&hl=vi&rclk=1",
+    "id": "0064",
+    "name": "Cà Phê việt pha máy ( mũi tàu)",
+    "address": "252 Liêu Bình Hương, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9756686,
+    "lng": 106.5035489,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 3.8,
+    "meals": [],
+    "semantic_text": "Cà Phê Việt Pha Máy (Mũi Tàu) là một quán nước nhỏ nhắn, mang đến không khí yên bình gần gũi. Quán nổi bật với những tách cà phê pha máy đậm đà, hương vị truyền thống được giữ trọn vẹn. Không gian giản dị, ấm cúng, phù hợp để thư giãn hoặc trò chuyện cùng bạn bè. Điểm đặc biệt là sự kết hợp giữa cà phê và các món ăn nhẹ cơ bản, tạo nên một trải nghiệm đơn thuần nhưng đầy thú vị. Nhìn chung, quán mang đến hương vị cà phê Việt pha máy quen thuộc với mức độ cay rất thấp.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEHjkj7sFXYGaKzaXIc1rxYmu-wd4LMbpIyJTi4nmKsrIbqIRUMo9WRTUPZYHSYNyFIJtjqHQRvI9IGMhtnZP93X8-DHwZzHtDi6X96ohetj51N424qMxJnE7OTl1lKvTcK1M3e=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+Kim+Huy%E1%BB%81n/data=!4m7!3m6!1s0x3174d57617bed96b:0x59da3a2c7ed88d4b!8m2!3d10.9326313!4d106.5436557!16s%2Fg%2F11j10qr6fd!19sChIJa9m-F3bVdDERS43Yfiw62lk?authuser=0&hl=vi&rclk=1",
+    "id": "0065",
+    "name": "Quán Kim Huyền",
+    "address": "Ngã tư, Đ. Số 99, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9326313,
+    "lng": 106.5436557,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 3.8,
+    "meals": [],
+    "semantic_text": "Quán Kim Huyền là một quán nước bình dân với không gian thoáng đãng, phù hợp để thưởng thức các món ăn quen thuộc. Quán nổi bật với hương vị truyền thống, tập trung vào sự thanh mát của các loại nước giải khát và cơm gà. Cơm gà tại đây được chế biến đơn giản nhưng vẫn đảm bảo đủ độ thơm ngon, thịt gà mềm ngọt hòa quyện cùng cơm nóng hổi. Giá cả phải chăng là một điểm cộng lớn, khiến quán trở thành lựa chọn lý tưởng cho những bữa trưa hoặc tối nhanh nhẹn.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHvzsr5-aNcJcWcFLXRNAyGitfPxJ8HuuCTHAzSg7Alc5_y-SbL9_uxQC_UbvKBmKMjo1YtmQLWJqQKgcrkVXIS3sgg8l4XJZZx3MoSRsLEsaC8KhqpWn8OB9NwTKLBVftDQks=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+ni%C3%AAu+B%C3%A0u+%C4%90%C3%A1/data=!4m7!3m6!1s0x3174d53403e5f8b7:0xc26a893b09c00be9!8m2!3d10.9426084!4d106.5432056!16s%2Fg%2F11kb8cm4fn!19sChIJt_jlAzTVdDER6QvACTuJasI?authuser=0&hl=vi&rclk=1",
+    "id": "0066",
+    "name": "Cơm niêu Bàu Đá",
+    "address": "96 HL2, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9426084,
+    "lng": 106.5432056,
+    "avg_price": 50500.0,
+    "shu": 2,
+    "star": 4.4,
+    "meals": [],
+    "semantic_text": "Cơm niêu Bàu Đá là một quán nước bình dân với hương vị truyền thống. Cơm được nấu mềm và thơm hòa quyện cùng các loại thịt và rau củ đậm đà. Đặc biệt, rau khoa quẹt là điểm nhấn đáng nhớ, mang đến sự béo ngậy và tươi ngon. Không gian quán đơn giản, sạch sẽ, phù hợp để thưởng thức những món ăn quen thuộc. Sự kết hợp giữa giá cả phải chăng và chất lượng đồ ăn khiến đây trở thành một lựa chọn hấp dẫn cho bữa trưa hoặc tối.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGezqyt-N7V4KnP8ZXz5BfxjgDrD4FXQQAKzX6rZsHCKZNIxlGU5p536NuDCUQNbW3VWrPG_vGyIK4dFDP_Mpj4dZwnzv19_W4peNf2WizY8yd96AwCQHe4g6J4Hpv-Sm4HguY3XhlnSVb9=w80-h106-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Sam+Coffee./data=!4m7!3m6!1s0x310b2d13860af4cb:0x760c75c9eeaa1ea3!8m2!3d10.9788191!4d106.4924058!16s%2Fg%2F11fwzz_q21!19sChIJy_QKhhMtCzERox6q7sl1DHY?authuser=0&hl=vi&rclk=1",
+    "id": "0067",
+    "name": "Sam Coffee.",
+    "address": "Nguyễn Văn Khạ/112 Tổ 5, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9788191,
+    "lng": 106.4924058,
+    "avg_price": 50500.0,
+    "shu": 1,
+    "star": 4.0,
+    "meals": [],
+    "semantic_text": "Sam Coffee là một quán nước nhỏ nhắn, ấm cúng với không gian yên tĩnh, phù hợp để thư giãn hoặc trò chuyện cùng bạn bè. Menu tập trung vào các món ăn nhẹ nhàng, thanh mát như chè, bánh ngọt và các loại đồ uống giải nhiệt. Hương vị chủ đạo của quán hướng đến sự tươi mát và tinh tế, mang lại trải nghiệm ẩm thực nhẹ nhàng. Đặc biệt, slogan \"Ăn ngon vừa là coffee vừa là Ăn\" gợi ý về sự kết hợp hài hòa giữa cà phê và những món ăn đơn giản, thanh đạm. ",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGNEFMwkuC8Gtg-Ukp3zvoNGcfsTt6eR1Lj0YnqxIP2N1fkFXmKYB_lYkSMBbBpoH0POJ_nYG5lqFW_JXHHGsAaDAAOM0BV1kwNHPsvliJ6sM0xhVLxhLL_nca7Z76BiMaHJ1_VZw=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/Qu%C3%A1n+N%C6%B0%E1%BB%9Bng+79/data=!4m7!3m6!1s0x310b2bdcc5883673:0x74376f388d528afc!8m2!3d10.9737612!4d106.5020818!16s%2Fg%2F11f5vcs6yf!19sChIJczaIxdwrCzER_IpSjThvN3Q?authuser=0&hl=vi&rclk=1",
+    "id": "0068",
+    "name": "Quán Nướng 79",
+    "address": "27 Nhữ Tiến Hiến, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9737612,
+    "lng": 106.5020818,
+    "avg_price": 150000.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Quán Nướng 79 là một địa điểm quán nước nhỏ nhắn, phù hợp cho những bữa ăn nhanh hoặc thư giãn. Thực khách có thể tìm thấy các món nướng cơ bản như thịt heo, gà, hải sản với hương vị vừa phải, không quá đặc sắc nhưng cũng không làm thất vọng. Không gian quán đơn giản, sạch sẽ và được trang trí khá ấm cúng. Kết hợp với nhận xét \"Đồ ăn tạm ổn, có món ăn được, món ko hẳn quá ngon.\", đây là một lựa chọn bình dân để thưởng thức.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHZC3ROYVi6F00PS6_-zG5E4J6z9DpqQ3rx_UYgxIIe7dt5UDEvK1INGIf-nLZhXa7r7vV4hHRH21G82EnPgidt-Wdyk5ainvAw-T6EZmO4rFi7-Yuwg65AaMGo_wYmn-FoAffdCoeofEQ=w122-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  },
+  {
+    "Link google": "https://www.google.com/maps/place/C%C6%A1m+T%E1%BA%A5m+S%C6%B0%E1%BB%9Dn+C%E1%BB%8Dng+B%C3%AC+Ch%E1%BA%A3+A+Ho%C3%B3n/data=!4m7!3m6!1s0x310b2b481411d625:0xb7142fd445a5319!8m2!3d10.9571211!4d106.5098561!16s%2Fg%2F11h5lw72vg!19sChIJJdYRFEgrCzERGVNaRP1CcQs?authuser=0&hl=vi&rclk=1",
+    "id": "0069",
+    "name": "Cơm Tấm Sườn Cọng Bì Chả A Hoón",
+    "address": "270A QL22, Củ Chi, TP. Hồ Chí Minh",
+    "lat": 10.9571211,
+    "lng": 106.5098561,
+    "avg_price": 50500.0,
+    "shu": 3,
+    "star": 4.2,
+    "meals": [],
+    "semantic_text": "Quán Cơm Tấm Sườn Cọng Bì Chả A Hoón mang đến hương vị truyền thống Việt Nam với những món ăn quen thuộc. Cơm tấm mềm dẻo kết hợp cùng sườn cọng bì và chả đầu nướng tạo nên sự cân bằng hoàn hảo về hương vị. Mùi thơm đặc trưng của thịt nướng quyện hòa cùng gia vị đậm đà khiến thực khách khó quên. Không gian quán tuy đơn giản nhưng vẫn mang nét ấm cúng, phù hợp cho bữa ăn gia đình hoặc bạn bè.",
+    "image_url": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGeJBnB9BcZrkln4WxbOWJfJDtkV9HMBKX6228_Cf3te0K7kc0v34Q6nd8agBuhc0AGkdnfxSMnwem5LKizLIuXE53h_G_EMyyzdw-ZRyIlmDdRK3bSWFFRaHmdu-b4-MaNwC6rXQ=w163-h92-k-no",
+    "type": [
+      "Quán nước"
+    ],
+    "phone_num": null,
+    "main_tag": [],
+    "potential_tag": [],
+    "menu": []
+  }
+]
