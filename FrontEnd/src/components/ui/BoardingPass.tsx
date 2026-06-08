@@ -97,7 +97,6 @@ const BoardingPassTicket = forwardRef<
       ref={ref}
       data-boarding-pass-ticket
       className="relative mx-auto box-border w-full max-w-[450px] overflow-visible rounded-[24px] border border-[#0B3C5D]/15 bg-[#FAFAFA] p-6 shadow-sm"
-      style={{ width: TICKET_WIDTH }}
     >
       <div className="absolute inset-x-0 top-0 h-[120px] bg-[#0B3C5D]" />
 
@@ -299,14 +298,12 @@ export default function BoardingPass({
     setIsExporting(true);
 
     const source = ticketRef.current;
-    const captureWidth = source.offsetWidth;
-    const captureHeight = source.offsetHeight;
     const clone = source.cloneNode(true) as HTMLDivElement;
     clone.style.position = "fixed";
     clone.style.left = "-9999px";
     clone.style.top = "0";
-    clone.style.width = `${captureWidth}px`;
-    clone.style.height = `${captureHeight}px`;
+    clone.style.width = `${TICKET_WIDTH}px`; // Fix cứng width clone theo chuẩn
+    clone.style.height = "auto"; // Chiều cao tự động bung theo nội dung
     clone.style.visibility = "visible";
     clone.style.opacity = "1";
     clone.style.pointerEvents = "none";
@@ -322,8 +319,8 @@ export default function BoardingPass({
         scale: 2,
         backgroundColor: "#ffffff",
         logging: false,
-        width: captureWidth,
-        height: captureHeight,
+        width: TICKET_WIDTH, // Đổi từ captureWidth sang TICKET_WIDTH
+        windowWidth: TICKET_WIDTH, // Thêm property này để canvas render chuẩn
         onclone: (_doc, element) => {
           const el = element as HTMLElement;
           el.style.overflow = "visible";
