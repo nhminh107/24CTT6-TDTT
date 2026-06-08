@@ -29,7 +29,7 @@ def analyze_restaurant_tags(name, restaurant_type, shu, semantic_text):
     - DeepFried_Oily: Đồ chiên rán nhiều dầu mỡ (gà rán, khoai tây chiên, đồ nướng).
     - High_Sugar: Món ăn/thức uống sử dụng nhiều đường, đồ ngọt (chè, trà sữa, bánh ngọt).
     - Refined_Carbs: Tinh bột tinh chế (mì Ý, pizza, bánh mỳ, burger).
-    - Low_GI_Diet: Chế độ ăn thanh đạm, đồ ăn kiêng, ít tinh bột (salad, đồ chay, đồ hấp luộc).
+    - High_Sodium: Chế độ ăn nhiều muối và các loại khoáng (Món kho,đồ ăn nhanh,...).
     - Red_Meat: Các loại thịt đỏ (bò bít tết, lẩu đuôi bò, thịt dê, thịt cừu).
     - Seafood: Hải sản nói chung (cá, tôm, mực, cua, hàu).
     - Alcohol_Pub: Quán nhậu, đồ uống có cồn, bia rượu.
@@ -47,7 +47,7 @@ def analyze_restaurant_tags(name, restaurant_type, shu, semantic_text):
       "DeepFried_Oily": "main/potential/none",
       "High_Sugar": "main/potential/none",
       "Refined_Carbs": "main/potential/none",
-      "Low_GI_Diet": "main/potential/none",
+      "High_Sodium": "main/potential/none",
       "Red_Meat": "main/potential/none",
       "Seafood": "main/potential/none",
       "Alcohol_Pub": "main/potential/none",
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     # 2. Đi lùi ra thư mục cha (Back_End), rồi đi vào 'Database' -> 'old_data.json'
-    input_filename = os.path.join(current_dir, "..", "Database", "old_data.json")
+    input_filename = os.path.join(current_dir,"merged_file.json")
         
     with open(input_filename, 'r', encoding='utf-8') as file:
       # 2. Nạp dữ liệu JSON thành List/Dict trong Python
@@ -129,7 +129,7 @@ if __name__ == "__main__":
     print("✅ Đã xử lý xong toàn bộ dữ liệu quán ăn!")
 
     # --- ĐOẠN CODE GHI RA FILE JSON Ở ĐÂY ---
-    output_filename = os.path.join(current_dir, "..", "Database", "data.json")
+    output_filename = os.path.join(current_dir, "data.json")
     
     try:
         # Mở file ở chế độ ghi ('w'), ép định dạng utf-8 để không bị lỗi font tiếng Việt
