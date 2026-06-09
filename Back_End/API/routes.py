@@ -799,14 +799,31 @@ async def create_restaurant_comment(restaurant_id: str, payload: RestaurantComme
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tạo comment: {str(e)}")
 
 @user_router.get("/restaurant-comment/{restaurant_id}", status_code=status.HTTP_200_OK)
-async def get_restaurant_comments(restaurant_id: str):
+async def get_restaurant_comments(restaurant_id: str, user_id: str = None):
     try:
-        comments_ref = db.collection("restaurant_comments") \
-                         .document(restaurant_id) \
-                         .collection("comments")
+        comments_ref = (
+            db.collection("restaurant_comments")
+              .document(restaurant_id)
+              .collection("comments")
+        )
 
         comments_query = comments_ref.order_by("created_at", direction=firestore.Query.DESCENDING)
-        comments_docs = comments_query.stream()
+        comments_docs = list(comments_query.stream())
+
+        # Fetch votes của user song song nếu có user_id
+        user_votes: dict[str, str] = {}  # comment_id → "like" | "dislike"
+        if user_id:
+            vote_refs = [
+                comments_ref.document(doc.id).collection("votes").document(user_id)
+                for doc in comments_docs
+            ]
+            vote_docs = db.get_all(vote_refs)  # 1 batch read thay vì N reads
+            for vote_doc in vote_docs:
+                if vote_doc.exists:
+                    data = vote_doc.to_dict()
+                    # vote_doc.reference.parent.parent.id là comment_id
+                    comment_id = vote_doc.reference.parent.parent.id
+                    user_votes[comment_id] = data.get("vote_type")
 
         comments = []
         for doc in comments_docs:
@@ -821,15 +838,15 @@ async def get_restaurant_comments(restaurant_id: str):
                 "like_count": record.get("like_count", 0),
                 "dislike_count": record.get("dislike_count", 0),
                 "created_at": record.get("created_at"),
-                "updated_at": record.get("updated_at"),
-                "edited": record.get("edited", False),
+                "current_vote": user_votes.get(doc.id),  # "like" | "dislike" | None
             })
 
         return {
             "restaurant_id": restaurant_id,
             "total_comments": len(comments),
-            "comments": comments
+            "comments": comments,
         }
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải comment: {str(e)}")
 

@@ -50,14 +50,14 @@ export default function RestaurantDetailModal({
   useEffect(() => {
     if (!isOpen || !restaurant?.id) return;
     setComments([]);
-    fetchComments();
+    fetchComments();  
   }, [isOpen, restaurant?.id]);
 
   const fetchComments = async () => {
     setLoadingComments(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/user/restaurant-comment/${restaurant!.id}`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/user/restaurant-comment/${restaurant!.id}?user_id=${CURRENT_USER.user_id}`
       );
       if (!res.ok) return;
       const data = await res.json();
@@ -65,7 +65,6 @@ export default function RestaurantDetailModal({
       setComments(
         (data.comments ?? []).map((c: CommentItem) => ({
           ...c,
-          current_vote: null, // backend chưa trả về, mặc định null
           edited: c.edited ?? false,
           updated_at: c.updated_at ?? null,
         }))
