@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
 import { Map, Source, Layer, Popup, NavigationControl, GeolocateControl, Marker, MapRef } from "react-map-gl/maplibre";
 import maplibregl from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
+import 'maplibre-gl/dist/maplibre-gl.css';
 import { convertToGeoJSON, ApiRestaurant, Restaurant, buildRestaurants, inferMealFromRestaurant } from "@/lib/utils";
 import { Star, MapPin, Navigation, Info, X, MessageSquare, Plus, Check, Loader2, ChevronDown } from "lucide-react";
 import Link from "next/link";
