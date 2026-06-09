@@ -5,6 +5,7 @@ import axios from "axios";
 import { X, Star, MapPin, Phone, Info, AlertTriangle, ThumbsUp, ThumbsDown, Edit3, Trash2 } from "lucide-react";
 import { Restaurant } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
+import Link from "next/link";
 interface RestaurantDetailModalProps {
   restaurant: Restaurant | null;
   isOpen: boolean;
@@ -100,6 +101,11 @@ export default function RestaurantDetailModal({
 
   const handleVote = async (commentId: string, voteType: "like" | "dislike") => {
     if (!restaurant?.id || !commentId || votingCommentId) return;
+    if (!user || !CURRENT_USER?.user_id) {
+    alert("Vui lòng đăng nhập để có thể thích hoặc không thích bình luận này!");
+    // Nếu bạn muốn tự chuyển hướng sang trang login, dùng: router.push('/login')
+    return; 
+    }
     setVotingCommentId(commentId);
 
     try {
@@ -317,31 +323,43 @@ export default function RestaurantDetailModal({
             </div>
           )}
 
-          {/* Comments */}
-          <div className="pt-6 border-t border-slate-100">
-            <div>
-              <h3 className="text-xl font-bold text-slate-800">Bình luận</h3>
-              <p className="text-sm text-slate-500">Chia sẻ trải nghiệm của bạn về nhà hàng này.</p>
-            </div>
+          {/* ── Thêm vào lịch trình ── */}
+          
+          {/* ── Bình luận ── */}
+<div className="pt-6 border-t border-slate-100">
+  <div>
+    <h3 className="text-xl font-bold text-slate-800">Bình luận</h3>
+    <p className="text-sm text-slate-500">Chia sẻ trải nghiệm của bạn về nhà hàng này.</p>
+  </div>
 
-            <div className="mt-4 space-y-4">
-              {/* Input */}
-              <div className="flex flex-col gap-3">
-                <textarea
-                  value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
-                  rows={4}
-                  placeholder="Viết bình luận của bạn..."
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 transition"
-                />
-                <button
-                  onClick={handleSubmitComment}
-                  disabled={submittingComment || !newComment.trim()}
-                  className="inline-flex items-center justify-center rounded-2xl bg-rose-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-rose-600 disabled:cursor-not-allowed disabled:bg-slate-300"
-                >
-                  {submittingComment ? "Đang gửi..." : "Gửi bình luận"}
-                </button>
-              </div>
+  <div className="mt-4 space-y-4">
+    {user ? (
+      /* Trường hợp ĐÃ ĐĂNG NHẬP: Hiển thị ô nhập bình luận */
+      <div className="flex flex-col gap-3">
+        <textarea
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+          rows={4}
+          placeholder="Viết bình luận của bạn..."
+          className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 transition"
+        />
+        <button
+          onClick={handleSubmitComment}
+          disabled={submittingComment || !newComment.trim()}
+          className="inline-flex items-center justify-center rounded-2xl bg-rose-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-rose-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+        >
+          {submittingComment ? "Đang gửi..." : "Gửi bình luận"}
+        </button>
+      </div>
+    ) : (
+      /* Trường hợp CHƯA ĐĂNG NHẬP: Yêu cầu đăng nhập */
+      <Link
+        href="/login"
+        className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-bold rounded-2xl transition flex items-center justify-center gap-2 border border-slate-200 border-dashed"
+      >
+        🔐 Đăng nhập để bình luận và chia sẻ trải nghiệm
+      </Link>
+    )}
 
               {/* List */}
               <div className="space-y-4">
