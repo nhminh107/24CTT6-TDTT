@@ -67,7 +67,7 @@ class LLMParser():
         6. "feedback_reason": (String) Reason for dissatisfaction or change request (if any). MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating". Return null if no specific reason is given.
         7. "meals_detail": (Array of Objects) Detailed list of each requested meal. Each "meal" type can only appear at most once. The array length must match "num_meals". If the user makes a general request without specifying the meal time, assign it to an appropriate meal; café/bakery/snacks ("quán nước/tiệm bánh/ăn vặt") defaults to "xế" if not specified. Each object includes:
             - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-            - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Thái", "Quán nước", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
+            - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
             - "semantic_query": (String) Keywords describing mood, atmosphere, view, or amenities (e.g., "máy lạnh", "yên tĩnh", "vỉa hè"). Separated by commas. Return null if none.
             - "dish": (String) A single specific dish requested for that meal (lowercase). Return "" if no specific dish is requested.
         8. "target_shop_id": (String) The ID of the specific restaurant the user is complaining about or wants to change, resolved from the SYSTEM CONTEXT. Return null if not applicable.
