@@ -52,7 +52,7 @@ class ChatBot():
         - Examples: "bánh canh", "tìm quán ăn sáng", "quán nào gần đây".
         - Evaluation of `isPoorInfo`:
             * isPoorInfo = 1 → Extremely vague with NO context in history (e.g., just "ngon", "đói").
-            * isPoorInfo = 0 → Specific food/location OR a follow-up answer that completes a previous search request.
+            * isPoorInfo = 0 → A specific food/place OR the next answer that fulfills the previous search query. Simply understand that anything related to food/place will have a value of 0.
 
         2. "System_QA"
         - Asking HOW TO USE the BMI app or reporting bugs.
@@ -165,7 +165,7 @@ Here is the information about the restaurants or itineraries that the system has
 
 ### General Guidelines
 - Respond enthusiastically, professionally, and in natural Vietnamese.
-- **MANDATORY**: Always end your response with the following medical disclaimer:
+- **MANDATORY**: When users ask about health issues, Always end your response with the following medical disclaimer:
   "⚠️ Lưu ý: Thông tin trên chỉ mang tính tham khảo. Vui lòng tham khảo ý kiến bác sĩ hoặc chuyên gia dinh dưỡng trước khi thay đổi chế độ ăn uống."
 """
 
