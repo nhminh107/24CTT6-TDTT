@@ -62,6 +62,14 @@ export const itineraryApi = {
     });
     return res.json();
   },
+  importShared: async (userId: string, shareId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/import-shared`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: userId, share_id: shareId }),
+    });
+    return res.json();
+  },
   getPublic: async (shareId: string) => {
     const res = await apiFetch(`${API_BASE_URL}/public/${shareId}`);
     return res.json();

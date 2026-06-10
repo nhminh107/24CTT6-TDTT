@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { ArrowLeft, CalendarCheck, Menu, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
@@ -54,6 +54,9 @@ const DEFAULT_HEALTH_PROFILE: HealthProfile = {
 export default function MainDashboard() {
   const { user } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const urlChatId = searchParams.get("chat_id");
+  
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
@@ -143,7 +146,10 @@ export default function MainDashboard() {
     try {
       const data = await itineraryApi.get(user.uid);
       if (data.status === "success") {
-        setCurrentItinerary(data.itinerary);
+        // Sử dụng buildRestaurants để chuẩn hóa dữ liệu từ backend (image_url, star...) 
+        // sang định dạng frontend (imageUrl, rating...)
+        const processedItinerary = buildRestaurants(data.itinerary);
+        setCurrentItinerary(processedItinerary);
       }
     } catch (error) {
       console.error("Error fetching itinerary:", error);
@@ -227,11 +233,15 @@ export default function MainDashboard() {
         // Fetch history to populate sidebar
         await fetchChatHistory();
         
-        // Kiểm tra xem trong phiên trình duyệt này đã khởi tạo chat chưa
         const sessionKey = `bmi_chat_init_${user.uid}`;
         const isSessionInitialized = sessionStorage.getItem(sessionKey);
 
-        if (!isSessionInitialized) {
+        if (urlChatId) {
+          console.log("[DASHBOARD] Opening chat from URL:", urlChatId);
+          setCurrentChatId(urlChatId);
+          await fetchChatMessages(urlChatId);
+          sessionStorage.setItem(sessionKey, "true");
+        } else if (!isSessionInitialized) {
           console.log("[DASHBOARD] New session detected. Creating auto-new chat...");
           await handleNewChat();
           sessionStorage.setItem(sessionKey, "true");
