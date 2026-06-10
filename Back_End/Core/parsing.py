@@ -162,4 +162,3 @@ class LLMParser():
 if __name__ == "__main__":
     parser = LLMParser()
     print(parser.JSON_response("Tôi đang muốn tìm quán nước, quán ăn trưa và tối. Quán trưa phải là quán Việt, quán ăn tối phải là quán Thái"))
-

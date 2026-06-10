@@ -10,7 +10,7 @@ import json
 
 
 
-from datetime import datetime
+from datetime import datetime,timezone
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -27,6 +27,10 @@ from Back_End.Core.semantic_cache import SemanticCacheManager
 from Back_End.Core.auth_handler import get_db
 from Back_End.Core.user_manager import UserManager
 from Back_End.Core.itinerary_manager import ItineraryManager
+from typing import Literal
+
+# Trả về giờ UTC có chứa thông tin múi giờ UTC rõ ràng (timezone-aware)
+current_time = datetime.now(timezone.utc)
 
 router = APIRouter(prefix="/api/v1", tags=["Main Pipeline"])
 
@@ -782,3 +786,257 @@ async def delete_chat(user_id: str, chat_id: str):
         return {"status": "success", "message": "Đã xóa cuộc trò chuyện."}
     else:
         raise HTTPException(status_code=500, detail="Không thể xóa cuộc trò chuyện.")
+
+
+class RestaurantCommentRequest(BaseModel):
+    user_id: str
+    username: str
+    content: str
+
+class EditCommentRequest(BaseModel):
+    user_id: str
+    content: str
+
+class DeleteCommentRequest(BaseModel):
+    user_id: str
+
+@user_router.post("/restaurant-comment/{restaurant_id}", status_code=status.HTTP_200_OK)
+async def create_restaurant_comment(restaurant_id: str, payload: RestaurantCommentRequest):
+    try:
+        restaurant_ref = db.collection("restaurant_comments").document(restaurant_id)
+        if not restaurant_ref.get().exists:
+            restaurant_ref.set({
+                "restaurant_id": restaurant_id,
+                "created_at": datetime.utcnow().isoformat() + "Z",
+            })
+
+        comment_data = {
+            "user_id": payload.user_id,
+            "username": payload.username,
+            "content": payload.content,
+            "like_count": 0,
+            "dislike_count": 0,
+            "edited": False,
+            "created_at": datetime.utcnow().isoformat() + "Z",
+            "updated_at": None,
+        }
+
+        restaurant_ref.collection("comments").add(comment_data)
+
+        return {
+            "status": "success",
+            "message": "Comment created successfully",
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tạo comment: {str(e)}")
+
+@user_router.get("/restaurant-comment/{restaurant_id}", status_code=status.HTTP_200_OK)
+async def get_restaurant_comments(restaurant_id: str, user_id: str = None):
+    try:
+        comments_ref = (
+            db.collection("restaurant_comments")
+              .document(restaurant_id)
+              .collection("comments")
+        )
+
+        comments_query = comments_ref.order_by("created_at", direction=firestore.Query.DESCENDING)
+        comments_docs = list(comments_query.stream())
+
+        # Fetch votes của user song song nếu có user_id
+        user_votes: dict[str, str] = {}  # comment_id → "like" | "dislike"
+        if user_id:
+            vote_refs = [
+                comments_ref.document(doc.id).collection("votes").document(user_id)
+                for doc in comments_docs
+            ]
+            vote_docs = db.get_all(vote_refs)  # 1 batch read thay vì N reads
+            for vote_doc in vote_docs:
+                if vote_doc.exists:
+                    data = vote_doc.to_dict()
+                    # vote_doc.reference.parent.parent.id là comment_id
+                    comment_id = vote_doc.reference.parent.parent.id
+                    user_votes[comment_id] = data.get("vote_type")
+
+        comments = []
+        for doc in comments_docs:
+            record = doc.to_dict()
+            if not record:
+                continue
+            comments.append({
+                "comment_id": doc.id,
+                "user_id": record.get("user_id"),
+                "username": record.get("username"),
+                "content": record.get("content"),
+                "like_count": record.get("like_count", 0),
+                "dislike_count": record.get("dislike_count", 0),
+                "created_at": record.get("created_at"),
+                "current_vote": user_votes.get(doc.id),  # "like" | "dislike" | None
+            })
+
+        return {
+            "restaurant_id": restaurant_id,
+            "total_comments": len(comments),
+            "comments": comments,
+        }
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải comment: {str(e)}")
+
+@user_router.put("/restaurant-comment/{restaurant_id}/{comment_id}", status_code=status.HTTP_200_OK)
+async def edit_restaurant_comment(restaurant_id: str, comment_id: str, payload: EditCommentRequest):
+    try:
+        comment_ref = (
+            db.collection("restaurant_comments")
+              .document(restaurant_id)
+              .collection("comments")
+              .document(comment_id)
+        )
+
+        comment_doc = comment_ref.get()
+        if not comment_doc.exists:
+            raise HTTPException(status_code=404, detail="Comment không tồn tại")
+
+        stored = comment_doc.to_dict() or {}
+        if stored.get("user_id") != payload.user_id:
+            raise HTTPException(status_code=403, detail="Bạn không có quyền sửa comment này")
+
+        comment_ref.update({
+            "content": payload.content,
+            "edited": True,
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+        })
+
+        return {
+            "status": "success",
+            "message": "Comment updated successfully"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi sửa comment: {str(e)}")
+
+@user_router.delete("/restaurant-comment/{restaurant_id}/{comment_id}", status_code=status.HTTP_200_OK)
+async def delete_restaurant_comment(restaurant_id: str, comment_id: str, payload: DeleteCommentRequest):
+    try:
+        comment_ref = (
+            db.collection("restaurant_comments")
+              .document(restaurant_id)
+              .collection("comments")
+              .document(comment_id)
+        )
+
+        comment_doc = comment_ref.get()
+        if not comment_doc.exists:
+            raise HTTPException(status_code=404, detail="Comment không tồn tại")
+
+        stored = comment_doc.to_dict() or {}
+        if stored.get("user_id") != payload.user_id:
+            raise HTTPException(status_code=403, detail="Bạn không có quyền xóa comment này")
+
+        comment_ref.delete()
+
+        return {
+            "status": "success",
+            "message": "Comment deleted successfully"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi xóa comment: {str(e)}")
+
+class VoteRequest(BaseModel):
+    user_id: str
+    vote_type: Literal["like", "dislike"]  # chỉ nhận 2 giá trị này
+
+@user_router.post("/restaurant-comment/{restaurant_id}/{comment_id}/vote", status_code=status.HTTP_200_OK)
+async def vote_restaurant_comment(
+    restaurant_id: str,
+    comment_id: str,
+    payload: VoteRequest
+):
+    try:
+        comment_ref = (
+            db.collection("restaurant_comments")
+              .document(restaurant_id)
+              .collection("comments")
+              .document(comment_id)
+        )
+        vote_ref = comment_ref.collection("votes").document(payload.user_id)
+
+        comment_doc = comment_ref.get()
+        if not comment_doc.exists:
+            raise HTTPException(status_code=404, detail="Comment không tồn tại")
+
+        existing_vote_doc = vote_ref.get()
+        existing_vote = existing_vote_doc.to_dict() if existing_vote_doc.exists else None
+        previous_type = existing_vote.get("vote_type") if existing_vote else None
+
+        # --- Xác định thay đổi cần thực hiện ---
+        # Case 1: Bấm lại cùng loại → hủy vote
+        # Case 2: Bấm loại mới (hoặc lần đầu) → ghi vote mới
+
+        like_delta = 0
+        dislike_delta = 0
+        new_vote_type = None  # None = xóa vote
+
+        if previous_type == payload.vote_type:
+            # Hủy vote: trừ đi 1
+            if payload.vote_type == "like":
+                like_delta = -1
+            else:
+                dislike_delta = -1
+            new_vote_type = None
+        else:
+            # Thêm vote mới
+            if payload.vote_type == "like":
+                like_delta = 1
+            else:
+                dislike_delta = 1
+            # Nếu trước đó đã vote loại khác thì trừ loại cũ
+            if previous_type == "like":
+                like_delta -= 1
+            elif previous_type == "dislike":
+                dislike_delta -= 1
+            new_vote_type = payload.vote_type
+
+        # --- Thực thi transaction ---
+        @firestore.transactional
+        
+        
+        def run_transaction(transaction):
+            transaction.update(comment_ref, {
+                "like_count": firestore.Increment(like_delta),
+                "dislike_count": firestore.Increment(dislike_delta),
+            })
+            if new_vote_type is None:
+                transaction.delete(vote_ref)
+            else:
+                transaction.set(vote_ref, {
+                "vote_type": new_vote_type,
+                "voted_at": datetime.now(timezone.utc).isoformat()
+            })
+
+        transaction = db.transaction()
+        run_transaction(transaction)
+
+        # --- Trả về trạng thái mới ---
+        action_map = {
+            ("like", None):     "like",     # lần đầu like
+            ("dislike", None):  "dislike",  # lần đầu dislike
+            (None, "like"):     "unliked",  # hủy like
+            (None, "dislike"):  "undisliked",
+            ("like", "dislike"): "like",    # đổi từ dislike → like
+            ("dislike", "like"): "dislike", # đổi từ like → dislike
+        }
+        action = action_map.get((new_vote_type, previous_type), "updated")
+
+        return {
+            "status": "success",
+            "action": action,
+            "current_vote": new_vote_type,  # null nếu đã hủy
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi vote: {str(e)}")
