@@ -105,3 +105,40 @@ class ItineraryManager:
         except Exception as e:
             print(f">>> ItineraryManager Error (reset_itinerary): {e}")
             return False
+
+    async def import_shared_itinerary(self, user_id: str, share_id: str) -> bool:
+        return await asyncio.to_thread(self._import_shared_itinerary_sync, user_id, share_id)
+
+    def _import_shared_itinerary_sync(self, user_id: str, share_id: str) -> bool:
+        try:
+            db = self._get_db()
+            # 1. Lấy dữ liệu từ shared_itineraries
+            share_doc = db.collection("shared_itineraries").document(share_id).get()
+            if not share_doc.exists:
+                return False
+            
+            shared_data = share_doc.to_dict()
+            itinerary_data = shared_data.get("itinerary", [])
+            
+            # 2. Reset itinerary hiện tại của user
+            self._reset_itinerary_sync(user_id)
+            
+            # 3. Import từng quán vào collection của user
+            col = self._get_itinerary_collection(user_id)
+            batch = db.batch()
+            
+            for index, item in enumerate(itinerary_data):
+                meal = item.get("meal", f"Meal_{index}")
+                # Đảm bảo có timestamp và order
+                item["timestamp"] = datetime.now()
+                if "order" not in item:
+                    item["order"] = index
+                
+                doc_ref = col.document(meal)
+                batch.set(doc_ref, item)
+            
+            batch.commit()
+            return True
+        except Exception as e:
+            print(f">>> ItineraryManager Error (import_shared_itinerary): {e}")
+            return False
