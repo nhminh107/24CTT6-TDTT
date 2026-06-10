@@ -479,8 +479,17 @@ class RestaurantFilter:
             return res
             
         # 2. Lấy danh sách tag của nhà hàng
-        main_tags = set(res.get("main_tag", []))
-        potential_tags = set(res.get("potential_tag", []))
+        main_raw = res.get("main_tag", [])
+        potential_raw = res.get("potential_tag", [])
+
+        if not isinstance(main_raw, (list, tuple, set)):
+            main_raw = []
+
+        if not isinstance(potential_raw, (list, tuple, set)):
+            potential_raw = []
+
+        main_tags = set(main_raw)
+        potential_tags = set(potential_raw)
         
         # 3. Tìm các tag vi phạm (Trùng giữa quán và user)
         violated_main = main_tags.intersection(forbidden_tags)

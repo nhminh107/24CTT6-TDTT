@@ -790,7 +790,7 @@ async def delete_chat(user_id: str, chat_id: str):
 
 class RestaurantCommentRequest(BaseModel):
     user_id: str
-    username: str
+    # username đã bị loại bỏ: Backend tự lấy từ collection `users` (Denormalization)
     content: str
 
 class EditCommentRequest(BaseModel):
@@ -802,7 +802,32 @@ class DeleteCommentRequest(BaseModel):
 
 @user_router.post("/restaurant-comment/{restaurant_id}", status_code=status.HTTP_200_OK)
 async def create_restaurant_comment(restaurant_id: str, payload: RestaurantCommentRequest):
+    """
+    Tạo một bình luận mới cho nhà hàng.
+
+    Chiến lược Denormalization:
+    - Thay vì để Frontend gửi username/avatar/role lên (dễ bị giả mạo),
+      Backend tự truy vấn collection `users` để lấy thông tin chính xác
+      rồi ghi thẳng vào document comment.
+    - Frontend (onSnapshot) sẽ tự nhận dữ liệu mới ngay lập tức.
+    """
     try:
+        # ── 1. LẤY THÔNG TIN USER TỪ FIRESTORE (Nguồn dữ liệu tin cậy) ──
+        user_ref = db.collection("users").document(payload.user_id)
+        user_doc = user_ref.get()
+
+        # Giá trị mặc định phòng trường hợp user chưa có profile đầy đủ
+        display_name = "Người dùng"
+        photo_url = None
+        user_role = "user"
+
+        if user_doc.exists:
+            user_data = user_doc.to_dict() or {}
+            display_name = user_data.get("display_name") or display_name
+            photo_url    = user_data.get("photo_url")
+            user_role    = user_data.get("role", "user")
+
+        # ── 2. ĐẢM BẢO DOCUMENT GỐC CỦA NHÀ HÀNG TỒN TẠI ──
         restaurant_ref = db.collection("restaurant_comments").document(restaurant_id)
         if not restaurant_ref.get().exists:
             restaurant_ref.set({
@@ -810,19 +835,25 @@ async def create_restaurant_comment(restaurant_id: str, payload: RestaurantComme
                 "created_at": datetime.utcnow().isoformat() + "Z",
             })
 
+        # ── 3. GHI COMMENT KÈM DỮ LIỆU ĐÃ DENORMALIZE ──
         comment_data = {
-            "user_id": payload.user_id,
-            "username": payload.username,
-            "content": payload.content,
-            "like_count": 0,
+            "user_id":       payload.user_id,
+            # Thông tin được denormalize — Frontend không cần gọi thêm
+            "username":      display_name,
+            "user_avatar":   photo_url,
+            "user_role":     user_role,
+            # Nội dung bình luận
+            "content":       payload.content,
+            "like_count":    0,
             "dislike_count": 0,
-            "edited": False,
-            "created_at": datetime.utcnow().isoformat() + "Z",
-            "updated_at": None,
+            "edited":        False,
+            "created_at":    datetime.utcnow().isoformat() + "Z",
+            "updated_at":    None,
         }
 
         restaurant_ref.collection("comments").add(comment_data)
 
+        # onSnapshot ở Frontend sẽ tự nhận document mới này ngay lập tức
         return {
             "status": "success",
             "message": "Comment created successfully",
@@ -830,91 +861,12 @@ async def create_restaurant_comment(restaurant_id: str, payload: RestaurantComme
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tạo comment: {str(e)}")
 
-@user_router.get("/restaurant-comment/{restaurant_id}", status_code=status.HTTP_200_OK)
-async def get_restaurant_comments(restaurant_id: str, user_id: str = None):
-    try:
-        comments_ref = (
-            db.collection("restaurant_comments")
-              .document(restaurant_id)
-              .collection("comments")
-        )
-
-        comments_query = comments_ref.order_by("created_at", direction=firestore.Query.DESCENDING)
-        comments_docs = list(comments_query.stream())
-
-        # ── 1. TỐI ƯU HÓA: FETCH THÔNG TIN USER (AVATAR & ROLE) TRONG 1 BATCH BẰNG GET_ALL ──
-        user_info_dict: dict[str, dict] = {}  # user_id -> {"photo_url": ..., "role": ...}
-        
-        # Lấy danh sách user_id không trùng lặp từ các comment
-        distinct_user_ids = list({
-            doc.to_dict().get("user_id") 
-            for doc in comments_docs 
-            if doc.to_dict() and doc.to_dict().get("user_id")
-        })
-        
-        if distinct_user_ids:
-            # Tạo danh sách các references tới collection "users"
-            user_refs = [db.collection("users").document(uid) for uid in distinct_user_ids]
-            # Batch read toàn bộ thông tin User
-            user_docs = db.get_all(user_refs)
-            
-            for u_doc in user_docs:
-                if u_doc.exists:
-                    u_data = u_doc.to_dict() or {}
-                    user_info_dict[u_doc.id] = {
-                        "photo_url": u_data.get("photo_url"),
-                        "role": u_data.get("role", "user"), # Mặc định là user nếu chưa có role
-                        "display_name":u_data.get("display_name")
-                    }
-
-        # ── 2. FETCH VOTES CỦA USER ĐANG ĐĂNG NHẬP (Giữ nguyên logic cũ của bạn) ──
-        user_votes: dict[str, str] = {}  # comment_id → "like" | "dislike"
-        if user_id:
-            vote_refs = [
-                comments_ref.document(doc.id).collection("votes").document(user_id)
-                for doc in comments_docs
-            ]
-            vote_docs = db.get_all(vote_refs)
-            for vote_doc in vote_docs:
-                if vote_doc.exists:
-                    data = vote_doc.to_dict() or {}
-                    comment_id = vote_doc.reference.parent.parent.id
-                    user_votes[comment_id] = data.get("vote_type")
-
-        # ── 3. MAP DỮ LIỆU TRẢ VỀ CHO FRONTEND ──
-        comments = []
-        for doc in comments_docs:
-            record = doc.to_dict()
-            if not record:
-                continue
-                
-            c_user_id = record.get("user_id")
-            # Lấy thông tin avatar và role từ dict đã batch read ở trên
-            u_info = user_info_dict.get(c_user_id, {})
-
-            comments.append({
-                "comment_id": doc.id,
-                "user_id": c_user_id,
-                "username": u_info.get("display_name") or record.get("username") or "Người dùng",
-                "content": record.get("content"),
-                "like_count": record.get("like_count", 0),
-                "dislike_count": record.get("dislike_count", 0),
-                "created_at": record.get("created_at"),
-                "current_vote": user_votes.get(doc.id),  # "like" | "dislike" | None
-                
-                # Trả thêm 2 trường này về cho Frontend dùng
-                "user_avatar": u_info.get("photo_url"),  
-                "user_role": u_info.get("role", "user")
-            })
-
-        return {
-            "restaurant_id": restaurant_id,
-            "total_comments": len(comments),
-            "comments": comments,
-        }
-
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải comment: {str(e)}")
+# ── API GET /restaurant-comment/{restaurant_id} ĐÃ BỊ XÓA ──
+# Frontend giờ dùng Firebase Client SDK (onSnapshot) để lắng nghe
+# sub-collection `comments` trực tiếp theo thời gian thực.
+# Việc gộp dữ liệu user (username, avatar, role) được xử lý bằng
+# chiến lược Denormalization tại thời điểm tạo comment (POST).
+# Không cần endpoint này nữa.
 
 @user_router.put("/restaurant-comment/{restaurant_id}/{comment_id}", status_code=status.HTTP_200_OK)
 async def edit_restaurant_comment(restaurant_id: str, comment_id: str, payload: EditCommentRequest):
@@ -1073,6 +1025,10 @@ async def vote_restaurant_comment(
         transaction = db.transaction()
         run_transaction(transaction)
 
+        # Lấy lại comment sau khi transaction hoàn tất để trả về số lượng chính xác
+        updated_comment_doc = comment_ref.get()
+        updated_comment = updated_comment_doc.to_dict() or {}
+
         # --- Trả về trạng thái mới ---
         action_map = {
             ("like", None):     "like",     # lần đầu like
@@ -1088,6 +1044,8 @@ async def vote_restaurant_comment(
             "status": "success",
             "action": action,
             "current_vote": new_vote_type,  # null nếu đã hủy
+            "like_count": updated_comment.get("like_count", 0),
+            "dislike_count": updated_comment.get("dislike_count", 0),
         }
 
     except HTTPException:
