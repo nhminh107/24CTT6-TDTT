@@ -283,7 +283,7 @@ export default function BoardingPass({
         if (!uid) return;
         
         const response = await itineraryApi.share(uid, itinerary);
-        if (response.success && response.share_id) {
+        if (response.status === "success" && response.share_id) {
           const origin = typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000';
           setShareUrl(`${origin}/share/${response.share_id}`);
         }

@@ -13,7 +13,7 @@ class ShareRequest(BaseModel):
 async def create_share_link(request: ShareRequest):
     try:
         share_id = await share_manager.create_share_link(request.user_id, request.itinerary_data)
-        return {"success": True, "share_id": share_id}
+        return {"status": "success", "share_id": share_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -22,7 +22,7 @@ async def get_shared_itinerary(share_id: str):
     try:
         data = await share_manager.get_shared_itinerary(share_id)
         if data:
-            return {"success": True, "data": data}
+            return {"status": "success", "data": data}
         else:
             raise HTTPException(status_code=404, detail="Shared itinerary not found")
     except Exception as e:
