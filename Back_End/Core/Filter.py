@@ -209,6 +209,10 @@ class RestaurantFilter:
         # 0. Lọc sức khỏe trước khi tiến hành lọc những cái khác
         safe_df = self.run_health_conditions_filter(self.data)
         print(f"[FILTER_DEBUG] Candidates after Health Filter: {len(safe_df)}")
+        
+        if safe_df.empty:
+            return safe_df
+
         filtered_df = safe_df.copy()
         
         # 1. Lọc khoảng cách không quá 15km
@@ -217,11 +221,15 @@ class RestaurantFilter:
             filtered_df = filtered_df[filtered_df['distance'] <= 15]
             print(f"[FILTER_DEBUG] Candidates after Distance Filter (15km): {len(filtered_df)}")
 
+        if filtered_df.empty: return filtered_df
+
         # 2. Lọc ngân sách (Theo feedback: giá > 0.6 * budget là loại)
         if self.user_prompt.get('budget'):
             max_allowed_price = 0.6 * self.user_prompt['budget']
             filtered_df = filtered_df[filtered_df['avg_price'] <= max_allowed_price]
             print(f"[FILTER_DEBUG] Candidates after Budget Filter: {len(filtered_df)}")
+
+        if filtered_df.empty: return filtered_df
 
         # 3. Lọc độ cay
         user_shu = self.user_prompt.get('shu')
@@ -229,11 +237,28 @@ class RestaurantFilter:
             filtered_df = filtered_df[(filtered_df['shu'] >= 1) & (filtered_df['shu'] <= user_shu)]
             print(f"[FILTER_DEBUG] Candidates after Spicy Filter: {len(filtered_df)}")
         
-        # 4. Lọc theo địa điểm
+        if filtered_df.empty: return filtered_df
+
+        # 4. Lọc theo địa điểm (Soft Filter + Cleaning)
         if self.user_prompt.get('location_pref'):
-            loc = self.user_prompt['location_pref']
-            filtered_df = filtered_df[filtered_df['address'].str.contains(loc, case=False, na=False)]
-            print(f"[FILTER_DEBUG] Candidates after Location Pref Filter: {len(filtered_df)}")
+            loc = self.user_prompt['location_pref'].lower().strip()
+            
+            # Bỏ qua các từ quá chung chung
+            ignored_broad = ["tp hcm", "hồ chí minh", "sài gòn", "tp.hcm", "việt nam"]
+            if loc not in ignored_broad:
+                # Cleaning: Bỏ phường, quận, p., q. để so khớp mờ tốt hơn
+                noise_words = ["phường", "p.", "quận", "q.", "thành phố", "tp.", "đường"]
+                clean_loc = loc
+                for word in noise_words:
+                    clean_loc = clean_loc.replace(word, "").strip()
+                
+                if clean_loc:
+                    temp_df = filtered_df[filtered_df['address'].str.contains(clean_loc, case=False, na=False)]
+                    if not temp_df.empty:
+                        filtered_df = temp_df
+                        print(f"[FILTER_DEBUG] Candidates after Location Pref Filter ('{clean_loc}'): {len(filtered_df)}")
+                    else:
+                        print(f"[FILTER_DEBUG] Warning: Location Filter '{clean_loc}' returned 0 results. Skipping to avoid empty output.")
             
         return filtered_df
 
@@ -334,6 +359,9 @@ class RestaurantFilter:
         print(f"[FILTER_DEBUG] Total candidates in base_df after general filters: {len(base_df)}")
         result_dict = {}
         
+        if base_df.empty:
+            return result_dict
+
         meal_name_map = {
             'sáng': ['sáng'],
             'trưa': ['trưa'],
@@ -351,8 +379,6 @@ class RestaurantFilter:
         
         meals_detail = self.user_prompt.get('meals_detail', [])
         
-        result_dict = {}
-
         for meal_info in meals_detail:
             meal_key_parser = meal_info.get('meal')
             print(f"\n[FILTER_DEBUG] Processing meal: '{meal_key_parser}'")
@@ -368,15 +394,23 @@ class RestaurantFilter:
 
                 # 2. Lọc base_df theo bữa ăn
                 try:
-                    meal_df = base_df[
-                        base_df['meals'].apply(
-                            lambda x: any(m in [str(meal).lower() for meal in x] for m in meal_names_lower)
-                            if isinstance(x, list) else False
-                        )
-                    ].copy()
+                    if 'meals' not in base_df.columns:
+                        print(f"[FILTER_DEBUG] Warning: 'meals' column missing in base_df.")
+                        meal_df = base_df.copy()
+                    else:
+                        meal_df = base_df[
+                            base_df['meals'].apply(
+                                lambda x: any(m in [str(meal).lower() for meal in x] for m in meal_names_lower)
+                                if isinstance(x, list) else False
+                            )
+                        ].copy()
                     print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after meal name filter: {len(meal_df)}")
                 except Exception as e:
                     print(f"[FILTER_DEBUG] Lỗi khi lọc base_df cho bữa {meal_key_parser}: {str(e)}")
+                    continue
+
+                if meal_df.empty:
+                    result_dict[meal_key_parser] = meal_df
                     continue
 
                 # 3. Lấy req_types an toàn
@@ -393,30 +427,31 @@ class RestaurantFilter:
                                 expanded_reqs.extend(type_normalization[t_lower])
                         
                         if 'type' not in meal_df.columns:
-                            raise KeyError(f"DataFrame thiếu cột 'type'.")
-
-                        meal_df = meal_df[
-                            meal_df['type'].apply(
-                                lambda x: any(any(req in str(item).lower() for req in expanded_reqs) for item in x) 
-                                if isinstance(x, list) else False
-                            )
-                        ]
-                        print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after type filter {req_types}: {len(meal_df)}")
-                    else:
-                        if meal_key_parser in MAIN_MEALS:
+                            print(f"[FILTER_DEBUG] Warning: 'type' column missing in meal_df for meal {meal_key_parser}.")
+                        else:
                             meal_df = meal_df[
                                 meal_df['type'].apply(
-                                    lambda x: not any(b.lower() in str(t).lower() for t in x for b in BLACKLIST) 
-                                    if isinstance(x, list) else True
+                                    lambda x: any(any(req in str(item).lower() for req in expanded_reqs) for item in x) 
+                                    if isinstance(x, list) else False
                                 )
                             ]
-                            print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after Blacklist filter: {len(meal_df)}")
+                            print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after type filter {req_types}: {len(meal_df)}")
+                    else:
+                        if meal_key_parser in MAIN_MEALS:
+                            if 'type' in meal_df.columns:
+                                meal_df = meal_df[
+                                    meal_df['type'].apply(
+                                        lambda x: not any(b.lower() in str(t).lower() for t in x for b in BLACKLIST) 
+                                        if isinstance(x, list) else True
+                                    )
+                                ]
+                                print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after Blacklist filter: {len(meal_df)}")
                 except Exception as e:
                     print(f"[FILTER_DEBUG] Lỗi logic lọc Type của {meal_key_parser}: {str(e)}")
                     meal_df = meal_df.iloc[0:0]
 
                 menu_query = self._extract_menu_query(meal_info)
-                if menu_query:
+                if menu_query and not meal_df.empty:
                     meal_df = self.menu_filter(meal_df, menu_query)
                     print(f"[FILTER_DEBUG] Candidates for '{meal_key_parser}' after Menu Filter ('{menu_query}'): {len(meal_df)}")
 

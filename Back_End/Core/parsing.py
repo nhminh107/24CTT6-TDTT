@@ -61,15 +61,19 @@ class LLMParser():
         Extraction Rules:
         1. "budget": (Integer) Total average budget per person. Convert slang/text to numbers (e.g., "1 củ" -> 1000000, "trăm rưỡi" -> 150000). Return null if not mentioned.
         2. "num_meals": (Integer) Number of places/meals the user is requesting. Default to 1 if not specified.
-        3. "location_pref": (String) District, street name, or specific area in Vietnam (e.g., "Quận 1", "Sư Vạn Hạnh"). Return null if not provided.
+        3. "location_pref": (String) Specific area in Vietnam like District name, street name, or ward (e.g., "1", "Phú Nhuận", "Sư Vạn Hạnh"). Avoid broad city names like "TP HCM" or "Hà Nội" unless the user only specifies the city. Return null if no location is mentioned.
         4. "shu": (Integer) Spiciness level requested by the user, on a scale of 1 to 5. Mandatory if the user mentions keywords related to spicy ("cay", "cay vừa", "siêu cay"). Return null if not mentioned.
         5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike for the current shop.
         6. "feedback_reason": (String) Reason for dissatisfaction or change request (if any). MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating". Return null if no specific reason is given.
-        7. "meals_detail": (Array of Objects) Detailed list of each requested meal. Each "meal" type can only appear at most once. The array length must match "num_meals". If the user makes a general request without specifying the meal time, assign it to an appropriate meal; café/bakery/snacks ("quán nước/tiệm bánh/ăn vặt") defaults to "xế" if not specified. Each object includes:
-            - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-            - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
-            - "semantic_query": (String) Keywords describing mood, atmosphere, view, or amenities (e.g., "máy lạnh", "yên tĩnh", "vỉa hè"). Separated by commas. Return null if none.
-            - "dish": (String) A single specific dish requested for that meal (lowercase). Return "" if no specific dish is requested.
+        7. "meals_detail": (Array of Objects) Detailed list of each requested meal. Each "meal" type can only appear at most once. The array length must match "num_meals".
+            - Routing Rules: 
+                - If the user specifies or implies snacks/tea break ("ăn vặt", "quán nước", "trà chiều"), assign it to "meal": "xế" and "type" MUST be either "Quán nước" or "Tiệm bánh".
+                - General requests without a specified time default to an appropriate meal based on context.
+            - Fields:
+                - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
+                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
+                - "semantic_query": (String) Keywords describing flavor profiles (e.g., "ngọt", "chua", "cay"), atmosphere (e.g., "máy lạnh", "yên tĩnh"), or very generic terms like "ăn vặt". Separated by commas.
+                - "dish": (String) The specific food item or food category requested (e.g., "phở bò", "hải sản", "thịt nướng"). This field is used for menu searching. Exception: If the user mentions generic terms like "ăn vặt" or "đồ ăn", leave this empty and put those keywords in "semantic_query".
         8. "target_shop_id": (String) The ID of the specific restaurant the user is complaining about or wants to change, resolved from the SYSTEM CONTEXT. Return null if not applicable.
 
         User Input (in Vietnamese): "{user_prompt}"
