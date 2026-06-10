@@ -10,7 +10,7 @@ export default function Hero() {
   const { user } = useAuth();
   
   return (
-    <section className="section-spacing !pb-10" id="about">
+    <section className="section-spacing !pt-10 !pb-10" id="about">
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -87,8 +87,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-brand-teal/20 blur-2xl" />
-          <div className="absolute -top-6 -right-4 h-32 w-32 rounded-full bg-brand-coral/30 blur-2xl" />
         </motion.div>
       </div>
     </section>

@@ -13,6 +13,7 @@ export type Restaurant = {
   imageUrl: string;
   semanticText: string;
   meals?: string[];
+  meal?: string; // Added to support itinerary display
   assignedMeal?: string;
   healthTagsDisplay?: {
     warnings?: string[];
@@ -77,48 +78,52 @@ export function convertToGeoJSON(restaurants: ApiRestaurant[]) {
   };
 }
 
-export const buildRestaurants = (items: ApiRestaurant[]): Restaurant[] =>
+export const buildRestaurants = (items: any[]): Restaurant[] =>
   items.map((item, index) => {
-    const imageUrl = item.image_url
-      ? item.image_url.replace(/\\\//g, "/")
-      : "";
+    // Handle both snake_case (backend) and camelCase (frontend)
+    const rawImageUrl = item.image_url || item.imageUrl || "";
+    const imageUrl = rawImageUrl ? rawImageUrl.replace(/\\\//g, "/") : "";
 
-    const mapQuery = [item.name, item.address]
+    const name = item.name || "Nhà hàng";
+    const address = item.address || "Chưa có địa chỉ";
+
+    const mapQuery = [name, address]
       .filter(Boolean)
       .join(" ");
 
-    const mapUrl = mapQuery
+    const mapUrl = item.mapUrl || (mapQuery
       ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
           mapQuery
         )}`
-      : "https://www.google.com/maps";
+      : "https://www.google.com/maps");
 
+    const star = item.star !== undefined ? item.star : item.rating;
     const ratingValue =
-      typeof item.star === "number"
-        ? item.star
-        : Number(item.star ?? 0) || 0;
+      typeof star === "number"
+        ? star
+        : Number(star ?? 0) || 0;
+
+    const priceValue = item.avg_price !== undefined ? item.avg_price : item.price;
 
     return {
-      id: item.id ?? `${item.name}-${index}`,
+      id: item.id ?? `${name}-${index}`,
 
-      name: item.name || "Nhà hàng",
-      address: item.address || "Chưa có địa chỉ",
+      name,
+      address,
 
       rating: ratingValue,
-      price: item.avg_price ?? "Chưa cập nhật",
-      phone: item.phone_num ?? "",
+      price: priceValue ?? "Chưa cập nhật",
+      phone: item.phone_num || item.phone || "",
 
       mapUrl,
       imageUrl,
 
-      semanticText: item.semantic_text
-        ? String(item.semantic_text)
-        : "Chưa có mô tả.",
+      semanticText: item.semantic_text || item.semanticText || "Chưa có mô tả.",
 
       meals: item.meals ?? [],
-      assignedMeal: item.meal || item.assigned_meal,
+      meal: item.meal || item.assigned_meal || item.assignedMeal,
+      assignedMeal: item.meal || item.assigned_meal || item.assignedMeal,
 
-      // 👇 QUAN TRỌNG
       warnings: item.warnings ?? [],
       notes: item.notes ?? []
     };

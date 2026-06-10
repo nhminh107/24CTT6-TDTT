@@ -2,6 +2,7 @@ import chromadb
 import json
 import hashlib
 import os
+import re #xử lý chuỗi Regex
 from chromadb.utils import embedding_functions
 
 class SemanticCacheManager:
@@ -26,6 +27,13 @@ class SemanticCacheManager:
             embedding_function=self.ef
         )
 
+    # Hàm chuẩn hoá prompt để Hash ID đúng
+    def _normalize_prompt(self, prompt: str) -> str:
+        prompt = prompt.lower() # 1. Đưa về chữ thường
+        prompt = re.sub(r'[^\w\s]', '', prompt) # 2. Xóa sạch dấu câu
+        prompt = " ".join(prompt.split()) # 3. Gom các khoảng trắng thừa thành 1
+        return prompt
+    
     def _get_location_zone(self, lat: float, lng: float) -> str:
         zone_lat = round(lat, 2)
         zone_lng = round(lng, 2)
@@ -33,13 +41,14 @@ class SemanticCacheManager:
 
     
     def check_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str):
-        prompt = prompt.strip().lower() 
+        normalized_prompt = self._normalize_prompt(prompt) 
         zone = self._get_location_zone(lat, lng)
-        doc_id = hashlib.md5(f"{prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
+        
+        # Băm ID từ chuỗi ĐÃ chuẩn hóa
+        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
         
         print(f"DEBUG: Checking ID: {doc_id}")
 
-        # THAY VÌ QUERY VỚI VECTOR (DỄ BỊ NHIỄU), TA LẤY TRỰC TIẾP THEO ID
         existing_doc = self.collection.get(ids=[doc_id])
 
         if existing_doc and existing_doc['documents']:
@@ -50,10 +59,12 @@ class SemanticCacheManager:
         return None
 
     def save_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str, result_json: dict):
-        prompt = prompt.strip().lower()
+        normalized_prompt = self._normalize_prompt(prompt)
         budget = budget if budget is not None else 0
         zone = self._get_location_zone(lat, lng)
-        doc_id = hashlib.md5(f"{prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
+        
+        # Băm ID từ chuỗi ĐÃ chuẩn hóa
+        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
 
         self.collection.upsert(
             documents=[json.dumps(result_json)],

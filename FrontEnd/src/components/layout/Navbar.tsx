@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MapPin, LogOut, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
+import MobileBottomNav from "./MobileBottomNav";
 
 const links = [
   { label: "Trang chủ", href: "/" },
@@ -117,6 +118,7 @@ export default function Navbar() {
           </div>
         </div>
       </motion.nav>
+      <MobileBottomNav />
     </>
   );
 }

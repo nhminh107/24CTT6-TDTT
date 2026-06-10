@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { ArrowLeft, CalendarCheck, Menu, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
@@ -54,6 +54,9 @@ const DEFAULT_HEALTH_PROFILE: HealthProfile = {
 export default function MainDashboard() {
   const { user } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const urlChatId = searchParams.get("chat_id");
+  
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
@@ -127,6 +130,7 @@ export default function MainDashboard() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
   const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
+  const [showBoardingPass, setShowBoardingPass] = useState(false);
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
   const isInitializingChat = useRef(false);
@@ -142,7 +146,10 @@ export default function MainDashboard() {
     try {
       const data = await itineraryApi.get(user.uid);
       if (data.status === "success") {
-        setCurrentItinerary(data.itinerary);
+        // Sử dụng buildRestaurants để chuẩn hóa dữ liệu từ backend (image_url, star...) 
+        // sang định dạng frontend (imageUrl, rating...)
+        const processedItinerary = buildRestaurants(data.itinerary);
+        setCurrentItinerary(processedItinerary);
       }
     } catch (error) {
       console.error("Error fetching itinerary:", error);
@@ -226,11 +233,15 @@ export default function MainDashboard() {
         // Fetch history to populate sidebar
         await fetchChatHistory();
         
-        // Kiểm tra xem trong phiên trình duyệt này đã khởi tạo chat chưa
         const sessionKey = `bmi_chat_init_${user.uid}`;
         const isSessionInitialized = sessionStorage.getItem(sessionKey);
 
-        if (!isSessionInitialized) {
+        if (urlChatId) {
+          console.log("[DASHBOARD] Opening chat from URL:", urlChatId);
+          setCurrentChatId(urlChatId);
+          await fetchChatMessages(urlChatId);
+          sessionStorage.setItem(sessionKey, "true");
+        } else if (!isSessionInitialized) {
           console.log("[DASHBOARD] New session detected. Creating auto-new chat...");
           await handleNewChat();
           sessionStorage.setItem(sessionKey, "true");
@@ -461,6 +472,7 @@ export default function MainDashboard() {
 
   const handleRestaurantSelect = (restaurantId: string) => {
     setSelectedRestaurantId(restaurantId);
+    setShowBoardingPass(false);
     setItineraryTab("detail");
     if (isMobile) {
       setRestaurantModalOpen(true);
@@ -473,6 +485,19 @@ export default function MainDashboard() {
     setItineraryTab("itinerary");
     setRestaurantModalOpen(false);
   };
+
+  const handleItineraryTabChange = (tab: "itinerary" | "detail" | "map") => {
+    if (tab !== "detail") {
+      setSelectedRestaurantId(null);
+    }
+    if (tab !== "itinerary") {
+      setShowBoardingPass(false);
+    }
+    setItineraryTab(tab);
+  };
+
+  const isRightPanelExpanded =
+    (itineraryTab === "detail" && !!selectedRestaurantId) || showBoardingPass;
 
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL ||
@@ -601,7 +626,7 @@ export default function MainDashboard() {
             onOpenHealthProfile={handleHealthOpen}
             onOpenProfileSettings={handleProfileOpen}
             onOpenLocationPrompt={() => setLocationPromptOpen(true)}
-            onTabChange={setItineraryTab}
+            onTabChange={handleItineraryTabChange}
             chatHistory={chatHistory}
             currentChatId={currentChatId}
             onNewChat={startLocalNewChat}
@@ -635,7 +660,7 @@ export default function MainDashboard() {
         {/* Right Itinerary Panel */}
         <aside 
           className={`hidden overflow-y-auto border-l border-slate-200/60 bg-white/70 backdrop-blur lg:block transition-all duration-300
-            ${selectedRestaurantId ? 'w-[450px]' : 'w-80'}`}
+            ${isRightPanelExpanded ? 'w-[450px]' : 'w-80'}`}
         >
           <ItineraryPanel
             location={dashboardState.location}
@@ -645,7 +670,7 @@ export default function MainDashboard() {
             selectedRestaurantId={selectedRestaurantId}
             currentTab={itineraryTab}
             onSelectRestaurant={handleRestaurantSelect}
-            onTabChange={setItineraryTab}
+            onTabChange={handleItineraryTabChange}
             onCloseDetail={handleCloseDetail}
             currentItinerary={currentItinerary}
             onDeleteMeal={handleDeleteMeal}
@@ -654,6 +679,8 @@ export default function MainDashboard() {
             userPlaceId={dashboardState.placeId}
             onItineraryChange={fetchItinerary}
             onUserLocationChange={handleUserLocationChange}
+            showBoardingPass={showBoardingPass}
+            onShowBoardingPassChange={setShowBoardingPass}
           />
         </aside>
       </div>
@@ -704,7 +731,7 @@ export default function MainDashboard() {
               selectedRestaurantId={selectedRestaurantId}
               currentTab={itineraryTab}
               onSelectRestaurant={handleRestaurantSelect}
-              onTabChange={setItineraryTab}
+              onTabChange={handleItineraryTabChange}
               onCloseDetail={handleCloseDetail}
               currentItinerary={currentItinerary}
               onDeleteMeal={handleDeleteMeal}
@@ -713,6 +740,8 @@ export default function MainDashboard() {
               userPlaceId={dashboardState.placeId}
               onItineraryChange={fetchItinerary}
               onUserLocationChange={handleUserLocationChange}
+              showBoardingPass={showBoardingPass}
+              onShowBoardingPassChange={setShowBoardingPass}
             />
           </div>
         </div>

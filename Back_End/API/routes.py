@@ -168,6 +168,10 @@ class ItineraryReorderRequest(BaseModel):
     user_id: str
     ordered_meals: List[str]
 
+class ItineraryImportRequest(BaseModel):
+    user_id: str
+    share_id: str
+
 #Endpoints xử lý chính
 
 @router.get("/itinerary/{user_id}")
@@ -190,6 +194,34 @@ async def reorder_itinerary(request: ItineraryReorderRequest):
         return {"status": "success", "message": "Đã cập nhật thứ tự lịch trình."}
     else:
         raise HTTPException(status_code=500, detail="Không thể cập nhật thứ tự.")
+
+@router.post("/itinerary/import-shared")
+async def import_shared_itinerary(request: ItineraryImportRequest):
+    success = await itinerary_manager.import_shared_itinerary(request.user_id, request.share_id)
+    if success:
+        # Tự động tạo một session chat mới khi import thành công
+        chat_id = await user_manager.create_chat_session(request.user_id)
+        
+        # Lấy lại dữ liệu itinerary vừa import để gửi kèm vào chat metadata
+        itinerary_data = await itinerary_manager.get_itinerary(request.user_id)
+        
+        # Thêm tin nhắn chào mừng kèm bối cảnh và danh sách quán
+        welcome_msg = "Chào bạn! Tôi đã nhập lộ trình mà bạn chia sẻ vào tài khoản. Đây là danh sách các quán trong lộ trình. Bạn có muốn điều chỉnh hay hỏi thêm gì không?"
+        await user_manager.add_message(
+            request.user_id, 
+            chat_id, 
+            "assistant", 
+            welcome_msg, 
+            metadata={"restaurants": itinerary_data}
+        )
+        
+        return {
+            "status": "success", 
+            "message": "Đã nhập lộ trình thành công.",
+            "chat_id": chat_id
+        }
+    else:
+        raise HTTPException(status_code=500, detail="Không thể nhập lộ trình.")
 
 @router.delete("/itinerary/{user_id}/{meal}")
 async def delete_meal(user_id: str, meal: str):
