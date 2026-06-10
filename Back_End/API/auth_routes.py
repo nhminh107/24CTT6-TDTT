@@ -19,23 +19,26 @@ async def sync_user(data: SyncUserRequest, current_user: dict = Depends(get_curr
     """
     uid = current_user.get("uid")
     
-    success = await user_manager.sync_user(
+    role = await user_manager.sync_user(
         uid=uid,
         email=data.email or current_user.get("email"),
         name=data.name or current_user.get("name"),
         photo_url=data.photo_url or current_user.get("picture")
     )
 
-    if not success:
+    # 2. Kiểm tra nếu hàm trả về False (tức là bị rơi vào block 'except' ở manager)
+    if role is False or not role:
         raise HTTPException(
             status_code=500, 
             detail="Không thể đồng bộ dữ liệu người dùng vào hệ thống."
         )
 
+    # 3. Trả về cho Frontend hứng (vừa có uid, vừa có role luôn)
     return {
         "status": "success",
         "message": "Đồng bộ người dùng thành công",
-        "uid": uid
+        "uid": uid,
+        "role": role  # <── Nhớ thêm dòng này để Next.js đọc được quyền nhé!
     }
 
 @router.get("/me")

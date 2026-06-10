@@ -8,6 +8,8 @@ type LocationOption = {
   id: string;
   name: string;
   subtitle?: string;
+  lat?: number; // Thêm vĩ độ
+  lng?: number; // Thêm kinh độ
 };
 
 type ApiSuggestion = {

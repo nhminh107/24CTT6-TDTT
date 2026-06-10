@@ -40,13 +40,29 @@ class UserManager:
                 "updated_at": datetime.now()
             }
 
+            
+            doc = user_ref.get()
+            current_role = "user" # Mặc định quyền ban đầu là user
+
+            if doc.exists:
+                existing_data = doc.to_dict() or {}
+                
+                # Lấy role hiện tại trong DB ra (nếu có), nếu chưa có trường 'role' thì gán bằng "user"
+                current_role = existing_data.get("role", "user")
+                
+                # Nếu trong DB chưa có trường 'role', ta sẽ bổ sung nó vào object để ghi đè lên DB
+                if "role" not in existing_data:
+                    user_data["role"] = "user"
+            else:
+                # Nếu là User mới tinh đăng nhập lần đầu -> Tự động thêm trường role: "user"
+                user_data["role"] = "user"
+            
             # Xử lý Display Name thông minh hơn
             if name and name.strip():
                 # Nếu có tên hợp lệ, luôn cập nhật
                 user_data["display_name"] = name
             else:
                 # Nếu không có tên truyền vào, kiểm tra xem trong DB đã có tên chưa
-                doc = user_ref.get()
                 if doc.exists:
                     existing_data = doc.to_dict()
                     # Nếu đã có tên rồi thì không ghi đè bằng email prefix nữa
@@ -58,7 +74,7 @@ class UserManager:
             
             # Merge=True: Chỉ cập nhật các trường có trong user_data
             user_ref.set(user_data, merge=True)
-            return True
+            return current_role
         except Exception as e:
             print(f">>> UserManager Error (sync_user): {e}")
             return False

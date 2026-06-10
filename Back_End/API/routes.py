@@ -842,35 +842,69 @@ async def get_restaurant_comments(restaurant_id: str, user_id: str = None):
         comments_query = comments_ref.order_by("created_at", direction=firestore.Query.DESCENDING)
         comments_docs = list(comments_query.stream())
 
-        # Fetch votes của user song song nếu có user_id
+        # ── 1. TỐI ƯU HÓA: FETCH THÔNG TIN USER (AVATAR & ROLE) TRONG 1 BATCH BẰNG GET_ALL ──
+        user_info_dict: dict[str, dict] = {}  # user_id -> {"photo_url": ..., "role": ...}
+        
+        # Lấy danh sách user_id không trùng lặp từ các comment
+        distinct_user_ids = list({
+            doc.to_dict().get("user_id") 
+            for doc in comments_docs 
+            if doc.to_dict() and doc.to_dict().get("user_id")
+        })
+        
+        if distinct_user_ids:
+            # Tạo danh sách các references tới collection "users"
+            user_refs = [db.collection("users").document(uid) for uid in distinct_user_ids]
+            # Batch read toàn bộ thông tin User
+            user_docs = db.get_all(user_refs)
+            
+            for u_doc in user_docs:
+                if u_doc.exists:
+                    u_data = u_doc.to_dict() or {}
+                    user_info_dict[u_doc.id] = {
+                        "photo_url": u_data.get("photo_url"),
+                        "role": u_data.get("role", "user"), # Mặc định là user nếu chưa có role
+                        "display_name":u_data.get("display_name")
+                    }
+
+        # ── 2. FETCH VOTES CỦA USER ĐANG ĐĂNG NHẬP (Giữ nguyên logic cũ của bạn) ──
         user_votes: dict[str, str] = {}  # comment_id → "like" | "dislike"
         if user_id:
             vote_refs = [
                 comments_ref.document(doc.id).collection("votes").document(user_id)
                 for doc in comments_docs
             ]
-            vote_docs = db.get_all(vote_refs)  # 1 batch read thay vì N reads
+            vote_docs = db.get_all(vote_refs)
             for vote_doc in vote_docs:
                 if vote_doc.exists:
-                    data = vote_doc.to_dict()
-                    # vote_doc.reference.parent.parent.id là comment_id
+                    data = vote_doc.to_dict() or {}
                     comment_id = vote_doc.reference.parent.parent.id
                     user_votes[comment_id] = data.get("vote_type")
 
+        # ── 3. MAP DỮ LIỆU TRẢ VỀ CHO FRONTEND ──
         comments = []
         for doc in comments_docs:
             record = doc.to_dict()
             if not record:
                 continue
+                
+            c_user_id = record.get("user_id")
+            # Lấy thông tin avatar và role từ dict đã batch read ở trên
+            u_info = user_info_dict.get(c_user_id, {})
+
             comments.append({
                 "comment_id": doc.id,
-                "user_id": record.get("user_id"),
-                "username": record.get("username"),
+                "user_id": c_user_id,
+                "username": u_info.get("display_name") or record.get("username") or "Người dùng",
                 "content": record.get("content"),
                 "like_count": record.get("like_count", 0),
                 "dislike_count": record.get("dislike_count", 0),
                 "created_at": record.get("created_at"),
                 "current_vote": user_votes.get(doc.id),  # "like" | "dislike" | None
+                
+                # Trả thêm 2 trường này về cho Frontend dùng
+                "user_avatar": u_info.get("photo_url"),  
+                "user_role": u_info.get("role", "user")
             })
 
         return {
@@ -918,6 +952,7 @@ async def edit_restaurant_comment(restaurant_id: str, comment_id: str, payload: 
 @user_router.delete("/restaurant-comment/{restaurant_id}/{comment_id}", status_code=status.HTTP_200_OK)
 async def delete_restaurant_comment(restaurant_id: str, comment_id: str, payload: DeleteCommentRequest):
     try:
+        # 1. Lấy thông tin comment từ Firestore
         comment_ref = (
             db.collection("restaurant_comments")
               .document(restaurant_id)
@@ -930,10 +965,29 @@ async def delete_restaurant_comment(restaurant_id: str, comment_id: str, payload
             raise HTTPException(status_code=404, detail="Comment không tồn tại")
 
         stored = comment_doc.to_dict() or {}
-        if stored.get("user_id") != payload.user_id:
+        comment_owner_id = stored.get("user_id") # ID của người viết comment
+
+        # 2. KIỂM TRA QUYỀN ADMIN CỦA NGƯỜI GỬI REQUEST
+        is_admin = False
+        if payload.user_id:
+            user_ref = db.collection("users").document(payload.user_id)
+            user_doc = user_ref.get()
+            if user_doc.exists:
+                user_data = user_doc.to_dict() or {}
+                # Nếu trường role trong document user là "admin" thì set True
+                if user_data.get("role") == "admin":
+                    is_admin = True
+
+        # 3. ĐIỀU KIỆN XÓA: Phải là CHỦ COMMENT hoặc là ADMIN
+        # Nếu KHÔNG PHẢI chủ comment VÀ CŨNG KHÔNG PHẢI admin -> Chặn lại bắn lỗi 403
+        if comment_owner_id != payload.user_id and not is_admin:
             raise HTTPException(status_code=403, detail="Bạn không có quyền xóa comment này")
 
+        # Hợp lệ thì tiến hành xóa
         comment_ref.delete()
+
+        # Nếu hệ thống của bạn có dùng Realtime Socket (Socket.IO) để đồng bộ UI, 
+        # await sio.emit("comment_deleted", {"comment_id": comment_id}, room=restaurant_id)
 
         return {
             "status": "success",
