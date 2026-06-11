@@ -41,24 +41,39 @@ itinerary_manager = ItineraryManager()
 last_results_by_user = {}
 
 
-def _extract_ids_from_result(result):
+def _extract_context_from_result(result):
+    """
+    Trích xuất thông tin tóm tắt (ID, Tên, Tags) để làm ngữ cảnh cho AI lượt sau.
+    """
     if not isinstance(result, list):
         return []
-    ids = []
+    context_list = []
+    seen_ids = set()
     for item in result:
         if not isinstance(item, dict):
             continue
-        rid = item.get("id")
-        if rid is None:
+        rid = str(item.get("id"))
+        if rid in seen_ids:
             continue
-        ids.append(str(rid))
-    return list(dict.fromkeys(ids))
+        seen_ids.add(rid)
+        context_list.append({
+            "id": rid,
+            "name": item.get("name"),
+            "description": item.get("semantic_text", "")
+        })
+    return context_list
 
 
 def _apply_exclusions(filtered_data: dict, exclude_ids: list):
     if not filtered_data or not exclude_ids:
         return filtered_data
-    exclude_set = {str(rid) for rid in exclude_ids if rid is not None}
+    
+    # Nếu exclude_ids là danh sách các dictionary (từ context mới), trích xuất lại ID
+    if exclude_ids and isinstance(exclude_ids[0], dict):
+        exclude_set = {str(item.get("id")) for item in exclude_ids if item.get("id") is not None}
+    else:
+        exclude_set = {str(rid) for rid in exclude_ids if rid is not None}
+
     if not exclude_set:
         return filtered_data
     result = {}
@@ -428,7 +443,7 @@ async def process_prompt(request: UserRequest):
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
             with contextlib.suppress(asyncio.CancelledError): await df_task
-            last_results_by_user[request.user_id] = _extract_ids_from_result(cached_result)
+            last_results_by_user[request.user_id] = _extract_context_from_result(cached_result)
 
             # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
             if request.chat_id:
@@ -519,7 +534,7 @@ async def process_prompt(request: UserRequest):
                 result_json=final_result_list
             )
 
-        last_results_by_user[request.user_id] = _extract_ids_from_result(final_result_list)
+        last_results_by_user[request.user_id] = _extract_context_from_result(final_result_list)
         print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
 
         # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
