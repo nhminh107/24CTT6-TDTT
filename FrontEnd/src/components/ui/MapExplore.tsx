@@ -237,12 +237,17 @@ export default function MapExplore({
   const handleAddToItinerary = useCallback(async (meal: string) => {
     if (!user?.uid || !popupInfo) return;
 
+
     setAddingMeal(true);
     setShowMealPicker(false);
     setAddError(null);
 
     try {
-      const restaurantData = buildRestaurants([popupInfo])[0];
+      const rawItem = { ...popupInfo };
+
+      rawItem.source = "user";
+
+      const restaurantData = buildRestaurants([rawItem])[0];
       const data = await itineraryApi.select(user.uid, meal, restaurantData);
       if (data.status === "success") {
         setAddSuccess(meal);

@@ -24,6 +24,7 @@ type Restaurant = {
   assignedMeal?: string;
   warnings?: string[];
   notes?: string[];
+  source?: "ai" | "user";
 };
 
 type RestaurantCardProps = {
@@ -93,6 +94,8 @@ export default function RestaurantCard2({
   const notes = restaurant.notes ?? [];
 
   const severity =
+    restaurant.source === "user" || (!restaurant.source)
+    ? "unknown":
     warnings.length === 0
       ? "safe"
       : warnings.length <= 2
@@ -100,6 +103,11 @@ export default function RestaurantCard2({
       : "danger";
 
   const badgeConfig = {
+  unknown: {
+    label: "Tự thêm thủ công",
+    className: "border-blue-200 bg-blue-100 text-blue-800 shadow-sm",
+    icon: Info,
+  },
   safe: {
     label: "Phù hợp",
     className:

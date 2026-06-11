@@ -125,7 +125,8 @@ export const buildRestaurants = (items: any[]): Restaurant[] =>
       assignedMeal: item.meal || item.assigned_meal || item.assignedMeal,
 
       warnings: item.warnings ?? [],
-      notes: item.notes ?? []
+      notes: item.notes ?? [],
+      source: item.source || (item.isCustom ? "user" : "ai")
     };
   });
 
