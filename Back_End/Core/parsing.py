@@ -41,18 +41,23 @@ class LLMParser():
     wait=wait_exponential(multiplier=1, min=2, max=10),
     retry=retry_if_exception_type((exceptions.ServiceUnavailable, exceptions.TooManyRequests))
     )
-    async def JSON_response(self, user_prompt: str, system_context: str = ""):
+    async def JSON_response(self, user_prompt: str, history: list = None, system_context: str = ""):
         print(f"[LLM_PARSER_LOG] Parsing intent for prompt: '{user_prompt}'")
         
         system_instruction = f"""
         Your task is to extract information from the user's food/restaurant search query and return ONLY a valid JSON object matching the requested structure.
         
+        CHAT HISTORY (Conversation context):
+        {history if history else "No history available."}
+
         CURRENT SYSTEM CONTEXT (User's current itinerary & previously suggested shops):
         {system_context}
 
-        SPECIAL ROUTING RULES:
-        - If the user wants to change the restaurant, find another place, or expresses dissatisfaction with the current suggestion (e.g., "không thích", "không ăn quán này", "chỗ này chán", "đổi quán"), set "wants_alternative" to true.
-        - SIMULTANEOUSLY, cross-reference their query with the CURRENT SYSTEM CONTEXT above to identify the exact ID of the restaurant they are referring to, and fill it in the "target_shop_id" field. If the specific shop cannot be identified, return null.
+        HOW TO USE CONTEXT & HISTORY:
+        - ALWAYS use CHAT HISTORY and SYSTEM CONTEXT to understand short or vague prompts (e.g., "Khác", "Đổi quán", "Quận 1").
+        - If the user wants to change a restaurant (e.g., "Khác"), refer to the history to see which meal/restaurant was just discussed and populate "meals_detail" accordingly.
+        - Set "wants_alternative" to true if they express dissatisfaction or want another option.
+        - Cross-reference the query with the contexts to identify the exact "target_shop_id" they are referring to.
         """
 
         prompt = f"""
@@ -165,4 +170,12 @@ class LLMParser():
     
 if __name__ == "__main__":
     parser = LLMParser()
-    print(parser.JSON_response("Tôi đang muốn tìm quán nước, quán ăn trưa và tối. Quán trưa phải là quán Việt, quán ăn tối phải là quán Thái"))
+    import asyncio
+    async def test():
+        history = [
+            {"role": "user", "content": "Tìm quán bún bò"},
+            {"role": "assistant", "content": "Dạ, tôi tìm thấy quán Bún Bò O Xuân..."}
+        ]
+        res = await parser.JSON_response("Khác", history=history)
+        print(json.dumps(res, indent=4, ensure_ascii=False))
+    asyncio.run(test())
