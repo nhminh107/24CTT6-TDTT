@@ -51,8 +51,8 @@ class ChatBot():
         - Finding restaurants, food, or places to eat.
         - Examples: "bánh canh", "tìm quán ăn sáng", "quán nào gần đây".
         - Evaluation of `isPoorInfo`:
-            * isPoorInfo = 1 → Extremely vague with NO context in history (e.g., just "ngon", "đói").
-            * isPoorInfo = 0 → A specific food/place OR the next answer that fulfills the previous search query. Simply understand that anything related to food/place will have a value of 0.
+            * isPoorInfo = 1 → Extremely vague with NO context in history (e.g., just "ngon", "đói"). 
+            * isPoorInfo = 0 → A specific food/place OR the next answer that fulfills the previous search query. **Simply understand that anything related to food/place will have a value of 0**. The goal is to provide users with maximum comfort. Simply grasping one piece of information means setting this to zero.
 
         2. "System_QA"
         - Asking HOW TO USE the BMI app or reporting bugs.
