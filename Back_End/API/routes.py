@@ -344,8 +344,9 @@ async def process_prompt(request: UserRequest):
         print("[API_LOG] Step 1: LLM Parsing started...")
         parser = LLMParser()
         parse_task = asyncio.create_task(parser.JSON_response(
-        user_prompt=request.prompt, 
-        system_context=itinerary_context
+            user_prompt=request.prompt,
+            history=formatted_history,
+            system_context=itinerary_context
         )) 
         loc_task = (
             asyncio.create_task(get_place_detail(request.place_id))
