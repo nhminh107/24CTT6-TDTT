@@ -50,29 +50,44 @@ class ItineraryManager:
             restaurant_data["meal"] = meal
             restaurant_data["timestamp"] = datetime.now()
             
-            # Nếu chưa có order, gán theo mặc định
+            is_auto = restaurant_data.get("is_auto", False)
+            
             if "order" not in restaurant_data:
                 meal_order = {"Sáng": 1, "Trưa": 2, "Xế": 3, "Tối": 4}
                 restaurant_data["order"] = meal_order.get(meal, 99)
                 
-            col.document(meal).set(restaurant_data)
+            doc_id = str(restaurant_data.get("id"))
+            
+            if meal in ["Sáng", "Trưa", "Tối"]:
+                docs = col.where("meal", "==", meal).stream()
+                for doc in docs:
+                    if doc.id != doc_id:
+                        doc.reference.delete()
+            elif meal == "Xế":
+                if is_auto:
+                    docs = col.where("meal", "==", "Xế").where("is_auto", "==", True).stream()
+                    for doc in docs:
+                        if doc.id != doc_id:
+                            doc.reference.delete()
+                
+            col.document(doc_id).set(restaurant_data)
             return True
         except Exception as e:
             print(f">>> ItineraryManager Error (select_restaurant): {e}")
             return False
 
-    async def reorder_itinerary(self, user_id: str, ordered_meals: List[str]) -> bool:
-        return await asyncio.to_thread(self._reorder_itinerary_sync, user_id, ordered_meals)
+    async def reorder_itinerary(self, user_id: str, ordered_items: List[Dict[str, str]]) -> bool:
+        return await asyncio.to_thread(self._reorder_itinerary_sync, user_id, ordered_items)
 
-    def _reorder_itinerary_sync(self, user_id: str, ordered_meals: List[str]) -> bool:
+    def _reorder_itinerary_sync(self, user_id: str, ordered_items: List[Dict[str, str]]) -> bool:
         try:
             db = self._get_db()
             col = self._get_itinerary_collection(user_id)
             
             batch = db.batch()
-            for index, meal in enumerate(ordered_meals):
-                doc_ref = col.document(meal)
-                batch.update(doc_ref, {"order": index})
+            for index, item in enumerate(ordered_items):
+                doc_ref = col.document(item["id"])
+                batch.update(doc_ref, {"order": index, "meal": item["meal"]})
             
             batch.commit()
             return True
@@ -80,13 +95,13 @@ class ItineraryManager:
             print(f">>> ItineraryManager Error (reorder_itinerary): {e}")
             return False
 
-    async def delete_meal(self, user_id: str, meal: str) -> bool:
-        return await asyncio.to_thread(self._delete_meal_sync, user_id, meal)
+    async def delete_meal(self, user_id: str, item_id: str) -> bool:
+        return await asyncio.to_thread(self._delete_meal_sync, user_id, item_id)
 
-    def _delete_meal_sync(self, user_id: str, meal: str) -> bool:
+    def _delete_meal_sync(self, user_id: str, item_id: str) -> bool:
         try:
             col = self._get_itinerary_collection(user_id)
-            col.document(meal).delete()
+            col.document(item_id).delete()
             return True
         except Exception as e:
             print(f">>> ItineraryManager Error (delete_meal): {e}")
@@ -112,7 +127,6 @@ class ItineraryManager:
     def _import_shared_itinerary_sync(self, user_id: str, share_id: str) -> bool:
         try:
             db = self._get_db()
-            # 1. Lấy dữ liệu từ shared_itineraries
             share_doc = db.collection("shared_itineraries").document(share_id).get()
             if not share_doc.exists:
                 return False
@@ -120,21 +134,19 @@ class ItineraryManager:
             shared_data = share_doc.to_dict()
             itinerary_data = shared_data.get("itinerary", [])
             
-            # 2. Reset itinerary hiện tại của user
             self._reset_itinerary_sync(user_id)
             
-            # 3. Import từng quán vào collection của user
             col = self._get_itinerary_collection(user_id)
             batch = db.batch()
             
             for index, item in enumerate(itinerary_data):
                 meal = item.get("meal", f"Meal_{index}")
-                # Đảm bảo có timestamp và order
                 item["timestamp"] = datetime.now()
                 if "order" not in item:
                     item["order"] = index
                 
-                doc_ref = col.document(meal)
+                doc_id = str(item.get("id"))
+                doc_ref = col.document(doc_id)
                 batch.set(doc_ref, item)
             
             batch.commit()

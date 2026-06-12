@@ -61,11 +61,24 @@ class LLMParser():
         """
 
         prompt = f"""
-        Extract intent information from the user's query and return ONLY a valid JSON object. No explanations, no markdown formatting outside the JSON, no extra text. If the information is missing or vague, return null or an empty array/string in the corresponding fields.
+        Extract intent information from the user's query and return ONLY a valid JSON object. No explanations, no markdown formatting outside the JSON, no extra text. If the information is missing, infer it from CHAT HISTORY and SYSTEM CONTEXT whenever possible.
+        Only return null when it cannot be inferred in the corresponding fields.
 
         Extraction Rules:
         1. "budget": (Integer) Total average budget per person. Convert slang/text to numbers (e.g., "1 củ" -> 1000000, "trăm rưỡi" -> 150000). Return null if not mentioned.
-        2. "num_meals": (Integer) Number of places/meals the user is requesting. Default to 1 if not specified.
+        2. "num_meals": (Integer)
+
+        Determine the number of meals from the user's intent.
+
+        Examples:
+        - "ăn sáng" -> 1
+        - "ăn sáng và tối" -> 2
+        - "lịch trình nguyên ngày" -> 4 ("sáng", "trưa", "xế", "tối")
+        - "cả ngày" -> 3
+        - "full day" -> 3
+        - "nửa ngày" -> 2
+
+        Only default to 1 when the request clearly refers to a single meal or restaurant.
         3. "location_pref": (String) Specific area in Vietnam like District name, street name, or ward (e.g., "1", "Phú Nhuận", "Sư Vạn Hạnh"). Avoid broad city names like "TP HCM" or "Hà Nội" unless the user only specifies the city. Return null if no location is mentioned.
         4. "shu": (Integer) Spiciness level requested by the user, on a scale of 1 to 5. Mandatory if the user mentions keywords related to spicy ("cay", "cay vừa", "siêu cay"). Return null if not mentioned.
         5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike for the current shop.

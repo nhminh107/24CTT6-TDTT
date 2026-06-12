@@ -177,10 +177,10 @@ export default function MainDashboard() {
     }
   };
 
-  const handleDeleteMeal = async (meal: string) => {
+  const handleDeleteMeal = async (itemId: string) => {
     if (!user?.uid) return;
     try {
-      const data = await itineraryApi.deleteMeal(user.uid, meal);
+      const data = await itineraryApi.deleteMeal(user.uid, itemId);
       if (data.status === "success") {
         await fetchItinerary();
       }
@@ -201,15 +201,15 @@ export default function MainDashboard() {
     }
   };
 
-  const handleReorder = async (orderedMeals: string[]) => {
+  const handleReorder = async (orderedItems: { id: string, meal: string }[]) => {
     if (!user?.uid) return;
     try {
       // Optimistic update
-      const mealMap = new Map(currentItinerary.map(item => [item.meal, item]));
-      const newItinerary = orderedMeals.map(meal => mealMap.get(meal)).filter(Boolean);
+      const mealMap = new Map(currentItinerary.map(item => [item.id, item]));
+      const newItinerary = orderedItems.map(item => ({ ...mealMap.get(item.id), meal: item.meal })).filter(item => item.id);
       setCurrentItinerary(newItinerary);
 
-      const data = await itineraryApi.reorder(user.uid, orderedMeals);
+      const data = await itineraryApi.reorder(user.uid, orderedItems);
       if (data.status !== "success") {
         // Fallback if failed
         await fetchItinerary();
