@@ -527,7 +527,7 @@ class RestaurantFilter:
         # MỐC 1: Nguy hiểm tuyệt đối (Dính combo nhiều món chính hoặc nhiều chất gây dị ứng nặng)
         if penalty >= 40.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Mức độ rủi ro tối đa (Điểm phạt: {penalty}). Thực đơn của quán hoàn toàn xung đột gay gắt với hồ sơ sức khỏe của bạn."
+                f"📊 Đánh giá tổng quan: Mức độ rủi ro tối đa. Thực đơn của quán hoàn toàn xung đột gay gắt với hồ sơ sức khỏe của bạn."
             )
             notes.append(
                 "🚨 Khuyên dùng: TUYỆT ĐỐI KHÔNG NÊN ĐẶT. Hãy chủ động đổi quán khác để bảo vệ an toàn."
@@ -536,7 +536,7 @@ class RestaurantFilter:
         # MỐC 2: Rủi ro cực cao (Ví dụ: dính từ 3 món chính hoặc 3 tag potential nguy hiểm trở lên)
         elif penalty >= 30.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Nguy cơ cao (Điểm phạt: {penalty}). Khả năng tìm được một món ăn an toàn hoặc không nhiễm chéo tại quán là rất thấp."
+                f"📊 Đánh giá tổng quan: Nguy cơ cao. Khả năng tìm được một món ăn an toàn hoặc không nhiễm chéo tại quán là rất thấp."
             )
             notes.append(
                 "💡 Khuyên dùng: Gần như toàn bộ thực đơn cốt lõi đều chứa thành phần bạn phải né."
@@ -545,7 +545,7 @@ class RestaurantFilter:
         # MỐC 3: Nguy cơ trung bình - cao (Ví dụ: Dính combo 1 main + 1 potential nguy hiểm = 20đ, cộng thêm tag thường)
         elif penalty >= 20.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Rủi ro đáng kể (Điểm phạt: {penalty}). Phần lớn thực đơn hoặc các món đặc trưng của quán thiên về nhóm món bạn cần hạn chế."
+                f"📊 Đánh giá tổng quan: Rủi ro đáng kể. Phần lớn thực đơn hoặc các món đặc trưng của quán thiên về nhóm món bạn cần hạn chế."
             )
             notes.append(
                 "💡 Khuyên dùng: Cần cực kỳ cẩn trọng. Hãy sàng lọc món thật kỹ và bắt buộc phải ghi chú rõ ràng với nhà bếp trước khi gọi."
@@ -554,7 +554,7 @@ class RestaurantFilter:
         # MỐC 4: Nguy cơ trung bình (Ví dụ: Dính 1 main vi phạm hoặc 1 potential nguy hiểm = 10đ)
         elif penalty >= 10.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Cần lưu ý (Điểm phạt: {penalty}). Quán có thành phần cấm xuất hiện trực tiếp trong món chính hoặc có nguy cơ nhiễm chéo nghiêm trọng."
+                f"📊 Đánh giá tổng quan: Cần lưu ý. Quán có thành phần cấm xuất hiện trực tiếp trong món chính hoặc có nguy cơ nhiễm chéo nghiêm trọng."
             )
             notes.append(
                 "💡 Khuyên dùng: Tránh gọi các món chủ đạo chứa tag cấm. Ưu tiên các món thanh đạm, luộc, hấp hoặc món phụ thuần túy."
@@ -563,13 +563,13 @@ class RestaurantFilter:
         # MỐC 5: Nhắc nhở nhẹ (Ví dụ: Chỉ dính 1 tag thường ở món phụ potential = 5đ)
         elif penalty >= 5.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Nhắc nhở nhẹ (Điểm phạt: {penalty}). Một vài thành phần món phụ có thể không tối ưu với chế độ ăn, nhưng tổng thể quán vẫn có nhiều lựa chọn an toàn thay thế."
+                f"📊 Đánh giá tổng quan: Nhắc nhở nhẹ. Một vài thành phần món phụ có thể không tối ưu với chế độ ăn, nhưng tổng thể quán vẫn có nhiều lựa chọn an toàn thay thế."
             )
 
         # MỐC 6: Rủi ro siêu nhỏ (Trường hợp điểm số lẻ hoặc tính toán tỷ lệ khác)
         elif penalty > 0.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Tương đối an toàn (Điểm phạt: {penalty}). Chỉ có rủi ro rất nhỏ từ một vài thành phần riêng biệt, chọn món kỹ một chút là có thể dùng tốt."
+                f"📊 Đánh giá tổng quan: Tương đối an toàn . Chỉ có rủi ro rất nhỏ từ một vài thành phần riêng biệt, chọn món kỹ một chút là có thể dùng tốt."
             )
 
         # MỐC 7: Hoàn hảo tuyệt đối (Penalty = 0)

@@ -651,17 +651,22 @@ export default function RestaurantDetailModal({
                                 }}
                               />
                               <div className="flex-1 min-w-0">
-                                <div className="flex items-center flex-wrap gap-2">
-                                  <p className="text-sm font-semibold text-slate-900 leading-none">
+                                <div className="flex items-center flex-wrap gap-1.5 min-w-0">
+                                  {/* Tên Username */}
+                                  <p className="text-sm font-semibold text-slate-800 truncate max-w-[120px] sm:max-w-none">
                                     {comment.username}
                                   </p>
+                                  
+                                  {/* Badge BẠN */}
                                   {isOwnComment && (
-                                    <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.05em] text-rose-600">
+                                    <span className="inline-flex items-center rounded bg-rose-50 px-1.5 py-0.5 text-[10px] font-medium text-rose-600 border border-rose-200/50">
                                       Bạn
                                     </span>
                                   )}
+                                  
+                                  {/* Badge ADMIN */}
                                   {(comment.user_role === "admin" || (isOwnComment && isCurrentUserAdmin)) && (
-                                    <span className="rounded-full bg-amber-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.05em] text-white shadow-sm">
+                                    <span className="inline-flex items-center rounded bg-amber-50 px-1.5 py-0.5 text-[10px] font-medium text-amber-700 border border-amber-200">
                                       Admin
                                     </span>
                                   )}
@@ -673,11 +678,24 @@ export default function RestaurantDetailModal({
                               </div>
                             </div>
                             {/* Like / Dislike count */}
-                            <div className="flex items-center gap-2 text-xs text-slate-500 shrink-0">
-                              <span>{comment.like_count} thích</span>
-                              <span>•</span>
-                              <span>{comment.dislike_count} không thích</span>
-                            </div>
+                            <div className="flex items-center gap-3 text-xs text-slate-500">
+                            {/* Like Count */}
+                            <span className="flex items-center gap-1">
+                              <ThumbsUp className="w-3.5 h-3.5" />
+                              <span>{comment.like_count}</span>
+                              <span className="hidden sm:inline">thích</span>
+                            </span>
+
+                            {/* Dấu chấm phân cách - chỉ hiện trên desktop nếu muốn */}
+                            <span className="hidden sm:inline text-slate-300">•</span>
+
+                            {/* Dislike Count */}
+                            <span className="flex items-center gap-1">
+                              <ThumbsDown className="w-3.5 h-3.5" />
+                              <span>{comment.dislike_count}</span>
+                              <span className="hidden sm:inline">không thích</span>
+                            </span>
+                          </div>
                           </div>
 
                           {/* Nội dung / Form chỉnh sửa */}
@@ -712,49 +730,53 @@ export default function RestaurantDetailModal({
                                 <button
                                   onClick={() => handleVote(comment.comment_id, "like")}
                                   disabled={votingCommentId === comment.comment_id}
-                                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition disabled:opacity-50 ${
+                                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold transition disabled:opacity-50 ${
                                     comment.current_vote === "like"
                                       ? "border-rose-400 bg-rose-50 text-rose-600"
                                       : "border-slate-200 bg-slate-50 text-slate-700 hover:border-rose-300 hover:text-rose-600"
                                   }`}
                                 >
-                                  <ThumbsUp className="w-4 h-4" />
-                                  Thích
+                                  <ThumbsUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                  <span className="hidden sm:inline">Thích</span>
                                 </button>
+
                                 <button
                                   onClick={() => handleVote(comment.comment_id, "dislike")}
                                   disabled={votingCommentId === comment.comment_id}
-                                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition disabled:opacity-50 ${
+                                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-full border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold transition disabled:opacity-50 ${
                                     comment.current_vote === "dislike"
                                       ? "border-blue-400 bg-blue-50 text-blue-600"
                                       : "border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-300 hover:text-blue-600"
                                   }`}
                                 >
-                                  <ThumbsDown className="w-4 h-4" />
-                                  Không thích
+                                  <ThumbsDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                  <span className="hidden sm:inline">Không thích</span>
                                 </button>
                                 {(isOwnComment || isCurrentUserAdmin) && (
-                                  <div className="ml-auto flex items-center gap-2">
-                                    {/* Nút Sửa: Chỉ chính chủ */}
-                                    {isOwnComment && (
-                                      <button
-                                        onClick={() => startEditComment(comment)}
-                                        className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
-                                      >
-                                        <Edit3 className="w-4 h-4" />
-                                        Sửa
-                                      </button>
-                                    )}
-                                    {/* Nút Xóa: Chính chủ hoặc Admin */}
+                                  <div className="flex items-center gap-1.5 ml-auto">
+                                  {/* Nút Sửa */}
+                                  {isOwnComment && (
                                     <button
-                                      onClick={() => handleDeleteComment(comment.comment_id)}
-                                      disabled={processingCommentId === comment.comment_id}
-                                      className="inline-flex items-center gap-2 rounded-full border border-rose-200 bg-white px-4 py-2 text-sm font-semibold text-rose-600 transition hover:bg-rose-50 disabled:opacity-50"
+                                      onClick={() => startEditComment(comment)}
+                                      className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white p-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                                      title="Sửa bình luận"
                                     >
-                                      <Trash2 className="w-4 h-4" />
-                                      Xóa
+                                      <Edit3 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                      <span className="hidden sm:inline">Sửa</span>
                                     </button>
-                                  </div>
+                                  )}
+
+                                  {/* Nút Xóa */}
+                                  <button
+                                    onClick={() => handleDeleteComment(comment.comment_id)}
+                                    disabled={processingCommentId === comment.comment_id}
+                                    className="inline-flex items-center gap-1 rounded-full text-slate-400 hover:text-rose-600 p-2 sm:border sm:border-rose-200 sm:bg-white sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold sm:text-rose-600 transition sm:hover:bg-rose-50 disabled:opacity-50"
+                                    title="Xóa bình luận"
+                                  >
+                                    <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    <span className="hidden sm:inline">Xóa</span>
+                                  </button>
+                                </div>
                                 )}
                               </div>
                             </>

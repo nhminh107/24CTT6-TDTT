@@ -93,14 +93,16 @@ export default function RestaurantCard2({
   const warnings = restaurant.warnings ?? [];
   const notes = restaurant.notes ?? [];
 
-  const severity =
-    restaurant.source === "user" || (!restaurant.source)
-    ? "unknown":
-    warnings.length === 0
-      ? "safe"
-      : warnings.length <= 2
-      ? "warning"
-      : "danger";
+  // Nhà hàng do user tự thêm (hoặc không có source) -> không có đánh giá sức khỏe AI
+  const isUserSource = restaurant.source === "user" || !restaurant.source;
+
+  const severity = isUserSource
+    ? "unknown"
+    : warnings.length === 0
+    ? "safe"
+    : warnings.length <= 2
+    ? "warning"
+    : "danger";
 
   const badgeConfig = {
   unknown: {
@@ -133,6 +135,9 @@ export default function RestaurantCard2({
   const badge = badgeConfig[severity];
   const BadgeIcon = badge.icon;
 
+  // Có nội dung gì để hiện trong khối "AI Insight" không?
+  const hasInsightContent = !isUserSource || !!semanticText;
+
   return (
   <div className="group overflow-hidden rounded-[36px] border border-white/20 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(15,23,42,0.18)]">
     
@@ -147,7 +152,6 @@ export default function RestaurantCard2({
       {/* cinematic overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-      {/* floating badge */}
       {/* floating badge */}
       <div className="absolute left-5 top-5">
         <div
@@ -210,106 +214,113 @@ export default function RestaurantCard2({
     {/* BODY */}
     <div className="space-y-5 p-6 pb-10">
       {/* AI Insight */}
-      <div className="rounded-[28px] border border-white/40 bg-gradient-to-br from-slate-50 to-white p-5 shadow-sm">
-        <div className="mb-3 flex items-center gap-3">
-        {/* logo giống mẫu */}
-        <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 via-orange-400 to-amber-500 shadow-[0_6px_20px_rgba(249,115,22,0.35)]">
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100 text-orange-700 shadow-inner">
-            <span className="text-sm font-black leading-none">
-              ✦
-            </span>
+      {hasInsightContent && (
+        <div className="rounded-[28px] border border-white/40 bg-gradient-to-br from-slate-50 to-white p-5 shadow-sm">
+          <div className="mb-3 flex items-center gap-3">
+          {/* logo giống mẫu */}
+          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 via-orange-400 to-amber-500 shadow-[0_6px_20px_rgba(249,115,22,0.35)]">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100 text-orange-700 shadow-inner">
+              <span className="text-sm font-black leading-none">
+                ✦
+              </span>
+            </div>
           </div>
+
+          <span className="text-[17px] font-semibold tracking-tight text-slate-900">
+            AI Health Insight
+          </span>
         </div>
 
-        <span className="text-[17px] font-semibold tracking-tight text-slate-900">
-          AI Health Insight
-        </span>
-      </div>
+      {/* Đánh giá sức khỏe (warnings / phù hợp) - chỉ hiện khi KHÔNG phải user tự thêm */}
+      {!isUserSource && (
+        warnings.length > 0 ? (
+          <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4">
+            {/* Nút bấm tiêu đề để ẩn/hiện */}
+            <button
+              type="button"
+              onClick={() => setIsOpenWarnings(!isOpenWarnings)}
+              className="flex w-full items-center justify-between rounded-xl bg-amber-100/60 px-3.5 py-2.5 text-left transition-all duration-200 hover:bg-amber-100 outline-none group"
+            >
+              {/* Bên trái: Tiêu đề bôi đậm, nổi bật hẳn lên */}
+              <div className="flex items-center gap-2">
+                <AlertCircle size={18} className="text-amber-600 animate-pulse" />
+                <span className="text-sm font-bold tracking-wide text-amber-900">
+                  Cần lưu ý
+                </span>
+                {/* Badge số lượng hình tròn nhỏ nhìn cực kỳ chuyên nghiệp */}
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-[11px] font-bold text-white shadow-sm">
+                  {warnings.length}
+                </span>
+              </div>
 
-    {warnings.length > 0 ? (
-      <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4">
-        {/* Nút bấm tiêu đề để ẩn/hiện */}
-        <button
-          type="button"
-          onClick={() => setIsOpenWarnings(!isOpenWarnings)}
-          className="flex w-full items-center justify-between rounded-xl bg-amber-100/60 px-3.5 py-2.5 text-left transition-all duration-200 hover:bg-amber-100 outline-none group"
-        >
-          {/* Bên trái: Tiêu đề bôi đậm, nổi bật hẳn lên */}
-          <div className="flex items-center gap-2">
-            <AlertCircle size={18} className="text-amber-600 animate-pulse" />
-            <span className="text-sm font-bold tracking-wide text-amber-900">
-              Cần lưu ý
-            </span>
-            {/* Badge số lượng hình tròn nhỏ nhìn cực kỳ chuyên nghiệp */}
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-600 text-[11px] font-bold text-white shadow-sm">
-              {warnings.length}
-            </span>
+              {/* Bên phải: Nút hành động kèm Icon xoay mượt mà */}
+              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 group-hover:text-amber-900">
+                <span>{isOpenWarnings ? "Thu gọn" : "Xem hết"}</span>
+                <ChevronDown
+                  size={15}
+                  className={`transition-transform duration-300 ${
+                    isOpenWarnings ? "rotate-180 text-amber-600" : "text-amber-500"
+                  }`}
+                />
+              </div>
+            </button>
+
+            {/* Nếu isOpenWarnings là true thì mới render danh sách bên dưới */}
+            {isOpenWarnings && (
+              <ul className="list-disc list-inside space-y-1.5 text-sm leading-6 text-amber-900">
+                {warnings.map((warning, index) => {
+                  // 1. Kiểm tra xem trong câu có dấu ":" không
+                  if (warning.includes(":")) {
+                    // Tách câu thành 2 phần: trước và sau dấu ":"
+                    const indexFirstColon = warning.indexOf(":");
+                    const title = warning.substring(0, indexFirstColon);
+                    const description = warning.substring(indexFirstColon + 1);
+
+                    return (
+                      <li key={index} className="marker:text-amber-500">
+                        {/* Phần trước dấu ":" - Bôi đậm màu nâu đen cho nổi bật */}
+                        <strong className="font-bold text-slate-900">{title}:</strong>
+                        {/* Phần sau dấu ":" - Giữ nguyên chữ thường */}
+                        <span className="text-amber-900">{description}</span>
+                      </li>
+                    );
+                  }
+
+                  // 2. Dự phòng trường hợp câu không có dấu ":" thì hiển thị bình thường
+                  return (
+                    <li key={index} className="marker:text-amber-500">
+                      {warning}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </div>
-
-          {/* Bên phải: Nút hành động kèm Icon xoay mượt mà */}
-          <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-700 group-hover:text-amber-900">
-            <span>{isOpenWarnings ? "Thu gọn" : "Xem hết"}</span>
-            <ChevronDown
-              size={15}
-              className={`transition-transform duration-300 ${
-                isOpenWarnings ? "rotate-180 text-amber-600" : "text-amber-500"
-              }`}
-            />
+        ) : (
+          <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+            <p className="text-sm leading-6 text-emerald-800">
+              <span className="font-semibold">
+                Hệ thống đánh giá nhà hàng này phù hợp với sức khỏe của bạn:
+              </span>{" "}
+              Không có cảnh báo nào được đưa ra.
+            </p>
           </div>
-        </button>
+        )
+      )}
 
-        {/* Nếu isOpenWarnings là true thì mới render danh sách bên dưới */}
-        {isOpenWarnings && (
-          <ul className="list-disc list-inside space-y-1.5 text-sm leading-6 text-amber-900">
-            {warnings.map((warning, index) => {
-              // 1. Kiểm tra xem trong câu có dấu ":" không
-              if (warning.includes(":")) {
-                // Tách câu thành 2 phần: trước và sau dấu ":"
-                const indexFirstColon = warning.indexOf(":");
-                const title = warning.substring(0, indexFirstColon);
-                const description = warning.substring(indexFirstColon + 1);
-
-                return (
-                  <li key={index} className="marker:text-amber-500">
-                    {/* Phần trước dấu ":" - Bôi đậm màu nâu đen cho nổi bật */}
-                    <strong className="font-bold text-slate-900">{title}:</strong>
-                    {/* Phần sau dấu ":" - Giữ nguyên chữ thường */}
-                    <span className="text-amber-900">{description}</span>
-                  </li>
-                );
-              }
-
-              // 2. Dự phòng trường hợp câu không có dấu ":" thì hiển thị bình thường
-              return (
-                <li key={index} className="marker:text-amber-500">
-                  {warning}
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
-    ) : (
-      <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
-        <p className="text-sm leading-6 text-emerald-800">
-          <span className="font-semibold">
-            Hệ thống đánh giá nhà hàng này phù hợp với sức khỏe của bạn:
-          </span>{" "}
-          Không có cảnh báo nào được đưa ra.
-        </p>
-      </div>
-    )}
-
-        {/* semantic text */}
-        <div className="mt-4 rounded-xl bg-amber-50/50 p-4 border-l-4 border-amber-500">
-          <div className="mb-1 flex items-center gap-1.5 text-xs font-bold text-amber-700">
-            <span>📖</span> Không gian & Hương vị
-          </div>
-          <p className="text-[14px] font-normal leading-relaxed text-slate-600">
-            {semanticText}
-          </p>
+          {/* semantic text - luôn hiện nếu có nội dung, kể cả khi user tự thêm */}
+          {semanticText && (
+            <div className="mt-4 rounded-xl bg-amber-50/50 p-4 border-l-4 border-amber-500">
+              <div className="mb-1 flex items-center gap-1.5 text-xs font-bold text-amber-700">
+                <span>📖</span> Không gian & Hương vị
+              </div>
+              <p className="text-[14px] font-normal leading-relaxed text-slate-600">
+                {semanticText}
+              </p>
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       {/* actions */}
       {/* Thay grid thành flex */}
@@ -340,67 +351,69 @@ export default function RestaurantCard2({
       </div>
     </div>
 
-    {/* accordion */}
-    <button
-      onClick={() => setOpen(!open)}
-      className="flex w-full items-center justify-between border-t border-orange-200 bg-orange-50 px-6 py-5 text-sm font-semibold text-orange-700 transition hover:bg-orange-100"
-    >
-      Xem thêm health insight
+    {/* accordion - chỉ hiện khi KHÔNG phải user tự thêm và có notes */}
+    {!isUserSource && notes.length > 0 && (
+      <>
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex w-full items-center justify-between border-t border-orange-200 bg-orange-50 px-6 py-5 text-sm font-semibold text-orange-700 transition hover:bg-orange-100"
+        >
+          Xem thêm health insight
 
-      <ChevronDown
-        size={18}
-        className={cn(
-          "transition-transform duration-300",
-          open && "rotate-180"
-        )}
-      />
-    </button>
+          <ChevronDown
+            size={18}
+            className={cn(
+              "transition-transform duration-300",
+              open && "rotate-180"
+            )}
+          />
+        </button>
 
-    {open && (
-    <div className="space-y-5 bg-slate-50 px-6 pb-24 pt-5">
-      {notes.length > 0 && (
-        <div className="rounded-[28px] border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/60 p-5 shadow-sm">
-          {/* header */}
-          <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-500 shadow-md shadow-emerald-200">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
-                ✓
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-slate-900">
-                Các lưu ý dành cho bạn
-              </h4>
-
-              <p className="text-xs text-slate-500">
-                Một vài gợi ý sức khỏe giúp bạn
-                lựa chọn món ăn phù hợp hơn
-              </p>
-            </div>
-          </div>
-
-          {/* notes */}
-          <div className="space-y-3">
-            {notes.map((note, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-white/80 p-4 shadow-sm transition hover:shadow-md"
-              >
-                <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">
-                  {i + 1}
+        {open && (
+          <div className="space-y-5 bg-slate-50 px-6 pb-24 pt-5">
+            <div className="rounded-[28px] border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-emerald-50/60 p-5 shadow-sm">
+              {/* header */}
+              <div className="mb-4 flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-500 shadow-md shadow-emerald-200">
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                    ✓
+                  </div>
                 </div>
 
-                <p className="text-sm leading-6 text-slate-700">
-                  {note}
-                </p>
+                <div>
+                  <h4 className="text-sm font-semibold text-slate-900">
+                    Các lưu ý dành cho bạn
+                  </h4>
+
+                  <p className="text-xs text-slate-500">
+                    Một vài gợi ý sức khỏe giúp bạn
+                    lựa chọn món ăn phù hợp hơn
+                  </p>
+                </div>
               </div>
-            ))}
+
+              {/* notes */}
+              <div className="space-y-3">
+                {notes.map((note, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-3 rounded-2xl border border-emerald-100 bg-white/80 p-4 shadow-sm transition hover:shadow-md"
+                  >
+                    <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700">
+                      {i + 1}
+                    </div>
+
+                    <p className="text-sm leading-6 text-slate-700">
+                      {note}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  )}
+        )}
+      </>
+    )}
   </div>
 );  
 }
