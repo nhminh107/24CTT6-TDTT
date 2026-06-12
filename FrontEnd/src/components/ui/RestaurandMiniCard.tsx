@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { MapPin, Star, ShieldCheck, AlertTriangle, Plus } from "lucide-react";
 import { Restaurant, cn, formatMealDisplay } from "@/lib/utils";
 
@@ -8,6 +8,7 @@ type RestaurantMiniCardProps = {
   restaurant: Restaurant;
   isSelected?: boolean;
   isInItinerary?: boolean;
+  isMealOccupied?: boolean;
   onSelect: (id: string) => void;
   onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
 };
@@ -29,9 +30,11 @@ export default function RestaurantMiniCard({
   restaurant,
   isSelected,
   isInItinerary,
+  isMealOccupied,
   onSelect,
   onSelectMeal,
 }: RestaurantMiniCardProps) {
+  const [isChangingMeal, setIsChangingMeal] = useState(false);
   const imageUrl = useMemo(
     () => normalizeImageUrl(restaurant.imageUrl),
     [restaurant.imageUrl]
@@ -142,13 +145,24 @@ export default function RestaurantMiniCard({
 
       {/* 4. SELECT MEAL BUTTONS / ADD BUTTON */}
       <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/50 px-3 py-2">
-        {assignedMeal ? (
+        {assignedMeal && !isChangingMeal ? (
           <>
             <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Gợi ý cho:</span>
               <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
                 {formatMealDisplay(assignedMeal)}
               </span>
+              {isMealOccupied && !isInItinerary && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsChangingMeal(true);
+                  }}
+                  className="text-[10px] font-bold text-brand-coral underline hover:text-brand-flame"
+                >
+                  Thay đổi
+                </button>
+              )}
             </div>
             <button
               disabled={isInItinerary}
@@ -167,7 +181,20 @@ export default function RestaurantMiniCard({
           </>
         ) : (
           <>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chọn bữa:</span>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chọn bữa:</span>
+              {isChangingMeal && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsChangingMeal(false);
+                  }}
+                  className="text-[10px] font-bold text-slate-500 hover:text-slate-700"
+                >
+                  (Hủy)
+                </button>
+              )}
+            </div>
             <div className="flex gap-1">
               {meals.map((meal) => (
                 <button
@@ -175,6 +202,7 @@ export default function RestaurantMiniCard({
                   disabled={isInItinerary}
                   onClick={(e) => {
                     e.stopPropagation();
+                    setIsChangingMeal(false);
                     onSelectMeal?.(meal, restaurant);
                   }}
                   className={cn(

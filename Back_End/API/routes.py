@@ -179,9 +179,13 @@ class ItinerarySelectRequest(BaseModel):
     meal: str
     restaurant_data: dict
 
+class ReorderItem(BaseModel):
+    id: str
+    meal: str
+
 class ItineraryReorderRequest(BaseModel):
     user_id: str
-    ordered_meals: List[str]
+    ordered_items: List[ReorderItem]
 
 class ItineraryImportRequest(BaseModel):
     user_id: str
@@ -204,7 +208,7 @@ async def select_restaurant(request: ItinerarySelectRequest):
 
 @router.post("/itinerary/reorder")
 async def reorder_itinerary(request: ItineraryReorderRequest):
-    success = await itinerary_manager.reorder_itinerary(request.user_id, request.ordered_meals)
+    success = await itinerary_manager.reorder_itinerary(request.user_id, [item.model_dump() for item in request.ordered_items])
     if success:
         return {"status": "success", "message": "Đã cập nhật thứ tự lịch trình."}
     else:
@@ -238,11 +242,11 @@ async def import_shared_itinerary(request: ItineraryImportRequest):
     else:
         raise HTTPException(status_code=500, detail="Không thể nhập lộ trình.")
 
-@router.delete("/itinerary/{user_id}/{meal}")
-async def delete_meal(user_id: str, meal: str):
-    success = await itinerary_manager.delete_meal(user_id, meal)
+@router.delete("/itinerary/{user_id}/{item_id}")
+async def delete_meal(user_id: str, item_id: str):
+    success = await itinerary_manager.delete_meal(user_id, item_id)
     if success:
-        return {"status": "success", "message": f"Đã xóa bữa {meal}."}
+        return {"status": "success", "message": f"Đã xóa bữa ăn khỏi lịch trình."}
     else:
         raise HTTPException(status_code=500, detail="Không thể xóa bữa ăn.")
 

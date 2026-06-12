@@ -20,9 +20,9 @@ type ItineraryPanelProps = {
   onTabChange: (tab: "itinerary" | "detail" | "map") => void;
   onCloseDetail: () => void;
   currentItinerary?: any[];
-  onDeleteMeal?: (meal: string) => void;
+  onDeleteMeal?: (id: string) => void;
   onResetItinerary?: () => void;
-  onReorder?: (orderedMeals: string[]) => void;
+  onReorder?: (orderedItems: { id: string, meal: string }[]) => void;
   userPlaceId?: string;
   onItineraryChange?: () => void;
   onUserLocationChange?: (location: { location: string; placeId: string }) => void;
@@ -54,13 +54,42 @@ export default function ItineraryPanel({
 
   // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn)
   useEffect(() => {
-    setLocalItinerary(currentItinerary);
+    // Chỉ đồng bộ nếu danh sách ID thay đổi (thêm/xóa quán)
+    // Nếu chỉ là đổi chỗ, ta tin tưởng vào localItinerary để tránh bị "giật" khi đang kéo
+    const currentIds = currentItinerary.map(i => i.id).sort().join(",");
+    const localIds = localItinerary.map(i => i.id).sort().join(",");
+    
+    if (currentIds !== localIds) {
+      setLocalItinerary(currentItinerary);
+    }
   }, [currentItinerary]);
 
+  // Hàm tính toán nhãn bữa ăn dựa trên vị trí hiện tại trong mảng
+  const getDisplayMeal = (item: any, index: number, items: any[]) => {
+    const mealType = (item.meal || "").trim().toLowerCase();
+    // Bữa phụ (Xế) luôn là Xế
+    if (mealType === "xế") return "Xế";
+    
+    // Đếm xem có bao nhiêu bữa chính đứng trước nó
+    const mainMealsBefore = items
+      .slice(0, index)
+      .filter(i => (i.meal || "").trim().toLowerCase() !== "xế").length;
+    
+    const mainMealSequence = ["Sáng", "Trưa", "Tối"];
+    return mainMealSequence[mainMealsBefore] || "Tối";
+  };
+
   const handleReorder = (newOrder: any[]) => {
+    // 1. Cập nhật thứ tự hiển thị ngay lập tức (giữ nguyên object identity)
     setLocalItinerary(newOrder);
+
+    // 2. Gửi dữ liệu đã được tính toán nhãn mới lên parent/backend
     if (onReorder) {
-      onReorder(newOrder.map(item => item.meal));
+      const updatedItems = newOrder.map((item, index) => ({
+        id: item.id,
+        meal: getDisplayMeal(item, index, newOrder)
+      }));
+      onReorder(updatedItems);
     }
   };
 
@@ -158,9 +187,9 @@ export default function ItineraryPanel({
                 onReorder={handleReorder}
                 className="space-y-3"
               >
-                {localItinerary.map((stop) => (
+                {localItinerary.map((stop, index) => (
                   <Reorder.Item
-                    key={stop.meal}
+                    key={stop.id}
                     value={stop}
                     className="group relative"
                   >
@@ -177,7 +206,7 @@ export default function ItineraryPanel({
                       {/* Stop Label */}
                       <div className="mb-2 flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
-                          {formatMealDisplay(stop.meal)}
+                          {formatMealDisplay(getDisplayMeal(stop, index, localItinerary))}
                         </span>
                       </div>
 
@@ -212,7 +241,7 @@ export default function ItineraryPanel({
                     </button>
                     
                     <button
-                      onClick={() => onDeleteMeal?.(stop.meal)}
+                      onClick={() => onDeleteMeal?.(stop.id)}
                       className="absolute right-2 top-2 rounded-lg p-1.5 text-slate-300 transition hover:bg-rose-50 hover:text-rose-500"
                     >
                       <Trash2 size={14} />

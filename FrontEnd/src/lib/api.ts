@@ -34,8 +34,8 @@ export const itineraryApi = {
     });
     return res.json();
   },
-  deleteMeal: async (userId: string, meal: string) => {
-    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/${userId}/${meal}`, {
+  deleteMeal: async (userId: string, itemId: string) => {
+    const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/${userId}/${itemId}`, {
       method: "DELETE",
     });
     return res.json();
@@ -46,11 +46,11 @@ export const itineraryApi = {
     });
     return res.json();
   },
-  reorder: async (userId: string, orderedMeals: string[]) => {
+  reorder: async (userId: string, orderedItems: { id: string, meal: string }[]) => {
     const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/reorder`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user_id: userId, ordered_meals: orderedMeals }),
+      body: JSON.stringify({ user_id: userId, ordered_items: orderedItems }),
     });
     return res.json();
   },
