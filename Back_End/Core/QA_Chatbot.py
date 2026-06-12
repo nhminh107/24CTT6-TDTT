@@ -49,7 +49,7 @@ class ChatBot():
 
         1. "Search"
         - Finding restaurants, food, or places to eat.
-        - Examples: "bánh canh", "tìm quán ăn sáng", "quán nào gần đây".
+        - Examples: "bánh canh", "tìm quán ăn sáng", "quán nào gần đây", "lên lịch trình".
         - Evaluation of `isPoorInfo`:
             * isPoorInfo = 1 → Extremely vague with NO context in history (e.g., just "ngon", "đói"). 
             * isPoorInfo = 0 → A specific food/place OR the next answer that fulfills the previous search query. **Simply understand that anything related to food/place will have a value of 0**. The goal is to provide users with maximum comfort. Simply grasping one piece of information means setting this to zero.
@@ -63,7 +63,7 @@ class ChatBot():
 
         4. "Out_Scope"
         - Completely unrelated to food, health, travel, or the BMI app.
-
+        - **Absolutely, when users mention food, scheduling, health, or dishes, any mention of such topics should not be considered out of scope.**
         ### OUTPUT FORMAT (strict JSON)
         {
             "user_intent": "Search" | "System_QA" | "Knowledge_QA" | "Out_Scope",
