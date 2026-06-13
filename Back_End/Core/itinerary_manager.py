@@ -47,29 +47,51 @@ class ItineraryManager:
     def _select_restaurant_sync(self, user_id: str, meal: str, restaurant_data: Dict[str, Any]) -> bool:
         try:
             col = self._get_itinerary_collection(user_id)
+            
+            # Chuẩn hóa nhãn bữa ăn một cách nghiêm ngặt
+            meal_raw = str(meal).strip().lower()
+            if "sáng" in meal_raw: meal = "Sáng"
+            elif "trưa" in meal_raw: meal = "Trưa"
+            elif "tối" in meal_raw: meal = "Tối"
+            elif "xế" in meal_raw or "phụ" in meal_raw or "snack" in meal_raw: meal = "Xế"
+            else: meal = meal.capitalize()
+            
             restaurant_data["meal"] = meal
             restaurant_data["timestamp"] = datetime.now()
             
             is_auto = restaurant_data.get("is_auto", False)
+            existing_order = None
             
-            if "order" not in restaurant_data:
-                meal_order = {"Sáng": 1, "Trưa": 2, "Xế": 3, "Tối": 4}
+            # 1. Tìm và xóa quán cũ, đồng thời lấy lại vị trí (order) của nó
+            # Truy vấn cả bản viết hoa và viết thường để đảm bảo dọn dẹp sạch sẽ
+            meal_variants = [meal, meal.lower(), meal.upper()]
+            docs = col.where("meal", "in", meal_variants).stream()
+            
+            items_to_delete = []
+            for doc in docs:
+                data = doc.to_dict()
+                # Đối với Xế, chỉ tự động thay thế nếu cả hai đều là bản do AI thêm (is_auto)
+                if meal == "Xế" and is_auto:
+                    if data.get("is_auto"):
+                        if existing_order is None: existing_order = data.get("order")
+                        items_to_delete.append(doc.reference)
+                elif meal != "Xế":
+                    # Sáng, Trưa, Tối luôn bị thay thế
+                    if existing_order is None: existing_order = data.get("order")
+                    items_to_delete.append(doc.reference)
+
+            # Thực hiện xóa các quán cũ
+            for ref in items_to_delete:
+                ref.delete()
+            
+            # 2. Gán vị trí cho quán mới
+            if existing_order is not None:
+                restaurant_data["order"] = existing_order
+            elif "order" not in restaurant_data:
+                meal_order = {"Sáng": 0, "Trưa": 1, "Xế": 2, "Tối": 3}
                 restaurant_data["order"] = meal_order.get(meal, 99)
                 
             doc_id = str(restaurant_data.get("id"))
-            
-            if meal in ["Sáng", "Trưa", "Tối"]:
-                docs = col.where("meal", "==", meal).stream()
-                for doc in docs:
-                    if doc.id != doc_id:
-                        doc.reference.delete()
-            elif meal == "Xế":
-                if is_auto:
-                    docs = col.where("meal", "==", "Xế").where("is_auto", "==", True).stream()
-                    for doc in docs:
-                        if doc.id != doc_id:
-                            doc.reference.delete()
-                
             col.document(doc_id).set(restaurant_data)
             return True
         except Exception as e:
