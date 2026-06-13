@@ -543,9 +543,11 @@ async def process_prompt(request: UserRequest):
 
         # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
         for meal in final_itinerary['meal'].unique():
-            meal_results = [r for r in final_result_list if r.get('meal') == meal]
+            # So sánh không phân biệt hoa thường để trích xuất kết quả
+            meal_results = [r for r in final_result_list if str(r.get('meal')).strip().lower() == str(meal).strip().lower()]
             if meal_results:
-                first_res = meal_results[0]
+                first_res = meal_results[0].copy() 
+                first_res['is_auto'] = True
                 await itinerary_manager.select_restaurant(request.user_id, meal, first_res)
 
         # Lưu tin nhắn của assistant nếu có chat_id

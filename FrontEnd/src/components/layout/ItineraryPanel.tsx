@@ -51,45 +51,41 @@ export default function ItineraryPanel({
   onShowBoardingPassChange,
 }: ItineraryPanelProps) {
   const [localItinerary, setLocalItinerary] = useState(currentItinerary);
+  const isInternalUpdate = useRef(false);
 
-  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn)
+  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn hoặc đổi nhãn từ server)
   useEffect(() => {
-    // Chỉ đồng bộ nếu danh sách ID thay đổi (thêm/xóa quán)
-    // Nếu chỉ là đổi chỗ, ta tin tưởng vào localItinerary để tránh bị "giật" khi đang kéo
-    const currentIds = currentItinerary.map(i => i.id).sort().join(",");
-    const localIds = localItinerary.map(i => i.id).sort().join(",");
-    
-    if (currentIds !== localIds) {
-      setLocalItinerary(currentItinerary);
+    // Nếu đây là bản cập nhật do chính component này thực hiện (kéo thả), bỏ qua đồng bộ để tránh bị giật/reset
+    if (isInternalUpdate.current) {
+      isInternalUpdate.current = false;
+      return;
     }
+    setLocalItinerary(currentItinerary);
   }, [currentItinerary]);
 
-  // Hàm tính toán nhãn bữa ăn dựa trên vị trí hiện tại trong mảng
-  const getDisplayMeal = (item: any, index: number, items: any[]) => {
-    const mealType = (item.meal || "").trim().toLowerCase();
-    // Bữa phụ (Xế) luôn là Xế
-    if (mealType === "xế") return "Xế";
-    
-    // Đếm xem có bao nhiêu bữa chính đứng trước nó
-    const mainMealsBefore = items
-      .slice(0, index)
-      .filter(i => (i.meal || "").trim().toLowerCase() !== "xế").length;
-    
-    const mainMealSequence = ["Sáng", "Trưa", "Tối"];
-    return mainMealSequence[mainMealsBefore] || "Tối";
-  };
-
   const handleReorder = (newOrder: any[]) => {
-    // 1. Cập nhật thứ tự hiển thị ngay lập tức (giữ nguyên object identity)
-    setLocalItinerary(newOrder);
+    const mainMealSequence = ["Sáng", "Trưa", "Tối"];
+    let mainMealIdx = 0;
 
-    // 2. Gửi dữ liệu đã được tính toán nhãn mới lên parent/backend
+    // QUAN TRỌNG: Tạo danh sách mới với nhãn được gán lại thực sự dựa trên vị trí
+    const updatedOrder = newOrder.map((item) => {
+      const isSnack = (item.meal || "").trim().toLowerCase() === "xế";
+      
+      if (isSnack) {
+        return { ...item, meal: "Xế" };
+      }
+      
+      const newMeal = mainMealSequence[mainMealIdx] || "Tối";
+      mainMealIdx++;
+      return { ...item, meal: newMeal };
+    });
+
+    isInternalUpdate.current = true;
+    setLocalItinerary(updatedOrder);
+
+    // Gửi lên parent/backend để lưu lại sự thay đổi nhãn này
     if (onReorder) {
-      const updatedItems = newOrder.map((item, index) => ({
-        id: item.id,
-        meal: getDisplayMeal(item, index, newOrder)
-      }));
-      onReorder(updatedItems);
+      onReorder(updatedOrder.map(item => ({ id: item.id, meal: item.meal })));
     }
   };
 
@@ -206,7 +202,7 @@ export default function ItineraryPanel({
                       {/* Stop Label */}
                       <div className="mb-2 flex items-center justify-between">
                         <span className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-0.5 text-[10px] font-bold text-white">
-                          {formatMealDisplay(getDisplayMeal(stop, index, localItinerary))}
+                          {formatMealDisplay(stop.meal)}
                         </span>
                       </div>
 
