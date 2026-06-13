@@ -13,23 +13,54 @@ class ChromaDBManager:
 
     def __init__(self):
         if ChromaDBManager._client is None:
-            # Sử dụng đường dẫn tuyệt đối để tránh lỗi Windows file locking
             base_dir = os.path.dirname(os.path.abspath(__file__))
             chroma_main_path = os.path.join(base_dir, "chroma_main_db")
-            if not os.path.exists(chroma_main_path):
-                os.makedirs(chroma_main_path, exist_ok=True)
             
+            # Khởi tạo client
             ChromaDBManager._client = chromadb.PersistentClient(path=chroma_main_path)
+
         if ChromaDBManager._ef is None:
             ChromaDBManager._ef = embedding_functions.SentenceTransformerEmbeddingFunction(
                 model_name="paraphrase-multilingual-MiniLM-L12-v2"
             )
-        if ChromaDBManager._collection is None:
+
+        # Thử lấy hoặc tạo collection, reset nếu lỗi
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        chroma_main_path = os.path.join(base_dir, "chroma_main_db")
+        
+        try:
+            if ChromaDBManager._collection is None:
+                ChromaDBManager._collection = ChromaDBManager._client.get_or_create_collection(
+                    name="restaurants_collection_vn",
+                    embedding_function=ChromaDBManager._ef
+                )
+                ChromaDBManager._collection.count() # Kiểm tra corruption
+            
+            if ChromaDBManager._menu_collection is None:
+                ChromaDBManager._menu_collection = ChromaDBManager._client.get_or_create_collection(
+                    name="menu_collection_vn",
+                    embedding_function=ChromaDBManager._ef
+                )
+                ChromaDBManager._menu_collection.count() # Kiểm tra corruption
+        except Exception as e:
+            print(f"⚠️ ChromaDB corrupted: {e}. Resetting...")
+            ChromaDBManager._client = None
+            ChromaDBManager._collection = None
+            ChromaDBManager._menu_collection = None
+            import shutil
+            import time
+            if os.path.exists(chroma_main_path):
+                try:
+                    shutil.rmtree(chroma_main_path)
+                    time.sleep(2)
+                except: pass
+            
+            os.makedirs(chroma_main_path, exist_ok=True)
+            ChromaDBManager._client = chromadb.PersistentClient(path=chroma_main_path)
             ChromaDBManager._collection = ChromaDBManager._client.get_or_create_collection(
                 name="restaurants_collection_vn",
                 embedding_function=ChromaDBManager._ef
             )
-        if ChromaDBManager._menu_collection is None:
             ChromaDBManager._menu_collection = ChromaDBManager._client.get_or_create_collection(
                 name="menu_collection_vn",
                 embedding_function=ChromaDBManager._ef
@@ -41,19 +72,27 @@ class ChromaDBManager:
         self.menu_collection = ChromaDBManager._menu_collection
     
     def search(self, query_text, n_results=5):
-        return self.collection.query(
-            query_texts=[query_text], 
-            n_results=n_results
-        )
+        try:
+            return self.collection.query(
+                query_texts=[query_text], 
+                n_results=n_results
+            )
+        except Exception as e:
+            print(f"❌ Search error: {e}")
+            return {"ids": [], "distances": [], "documents": []}
 
     def search_menu(self, query_text, n_results=5, where=None):
-        query_kwargs = {
-            "query_texts": [query_text],
-            "n_results": n_results
-        }
-        if where is not None:
-            query_kwargs["where"] = where
-        return self.menu_collection.query(**query_kwargs)
+        try:
+            query_kwargs = {
+                "query_texts": [query_text],
+                "n_results": n_results
+            }
+            if where is not None:
+                query_kwargs["where"] = where
+            return self.menu_collection.query(**query_kwargs)
+        except Exception as e:
+            print(f"❌ Search menu error: {e}")
+            return {"ids": [], "distances": [], "documents": []}
 
     @staticmethod
     def _cosine_similarity(vec_a, vec_b):
@@ -182,7 +221,7 @@ class ChromaDBManager:
 if __name__ == "__main__": 
     db_mng = ChromaDBManager() 
     # Thêm tham số force=True nếu muốn nạp lại dữ liệu mới nhất
-    db_mng.add(force=True) 
+    db_mng.add(force=False) 
     print(f"Final Restaurant count: {db_mng.collection.count()}")
     print(f"Final Menu count: {db_mng.menu_collection.count()}")
     
