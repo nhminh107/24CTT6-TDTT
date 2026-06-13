@@ -5,7 +5,7 @@ import { Map, Source, Layer, Popup, NavigationControl, GeolocateControl, Marker,
 import maplibregl from "maplibre-gl";
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { convertToGeoJSON, ApiRestaurant, Restaurant, buildRestaurants, inferMealFromRestaurant } from "@/lib/utils";
-import { Star, MapPin, Navigation, Info, X, MessageSquare, Plus, Check, Loader2, ChevronDown } from "lucide-react";
+import { Star, MapPin, Navigation, Info, X, MessageSquare, Plus, Check, Loader2, ChevronDown, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import RestaurantDetailModal from "./RestaurantDetailModal";
 import { itineraryApi } from "@/lib/api";
@@ -34,7 +34,7 @@ type MapExploreProps = {
 export default function MapExplore({
   userPlaceId,
   userLocationText,
-  currentItinerary = [],
+  currentItinerary: propItinerary,
   onItineraryChange,
   onUserLocationChange,
 }: MapExploreProps) {
@@ -52,17 +52,97 @@ export default function MapExplore({
   const [pendingFlyTo, setPendingFlyTo] = useState<{ lat: number; lng: number } | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
 
+  // Itinerary local state if not passed from props
+  const [localItinerary, setLocalItinerary] = useState<any[]>([]);
+  const currentItinerary = propItinerary || localItinerary;
+
   // Add to itinerary state
   const [addingMeal, setAddingMeal] = useState(false);
   const [showMealPicker, setShowMealPicker] = useState(false);
   const [addSuccess, setAddSuccess] = useState<string | null>(null);
   const [addError, setAddError] = useState<string | null>(null);
 
+  // Fetch itinerary if standalone
+  useEffect(() => {
+    if (!propItinerary && user?.uid) {
+      itineraryApi.get(user.uid).then(data => {
+        if (data.status === "success") setLocalItinerary(data.itinerary || []);
+      });
+    }
+  }, [propItinerary, user?.uid]);
+
+  const refreshItinerary = useCallback(() => {
+    if (!propItinerary && user?.uid) {
+      itineraryApi.get(user.uid).then(data => {
+        if (data.status === "success") setLocalItinerary(data.itinerary || []);
+      });
+    }
+    onItineraryChange?.();
+  }, [propItinerary, user?.uid, onItineraryChange]);
+
+
   const applyUserLocation = (lat: number, lng: number, locationLabel: string, placeId: string) => {
     setUserLocation({ lat, lng });
     setPendingFlyTo({ lat, lng });
     onUserLocationChange?.({ location: locationLabel, placeId });
   };
+
+  // State for off-screen indicators
+  const [edgeIndicators, setEdgeIndicators] = useState<any[]>([]);
+
+  // Update edge indicators on map move/zoom
+  const updateEdgeIndicators = useCallback(() => {
+    if (!mapRef.current || currentItinerary.length === 0) {
+      setEdgeIndicators([]);
+      return;
+    }
+
+    const map = mapRef.current.getMap();
+    const canvas = map.getCanvas();
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const padding = 60;
+
+    const indicators: any[] = [];
+
+    currentItinerary.forEach((item) => {
+      if (!item.lat || !item.lng) return;
+
+      const pos = map.project([item.lng, item.lat]);
+      const isOffScreen = pos.x < 0 || pos.x > width || pos.y < 0 || pos.y > height;
+
+      if (isOffScreen) {
+        // Clamp position to edges
+        let edgeX = Math.max(padding, Math.min(width - padding, pos.x));
+        let edgeY = Math.max(padding, Math.min(height - padding, pos.y));
+        
+        // Determine arrow direction
+        let direction = "up";
+        if (pos.x < 0) direction = "left";
+        else if (pos.x > width) direction = "right";
+        else if (pos.y < 0) direction = "up";
+        else if (pos.y > height) direction = "down";
+
+        indicators.push({
+          id: item.id,
+          name: item.name,
+          x: edgeX,
+          y: edgeY,
+          direction,
+          lat: item.lat,
+          lng: item.lng
+        });
+      }
+    });
+
+    setEdgeIndicators(indicators);
+  }, [currentItinerary]);
+
+  useEffect(() => {
+    if (mapLoaded) {
+      updateEdgeIndicators();
+    }
+  }, [mapLoaded, updateEdgeIndicators, zoom]);
 
   // 1. Fetch and Clean Map Style
   useEffect(() => {
@@ -251,7 +331,7 @@ export default function MapExplore({
       const data = await itineraryApi.select(user.uid, meal, restaurantData);
       if (data.status === "success") {
         setAddSuccess(meal);
-        onItineraryChange?.();
+        refreshItinerary();
         setTimeout(() => setAddSuccess(null), 2500);
       } else {
         setAddError("Không thể thêm vào lịch trình.");
@@ -261,12 +341,12 @@ export default function MapExplore({
     } finally {
       setAddingMeal(false);
     }
-  }, [user, popupInfo, onItineraryChange]);
+  }, [user, popupInfo, refreshItinerary]);
 
   // Kiểm tra quán đã có trong lịch trình chưa
   const isAlreadyInItinerary = useMemo(() => {
     if (!popupInfo) return false;
-    return currentItinerary.some((stop) => stop.id === popupInfo.id || stop.name === popupInfo.name);
+    return currentItinerary.some((stop) => stop.id === popupInfo.id || String(stop.id) === String(popupInfo.id) || stop.name === popupInfo.name);
   }, [popupInfo, currentItinerary]);
 
   // Meal đã dùng (để disable)
@@ -298,7 +378,11 @@ export default function MapExplore({
         ref={mapRef}
         onClick={onMapClick}
         onZoom={(e) => setZoom(e.viewState.zoom)}
-        onLoad={() => setMapLoaded(true)}
+        onMove={updateEdgeIndicators}
+        onLoad={() => {
+          setMapLoaded(true);
+          updateEdgeIndicators();
+        }}
         interactiveLayerIds={["clusters"]}
         style={{ width: "100%", height: "100%" }}
       >
@@ -329,26 +413,79 @@ export default function MapExplore({
         </Source>
 
         {/* MARKERS */}
-        {zoom > 13 && restaurants.map((res: any, idx) => (
+        {restaurants.map((res: any, idx) => {
+          const isSelected = currentItinerary.some((stop) => String(stop.id) === String(res.id) || stop.name === res.name);
+          
+          // Always show markers for selected restaurants, even when zoomed out
+          if (zoom <= 13 && !isSelected) return null;
+
+          return (
+            <Marker
+              key={`res-${res.id || idx}`}
+              longitude={res.lng}
+              latitude={res.lat}
+              anchor="bottom"
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                setPopupInfo(res);
+              }}
+              style={{ zIndex: isSelected ? 10 : 1 }}
+            >
+              <div className={`relative flex flex-col items-center group cursor-pointer ${isSelected ? "scale-110" : ""}`}>
+                {/* HIỆU ỨNG TỎA SÁNG RỘNG KHI ĐƯỢC CHỌN */}
+                {isSelected && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-3">
+                    <div className="absolute w-12 h-12 rounded-full bg-rose-500 animate-sonar" />
+                    <div className="absolute w-12 h-12 rounded-full bg-brand-coral animate-sonar [animation-delay:0.9s]" />
+                  </div>
+                )}
+
+                <div
+                  className={`relative w-9 h-9 rounded-full flex items-center justify-center border-2 shadow-xl transition-all group-hover:scale-125
+                    ${isSelected ? "border-rose-500 ring-2 ring-white z-10 bg-brand-coral" : "border-white bg-white"}`}
+                  style={{ backgroundColor: isSelected ? undefined : convertToGeoJSON([res]).features[0].properties.mapColor }}
+                >
+                  <span className={`text-lg ${isSelected ? "animate-pulse" : ""}`}>
+                    {isSelected ? "📍" : convertToGeoJSON([res]).features[0].properties.mapIcon}
+                  </span>
+                </div>
+                <div className={`relative z-10 mt-1.5 px-2.5 py-1 rounded-lg shadow-md border transition-colors
+                  ${isSelected ? "bg-rose-600 border-rose-500" : "bg-white/95 border-slate-100"}`}>
+                  <p className={`text-[11px] font-black whitespace-nowrap ${isSelected ? "text-white" : "text-slate-800"}`}>
+                    {isSelected && "🌟 "}{res.name}
+                  </p>
+                </div>
+              </div>
+            </Marker>
+          );
+        })}
+
+        {/* EXTRA ITINERARY MARKERS (For items not in the main list) */}
+        {currentItinerary.filter(stop => 
+          !restaurants.some(res => String(res.id) === String(stop.id) || res.name === stop.name)
+        ).map((stop, idx) => (
           <Marker
-            key={res.id || idx}
-            longitude={res.lng}
-            latitude={res.lat}
+            key={`itinerary-${stop.id || idx}`}
+            longitude={stop.lng}
+            latitude={stop.lat}
             anchor="bottom"
             onClick={(e) => {
               e.originalEvent.stopPropagation();
-              setPopupInfo(res);
+              setPopupInfo(stop);
             }}
+            style={{ zIndex: 11 }}
           >
-            <div className="flex flex-col items-center group cursor-pointer">
-              <div
-                className="w-9 h-9 rounded-full flex items-center justify-center border-2 border-white shadow-xl transition-transform group-hover:scale-125"
-                style={{ backgroundColor: convertToGeoJSON([res]).features[0].properties.mapColor }}
-              >
-                <span className="text-lg">{convertToGeoJSON([res]).features[0].properties.mapIcon}</span>
+            <div className="relative flex flex-col items-center group cursor-pointer scale-110">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-3">
+                <div className="absolute w-12 h-12 rounded-full bg-rose-500 animate-sonar" />
+                <div className="absolute w-12 h-12 rounded-full bg-brand-coral animate-sonar [animation-delay:0.9s]" />
               </div>
-              <div className="mt-1.5 px-2.5 py-1 bg-white/95 backdrop-blur-sm rounded-lg shadow-md border border-slate-100">
-                <p className="text-[11px] font-black text-slate-800 whitespace-nowrap">{res.name}</p>
+              
+              <div className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center border-2 border-rose-500 ring-2 ring-white bg-brand-coral shadow-xl transition-all group-hover:scale-125">
+                <span className="text-lg animate-pulse">📍</span>
+              </div>
+              <div className="relative z-10 mt-1.5 px-2.5 py-1 bg-rose-600 border border-rose-500 rounded-lg shadow-md transition-colors">
+                <p className="text-[11px] font-black whitespace-nowrap text-white">🌟 {stop.name}</p>
               </div>
             </div>
           </Marker>
@@ -376,16 +513,18 @@ export default function MapExplore({
             className="z-50"
           >
             <div className="p-0 min-w-[260px] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-100">
-              <img src={popupInfo.image_url || "/assets/images/AI.png"} className="w-full h-32 object-cover" />
+              <img src={popupInfo.image_url || popupInfo.imageUrl || "/assets/images/AI.png"} className="w-full h-32 object-cover" />
               <div className="p-4 space-y-3">
                 <div>
                   <h3 className="font-bold text-slate-800 text-base leading-tight line-clamp-2">{popupInfo.name}</h3>
                   <div className="flex items-center gap-2 mt-1">
                     <div className="flex items-center text-xs font-bold text-yellow-500">
-                      <Star className="w-3.5 h-3.5 fill-current mr-0.5" /> {popupInfo.star}
+                      <Star className="w-3.5 h-3.5 fill-current mr-0.5" /> {popupInfo.star || popupInfo.rating}
                     </div>
                     <span className="text-xs text-slate-300">|</span>
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{popupInfo.type?.[0]}</span>
+                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                      {Array.isArray(popupInfo.type) ? popupInfo.type[0] : (popupInfo.meals?.[0] || "Nhà hàng")}
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-start text-[11px] text-slate-500 italic">
@@ -486,6 +625,40 @@ export default function MapExplore({
           </Popup>
         )}
       </Map>
+
+      {/* EDGE INDICATORS (Arrows) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {edgeIndicators.map((ind) => (
+          <div
+            key={ind.id}
+            className="absolute flex flex-col items-center gap-1 transition-all duration-300 ease-out"
+            style={{
+              left: ind.x,
+              top: ind.y,
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            <button
+              onClick={() => {
+                if (mapRef.current) {
+                  mapRef.current.flyTo({ center: [ind.lng, ind.lat], zoom: 16 });
+                  // Tìm quán trong list hoặc itinerary để hiện popup
+                  const res = currentItinerary.find(item => String(item.id) === String(ind.id)) || 
+                             restaurants.find(item => String(item.id) === String(ind.id));
+                  if (res) setPopupInfo(res);
+                }
+              }}
+              className="pointer-events-auto flex items-center gap-2 px-3 py-1.5 bg-rose-500 text-white rounded-full shadow-lg border-2 border-white hover:bg-rose-600 transition-colors active:scale-90"
+            >
+              {ind.direction === "up" && <ArrowUp className="w-3.5 h-3.5 animate-bounce" />}
+              {ind.direction === "down" && <ArrowDown className="w-3.5 h-3.5 animate-bounce" />}
+              {ind.direction === "left" && <ArrowLeft className="w-3.5 h-3.5 animate-bounce" />}
+              {ind.direction === "right" && <ArrowRight className="w-3.5 h-3.5 animate-bounce" />}
+              <span className="text-[10px] font-bold whitespace-nowrap max-w-[100px] truncate">{ind.name}</span>
+            </button>
+          </div>
+        ))}
+      </div>
 
       {/* Floating Header UI — chỉ hiện khi fullscreen (/explore), ẩn khi trong panel */}
       {!userPlaceId && (

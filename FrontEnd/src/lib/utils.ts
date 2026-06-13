@@ -15,12 +15,15 @@ export type Restaurant = {
   meals?: string[];
   meal?: string; // Added to support itinerary display
   assignedMeal?: string;
+  lat?: number;
+  lng?: number;
   healthTagsDisplay?: {
     warnings?: string[];
     notes?: string[];
   };
   warnings?: string[];
   notes?: string[];
+  source?: "user" | "ai";
 };
 
 export type ApiRestaurant = {
@@ -126,7 +129,9 @@ export const buildRestaurants = (items: any[]): Restaurant[] =>
 
       warnings: item.warnings ?? [],
       notes: item.notes ?? [],
-      source: item.source || (item.isCustom ? "user" : "ai")
+      source: item.source || (item.isCustom ? "user" : "ai"),
+      lat: item.lat,
+      lng: item.lng
     };
   });
 
