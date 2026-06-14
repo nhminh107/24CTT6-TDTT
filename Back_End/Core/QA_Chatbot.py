@@ -40,7 +40,8 @@ class ChatBot():
         Your ONLY task is to classify the user's message into exactly one of FOUR intents and return a JSON object.
 
         ### HOW TO USE CHAT HISTORY (CRITICAL)
-        - ALWAYS check the chat history to understand short or ambiguous prompts.
+        - ALWAYS check the chat history to understand short, follow-up, or ambiguous prompts.
+        - CONTEXT MERGING: If the user adds a constraint (e.g., "Quận 4", "Giá rẻ thôi", "Không cay") to a search started in previous messages, the intent is still "Search" and isPoorInfo = 0 because you must merge this with the previous intent.
         - If the user provides a short answer (e.g., "Quận 1", "Bún bò", "Có", "Ok"), check if the last message from the Assistant was asking for missing information.
         - If the previous Assistant message asked "Bạn muốn ăn ở đâu?" and user replies "Quận 1" -> Intent is "Search" and isPoorInfo = 0.
         - If the prompt uses pronouns like "nó", "quán đó", "ở đó", refer to the last mentioned restaurant or dish in the history.
