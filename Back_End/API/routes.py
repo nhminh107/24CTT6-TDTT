@@ -367,9 +367,13 @@ async def process_prompt(request: UserRequest):
             history=formatted_history,
             system_context=itinerary_context
         )) 
+
+        # Kiểm tra nếu là tọa độ GPS trực tiếp (định dạng geo_lat_lng)
+        is_gps_location = request.place_id and request.place_id.startswith("geo_")
+        
         loc_task = (
             asyncio.create_task(get_place_detail(request.place_id))
-            if request.place_id
+            if request.place_id and not is_gps_location
             else None
         )
 
@@ -382,14 +386,27 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] LLM Parsing result: {json.dumps(parsed_json, ensure_ascii=False)}")
 
         # 2. Xử lý vị trí người dùng (User Location)
-        user_lat, user_lng = 10.7769, 106.7009 
-        if loc_task:
-            print("[API_LOG] Fetching place details...")
+        user_lat, user_lng = 10.774773681750506, 106.72470566530203 
+
+        if is_gps_location:
+            try:
+                # Trích xuất lat, lng từ chuỗi "geo_lat_lng"
+                parts = request.place_id.split("_")
+                if len(parts) >= 3:
+                    user_lat = float(parts[1])
+                    user_lng = float(parts[2])
+                    print(f"[API_LOG] Extracted GPS coordinates: ({user_lat}, {user_lng})")
+                else:
+                    print(f"[API_LOG] Warning: Invalid GPS format '{request.place_id}', using default.")
+            except (ValueError, IndexError) as e:
+                print(f"[API_LOG] Error parsing GPS coordinates: {e}, using default.")
+        elif loc_task:
+            print("[API_LOG] Fetching place details from Maps API...")
             loc_detail = await loc_task
             if loc_detail.get("status") == "success":
                 user_lat = loc_detail["data"]["lat"]
                 user_lng = loc_detail["data"]["lng"]
-                print(f"[API_LOG] Place coordinates: ({user_lat}, {user_lng})")
+                print(f"[API_LOG] Maps API coordinates: ({user_lat}, {user_lng})")
             else:
                 print(f"[API_LOG] Warning: Could not fetch place details, using default coordinates.")
         else:
