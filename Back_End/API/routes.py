@@ -412,6 +412,33 @@ async def process_prompt(request: UserRequest):
         else:
             print(f"[API_LOG] Using default coordinates: ({user_lat}, {user_lng})")
 
+        # --- CHIẾN LƯỢC CÁCH 1: GEOCODING LOCATION PREFERENCE ---
+        # Nếu AI phát hiện người dùng yêu cầu một khu vực cụ thể (location_pref)
+        location_pref = parsed_json.get("location_pref")
+        if location_pref:
+            print(f"[API_LOG] User specified a location preference: '{location_pref}'. Geocoding...")
+            # Bỏ qua các từ quá chung chung
+            ignored_broad = ["tp hcm", "hồ chí minh", "sài gòn", "tp.hcm", "việt nam", "hà nội", "đà nẵng"]
+            if location_pref.lower().strip() not in ignored_broad:
+                try:
+                    # 1. Tìm place_id cho khu vực này
+                    suggestions = await suggest_locations(location_pref)
+                    if suggestions:
+                        # Lấy gợi ý đầu tiên
+                        first_place_id = suggestions[0][1]
+                        # 2. Lấy tọa độ chi tiết
+                        loc_detail = await get_place_detail(first_place_id)
+                        if loc_detail.get("status") == "success":
+                            user_lat = loc_detail["data"]["lat"]
+                            user_lng = loc_detail["data"]["lng"]
+                            print(f"[API_LOG] Geocoded '{location_pref}' to: ({user_lat}, {user_lng}). Overriding search base.")
+                        else:
+                            print(f"[API_LOG] Could not get details for '{location_pref}'. Keeping current base.")
+                    else:
+                        print(f"[API_LOG] No suggestions found for '{location_pref}'. Keeping current base.")
+                except Exception as e:
+                    print(f"[API_LOG] Error during geocoding location_pref: {e}")
+
         # Normalize budget
         budget_value = parsed_json.get("budget", 0)
         if budget_value is None: budget_value = 0
@@ -484,11 +511,33 @@ async def process_prompt(request: UserRequest):
         df_raw = await df_task
         print(f"[API_LOG] Total restaurants in DB: {len(df_raw)}")
         
-        filter_engine = RestaurantFilter(df=df_raw, prompt=parsed_json, user_lat=user_lat, user_lng=user_lng,user_health_profie=user_health_profile)
+        # Chiến lược mở rộng bán kính: Bắt đầu nhỏ, nếu rỗng thì tăng dần
+        search_distance = 3.0 if location_pref else 10.0
+        print(f"[API_LOG] Initial search distance: {search_distance}km")
+
+        filter_engine = RestaurantFilter(
+            df=df_raw, 
+            prompt=parsed_json, 
+            user_lat=user_lat, 
+            user_lng=user_lng,
+            user_health_profie=user_health_profile,
+            max_distance=search_distance
+        )
         filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
         
+        # Kiểm tra nếu rỗng hoàn toàn trên tất cả bữa ăn
+        is_completely_empty = all(df.empty for df in filtered_data.values()) if filtered_data else True
+        
+        if is_completely_empty:
+            expanded_distance = 5.0 if location_pref else 15.0
+            print(f"[API_LOG] ⚠️ No results at {search_distance}km. Expanding search to {expanded_distance}km...")
+            
+            # Cập nhật bán kính mới và chạy lại pipeline
+            filter_engine.max_distance = expanded_distance
+            filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
+
         for m_tag, m_df in filtered_data.items():
-            print(f"[API_LOG] Meal '{m_tag}': found {len(m_df)} candidates after initial filter.")
+            print(f"[API_LOG] Meal '{m_tag}': found {len(m_df)} candidates.")
 
         if exclude_ids:
             print(f"[API_LOG] Applying exclusions for {len(exclude_ids)} IDs.")

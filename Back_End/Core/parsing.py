@@ -53,16 +53,21 @@ class LLMParser():
         CURRENT SYSTEM CONTEXT (User's current itinerary & previously suggested shops):
         {system_context}
 
-        HOW TO USE CONTEXT & HISTORY:
-        - ALWAYS use CHAT HISTORY and SYSTEM CONTEXT to understand short or vague prompts (e.g., "Khác", "Đổi quán", "Quận 1").
+        HOW TO USE CONTEXT & HISTORY (INHERITANCE RULES):
+        - ALWAYS use CHAT HISTORY and SYSTEM CONTEXT to understand short, vague, or follow-up prompts.
+        - CONTEXT MERGING: If the user adds a filter or constraint (e.g., "Ở Quận 1", "Rẻ thôi", "Không cay") to a search started in previous messages, you MUST INHERIT the previous search intent (dish, type, semantic_query) and only update the specified field.
+        - Example:
+            * History: "Tìm quán mì cay lãng mạn"
+            * Current: "Phải ở Quận 4"
+            * Result: dish="mì cay", semantic_query="lãng mạn", location_pref="Quận 4, TP.HCM".
         - If the user wants to change a restaurant (e.g., "Khác"), refer to the history to see which meal/restaurant was just discussed and populate "meals_detail" accordingly.
         - Set "wants_alternative" to true if they express dissatisfaction or want another option.
         - Cross-reference the query with the contexts to identify the exact "target_shop_id" they are referring to.
         """
 
         prompt = f"""
-        Extract intent information from the user's query and return ONLY a valid JSON object. No explanations, no markdown formatting outside the JSON, no extra text. If the information is missing, infer it from CHAT HISTORY and SYSTEM CONTEXT whenever possible.
-        Only return null when it cannot be inferred in the corresponding fields.
+        Extract intent information from the user's query and return ONLY a valid JSON object. If information is missing but exists in CHAT HISTORY, you MUST carry it over (Inherit) to maintain the conversation flow.
+        Only return null when it cannot be inferred from the current prompt OR history.
 
         Extraction Rules:
         1. "budget": (Integer) Total average budget per person. Convert slang/text to numbers (e.g., "1 củ" -> 1000000, "trăm rưỡi" -> 150000). Return null if not mentioned.
@@ -79,7 +84,7 @@ class LLMParser():
         - "nửa ngày" -> 2
 
         Only default to 1 when the request clearly refers to a single meal or restaurant.
-        3. "location_pref": (String) Specific area in Vietnam like District name, street name, or ward (e.g., "1", "Phú Nhuận", "Sư Vạn Hạnh"). Avoid broad city names like "TP HCM" or "Hà Nội" unless the user only specifies the city. Return null if no location is mentioned.
+        3. "location_pref": (String) Specific area in Vietnam like District name, street name, or ward. IMPORTANT: Always try to append the city name if possible (e.g., "Quận 1, TP.HCM", "Thanh Xuân, Hà Nội", "Hòa Vang, Đà Nẵng"). If the user only says "Quận 1", infer the city from context or default to "TP.HCM". Avoid broad city names like "TP HCM" or "Hà Nội" alone unless the user ONLY specifies the city. Return null if no location is mentioned.
         4. "shu": (Integer) Spiciness level requested by the user, on a scale of 1 to 5. Mandatory if the user mentions keywords related to spicy ("cay", "cay vừa", "siêu cay"). Return null if not mentioned.
         5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike for the current shop.
         6. "feedback_reason": (String) Reason for dissatisfaction or change request (if any). MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating". Return null if no specific reason is given.
@@ -89,7 +94,7 @@ class LLMParser():
                 - General requests without a specified time default to an appropriate meal based on context.
             - Fields:
                 - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
+                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
                 - "semantic_query": (String) Keywords describing flavor profiles (e.g., "ngọt", "chua", "cay"), atmosphere (e.g., "máy lạnh", "yên tĩnh"), or very generic terms like "ăn vặt". Separated by commas.
                 - "dish": (String) The specific food item or food category requested (e.g., "phở bò", "hải sản", "thịt nướng"). This field is used for menu searching. Exception: If the user mentions generic terms like "ăn vặt" or "đồ ăn", leave this empty and put those keywords in "semantic_query".
         8. "target_shop_id": (String) The ID of the specific restaurant the user is complaining about or wants to change, resolved from the SYSTEM CONTEXT. Return null if not applicable.

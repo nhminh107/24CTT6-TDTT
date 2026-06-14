@@ -8,12 +8,13 @@ from Back_End.Database.database import ChromaDBManager
 
 class RestaurantFilter:
     _menu_db_manager = None
-    def __init__(self, df, prompt, user_lat, user_lng,user_health_profie):
+    def __init__(self, df, prompt, user_lat, user_lng, user_health_profie, max_distance=10.0):
         self.data = df
         self.user_prompt = prompt
         self.user_lat = user_lat
         self.user_lng = user_lng
-        self.user_health=user_health_profie
+        self.user_health = user_health_profie
+        self.max_distance = max_distance
         
         self.warnings = {
             "Spicy": {
@@ -215,11 +216,11 @@ class RestaurantFilter:
 
         filtered_df = safe_df.copy()
         
-        # 1. Lọc khoảng cách không quá 15km
+        # 1. Lọc khoảng cách
         if self.user_lat and self.user_lng:
             filtered_df['distance'] = self._calculate_distance(filtered_df)
-            filtered_df = filtered_df[filtered_df['distance'] <= 15]
-            print(f"[FILTER_DEBUG] Candidates after Distance Filter (15km): {len(filtered_df)}")
+            filtered_df = filtered_df[filtered_df['distance'] <= self.max_distance]
+            print(f"[FILTER_DEBUG] Candidates after Distance Filter ({self.max_distance}km): {len(filtered_df)}")
 
         if filtered_df.empty: return filtered_df
 
@@ -239,27 +240,6 @@ class RestaurantFilter:
         
         if filtered_df.empty: return filtered_df
 
-        # 4. Lọc theo địa điểm (Soft Filter + Cleaning)
-        if self.user_prompt.get('location_pref'):
-            loc = self.user_prompt['location_pref'].lower().strip()
-            
-            # Bỏ qua các từ quá chung chung
-            ignored_broad = ["tp hcm", "hồ chí minh", "sài gòn", "tp.hcm", "việt nam"]
-            if loc not in ignored_broad:
-                # Cleaning: Bỏ phường, quận, p., q. để so khớp mờ tốt hơn
-                noise_words = ["phường", "p.", "quận", "q.", "thành phố", "tp.", "đường"]
-                clean_loc = loc
-                for word in noise_words:
-                    clean_loc = clean_loc.replace(word, "").strip()
-                
-                if clean_loc:
-                    temp_df = filtered_df[filtered_df['address'].str.contains(clean_loc, case=False, na=False)]
-                    if not temp_df.empty:
-                        filtered_df = temp_df
-                        print(f"[FILTER_DEBUG] Candidates after Location Pref Filter ('{clean_loc}'): {len(filtered_df)}")
-                    else:
-                        print(f"[FILTER_DEBUG] Warning: Location Filter '{clean_loc}' returned 0 results. Skipping to avoid empty output.")
-            
         return filtered_df
 
     
