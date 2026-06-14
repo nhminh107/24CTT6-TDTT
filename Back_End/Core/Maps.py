@@ -78,6 +78,25 @@ async def suggest_locations(search_text: str) -> List[Tuple[str, str]]:
     ]
 
 async def get_place_detail(place_id: str) -> Dict[str, Any]:
+    if not place_id:
+        return {"status": "error", "message": "Missing place_id"}
+
+    # Handle GPS coordinates format from frontend
+    if place_id.startswith("geo_"):
+        try:
+            parts = place_id.split("_")
+            if len(parts) >= 3:
+                return {
+                    "status": "success",
+                    "data": {
+                        "lat": float(parts[1]),
+                        "lng": float(parts[2]),
+                        "formatted_address": "Vị trí hiện tại",
+                    },
+                }
+        except (ValueError, IndexError):
+            pass
+
     if place_id in MOCK_DETAILS:
         return {"status": "success", "data": MOCK_DETAILS[place_id]}
 
