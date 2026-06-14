@@ -89,7 +89,7 @@ class LLMParser():
                 - General requests without a specified time default to an appropriate meal based on context.
             - Fields:
                 - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
+                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
                 - "semantic_query": (String) Keywords describing flavor profiles (e.g., "ngọt", "chua", "cay"), atmosphere (e.g., "máy lạnh", "yên tĩnh"), or very generic terms like "ăn vặt". Separated by commas.
                 - "dish": (String) The specific food item or food category requested (e.g., "phở bò", "hải sản", "thịt nướng"). This field is used for menu searching. Exception: If the user mentions generic terms like "ăn vặt" or "đồ ăn", leave this empty and put those keywords in "semantic_query".
         8. "target_shop_id": (String) The ID of the specific restaurant the user is complaining about or wants to change, resolved from the SYSTEM CONTEXT. Return null if not applicable.
