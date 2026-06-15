@@ -152,7 +152,7 @@ export default function RestaurantMiniCard({
               <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
                 {formatMealDisplay(assignedMeal)}
               </span>
-              {isMealOccupied && !isInItinerary && (
+              {isMealOccupied && (
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

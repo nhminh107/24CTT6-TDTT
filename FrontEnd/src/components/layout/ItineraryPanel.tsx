@@ -64,18 +64,25 @@ export default function ItineraryPanel({
   }, [currentItinerary]);
 
   const handleReorder = (newOrder: any[]) => {
-    const mainMealSequence = ["Sáng", "Trưa", "Tối"];
+    // 1. Lấy ra danh sách các tag của bữa chính theo thứ tự HIỆN TẠI (trước khi kéo thả)
+    const mainMealTags = localItinerary
+      .map(i => i.meal)
+      .filter(meal => (meal || "").trim().toLowerCase() !== "xế");
+
     let mainMealIdx = 0;
 
-    // QUAN TRỌNG: Tạo danh sách mới với nhãn được gán lại thực sự dựa trên vị trí
+    // 2. Gán lại tag cho danh sách mới
     const updatedOrder = newOrder.map((item) => {
       const isSnack = (item.meal || "").trim().toLowerCase() === "xế";
       
+      // Quán Xế luôn giữ tag Xế
       if (isSnack) {
         return { ...item, meal: "Xế" };
       }
       
-      const newMeal = mainMealSequence[mainMealIdx] || "Tối";
+      // Các quán chính lấy tag từ danh sách mainMealTags đã lưu
+      // Nếu vì lý do nào đó thiếu tag, fallback về "Tối"
+      const newMeal = mainMealTags[mainMealIdx] || "Tối";
       mainMealIdx++;
       return { ...item, meal: newMeal };
     });

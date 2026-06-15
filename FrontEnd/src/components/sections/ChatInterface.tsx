@@ -519,7 +519,7 @@ export default function ChatInterface({
                         <RestaurantMiniCard
                           restaurant={restaurant}
                           isInItinerary={currentItinerary.some(item => item.id === restaurant.id)}
-                          isMealOccupied={restaurant.assignedMeal ? currentItinerary.some(i => i.meal === restaurant.assignedMeal) : false}
+                          isMealOccupied={restaurant.assignedMeal ? currentItinerary.some(i => (i.meal || "").trim().toLowerCase() === (restaurant.assignedMeal || "").trim().toLowerCase()) : false}
                           onSelect={(id) => {
                             onRestaurantsSelect?.(message.restaurants || []);
                             onRestaurantSelect?.(id);
