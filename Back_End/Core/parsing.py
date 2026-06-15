@@ -55,49 +55,42 @@ class LLMParser():
 
         HOW TO USE CONTEXT & HISTORY (INHERITANCE RULES):
         - ALWAYS use CHAT HISTORY and SYSTEM CONTEXT to understand short, vague, or follow-up prompts.
-        - CONTEXT MERGING: If the user adds a filter or constraint (e.g., "Ở Quận 1", "Rẻ thôi", "Không cay") to a search started in previous messages, you MUST INHERIT the previous search intent (dish, type, semantic_query) and only update the specified field.
+        - CONTEXT MERGING & INHERITANCE: If the user adds a filter or constraint (e.g., "Ở Quận 1", "Rẻ thôi", "Không cay") or requests an alternative (e.g., "Khác", "Đổi quán") to a search started in previous messages, you MUST INHERIT the ENTIRE previous search intent (including num_meals, location_pref, dish, type, semantic_query) and only update the specified field.
+        - If the user previously requested a multi-meal itinerary (e.g., 3 meals), any follow-up adjustment (like "rẻ hơn") MUST maintain the same number of meals and types unless they explicitly change it.
         - Example:
-            * History: "Tìm quán mì cay lãng mạn"
-            * Current: "Phải ở Quận 4"
-            * Result: dish="mì cay", semantic_query="lãng mạn", location_pref="Quận 4, TP.HCM".
-        - If the user wants to change a restaurant (e.g., "Khác"), refer to the history to see which meal/restaurant was just discussed and populate "meals_detail" accordingly.
+            * History: "Tìm quán mì cay lãng mạn ở Quận 1"
+            * Current: "Rẻ hơn chút"
+            * Result: dish="mì cay", semantic_query="lãng mạn", location_pref="Quận 1, TP.HCM", budget=<smaller_value>, num_meals=1.
+        - Example 2 (Itinerary):
+            * History: "Lên lịch ăn cả ngày hôm nay" -> System suggested 3 meals.
+            * Current: "Đổi quán khác rẻ hơn"
+            * Result: wants_alternative=true, feedback_reason="expensive", num_meals=3, meals_detail=[inherited meals from history].
         - Set "wants_alternative" to true if they express dissatisfaction or want another option.
         - Cross-reference the query with the contexts to identify the exact "target_shop_id" they are referring to.
         """
 
         prompt = f"""
-        Extract intent information from the user's query and return ONLY a valid JSON object. If information is missing but exists in CHAT HISTORY, you MUST carry it over (Inherit) to maintain the conversation flow.
+        Extract intent information from the user's query and return ONLY a valid JSON object. If information is missing but exists in CHAT HISTORY or SYSTEM CONTEXT, you MUST carry it over (Inherit) to maintain the conversation flow.
         Only return null when it cannot be inferred from the current prompt OR history.
 
         Extraction Rules:
         1. "budget": (Integer) Total average budget per person. Convert slang/text to numbers (e.g., "1 củ" -> 1000000, "trăm rưỡi" -> 150000). Return null if not mentioned.
-        2. "num_meals": (Integer)
-
-        Determine the number of meals from the user's intent.
-
-        Examples:
-        - "ăn sáng" -> 1
-        - "ăn sáng và tối" -> 2
-        - "lịch trình nguyên ngày" -> 4 ("sáng", "trưa", "xế", "tối")
-        - "cả ngày" -> 3
-        - "full day" -> 3
-        - "nửa ngày" -> 2
-
-        Only default to 1 when the request clearly refers to a single meal or restaurant.
-        3. "location_pref": (String) Specific area in Vietnam like District name, street name, or ward. IMPORTANT: Always try to append the city name if possible (e.g., "Quận 1, TP.HCM", "Thanh Xuân, Hà Nội", "Hòa Vang, Đà Nẵng"). If the user only says "Quận 1", infer the city from context or default to "TP.HCM". Avoid broad city names like "TP HCM" or "Hà Nội" alone unless the user ONLY specifies the city. Return null if no location is mentioned.
-        4. "shu": (Integer) Spiciness level requested by the user, on a scale of 1 to 5. Mandatory if the user mentions keywords related to spicy ("cay", "cay vừa", "siêu cay"). Return null if not mentioned.
-        5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike for the current shop.
-        6. "feedback_reason": (String) Reason for dissatisfaction or change request (if any). MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating". Return null if no specific reason is given.
-        7. "meals_detail": (Array of Objects) Detailed list of each requested meal. Each "meal" type can only appear at most once. The array length must match "num_meals".
-            - Routing Rules: 
-                - If the user specifies or implies snacks/tea break ("ăn vặt", "quán nước", "trà chiều"), assign it to "meal": "xế" and "type" MUST be either "Quán nước" or "Tiệm bánh".
-                - General requests without a specified time default to an appropriate meal based on context.
+        2. "num_meals": (Integer) Determine the number of meals. 
+           - If not mentioned in the current prompt, INHERIT from CHAT HISTORY if a multi-meal itinerary was previously discussed.
+           - Examples: "ăn sáng" -> 1, "cả ngày" -> 3, "nửa ngày" -> 2.
+           - Only default to 1 when it's a completely new, single-meal request.
+        3. "location_pref": (String) Specific area. ALWAYS inherit from CHAT HISTORY if not mentioned in the current prompt. Try to append city name (e.g., "Quận 1, TP.HCM").
+        4. "shu": (Integer) Spiciness level (1-5). Inherit if applicable.
+        5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike.
+        6. "feedback_reason": (String) MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating".
+        7. "meals_detail": (Array of Objects) **The array length must match "num_meals"**.
+            - If `wants_alternative` is true or it's a follow-up, you MUST populate this array by inheriting the meal types (sáng, trưa, tối...) and dishes/types from the previous turns in history.
             - Fields:
                 - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-                - "type": (Array of Strings) Restaurant type (MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"). Return [] if not mentioned.
-                - "semantic_query": (String) Keywords describing flavor profiles (e.g., "ngọt", "chua", "cay"), atmosphere (e.g., "máy lạnh", "yên tĩnh"), or very generic terms like "ăn vặt". Separated by commas.
-                - "dish": (String) The specific food item or food category requested (e.g., "phở bò", "hải sản", "thịt nướng"). This field is used for menu searching. Exception: If the user mentions generic terms like "ăn vặt" or "đồ ăn", leave this empty and put those keywords in "semantic_query".
-        8. "target_shop_id": (String) The ID of the specific restaurant the user is complaining about or wants to change, resolved from the SYSTEM CONTEXT. Return null if not applicable.
+                - "type": (Array of Strings) (MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh").
+                - "semantic_query": (String) Flavor profiles, atmosphere, or generic terms like "ăn vặt".
+                - "dish": (String) Specific food item.
+        8. "target_shop_id": (String) The ID of the specific restaurant discussed, resolved from SYSTEM CONTEXT.
 
         User Input (in Vietnamese): "{user_prompt}"
         Output JSON:
