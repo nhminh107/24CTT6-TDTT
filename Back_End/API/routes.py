@@ -27,6 +27,7 @@ from Back_End.Core.semantic_cache import SemanticCacheManager
 from Back_End.Core.auth_handler import get_db
 from Back_End.Core.user_manager import UserManager
 from Back_End.Core.itinerary_manager import ItineraryManager
+from Back_End.Core.health_mapping import HealthRiskDetector
 from typing import Literal
 
 # Trả về giờ UTC có chứa thông tin múi giờ UTC rõ ràng (timezone-aware)
@@ -39,7 +40,7 @@ cache_manager = SemanticCacheManager()
 user_manager = UserManager()
 itinerary_manager = ItineraryManager()
 last_results_by_user = {}
-
+health_risk_detector = HealthRiskDetector()
 
 def _extract_context_from_result(result):
     """
@@ -453,8 +454,23 @@ async def process_prompt(request: UserRequest):
         print(f"[API_LOG] Fetching health profile for user: {request.user_id}")
         user_health_profile = await fetch_user_health_profile(request.user_id)
         forbidden_tags = user_health_profile.get("forbidden_tags", [])
-        health_key = ",".join(sorted(forbidden_tags)) if forbidden_tags else "none"
+        
+        detected_tags = health_risk_detector.detect(request.prompt) 
+
+        total_tags_set = set(forbidden_tags) | set(detected_tags)
+
+        # Sắp xếp lại danh sách đã gộp tổng hợp
+        forbidden_tags_final = sorted(list(total_tags_set))
+        
+        # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
+        health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
+        
+        print(f"[API_LOG] Bóc tách từ prompt: {detected_tags}")
+        print(f"[API_LOG] Tổng hợp tags: {forbidden_tags_final}")
+        print(f"[API_LOG] Health key cuối cùng: {health_key}")
         print(f"[API_LOG] Health key: {health_key}")
+        
+        user_health_profile["forbidden_tags"] = forbidden_tags_final
 
         wants_alternative = parsed_json.get("wants_alternative", False)
         feedback_reason = parsed_json.get("feedback_reason")

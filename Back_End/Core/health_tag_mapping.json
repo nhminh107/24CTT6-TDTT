@@ -1,0 +1,62 @@
+{
+"da_day": [
+"Spicy",
+"DeepFried_Oily",
+"Alcohol_Pub"
+],
+"tieu_duong": [
+"High_Sugar",
+"Refined_Carbs"
+],
+"huyet_ap_cao": [
+"High_Sodium",
+"DeepFried_Oily",
+"Alcohol_Pub"
+],
+"gout": [
+"Red_Meat",
+"Seafood",
+"Shellfish",
+"Alcohol_Pub"
+],
+"di_ung_dau_phong": [
+"Peanuts_Nuts"
+],
+"di_ung_hat": [
+"Peanuts_Nuts"
+],
+"di_ung_hai_san": [
+"Seafood",
+"Shellfish"
+],
+"di_ung_tom_cua": [
+"Shellfish",
+"Seafood"
+],
+"di_ung_gluten": [
+"Gluten_Present"
+],
+"bat_dung_nap_lactose": [
+"Dairy_Product"
+],
+"giam_can": [
+"DeepFried_Oily",
+"High_Sugar",
+"Refined_Carbs"
+],
+"eat_clean": [
+"DeepFried_Oily",
+"High_Sugar",
+"High_Sodium",
+"Refined_Carbs"
+],
+"low_carb": [
+"Refined_Carbs",
+"High_Sugar"
+],
+"healthy_diet": [
+"DeepFried_Oily",
+"High_Sugar",
+"High_Sodium"
+]
+}

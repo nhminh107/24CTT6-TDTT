@@ -1,0 +1,183 @@
+[
+  {
+    "health_tag": "da_day",
+    "list_idea": [
+      "đau dạ dày", "dau da day", "đau bao tử", "dau bao tu", "trào ngược", "trao nguoc",
+      "trào ngược dạ dày thực quản", "viêm loét dạ dày", "viem loet da day", "hay đau bụng",
+      "bụng yếu", "bung yeu", "ăn hay bị đầy bụng", "an hay bi day bung", "khó tiêu",
+      "kho tieu", "ợ chua", "o chua", "trướng bụng", "truong bung", "xót ruột", "xot ruot",
+      "bao tử mỏng", "bao tu mong", "đau xót bao tử", "viêm hang vị", "viem hang vi",
+      "tá tràng", "ta trang", "đau tá tràng", "dạ dày yếu", "da day yeu", "hay chướng bụng",
+      "hay chuong bung", "ăn đồ cay bị đau bụng", "an do cay bi dau bung", "ăn đồ chua bị đau",
+      "đau thượng vị", "dau thuong vi", "đau vùng thượng vị", "đầy hơi", "day hoi",
+      "tì vị hư hàn", "hay bị ợ hơi", "trào ngược axit"
+    ]
+  },
+  {
+    "health_tag": "tieu_duong",
+    "list_idea": [
+      "tiểu đường", "tieu duong", "đái tháo đường", "dai thao duong", "đường huyết cao",
+      "duong huyet cao", "bệnh tiểu đường", "benh tieu duong", "tiểu đường tuýp 1",
+      "tieu duong type 1", "tiểu đường tuýp 2", "tieu duong tuyp 2", "kiêng ngọt",
+      "kieng ngot", "kiêng đường", "kieng duong", "không ăn đường", "khong an duong",
+      "đường trong máu cao", "chỉ số đường cao", "chi so duong cao", "đtđ", "dtd",
+      "tiểu đường thai kỳ", "tieu duong thai ky", "ăn ít đường ngọt", "giảm ngọt",
+      "giam ngot", "không ăn đồ ngọt", "khong an do ngot", "tiền tiểu đường",
+      "tien tieu duong", "hạn chế tinh bột ngọt", "mỡ máu tiểu đường", "kiêng đồ ngọt",
+      "hạn chế đường", "đang bị tiểu đường", "dang bi tieu duong"
+    ]
+  },
+  {
+    "health_tag": "huyet_ap_cao",
+    "list_idea": [
+      "huyết áp cao", "huyet ap cao", "cao huyết áp", "cao huyet ap", "tăng huyết áp",
+      "tang huyet ap", "bệnh huyết áp", "benh huyet ap", "cao máu", "cao mau", "kiêng mặn",
+      "kieng man", "ăn nhạt", "an nhat", "không ăn mặn", "khong an man", "giảm muối",
+      "giam muoi", "tim mạch huyết áp", "tim mach huyet ap", "hay bị lên huyết áp",
+      "hay bi len huyet ap", "lên tăng xông", "len tang xong", "huyết áp không ổn định",
+      "huyet ap khong on dinh", "tiền sử cao huyết áp", "tien su cao huyet ap",
+      "tiền sử tăng huyết áp", "bệnh tim mạch cao huyết áp", "ăn lạt", "an lat",
+      "không ăn đồ mặn", "khong an do man", "hạn chế muối", "han che muoi", "huyết áp cao cữ mặn"
+    ]
+  },
+  {
+    "health_tag": "gout",
+    "list_idea": [
+      "bệnh gout", "benh gout", "bệnh gút", "benh gut", "gút", "gut", "thống phong",
+      "thong phong", "axit uric cao", "acid uric cao", "xương khớp gout", "đau khớp gout",
+      "dau khop gut", "kiêng hải sản thịt đỏ", "kieng hai san thit do", "kiêng đạm",
+      "kieng dam", "dư đạm", "du dam", "không ăn đồ nhiều đạm", "khong an do nhieu dam",
+      "bệnh gout cấp", "benh gut cap", "đang bị gút", "dang bi gut", "sưng khớp ngón chân",
+      "sung khop ngon chan", "hay bị sưng khớp", "viêm khớp gout", "viem khop gut",
+      "nhức mỏi gout", "nhuc moi gut", "dư axit uric", "du acid uric", "kiêng nhậu",
+      "kieng nhau", "không ăn lòng lợn nội tạng", "khong an noi tang"
+    ]
+  },
+  {
+    "health_tag": "di_ung_dau_phong",
+    "list_idea": [
+      "dị ứng đậu phộng", "di ung dau phong", "dị ứng lạc", "di ung lac", "không ăn lạc",
+      "khong an lac", "không ăn đậu phộng", "khong an dau phong", "ăn lạc bị ngứa",
+      "an lac bi ngua", "ăn đậu phộng bị dị ứng", "an dau phong bi di ung",
+      "mẫn cảm với đậu phộng", "man cam voi dau phong", "mẫn cảm với lạc", "man cam voi lac",
+      "ngứa khi ăn lạc", "ngua khi an lac", "không bỏ đậu phộng nhé", "khong bo dau phong",
+      "dặn quán không để đậu phộng", "không hạt lạc", "sốc phản vệ đậu phộng",
+      "soc phan ve dau phong", "dị ứng peanut", "di ung peanut", "không rắc đậu phộng",
+      "không rắc lạc", "khong rac lac", "bỏ lạc ra nhé", "bo lac ra nhe", "ngộ độc đậu phộng",
+      "ngo doc dau phong"
+    ]
+  },
+  {
+    "health_tag": "di_ung_hat",
+    "list_idea": [
+      "dị ứng các loại hạt", "di ung cac loai hat", "dị ứng hạt điều", "di ung hat dieu",
+      "dị ứng hạnh nhân", "di ung hanh nhan", "dị ứng óc chó", "di ung oc cho",
+      "dị ứng macca", "di ung macadamia", "không ăn hạt", "khong an hat", "kiêng các loại hạt",
+      "kieng cac loai hat", "mẫn cảm với hạt", "man cam voi hat", "tree nut allergy",
+      "di ung nut", "dị ứng hạt dẻ", "di ung hat de", "không bỏ hạt ngũ cốc",
+      "khong bo hat ngu coc", "ăn hạt bị ngứa", "an hat bi ngua", "không dùng sữa hạt",
+      "khong dung sua hat", "mẩn ngứa khi ăn hạt", "man ngua khi an hat",
+      "tránh các loại hạt dinh dưỡng", "tranh hat dinh duong"
+    ]
+  },
+  {
+    "health_tag": "di_ung_hai_san",
+    "list_idea": [
+      "dị ứng hải sản", "di ung hai san", "không ăn được hải sản", "khong an duoc hai san",
+      "ăn hải sản bị ngứa", "an hai san bi ngua", "ngộ độc hải sản", "ngo doc hai san",
+      "kiêng đồ biển", "kieng do bien", "không ăn đồ biển", "khong an do bien",
+      "mẫn cảm với đồ biển", "man cam voi do bien", "mẩn ngứa hải sản", "man ngua hai san",
+      "dị ứng đồ biển", "di ung do bien", "không ăn hải sản", "khong an hai san",
+      "bụng yếu ăn hải sản không được", "ăn hải sản bị tiêu chảy", "an hai san bi tieu chay",
+      "seafood allergy", "bị dị ứng hải sản nặng", "tránh hải sản", "tranh hai san",
+      "không nấu chung hải sản", "khong nau chung voi hai san"
+    ]
+  },
+  {
+    "health_tag": "di_ung_tom_cua",
+    "list_idea": [
+      "dị ứng tôm cua", "di ung tom cua", "dị ứng tôm", "di ung tom", "dị ứng cua",
+      "di ung cua", "dị ứng động vật vỏ cứng", "di ung dong vat co vo", "dị ứng shellfish",
+      "di ung shellfish", "dị ứng nghêu sò ốc hến", "di ung ngheu so oc hen",
+      "không ăn được tôm", "khong an duoc tom", "ăn tôm bị ngứa", "an tom bi ngua",
+      "không ăn cua ốc", "khong an cua oc", "mẫn cảm với tôm cua", "man cam voi tom cua",
+      "ăn tôm tép bị dị ứng", "an tom tep bi di ung", "kiêng tôm cua ghẹ", "kieng tom cua ghe",
+      "ngứa khi ăn tôm cua", "ngua khi an tom cua", "không bỏ tôm nha", "khong bo tom nha",
+      "dị ứng tôm càng"
+    ]
+  },
+  {
+    "health_tag": "di_ung_gluten",
+    "list_idea": [
+      "dị ứng gluten", "di ung gluten", "bất dung nạp gluten", "bat dung nap gluten",
+      "bệnh celiac", "benh celiac", "không dung nạp gluten", "khong dung nap gluten",
+      "kiêng gluten", "kieng gluten", "gluten free", "không ăn lúa mì", "khong an lua mi",
+      "dị ứng bột mì", "di ung bot mi", "không ăn bột mì", "khong an bot mi",
+      "nhạy cảm với gluten", "nhay cam voi gluten", "chế độ ăn không gluten",
+      "che do an khong gluten", "không ăn lúa mạch", "khong an lua mach", "dị ứng lúa mì",
+      "di ung lua mi", "không dùng bột mì", "khong dung bot mi", "celiac disease",
+      "gluten intolerance"
+    ]
+  },
+  {
+    "health_tag": "bat_dung_nap_lactose",
+    "list_idea": [
+      "bất dung nạp lactose", "bat dung nap lactose", "dị ứng lactose", "di ung lactose",
+      "không dung nạp lactose", "khong dung nap lactose", "uống sữa bị đau bụng",
+      "uong sua bi dau bung", "uống sữa bị tiêu chảy", "uong sua bi tieu chay",
+      "dị ứng sữa bò", "di ung sua bo", "không uống được sữa", "khong uong duoc sua",
+      "không ăn được bơ sữa", "khong an duoc bo sua", "dị ứng bơ sữa", "di ung bo sua",
+      "lactose intolerant", "dị ứng dairy", "di ung dairy", "kiêng đồ từ sữa",
+      "kieng do tu sua", "sữa bò làm đi ngoài", "sua bo lam di ngoai",
+      "không dùng phô mai", "khong dung pho mai bo sua", "bụng yếu uống sữa"
+    ]
+  },
+  {
+    "health_tag": "giam_can",
+    "list_idea": [
+      "giảm cân", "giam can", "giảm béo", "giam beo", "ăn kiêng giảm cân", "an kieng giam can",
+      "đang siết mỡ", "dang siet mo", "muốn giảm cân", "muon giam can", "thực đơn giảm cân",
+      "thuc don giam can", "giảm mỡ", "giam mo", "kiêng béo", "kieng beo", "ít calo", "it calo",
+      "thâm hụt calo", "tham hut calo", "calorie deficit", "đồ ăn ít béo", "do an it beo",
+      "không ăn mỡ", "khong an mo", "giảm mập", "giam map", "ăn kiêng béo", "an kieng beo",
+      "đồ ăn ít béo ít đường", "do an it beo it duong", "muốn ốm", "muon om", "đang cutting mỡ",
+      "dang giam can", "thực đơn giảm béo", "thuc don giam beo"
+    ]
+  },
+  {
+    "health_tag": "eat_clean",
+    "list_idea": [
+      "eat clean", "ăn sạch", "an sach", "chế độ eat clean", "che do eat clean",
+      "ăn eatclean", "an eatclean", "ăn uống lành mạnh", "an uong lanh manh",
+      "đồ ăn thanh đạm", "do an thanh dam", "ít gia vị", "it gia vi", "đồ luộc hấp",
+      "do luoc hap", "không dầu mỡ", "khong dau mo", "ăn thô", "an tho", "whole foods",
+      "ăn thực phẩm tự nhiên", "an thuc pham tu nhien", "nguyên cám", "nguyen cam",
+      "ăn nhạt ít dầu", "an nhat it dau", "đồ ăn heathy eat clean", "do an heathy eat clean",
+      "nấu eat clean", "nau eat clean", "ăn kiêng eat clean", "an kieng eat clean"
+    ]
+  },
+  {
+    "health_tag": "low_carb",
+    "list_idea": [
+      "low carb", "ăn ít tinh bột", "an it tinh bot", "lowcarb", "kiêng tinh bột",
+      "kieng tinh bot", "keto", "chế độ keto", "che do keto", "không ăn tinh bột",
+      "khong an tinh bot", "cắt cơm", "cat com", "hạn chế tinh bột", "han che tinh bot",
+      "giảm tinh bột", "giam tinh bot", "không ăn cơm", "khong an com", "cắt giảm carbs",
+      "cat giam carb", "ăn low carb", "an low carb", "kiêng bột đường", "kieng bot duong",
+      "chế độ ăn low carb", "che do an low carb", "kiêng carb", "kieng carb",
+      "ăn kiêng lowcarb", "an kieng lowcarb"
+    ]
+  },
+  {
+    "health_tag": "healthy_diet",
+    "list_idea": [
+      "healthy", "ăn healthy", "an healthy", "thực đơn healthy", "thuc don healthy",
+      "đồ ăn healthy", "do an healthy", "dinh dưỡng lành mạnh", "dinh duong lanh manh",
+      "đồ ăn tốt cho sức khỏe", "do an tot cho suc khoe", "ăn khoa học", "an khoa hoc",
+      "chế độ ăn tốt cho sức khỏe", "che do an tot cho suc khoe", "bữa ăn heathy",
+      "bua an healthy", "ăn dinh dưỡng", "an dinh duong", "ăn cân bằng dinh dưỡng",
+      "an can bang dinh duong", "thực phẩm healthy", "thuc pham healthy", "đồ ăn bổ dưỡng",
+      "do an bo duong", "lối sống healthy", "loi song healthy", "khẩu phần healthy"
+    ]
+  }
+]
