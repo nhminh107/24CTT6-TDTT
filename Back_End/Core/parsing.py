@@ -120,7 +120,7 @@ class LLMParser():
         ALL_AVAILABLE_TAGS = [
             "Red_Meat", "Seafood", "Alcohol_Pub", "Shellfish", 
             "Spicy", "DeepFried_Oily", "High_Sugar", "Refined_Carbs", 
-            "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present"
+            "Low_GI_Diet", "Peanuts_Nuts", "Dairy_Product", "Gluten_Present","High_Sodium"
         ]
 
         system_instruction = "You are an expert medical and dietary restriction parser. Return ONLY a JSON array of matching tags."

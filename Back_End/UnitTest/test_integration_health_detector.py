@@ -1299,7 +1299,56 @@ class TestIntegrationRealistic(_BaseDetectorTest):
         self.assertIn("High_Sugar", rs)
         self.assertIn("Red_Meat", rs)
         self.assertIn("High_Fat", rs)
+# ===========================================================================
+# 10. detect() — Healthy & Normal inputs (No diseases)
+# ===========================================================================
 
+class TestDetectHealthyAndNormal(_BaseDetectorTest):
+
+    def test_completely_healthy_prompt(self):
+        """Người dùng khẳng định mình khỏe mạnh hoặc không có bệnh."""
+        self.assertEqual(self.detector.detect("Tôi hoàn toàn khỏe mạnh"), [])
+        self.assertEqual(self.detector.detect("Sức khỏe của tôi bình thường"), [])
+        self.assertEqual(self.detector.detect("Tôi không có tiền sử bệnh lý nào cả"), [])
+
+    def test_pure_greeting_or_chat(self):
+        """Lời chào hoặc câu chat thông thường, không chứa từ khóa bệnh."""
+        self.assertEqual(self.detector.detect("Xin chào bot, gợi ý cho tôi quán ăn ngon"), [])
+        self.assertEqual(self.detector.detect("Hôm nay thời tiết đẹp quá, ăn gì đây nhỉ?"), [])
+        self.assertEqual(self.detector.detect("Tư vấn giúp tôi một nhà hàng lãng mạn cho 2 người"), [])
+
+    def test_food_preferences_only(self):
+        """Người dùng chỉ nói về sở thích ăn uống, không phải do bệnh lý."""
+        self.assertEqual(self.detector.detect("Tôi muốn ăn đồ cay và nhiều dầu mỡ"), [])
+        self.assertEqual(self.detector.detect("Gợi ý quán có nhiều món ngọt hoặc trà sữa"), [])
+        self.assertEqual(self.detector.detect("Tôi rất thích ăn thịt bò và hải sản"), [])
+
+    def test_empty_or_whitespace_input(self):
+        """Input rỗng, chỉ có dấu cách hoặc ký tự đặc biệt không chữ."""
+        self.assertEqual(self.detector.detect(""), [])
+        self.assertEqual(self.detector.detect("   "), [])
+        self.assertEqual(self.detector.detect("!!! ??? ..."), [])
+
+    def test_stopword_heavy_input(self):
+        """Câu lệnh chỉ chứa toàn các stopword tiếng Việt thông dụng."""
+        self.assertEqual(self.detector.detect("tôi bị và có được tại vì rất khá nhiều"), [])
+
+    def test_near_miss_keywords(self):
+        """
+        Các từ ngữ đời thường có thể chứa một phần từ khóa bệnh 
+        nhưng ý nghĩa hoàn toàn khác (Chặn lỗi nhận diện nhầm/Fuzzy Match bừa bãi).
+        """
+        # "đường" trong "đường phố" chứ không phải "đường huyết"
+        self.assertEqual(self.detector.detect("Chỉ tôi quán ăn ở bên kia đường"), [])
+        
+        # "tim" trong "tìm kiếm" chứ không phải "suy tim"
+        self.assertEqual(self.detector.detect("Tôi đang đi tìm quán phở ngon"), [])
+        
+        # "gút" trong "chốt gút" hoặc "gút thắt" chứ không phải bệnh "gout"
+        self.assertEqual(self.detector.detect("Tôi muốn tìm quán ăn cay cho 2 người, tôi thích ăn dạ dày bò"), [])
+
+        # "mật" trong "bí mật" chứ không phải "sỏi mật"
+        self.assertEqual(self.detector.detect("Quán này có không gian bí mật riêng tư"), [])
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
