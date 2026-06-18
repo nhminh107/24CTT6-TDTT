@@ -17,7 +17,7 @@ export default function MobileBottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-[60] block border-t border-slate-200/60 bg-white/80 pb-safe-area-inset-bottom backdrop-blur-md md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-[60] block border-t border-slate-200/60 bg-white/80 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
       <div className="flex h-16 items-center justify-around px-2">
         {links.map((link) => {
           const Icon = link.icon;
@@ -28,12 +28,12 @@ export default function MobileBottomNav() {
               key={link.href}
               href={link.href}
               className={cn(
-                "flex flex-col items-center justify-center gap-1 transition-colors duration-200 px-1",
+                "relative flex min-w-0 flex-1 flex-col items-center justify-center gap-1 px-1 transition-colors duration-200",
                 isActive ? "text-brand-coral" : "text-slate-500 hover:text-slate-900"
               )}
             >
               <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
-              <span className="text-[10px] font-medium">{link.label}</span>
+              <span className="max-w-full truncate text-[10px] font-medium">{link.label}</span>
               {isActive && (
                 <span className="absolute bottom-1 h-1 w-1 rounded-full bg-brand-coral" />
               )}

@@ -561,7 +561,7 @@ export default function MainDashboard() {
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-white">
+    <div className="h-[100dvh] w-screen overflow-hidden bg-white">
       {/* Top Navigation */}
       <nav className="relative flex items-center justify-between border-b border-slate-200/60 bg-white/70 px-6 py-3 backdrop-blur">
       {/* Khối bên trái: Nút Menu và Quay lại */}
@@ -594,12 +594,12 @@ export default function MainDashboard() {
     </nav>
 
       {/* Main Content Container */}
-      <div className="flex h-[calc(100vh-73px)] w-full overflow-hidden">
+      <div className="flex h-[calc(100dvh-73px)] w-full overflow-hidden">
         {/* Left Sidebar */}
         <aside
           className={
             isMobile
-              ? `fixed inset-0 z-40 w-full overflow-y-auto bg-white/95 backdrop-blur transition-transform duration-300 ease-out ${
+              ? `fixed inset-0 z-40 w-full overflow-y-auto bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur transition-transform duration-300 ease-out ${
                   mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 }`
               : `${
@@ -692,7 +692,7 @@ export default function MainDashboard() {
             setItineraryTab("itinerary");
             setMobileItineraryOpen(true);
           }}
-          className="fixed bottom-24 right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition hover:scale-105 md:hidden"
+          className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition hover:scale-105 md:hidden"
         >
           <span className="relative">
             <CalendarCheck size={20} />
@@ -706,7 +706,7 @@ export default function MainDashboard() {
       )}
 
       {mobileItineraryOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col bg-white/95 backdrop-blur md:hidden">
+        <div className="fixed inset-0 z-40 flex flex-col bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
           <div className="flex items-center justify-between border-b border-slate-200/60 px-4 py-3">
             <div>
               <p className="text-sm font-semibold text-slate-900">Lịch trình</p>

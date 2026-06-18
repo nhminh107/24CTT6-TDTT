@@ -67,7 +67,7 @@ def _get_restaurant_df_cached() -> pd.DataFrame:
     if _restaurant_df_cache is None or _restaurant_data_mtime != current_mtime:
         df = pd.read_json(data_path, encoding='utf-8', dtype={'id': str})
         _restaurant_df_cache = df
-        _restaurant_json_cache = df.to_dict(orient='records')
+        _restaurant_json_cache = json.loads(df.to_json(orient='records', force_ascii=False))
         _restaurant_data_mtime = current_mtime
         print(f"[API_LOG][DATA_CACHE] Loaded {len(df)} restaurants from data.json")
 

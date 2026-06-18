@@ -42,10 +42,10 @@ export default function Toast({ show, type, message, duration = 3000, onClose, p
   const getPositionClasses = () => {
     switch (position) {
       case "center": return "items-center justify-center";
-      case "bottom": return "items-end justify-center pb-12";
-      case "bottom-left": return "items-end justify-start pl-8 pb-8";
-      case "top": return "items-start justify-center pt-24";
-      default: return "items-start justify-center pt-24";
+      case "bottom": return "items-end justify-center px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pb-12";
+      case "bottom-left": return "items-end justify-start px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] sm:pl-8 sm:pb-8";
+      case "top": return "items-start justify-center px-4 pt-[calc(1rem+env(safe-area-inset-top))] sm:pt-24";
+      default: return "items-start justify-center px-4 pt-[calc(1rem+env(safe-area-inset-top))] sm:pt-24";
     }
   };
 
@@ -65,10 +65,10 @@ export default function Toast({ show, type, message, duration = 3000, onClose, p
               scale: 0.9, 
               y: (position === 'top' || position === 'bottom-left') ? -20 : 20 
             }}
-            className={`pointer-events-auto flex items-center gap-3 rounded-[24px] border px-6 py-4 shadow-2xl backdrop-blur-xl ${backgrounds[type]}`}
+            className={`pointer-events-auto flex max-w-[calc(100vw-2rem)] items-start gap-3 rounded-[24px] border px-4 py-3 shadow-2xl backdrop-blur-xl sm:max-w-[min(90vw,32rem)] sm:px-6 sm:py-4 ${backgrounds[type]}`}
           >
-            <div className="flex-shrink-0">{icons[type]}</div>
-            <p className="text-sm font-bold text-slate-800 whitespace-nowrap">
+            <div className="mt-0.5 flex-shrink-0">{icons[type]}</div>
+            <p className="min-w-0 break-words text-sm font-bold leading-5 text-slate-800">
               {message}
             </p>
             {type !== "loading" && (

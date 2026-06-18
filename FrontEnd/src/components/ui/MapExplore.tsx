@@ -40,10 +40,13 @@ export default function MapExplore({
 }: MapExploreProps) {
   const { user } = useAuth();
   const mapRef = useRef<MapRef>(null);
+  const isStandalone = userPlaceId === undefined && userLocationText === undefined;
   const [restaurants, setRestaurants] = useState<ApiRestaurant[]>([]);
   const [loading, setLoading] = useState(true);
   const [popupInfo, setPopupInfo] = useState<any | null>(null);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [storedLocation, setStoredLocation] = useState<{ location: string; placeId: string } | null>(null);
+  const [storageChecked, setStorageChecked] = useState(!isStandalone);
   const [selectedResForModal, setSelectedResForModal] = useState<Restaurant | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mapStyle, setMapStyle] = useState<any>(null);
@@ -55,6 +58,8 @@ export default function MapExplore({
   // Itinerary local state if not passed from props
   const [localItinerary, setLocalItinerary] = useState<any[]>([]);
   const currentItinerary = propItinerary || localItinerary;
+  const effectiveUserPlaceId = userPlaceId ?? storedLocation?.placeId ?? "";
+  const effectiveUserLocationText = userLocationText ?? storedLocation?.location ?? "";
 
   // Add to itinerary state
   const [addingMeal, setAddingMeal] = useState(false);
@@ -84,8 +89,24 @@ export default function MapExplore({
   const applyUserLocation = (lat: number, lng: number, locationLabel: string, placeId: string) => {
     setUserLocation({ lat, lng });
     setPendingFlyTo({ lat, lng });
+    if (isStandalone && typeof window !== "undefined") {
+      localStorage.setItem("bmi_user_location", locationLabel);
+      localStorage.setItem("bmi_user_place_id", placeId);
+      setStoredLocation({ location: locationLabel, placeId });
+    }
     onUserLocationChange?.({ location: locationLabel, placeId });
   };
+
+  useEffect(() => {
+    if (!isStandalone || typeof window === "undefined") return;
+
+    const savedLocation = localStorage.getItem("bmi_user_location") || "";
+    const savedPlaceId = localStorage.getItem("bmi_user_place_id") || "";
+    if (savedLocation || savedPlaceId) {
+      setStoredLocation({ location: savedLocation, placeId: savedPlaceId });
+    }
+    setStorageChecked(true);
+  }, [isStandalone]);
 
   // State for off-screen indicators
   const [edgeIndicators, setEdgeIndicators] = useState<any[]>([]);
@@ -188,17 +209,17 @@ export default function MapExplore({
     let cancelled = false;
 
     async function resolveUserLocation() {
-      if (userPlaceId) {
+      if (effectiveUserPlaceId) {
         // Trường hợp GPS: "geo_10.76940_106.68350"
-        if (userPlaceId.startsWith("geo_")) {
-          const raw = userPlaceId.slice(4);
+        if (effectiveUserPlaceId.startsWith("geo_")) {
+          const raw = effectiveUserPlaceId.slice(4);
           // Chỉ có đúng 1 dấu "_" ngăn cách lat và lng
           const sepIdx = raw.indexOf("_");
           if (sepIdx > 0) {
             const lat = parseFloat(raw.slice(0, sepIdx));
             const lng = parseFloat(raw.slice(sepIdx + 1));
             if (!isNaN(lat) && !isNaN(lng) && !cancelled) {
-                applyUserLocation(lat, lng, "Vị trí hiện tại", userPlaceId);
+                applyUserLocation(lat, lng, effectiveUserLocationText?.trim() || "Vị trí hiện tại", effectiveUserPlaceId);
             }
           }
           return;
@@ -207,14 +228,14 @@ export default function MapExplore({
         // Trường hợp Goong place_id (nhập địa chỉ tay)
         try {
           const res = await fetch(
-            `/api/maps/place-detail?place_id=${encodeURIComponent(userPlaceId)}`
+            `/api/maps/place-detail?place_id=${encodeURIComponent(effectiveUserPlaceId)}`
           );
           if (!res.ok || cancelled) return;
           const data = await res.json();
           if (data.status === "success" && data.data?.lat && data.data?.lng) {
             const { lat, lng } = data.data;
             if (!cancelled) {
-              applyUserLocation(lat, lng, userLocationText?.trim() || "Vị trí được chọn", userPlaceId);
+              applyUserLocation(lat, lng, effectiveUserLocationText?.trim() || "Vị trí được chọn", effectiveUserPlaceId);
             }
           }
         } catch (e) {
@@ -223,7 +244,7 @@ export default function MapExplore({
         return;
       }
 
-      const query = userLocationText?.trim();
+      const query = effectiveUserLocationText?.trim();
       if (!query) return;
 
       try {
@@ -259,7 +280,33 @@ export default function MapExplore({
     return () => {
       cancelled = true;
     };
-  }, [userPlaceId, userLocationText]);
+  }, [effectiveUserPlaceId, effectiveUserLocationText]);
+
+  useEffect(() => {
+    if (!isStandalone || !storageChecked || effectiveUserPlaceId || effectiveUserLocationText || userLocation) {
+      return;
+    }
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      return;
+    }
+
+    let cancelled = false;
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (cancelled) return;
+        const { latitude, longitude } = position.coords;
+        applyUserLocation(latitude, longitude, "Vị trí hiện tại", `geo_${latitude}_${longitude}`);
+      },
+      (error) => {
+        console.warn("Auto geolocation failed:", error.message);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
+    );
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isStandalone, storageChecked, effectiveUserPlaceId, effectiveUserLocationText, userLocation]);
 
   // 4. Thực hiện flyTo SAU KHI map đã load và có tọa độ
   useEffect(() => {
@@ -449,9 +496,9 @@ export default function MapExplore({
                     {isSelected ? "📍" : convertToGeoJSON([res]).features[0].properties.mapIcon}
                   </span>
                 </div>
-                <div className={`relative z-10 mt-1.5 px-2.5 py-1 rounded-lg shadow-md border transition-colors
+                <div className={`relative z-10 mt-1.5 max-w-[160px] rounded-lg border px-2.5 py-1 shadow-md transition-colors sm:max-w-[220px]
                   ${isSelected ? "bg-rose-600 border-rose-500" : "bg-white/95 border-slate-100"}`}>
-                  <p className={`text-[11px] font-black whitespace-nowrap ${isSelected ? "text-white" : "text-slate-800"}`}>
+                  <p className={`truncate text-[11px] font-black ${isSelected ? "text-white" : "text-slate-800"}`}>
                     {isSelected && "🌟 "}{res.name}
                   </p>
                 </div>
@@ -484,8 +531,8 @@ export default function MapExplore({
               <div className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center border-2 border-rose-500 ring-2 ring-white bg-brand-coral shadow-xl transition-all group-hover:scale-125">
                 <span className="text-lg animate-pulse">📍</span>
               </div>
-              <div className="relative z-10 mt-1.5 px-2.5 py-1 bg-rose-600 border border-rose-500 rounded-lg shadow-md transition-colors">
-                <p className="text-[11px] font-black whitespace-nowrap text-white">🌟 {stop.name}</p>
+              <div className="relative z-10 mt-1.5 max-w-[160px] rounded-lg border border-rose-500 bg-rose-600 px-2.5 py-1 shadow-md transition-colors sm:max-w-[220px]">
+                <p className="truncate text-[11px] font-black text-white">🌟 {stop.name}</p>
               </div>
             </div>
           </Marker>
@@ -512,7 +559,7 @@ export default function MapExplore({
             closeButton={false}
             className="z-50"
           >
-            <div className="p-0 min-w-[260px] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-100">
+            <div className="w-[min(260px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-slate-100 bg-white p-0 shadow-2xl">
               <img src={popupInfo.image_url || popupInfo.imageUrl || "/assets/images/AI.png"} className="w-full h-32 object-cover" />
               <div className="p-4 space-y-3">
                 <div>
@@ -576,10 +623,10 @@ export default function MapExplore({
                                   setAddError("Không thể gợi ý bữa ăn tự động.");
                                 }
                               }}
-                              className={`w-full text-left px-3 py-2.5 text-xs font-semibold transition-colors flex items-center justify-between text-slate-700 hover:bg-orange-50 hover:text-brand-coral`}
+                              className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left text-xs font-semibold text-slate-700 transition-colors hover:bg-orange-50 hover:text-brand-coral"
                             >
-                              Tự động (gợi ý)
-                              <span className="text-[10px] font-normal text-slate-400">Gợi ý theo giờ mở</span>
+                              <span>Tự động (gợi ý)</span>
+                              <span className="min-w-0 text-right text-[10px] font-normal text-slate-400">Gợi ý theo giờ mở</span>
                             </button>
 
                             {MEAL_OPTIONS.map((meal) => {
@@ -661,26 +708,38 @@ export default function MapExplore({
       </div>
 
       {/* Floating Header UI — chỉ hiện khi fullscreen (/explore), ẩn khi trong panel */}
-      {!userPlaceId && (
-        <div className="absolute top-8 left-8 z-10 flex flex-col gap-4 pointer-events-none">
-          <div className="pointer-events-auto bg-white/80 backdrop-blur-xl p-5 rounded-[24px] shadow-2xl border border-white/40">
-            <h1 className="text-2xl font-black text-slate-800 flex items-center gap-3">
-              <Navigation className="w-7 h-7 text-rose-500 fill-current" />
+      {isStandalone && (
+        <>
+        <div className="pointer-events-none absolute left-4 top-4 z-10 max-w-[calc(100vw-6rem)] sm:left-8 sm:top-8 sm:max-w-none">
+          <div className="pointer-events-auto rounded-2xl border border-white/40 bg-white/85 px-3 py-2 shadow-xl backdrop-blur-xl sm:rounded-[24px] sm:p-5 sm:shadow-2xl">
+            <h1 className="flex items-center gap-2 text-sm font-black text-slate-800 sm:gap-3 sm:text-2xl">
+              <Navigation className="h-4 w-4 fill-current text-rose-500 sm:h-7 sm:w-7" />
               Khám phá Ẩm thực
             </h1>
-            <p className="text-xs text-slate-500 font-bold uppercase tracking-[0.2em] mt-1 ml-10">
+            <p className="ml-6 mt-0.5 truncate text-[9px] font-bold uppercase tracking-[0.08em] text-slate-500 sm:ml-10 sm:mt-1 sm:text-xs sm:tracking-[0.2em]">
               Dữ liệu độc quyền • {restaurants.length} địa điểm
             </p>
           </div>
 
           <Link
             href="/app"
-            className="pointer-events-auto flex items-center gap-3 w-fit bg-slate-900 hover:bg-slate-800 text-white px-7 py-4 rounded-[20px] font-bold text-sm shadow-2xl transition-all active:scale-95 group border border-white/10"
+            className="group pointer-events-auto mt-4 hidden w-fit items-center gap-3 rounded-[20px] border border-white/10 bg-slate-900 px-7 py-4 text-sm font-bold text-white shadow-2xl transition-all hover:bg-slate-800 active:scale-95 sm:flex"
           >
-            <MessageSquare className="w-5 h-5 text-rose-400 group-hover:scale-110 transition-transform" />
+            <MessageSquare className="h-5 w-5 text-rose-400 transition-transform group-hover:scale-110" />
             Quay lại Chat AI
           </Link>
         </div>
+
+        <div className="pointer-events-none absolute bottom-[calc(1rem+env(safe-area-inset-bottom))] left-4 right-4 z-10 sm:hidden">
+          <Link
+            href="/app"
+            className="pointer-events-auto flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-slate-900 text-sm font-bold text-white shadow-2xl active:scale-[0.98]"
+          >
+            <MessageSquare className="h-4 w-4 text-rose-400" />
+            Quay lại Chat AI
+          </Link>
+        </div>
+        </>
       )}
 
       <RestaurantDetailModal restaurant={selectedResForModal} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

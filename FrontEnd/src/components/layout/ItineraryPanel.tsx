@@ -105,10 +105,10 @@ export default function ItineraryPanel({
   return (
     <div className="flex h-full flex-col gap-4 p-4">
       {/* Tab Buttons */}
-      <div className="flex gap-2 border-b border-slate-200/60">
+      <div className="flex gap-2 overflow-x-auto border-b border-slate-200/60">
         <button
           onClick={() => onTabChange("itinerary")}
-          className={`px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition ${
+          className={`shrink-0 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition sm:px-4 sm:tracking-[0.2em] ${
             currentTab === "itinerary"
               ? "border-b-2 border-brand-coral text-brand-coral"
               : "text-slate-500 hover:text-slate-700"
@@ -118,13 +118,23 @@ export default function ItineraryPanel({
         </button>
         <button
           onClick={() => onTabChange("detail")}
-          className={`px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition ${
+          className={`shrink-0 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition sm:px-4 sm:tracking-[0.2em] ${
             currentTab === "detail"
               ? "border-b-2 border-brand-coral text-brand-coral"
               : "text-slate-500 hover:text-slate-700"
           }`}
         >
           Chi tiết
+        </button>
+        <button
+          onClick={() => onTabChange("map")}
+          className={`shrink-0 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition sm:px-4 sm:tracking-[0.2em] ${
+            currentTab === "map"
+              ? "border-b-2 border-brand-coral text-brand-coral"
+              : "text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          Bản đồ
         </button>
       </div>
 

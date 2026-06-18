@@ -139,10 +139,10 @@ export default function RestaurantCard2({
   const hasInsightContent = !isUserSource || !!semanticText;
 
   return (
-  <div className="group overflow-hidden rounded-[36px] border border-white/20 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(15,23,42,0.18)]">
+  <div className="group overflow-hidden rounded-[24px] border border-white/20 bg-white/70 shadow-[0_20px_60px_rgba(15,23,42,0.12)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(15,23,42,0.18)] sm:rounded-[36px]">
     
     {/* HERO */}
-    <div className="relative h-[360px] overflow-hidden">
+    <div className="relative h-[260px] overflow-hidden sm:h-[360px]">
       <img
         src={imageUrl}
         alt={restaurant.name}
@@ -153,10 +153,10 @@ export default function RestaurantCard2({
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
       {/* floating badge */}
-      <div className="absolute left-5 top-5">
+      <div className="absolute left-4 top-4 sm:left-5 sm:top-5">
         <div
           className={cn(
-            "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold backdrop-blur-xl",
+            "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold backdrop-blur-xl sm:px-4 sm:py-2 sm:text-xs",
             badge.className
           )}
         >
@@ -167,15 +167,15 @@ export default function RestaurantCard2({
 
       {/* content on image */}
           
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-        <h2 className="text-3xl font-bold tracking-tight drop-shadow-md">
+      <div className="absolute bottom-0 left-0 right-0 p-4 text-white sm:p-6">
+        <h2 className="text-2xl font-bold tracking-tight drop-shadow-md sm:text-3xl">
           {name}
         </h2>
 
         {/* unified badges */}
-        <div className="mt-4 flex flex-wrap items-center gap-3">
+        <div className="mt-3 flex flex-wrap items-center gap-2 sm:mt-4 sm:gap-3">
           {/* rating */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm">
             <Star
               size={15}
               className="fill-yellow-400 text-yellow-400"
@@ -184,7 +184,7 @@ export default function RestaurantCard2({
           </div>
 
           {/* price */}
-          <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
+          <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm">
             {typeof price === "number"
               ? `${price.toLocaleString("vi-VN")}đ`
               : price || "Chưa cập nhật"}
@@ -192,14 +192,14 @@ export default function RestaurantCard2({
 
           {/* meal time */}
           {restaurant.meals && restaurant.meals.length > 0 && (
-            <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md shadow-lg">
+            <div className="inline-flex max-w-full items-center rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md sm:px-4 sm:py-2 sm:text-sm">
               {restaurant.meals.join(" • ")}
             </div>
           )}
         </div>
 
         {/* location */}
-        <div className="mt-5 flex items-start text-sm text-white/85">
+        <div className="mt-4 flex items-start text-xs text-white/85 sm:mt-5 sm:text-sm">
           <MapPin
             size={17}
             className="mt-[2px] mr-3 shrink-0 text-orange-300"
@@ -212,7 +212,7 @@ export default function RestaurantCard2({
       </div>
     </div>
     {/* BODY */}
-    <div className="space-y-5 p-6 pb-10">
+    <div className="space-y-5 p-4 pb-8 sm:p-6 sm:pb-10">
       {/* AI Insight */}
       {hasInsightContent && (
         <div className="rounded-[28px] border border-white/40 bg-gradient-to-br from-slate-50 to-white p-5 shadow-sm">
