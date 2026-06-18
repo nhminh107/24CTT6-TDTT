@@ -1,7 +1,10 @@
 import pytest
 from unittest.mock import MagicMock, patch
-import asyncio
 from Back_End.Core.share_manager import ShareManager
+
+@pytest.fixture
+def anyio_backend():
+    return "asyncio"
 
 @pytest.fixture
 def mock_db():
@@ -20,7 +23,7 @@ def test_generate_share_id(share_manager):
     assert len(share_id) == 6
     assert share_id.isalnum()
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_create_share_link(share_manager, mock_db):
     # Setup mock
     mock_doc = MagicMock()
@@ -45,7 +48,7 @@ async def test_create_share_link(share_manager, mock_db):
     mock_collection.document.assert_called_with(share_id)
     mock_doc.set.assert_called_once()
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_get_shared_itinerary_exists(share_manager, mock_db):
     # Setup mock for existing doc
     expected_data = {"user_id": "test", "itinerary": []}
@@ -64,7 +67,7 @@ async def test_get_shared_itinerary_exists(share_manager, mock_db):
     assert result == expected_data
     mock_collection.document.assert_called_with("VALID_ID")
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_get_shared_itinerary_not_exists(share_manager, mock_db):
     # Setup mock for non-existing doc
     mock_doc = MagicMock()

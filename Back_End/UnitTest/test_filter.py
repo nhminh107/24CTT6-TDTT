@@ -69,6 +69,7 @@ def make_filter(df=None, prompt=None, user_lat=10.776, user_lng=106.700,
     obj.user_lat = user_lat
     obj.user_lng = user_lng
     obj.user_health = health_profile
+    obj.max_distance = 10.0
     obj.CRITICAL_ALLERGY_TAGS = [
         "Peanuts_Nuts", "Gluten_Present", "Dairy_Product", "Seafood", "Shellfish"
     ]

@@ -28,6 +28,11 @@ type ApiResponse = {
   status?: string;
   message?: string;
   detail?: string;
+  reason?: string;
+  suggestions?: string[];
+  meta?: {
+    cache_hit?: boolean;
+  };
   error?: {
     code?: number;
     message?: string;
@@ -68,6 +73,7 @@ export default function ChatInterface({
   onInputChange,
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingStage, setLoadingStage] = useState("Đang hiểu yêu cầu của bạn");
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [internalInput, setInternalInput] = useState("");
 
@@ -87,6 +93,28 @@ export default function ChatInterface({
   );
 
   const input = inputProp ?? internalInput;
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoadingStage("Đang hiểu yêu cầu của bạn");
+      return;
+    }
+
+    const stages = [
+      "Đang hiểu yêu cầu của bạn",
+      "Đang kiểm tra vị trí và ngân sách",
+      "Đang lọc theo hồ sơ sức khỏe",
+      "Đang chấm điểm các nhà hàng",
+      "Đang hoàn thiện lịch trình phù hợp"
+    ];
+    let index = 0;
+    const interval = window.setInterval(() => {
+      index = Math.min(index + 1, stages.length - 1);
+      setLoadingStage(stages[index]);
+    }, 1800);
+
+    return () => window.clearInterval(interval);
+  }, [isLoading]);
 
   const setInputValue = (value: string) => {
     if (onInputChange) {
@@ -111,7 +139,9 @@ export default function ChatInterface({
       const results = response.result || [];
       const count = results.length;
       const content =
-        count > 0
+        response.meta?.cache_hit && count > 0
+          ? `Mình có sẵn ${count} lựa chọn phù hợp từ bộ nhớ tạm nè!`
+          : count > 0
           ? `Dạ, mình tìm thấy ${count} nhà hàng nè!`
           : "Không tìm thấy kết quả.";
       return {
@@ -128,8 +158,13 @@ export default function ChatInterface({
     }
 
     if (response.status === "empty") {
+      const suggestions = response.suggestions || [];
+      const suggestionText =
+        suggestions.length > 0
+          ? `\n\nBạn có thể thử:\n${suggestions.map((item) => `• ${item}`).join("\n")}`
+          : "";
       return {
-        content: response.message || "Rất tiếc, tôi không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn.",
+        content: `${response.message || "Rất tiếc, tôi không tìm thấy quán ăn nào phù hợp với yêu cầu của bạn."}${suggestionText}`,
         restaurants: []
       };
     }
@@ -157,6 +192,7 @@ export default function ChatInterface({
 
   const callRestaurantApi = async (prompt: string, activeChatId: string | null, latestMessages: Message[]) => {
     setIsLoading(true);
+    setLoadingStage("Đang hiểu yêu cầu của bạn");
     try {
       const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
         method: "POST",
@@ -256,7 +292,9 @@ export default function ChatInterface({
 
       // Sync itinerary from backend (since it's now updated automatically)
       if (user && fetchItinerary) {
-        fetchItinerary();
+        window.setTimeout(() => {
+          fetchItinerary();
+        }, 700);
       }
     } catch {
       const message = "Hệ thống đang quá tải vui lòng thử lại sau.";
@@ -474,7 +512,7 @@ export default function ChatInterface({
                   initial={{ scale: 1, opacity: 1 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className={`max-w-xs md:max-w-sm rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft origin-bottom-left ${
+                  className={`max-w-xs md:max-w-sm whitespace-pre-line rounded-2xl px-4 py-3 text-xs md:text-sm shadow-soft origin-bottom-left ${
                     message.role === "user"
                       ? "bg-gradient-to-r from-brand-coral to-brand-flame text-white"
                       : "glass text-slate-700"
@@ -556,7 +594,7 @@ export default function ChatInterface({
             </div>
             <div className="glass rounded-2xl px-4 py-3">
               <div className="flex items-center gap-2">
-                <span className="text-slate-600">Đang suy nghĩ</span>
+                <span className="text-slate-600">{loadingStage}</span>
                 <span className="flex items-center gap-1">
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-coral" />
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-flame [animation-delay:120ms]" />

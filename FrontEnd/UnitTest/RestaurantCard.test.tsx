@@ -14,6 +14,7 @@ describe("Component RestaurantCard", () => {
     imageUrl: "https://example.com/image.jpg",
     semanticText: "Ngon, bổ, rẻ",
     meals: ["trưa", "tối"],
+    source: "ai" as const,
     warnings: [], // Không có cảnh báo -> Phải hiện "Phù hợp"
     notes: []
   };
@@ -36,5 +37,18 @@ describe("Component RestaurantCard", () => {
     
     // Nút mở accordion cảnh báo phải xuất hiện
     expect(screen.getAllByText("Cần lưu ý").length).toBeGreaterThan(0);
+  });
+
+  it("nên hiển thị huy hiệu 'Tự thêm thủ công' cho nhà hàng do user thêm", () => {
+    const userRestaurant = {
+      ...mockRestaurant,
+      source: "user" as const,
+      warnings: ["Không dùng để đánh giá sức khỏe AI"],
+    };
+
+    render(<RestaurantCard restaurant={userRestaurant} />);
+
+    expect(screen.getByText("Tự thêm thủ công")).toBeInTheDocument();
+    expect(screen.queryByText("Phù hợp")).not.toBeInTheDocument();
   });
 });

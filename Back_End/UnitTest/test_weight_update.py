@@ -5,6 +5,10 @@ from datetime import datetime
 import pytz
 
 @pytest.fixture
+def anyio_backend():
+    return "asyncio"
+
+@pytest.fixture
 def weight_updater():
     return Weight_Update(10.762622, 106.660172) # HCM City coords
 
