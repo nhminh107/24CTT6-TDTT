@@ -230,7 +230,7 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
 
         meal_raw = item.get("meal")
         if not meal_raw:
-            continue
+            meal_raw = "any"
 
         meal_key = str(meal_raw).strip().lower()
 

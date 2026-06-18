@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { ArrowLeft, CalendarCheck, Menu, X } from "lucide-react";
+import { CalendarCheck, Menu, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
@@ -129,7 +129,7 @@ export default function MainDashboard() {
   const [healthOpen, setHealthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [selectedRestaurantId, setSelectedRestaurantId] = useState<string | null>(null);
-  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail" | "map">("itinerary");
+  const [itineraryTab, setItineraryTab] = useState<"itinerary" | "detail">("itinerary");
   const [showBoardingPass, setShowBoardingPass] = useState(false);
   const [healthProfile, setHealthProfile] = useState<HealthProfile>(DEFAULT_HEALTH_PROFILE);
   const [locationPromptOpen, setLocationPromptOpen] = useState(false);
@@ -486,7 +486,7 @@ export default function MainDashboard() {
     setRestaurantModalOpen(false);
   };
 
-  const handleItineraryTabChange = (tab: "itinerary" | "detail" | "map") => {
+  const handleItineraryTabChange = (tab: "itinerary" | "detail") => {
     if (tab !== "detail") {
       setSelectedRestaurantId(null);
     }
@@ -676,9 +676,6 @@ export default function MainDashboard() {
             onDeleteMeal={handleDeleteMeal}
             onResetItinerary={handleResetItinerary}
             onReorder={handleReorder}
-            userPlaceId={dashboardState.placeId}
-            onItineraryChange={fetchItinerary}
-            onUserLocationChange={handleUserLocationChange}
             showBoardingPass={showBoardingPass}
             onShowBoardingPassChange={setShowBoardingPass}
           />
@@ -737,9 +734,6 @@ export default function MainDashboard() {
               onDeleteMeal={handleDeleteMeal}
               onResetItinerary={handleResetItinerary}
               onReorder={handleReorder}
-              userPlaceId={dashboardState.placeId}
-              onItineraryChange={fetchItinerary}
-              onUserLocationChange={handleUserLocationChange}
               showBoardingPass={showBoardingPass}
               onShowBoardingPassChange={setShowBoardingPass}
             />

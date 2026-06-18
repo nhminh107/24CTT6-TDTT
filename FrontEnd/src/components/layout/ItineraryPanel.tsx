@@ -1,12 +1,11 @@
 "use client";
 
 import { motion, Reorder } from "framer-motion";
-import { MapPin, Clock, DollarSign, Star, X, Trash2, Ticket, ArrowLeft, Map as MapIcon, GripVertical } from "lucide-react";
+import { Star, X, Trash2, Ticket, Map as MapIcon, GripVertical } from "lucide-react";
 import { useRef, useMemo, useState, useEffect } from "react";
 import Link from "next/link";
 import RestaurantCard from "@/components/ui/RestaurantCard";
 import BoardingPass from "@/components/ui/BoardingPass";
-import MapExplore from "@/components/ui/MapExplore";
 import { formatMealDisplay } from "@/lib/utils";
 
 type ItineraryPanelProps = {
@@ -15,17 +14,14 @@ type ItineraryPanelProps = {
   mealStops: any[];
   restaurants: any[];
   selectedRestaurantId: string | null;
-  currentTab: "itinerary" | "detail" | "map";
+  currentTab: "itinerary" | "detail";
   onSelectRestaurant: (id: string) => void;
-  onTabChange: (tab: "itinerary" | "detail" | "map") => void;
+  onTabChange: (tab: "itinerary" | "detail") => void;
   onCloseDetail: () => void;
   currentItinerary?: any[];
   onDeleteMeal?: (id: string) => void;
   onResetItinerary?: () => void;
   onReorder?: (orderedItems: { id: string, meal: string }[]) => void;
-  userPlaceId?: string;
-  onItineraryChange?: () => void;
-  onUserLocationChange?: (location: { location: string; placeId: string }) => void;
   showBoardingPass?: boolean;
   onShowBoardingPassChange?: (open: boolean) => void;
 };
@@ -44,9 +40,6 @@ export default function ItineraryPanel({
   onDeleteMeal,
   onResetItinerary,
   onReorder,
-  userPlaceId,
-  onItineraryChange,
-  onUserLocationChange,
   showBoardingPass = false,
   onShowBoardingPassChange,
 }: ItineraryPanelProps) {
@@ -126,39 +119,10 @@ export default function ItineraryPanel({
         >
           Chi tiết
         </button>
-        <button
-          onClick={() => onTabChange("map")}
-          className={`shrink-0 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition sm:px-4 sm:tracking-[0.2em] ${
-            currentTab === "map"
-              ? "border-b-2 border-brand-coral text-brand-coral"
-              : "text-slate-500 hover:text-slate-700"
-          }`}
-        >
-          Bản đồ
-        </button>
       </div>
 
       {/* Content */}
-      {currentTab === "map" ? (
-        <div className="flex-1 flex flex-col gap-3 overflow-hidden">
-          <button
-            onClick={() => onTabChange("itinerary")}
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 transition-all duration-200 hover:border-brand-coral hover:bg-orange-50 hover:text-brand-coral shadow-sm w-fit"
-          >
-            <ArrowLeft size={14} />
-            Quay lại lịch trình
-          </button>
-          <div className="flex-1 overflow-hidden rounded-2xl border border-slate-100 shadow-inner">
-            <MapExplore
-              userPlaceId={userPlaceId}
-              userLocationText={location}
-              currentItinerary={currentItinerary}
-              onItineraryChange={onItineraryChange}
-              onUserLocationChange={onUserLocationChange}
-            />
-          </div>
-        </div>
-      ) : currentTab === "itinerary" ? (
+      {currentTab === "itinerary" ? (
         showBoardingPass ? (
           <div className="flex min-h-0 min-w-0 w-full max-w-full flex-1 flex-col overflow-hidden">
             <BoardingPass
