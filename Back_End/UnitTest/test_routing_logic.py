@@ -1,12 +1,12 @@
 import os
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock, patch
 import json
 import sys
-import asyncio
 
 # Add the project root to sys.path to import Back_End
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+os.environ.setdefault("GROQ_API_KEY", "test-groq-key")
 
 from Back_End.Core.QA_Chatbot import ChatBot
 
@@ -18,8 +18,7 @@ class TestChatBotRouting(unittest.IsolatedAsyncioTestCase):
         mock_response.choices = [
             MagicMock(message=MagicMock(content=json.dumps({"user_intent": "Search", "isPoorInfo": 0})))
         ]
-        # For AsyncGroq, we need to mock the awaitable create call
-        mock_client.chat.completions.create = MagicMock(side_effect=asyncio.coroutine(lambda *args, **kwargs: mock_response))
+        mock_client.chat.completions.create = AsyncMock(return_value=mock_response)
         
         with patch('Back_End.Core.QA_Chatbot._client', mock_client):
             chatbot = ChatBot()
@@ -35,7 +34,7 @@ class TestChatBotRouting(unittest.IsolatedAsyncioTestCase):
         mock_response.choices = [
             MagicMock(message=MagicMock(content=json.dumps({"user_intent": "Search", "isPoorInfo": 1})))
         ]
-        mock_client.chat.completions.create = MagicMock(side_effect=asyncio.coroutine(lambda *args, **kwargs: mock_response))
+        mock_client.chat.completions.create = AsyncMock(return_value=mock_response)
         
         with patch('Back_End.Core.QA_Chatbot._client', mock_client):
             chatbot = ChatBot()
@@ -51,7 +50,7 @@ class TestChatBotRouting(unittest.IsolatedAsyncioTestCase):
         mock_response.choices = [
             MagicMock(message=MagicMock(content=json.dumps({"user_intent": "QA"})))
         ]
-        mock_client.chat.completions.create = MagicMock(side_effect=asyncio.coroutine(lambda *args, **kwargs: mock_response))
+        mock_client.chat.completions.create = AsyncMock(return_value=mock_response)
         
         with patch('Back_End.Core.QA_Chatbot._client', mock_client):
             chatbot = ChatBot()

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException,status
+from fastapi import APIRouter, BackgroundTasks, HTTPException,status
 import asyncio
 import contextlib
 from pydantic import BaseModel,Field
@@ -7,6 +7,8 @@ import pandas as pd
 from typing import List, Optional
 import traceback
 import json
+import time
+import uuid
 
 
 
@@ -41,6 +43,126 @@ user_manager = UserManager()
 itinerary_manager = ItineraryManager()
 last_results_by_user = {}
 health_risk_detector = HealthRiskDetector()
+_restaurant_df_cache = None
+_restaurant_json_cache = None
+_restaurant_data_mtime = None
+
+def _api_log(request_id: str, message: str):
+    print(f"[API_LOG][{request_id}] {message}")
+
+def _elapsed_ms(start_time: float) -> int:
+    return int((time.perf_counter() - start_time) * 1000)
+
+def _restaurant_data_path() -> str:
+    return os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
+
+def _get_restaurant_df_cached() -> pd.DataFrame:
+    global _restaurant_df_cache, _restaurant_json_cache, _restaurant_data_mtime
+
+    data_path = _restaurant_data_path()
+    if not os.path.exists(data_path):
+        raise FileNotFoundError(data_path)
+
+    current_mtime = os.path.getmtime(data_path)
+    if _restaurant_df_cache is None or _restaurant_data_mtime != current_mtime:
+        df = pd.read_json(data_path, encoding='utf-8', dtype={'id': str})
+        _restaurant_df_cache = df
+        _restaurant_json_cache = df.to_dict(orient='records')
+        _restaurant_data_mtime = current_mtime
+        print(f"[API_LOG][DATA_CACHE] Loaded {len(df)} restaurants from data.json")
+
+    return _restaurant_df_cache.copy(deep=False)
+
+def _get_restaurant_json_cached() -> list:
+    global _restaurant_json_cache
+    _get_restaurant_df_cached()
+    return list(_restaurant_json_cache or [])
+
+async def _save_assistant_message_background(user_id: str, chat_id: str | None, content: str, restaurants: list | None = None):
+    if not chat_id:
+        return
+    try:
+        metadata = {"restaurants": restaurants} if restaurants is not None else None
+        await user_manager.add_message(user_id, chat_id, "assistant", content, metadata=metadata)
+    except Exception as exc:
+        print(f"[API_LOG][BACKGROUND] Failed to save assistant message: {exc}")
+
+async def _save_user_message_background(user_id: str, chat_id: str | None, content: str):
+    if not chat_id:
+        return
+    try:
+        await user_manager.add_message(user_id, chat_id, "user", content)
+    except Exception as exc:
+        print(f"[API_LOG][BACKGROUND] Failed to save user message: {exc}")
+
+async def _auto_save_itinerary_background(user_id: str, final_result_list: list):
+    try:
+        seen_meals = []
+        for item in final_result_list:
+            meal = item.get("meal")
+            meal_key = str(meal).strip().lower()
+            if not meal_key or meal_key in seen_meals:
+                continue
+            seen_meals.append(meal_key)
+            first_res = item.copy()
+            first_res["is_auto"] = True
+            await itinerary_manager.select_restaurant(user_id, meal, first_res)
+    except Exception as exc:
+        print(f"[API_LOG][BACKGROUND] Failed to auto-save itinerary: {exc}")
+
+def _empty_reason_and_suggestions(parsed_json: dict, filtered_data: dict, scored_candidates: pd.DataFrame, health_profile: dict):
+    requested_meals = [m.get('meal') for m in parsed_json.get('meals_detail', []) if isinstance(m, dict)]
+    available_meals = scored_candidates['meal'].unique().tolist() if scored_candidates is not None and not scored_candidates.empty else []
+    missing_meals = [m for m in requested_meals if m not in available_meals]
+    budget = parsed_json.get("budget") or 0
+    forbidden_tags = health_profile.get("forbidden_tags", []) if isinstance(health_profile, dict) else []
+
+    if not filtered_data or all(df is None or df.empty for df in filtered_data.values()):
+        if forbidden_tags:
+            return (
+                "health_or_distance_too_strict",
+                [
+                    "Bạn có thể thử chuyển hồ sơ sức khỏe sang chế độ thoải mái hơn nếu không có dị ứng nghiêm trọng.",
+                    "Thử mở rộng khu vực tìm kiếm hoặc chọn một địa điểm trung tâm hơn.",
+                    "Giảm bớt yêu cầu về món/loại quán để BMI có thêm lựa chọn."
+                ]
+            )
+        return (
+            "too_far_or_no_candidates",
+            [
+                "Thử mở rộng bán kính tìm kiếm hoặc đổi sang khu vực gần trung tâm hơn.",
+                "Bỏ bớt yêu cầu về loại quán hoặc món cụ thể.",
+                "Thử nhập tên món phổ biến hơn."
+            ]
+        )
+
+    if missing_meals:
+        return (
+            "missing_meal_candidates",
+            [
+                f"Không đủ quán phù hợp cho bữa: {', '.join(str(m) for m in missing_meals)}.",
+                "Bạn có thể đổi loại quán cho bữa bị thiếu hoặc bỏ yêu cầu món quá cụ thể.",
+                "Thử tăng khu vực tìm kiếm hoặc chọn vị trí khác."
+            ]
+        )
+
+    if budget and budget < 100000:
+        return (
+            "budget_too_low",
+            [
+                "Ngân sách hiện khá thấp so với dữ liệu quán. Thử tăng ngân sách một chút.",
+                "Chọn quán ăn nhanh, ăn vặt hoặc quán bình dân để có nhiều lựa chọn hơn."
+            ]
+        )
+
+    return (
+        "no_rankable_candidates",
+        [
+            "Thử mô tả yêu cầu ngắn gọn hơn, ví dụ món ăn + khu vực + ngân sách.",
+            "Bỏ bớt tiêu chí không gian hoặc phong cách nếu đang quá cụ thể.",
+            "Thử tìm một bữa trước, sau đó thêm các bữa còn lại."
+        ]
+    )
 
 def _extract_context_from_result(result):
     """
@@ -260,14 +382,16 @@ async def reset_itinerary(user_id: str):
         raise HTTPException(status_code=500, detail="Không thể đặt lại lịch trình.")
 
 @router.post("/prompt")
-async def process_prompt(request: UserRequest):
+async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks):
     """
     Kết nối toàn bộ luồng xử lý từ Prompt đến Lịch trình.
     """
-    print(f"\n[API_LOG] Starting /prompt process for user_id: {request.user_id}")
-    print(f"[API_LOG] User prompt: '{request.prompt}'")
+    request_id = uuid.uuid4().hex[:10]
+    total_start = time.perf_counter()
+    print(f"\n[API_LOG][{request_id}] Starting /prompt process for user_id: {request.user_id}")
+    _api_log(request_id, f"User prompt: '{request.prompt}'")
     if request.place_id:
-        print(f"[API_LOG] Specified place_id: {request.place_id}")
+        _api_log(request_id, f"Specified place_id: {request.place_id}")
 
     try:
         # Lấy lịch trình hiện tại và các kết quả gợi ý gần nhất để cung cấp ngữ cảnh cho AI
@@ -287,11 +411,10 @@ async def process_prompt(request: UserRequest):
 
         formatted_history = []
         if request.chat_id:
-            await user_manager.add_message(request.user_id, request.chat_id, "user", request.prompt)
-            # Lấy lịch sử chat để cung cấp ngữ cảnh (lấy 10 tin nhắn gần nhất)
+            # Lấy lịch sử chat trước đó để cung cấp ngữ cảnh; prompt hiện tại đã được truyền riêng.
             raw_history = await user_manager.get_chat_messages(request.user_id, request.chat_id)
             if raw_history:
-                for msg in raw_history[:-1]: 
+                for msg in raw_history:
                     formatted_history.append({
                         "role": msg.get("role"),
                         "content": msg.get("content")
@@ -300,68 +423,84 @@ async def process_prompt(request: UserRequest):
                 print(f"[API_LOG] Chat history loaded: {len(formatted_history)} messages.")
                 for i, m in enumerate(formatted_history):
                     print(f"  - [{m['role']}] {m['content'][:50]}...")
+            background_tasks.add_task(
+                _save_user_message_background,
+                request.user_id,
+                request.chat_id,
+                request.prompt
+            )
 
         # 0. Intent Routing: Phân luồng ý định
-        print("[API_LOG] Step 0: Intent Routing started...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "Step 0: Intent Routing started...")
         chatbot = ChatBot()
         routing_res_json = await chatbot.routing(request.prompt, history=formatted_history)
         routing_res = json.loads(routing_res_json)
         
         user_intent = routing_res.get("user_intent")
         is_poor_info = routing_res.get("isPoorInfo", 0)
-        print(f"[API_LOG] Intent detected: {user_intent} | isPoorInfo: {is_poor_info}")
+        _api_log(request_id, f"Intent detected: {user_intent} | isPoorInfo: {is_poor_info} | ms={_elapsed_ms(step_start)}")
 
         if user_intent == "Search" and is_poor_info == 1:
-            print("[API_LOG] User intent: Search, but info is poor. Asking for more info.")
+            _api_log(request_id, "User intent: Search, but info is poor. Asking for more info.")
             poor_info_msg = "Dạ, tôi chưa hiểu rõ ý định tìm kiếm của bạn. Bạn có thể cho tôi thêm thông tin như: bạn muốn ăn món gì, ở đâu, hoặc ngân sách khoảng bao nhiêu không ạ?"
             if request.chat_id:
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", poor_info_msg)
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, poor_info_msg)
             return {
                 "status": "poor_info",
                 "message": poor_info_msg,
-                "result": []
+                "result": [],
+                "request_id": request_id
             }
             
         if user_intent == "System_QA":
-            print("[API_LOG] User intent: System_QA. Handling system guidance...")
+            step_start = time.perf_counter()
+            _api_log(request_id, "User intent: System_QA. Handling system guidance...")
             system_qa_response = await chatbot.handle_system_qa(request.prompt)
             if request.chat_id:
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", system_qa_response)
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, system_qa_response)
+            _api_log(request_id, f"System_QA completed | ms={_elapsed_ms(step_start)} | total_ms={_elapsed_ms(total_start)}")
             return {
                 "status": "success_qa",
                 "message": system_qa_response,
-                "result": []
+                "result": [],
+                "request_id": request_id
             }
 
         if user_intent == "Knowledge_QA":
-            print("[API_LOG] User intent: Knowledge_QA. Handling nutrition/food knowledge...")
+            step_start = time.perf_counter()
+            _api_log(request_id, "User intent: Knowledge_QA. Handling nutrition/food knowledge...")
             knowledge_qa_response = await chatbot.handle_knowledge_qa(
                 request.prompt, 
                 history=formatted_history,
                 system_context=itinerary_context
             )
             if request.chat_id:
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", knowledge_qa_response)
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, knowledge_qa_response)
+            _api_log(request_id, f"Knowledge_QA completed | ms={_elapsed_ms(step_start)} | total_ms={_elapsed_ms(total_start)}")
             return {
                 "status": "success_qa",
                 "message": knowledge_qa_response,
-                "result": []
+                "result": [],
+                "request_id": request_id
             }
             
 
         if user_intent == "Out_Scope":
-            print("[API_LOG] User intent: Out_Scope. Refusing to answer...")
+            _api_log(request_id, "User intent: Out_Scope. Refusing to answer...")
             out_scope_msg = "Dạ, hiện tại tôi là trợ lý chuyên sâu về ẩm thực, sức khỏe và du lịch. Tôi xin phép không trả lời các nội dung ngoài phạm vi này ạ. Bạn có muốn tìm quán ăn hay hỏi gì về dinh dưỡng không?"
             if request.chat_id:
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", out_scope_msg)
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, out_scope_msg)
             return {
                 "status": "out_scope",
                 "message": out_scope_msg,
-                "result": []
+                "result": [],
+                "request_id": request_id
             }
 
         # 1. LLM Parsing: Hiểu ý định người dùng
-        print("[API_LOG] Step 1: LLM Parsing started...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "Step 1: LLM Parsing started...")
         parser = LLMParser()
         parse_task = asyncio.create_task(parser.JSON_response(
             user_prompt=request.prompt,
@@ -384,7 +523,7 @@ async def process_prompt(request: UserRequest):
             raise HTTPException(status_code=400, detail="AI không thể phân tích yêu cầu này.")
 
         parsed_json = _normalize_parsed_intent(parsed_json)
-        print(f"[API_LOG] LLM Parsing result: {json.dumps(parsed_json, ensure_ascii=False)}")
+        _api_log(request_id, f"LLM Parsing completed | ms={_elapsed_ms(step_start)} | result={json.dumps(parsed_json, ensure_ascii=False)}")
 
         # 2. Xử lý vị trí người dùng (User Location)
         user_lat, user_lng = 10.774773681750506, 106.72470566530203 
@@ -448,10 +587,11 @@ async def process_prompt(request: UserRequest):
             except ValueError: budget_value = 0
         elif isinstance(budget_value, float):
             budget_value = int(budget_value)
-        print(f"[API_LOG] Normalized budget: {budget_value}")
+        _api_log(request_id, f"Normalized budget: {budget_value}")
 
         # Fetch health profile
-        print(f"[API_LOG] Fetching health profile for user: {request.user_id}")
+        step_start = time.perf_counter()
+        _api_log(request_id, f"Fetching health profile for user: {request.user_id}")
         user_health_profile = await fetch_user_health_profile(request.user_id)
         forbidden_tags = user_health_profile.get("forbidden_tags", [])
         
@@ -465,10 +605,7 @@ async def process_prompt(request: UserRequest):
         # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
         health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
         
-        print(f"[API_LOG] Bóc tách từ prompt: {detected_tags}")
-        print(f"[API_LOG] Tổng hợp tags: {forbidden_tags_final}")
-        print(f"[API_LOG] Health key cuối cùng: {health_key}")
-        print(f"[API_LOG] Health key: {health_key}")
+        _api_log(request_id, f"Health profile/tags completed | ms={_elapsed_ms(step_start)} | detected={detected_tags} | final={forbidden_tags_final} | health_key={health_key}")
         
         user_health_profile["forbidden_tags"] = forbidden_tags_final
 
@@ -480,10 +617,11 @@ async def process_prompt(request: UserRequest):
 
         exclude_ids = last_results_by_user.get(request.user_id, []) if wants_alternative else []
         bypass_cache = wants_alternative and bool(exclude_ids)
-        print(f"[API_LOG] Wants alternative: {wants_alternative}, Feedback reason: {feedback_reason}, Bypass cache: {bypass_cache}")
+        _api_log(request_id, f"Wants alternative: {wants_alternative}, Feedback reason: {feedback_reason}, Bypass cache: {bypass_cache}")
 
         # Check cache
-        print("[API_LOG] Checking semantic cache...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "Checking semantic cache...")
         cache_task = asyncio.to_thread(
             cache_manager.check_cache,
             prompt=request.prompt,
@@ -493,16 +631,11 @@ async def process_prompt(request: UserRequest):
             health_key=health_key
         )
 
-        data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
-        if not os.path.exists(data_path):
-            print(f"[API_LOG] Error: Database file not found at {data_path}")
-            raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
-
-        df_task = asyncio.create_task(asyncio.to_thread(pd.read_json, data_path, encoding='utf-8', dtype={'id': str}))
+        df_task = asyncio.create_task(asyncio.to_thread(_get_restaurant_df_cached))
 
         cached_result = await cache_task
         if cached_result and not bypass_cache:
-            print("[API_LOG] ⚡ CACHE HIT! Returning cached result.")
+            _api_log(request_id, f"Cache hit | ms={_elapsed_ms(step_start)}")
             weight_task.cancel()
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
@@ -512,24 +645,29 @@ async def process_prompt(request: UserRequest):
             # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
             if request.chat_id:
                 msg_content = f"Dạ, tôi đã tìm thấy kết quả phù hợp từ bộ nhớ tạm cho bạn."
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"restaurants": cached_result})
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, msg_content, cached_result)
+
+            _api_log(request_id, f"/prompt completed from cache | total_ms={_elapsed_ms(total_start)}")
 
             return {
                 "status": "success",
                 "parsed_intent": parsed_json,
-                "result": cached_result
+                "result": cached_result,
+                "request_id": request_id,
+                "meta": {"cache_hit": True}
             }
         
-        print("[API_LOG] CACHE MISS. Proceeding with filtering and scoring.")
+        _api_log(request_id, f"Cache miss | ms={_elapsed_ms(step_start)}. Proceeding with filtering and scoring.")
         
         # 3. Data Filtering
-        print("[API_LOG] Step 3: Filtering restaurants...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "Step 3: Filtering restaurants...")
         df_raw = await df_task
-        print(f"[API_LOG] Total restaurants in DB: {len(df_raw)}")
+        _api_log(request_id, f"Total restaurants in DB: {len(df_raw)}")
         
         # Chiến lược mở rộng bán kính: Bắt đầu nhỏ, nếu rỗng thì tăng dần
         search_distance = 3.0 if location_pref else 10.0
-        print(f"[API_LOG] Initial search distance: {search_distance}km")
+        _api_log(request_id, f"Initial search distance: {search_distance}km")
 
         filter_engine = RestaurantFilter(
             df=df_raw, 
@@ -546,24 +684,25 @@ async def process_prompt(request: UserRequest):
         
         if is_completely_empty:
             expanded_distance = 5.0 if location_pref else 15.0
-            print(f"[API_LOG] ⚠️ No results at {search_distance}km. Expanding search to {expanded_distance}km...")
+            _api_log(request_id, f"No results at {search_distance}km. Expanding search to {expanded_distance}km...")
             
             # Cập nhật bán kính mới và chạy lại pipeline
             filter_engine.max_distance = expanded_distance
             filtered_data = await asyncio.to_thread(filter_engine.run_filter_pipeline)
 
         for m_tag, m_df in filtered_data.items():
-            print(f"[API_LOG] Meal '{m_tag}': found {len(m_df)} candidates.")
+            _api_log(request_id, f"Meal '{m_tag}': found {len(m_df)} candidates.")
 
         if exclude_ids:
-            print(f"[API_LOG] Applying exclusions for {len(exclude_ids)} IDs.")
+            _api_log(request_id, f"Applying exclusions for {len(exclude_ids)} IDs.")
             filtered_data = _apply_exclusions(filtered_data, exclude_ids)
         
         buff_weights = await weight_task
-        print(f"[API_LOG] Weight buffers calculated: {json.dumps(buff_weights, ensure_ascii=False)}")
+        _api_log(request_id, f"Filtering completed | ms={_elapsed_ms(step_start)} | weight_buffers={json.dumps(buff_weights, ensure_ascii=False)}")
 
         # 4. Scoring & Optimization
-        print("[API_LOG] Step 4: Scoring candidates...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "Step 4: Scoring candidates...")
         db_manager = ChromaDBManager()
         scorer = RestaurantScorer(user_lat=user_lat, user_lng=user_lng, db=db_manager)
         scored_candidates = scorer.run_scoring_pipeline(filtered_data, parsed_json, buff_weights, diet_mode=user_health_profile.get('diet_mode', None))
@@ -571,11 +710,13 @@ async def process_prompt(request: UserRequest):
         if not scored_candidates.empty:
             for m_tag in filtered_data.keys():
                 count = len(scored_candidates[scored_candidates['meal'] == m_tag])
-                print(f"[API_LOG] Meal '{m_tag}': {count} candidates scored.")
+                _api_log(request_id, f"Meal '{m_tag}': {count} candidates scored.")
         else:
-            print("[API_LOG] Warning: scored_candidates is empty!")
+            _api_log(request_id, "Warning: scored_candidates is empty!")
+        _api_log(request_id, f"Scoring completed | ms={_elapsed_ms(step_start)}")
 
-        print("[API_LOG] LLM Selection for final itinerary...")
+        step_start = time.perf_counter()
+        _api_log(request_id, "LLM Selection for final itinerary...")
         selector = FinalResultLLM()
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
@@ -583,34 +724,45 @@ async def process_prompt(request: UserRequest):
             parsed_json,
             max_per_meal = 3 if wants_alternative else 1
         )
+        _api_log(request_id, f"Final selection completed | ms={_elapsed_ms(step_start)}")
 
         # 5. Result processing
         if final_itinerary.empty:
-            print("[API_LOG] Result: No suitable restaurants found (Final itinerary empty).")
+            _api_log(request_id, "Result: No suitable restaurants found (Final itinerary empty).")
             # Check why it might be empty
             requested_meals = [m.get('meal') for m in parsed_json.get('meals_detail', [])]
             available_meals = scored_candidates['meal'].unique().tolist() if not scored_candidates.empty else []
             missing_meals = [m for m in requested_meals if m not in available_meals]
             if missing_meals:
-                print(f"[API_LOG] Reason: No candidates found for meals: {missing_meals}")
+                _api_log(request_id, f"Reason: No candidates found for meals: {missing_meals}")
             
+            empty_reason, empty_suggestions = _empty_reason_and_suggestions(
+                parsed_json,
+                filtered_data,
+                scored_candidates,
+                user_health_profile
+            )
             error_msg = "Không tìm thấy quán ăn nào phù hợp với yêu cầu và ngân sách của bạn."
             if request.chat_id:
-                await user_manager.add_message(request.user_id, request.chat_id, "assistant", error_msg)
+                background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, error_msg)
+            _api_log(request_id, f"Empty response | reason={empty_reason} | total_ms={_elapsed_ms(total_start)}")
 
             return {
                 "status": "empty",
                 "message": error_msg,
-                "result": []
+                "result": [],
+                "reason": empty_reason,
+                "suggestions": empty_suggestions,
+                "request_id": request_id
             }
         
         final_result_json_str = final_itinerary.to_json(orient='records', force_ascii=False)
         final_result_list = json.loads(final_result_json_str)
-        print(f"[API_LOG] Final itinerary contains {len(final_result_list)} items.")
+        _api_log(request_id, f"Final itinerary contains {len(final_result_list)} items.")
 
         # Save to cache
         if not bypass_cache:
-            print("[API_LOG] Saving result to cache...")
+            _api_log(request_id, "Saving result to cache...")
             cache_manager.save_cache(
                 prompt=request.prompt,
                 lat=user_lat,
@@ -621,32 +773,28 @@ async def process_prompt(request: UserRequest):
             )
 
         last_results_by_user[request.user_id] = _extract_context_from_result(final_result_list)
-        print(f"[API_LOG] /prompt process completed successfully for user_id: {request.user_id}\n")
+        _api_log(request_id, f"/prompt process completed successfully for user_id: {request.user_id} | total_ms={_elapsed_ms(total_start)}")
 
         # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
-        for meal in final_itinerary['meal'].unique():
-            # So sánh không phân biệt hoa thường để trích xuất kết quả
-            meal_results = [r for r in final_result_list if str(r.get('meal')).strip().lower() == str(meal).strip().lower()]
-            if meal_results:
-                first_res = meal_results[0].copy() 
-                first_res['is_auto'] = True
-                await itinerary_manager.select_restaurant(request.user_id, meal, first_res)
+        background_tasks.add_task(_auto_save_itinerary_background, request.user_id, final_result_list)
 
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:
             meals_found = final_itinerary['meal'].unique().tolist()
             meals_str = ", ".join(meals_found)
             msg_content = f"Dạ, tôi đã tìm thấy các quán ăn phù hợp cho bữa {meals_str} theo yêu cầu của bạn. Bạn xem qua nhé!"
-            await user_manager.add_message(request.user_id, request.chat_id, "assistant", msg_content, metadata={"restaurants": final_result_list})
+            background_tasks.add_task(_save_assistant_message_background, request.user_id, request.chat_id, msg_content, final_result_list)
 
         return {
             "status": "success",
             "parsed_intent": parsed_json,
-            "result": final_result_list
+            "result": final_result_list,
+            "request_id": request_id,
+            "meta": {"cache_hit": False}
         }
         
     except Exception as e:
-        print(f"[API_LOG] !!! CRITICAL ERROR in /prompt: {str(e)}")
+        _api_log(request_id, f"!!! CRITICAL ERROR in /prompt after {_elapsed_ms(total_start)}ms: {str(e)}")
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống: {str(e)}")
 
@@ -657,14 +805,11 @@ async def get_all_restaurants():
     """
     Trả về toàn bộ danh sách quán ăn để hiển thị trên bản đồ.
     """
-    data_path = os.path.join(os.getcwd(), 'Back_End', 'Database', 'data.json')
-    if not os.path.exists(data_path):
-        raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
-    
     try:
-        with open(data_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
+        data = await asyncio.to_thread(_get_restaurant_json_cached)
         return {"status": "success", "data": data}
+    except FileNotFoundError:
+        raise HTTPException(status_code=500, detail="Không tìm thấy cơ sở dữ liệu quán ăn.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi khi đọc dữ liệu: {str(e)}")
 

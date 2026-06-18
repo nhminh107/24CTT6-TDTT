@@ -4,7 +4,7 @@ import asyncio
 from Back_End.Database.database import ChromaDBManager
 from Back_End.API.routes import router as main_router
 from Back_End.API.auth_routes import router as auth_router
-from Back_End.API.routes import user_router
+from Back_End.API.routes import _get_restaurant_df_cached, user_router
 from Back_End.API.share_routes import router as share_router
 app = FastAPI(
     title="Trợ lý du lịch thông minh",
@@ -33,7 +33,10 @@ async def warmup_models():
     # Tự động nạp dữ liệu từ data.json vào ChromaDB nếu chưa có
     # Chạy trong thread riêng để không làm treo server lúc khởi động
     loop = asyncio.get_event_loop()
-    await loop.run_in_executor(None, db_mng.add)
+    await asyncio.gather(
+        loop.run_in_executor(None, db_mng.add),
+        loop.run_in_executor(None, _get_restaurant_df_cached),
+    )
     print("✅ Database initialization completed!")
 
 #Cổng phụ
