@@ -144,11 +144,11 @@ export default function RestaurantMiniCard({
       </div>
 
       {/* 4. SELECT MEAL BUTTONS / ADD BUTTON */}
-      <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/50 px-3 py-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 bg-slate-50/50 px-3 py-2">
         {assignedMeal && !isChangingMeal ? (
           <>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Gợi ý cho:</span>
+            <div className="flex min-w-0 flex-wrap items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-400 sm:tracking-wider">Gợi ý cho:</span>
               <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
                 {formatMealDisplay(assignedMeal)}
               </span>
@@ -171,18 +171,18 @@ export default function RestaurantMiniCard({
                 onSelectMeal?.(assignedMeal, restaurant);
               }}
               className={cn(
-                "flex items-center gap-1 rounded-lg bg-gradient-to-r from-brand-coral to-brand-flame px-3 py-1 text-xs font-bold text-white shadow-md transition hover:scale-105 active:scale-95 disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none disabled:hover:scale-100",
+                "flex min-w-0 items-center gap-1 rounded-lg bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-1 text-xs font-bold text-white shadow-md transition hover:scale-105 active:scale-95 disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none disabled:hover:scale-100 sm:px-3",
                 isInItinerary && "cursor-not-allowed"
               )}
             >
               <Plus size={14} />
-              {isInItinerary ? "Đã thêm" : "Thêm vào lịch trình"}
+              <span className="truncate">{isInItinerary ? "Đã thêm" : "Thêm vào lịch trình"}</span>
             </button>
           </>
         ) : (
           <>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Chọn bữa:</span>
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-400 sm:tracking-wider">Chọn bữa:</span>
               {isChangingMeal && (
                 <button
                   onClick={(e) => {
@@ -195,7 +195,7 @@ export default function RestaurantMiniCard({
                 </button>
               )}
             </div>
-            <div className="flex gap-1">
+            <div className="flex flex-wrap justify-end gap-1">
               {meals.map((meal) => (
                 <button
                   key={meal}

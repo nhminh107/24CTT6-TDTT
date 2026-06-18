@@ -163,7 +163,7 @@ export default function HealthProfileModal({
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 100, scale: 0.95 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-lg overflow-hidden rounded-[32px] bg-white shadow-2xl sm:rounded-[40px]"
+              className="relative max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-hidden rounded-[28px] bg-white shadow-2xl sm:rounded-[40px]"
             >
               <AnimatePresence mode="wait">
                 {!showSuccess ? (
@@ -175,12 +175,12 @@ export default function HealthProfileModal({
                     transition={{ duration: 0.2 }}
                   >
                     {/* Header */}
-                    <div className="flex items-center justify-between border-b border-slate-100 px-8 py-6">
-                      <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-5 py-5 sm:px-8 sm:py-6">
+                      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 shadow-lg shadow-orange-200">
                           <ShieldCheck size={24} className="text-white" />
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <h2 className="text-lg font-bold text-slate-900">Hồ sơ sức khỏe</h2>
                           <p className="text-xs font-medium text-slate-500">Tối ưu gợi ý AI theo thể trạng của bạn</p>
                         </div>
@@ -195,7 +195,7 @@ export default function HealthProfileModal({
                     </div>
 
                     {/* Body */}
-                    <div className="max-h-[60vh] space-y-8 overflow-y-auto px-8 py-8 scrollbar-hide">
+                    <div className="max-h-[calc(100dvh-14rem)] space-y-8 overflow-y-auto px-5 py-6 scrollbar-hide sm:max-h-[60vh] sm:px-8 sm:py-8">
                       <section>
                         <div className="mb-4 flex items-center gap-2">
                           <div className="h-1.5 w-1.5 rounded-full bg-orange-500" />

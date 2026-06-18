@@ -101,22 +101,22 @@ export default function InitialLocationModal({ isOpen, onClose }: InitialLocatio
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-lg rounded-[32px] bg-white shadow-2xl"
+            className="relative max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-[28px] bg-white shadow-2xl sm:rounded-[32px]"
           >
             {/* Background Decorative Element */}
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-coral/5 blur-3xl" />
             <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-brand-lagoon/5 blur-3xl" />
 
-            <div className="relative p-8">
+            <div className="relative p-5 sm:p-8">
               <button
                 onClick={() => handleContinue()}
                 disabled={isLocating}
-                className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-slate-100 text-slate-400 transition hover:bg-slate-50 hover:text-slate-600 disabled:opacity-30"
+                className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-slate-100 text-slate-400 transition hover:bg-slate-50 hover:text-slate-600 disabled:opacity-30 sm:right-6 sm:top-6"
               >
                 <X size={20} />
               </button>
 
-              <div className="mb-8 flex flex-col items-center text-center">
+              <div className="mb-6 flex flex-col items-center text-center sm:mb-8">
                 <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-[24px] bg-gradient-to-br from-brand-coral/10 to-brand-flame/10 text-brand-coral shadow-inner">
                   <div className="relative">
                     <MapPin size={38} />

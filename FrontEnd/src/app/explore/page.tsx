@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ExplorePage() {
   return (
-    <main className="w-full h-screen overflow-hidden">
+    <main className="h-[100dvh] w-full overflow-hidden">
       <MapExplore />
     </main>
   );

@@ -456,8 +456,8 @@ export default function RestaurantDetailModal({
   if (!isOpen || !restaurant) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm sm:p-4">
+      <div className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl sm:max-h-[90vh]">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full text-slate-600 hover:text-rose-500 transition-colors shadow-sm"
@@ -466,16 +466,16 @@ export default function RestaurantDetailModal({
         </button>
 
         {/* Hero Image */}
-        <div className="relative h-64 sm:h-80 w-full overflow-hidden">
+        <div className="relative h-56 w-full overflow-hidden sm:h-80">
           <img
             src={restaurant.imageUrl || "/assets/images/AI.png"}
             alt={restaurant.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 text-white">
-            <h2 className="text-3xl font-bold mb-2">{restaurant.name}</h2>
-            <div className="flex items-center gap-2">
+          <div className="absolute bottom-4 left-4 right-4 text-white sm:bottom-6 sm:left-6 sm:right-6">
+            <h2 className="mb-2 text-2xl font-bold leading-tight sm:text-3xl">{restaurant.name}</h2>
+            <div className="flex flex-wrap items-center gap-2">
               <div className="flex items-center bg-yellow-400 px-2 py-0.5 rounded-full text-xs font-bold text-black">
                 <Star className="w-3 h-3 fill-current mr-1" />
                 {restaurant.rating}
@@ -487,7 +487,7 @@ export default function RestaurantDetailModal({
           </div>
         </div>
 
-        <div className="p-6 sm:p-8 space-y-8">
+        <div className="space-y-8 p-4 sm:p-8">
           {/* Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="space-y-4">

@@ -592,10 +592,10 @@ export default function ChatInterface({
                 AI
               </div>
             </div>
-            <div className="glass rounded-2xl px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="text-slate-600">{loadingStage}</span>
-                <span className="flex items-center gap-1">
+            <div className="glass min-w-0 max-w-[calc(100vw-5.5rem)] rounded-2xl px-4 py-3">
+              <div className="flex min-w-0 items-center gap-2">
+                <span className="min-w-0 truncate text-slate-600">{loadingStage}</span>
+                <span className="flex shrink-0 items-center gap-1">
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-coral" />
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-flame [animation-delay:120ms]" />
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-brand-lagoon [animation-delay:240ms]" />
