@@ -47,6 +47,26 @@ export type ApiRestaurant = {
   lng?: number;
 };
 
+function resolveAssignedMeal(
+  assignedMeal: string | undefined | null,
+  meals: unknown
+): string | undefined {
+  const normalizedAssigned = String(assignedMeal || "").trim();
+  if (!normalizedAssigned) return undefined;
+
+  if (normalizedAssigned.toLowerCase() !== "any") {
+    return normalizedAssigned;
+  }
+
+  if (!Array.isArray(meals)) return undefined;
+
+  const firstMeal = meals
+    .map((meal) => String(meal || "").trim())
+    .find(Boolean);
+
+  return firstMeal;
+}
+
 export function convertToGeoJSON(restaurants: ApiRestaurant[]) {
   const getStyle = (types?: string[]) => {
     const typeStr = types?.join(" ") || "";
@@ -108,6 +128,12 @@ export const buildRestaurants = (items: any[]): Restaurant[] =>
 
     const priceValue = item.avg_price !== undefined ? item.avg_price : item.price;
 
+    const meals = item.meals ?? [];
+    const assignedMeal = resolveAssignedMeal(
+      item.meal || item.assigned_meal || item.assignedMeal,
+      meals
+    );
+
     return {
       id: item.id ?? `${name}-${index}`,
 
@@ -123,9 +149,9 @@ export const buildRestaurants = (items: any[]): Restaurant[] =>
 
       semanticText: item.semantic_text || item.semanticText || "Chưa có mô tả.",
 
-      meals: item.meals ?? [],
-      meal: item.meal || item.assigned_meal || item.assignedMeal,
-      assignedMeal: item.meal || item.assigned_meal || item.assignedMeal,
+      meals,
+      meal: assignedMeal,
+      assignedMeal,
 
       warnings: item.warnings ?? [],
       notes: item.notes ?? [],
@@ -187,6 +213,7 @@ export function inferMealFromRestaurant(item: ApiRestaurant, refDate?: Date): st
 export function formatMealDisplay(meal: string | undefined | null): string {
   if (!meal) return "";
   const m = meal.trim().toLowerCase();
+  if (m === "any") return "";
   if (m === "xế") return "Bữa phụ";
   // Capitalize first letter, rest lowercase
   return meal.charAt(0).toUpperCase() + meal.slice(1).toLowerCase();

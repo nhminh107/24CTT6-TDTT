@@ -21,7 +21,7 @@ type SidebarNavProps = {
   onOpenHealthProfile: () => void;
   onOpenProfileSettings: () => void;
   onOpenLocationPrompt?: () => void;
-  onTabChange?: (tab: "itinerary" | "detail" | "map") => void;
+  onTabChange?: (tab: "itinerary" | "detail") => void;
   chatHistory?: ChatSession[];
   currentChatId?: string | null;
   onNewChat?: () => void;

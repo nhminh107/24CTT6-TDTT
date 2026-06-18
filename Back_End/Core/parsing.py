@@ -54,19 +54,18 @@ class LLMParser():
         {system_context}
 
         HOW TO USE CONTEXT & HISTORY (INHERITANCE RULES):
-        - ALWAYS use CHAT HISTORY and SYSTEM CONTEXT to understand short, vague, or follow-up prompts.
-        - CONTEXT MERGING & INHERITANCE: If the user adds a filter or constraint (e.g., "Ở Quận 1", "Rẻ thôi", "Không cay") or requests an alternative (e.g., "Khác", "Đổi quán") to a search started in previous messages, you MUST INHERIT the ENTIRE previous search intent (including num_meals, location_pref, dish, type, semantic_query) and only update the specified field.
-        - If the user previously requested a multi-meal itinerary (e.g., 3 meals), any follow-up adjustment (like "rẻ hơn") MUST maintain the same number of meals and types unless they explicitly change it.
-        - Example:
-            * History: "Tìm quán mì cay lãng mạn ở Quận 1"
-            * Current: "Rẻ hơn chút"
-            * Result: dish="mì cay", semantic_query="lãng mạn", location_pref="Quận 1, TP.HCM", budget=<smaller_value>, num_meals=1.
-        - Example 2 (Itinerary):
-            * History: "Lên lịch ăn cả ngày hôm nay" -> System suggested 3 meals.
-            * Current: "Đổi quán khác rẻ hơn"
-            * Result: wants_alternative=true, feedback_reason="expensive", num_meals=3, meals_detail=[inherited meals from history].
-        - Set "wants_alternative" to true if they express dissatisfaction or want another option.
-        - Cross-reference the query with the contexts to identify the exact "target_shop_id" they are referring to.
+        - Use CHAT HISTORY and SYSTEM CONTEXT only when the current prompt is clearly contextual.
+        - Do NOT inherit fields by default. A prompt with a concrete new dish/type/cuisine and no reference words is a standalone new search.
+        - Standalone new search: extract only from the current prompt. Do NOT inherit location_pref, meal, target_shop_id, dish, type, or semantic_query from history.
+        - Contextual follow-up: the prompt modifies, rejects, compares, or refers to previous results/context. In this case, inherit only the missing fields needed to preserve the user's previous intent.
+        - Treat the prompt as contextual if it contains signals like:
+          * rejection/dislike: "không thích", "không muốn", "không ăn", "né", "tránh", "đừng", "bỏ", "loại"
+          * alternative/change: "đổi", "khác", "quán khác", "thay", "rẻ hơn", "gần hơn", "ngon hơn"
+          * reference words: "quán này", "quán đó", "chỗ này", "ở đó", "như trên", "vừa rồi", "mấy quán đó"
+          * adjustment/comparison: "đắt quá", "xa quá", "không hợp", "không đúng món", "không đúng vibe"
+        - If the user previously requested a multi-meal itinerary, a contextual adjustment must maintain the same number of meals unless the user explicitly changes it.
+        - Set "wants_alternative" to true if the user expresses dissatisfaction, rejects a previous suggestion, or asks for another option.
+        - Only set "target_shop_id" when the current prompt explicitly refers to a previous restaurant using reference words or a restaurant name from SYSTEM CONTEXT. For standalone new searches, target_shop_id must be null.
         """
 
         prompt = f"""
@@ -76,21 +75,47 @@ class LLMParser():
         Extraction Rules:
         1. "budget": (Integer) Total average budget per person. Convert slang/text to numbers (e.g., "1 củ" -> 1000000, "trăm rưỡi" -> 150000). Return null if not mentioned.
         2. "num_meals": (Integer) Determine the number of meals. 
-           - If not mentioned in the current prompt, INHERIT from CHAT HISTORY if a multi-meal itinerary was previously discussed.
+           - If not mentioned in the current prompt, INHERIT from CHAT HISTORY only when the current prompt is contextual.
            - Examples: "ăn sáng" -> 1, "cả ngày" -> 3, "nửa ngày" -> 2.
            - Only default to 1 when it's a completely new, single-meal request.
-        3. "location_pref": (String) Specific area. ALWAYS inherit from CHAT HISTORY if not mentioned in the current prompt. Try to append city name (e.g., "Quận 1, TP.HCM").
-        4. "shu": (Integer) Spiciness level (1-5). Inherit if applicable.
+        3. "location_pref": (String|null) Specific area. Append city name when possible (e.g., "Quận 1, TP.HCM").
+           - For standalone new searches, return null unless the current prompt explicitly mentions a location.
+           - For contextual follow-ups, inherit location_pref only if the prompt refers to prior context or only adds a constraint.
+        4. "shu": (Integer|null) Spiciness level (1-5). Inherit only for contextual follow-ups. Return null if not mentioned for standalone searches.
         5. "wants_alternative": (Boolean) Set to true if the user wants to change the shop, find another option, or expresses dislike.
-        6. "feedback_reason": (String) MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating".
+        6. "feedback_reason": (String|null) MUST ONLY choose from: "expensive", "far", "unhealthy", "not_style", "low_rating". If wants_alternative=false, feedback_reason must be null.
         7. "meals_detail": (Array of Objects) **The array length must match "num_meals"**.
-            - If `wants_alternative` is true or it's a follow-up, you MUST populate this array by inheriting the meal types (sáng, trưa, tối...) and dishes/types from the previous turns in history.
+            - If `wants_alternative` is true or it is a contextual follow-up, populate this array by inheriting only the missing meal types/dishes/types from previous turns.
+            - If it is a standalone new search, do NOT inherit meal, dish, type, or semantic_query from history.
+            - Do NOT infer meal from current time or history for a standalone search. If the user does not explicitly mention "ăn sáng", "ăn trưa", "ăn tối", "ăn xế", or "ăn khuya", use meal="any".
+            - Dish/Menu vs Semantic separation:
+                * "dish" is ONLY a concrete food or drink item, e.g. "bún bò", "cơm tấm", "ốc", "trà sữa".
+                * "semantic_query" is ONLY atmosphere, style, taste, occasion, or restaurant vibe, e.g. "lãng mạn", "yên tĩnh", "view đẹp", "gia đình", "sang trọng".
+                * NEVER put concrete dish names into semantic_query.
+                * If user says "bún bò lãng mạn", output dish="bún bò" and semantic_query="lãng mạn".
+                * If user only asks for a vibe without a concrete dish, output dish=null and semantic_query=<that vibe>.
+            - Negative food constraints:
+                * If the user says they do NOT like/want/eat a food, do NOT set that rejected food as dish.
+                * Treat it as contextual rejection if there is prior context; preserve the previous dish/type/meal/location only if needed.
+                * Put the rejected food into semantic_query as "exclude: <food>" only when no dedicated exclusion field exists.
             - Fields:
-                - "meal": (String) Required. MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya".
-                - "type": (Array of Strings) (MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh").
-                - "semantic_query": (String) Flavor profiles, atmosphere, or generic terms like "ăn vặt".
-                - "dish": (String) Specific food item.
-        8. "target_shop_id": (String) The ID of the specific restaurant discussed, resolved from SYSTEM CONTEXT.
+                - "meal": (String) MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya", "any". Use "any" if no meal is explicitly mentioned.
+                - "type": (Array of Strings) (**MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"**).
+                - "semantic_query": (String|null) Atmosphere/style/taste/occasion/vibe only. Do not include dish names.
+                - "dish": (String|null) Concrete food or drink item only.
+        8. "target_shop_id": (String|null) The ID of the specific restaurant discussed, resolved from SYSTEM CONTEXT only when the current prompt explicitly refers to it.
+
+        Examples:
+        - Current: "Tìm quán bún bò"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "any", "type": ["Quán Việt"], "semantic_query": null, "dish": "bún bò"}}], target_shop_id=null.
+        - Current: "Tìm quán bún bò lãng mạn ở Quận 1"
+          Output: location_pref="Quận 1, TP.HCM", meals_detail=[{{"meal": "any", "type": ["Quán Việt"], "semantic_query": "lãng mạn", "dish": "bún bò"}}].
+        - Current: "Tối nay ăn bún bò"
+          Output: meals_detail=[{{"meal": "tối", "type": ["Quán Việt"], "semantic_query": null, "dish": "bún bò"}}].
+        - Current: "Rẻ hơn chút"
+          Output: contextual follow-up; inherit previous dish/location/meal as needed, wants_alternative=true, feedback_reason="expensive".
+        - Current: "Tôi không thích ăn heo quay"
+          Output: contextual rejection if prior context exists; do NOT set dish="heo quay"; inherit previous intent if needed; semantic_query may contain "exclude: heo quay".
 
         User Input (in Vietnamese): "{user_prompt}"
         Output JSON:

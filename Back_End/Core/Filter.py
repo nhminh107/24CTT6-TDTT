@@ -343,6 +343,7 @@ class RestaurantFilter:
             return result_dict
 
         meal_name_map = {
+            'any': ['sáng', 'trưa', 'xế', 'chiều', 'tối', 'khuya', 'đêm'],
             'sáng': ['sáng'],
             'trưa': ['trưa'],
             'xế': ['xế', 'chiều', 'trưa', 'tối'],
