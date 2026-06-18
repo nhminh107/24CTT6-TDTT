@@ -71,6 +71,7 @@ _MEDICAL_AVOIDANCE_KEYWORDS: re.Pattern = re.compile(
     r'bac si|bac si dan|bac si khuyen|bac si bao|'
     r'phai kieng|nen kieng|can kieng|nen tranh|phai tranh|'
     r'phai ne|nen ne|'
+    r'di ung|man ngua|doc hai|nguon doc|' # <-- BỔ SUNG "di ung" VÀO ĐÂY
     r'tieu chay|day bung|kho tieu|buon non|non|'
     r'dau bao tu|dau da day|viem da day|loet da day|'
     r'viem loet|roi loan tieu hoa|he tieu hoa kem|'
@@ -78,7 +79,6 @@ _MEDICAL_AVOIDANCE_KEYWORDS: re.Pattern = re.compile(
     r'yeu da day|da day yeu|bao tu yeu|bung da yeu|bung yeu'
     r')\b'
 )
-
 # ---------------------------------------------------------------------------
 # ⑩ Exclusion phrases – chỉ dùng khi câu KHÔNG có từ y tế/kiêng cữ
 # ---------------------------------------------------------------------------
@@ -88,7 +88,32 @@ _EXCLUSION_PHRASES: frozenset[str] = frozenset({
     "them an", "them ag", "khoai an", "ghoai an", "hao an",
     "muon uong", "mun uong", "muon un", "mun un",
     "thich uong", "thik uong", "them uong",
-    "tim quan", "kiem quan", "dat ban", "goi mon", "muon thu", "thich thu"
+    "tim quan", "kiem quan", "dat ban", "goi mon", "muon thu", "thich thu",
+    
+    # --- NHÓM DỰ ĐỊNH / KẾ HOẠCH (Giống "định đi ăn") ---
+    "dinh di an", "dinh di ag", "dinh an", "dinh ag",
+    "tinh di an", "tinh di ag", "tinh an", "tinh ag",       # tính đi ăn / tính ăn
+    "sap di an", "sap di ag", "sap an", "sap ag",           # sắp đi ăn / sắp ăn
+    "chuan bi an", "chuan bi ag", "cb an", "cb ag",         # chuẩn bị ăn (cb ăn)
+    "ke hoach an", "ke hoach ag",                           # kế hoạch ăn
+
+    # --- NHÓM RỦ RÊ / TỤ TẬP / HẸN HÒ ---
+    "ru di an", "ru di ag", "ru nhau an", "ru nhau ag",     # rủ đi ăn / rủ nhau ăn
+    "hen di an", "hen di ag", "hen nhau an", "hen nhau ag", # hẹn đi ăn / hẹn nhau ăn
+    "tu tap an", "tu tap ag", "tu tap uong",                # tụ tập ăn / tụ tập uống
+    "lien hoan an", "lien hoan ag",                         # liên hoan ăn
+    "ru re an", "ru re ag",                                 # rủ rê ăn
+
+    # --- NHÓM NHU CẦU PHÁT SINH TỨC THỜI ---
+    "can di an", "can di ag", "can an", "can ag",           # cần đi ăn / cần ăn
+    "qua di an", "qua di ag",                               # qua đi ăn (Ví dụ: "Qua đi ăn hải sản...")
+    "ghe di an", "ghe an", "ghe ag",                        # ghé đi ăn / ghé ăn
+    "ra di an", "ra an", "ra ag",                           # ra đi ăn / ra ăn (Ví dụ: "Ra ăn hải sản...")
+    "xuong di an", "xuong an",                              # xuống đi ăn / xuống ăn
+    
+    # --- NHÓM THỬ NGHIỆM ĐỒ ĂN MỚI ---
+    "trai nghiem an", "trai nghiem ag",                     # trải nghiệm ăn
+    "an thu", "ag thu", "uong thu"                          # ăn thử / uống thử
 })
 
 _EXCLUSION_WINDOW: int = 40
@@ -333,10 +358,11 @@ class HealthRiskDetector:
         pattern_1 = "|".join(re.escape(w) for w in sorted(list(first_words), key=len, reverse=True))
         pattern_2 = "|".join(re.escape(w) for w in sorted(list(second_words), key=len, reverse=True))
 
+        # ĐOẠN MỚI: Ngăn không cho Exclusion Scope nhảy qua các từ khai báo bệnh/dị ứng lý thuyết
         exclusion_pattern = (
             r'(?<!\bkhong\b )(?<!\bchang\b )(?<!\bchua\b )'
             r'\b(' + pattern_1 + r')\b'
-            r'(?:\s+\w+){0,4}\s+\b(' + pattern_2 + r')\b'
+            r'(?:(?!\b(?:bi|co|nhung|mac)\b)\s+\w+){0,4}\s+\b(' + pattern_2 + r')\b'
         )
 
         for ex_match in re.finditer(exclusion_pattern, normalized):
@@ -374,7 +400,7 @@ class HealthRiskDetector:
             # Nếu không có ngữ cảnh y tế, áp dụng exclusion scope
             # nhưng chỉ đến hết mệnh đề hiện tại (không kéo đến hết chuỗi)
             ex_end = clause_end
-
+           
             # Bảo vệ ngữ cảnh: Bẻ gãy nếu xuất hiện "NHUNG"
             sub_segment = normalized[ex_start:ex_end]
             but_match = re.search(r'\b(nhung)\b', sub_segment)

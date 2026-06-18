@@ -181,6 +181,114 @@ class TestExclusionContext(_NegationDetectorTest):
             detected_risks, [], 
             f"Thất bại! Câu muốn ăn chủ động bị gắn nhầm tag: {detected_risks}"
         )
+    def test_prompt_mau_7(self):
+        """Khách tìm lộ trình ăn cả ngày: ăn sáng, cà phê, ăn trưa -> Phải pass."""
+        prompt = "Gợi ý lộ trình ăn uống cả ngày ở Đà Nẵng: ăn sáng mì quảng ngon, quán cà phê sống ảo, ăn trưa bánh tráng cuốn."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_8(self):
+        """Khách tìm combo ăn xế nhẹ nhàng + trà sữa tụ tập -> Phải pass."""
+        prompt = "Tìm quán ăn xế bánh tráng trộn hoặc chân gà sả tắc, xong có quán nước nào ngồi buôn chuyện được gần đây không."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_9(self):
+        """Tìm quán ăn đêm sau khi đi quầy/đi pub về quanh Quận 1 -> Phải pass."""
+        prompt = "Tầm này 2h đêm rồi muốn tìm quán ăn khuya, cháo sườn hoặc lẩu tôm mực quanh bùi viện quận 1 giá bình dân."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_10(self):
+        """Gõ sai chính tả 'giá cả phải chăng' thành 'phải trăng', 'mún ag' -> Phải pass."""
+        prompt = "mún ag hải sản tươi sống ở bình thạnh, giá cả phải trăng, không gian sạch sẽ thoáng mát"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_11(self):
+        """Sử dụng từ lóng 'giá rổ', 'cành', 'ví lướt' -> Phải pass."""
+        prompt = "Tìm quán nước view hồ tây chill chill, giá rổ tầm 50 cành đổ lại thui nha, ví dạo này đang xẹp."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_12(self):
+        """Viết tắt, không viết hoa, dùng từ 'thik' -> Phải pass."""
+        prompt = "mình thik uong trà sữa nướng hoặc trà trái cây mát lạnh, tìm quán bên q3 ngân sách dưới 100k"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_13(self):
+        """Tìm quán ăn gia đình có phòng riêng, yên tĩnh để nói chuyện -> Phải pass."""
+        prompt = "Tôi muốn tìm nhà hàng hải sản có phòng VIP riêng tư, không gian ấm cúng, sang trọng để ăn gia đình cuối tuần."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_14(self):
+        """Tìm quán nước/quán ăn mang được chó mèo theo (Pet-friendly) -> Phải pass."""
+        prompt = "Kiếm quán cà phê hoặc tiệm trà bánh nào không gian thoáng mát, cho mang thú cưng vào ở khu vực Quận 7."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_15(self):
+        """Nắng nóng cần tìm quán có máy lạnh/điều hòa chạy phèn phẹt -> Phải pass."""
+        prompt = "Trời nóng quá cần tìm quán lẩu thái hoặc cua sốt có điều hòa mát lạnh, không gian rộng rãi sạch sẽ ở Tân Bình."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_16(self):
+        """Đặt tiệc sinh nhật đông người, cần quầy line buffet -> Phải pass."""
+        prompt = "Cần tìm quán buffet hải sản tầm giá 400k một người, có chỗ decor tổ chức sinh nhật cho nhóm 15 người."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_17(self):
+        """Tìm quán nhậu bình dân, vỉa hè để uống bia với bạn bè -> Phải pass."""
+        prompt = "Tìm quán ốc vỉa hè hoặc quán nhậu hải sản bình dân ở quận 4, mồi ngon giá rẻ để ngồi lai rai với mấy chiến hữu."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_18(self):
+        """Tìm nhà hàng cao cấp Fine Dining (Khuyết giá tiền nhưng có phân khúc) -> Phải pass."""
+        prompt = "Gợi ý nhà hàng hải sản phong cách Âu cao cấp, phục vụ món đắt tiền, không gian lãng mạn thích hợp cầu hôn."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_19(self):
+        """Tìm quán Sashimi/Hàu sống kiểu Nhật -> Phải pass (Không được kích hoạt nhầm tag đồ sống)."""
+        prompt = "Tôi muốn ăn sashimi hải sản tươi sống và sushi chuẩn vị Nhật, quán có không gian phòng chiếu tatami ở Quận 1."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_20(self):
+        """Tìm quán ăn cay kiểu Trung Quốc/Tứ Xuyên -> Phải pass."""
+        prompt = "Tìm quán lẩu cá cay Tứ Xuyên hoặc tôm hùm đất sốt cay kiểu Trung Quốc, không gian náo nhiệt, giá tầm trung."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_21(self):
+        """Tìm đồ ăn Hàn Quốc kèm không gian chụp ảnh check-in -> Phải pass."""
+        prompt = "Kiếm quán lẩu bạch tuộc cay kiểu Hàn Quốc có không gian decor hiện đại mạn Hoàn Kiếm, ngân sách tầm 300k."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_22(self):
+        """Khách hỏi xin review chất lượng nguyên liệu trước khi đặt món -> Phải pass."""
+        prompt = "Nhìn menu cua sốt và tôm hùm bên mình ngon quá, không biết hải sản là đồ tươi sống bắt tại hồ hay đồ đông lạnh vậy shop?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_23(self):
+        """Khách phân vân giữa hai lựa chọn, hỏi ý kiến bot -> Phải pass."""
+        prompt = "Cuối tuần tụi mình định đi ăn hải sản, đang phân vân giữa quán vỉa hè Quận 4 với nhà hàng Quận 7, bên nào hợp lý hơn?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_24(self):
+        """Tìm quán ăn theo định vị/bán kính 'gần đây' mà không ghi rõ địa danh -> Phải pass."""
+        prompt = "Xung quanh vị trí của tôi có tiệm bánh ngọt hay quán nước nào thoáng mát, yên tĩnh để ngồi làm việc không?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_25(self):
+        """Tìm quán ăn theo trào lưu, món đang trend trên mạng -> Phải pass."""
+        prompt = "Tìm giùm mình mấy quán bán gỏi đu đủ ba khía hải sản sốt thái đang hot rần rần trên mạng, tiêu chí sạch sẽ."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
     def test_app_tim_quan_review_pass_test(self):
         """Khách tìm quán theo review, không có rủi ro -> Phải pass."""
         # Tìm quán view đẹp, đi hẹn hò
