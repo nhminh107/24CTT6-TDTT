@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { AlertTriangle, SendHorizontal, Sparkles, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AlertTriangle, ImagePlus, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
 import RestaurantMiniCard from "@/components/ui/RestaurandMiniCard";
+import { getApiV1BaseUrl } from "@/lib/apiBase";
 import { Restaurant, ApiRestaurant, buildRestaurants } from "@/lib/utils";
 
 type Message = {
@@ -19,10 +20,10 @@ type Message = {
   };
 };
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://api.bmi-foodtour.io.vn";
+const API_V1_BASE_URL = getApiV1BaseUrl();
+const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+const MAX_MULTIMODAL_IMAGE_SIZE = 5 * 1024 * 1024;
 
 type ApiResponse = {
   status?: string;
@@ -76,6 +77,9 @@ export default function ChatInterface({
   const [loadingStage, setLoadingStage] = useState("Đang hiểu yêu cầu của bạn");
   const [showLoginSuggestion, setShowLoginSuggestion] = useState(false);
   const [internalInput, setInternalInput] = useState("");
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [selectedImagePreview, setSelectedImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [errorModal, setErrorModal] = useState({
     open: false,
@@ -93,6 +97,14 @@ export default function ChatInterface({
   );
 
   const input = inputProp ?? internalInput;
+
+  useEffect(() => {
+    return () => {
+      if (selectedImagePreview) {
+        URL.revokeObjectURL(selectedImagePreview);
+      }
+    };
+  }, [selectedImagePreview]);
 
   useEffect(() => {
     if (!isLoading) {
@@ -123,6 +135,84 @@ export default function ChatInterface({
     if (inputProp === undefined) {
       setInternalInput(value);
     }
+  };
+
+  const setChatError = (code: string, message: string) => {
+    setErrorModal({
+      open: true,
+      code,
+      message
+    });
+  };
+
+  const clearSelectedImage = () => {
+    if (selectedImagePreview) {
+      URL.revokeObjectURL(selectedImagePreview);
+    }
+    setSelectedImageFile(null);
+    setSelectedImagePreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleImageSelect = (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      setChatError("IMAGE_TYPE", "Vui lòng chọn một tệp ảnh hợp lệ.");
+      return;
+    }
+
+    if (file.size > MAX_MULTIMODAL_IMAGE_SIZE) {
+      setChatError("IMAGE_SIZE", "Ảnh gửi kèm không được vượt quá 5MB.");
+      return;
+    }
+
+    if (selectedImagePreview) {
+      URL.revokeObjectURL(selectedImagePreview);
+    }
+    setSelectedImageFile(file);
+    setSelectedImagePreview(URL.createObjectURL(file));
+  };
+
+  const uploadMultimodalImage = async (file: File) => {
+    if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
+      throw new Error("Chưa cấu hình Cloudinary để tải ảnh lên.");
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    if (!response.ok || !data.secure_url) {
+      throw new Error(data.error?.message || "Không thể tải ảnh lên.");
+    }
+
+    return data.secure_url as string;
+  };
+
+  const transformMultimodalPrompt = async (prompt: string, imageUrl: string) => {
+    const response = await fetch(`${API_V1_BASE_URL}/multimodal/transform`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        prompt,
+        image_url: imageUrl,
+      }),
+    });
+
+    const data = await response.json().catch(() => null);
+    if (!response.ok || data?.status !== "success" || !data?.transformed_prompt) {
+      throw new Error(data?.detail || data?.message || "Không thể phân tích ảnh.");
+    }
+
+    return data.transformed_prompt as string;
   };
 
   const buildAssistantMessage = (response: ApiResponse) => {
@@ -194,7 +284,7 @@ export default function ChatInterface({
     setIsLoading(true);
     setLoadingStage("Đang hiểu yêu cầu của bạn");
     try {
-      const response = await fetch(`${API_BASE_URL}/api/v1/prompt`, {
+      const response = await fetch(`${API_V1_BASE_URL}/prompt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -323,7 +413,8 @@ export default function ChatInterface({
     if (!input.trim() || isLoading) {
       return;
     }
-    const prompt = input.trim();
+    const originalPrompt = input.trim();
+    let prompt = originalPrompt;
     const messageId = Date.now().toString();
 
     let activeChatId = chatId;
@@ -336,7 +427,9 @@ export default function ChatInterface({
     const newUserMessage: Message = {
       id: messageId,
       role: "user",
-      content: prompt,
+      content: selectedImageFile
+        ? `${originalPrompt}\n\n[Đã đính kèm ảnh - tính năng beta, OCR có thể sai]`
+        : originalPrompt,
       isCompact: false
     };
 
@@ -350,8 +443,33 @@ export default function ChatInterface({
     onMessagesChange?.(nextMessages);
     
     setInputValue("");
-    // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
-    callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
+
+    try {
+      if (selectedImageFile) {
+        setIsLoading(true);
+        setLoadingStage("Đang tải ảnh và đọc nội dung beta");
+        const imageUrl = await uploadMultimodalImage(selectedImageFile);
+        setLoadingStage("Đang chuyển ảnh thành yêu cầu tìm kiếm");
+        prompt = await transformMultimodalPrompt(originalPrompt, imageUrl);
+        clearSelectedImage();
+      }
+
+      // Truyền danh sách mới nhất vào hàm API để tránh bị mất tin nhắn khi AI trả lời
+      callRestaurantApi(prompt, activeChatId ?? null, nextMessages);
+    } catch (error: any) {
+      setIsLoading(false);
+      setChatError("MULTIMODAL", error?.message || "Không thể xử lý ảnh gửi kèm.");
+      onMessagesChange?.([
+        ...nextMessages,
+        {
+          id: `${messageId}-error`,
+          role: "assistant",
+          content: "Mình chưa xử lý được ảnh này. Bạn có thể thử ảnh rõ hơn hoặc gửi yêu cầu bằng chữ trước nhé.",
+          restaurants: [],
+          isCompact: false
+        }
+      ]);
+    }
   };
 
   return (
@@ -627,8 +745,53 @@ export default function ChatInterface({
         </div>
       )}
 
+      {selectedImagePreview && (
+        <div className="flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50/80 p-3 text-xs text-amber-800">
+          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-white">
+            <img
+              src={selectedImagePreview}
+              alt="Ảnh gửi kèm"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-bold">Ảnh sẽ được phân tích ở chế độ beta</p>
+            <p className="mt-0.5 text-amber-700">
+              OCR/nhận diện món có thể sai nếu ảnh mờ hoặc menu khó đọc. Bạn vẫn cần nhập mô tả bằng chữ.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={clearSelectedImage}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-amber-700 shadow-sm transition hover:text-rose-600"
+            disabled={isLoading}
+          >
+            <X size={15} />
+          </button>
+        </div>
+      )}
+
       {/* Input Area */}
       <div className="flex items-center gap-2 rounded-full border border-white/60 bg-white/80 px-3 py-2.5 shadow-soft backdrop-blur">
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) handleImageSelect(file);
+          }}
+        />
+        <button
+          type="button"
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isLoading}
+          title="Đính kèm ảnh menu hoặc món ăn"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:border-brand-coral hover:text-brand-coral disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <ImagePlus size={16} />
+        </button>
         <input
           type="text"
           value={input}
