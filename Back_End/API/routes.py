@@ -30,6 +30,7 @@ from Back_End.Core.auth_handler import get_db
 from Back_End.Core.user_manager import UserManager
 from Back_End.Core.itinerary_manager import ItineraryManager
 from Back_End.Core.health_mapping import HealthRiskDetector
+from Back_End.Core.multimodal_prompt import MultimodalPromptTransformer
 from typing import Literal
 
 # Trả về giờ UTC có chứa thông tin múi giờ UTC rõ ràng (timezone-aware)
@@ -297,6 +298,10 @@ class UserRequest(BaseModel):
     user_id: str
     chat_id: Optional[str] = None # ID session chat hiện tại
 
+class MultimodalTransformRequest(BaseModel):
+    prompt: str
+    image_url: str
+
 class ItinerarySelectRequest(BaseModel):
     user_id: str
     meal: str
@@ -315,6 +320,31 @@ class ItineraryImportRequest(BaseModel):
     share_id: str
 
 #Endpoints xử lý chính
+
+@router.post("/multimodal/transform")
+async def transform_multimodal_prompt(request: MultimodalTransformRequest):
+    text_prompt = request.prompt.strip()
+    image_url = request.image_url.strip()
+
+    if not text_prompt:
+        raise HTTPException(status_code=400, detail="Bạn cần nhập yêu cầu bằng chữ khi gửi kèm ảnh.")
+    if not image_url:
+        raise HTTPException(status_code=400, detail="Thiếu ảnh để phân tích.")
+
+    try:
+        transformer = MultimodalPromptTransformer()
+        result = await transformer.transform(text_prompt, image_url)
+        return {
+            "status": "success",
+            "transformed_prompt": result["transformed_prompt"],
+            "image_summary": result.get("image_summary"),
+            "confidence": result.get("confidence"),
+            "beta_notice": "Tính năng phân tích ảnh đang ở giai đoạn beta. OCR/nhận diện món có thể sai nếu ảnh mờ hoặc menu khó đọc."
+        }
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Không thể phân tích ảnh: {str(exc)}")
 
 @router.get("/itinerary/{user_id}")
 async def get_itinerary(user_id: str):
