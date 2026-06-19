@@ -52,9 +52,9 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                className="glass group rounded-3xl p-6 shadow-soft transition hover:-translate-y-2 hover:shadow-glow"
+                className="glass group rounded-2xl p-5 shadow-sm transition hover:-translate-y-2 hover:shadow-glow lg:rounded-3xl lg:p-6 lg:shadow-soft"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-teal to-brand-lagoon text-white">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-lagoon text-white lg:h-12 lg:w-12 lg:bg-gradient-to-br lg:from-brand-teal lg:to-brand-lagoon">
                   <Icon size={22} />
                 </div>
                 <h3 className="mt-6 font-display text-xl font-semibold text-slate-900">

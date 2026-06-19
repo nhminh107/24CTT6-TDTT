@@ -171,20 +171,20 @@ function LoginContent() {
                   <MapPin size={24} />
                 </span>
                 <div className="flex flex-col text-left leading-tight">
-                  <span className="font-display text-2xl font-bold tracking-tight text-slate-900">
+                  <span className="font-display text-2xl font-bold tracking-tight text-white lg:text-slate-900">
                     BMI
                   </span>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/75 lg:text-slate-500">
                     Bite Mapping Intelligent
                   </span>
                 </div>
               </Link>
-              <h1 className="text-4xl font-bold tracking-tight text-slate-900 lg:text-5xl">
+              <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-sm lg:text-5xl lg:text-slate-900 lg:drop-shadow-none">
                 {isForgotPassword 
                   ? "Khôi phục mật khẩu" 
                   : isLogin ? "Chào mừng trở lại" : "Tạo tài khoản mới"}
               </h1>
-              <p className="mt-4 text-slate-500 text-lg">
+              <p className="mt-4 text-lg font-medium text-white/85 lg:text-slate-500">
                 {isForgotPassword
                   ? "Nhập email của bạn để nhận liên kết đặt lại mật khẩu"
                   : isLogin 
@@ -247,7 +247,7 @@ function LoginContent() {
                       <input
                         type="email"
                         placeholder="name@example.com"
-                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
+                        className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-400 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
@@ -288,7 +288,7 @@ function LoginContent() {
                           <input
                             type="text"
                             placeholder="Nguyễn Văn A"
-                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
+                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-400 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
                             onChange={(e) => setName(e.target.value)}
                             required
                           />
@@ -303,7 +303,7 @@ function LoginContent() {
                         <input
                           type="email"
                           placeholder="name@example.com"
-                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
+                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-400 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
                           onChange={(e) => setEmail(e.target.value)}
                           required
                         />
@@ -328,7 +328,7 @@ function LoginContent() {
                         <input
                           type="password"
                           placeholder="••••••••"
-                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
+                          className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-400 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
                           onChange={(e) => setPassword(e.target.value)}
                           required
                         />
@@ -343,7 +343,7 @@ function LoginContent() {
                           <input
                             type="password"
                             placeholder="••••••••"
-                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
+                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-4 pl-12 pr-4 text-slate-900 placeholder:text-slate-400 transition-all focus:border-brand-coral focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-coral/10"
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                           />

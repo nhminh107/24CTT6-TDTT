@@ -63,7 +63,7 @@ export default function TestimonialMarquee() {
               {marqueeReviews.map((review, index) => (
                 <div
                   key={`${review.name}-${index}`}
-                  className="w-[350px] rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm"
+                  className="w-[min(82vw,350px)] rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm sm:w-[350px]"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-coral to-brand-flame text-white text-sm font-semibold">
