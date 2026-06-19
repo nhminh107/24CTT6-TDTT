@@ -91,6 +91,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, User, signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { authStorage } from "@/lib/auth";
+import { getApiOrigin } from "@/lib/apiBase";
 
 // 1. Định nghĩa kiểu dữ liệu mở rộng để User có chứa thuộc tính role
 export interface AuthUser extends User {
@@ -129,10 +130,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           }
 
           // Gọi API Sync để lưu vào Firestore trên Backend
-          const apiBaseUrl =
-            process.env.NEXT_PUBLIC_API_BASE_URL ||
-            process.env.NEXT_PUBLIC_API_URL ||
-            "https://api.bmi-foodtour.io.vn";
+          const apiBaseUrl = getApiOrigin();
 
           const response = await fetch(`${apiBaseUrl}/api/v1/auth/sync`, {
             method: "POST",
@@ -158,11 +156,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
           }
 
-          // 3. ĐÍNH KÈM THÊM TRƯỜNG ROLE VÀO STATE USER TOÀN CỤC
-          setUser({
-            ...firebaseUser,
-            role: userRole
-          } as AuthUser);
+          // 3. Giữ nguyên Firebase User instance để không mất getIdToken/reload.
+          (firebaseUser as AuthUser).role = userRole;
+          setUser(firebaseUser as AuthUser);
 
         } catch (error) {
           console.error("Lỗi đồng bộ người dùng:", error);

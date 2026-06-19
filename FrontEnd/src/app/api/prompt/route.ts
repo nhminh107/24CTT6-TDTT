@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
+import { getApiV1BaseUrl } from "@/lib/apiBase";
 
-const apiBaseUrl =
-  process.env.API_BASE_URL ||
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://api.bmi-foodtour.io.vn/api/v1";
+const apiBaseUrl = getApiV1BaseUrl();
 
 export async function POST(request: Request) {
   const timestamp = new Date().toISOString();

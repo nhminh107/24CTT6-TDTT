@@ -1,24 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { auth } from "@/lib/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { User, Image as ImageIcon } from "lucide-react";
+import { Upload, User } from "lucide-react";
+import { getApiOrigin } from "@/lib/apiBase";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://api.bmi-foodtour.io.vn";
+const API_BASE_URL = getApiOrigin();
+const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
+const MAX_AVATAR_SIZE = 5 * 1024 * 1024;
 
 export default function ProfileSettings() {
   const { user } = useAuth();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [avatar, setAvatar] = useState("");
   
   const [isLoading, setIsLoading] = useState(false);
+  const [isUploadingAvatar, setIsUploadingAvatar] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error", text: string } | null>(null);
 
@@ -109,6 +112,54 @@ export default function ProfileSettings() {
     }
   };
 
+  const handleAvatarUpload = async (file: File) => {
+    if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
+      setMessage({ type: "error", text: "Chưa cấu hình Cloudinary để tải ảnh lên." });
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      setMessage({ type: "error", text: "Vui lòng chọn một tệp ảnh hợp lệ." });
+      return;
+    }
+
+    if (file.size > MAX_AVATAR_SIZE) {
+      setMessage({ type: "error", text: "Ảnh đại diện không được vượt quá 5MB." });
+      return;
+    }
+
+    setIsUploadingAvatar(true);
+    setMessage(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok || !data.secure_url) {
+        throw new Error(data.error?.message || "Upload failed");
+      }
+
+      setAvatar(data.secure_url);
+      setMessage({ type: "success", text: "Tải ảnh lên thành công. Bấm Lưu thay đổi để cập nhật hồ sơ." });
+    } catch (error) {
+      console.error("Lỗi khi tải ảnh đại diện:", error);
+      setMessage({ type: "error", text: "Không thể tải ảnh lên. Vui lòng thử lại." });
+    } finally {
+      setIsUploadingAvatar(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
+
   const handleResetPassword = async () => {
     if (!email) return;
     setIsResetting(true);
@@ -186,18 +237,36 @@ export default function ProfileSettings() {
           <div className="flex-1 w-full text-center sm:text-left">
             <h3 className="text-base font-bold text-slate-800 mb-1">Ảnh đại diện</h3>
             <p className="text-xs text-slate-500 mb-4 max-w-xs mx-auto sm:mx-0">
-              Dán đường dẫn (Link URL) của ảnh vào đây để thay đổi ảnh đại diện miễn phí!
+              Chọn ảnh từ thiết bị của bạn. Hỗ trợ ảnh JPG, PNG, WebP tối đa 5MB.
             </p>
-            <div className="relative text-left">
-              <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-              <input 
-                type="text" 
-                value={avatar}
-                onChange={(e) => setAvatar(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl outline-none focus:border-brand-coral focus:ring-4 focus:ring-brand-coral/10 transition shadow-sm text-sm"
-                placeholder="https://..."
-              />
-            </div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) handleAvatarUpload(file);
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isUploadingAvatar}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-brand-coral hover:text-brand-coral disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isUploadingAvatar ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-slate-300 border-t-brand-coral rounded-full animate-spin" />
+                  Đang tải ảnh...
+                </>
+              ) : (
+                <>
+                  <Upload size={18} />
+                  Tải ảnh lên
+                </>
+              )}
+            </button>
           </div>
         </div>
 
@@ -214,7 +283,7 @@ export default function ProfileSettings() {
         <div className="pt-6 border-t border-slate-100">
           <button 
             type="submit" 
-            disabled={isLoading}
+            disabled={isLoading || isUploadingAvatar}
             className="w-full bg-gradient-to-r from-brand-coral to-brand-flame text-white font-bold py-4 rounded-2xl shadow-glow hover:opacity-90 hover:scale-[0.99] active:scale-[0.97] transition-all disabled:opacity-70 disabled:hover:scale-100 flex justify-center items-center gap-2"
           >
             {isLoading ? (
