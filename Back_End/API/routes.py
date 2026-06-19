@@ -246,7 +246,7 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
         dish = item.get("dish", "")
 
         is_snack = any(str(t).strip().lower() in snack_types for t in types)
-        if meal_key in index_map and is_snack:
+        if is_snack and meal_key in {"any", "xế", "chiều"}:
             meal_key = "xế"
 
         if meal_key in index_map:

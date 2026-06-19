@@ -88,6 +88,14 @@ class LLMParser():
             - If `wants_alternative` is true or it is a contextual follow-up, populate this array by inheriting only the missing meal types/dishes/types from previous turns.
             - If it is a standalone new search, do NOT inherit meal, dish, type, or semantic_query from history.
             - Do NOT infer meal from current time or history for a standalone search. If the user does not explicitly mention "ăn sáng", "ăn trưa", "ăn tối", "ăn xế", or "ăn khuya", use meal="any".
+            - Multi-stop splitting:
+                * If the user connects distinct eating/drinking stops with "và", "rồi", "sau đó", "kèm", create separate meals_detail items.
+                * A main meal request plus a drink/snack venue request is two stops, not one merged stop.
+                * Example meaning: "quán ăn trưa và quán nước" = one lunch stop plus one snack/drink stop.
+                * Do NOT attach "Quán nước" to meal="trưa" unless the user explicitly says the drink venue is for lunch, e.g. "quán nước cho bữa trưa".
+            - Snack/drink venue mapping:
+                * Venue types "Quán nước", "Trà sữa", "Tiệm bánh", "Ăn vặt", "cafe", "quán cà phê" should use meal="xế" when they appear as a separate stop or when no explicit main meal is attached.
+                * "quán nước", "cafe", "trà sữa" are venue types, not concrete dish names. Put them in "type", not "dish".
             - Dish/Menu vs Semantic separation:
                 * "dish" is ONLY a concrete food or drink item, e.g. "bún bò", "cơm tấm", "ốc", "trà sữa".
                 * "semantic_query" is ONLY atmosphere, style, taste, occasion, or restaurant vibe, e.g. "lãng mạn", "yên tĩnh", "view đẹp", "gia đình", "sang trọng".
@@ -112,6 +120,37 @@ class LLMParser():
           Output: location_pref="Quận 1, TP.HCM", meals_detail=[{{"meal": "any", "type": ["Quán Việt"], "semantic_query": "lãng mạn", "dish": "bún bò"}}].
         - Current: "Tối nay ăn bún bò"
           Output: meals_detail=[{{"meal": "tối", "type": ["Quán Việt"], "semantic_query": null, "dish": "bún bò"}}].
+        - Current: "Tìm quán ăn trưa và quán nước"
+          Output: location_pref=null, num_meals=2, meals_detail=[
+            {{"meal": "trưa", "type": [], "semantic_query": null, "dish": null}},
+            {{"meal": "xế", "type": ["Quán nước"], "semantic_query": null, "dish": null}}
+          ], target_shop_id=null.
+        - Current: "Tìm quán nước"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "xế", "type": ["Quán nước"], "semantic_query": null, "dish": null}}], target_shop_id=null.
+        - Current: "Tìm quán phở, cà phê rồi ăn tối hải sản"
+          Output: location_pref=null, num_meals=3, meals_detail=[
+            {{"meal": "any", "type": ["Quán Việt"], "semantic_query": null, "dish": "phở"}},
+            {{"meal": "xế", "type": ["Quán nước"], "semantic_query": null, "dish": null}},
+            {{"meal": "tối", "type": [], "semantic_query": null, "dish": "hải sản"}}
+          ], target_shop_id=null.
+        - Current: "Sáng mai ăn nhẹ, chiều uống cà phê, tối ăn lẩu"
+          Output: location_pref=null, num_meals=3, meals_detail=[
+            {{"meal": "sáng", "type": [], "semantic_query": "ăn nhẹ", "dish": null}},
+            {{"meal": "xế", "type": ["Quán nước"], "semantic_query": null, "dish": null}},
+            {{"meal": "tối", "type": [], "semantic_query": null, "dish": "lẩu"}}
+          ], target_shop_id=null.
+        - Current: "Đi với gia đình, có trẻ em, cần chỗ rộng để ăn tối"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "tối", "type": [], "semantic_query": "gia đình, có trẻ em, chỗ rộng", "dish": null}}], target_shop_id=null.
+        - Current: "Không ăn hải sản, tìm quán trưa không cay"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "trưa", "type": [], "semantic_query": "không cay, exclude: hải sản", "dish": null}}], target_shop_id=null.
+        - Current: "Ưu tiên gần hơn, giá rẻ, quán cơm trưa"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "trưa", "type": ["Quán Việt"], "semantic_query": "ưu tiên gần, giá rẻ", "dish": "cơm"}}], target_shop_id=null.
+        - Current: "Kiếm chỗ chill chill uống nước"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "xế", "type": ["Quán nước"], "semantic_query": "chill", "dish": null}}], target_shop_id=null.
+        - Current: "Làm cái kèo ăn trưa nhẹ nhẹ"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "trưa", "type": [], "semantic_query": "ăn nhẹ", "dish": null}}], target_shop_id=null.
+        - Current: "Tìm quán ngon gần đây"
+          Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "any", "type": [], "semantic_query": "ngon, gần đây", "dish": null}}], target_shop_id=null.
         - Current: "Rẻ hơn chút"
           Output: contextual follow-up; inherit previous dish/location/meal as needed, wants_alternative=true, feedback_reason="expensive".
         - Current: "Tôi không thích ăn heo quay"
