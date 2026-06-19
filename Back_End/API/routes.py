@@ -304,7 +304,7 @@ class ItinerarySelectRequest(BaseModel):
 
 class ReorderItem(BaseModel):
     id: str
-    meal: str
+    meal: Optional[str] = None
 
 class ItineraryReorderRequest(BaseModel):
     user_id: str

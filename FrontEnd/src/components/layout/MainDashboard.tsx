@@ -201,12 +201,14 @@ export default function MainDashboard() {
     }
   };
 
-  const handleReorder = async (orderedItems: { id: string, meal: string }[]) => {
+  const handleReorder = async (orderedItems: { id: string }[]) => {
     if (!user?.uid) return;
     try {
       // Optimistic update
       const mealMap = new Map(currentItinerary.map(item => [item.id, item]));
-      const newItinerary = orderedItems.map(item => ({ ...mealMap.get(item.id), meal: item.meal })).filter(item => item.id);
+      const newItinerary = orderedItems
+        .map(item => mealMap.get(item.id))
+        .filter((item): item is NonNullable<typeof item> => Boolean(item));
       setCurrentItinerary(newItinerary);
 
       const data = await itineraryApi.reorder(user.uid, orderedItems);
