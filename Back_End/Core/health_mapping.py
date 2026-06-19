@@ -66,17 +66,19 @@ _NEGATION_PHRASES: tuple[str, ...] = (
 #    và KHÔNG áp dụng exclusion scope cho phần sau chúng.
 # ---------------------------------------------------------------------------
 _MEDICAL_AVOIDANCE_KEYWORDS: re.Pattern = re.compile(
-     r'\b('
+    r'\b('
     r'kieng|ne|tranh|han che|giam thieu|'
     r'bac si|bac si dan|bac si khuyen|bac si bao|'
-    r'phai kieng|nen kieng|can kieng|nen tranh|phai tranh|'
+    r'phai kieng|nen kieng|can kieng|nen tranh|phai tranh|kieng tuyet doi|'
     r'phai ne|nen ne|'
-    r'di ung|man ngua|doc hai|nguon doc|' # <-- BỔ SUNG "di ung" VÀO ĐÂY
+    r'di ung|man ngua|doc hai|nguon doc|'
+    r'mang thai|mang bau|co bau|ba bau|sinh de|'
     r'tieu chay|day bung|kho tieu|buon non|non|'
     r'dau bao tu|dau da day|viem da day|loet da day|'
     r'viem loet|roi loan tieu hoa|he tieu hoa kem|'
     r'suc khoe kem|co van de suc khoe|'
-    r'yeu da day|da day yeu|bao tu yeu|bung da yeu|bung yeu'
+    r'yeu da day|da day yeu|bao tu yeu|bung da yeu|bung yeu|'
+    r'tieu duong|tieu duog|huyet ap|tim mach'  # <-- BỔ SUNG "tieu duong" VÀ CÁC BỆNH NỀN TẠI ĐÂY
     r')\b'
 )
 # ---------------------------------------------------------------------------
@@ -114,7 +116,25 @@ _EXCLUSION_PHRASES: frozenset[str] = frozenset({
     # --- NHÓM THỬ NGHIỆM ĐỒ ĂN MỚI ---
     "trai nghiem an", "trai nghiem ag",                     # trải nghiệm ăn
     "an thu", "ag thu", "uong thu"                          # ăn thử / uống thử
+    ,
+    "quan bia", "tiem bia", "uong bia", "quan nhau", "tiem nhau", "di nhau",
+    "nguoi ta noi",
+    "moi nguoi noi",
+    "hay noi rang",
+    "nghe noi",
+    "theo nghien cuu",
+    "theo bac si",        # "theo bác sĩ, huyết áp cao là..." (nói chung chung)
+    "noi chung",
+    "vi du nhu",
+    "giai thich rang",
+    
+
 })
+
+# Pattern dùng chung — định nghĩa 1 lần ở đầu file, dùng lại ở mọi chỗ
+_CLAUSE_SEPARATOR: str = (
+    r'[.!?,;]|\b(nhung|tuy nhien|song|the nhung|co ma|nhung ma|nen|vi vay|ma)\b'
+)
 
 _EXCLUSION_WINDOW: int = 40
 _NEGATION_WINDOW: int = 4
@@ -203,7 +223,7 @@ def _split_into_clauses(text: str) -> list[tuple[str, int, int]]:
     Trả về list[(clause_text, char_start, char_end)].
     """
     # Tách tại dấu câu và các từ nối đối lập
-    pattern = r'[.!?,;]|\b(nhung|tuy nhien|song|the nhung|co ma|nhung ma|nen|vi vay)\b'
+    pattern = _CLAUSE_SEPARATOR
     clauses = []
     prev_end = 0
     for m in re.finditer(pattern, text):
@@ -343,26 +363,36 @@ class HealthRiskDetector:
         # --- BƯỚC 2 [v3]: Exclusion scope với kiểm tra y tế theo mệnh đề ---
         exclusion_scopes: list[tuple[int, int]] = []
 
-        # 1. Tách danh sách _EXCLUSION_PHRASES thành 2 nhóm từ đầu (muon, thich...) và từ sau (an, uong...)
-        first_words: set[str] = set()
-        second_words: set[str] = set()
-        
+        # Tách danh sách _EXCLUSION_PHRASES thành 2 nhóm: Cụm cố định và Cụm linh hoạt (có chứa ăn/uống/ag/un)
+        fixed_phrases = []
+        flexible_first = set()
+        flexible_second = set()
+
         for phrase in _EXCLUSION_PHRASES:
             parts = phrase.split()
             if len(parts) == 2:
-                first_words.add(parts[0])
-                second_words.add(parts[1])
+                # Nếu là các cụm cố định không có cấu trúc hành động xen kẽ, giữ nguyên chuỗi
+                if parts[0] in ["quan", "tiem", "di", "uong", "eat", "giam", "an"] and parts[1] in ["bia", "nhau", "chay", "clean", "can", "kieng"]:
+                    fixed_phrases.append(re.escape(phrase))
+                else:
+                    flexible_first.add(parts[0])
+                    flexible_second.add(parts[1])
+            else:
+                fixed_phrases.append(re.escape(phrase))
 
-        # 2. Tạo Regex linh hoạt: Cho phép xen giữa từ 0 đến 4 từ ngẫu nhiên
-        # Sắp xếp theo chiều dài giảm dần để ưu tiên match chính xác
-        pattern_1 = "|".join(re.escape(w) for w in sorted(list(first_words), key=len, reverse=True))
-        pattern_2 = "|".join(re.escape(w) for w in sorted(list(second_words), key=len, reverse=True))
+        # Build regex cho nhóm linh hoạt (cho phép xen giữa 0-4 từ)
+        pattern_1 = "|".join(re.escape(w) for w in sorted(list(flexible_first), key=len, reverse=True))
+        pattern_2 = "|".join(re.escape(w) for w in sorted(list(flexible_second), key=len, reverse=True))
+        
+        flexible_regex = r'\b(' + pattern_1 + r')\b(?:(?!\b(?:bi|co|nhung|mac)\b)\s+\w+){0,4}\s+\b(' + pattern_2 + r')\b'
+        
+        # Build regex cho nhóm cụm cố định (match chính xác dính liền)
+        fixed_regex = r'\b(' + "|".join(sorted(fixed_phrases, key=len, reverse=True)) + r')\b'
 
-        # ĐOẠN MỚI: Ngăn không cho Exclusion Scope nhảy qua các từ khai báo bệnh/dị ứng lý thuyết
+        # Gom chung lại thành pattern hoàn chỉnh
         exclusion_pattern = (
             r'(?<!\bkhong\b )(?<!\bchang\b )(?<!\bchua\b )'
-            r'\b(' + pattern_1 + r')\b'
-            r'(?:(?!\b(?:bi|co|nhung|mac)\b)\s+\w+){0,4}\s+\b(' + pattern_2 + r')\b'
+            r'(?:' + flexible_regex + r'|' + fixed_regex + r')'
         )
 
         for ex_match in re.finditer(exclusion_pattern, normalized):
@@ -381,12 +411,12 @@ class HealthRiskDetector:
             )
             # Vì search ngược khó, dùng cách khác: tìm dấu câu cuối cùng trước ex_start
             clause_start = 0
-            for m in re.finditer(r'[.!?,;]|\b(nhung|tuy nhien|nen|vi vay)\b', normalized[:ex_start]):
+            for m in re.finditer(_CLAUSE_SEPARATOR, normalized[:ex_start]):
                 clause_start = m.end()
 
             # Tìm điểm kết thúc mệnh đề (dấu câu tiếp theo sau ex_start)
             clause_end = len(normalized)
-            for m in re.finditer(r'[.!?,;]|\b(nhung|tuy nhien|nen|vi vay|co ma)\b', normalized[ex_start:]):
+            for m in re.finditer(_CLAUSE_SEPARATOR, normalized[ex_start:]):
                 clause_end = ex_start + m.start()
                 break
 
@@ -400,7 +430,9 @@ class HealthRiskDetector:
             # Nếu không có ngữ cảnh y tế, áp dụng exclusion scope
             # nhưng chỉ đến hết mệnh đề hiện tại (không kéo đến hết chuỗi)
             ex_end = clause_end
-           
+
+            
+            
             # Bảo vệ ngữ cảnh: Bẻ gãy nếu xuất hiện "NHUNG"
             sub_segment = normalized[ex_start:ex_end]
             but_match = re.search(r'\b(nhung)\b', sub_segment)
@@ -486,16 +518,28 @@ class HealthRiskDetector:
             all_stopwords = (ngram_text in _VI_STOPWORDS) or all_stopwords
             if all_stopwords or not self._all_keywords:
                 continue
+            
+            if len(ngram_text) <= 3:
+                continue
+
+            tokens_count = len(ngram_text.split())
+            dynamic_threshold = self.fuzzy_threshold
+            if tokens_count <= 2:
+                dynamic_threshold = 95
+            elif tokens_count == 3:
+                dynamic_threshold = 90
 
             result = fuzz_process.extractOne(
                 ngram_text,
                 self._all_keywords,
                 scorer=fuzz.ratio,
-                score_cutoff=self.fuzzy_threshold,
+                score_cutoff=dynamic_threshold,
             )
             if result is not None:
                 best_kw: str = result[0]
                 raw_score: float = result[1]
+                if len(ngram_text) <= 4 and abs(len(best_kw) - len(ngram_text)) > 0:
+                    continue
                 tags = self._keyword_index.get(best_kw, [])
                 match_happened = False
                 for tag in tags:
@@ -514,7 +558,176 @@ class HealthRiskDetector:
 
         return results
 
-    
+    # def detect_with_scores(self, prompt: str) -> list[MatchDetail]:
+    #     normalized = normalize_text(prompt)
+    #     words_original = prompt.split()
+
+    #     # --- BƯỚC 1: QUÉT N-GRAM ĐẠI TRÀ ĐỂ THU THẬP TẤT CẢ CÁC MATCH TIỀM NĂNG ---
+    #     tokens = normalized.split()
+    #     ngrams = _ngrams_by_size(tokens, self.ngram_max)
+
+    #     matched_spans: list[tuple[int, int]] = []
+    #     raw_matches: list[dict] = []  # Nơi lưu tạm các match trước khi thẩm định
+
+    #     for ngram_text, start, end in ngrams:
+    #         if self._span_covered(start, end, matched_spans):
+    #             continue
+
+    #         # Tính toán vị trí ký tự chính xác của n-gram trong chuỗi normalized
+    #         char_start = self._token_span_to_char(normalized, tokens, start)
+    #         char_end = char_start + len(ngram_text)
+
+    #         # 1. Thử nghiệm Exact Match
+    #         if ngram_text in self._keyword_index:
+    #             tags = self._keyword_index[ngram_text]
+    #             if len(tags) > 0:
+    #                 for tag in tags:
+    #                     raw_matches.append({
+    #                         "health_tag": tag,
+    #                         "matched_keyword": ngram_text,
+    #                         "score": 1.0,
+    #                         "method": "exact",
+    #                         "char_start": char_start,
+    #                         "char_end": char_end
+    #                     })
+    #                 matched_spans.append((start, end))
+    #                 continue
+
+    #         # 2. Thử nghiệm Fuzzy Match
+    #         tokens_in_ngram = ngram_text.split()
+    #         all_stopwords = all(t in _VI_STOPWORDS for t in tokens_in_ngram)
+    #         all_stopwords = (ngram_text in _VI_STOPWORDS) or all_stopwords
+    #         if all_stopwords or not self._all_keywords or len(ngram_text) <= 3:
+    #             continue
+
+    #         result = fuzz_process.extractOne(
+    #             ngram_text,
+    #             self._all_keywords,
+    #             scorer=fuzz.ratio,
+    #             score_cutoff=self.fuzzy_threshold,
+    #         )
+    #         if result is not None:
+    #             best_kw: str = result[0]
+    #             raw_score: float = result[1]
+    #             if len(ngram_text) <= 4 and abs(len(best_kw) - len(ngram_text)) > 0:
+    #                 continue
+                
+    #             tags = self._keyword_index.get(best_kw, [])
+    #             if len(tags) > 0:
+    #                 for tag in tags:
+    #                     raw_matches.append({
+    #                         "health_tag": tag,
+    #                         "matched_keyword": best_kw,
+    #                         "score": raw_score / 100.0,
+    #                         "method": "fuzzy",
+    #                         "char_start": char_start,
+    #                         "char_end": char_end
+    #                     })
+    #                 matched_spans.append((start, end))
+
+    #     # --- BƯỚC 2: THẨM ĐỊNH NGỮ CẢNH CHO TỪNG MATCH (ĐẢO NGƯỢC LOGIC) ---
+    #     results: list[MatchDetail] = []
+    #     seen_tags: set[str] = set()
+        
+    #     # Tiền phân tách pattern để phục vụ việc xác định mệnh đề
+    #     clause_separator = r'[.!?,;]|\b(nhung|tuy nhien|nen|vi vay|co ma|ma|nhung ma)\b'
+
+    #     for match in raw_matches:
+    #         tag = match["health_tag"]
+    #         c_start = match["char_start"]
+            
+    #         # Nếu tag này đã được ghi nhận rồi thì bỏ qua để tránh trùng lặp
+    #         if tag in seen_tags:
+    #             continue
+
+    #         # A. Xác định ranh giới mệnh đề chứa từ khóa (Clause Bound)
+    #         clause_start = 0
+    #         for m in re.finditer(clause_separator, normalized[:c_start]):
+    #             clause_start = m.end()
+
+    #         clause_end = len(normalized)
+    #         for m in re.finditer(clause_separator, normalized[c_start:]):
+    #             clause_end = c_start + m.start()
+    #             break
+
+    #         current_clause = normalized[clause_start:clause_end]
+
+    #         # B. Thẩm định điều kiện PHỦ ĐỊNH (Negation Check)
+    #         is_neg = False
+    #         if self.detect_negation:
+    #             normalized_neg_phrases = [normalize_text(p) for p in _NEGATION_PHRASES]
+    #             negation_pattern = r'\b(' + '|'.join(map(re.escape, normalized_neg_phrases)) + r')\b'
+                
+    #             for neg_m in re.finditer(negation_pattern, current_clause):
+    #                 if clause_start + neg_m.start() < c_start:
+    #                     sub_seg = current_clause[neg_m.start(): c_start - clause_start]
+    #                     if not re.search(r'\b(nhung)\b', sub_seg):
+    #                         is_neg = True
+    #                         break
+
+    #         # C. Thẩm định điều kiện LOẠI TRỪ SỞ THÍCH (Exclusion Check)
+    #         fixed_phrases = []
+    #         flexible_first = set()
+    #         flexible_second = set()
+    #         for phrase in _EXCLUSION_PHRASES:
+    #             parts = phrase.split()
+    #             if len(parts) == 2:
+    #                 if parts[0] in ["quan", "tiem", "di", "uong", "eat", "giam", "an"] and parts[1] in ["bia", "nhau", "chay", "clean", "can", "kieng"]:
+    #                     fixed_phrases.append(re.escape(phrase))
+    #                 else:
+    #                     flexible_first.add(parts[0])
+    #                     flexible_second.add(parts[1])
+    #             else:
+    #                 fixed_phrases.append(re.escape(phrase))
+
+    #         pattern_1 = "|".join(re.escape(w) for w in sorted(list(flexible_first), key=len, reverse=True))
+    #         pattern_2 = "|".join(re.escape(w) for w in sorted(list(flexible_second), key=len, reverse=True))
+    #         flexible_regex = r'\b(' + pattern_1 + r')\b(?:(?!\b(?:bi|co|nhung|mac)\b)\s+\w+){0,4}\s+\b(' + pattern_2 + r')\b'
+    #         fixed_regex = r'\b(' + "|".join(sorted(fixed_phrases, key=len, reverse=True)) + r')\b'
+    #         exclusion_pattern = r'(?<!\bkhong\b )(?<!\bchang\b )(?<!\bchua\b )(?:' + flexible_regex + r'|' + fixed_regex + r')'
+
+    #         has_exclusion_trigger = False
+    #         is_saved_by_medical = False
+
+    #         for ex_m in re.finditer(exclusion_pattern, current_clause):
+    #             ex_match_start_global = clause_start + ex_m.start()
+                
+    #             # Chỉ xử lý nếu trigger sở thích xuất hiện trước từ khóa rủi ro
+    #             if ex_match_start_global < c_start:
+    #                 has_exclusion_trigger = True
+                    
+    #                 # --- NÚT THẮT CHÍ MẠNG: GIỚI HẠN PHẠM VI ẢNH HƯỞNG ---
+    #                 # Tính toán ex_end ảo dựa trên bán kính hẹp (25 kí tự) tính từ trigger sở thích
+    #                 ex_end_virtual = min(clause_end, ex_match_start_global + 25)
+                    
+    #                 # Kiểm tra xem ngay vế sau của từ sở thích (vùng hẹp) có chứa ngữ cảnh y tế ngay không
+    #                 # Ví dụ: "trưa ăn đồ Nhật sashimi... mà bác sĩ dặn kiêng" -> "đồ Nhật sashimi" không chứa từ y tế
+    #                 # Nhưng nếu cấu trúc câu lồng ghép y tế cục bộ, bộ lọc này bảo vệ tag.
+    #                 if _sentence_has_medical_context(normalized[ex_match_start_global:ex_end_virtual]):
+    #                     is_saved_by_medical = True
+    #                 break
+
+    #         # Kiểm tra bối cảnh y tế cục bộ ngay trong mệnh đề hiện tại
+    #         # Bỏ kiểm tra toàn cục normalized để tránh bị leak từ mệnh đề quá khứ của câu chuyện cũ (Test 33)
+    #         has_medical_in_clause = _sentence_has_medical_context(current_clause) or is_saved_by_medical
+
+    #         # LOGIC QUYẾT ĐỊNH CHỐT:
+    #         # Nếu dính trigger sở thích VÀ mệnh đề hiện tại hoàn toàn trống thông tin y tế 
+    #         # -> Kích hoạt loại trừ (loại bỏ tag này)
+    #         if has_exclusion_trigger and not has_medical_in_clause:
+    #             continue
+
+    #         # D. Nếu vượt qua tất cả các bộ lọc, chính thức ghi nhận tag rủi ro
+    #         seen_tags.add(tag)
+    #         results.append({
+    #             "health_tag": tag,
+    #             "matched_keyword": match["matched_keyword"],
+    #             "score": match["score"],
+    #             "method": match["method"],
+    #             "negated": is_neg,
+    #         })
+
+    #     return results
     # ------------------------------------------------------------------
     # Private helpers
     # ------------------------------------------------------------------

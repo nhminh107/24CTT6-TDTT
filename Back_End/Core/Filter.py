@@ -18,55 +18,54 @@ class RestaurantFilter:
         
         self.warnings = {
             "Spicy": {
-                "potential": "Vị cay nồng (Tiềm ẩn): Món ăn có thể cay. Bạn nên dặn nhân viên làm mức nhẹ nhất hoặc không cay để bảo vệ dạ dày.",
-                "main": "Món cay nồng (Chủ đạo): Quán chuyên vị cay đậm. Nên chủ động yêu cầu nhà bếp giảm độ cay để tránh kích ứng dạ dày."
+                "potential": "Hệ thống ghi nhận xu hướng vị cay nhẹ (Tiềm ẩn): Dữ liệu phân tích từ mô hình cho thấy một số món ăn có khả năng chứa gia vị cay, người dùng có thể tham khảo việc yêu cầu điều chỉnh mức độ phù hợp với dạ dày.",
+                "main": "Mô hình ước tính phong cách vị cay nồng (Chủ đạo): Hệ thống nhận diện quán có xu hướng thiên về các món vị cay đậm, người dùng có thể lưu ý trao đổi trước với nhà bếp để hạn chế kích ứng tiêu hóa."
             },
             "DeepFried_Oily": {
-                "potential": "Đồ chiên rán (Tiềm ẩn): Thực đơn có thể nhiều dầu mỡ. Bạn nên nhờ đầu bếp giảm dầu hoặc ưu tiên chọn món luộc/hấp.",
-                "main": "Nhiều dầu mỡ (Chủ đạo): Các món chủ yếu là chiên xào. Nên cân nhắc đổi sang món thanh đạm để tránh đầy bụng, nóng trong."
+                "potential": "Hệ thống ghi nhận dấu hiệu đồ chiên rán (Tiềm ẩn): Cấu trúc thực đơn có thể bao gồm các thành phần chứa dầu mỡ, mô hình gợi ý góc độ tham khảo ưu tiên các món chế biến thanh đạm.",
+                "main": "Mô hình ước tính tỷ lệ dầu mỡ cao (Chủ đạo): Dữ liệu cho thấy danh mục chính chủ yếu là các món chiên xào, hệ thống đề xuất việc cân nhắc lựa chọn tùy theo trạng thái tiêu hóa hiện tại."
             },
             "High_Sugar": {
-                "potential": "Hàm lượng đường (Tiềm ẩn): Nước sốt hoặc đồ uống có thể khá ngọt. Hãy nhờ người bán giảm ngọt tối đa khi gọi món.",
-                "main": "Hàm lượng đường (Chủ đạo): Thực đơn chứa lượng đường rất cao. Bạn hãy yêu cầu nhân viên để riêng nước sốt hoặc chọn dòng không đường."
+                "potential": "Hệ thống ghi nhận dấu hiệu hàm lượng đường (Tiềm ẩn): Thuật toán ước tính nước sốt hoặc đồ uống đi kèm có khả năng mang vị ngọt, người dùng có thể tham khảo việc lưu ý người bán điều chỉnh lượng đường.",
+                "main": "Mô hình ước tính hàm lượng đường cao (Chủ đạo): Theo phân tích văn bản thực đơn, hệ thống nhận diện lượng đường có xu hướng xuất hiện nhiều, gợi ý góc độ tham khảo yêu cầu để riêng nước sốt."
             },
             "Refined_Carbs": {
-                "potential": "Tinh bột tinh chế (Tiềm ẩn): Quán chủ yếu dùng bún, mì trắng, bánh mì. Hãy hỏi nhân viên xem có thể đổi sang bún lứt hoặc rau không.",
-                "main": "Tinh bột nhanh (Chủ đạo): Thực đơn nhiều tinh bột hấp thu nhanh. Bạn nên ăn kèm nhiều rau xanh để tránh làm tăng đường huyết đột ngột."
+                "potential": "Hệ thống ghi nhận xu hướng tinh bột tinh chế (Tiềm ẩn): Quán có khả năng sử dụng các nguyên liệu như bún, mì trắng, bánh mì; mô hình gợi ý việc tham khảo các lựa chọn thay thế nếu có.",
+                "main": "Mô hình ước tính thành phần tinh bột nhanh (Chủ đạo): Thuật toán nhận diện thực đơn có xu hướng tập trung vào nhóm tinh bột hấp thu nhanh, người dùng có thể lưu ý kết hợp thêm rau xanh để phù hợp với chế độ ăn."
             },
             "High_Sodium": {
-                "potential": "Thực phần chứa nhiều muối (Tiềm ẩn): Một số món có thể có nhiều muối. Hãy nhờ nhân viên tư vấn thêm",
-                "main": "Thực phần chứa nhiều muối (Chủ đao): Thực đơn chính và phong cách ẩm thực có thể chứa nhiều muốn nên cân nhắc khi gọi món."
+                "potential": "Hệ thống ghi nhận dấu hiệu chứa nhiều muối (Tiềm ẩn): Mô hình ước tính một số món ăn có khả năng mang hàm lượng natri/muối đáng kể, người dùng có thể tham khảo tư vấn từ nhân viên.",
+                "main": "Mô hình ước tính xu hướng chứa nhiều muối (Chủ đạo): Dựa trên dữ liệu văn bản, phong cách ẩm thực tại đây có khả năng sử dụng lượng muối cao, hệ thống đề xuất góc độ cân nhắc tùy thuộc nhu cầu kiêng cữ cá nhân."
             },
             "Red_Meat": {
-                "potential": "Thịt đỏ (Tiềm ẩn): Có thể có món chứa thịt bò, heo. Bạn nên nhờ nhân viên kiểm tra xem nước dùng hoặc món xào có lẫn thịt đỏ không.",
-                "main": "Thịt đỏ (Chủ đạo): Thực đơn chính chứa nhiều thịt bò, heo. Không phù hợp nếu bạn đang trong giai đoạn sưng đau Gout."
+                "potential": "Hệ thống ghi nhận khả năng xuất hiện thịt đỏ (Tiềm ẩn): Thuật toán nhận diện tín hiệu món ăn chứa thịt bò hoặc heo, người dùng có thể lưu ý kiểm tra thêm phần nước dùng hoặc nước sốt đi kèm.",
+                "main": "Mô hình ước tính danh mục chính chứa thịt đỏ (Chủ đạo): Hệ thống phân tích thấy các món chính thiên về thịt bò hoặc heo, người dùng có thể đối chiếu lại với trạng thái khớp hoặc lộ trình Gout hiện tại."
             },
             "Seafood": {
-                "potential": "Hải sản (Tiềm ẩn): Có thể có hải sản. Hãy nhờ nhân viên kiểm tra xem nước dùng hoặc nước sốt có nấu từ tôm, khô mực không.",
-                "main": "Chuyên hải sản (Chủ đạo): Nguy cơ cao gây dị ứng hoặc tăng axit uric (Gout). Bạn nên chọn các nhóm món khác thay thế."
+                "potential": "Hệ thống ghi nhận khả năng chứa hải sản (Tiềm ẩn): Dữ liệu từ mô hình cho thấy một số món ăn hoặc nước dùng có thể có thành phần từ tôm, mực, cá; người dùng có thể tham khảo thông tin từ quán.",
+                "main": "Mô hình ước tính chuyên hải sản (Chủ đạo): Hệ thống nhận diện quán tập trung vào nguồn nguyên liệu biển, đề xuất góc độ đối chiếu với tiền sử kích ứng hoặc chỉ số axit uric của cơ thể."
             },
             "Alcohol_Pub": {
-                "potential": "Thức uống có cồn (Tiềm ẩn): Không gian có phục vụ bia rượu. Bạn nên hỏi menu nước ép hoặc trà lành tính để thay thế.",
-                "main": "Quán nước có cồn (Chủ đạo): Đây là không gian pub/bia rượu. Không phù hợp với chế độ kiêng chất kích thích hoặc lộ trình thải độc."
+                "potential": "Hệ thống ghi nhận không gian có thức uống cồn (Tiềm ẩn): Theo phân tích dữ liệu, địa điểm có phục vụ kèm bia rượu, mô hình gợi ý việc tham khảo danh mục nước ép hoặc trà nếu cần.",
+                "main": "Mô hình ước tính không gian chuyên đồ uống cồn (Chủ đạo): Thuật toán phân tích thấy địa điểm thiên về mô hình pub/bia rượu, đề xuất người dùng đối chiếu với lộ trình kiêng chất kích thích cá nhân."
             },
             "Peanuts_Nuts": {
-                "potential": "Đậu phộng & Hạt (Tiềm ẩn): Quán có thể dùng hạt trong nước chấm, món trộn. Hãy dặn người bán bỏ qua để phòng dị ứng.",
-                "main": "Chứa đậu phộng/Hạt (Chủ đạo): Món ăn thành phần chứa hạt nguy cơ cao. Tuyệt đối không dùng nếu bạn có tiền sử sốc phản vệ."
+                "potential": "Hệ thống ghi nhận khả năng chứa đậu phộng & hạt (Tiềm ẩn): Nhận diện từ mô hình cho thấy các loại hạt có xu hướng xuất hiện trong nước chấm hoặc món trộn, gợi ý việc lưu ý người bán nếu cần phòng ngừa kích ứng.",
+                "main": "Mô hình ước tính thành phần chứa đậu phộng/hạt (Chủ đạo): Dữ liệu văn bản cho thấy nguy cơ trùng khớp cao với các loại hạt, đề xuất người dùng đối chiếu nghiêm ngặt với hồ sơ phản vệ cá nhân."
             },
             "Dairy_Product": {
-                "potential": "Sữa & Bơ (Tiềm ẩn): Có thể dùng sữa, phô mai khi chế biến. Hãy nhờ nhân viên xác nhận món không chứa sữa (Dairy-free).",
-                "main": "Thành phần từ sữa (Chủ đạo): Món ăn chứa sữa/bơ. Cần cân nhắc kỹ nếu cơ thể bạn có hội chứng bất dung nạp lactose gây đau bụng."
+                "potential": "Hệ thống ghi nhận dấu hiệu chứa sữa & bơ (Tiềm ẩn): Thuật toán ước tính có khả năng sử dụng thành phần từ sữa hoặc phô mai khi chế biến, người dùng có thể lưu ý xác nhận lại để đảm bảo tính phù hợp.",
+                "main": "Mô hình ước tính thành phần chủ đạo từ sữa (Chủ đạo): Hệ thống nhận diện xu hướng sử dụng sữa/bơ trong món chính, đề xuất góc độ cân nhắc đối với người dùng có hội chứng nhạy cảm lactose."
             },
             "Gluten_Present": {
-                "potential": "Gluten / Bột mì (Tiềm ẩn): Quán có thể dùng bột mì trong chế biến. Hãy nhờ tư vấn các món thuần túy không gluten để an tâm hơn.",
-                "main": "Chứa Gluten (Chủ đạo): Món ăn chứa bột mì/gluten. Không thích hợp cho người có hệ tiêu hóa nhạy cảm hoặc mắc hội chứng Celiac."
+                "potential": "Hệ thống ghi nhận khả năng chứa Gluten/Bột mì (Tiềm ẩn): Dữ liệu phân tích cho thấy có xu hướng sử dụng bột mì trong chế biến thực phẩm, mô hình gợi ý việc tham khảo các tùy chọn thay thế.",
+                "main": "Mô hình ước tính thành phần chứa Gluten (Chủ đạo): Thuật toán nhận diện món ăn có nguồn gốc từ bột mì/gluten, đề xuất người dùng đối chiếu với mức độ nhạy cảm của hệ tiêu hóa hoặc hội chứng Celiac."
             },
             "Shellfish": {
-                "potential": "Hải sản vỏ cứng (Tiềm ẩn): Có thể có tôm, cua, nghêu, sò. Hãy dặn người bán tránh dùng chung chảo hoặc dính vụn thức ăn.",
-                "main": "Hải sản vỏ cứng (Chủ đạo): Thành phần chứa tôm, cua, nghêu, sò. Cân nhắc kỹ nếu bạn từng có tiền sử dị ứng nghiêm trọng nhóm này."
+                "potential": "Hệ thống ghi nhận khả năng chứa hải sản vỏ cứng (Tiềm ẩn): Mô hình ước tính sự xuất hiện của tôm, cua, nghêu, sò trong quy trình hoặc món ăn, người dùng có thể tham khảo việc dặn dò nhà bếp.",
+                "main": "Mô hình ước tính thành phần chủ đạo là hải sản vỏ cứng (Chủ đạo): Hệ thống nhận diện danh mục chính tập trung vào tôm, cua, nghêu, sò; đề xuất người dùng chủ động đối chiếu với tiền sử dị ứng cá nhân."
             }
         }
-        
         # Các tag này nếu người dùng chọn ăn xả láng cũng phải loại bỏ
         self.CRITICAL_ALLERGY_TAGS=["Peanuts_Nuts", "Gluten_Present", "Dairy_Product", "Seafood", "Shellfish"] 
         
@@ -501,6 +500,7 @@ class RestaurantFilter:
     def generate_notes(self, res):
         """
         Thêm đánh giá tổng quan và lời khuyên dựa vào điểm số penalty tích lũy.
+        Tất cả các phát biểu đều mang tính chất tham khảo, chủ quan từ hệ thống.
         """
         penalty = res.get("penalty_score", 0.0)
         notes = []
@@ -508,56 +508,61 @@ class RestaurantFilter:
         # MỐC 1: Nguy hiểm tuyệt đối (Dính combo nhiều món chính hoặc nhiều chất gây dị ứng nặng)
         if penalty >= 40.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Mức độ rủi ro tối đa. Thực đơn của quán hoàn toàn xung đột gay gắt với hồ sơ sức khỏe của bạn."
+                "📊 Đánh giá tổng quan: Hệ thống ước tính mức độ tương thích rất thấp. Dữ liệu thực đơn hiện tại của quán cho thấy có xu hướng xuất hiện nhiều thành phần được phân loại là không phù hợp với hồ sơ sức khỏe của bạn."
             )
             notes.append(
-                "🚨 Khuyên dùng: NÊN CÂN NHẮC THẬT KỸ TRƯỚC KHI LỰA CHỌN. Nếu được bạn hãy chủ động chọn quán khác."
+                "🚨 Khuyên dùng: Góc độ tham khảo từ ứng dụng đề xuất bạn nên cân nhắc kỹ lưỡng và có thể ưu tiên tìm kiếm các thực đơn khác có chỉ số phù hợp cao hơn."
             )
 
         # MỐC 2: Rủi ro cực cao (Ví dụ: dính từ 3 món chính hoặc 3 tag potential nguy hiểm trở lên)
         elif penalty >= 30.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Nguy cơ cao. Khả năng tìm được một món ăn phù hợp là rất thấp."
+                "📊 Đánh giá tổng quan: Hệ thống ghi nhận chỉ số rủi ro cao. Theo phân tích từ mô hình, danh mục món ăn tại đây có khả năng chứa các nhóm chất mà bạn đang cần hạn chế."
             )
             notes.append(
-                "💡 Khuyên dùng: Nên cân nhắc khi chọn món, liên lạc trước với nhà hàng để tham khảo thêm."
+                "💡 Khuyên dùng: Bạn có thể tham khảo ý kiến từ phía nhà hàng về thành phần chi tiết của món ăn trước khi gọi để có thông tin chính xác nhất."
             )
 
         # MỐC 3: Nguy cơ trung bình - cao (Ví dụ: Dính combo 1 main + 1 potential nguy hiểm = 20đ, cộng thêm tag thường)
         elif penalty >= 20.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Rủi ro đáng kể. Phần lớn thực đơn hoặc các món đặc trưng của quán thiên về nhóm món bạn cần hạn chế."
+                "📊 Đánh giá tổng quan: Ghi nhận dấu hiệu rủi ro đáng kể. Thuật toán ước tính rằng một phần thực đơn hoặc các món phổ biến tại đây có xu hướng thiên về nhóm thực phẩm thuộc diện cần điều chỉnh giảm."
             )
             notes.append(
-                "💡 Khuyên dùng: Cần cực kỳ cẩn trọng. Hãy sàng lọc món thật kỹ và bắt buộc phải ghi chú rõ ràng với nhà bếp trước khi gọi."
+                "💡 Khuyên dùng: Đề xuất bạn chủ động sàng lọc và có thể trao đổi các tùy chỉnh riêng với nhà bếp để phù hợp hơn với nhu cầu cá nhân."
             )
 
         # MỐC 4: Nguy cơ trung bình (Ví dụ: Dính 1 main vi phạm hoặc 1 potential nguy hiểm = 10đ)
         elif penalty >= 10.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Cần lưu ý. Quán có thành phần có thể không phù hợp xuất hiện trực tiếp trong món chính."
+                "📊 Đánh giá tổng quan: Thuật toán đưa ra lưu ý nhỏ. Hệ thống nhận diện một số món ăn có thể chứa thành phần chưa tối ưu cho chế độ kiêng cữ hoặc hồ sơ sức khỏe được cấu hình."
             )
             notes.append(
-                "💡 Khuyên dùng:Ưu tiên các món thanh đạm, luộc, hấp hoặc món phụ thuần túy."
+                "💡 Khuyên dùng: Bạn có thể ưu tiên xem xét các món ăn có phương thức chế biến đơn giản hoặc các món phụ ít thành phần hỗn hợp."
             )
 
         # MỐC 5: Nhắc nhở nhẹ (Ví dụ: Chỉ dính 1 tag thường ở món phụ potential = 5đ)
         elif penalty >= 5.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Nhắc nhở nhẹ. Một vài thành phần món phụ có thể không tối ưu với chế độ ăn, nhưng tổng thể quán vẫn có nhiều lựa chọn an toàn thay thế."
+                "📊 Đánh giá tổng quan: Chỉ số rủi ro ở mức thấp. Hệ thống ước tính chỉ có một vài thành phần rải rác ở nhóm món phụ có thể không tối ưu, nhìn chung thực đơn vẫn cung cấp nhiều sự lựa chọn khác."
             )
 
         # MỐC 6: Rủi ro siêu nhỏ (Trường hợp điểm số lẻ hoặc tính toán tỷ lệ khác)
         elif penalty > 0.0:
             notes.append(
-                f"📊 Đánh giá tổng quan: Tương đối an toàn . Chỉ có rủi ro rất nhỏ từ một vài thành phần riêng biệt, chọn món kỹ một chút là có thể dùng tốt."
+                "📊 Đánh giá tổng quan: Chỉ số an toàn theo mô hình ở mức cao. Ghi nhận tỷ lệ trùng khớp rủi ro rất nhỏ từ một vài thành phần riêng biệt, không đáng kể đối với tổng thể thực đơn."
             )
 
         # MỐC 7: Hoàn hảo tuyệt đối (Penalty = 0)
         else:
             notes.append(
-                "✅ THỰC ĐƠN LÝ TƯỞNG: Không phát hiện bất kỳ thành phần đáng lo ngại nào đối với hồ sơ sức khỏe hiện tại của bạn."
+                "✅ Đánh giá tổng quan: Thực đơn giả định lý tưởng. Dựa trên dữ liệu văn bản hiện có, hệ thống chưa phát hiện thành phần nào trùng khớp với danh mục cần lưu ý trong hồ sơ sức khỏe của bạn."
             )
+            
+        # --- BỐ SUNG KHUYẾN CÁO Y TẾ KHÉO LÉO CHỐT HẠ ---
+        notes.append(
+            "💡 Mẹo nhỏ: Tính năng đánh giá sức khỏe hoạt động như một bộ lọc tự động hỗ trợ bạn nhanh chóng nhận diện thành phần món ăn trên phương diện lý thuyết. Tuy nhiên, ứng dụng không đưa ra lời khuyên y tế và không chịu trách nhiệm pháp lý đối với các tình huống sức khỏe phát sinh. Bạn vui lòng luôn dựa trên cảm nhận thực tế của cơ thể và tham khảo ý kiến chuyên gia khi cần thiết nhé!"
+        )
             
         # Gán mảng kết quả vào key "notes" của quán
         res["notes"] = notes

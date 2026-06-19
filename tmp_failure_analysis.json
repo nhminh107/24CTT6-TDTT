@@ -1,0 +1,55 @@
+[
+  {
+    "label": "pregnancy",
+    "prompt": "Sáng ăn hủ tiếu, trưa ăn đồ Nhật sashimi cá hồi ở Quận 3 mà bác sĩ dặn phải kiêng tuyệt đối đồ sống hải sản tươi sống.",
+    "normalized": "sang an hu tieu trua an do nhat sashimi ca hoi o quan 3 ma bac si dan phai kieng tuyet doi do song hai san tuoi song",
+    "detected": [],
+    "details": [],
+    "candidates": [],
+    "candidate_count": 0
+  },
+  {
+    "label": "elderly",
+    "prompt": "Gia đình 4 người đi du lịch ghé Quận 1 ăn trưa món Âu, tối ăn đặc sản Nam Bộ mà mẹ mình bị mỡ máu cao nên cần tránh mấy món chiên xào nhiều dầu mỡ.",
+    "normalized": "gia dinh 4 nguoi di du lich ghe quan 1 an trua mon au toi an dac san nam bo ma me minh bi mo mau cao nen can tranh may mon chien xao nhieu dau mo",
+    "detected": [],
+    "details": [],
+    "candidates": [
+      {
+        "ngram": "bi mo mau cao nen",
+        "type": "fuzzy",
+        "best": [
+          86.66666666666667,
+          "bi mo mau cao"
+        ],
+        "len_ngram": 17,
+        "len_kw": 13
+      },
+      {
+        "ngram": "bi mo mau cao",
+        "type": "exact",
+        "tags": [
+          "healthy_diet"
+        ]
+      },
+      {
+        "ngram": "mo mau cao nen",
+        "type": "fuzzy",
+        "best": [
+          92.85714285714286,
+          "mo mau cao nhe"
+        ],
+        "len_ngram": 14,
+        "len_kw": 14
+      },
+      {
+        "ngram": "mo mau cao",
+        "type": "exact",
+        "tags": [
+          "healthy_diet"
+        ]
+      }
+    ],
+    "candidate_count": 4
+  }
+]

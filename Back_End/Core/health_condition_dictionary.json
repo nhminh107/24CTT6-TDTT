@@ -10,21 +10,45 @@
       "tá tràng", "ta trang", "đau tá tràng", "dạ dày yếu", "da day yeu", "hay chướng bụng",
       "hay chuong bung", "ăn đồ cay bị đau bụng", "an do cay bi dau bung", "ăn đồ chua bị đau",
       "đau thượng vị", "dau thuong vi", "đau vùng thượng vị", "đầy hơi", "day hoi",
-      "tì vị hư hàn", "hay bị ợ hơi", "trào ngược axit","bụng dạ yếu","hay đau vùng bụng","đau bao tử"
+      "tì vị hư hàn", "hay bị ợ hơi", "trào ngược axit","bụng dạ yếu","hay đau vùng bụng","đau bao tử",
+      "dạ dày mình yếu", "da day minh yeu",
+    "dạ dày tôi yếu", "da day toi yeu",
+    "dạ dày em yếu", "da day em yeu",
+    "dạ dày mình hay đau", "da day minh hay dau",
+    "dạ dày mình không tốt", "da day minh khong tot",
+    "bao tử mình yếu", "bao tu minh yeu",
+    "bao tử tôi yếu", "bao tu toi yeu",
+    "dạ dày mình kém", "da day minh kem",
+    "dạ dày yếu lắm", "da day yeu lam",
+    "dạ dày mình yếu lắm", "da day minh yeu lam",
+    "ăn đồ cay là đau bụng", "an do cay la dau bung",
+    "ăn cay bị đau bụng", "an cay bi dau bung",
+    "ăn cay đau bụng ngay", "an cay dau bung ngay"
     ]
   },
   {
-    "health_tag": "tieu_duong",
-    "list_idea": [
-      "tiểu đường", "tieu duong", "đái tháo đường", "dai thao duong", "đường huyết cao",
-      "duong huyet cao", "bệnh tiểu đường", "benh tieu duong", "tiểu đường tuýp 1",
-      "tieu duong type 1", "tiểu đường tuýp 2", "tieu duong tuyp 2", "kiêng ngọt",
-      "kieng ngot", "kiêng đường", "kieng duong", "không ăn đường", "khong an duong",
-      "đường trong máu cao", "chỉ số đường cao", "chi so duong cao", "đtđ", "dtd",
-      "tiểu đường thai kỳ", "tieu duong thai ky", "ăn ít đường ngọt", "giảm ngọt",
-      "giam ngot", "không ăn đồ ngọt", "khong an do ngot", "tiền tiểu đường",
-      "tien tieu duong", "hạn chế tinh bột ngọt", "mỡ máu tiểu đường", "kiêng đồ ngọt",
-      "hạn chế đường", "đang bị tiểu đường", "dang bi tieu duong"
+  "health_tag": "tieu_duong",
+  "list_idea": [
+    "tiểu đường", "tieu duong",
+    "đái tháo đường", "dai thao duong",
+    "đường huyết cao", "duong huyet cao",
+    "bệnh tiểu đường", "benh tieu duong",
+    "tiểu đường tuýp 1", "tieu duong type 1",
+    "tiểu đường tuýp 2", "tieu duong tuyp 2",
+    "kiêng ngọt", "kieng ngot",
+    "kiêng đường", "kieng duong",
+    "không ăn đường", "khong an duong",
+    "đường trong máu cao", "duong trong mau cao",
+    "chỉ số đường cao", "chi so duong cao",
+    "đtđ", "dtd",
+    "tiểu đường thai kỳ", "tieu duong thai ky",
+    "tiền tiểu đường", "tien tieu duong",
+    "hạn chế tinh bột ngọt", "han che tinh bot ngot",
+    "mỡ máu tiểu đường", "mo mau tieu duong",
+    "kiêng đồ ngọt", "kieng do ngot",
+    "hạn chế đường", "han che duong",
+    "đang bị tiểu đường", "dang bi tieu duong",
+    "bị tiểu đường", "bi tieu duong","không muốn ăn đồ ngọt", "khong muon an do ngot"
     ]
   },
   {
@@ -81,16 +105,25 @@
     ]
   },
   {
-    "health_tag": "di_ung_hai_san",
-    "list_idea": [
-      "dị ứng hải sản", "di ung hai san", "không ăn được hải sản", "khong an duoc hai san",
-      "ăn hải sản bị ngứa", "an hai san bi ngua", "ngộ độc hải sản", "ngo doc hai san",
-      "kiêng đồ biển", "kieng do bien", "không ăn đồ biển", "khong an do bien",
-      "mẫn cảm với đồ biển", "man cam voi do bien", "mẩn ngứa hải sản", "man ngua hai san",
-      "dị ứng đồ biển", "di ung do bien", "không ăn hải sản", "khong an hai san",
-      "bụng yếu ăn hải sản không được", "ăn hải sản bị tiêu chảy", "an hai san bi tieu chay",
-      "seafood allergy", "bị dị ứng hải sản nặng", "tránh hải sản", "tranh hai san",
-      "không nấu chung hải sản", "khong nau chung voi hai san"
+  "health_tag": "di_ung_hai_san",
+  "list_idea": [
+    "dị ứng hải sản", "di ung hai san", "không ăn được hải sản", "khong an duoc hai san",
+    "ăn hải sản bị ngứa", "an hai san bi ngua", "ngộ độc hải sản", "ngo doc hai san",
+    "kiêng đồ biển", "kieng do bien", "không ăn đồ biển", "khong an do bien",
+    "mẫn cảm với đồ biển", "man cam voi do bien", "mẩn ngứa hải sản", "man ngua hai san",
+    "dị ứng đồ biển", "di ung do bien", "không ăn hải sản", "khong an hai san",
+    "bụng yếu ăn hải sản không được", "ăn hải sản bị tiêu chảy", "an hai san bi tieu chay",
+    "seafood allergy", "bị dị ứng hải sản nặng", "tránh hải sản", "tranh hai san",
+    "không nấu chung hải sản", "khong nau chung voi hai san", "kieng hai san",
+
+    "kiêng tuyệt đối đồ sống", "kieng tuyet doi do song",
+    "kiêng hải sản tươi sống", "kieng hai san tuoi song",
+    "kiêng đồ sống hải sản", "kieng do song hai san",
+    "bác sĩ dặn kiêng hải sản", "bac si dan kieng hai san",
+    "bác sĩ dặn kiêng đồ sống", "bac si dan kieng do song",
+    "không được ăn hải sản tươi sống", "khong duoc an hai san tuoi song",
+    "cá sống gỏi cá", "ca song goi ca",
+    "sashimi kiêng", "kiêng sashimi"
     ]
   },
   {
@@ -157,27 +190,94 @@
     ]
   },
   {
-    "health_tag": "low_carb",
-    "list_idea": [
-      "low carb", "ăn ít tinh bột", "an it tinh bot", "lowcarb", "kiêng tinh bột",
-      "kieng tinh bot", "keto", "chế độ keto", "che do keto", "không ăn tinh bột",
-      "khong an tinh bot", "cắt cơm", "cat com", "hạn chế tinh bột", "han che tinh bot",
-      "giảm tinh bột", "giam tinh bot", "không ăn cơm", "khong an com", "cắt giảm carbs",
-      "cat giam carb", "ăn low carb", "an low carb", "kiêng bột đường", "kieng bot duong",
-      "chế độ ăn low carb", "che do an low carb", "kiêng carb", "kieng carb",
-      "ăn kiêng lowcarb", "an kieng lowcarb"
+  "health_tag": "low_carb",
+  "list_idea": [
+    "low carb", "ăn ít tinh bột", "an it tinh bot",
+    "lowcarb", "kiêng tinh bột", "kieng tinh bot",
+    "keto", "chế độ keto", "che do keto",
+    "không ăn tinh bột", "khong an tinh bot",
+    "cắt cơm", "cat com",
+    "hạn chế tinh bột", "han che tinh bot",
+    "giảm tinh bột", "giam tinh bot",
+    "không ăn cơm", "khong an com",
+    "cắt giảm carbs", "cat giam carb",
+    "ăn low carb", "an low carb",
+    "kiêng bột đường", "kieng bot duong",
+    "chế độ ăn low carb", "che do an low carb",
+    "kiêng carb", "kieng carb",
+    "ăn kiêng lowcarb", "an kieng lowcarb",
+
+    "né tinh bột", "ne tinh bot",
+    "tránh tinh bột", "tranh tinh bot",
+    "né cơm mỳ", "ne com my",
+    "tránh cơm mỳ", "tranh com my",
+    "không ăn cơm mỳ", "khong an com my",
+    "kiêng nghiêm ngặt tinh bột", "kieng nghiem ngat tinh bot",
+    "cần né tinh bột", "can ne tinh bot",
+    "siết tinh bột", "siet tinh bot",
+    "cắt tinh bột", "cat tinh bot"
     ]
   },
   {
-    "health_tag": "healthy_diet",
-    "list_idea": [
-      "healthy", "ăn healthy", "an healthy", "thực đơn healthy", "thuc don healthy",
-      "đồ ăn healthy", "do an healthy", "dinh dưỡng lành mạnh", "dinh duong lanh manh",
-      "đồ ăn tốt cho sức khỏe", "do an tot cho suc khoe", "ăn khoa học", "an khoa hoc",
-      "chế độ ăn tốt cho sức khỏe", "che do an tot cho suc khoe", "bữa ăn heathy",
-      "bua an healthy", "ăn dinh dưỡng", "an dinh duong", "ăn cân bằng dinh dưỡng",
-      "an can bang dinh duong", "thực phẩm healthy", "thuc pham healthy", "đồ ăn bổ dưỡng",
-      "do an bo duong", "lối sống healthy", "loi song healthy", "khẩu phần healthy","kiêng dầu mỡ","kiêng đồ ngọt"
+  "health_tag": "healthy_diet",
+  "list_idea": [
+    "ăn healthy", "an healthy",
+    "thực đơn healthy", "thuc don healthy",
+    "đồ ăn healthy", "do an healthy",
+    "dinh dưỡng lành mạnh", "dinh duong lanh manh",
+    "đồ ăn tốt cho sức khỏe", "do an tot cho suc khoe",
+    "ăn khoa học", "an khoa hoc",
+    "chế độ ăn tốt cho sức khỏe", "che do an tot cho suc khoe",
+    "bữa ăn healthy", "bua an healthy",
+    "ăn dinh dưỡng", "an dinh duong",
+    "ăn cân bằng dinh dưỡng", "an can bang dinh duong",
+    "thực phẩm healthy", "thuc pham healthy",
+    "lối sống healthy", "loi song healthy",
+    "khẩu phần healthy", "khau phan healthy",
+    "kiêng dầu mỡ", "kieng dau mo",
+    "kiêng đồ ngọt", "kieng do ngot",
+    "kiêng đồ chiên xào", "kieng do chien xao",
+"kiêng chiên xào", "kieng chien xao",
+"kiêng mấy món chiên", "kieng may mon chien",
+"tránh đồ chiên xào", "tranh do chien xao",
+"không ăn đồ chiên xào", "khong an do chien xao",
+"muốn kiêng đồ chiên", "muon kieng do chien",
+"kiêng đồ béo chiên", "kieng do beo chien"
     ]
-  }
+  },
+  {
+  "health_tag": "mo_mau_cao",
+  "list_idea": [
+    "mỡ máu cao", "mo mau cao",
+    "mỡ trong máu cao", "mo trong mau cao",
+    "mỡ máu", "mo mau",
+    "máu nhiễm mỡ", "mau nhiem mo",
+    "cholesterol cao", "cholesterol",
+    "triglyceride cao", "triglycerid cao",
+    "rối loạn mỡ máu", "roi loan mo mau",
+    "tăng mỡ máu", "tang mo mau",
+    "lipid máu cao", "lipid mau cao",
+    "kiêng chiên xào nhiều dầu mỡ", "kieng chien xao nhieu dau mo",
+"tránh chiên xào nhiều dầu mỡ", "tranh chien xao nhieu dau mo",
+"kiêng đồ chiên xào nhiều dầu", "kieng do chien xao nhieu dau",
+    "bị mỡ máu", "bi mo mau","bi mo mau cao" ,"bị mỡ máu cao" , "mỡ máu cao", "mo mau cao"
+  ]
+  },
+  {
+  "health_tag": "mo_mau_cao",
+  "list_idea": [
+    "mỡ máu cao", "mo mau cao",
+    "mỡ trong máu cao", "mo trong mau cao",
+    "máu nhiễm mỡ", "mau nhiem mo",
+    "cholesterol cao", "cholesterol",
+    "triglyceride cao", "triglycerid cao",
+    "rối loạn mỡ máu", "roi loan mo mau",
+    "tăng mỡ máu", "tang mo mau",
+    "lipid máu cao", "lipid mau cao",
+    "bị mỡ máu", "bi mo mau",
+    "mỡ máu cao cần tránh chiên xào", "mo mau cao can tranh chien xao",
+    "tránh món chiên xào vì mỡ máu", "tranh mon chien xao vi mo mau",
+    "kiêng chiên xào vì mỡ máu", "kieng chien xao vi mo mau"
+  ]
+}
 ]

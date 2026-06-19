@@ -201,6 +201,8 @@ class TestExclusionContext(_NegationDetectorTest):
     def test_prompt_mau_10(self):
         """Gõ sai chính tả 'giá cả phải chăng' thành 'phải trăng', 'mún ag' -> Phải pass."""
         prompt = "mún ag hải sản tươi sống ở bình thạnh, giá cả phải trăng, không gian sạch sẽ thoáng mát"
+        for d in self.detector.detect_with_scores(prompt):
+            print(d)
         detected_risks = self.detector.detect(prompt)
         self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
 
@@ -289,6 +291,336 @@ class TestExclusionContext(_NegationDetectorTest):
         prompt = "Tìm giùm mình mấy quán bán gỏi đu đủ ba khía hải sản sốt thái đang hot rần rần trên mạng, tiêu chí sạch sẽ."
         detected_risks = self.detector.detect(prompt)
         self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    
+    def test_prompt_mau_26(self):
+        """Khách báo có người dị ứng nghiêm trọng -> Phải bắt được nguy cơ (Không được rỗng)."""
+        prompt = "Tụi mình tính đi ăn buffet hải sản ở Quận 1 nhưng trong nhóm có đứa bạn bị dị ứng vỏ tôm cua cua ghẹ rất nặng."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(len(detected_risks) > 0, f"Lỗi! Khách báo dị ứng cua ghẹ nặng mà không detect được rủi ro.")
+
+    def test_prompt_mau_27(self):
+        """Khách mang bầu cần kiêng đồ sống -> Phải bắt được nguy cơ."""
+        prompt = "Vợ chồng mình định đi ăn sushi Nhật Bản, quán nào đồ chín đa dạng không ạ vì vợ mình đang bầu cần kiêng hải sản sống."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(len(detected_risks) > 0, f"Lỗi! Phụ nữ mang thai kiêng đồ sống mà hệ thống bỏ qua.")
+
+    def test_prompt_mau_28(self):
+        """Khách báo đang bị đau dạ dày cần tìm món thanh đạm -> Phải bắt được nguy cơ."""
+        prompt = "Dạo này mình đang bị viêm loét dạ dày nhẹ, muốn tìm quán nào có món cháo bồ câu hoặc súp thanh đạm dễ tiêu ở Quận 3."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(len(detected_risks) > 0, f"Lỗi! Đau dạ dày là từ khóa y tế, buộc phải ghi nhận rủi ro để lọc món cay/nóng.")
+    def test_prompt_mau_29(self):
+        """Khách sợ ăn trúng đồ ươn gây đau bụng nhưng bản chất là đang tìm quán -> Phải pass."""
+        prompt = "Muốn thử ăn cái món gỏi gà măng cụt sống đang trend ghê, mà sợ mấy quán làm không sạch sẽ về đau bụng quá."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_30(self):
+        """Khách lo ngại ngộ độc thực phẩm khi ăn vỉa hè nhưng vẫn xin địa chỉ -> Phải pass."""
+        prompt = "Xung quanh khu ẩm thực quận 4 có quán ốc vỉa hè nào làm sạch sẽ không mọi người, dạo này đọc báo thấy ngộ độc thực phẩm ghê quá mà vẫn thèm ăn."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_prompt_mau_31(self):
+        """Thời tiết mưa gió lạnh lẽo, tìm quán ăn đồ nóng ấm -> Phải pass."""
+        prompt = "Sài Gòn chiều nay mưa lạnh quá, mình cần tìm quán lẩu bò hoặc lẩu hải sản nấm nghi ngút khói, giá tầm 300k quanh Quận 10."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_32(self):
+        """Thời tiết nắng nóng, đi tìm món giải nhiệt -> Phải pass."""
+        prompt = "Trời nắng nóng muốn héo người, tìm quán nước thoáng mát có máy lạnh bốc lửa hoặc tiệm kem dừa giải nhiệt gấp ở Quận 1."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_prompt_mau_33(self):
+        """Kể chuyện quán cũ làm bẩn gây đau bụng để đi tìm quán mới sạch hơn -> Phải pass."""
+        prompt = "Hôm trước ăn hải sản ở quán X xong về bị tào tháo rượt cả đêm. Hôm nay nhóm mình muốn tìm quán khác sạch sẽ, uy tín hơn để ăn lại, ngân sách không thành vấn đề."
+        detected_risks = self.detector.detect(prompt)
+        # Giải thích: Mệnh đề 1 chứa "tào tháo rượt" (bệnh), mệnh đề 2 độc lập chứa "muốn tìm quán khác... để ăn lại" -> Cơ chế tách clause v3 phải cô lập được vế sau và Pass.
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_34(self):
+        """Phàn nàn về đồ ăn cũ dính dị ứng để tìm quán chuẩn organic -> Phải pass."""
+        prompt = "Tôi ăn đồ nhà hàng khác hay bị ngứa ngáy nổi mề đay do chất bảo quản, tối nay tính đi ăn nhà hàng chay nào chuẩn vị sạch sẽ organic ở Quận 1 giới thiệu tôi với."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_prompt_mau_35(self):
+        """Tìm không gian sang trọng đặt tiệc đầy tháng cho bé -> Phải pass."""
+        prompt = "Nhà mình sắp làm tiệc đầy tháng cho bé, cần đặt bàn khoảng 3 bàn tiệc hải sản cao cấp, có hỗ trợ gói trang trí sân khấu tại tiệm luôn nha."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_36(self):
+        """Câu troll/vui vẻ: Đi ăn với người yêu cũ cần không gian riêng -> Phải pass."""
+        prompt = "Hẹn đi ăn tối với người yêu cũ, cần tìm quán ăn thái hoặc quán hải sản nào không gian tối tối lãng mạn, có phòng chia vách ngăn riêng tư ở Quận 3."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_37(self):
+        """Tìm quán ăn phục vụ xuyên đêm cho cổ động viên xem bóng đá -> Phải pass."""
+        prompt = "Tối nay có trận chung kết C1, nhóm mình muốn tìm quán nhậu hải sản hoặc quán bia nào có màn hình chiếu lớn và mở cửa xuyên đêm qua 2h sáng."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_prompt_mau_38(self):
+        """Tìm đặc sản vùng miền cụ thể (Hải sản nhảy, tôm nhảy) -> Phải pass."""
+        prompt = "Đang đi du lịch Quy Nhơn muốn thử trải nghiệm ăn bánh xèo tôm nhảy hoặc hải sản tươi sống bắt tại đầm ngon bổ rẻ."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_39(self):
+        """Tìm quán buffet chay / Đồ ăn ăn kiêng giảm cân (Keto/Clean) -> Phải pass."""
+        prompt = "Mình đang có kế hoạch ăn chế độ giảm cân eat clean, app gợi ý giùm mấy quán salad hoặc tiệm ăn chay nào ngon quanh Quận 1 ngân sách dưới 150k."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+
+    def test_prompt_mau_40(self):
+        """Tìm combo quà tặng kèm đồ ăn đem về -> Phải pass."""
+        prompt = "Shop ơi mình muốn đặt bàn ăn tối 2 người món Âu lãng mạn, bên quán có dịch vụ chuẩn bị sẵn bánh kem sinh nhật nhỏ tặng kèm không?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    
+    def test_fp_02(self):
+        """Rủ bạn ăn hải sản, không kiêng cữ — Câu rủ rê, không có bệnh lý hay kiêng cữ."""
+        prompt = "Tụi mình rủ nhau ra biển ăn hải sản tươi sống ngon quá trời, cua ghẹ tôm hùm đủ hết luôn!"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_fp_01(self):
+        """Hỏi về món hải sản tươi sống (review chất lượng) — Khách hỏi nguyên liệu, không có bệnh lý."""
+        prompt = "Nhìn menu cua sốt và tôm hùm bên mình ngon quá, không biết hải sản là đồ tươi sống bắt tại hồ hay đồ đông lạnh vậy shop?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_fp_03(self):
+        """Hỏi quán có đồ chiên giòn không — Khách tìm đồ chiên vì thích ăn, không có bệnh lý."""
+        prompt = "Cho mình hỏi quán có món gì chiên xào giòn giòn không? Mình đang thèm đồ chiên lắm."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_fp_04(self):
+        """Hỏi về đồ ngọt / trà sữa — Muốn ăn ngọt vì thích, không phải tiểu đường."""
+        prompt = "Gần đây có quán trà sữa hay bánh ngọt nào ngon không? Mình thích đồ ngọt lắm."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_fp_05(self):
+        """Lịch trình du lịch bình thường — Chuyến đi không có yếu tố sức khỏe."""
+        prompt = "Mình đi Đà Nẵng 3 ngày 2 đêm, muốn ăn hải sản, mỳ Quảng, bánh mì. Gợi ý quán nào ngon không?"
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    
+    def test_fp_06(self):
+        """Review quán ăn có đề cập nguyên liệu — Đề cập đến nguyên liệu như cách mô tả món, không phải kiêng cữ."""
+        prompt = "Quán này nấu phở bằng xương bò hầm 12 tiếng, nước dùng không bột ngọt, đồ tươi sống 100%."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+        
+    def test_fp_07(self):
+        """Bạn bè nhắc nhau ăn ít đồ ngọt (không có bệnh) — Lời khuyên xã giao, không phải khai báo bệnh."""
+        prompt = "Dạo này tụi mình hay nhắc nhau ăn ít đồ ngọt lại cho healthy, chứ không bệnh gì đâu."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    
+    def test_fp_08(self):
+        """Nhắc đến huyết áp trong ngữ cảnh quan tâm sức khỏe chung — Nói chuyện về sức khỏe chung, không phải bệnh nhân."""
+        prompt = "Mọi người hay nói huyết áp cao là do ăn mặn, nên mình cũng tập ăn nhạt hơn cho khỏe."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    def test_fn_09(self):
+        """Huyết áp cao kiêng mặn — Tăng huyết áp, bác sĩ dặn ăn nhạt."""
+        prompt = "Ba mình tăng huyết áp, bác sĩ dặn phải ăn nhạt giảm muối, không ăn đồ mặn. Gợi ý quán cơm ít muối."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("High_Sodium", detected_risks)
+    
+    def test_fp_10(self):
+        """Ăn chay theo tôn giáo, không phải bệnh lý — Ăn chay vì tín ngưỡng, không liên quan sức khỏe."""
+        prompt = "Mình ăn chay trường theo đạo Phật, tìm quán buffet chay ngon gần Quận 5."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Bị gắn nhầm tag: {detected_risks}")
+    
+    def test_prompt_mau_41(self):
+        """Khách ăn chay nhưng bị đau dạ dày -> Phải nhận diện được tag nguy cơ đồ cay (Spicy)."""
+        prompt = "tôi là người ăn chay nhưng bị đau dạ dày"
+        detected_risks = self.detector.detect(prompt)
+        
+        # Mong đợi: Hệ thống phải phát hiện ra rủi ro cho người đau dạ dày
+        self.assertTrue(
+            len(detected_risks) > 0, 
+            "Thất bại! Khách khai báo bị đau dạ dày nhưng hệ thống không phát hiện rủi ro nào."
+        )
+        
+        # Kiểm tra xem tag 'Spicy' (hoặc tag tương ứng của nhóm bạn) có nằm trong list rủi ro không
+        # Lưu ý: Thay chữ 'Spicy' bằng chính xác Tên Tag đồ cay trong file JSON/Dictionary của nhóm bạn
+        expected_tag = "Spicy" 
+        self.assertIn(
+            expected_tag, detected_risks, 
+            f"Thất bại! Đau dạ dày phải cảnh báo tag '{expected_tag}'. Danh sách hiện tại: {detected_risks}"
+        )
+    def test_fn_01(self):
+        """Tiểu đường thai kỳ kiêng ngọt — Phụ nữ mang thai bị tiểu đường thai kỳ."""
+        prompt = "Mình đang mang thai tháng thứ 6, bị tiểu đường thai kỳ, bác sĩ dặn kiêng đồ ngọt và tinh bột."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(all(t in detected_risks for t in ["High_Sugar","Refined_Carbs"]), f"Thiếu tag: {detected_risks}")
+    
+    
+    def test_fn_02(self):
+        """Dị ứng đậu phộng nặng khi gọi món — Dặn dò quán về dị ứng nghiêm trọng."""
+        prompt = "Mình bị dị ứng đậu phộng rất nặng, sốc phản vệ luôn, nhờ nhà bếp không cho bất kỳ loại lạc nào vào món nhé."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Peanuts_Nuts", detected_risks)
+    
+    def test_fn_03(self):
+        """Mỡ máu cao tránh đồ chiên — Bệnh nền mỡ máu cao, cần tránh đồ chiên xào."""
+        prompt = "Gia đình 4 người đi du lịch ghé Quận 1 ăn trưa món Âu, tối ăn đặc sản Nam Bộ mà mẹ mình bị mỡ máu cao nên cần tránh mấy món chiên xào nhiều dầu mỡ."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("DeepFried_Oily", detected_risks)
+   
+    def test_fn_04(self):
+        """Bác sĩ dặn kiêng hải sản tươi sống — Lịch kết hợp kiêng cữ đồ sống theo chỉ định y tế."""
+        prompt = "Sáng ăn hủ tiếu, trưa ăn đồ Nhật sashimi cá hồi ở Quận 3, bác sĩ dặn phải kiêng tuyệt đối đồ sống hải sản tươi sống."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(all(t in detected_risks for t in ["Seafood","Shellfish"]), f"Thiếu tag: {detected_risks}")
+    
+    def test_fn_05(self):
+        """Gout kiêng hải sản và thịt đỏ — Bệnh nhân gout khai bệnh và kiêng cữ."""
+        prompt = "Mình đang bị bệnh gout, bác sĩ bắt kiêng hải sản, thịt đỏ và rượu bia. Gợi ý quán ăn phù hợp."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(all(t in detected_risks for t in ["Seafood","Shellfish","Red_Meat","Alcohol_Pub"]), f"Thiếu tag: {detected_risks}")
+    
+    
+    def test_fn_06(self):
+        """Không dung nạp lactose — Uống sữa bị tiêu chảy, không dung nạp lactose."""
+        prompt = "Mình uống sữa hay bị đau bụng tiêu chảy, bị bất dung nạp lactose, nhờ không bỏ phô mai hay kem vào món giúp mình."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Dairy_Product", detected_risks)
+    
+    def test_fn_07(self):
+        """Dị ứng gluten - celiac — Bệnh celiac, cần tránh lúa mì."""
+        prompt = "Mình bị bệnh celiac nên phải ăn gluten free hoàn toàn, không ăn được bột mì, bánh mì, mì gói."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Gluten_Present", detected_risks)
+    
+    def test_fn_08(self):
+        prompt = "Dạ dày mình yếu lắm, ăn đồ cay là đau bụng ngay, nhờ gợi ý món không cay và không chiên nhiều dầu."
+        
+        from unidecode import unidecode
+        import re
+        normalized = prompt.lower()
+        normalized = unidecode(normalized)
+        normalized = re.sub(r"[^a-z0-9\s]", " ", normalized)
+        normalized = re.sub(r"\s+", " ", normalized).strip()
+        print("Normalized:", normalized)
+        
+        tokens = normalized.split()
+        print("Tokens:", tokens)
+        
+        for d in self.detector.detect_with_scores(prompt):
+            print("Match:", d)
+        
+        detected_risks = self.detector.detect(prompt)
+        print("Final risks:", detected_risks)
+        self.assertTrue(all(t in detected_risks for t in ["Spicy","DeepFried_Oily"]), f"Thiếu tag: {detected_risks}")
+            
+    
+    def test_fn_09(self):
+        """Huyết áp cao kiêng mặn — Tăng huyết áp, bác sĩ dặn ăn nhạt."""
+        prompt = "Ba mình tăng huyết áp, bác sĩ dặn phải ăn nhạt giảm muối, không ăn đồ mặn. Gợi ý quán cơm ít muối."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("High_Sodium", detected_risks)
+    
+    # =======================================================================
+    # 15. NHÓM PHỐI HỢP LỊCH TRÌNH / VỊ TRÍ / NGÂN SÁCH (MIX-CONTEXT)
+    # =======================================================================
+
+    def test_mix_schedule_no_health_pass(self):
+        """Lịch trình sáng Việt trưa Thái tối Âu hoàn toàn bình thường -> Kỳ vọng []"""
+        prompt = "Tôi muốn ăn sáng bằng món Việt ăn trưa bằng món Thái, ăn tối bằng món Âu ngân sách 500k, ở Quận 1."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [], f"Lỗi bắt nhầm tag từ lịch trình thông thường: {detected_risks}")
+
+    def test_mix_schedule_with_spicy_medical(self):
+        """Lịch trình kết hợp: Trưa ăn đồ Thái nhưng dạ dày yếu phải né cay -> Kỳ vọng ['Spicy']"""
+        prompt = "Gợi ý lịch trình ăn uống Quận 3: sáng cafe bánh ngọt, trưa ăn món Thái mà mình bị đau dạ dày nên quán nhớ làm không cay nha, tối ăn lẩu nhẹ nhàng với bạn."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Spicy", detected_risks, f"Lỗi lọt tag đồ cay khi khách khai báo đau dạ dày trong lịch trình.")
+
+    def test_mix_schedule_with_diabetes(self):
+        """Lịch trình kết hợp: Sáng muốn ăn bánh ngọt nhưng bị tiểu đường -> Kỳ vọng ['High_Sugar']"""
+        prompt = "Mình cần tìm chỗ ăn cả ngày quanh Bình Thạnh, ngân sách tầm 300k. Sáng tính ăn bánh ngọt uống trà sữa mà ngặt nỗi bị tiểu đường, trưa tối ăn cơm văn phòng bình thường."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("High_Sugar", detected_risks)
+
+    def test_mix_schedule_with_seafood_allergy(self):
+        """Lịch trình kết hợp: Tối ăn buffet hải sản nhưng có người dị ứng tôm cua -> Kỳ vọng Seafood/Shellfish"""
+        prompt = "Lên kế hoạch ăn uống đi chơi Quận 1: trưa ăn mỳ Ý tầm 150k, tối đi ăn buffet hải sản với công ty nhưng trong nhóm có ông anh bị dị ứng hải sản nặng, xem có món gì thay thế không."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(any(tag in detected_risks for tag in ["Seafood", "Shellfish"]))
+
+    def test_mix_schedule_with_hypertension(self):
+        """Lịch trình kết hợp: Trưa ăn mỳ cay/đồ mặn nhưng bố bị cao huyết áp -> Kỳ vọng ['High_Sodium']"""
+        prompt = "Dẫn gia đình đi ăn ở Landmark 81, sáng ăn bún bò, trưa ăn món Hàn Quốc mà bố mình bị cao huyết áp nên quán làm nhạt muối giùm, tối ăn nhẹ salad thôi."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("High_Sodium", detected_risks)
+
+    def test_mix_schedule_with_oily_medical(self):
+        """Lịch trình kết hợp: Đi du lịch ăn súp cua, gà rán nhưng đang ho -> Kỳ vọng ['DeepFried_Oily']"""
+        prompt = "Tôi muốn ăn sáng súp cua Quận 5, trưa dẫn mấy đứa nhỏ đi ăn gà rán kem tươi tiệc sinh nhật mà tôi đang bị ho viêm họng nên cần kiêng đồ dầu mỡ rán ngập dầu nha."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("DeepFried_Oily", detected_risks)
+
+    def test_mix_schedule_all_clean_pass(self):
+        """Lịch trình ăn chay/eat clean chủ động hoàn toàn khỏe mạnh -> Kỳ vọng []"""
+        prompt = "Tìm quán ăn sáng món Việt thanh đạm, trưa ăn buffet chay Quận 10, tối ăn salad tổng hợp eat clean để giữ dáng, ngân sách cả ngày 400k."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [])
+
+    def test_mix_schedule_with_low_carb(self):
+        """Lịch trình kết hợp: Muốn ăn món Âu, món Nhật nhưng đang siết cơ kiêng tinh bột -> Kỳ vọng ['Refined_Carbs']"""
+        prompt = "Tư vấn thực đơn cả ngày ở Quận 1, ngân sách 1 triệu. Trưa ăn sushi Nhật, tối ăn bít tết Âu nhưng mình đang ăn kiêng nghiêm ngặt, cần né tinh bột với cơm mỳ ra."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Refined_Carbs", detected_risks)
+
+    def test_mix_location_budget_no_health_pass(self):
+        """Tìm quán nhậu, uống bia cuối tuần thông thường -> Kỳ vọng []"""
+        prompt = "Cuối tuần tụ tập bạn cấp 3 tầm 6 người, muốn tìm quán nhậu hoặc tiệm bia nào view chill chill ở khu Thảo Điền Quận 2, ngân sách mỗi người tầm 400k."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [])
+
+    def test_mix_schedule_with_stomach_ache(self):
+        """Lịch trình kết hợp: Trưa ăn mỳ cay nhưng bụng yếu hay tiêu chảy -> Kỳ vọng ['Spicy']"""
+        prompt = "Sáng ăn phở bò, trưa nhóm bạn rủ ăn mỳ cay 7 cấp độ ở Quận 10 mà dạo này bụng dạ yếu hay bị tiêu chảy nên mình muốn đổi sang món khác không cay, tối ăn gì cũng được."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("Spicy", detected_risks)
+
+    def test_mix_corporate_party_no_health_pass(self):
+        """Đặt tiệc công ty gồm món Việt, món Hoa, tiếp khách -> Kỳ vọng []"""
+        prompt = "Đặt bàn tiệc công ty 20 người trưa nay, menu kết hợp món Việt với món Hoa, có không gian riêng để tiếp khách VIP, ngân sách tổng khoảng 10 triệu ở Quận 1."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [])
+
+    def test_mix_schedule_pregnancy_care(self):
+        """Lịch trình kết hợp:kiêng cữ đồ sống -> Kỳ vọng Seafood/Shellfish hoặc sinh học"""
+        prompt = "Sáng ăn hủ tiếu, trưa ăn đồ Nhật sashimi cá hồi ở Quận 3, bác sĩ dặn phải kiêng tuyệt đối đồ sống hải sản tươi sống."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(any(tag in detected_risks for tag in ["Seafood", "Shellfish"]))
+
+    def test_mix_family_trip_with_elderly_fat(self):
+        """Chuyến đi gia đình: Người già mỡ máu cao né đồ chiên xào -> Kỳ vọng ['DeepFried_Oily']"""
+        prompt = "Gia đình 4 người đi du lịch ghé Quận 1 ăn trưa món Âu, tối ăn đặc sản Nam Bộ mà mẹ mình bị mỡ máu cao nên cần tránh mấy món chiên xào nhiều dầu mỡ."
+        detected_risks = self.detector.detect(prompt)
+        self.assertIn("DeepFried_Oily", detected_risks)
+
+    def test_mix_dating_schedule_no_health_pass(self):
+        """Lịch trình hẹn hò sang chảnh tinh tế -> Kỳ vọng []"""
+        prompt = "Dẫn bạn gái đi hẹn hò tối thứ 7, muốn ăn món Pháp lãng mạn có nến và hoa, sau đó đi uống cocktail bar quanh khu Quận 1, ngân sách thoải mái tầm 3 triệu."
+        detected_risks = self.detector.detect(prompt)
+        self.assertEqual(detected_risks, [])
+
+    def test_mix_weekend_with_gout(self):
+        """Lịch trình cuối tuần: Đi ăn tiệc nướng nhưng bị gout -> Kỳ vọng Seafood/Shellfish hoặc tag tương ứng"""
+        prompt = "Trưa ăn cơm tấm, tối bạn thân mời đám cưới tiệc buffet nướng hải sản bia tươi ở Quận 7, ngặt nỗi mình đang bị bệnh gout sưng khớp chân nên phải kiêng hải sản tôm cua."
+        detected_risks = self.detector.detect(prompt)
+        self.assertTrue(any(tag in detected_risks for tag in ["Seafood", "Shellfish"]))
     def test_app_tim_quan_review_pass_test(self):
         """Khách tìm quán theo review, không có rủi ro -> Phải pass."""
         # Tìm quán view đẹp, đi hẹn hò

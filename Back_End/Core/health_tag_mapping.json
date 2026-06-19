@@ -58,5 +58,15 @@
 "DeepFried_Oily",
 "High_Sugar",
 "High_Sodium"
-]
+],
+"hai_san":           ["Seafood", "Shellfish"],
+"do_bien":           ["Seafood", "Shellfish"],
+"do_song":           ["Seafood", "Shellfish"],
+"tuoi_song":         ["Seafood", "Shellfish"],
+"ca_song":           ["Seafood"],
+"tom_cua_song":      ["Shellfish"],
+"sashimi":           ["Seafood", "Shellfish"],
+"thai_san":          ["Seafood", "Shellfish"],
+"mang_thai":         ["Seafood", "Shellfish"],
+"mo_mau_cao":         ["High_Sodium", "DeepFried_Oily"]
 }
