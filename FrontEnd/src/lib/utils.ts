@@ -58,13 +58,7 @@ function resolveAssignedMeal(
     return normalizedAssigned;
   }
 
-  if (!Array.isArray(meals)) return undefined;
-
-  const firstMeal = meals
-    .map((meal) => String(meal || "").trim())
-    .find(Boolean);
-
-  return firstMeal;
+  return undefined;
 }
 
 export function convertToGeoJSON(restaurants: ApiRestaurant[]) {
