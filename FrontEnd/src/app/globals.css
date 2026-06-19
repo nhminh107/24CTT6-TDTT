@@ -15,9 +15,7 @@ body {
   min-height: 100vh;
   font-family: "Manrope", ui-sans-serif, system-ui;
   background-color: #f8fafc;
-  background-image: 
-    radial-gradient(circle at 20% 20%, rgba(17, 181, 184, 0.08), transparent 50%),
-    radial-gradient(circle at 80% 10%, rgba(255, 106, 61, 0.12), transparent 45%);
+  background-image: none;
   color: #0f172a;
 }
 
@@ -37,9 +35,9 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.68);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
 }
 
 .section-spacing {
@@ -47,6 +45,12 @@ body {
 }
 
 @media (min-width: 1024px) {
+  .glass {
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(18px);
+    border-color: rgba(148, 163, 184, 0.35);
+  }
+
   .section-spacing {
     padding: 8rem 4.5rem;
   }

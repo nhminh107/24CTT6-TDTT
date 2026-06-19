@@ -24,7 +24,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="sticky top-0 z-50 w-full border-b border-slate-200/60 bg-white/70 backdrop-blur"
       >
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-coral to-brand-flame text-white shadow-glow">
@@ -93,7 +93,7 @@ export default function Navbar() {
 
                     <Link
                       href="/app"
-                      className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+                      className="hidden rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(255,106,61,0.22)] transition hover:-translate-y-0.5 sm:inline-flex lg:rounded-full lg:px-5 lg:py-2 lg:shadow-glow"
                     >
                       Dùng ngay
                     </Link>
@@ -102,13 +102,13 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/app"
-                    className="rounded-full bg-gradient-to-r from-brand-coral to-brand-flame px-5 py-2 text-sm font-semibold text-white shadow-glow transition hover:-translate-y-0.5"
+                    className="hidden rounded-2xl bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_22px_rgba(255,106,61,0.22)] transition hover:-translate-y-0.5 sm:inline-flex lg:rounded-full lg:px-5 lg:py-2 lg:shadow-glow"
                   >
                     Dùng ngay
                   </Link>
                   <Link
                     href="/login"
-                    className="rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-bold text-slate-600 transition hover:border-brand-coral hover:text-brand-coral hover:shadow-sm"
+                    className="inline-flex min-h-10 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition hover:border-brand-coral hover:text-brand-coral hover:shadow-sm lg:rounded-full lg:px-5"
                   >
                     Đăng nhập
                   </Link>
@@ -122,5 +122,4 @@ export default function Navbar() {
     </>
   );
 }
-
 
