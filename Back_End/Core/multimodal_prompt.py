@@ -48,11 +48,27 @@ class MultimodalPromptTransformer:
 
         Rules:
         - The transformed_prompt will be passed to routing/search. It must be useful, concise, and in Vietnamese.
-        - Preserve the user's original intent. Do not answer the user directly.
+        - Preserve and combine BOTH information sources: the user's text prompt and the image content. The text prompt defines the user's intent; the image adds dish/menu/store evidence. If they conflict, keep the user's intent and mention the image finding cautiously.
+        - Do not answer the user directly.
         - If the image is a menu: extract the most relevant readable dish/drink names and include them in the prompt. Do not list too many items; keep 5-12 clear items maximum.
         - If the user asks "Tôi nên ăn món nào" with a menu image, transform into: "Tôi nên ăn món nào trong những món trong menu sau đây: ..."
         - If the image is a dish: identify the most likely dish/drink. If uncertain, mention "có vẻ là". Transform search intent into: "Tôi muốn ăn món ...".
-        - If the image is a restaurant/storefront/ambience: describe visible cuisine, vibe, and constraints briefly.
+        - When a recognized dish clearly implies a restaurant venue type, add that type naturally to transformed_prompt, but ONLY choose from this allowed list: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước", "Quán Nhật", "Quán Âu", "Tiệm bánh".
+        - Do NOT force a venue type. Leave type unstated if the dish/menu is ambiguous or no allowed type fits confidently.
+        - Venue type examples:
+          * bánh gato, bánh kem, croissant, bánh ngọt -> "Tiệm bánh"
+          * mì Ý, pizza, pasta, steak, burger kiểu Âu -> "Quán Âu"
+          * sushi, sashimi, ramen, udon, takoyaki -> "Quán Nhật"
+          * pad Thái, tom yum, som tam -> "Quán Thái"
+          * phở, bún bò, cơm tấm, bánh mì, bún chả -> "Quán Việt"
+          * trà sữa, cà phê, nước ép, sinh tố, đồ uống -> "Quán nước"
+          * món chay rõ ràng, cơm chay, bún chay, lẩu chay -> "Quán Chay"
+        - Format examples for transformed_prompt:
+          * User asks "Tìm quán ăn có món này", image is bánh gato -> "Tôi muốn ăn bánh gato ở Tiệm bánh."
+          * User asks "Tìm quán ăn có món này", image is mì Ý -> "Tôi muốn ăn mì Ý ở Quán Âu."
+          * User asks "Tối nay ăn món này", image is sushi -> "Tối nay tôi muốn ăn sushi ở Quán Nhật."
+          * User asks "Tôi nên ăn món nào", image is a menu -> "Tôi nên ăn món nào trong những món trong menu sau đây: ..."
+        - If the image is a restaurant/storefront/ambience: describe visible cuisine, allowed venue type if clear, vibe, and constraints briefly.
         - If OCR/recognition is uncertain, keep confidence lower and use cautious wording. Do not invent exact dish names that are not visible or likely.
         - Do not include markdown. Do not include beta warnings in transformed_prompt.
         """
