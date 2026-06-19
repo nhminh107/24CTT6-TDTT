@@ -1,4 +1,5 @@
 import { authStorage } from "@/lib/auth";
+import { getApiOrigin } from "@/lib/apiBase";
 
 export const apiFetch = async (input: RequestInfo, init: RequestInit = {}) => {
   const headers = new Headers(init.headers || {});
@@ -19,7 +20,7 @@ export const apiFetch = async (input: RequestInfo, init: RequestInit = {}) => {
   });
 };
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.bmi-foodtour.io.vn";
+const API_BASE_URL = getApiOrigin();
 
 export const itineraryApi = {
   get: async (userId: string) => {
