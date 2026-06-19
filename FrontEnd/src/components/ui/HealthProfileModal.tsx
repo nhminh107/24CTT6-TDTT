@@ -21,9 +21,29 @@ export interface HealthProfile {
 interface HealthProfileModalProps {
   open: boolean;
   onClose: () => void;
-  profile: HealthProfile;
+  profile?: HealthProfile | null;
   onChange: (profile: HealthProfile) => void;
 }
+
+const DEFAULT_PROFILE: HealthProfile = {
+  selected_conditions: [],
+  selected_allergies: [],
+  diet_mode: "casual",
+  more_descriptions: "",
+};
+
+const normalizeProfile = (profile?: HealthProfile | null): HealthProfile => {
+  // Kiểm tra xem diet_mode truyền xuống có hợp lệ không, nếu không hợp lệ thì ép về "casual"
+  const isValidDietMode = profile?.diet_mode === "strict" || profile?.diet_mode === "casual";
+  const initialDietMode = isValidDietMode ? profile!.diet_mode : "casual";
+
+  return {
+    selected_conditions: profile?.selected_conditions ?? [],
+    selected_allergies: profile?.selected_allergies ?? [],
+    diet_mode: initialDietMode,
+    more_descriptions: profile?.more_descriptions ?? "",
+  };
+};
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -43,7 +63,9 @@ const ALLERGIES = [
   "Dị ứng Hải sản vỏ cứng", 
   "Dị ứng Đậu phộng / Hạt", 
   "Bất dung nạp Lactose", 
-  "Dị ứng Gluten (Celiac)"
+  "Dị ứng Gluten (Celiac)",
+  "Dị ứng Hạt cây (Hạnh nhân/Óc chó)", // 👈 Thêm mới (Dùng tag Peanuts_Nuts)
+  "Dị ứng Đạm sữa động vật"            // 👈 Thêm mới (Dùng tag Dairy_Product)
 ];
 
 // ─── Chip component ───────────────────────────────────────────────────────────
@@ -86,7 +108,7 @@ export default function HealthProfileModal({
   profile,
   onChange,
 }: HealthProfileModalProps) {
-  const [local, setLocal] = useState<HealthProfile>(profile);
+  const [local, setLocal] = useState<HealthProfile>(normalizeProfile(profile));
 
   const hasTags =
     local.selected_conditions.length > 0 ||
@@ -96,10 +118,13 @@ export default function HealthProfileModal({
     local.more_descriptions.trim().length > 0;
 
   useEffect(() => {
-    if (open) { 
-      setLocal(profile);
-    }
-  }, [profile, open]);
+  if (open) {
+    const normalized = normalizeProfile(profile);
+    console.log("profile từ server:", profile);
+    console.log("sau normalize:", normalized);
+    setLocal(normalized);
+  }
+}, [profile, open]);
 
   const { user } = useAuth();
   
@@ -195,35 +220,35 @@ export default function HealthProfileModal({
                     </div>
 
                     {/* Body */}
-                    <div className="max-h-[calc(100dvh-14rem)] space-y-8 overflow-y-auto px-5 py-6 scrollbar-hide sm:max-h-[60vh] sm:px-8 sm:py-8">
-                      <section>
+                    <div className="max-h-[calc(100dvh-14rem)] space-y-6 overflow-y-auto px-5 py-6 scrollbar-hide sm:max-h-[60vh] sm:px-8 sm:py-8">
+                      <section className="rounded-[28px] border border-slate-100 bg-slate-50/80 p-5 shadow-sm shadow-slate-100">
                         <div className="mb-4 flex items-center gap-2">
                           <div className="h-1.5 w-1.5 rounded-full bg-orange-500" />
-                          <span className="text-[13px] font-bold text-slate-700">
+                          <span className="text-[13px] font-bold uppercase tracking-[0.18em] text-slate-700">
                             Bệnh nền & Thể trạng
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-2.5">
+                        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                           {CONDITIONS.map((c) => (
                             <Chip
                               key={c}
                               label={c}
                               selected={local.selected_conditions.includes(c)}
                               onClick={() => toggle("selected_conditions", c)}
-                              disabled={hasDescription}   
+                              disabled={hasDescription}
                             />
                           ))}
                         </div>
                       </section>
 
-                      <section>
+                      <section className="rounded-[28px] border border-slate-100 bg-slate-50/80 p-5 shadow-sm shadow-slate-100">
                         <div className="mb-4 flex items-center gap-2">
                           <div className="h-1.5 w-1.5 rounded-full bg-red-500" />
-                          <span className="text-[13px] font-bold text-slate-700">
+                          <span className="text-[13px] font-bold uppercase tracking-[0.18em] text-slate-700">
                             Dị ứng thực phẩm
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-2.5">
+                        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                           {Array.from(new Set([...ALLERGIES, ...local.selected_allergies])).map((a) => (
                             <Chip
                               key={a}
@@ -236,43 +261,50 @@ export default function HealthProfileModal({
                         </div>
                       </section>
 
-                      <section>
-                        <div className="mb-4">
-                          <span className="text-[13px] font-bold text-slate-700">
+                      <section className="w-full flex flex-col items-center rounded-[28px] border border-slate-100 bg-slate-50/80 p-5 shadow-sm shadow-slate-100">
+                      <div className="mb-4 w-full flex justify-center">
+                        {/* Bỏ flex justify-between thừa và ép bọc ngoài căn giữa */}
+                        <div className="flex flex-col items-center text-center">
+                          <p className="text-[13px] font-bold uppercase tracking-[0.18em] text-slate-700">
                             Mức độ ưu tiên
-                          </span>
+                          </p>
+                          <p className="mt-1 text-sm text-slate-500 max-w-xs">
+                            Chọn cách AI ưu tiên gợi ý món ăn cho bạn.
+                          </p>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 p-1.5 bg-slate-50 rounded-2xl border border-slate-100">
-                          <button
-                            type="button"
-                            onClick={() => setLocal((p) => ({ ...p, diet_mode: "strict" }))}
-                            className={cn(
-                              "flex items-center justify-center gap-2 py-3 text-[14px] font-bold transition-all rounded-xl",
-                              local.diet_mode === "strict"
-                                ? "bg-white text-orange-600 shadow-sm border border-orange-100"
-                                : "text-slate-500 hover:text-slate-700"
-                            )}
-                          >
-                            <span className="text-base">🔒</span> Nghiêm ngặt
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setLocal((p) => ({ ...p, diet_mode: "casual" }))}
-                            className={cn(
-                              "flex items-center justify-center gap-2 py-3 text-[14px] font-bold transition-all rounded-xl",
-                              local.diet_mode === "casual"
-                                ? "bg-white text-orange-600 shadow-sm border border-orange-100"
-                                : "text-slate-500 hover:text-slate-700"
-                            )}
-                          >
-                            <span className="text-base">😌</span> Linh hoạt
-                          </button>
-                        </div>
-                      </section>
+                      </div>
 
-                      <section>
+                      <div className="grid grid-cols-2 gap-3 w-full p-1.5 bg-white rounded-3xl border border-slate-200">
+                        <button
+                          type="button"
+                          onClick={() => setLocal((p) => ({ ...p, diet_mode: "strict" }))}
+                          className={cn(
+                            "flex items-center justify-center gap-2 rounded-2xl border py-3 px-3 text-[14px] font-bold transition-all",
+                            local.diet_mode === "strict"
+                              ? "border-orange-300 bg-orange-50 text-orange-700 shadow-sm"
+                              : "border-transparent text-slate-500 hover:border-slate-200 hover:text-slate-700"
+                          )}
+                        >
+                          <span className="text-base">🔒</span> Nghiêm ngặt
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setLocal((p) => ({ ...p, diet_mode: "casual" }))}
+                          className={cn(
+                            "flex items-center justify-center gap-2 rounded-2xl border py-3 px-3 text-[14px] font-bold transition-all",
+                            local.diet_mode === "casual"
+                              ? "border-orange-300 bg-orange-50 text-orange-700 shadow-sm"
+                              : "border-transparent text-slate-500 hover:border-slate-200 hover:text-slate-700"
+                          )}
+                        >
+                          <span className="text-base">😌</span> Linh hoạt
+                        </button>
+                      </div>
+                    </section>
+
+                      <section className="rounded-[28px] border border-slate-100 bg-slate-50/80 p-5 shadow-sm shadow-slate-100">
                         <div className="mb-4">
-                          <span className="text-[13px] font-bold text-slate-700">
+                          <span className="text-[13px] font-bold uppercase tracking-[0.18em] text-slate-700">
                             Ghi chú riêng cho AI
                           </span>
                         </div>
@@ -284,11 +316,14 @@ export default function HealthProfileModal({
                             }
                             disabled={hasTags}
                             maxLength={200}
-                            rows={3}
+                            rows={4}
                             placeholder="Ví dụ: Tôi không ăn cay, đang trong chế độ Eat Clean..."
-                            className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100 placeholder:text-slate-300"
+                            className="min-h-[120px] w-full resize-none rounded-3xl border border-slate-200 bg-white px-5 py-4 text-sm text-slate-700 outline-none transition focus:border-orange-400 focus:ring-4 focus:ring-orange-100 placeholder:text-slate-300"
                           />
                         </div>
+                        <p className="mt-3 text-xs text-slate-500">
+                          Nếu bạn đã chọn tình trạng sức khỏe hoặc dị ứng, phần ghi chú sẽ bị vô hiệu hoá.
+                        </p>
                       </section>
                     </div>
 

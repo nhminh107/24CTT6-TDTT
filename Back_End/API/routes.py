@@ -632,6 +632,8 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         # Sắp xếp lại danh sách đã gộp tổng hợp
         forbidden_tags_final = sorted(list(total_tags_set))
         
+        print(f"USER HEALTH FILLER MODE: {user_health_profile["diet_mode"]}" )
+        
         # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
         health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
         
@@ -895,7 +897,9 @@ ALLERGY_MAP = {
     "Dị ứng Hải sản vỏ cứng": {"main": ["Shellfish"], "potential": ["Seafood"]},
     "Dị ứng Đậu phộng / Hạt": {"main": ["Peanuts_Nuts"], "potential": []},
     "Bất dung nạp Lactose": {"main": ["Dairy_Product"], "potential": []},
-    "Dị ứng Gluten (Celiac)": {"main": ["Gluten_Present"], "potential": ["Refined_Carbs"]}
+    "Dị ứng Gluten (Celiac)": {"main": ["Gluten_Present"], "potential": ["Refined_Carbs"]},
+    "Dị ứng Hạt cây (Hạnh nhân/Óc chó)": {"main": ["Peanuts_Nuts"], "potential": []},
+    "Dị ứng Đạm sữa động vật": {"main": ["Dairy_Product"], "potential": []}
 }
 
 ALL_AVAILABLE_TAGS = [
@@ -1003,7 +1007,7 @@ async def get_user_health_profile(user_id: str):
         if he.status_code == 404:
             return {
                 "user_id": user_id,
-                "diet_mode": "strict",
+                "diet_mode": "casual",
                 "more_description": "",
                 "raw_selections": {
                     "selected_conditions": [],
@@ -1025,7 +1029,7 @@ async def fetch_user_health_profile(user_id: str):
     if not doc.exists:
         return {
             "user_id": user_id,
-            "diet_mode": "strict",
+            "diet_mode": "casual",
             "more_description": "",
             "raw_selections": {
                 "selected_conditions": [],

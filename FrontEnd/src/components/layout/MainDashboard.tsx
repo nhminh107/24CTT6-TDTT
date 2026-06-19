@@ -528,8 +528,8 @@ export default function MainDashboard() {
       router.push("/login");
       return;
     }
-    await fetchHealthProfile();
-    setHealthOpen(true);
+    setHealthOpen(true);      // mở trước
+    await fetchHealthProfile(); // fetch sau 
   };
 
   const handleProfileOpen = () => {
