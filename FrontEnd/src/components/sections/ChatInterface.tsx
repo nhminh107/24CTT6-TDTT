@@ -543,29 +543,34 @@ export default function ChatInterface({
                       transformOrigin: "top left",
                     }}
                   >
-                    {message.restaurants.map((restaurant, restaurantIndex) => (
-                      <motion.div
-                        key={`${message.id}-${restaurant.id}-${restaurantIndex}`}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 0.4,
-                          delay: message.isCompact ? 0 : restaurantIndex * 0.1
-                        }}
-                        className="space-y-3"
-                      >
-                        <RestaurantMiniCard
-                          restaurant={restaurant}
-                          isInItinerary={currentItinerary.some(item => item.id === restaurant.id)}
-                          isMealOccupied={restaurant.assignedMeal ? currentItinerary.some(i => (i.meal || "").trim().toLowerCase() === (restaurant.assignedMeal || "").trim().toLowerCase()) : false}
-                          onSelect={(id) => {
-                            onRestaurantsSelect?.(message.restaurants || []);
-                            onRestaurantSelect?.(id);
+                    {message.restaurants.map((restaurant, restaurantIndex) => {
+                      const itineraryItem = currentItinerary.find(item => item.id === restaurant.id);
+
+                      return (
+                        <motion.div
+                          key={`${message.id}-${restaurant.id}-${restaurantIndex}`}
+                          initial={{ opacity: 0, y: 12 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: message.isCompact ? 0 : restaurantIndex * 0.1
                           }}
-                          onSelectMeal={onSelectMeal}
-                        />
-                      </motion.div>
-                    ))}
+                          className="space-y-3"
+                        >
+                          <RestaurantMiniCard
+                            restaurant={restaurant}
+                            isInItinerary={Boolean(itineraryItem)}
+                            currentMeal={itineraryItem?.meal}
+                            occupiedMeals={currentItinerary.map(item => item.meal).filter(Boolean)}
+                            onSelect={(id) => {
+                              onRestaurantsSelect?.(message.restaurants || []);
+                              onRestaurantSelect?.(id);
+                            }}
+                            onSelectMeal={onSelectMeal}
+                          />
+                        </motion.div>
+                      );
+                    })}
                   </motion.div>
                 )}
             </motion.div>

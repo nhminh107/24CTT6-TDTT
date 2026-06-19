@@ -8,7 +8,8 @@ type RestaurantMiniCardProps = {
   restaurant: Restaurant;
   isSelected?: boolean;
   isInItinerary?: boolean;
-  isMealOccupied?: boolean;
+  occupiedMeals?: string[];
+  currentMeal?: string;
   onSelect: (id: string) => void;
   onSelectMeal?: (meal: string, restaurant: Restaurant) => void;
 };
@@ -26,11 +27,15 @@ const normalizeImageUrl = (url: string | undefined | null) => {
   return url.replace(/\\\//g, "/");
 };
 
+const normalizeMeal = (meal: string | undefined | null) =>
+  (meal || "").trim().toLowerCase();
+
 export default function RestaurantMiniCard({
   restaurant,
   isSelected,
   isInItinerary,
-  isMealOccupied,
+  occupiedMeals = [],
+  currentMeal,
   onSelect,
   onSelectMeal,
 }: RestaurantMiniCardProps) {
@@ -75,6 +80,27 @@ export default function RestaurantMiniCard({
     : ["Sáng", "Trưa", "Xế", "Tối"];
 
   const assignedMeal = restaurant.assignedMeal;
+  const occupiedMealSet = useMemo(
+    () => new Set(occupiedMeals.map(normalizeMeal).filter(Boolean)),
+    [occupiedMeals]
+  );
+  const normalizedCurrentMeal = normalizeMeal(currentMeal);
+  const isMealOccupied = (meal: string | undefined | null) => {
+    const normalizedMeal = normalizeMeal(meal);
+    return !!normalizedMeal && occupiedMealSet.has(normalizedMeal);
+  };
+  const isCurrentMeal = (meal: string | undefined | null) =>
+    !!normalizedCurrentMeal && normalizeMeal(meal) === normalizedCurrentMeal;
+  const getMealActionLabel = (meal: string) => {
+    const mealDisplay = formatMealDisplay(meal);
+    const mealLabel = mealDisplay.toLowerCase().startsWith("bữa")
+      ? mealDisplay.toLowerCase()
+      : `bữa ${mealDisplay.toLowerCase()}`;
+    if (isCurrentMeal(meal)) return "Đang trong lịch trình";
+    if (isInItinerary) return `Chuyển sang ${mealLabel}`;
+    if (isMealOccupied(meal)) return `Thay thế ${mealLabel}`;
+    return `Thêm vào ${mealLabel}`;
+  };
 
   return (
     <div
@@ -148,35 +174,35 @@ export default function RestaurantMiniCard({
         {assignedMeal && !isChangingMeal ? (
           <>
             <div className="flex min-w-0 flex-wrap items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-400 sm:tracking-wider">Gợi ý cho:</span>
-              <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
-                {formatMealDisplay(assignedMeal)}
+              <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-slate-400 sm:tracking-wider">
+                {isInItinerary ? "Đang trong:" : "Gợi ý cho:"}
               </span>
-              {isMealOccupied && (
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsChangingMeal(true);
-                  }}
-                  className="text-[10px] font-bold text-brand-coral underline hover:text-brand-flame"
-                >
-                  Thay đổi
-                </button>
-              )}
+              <span className="inline-flex items-center rounded-full bg-orange-100 px-2 py-0.5 text-[10px] font-bold text-orange-700">
+                {formatMealDisplay(currentMeal || assignedMeal)}
+              </span>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsChangingMeal(true);
+                }}
+                className="text-[10px] font-bold text-brand-coral underline hover:text-brand-flame"
+              >
+                Đổi bữa
+              </button>
             </div>
             <button
-              disabled={isInItinerary}
+              disabled={isInItinerary && isCurrentMeal(assignedMeal)}
               onClick={(e) => {
                 e.stopPropagation();
                 onSelectMeal?.(assignedMeal, restaurant);
               }}
               className={cn(
                 "flex min-w-0 items-center gap-1 rounded-lg bg-gradient-to-r from-brand-coral to-brand-flame px-2.5 py-1 text-xs font-bold text-white shadow-md transition hover:scale-105 active:scale-95 disabled:from-slate-300 disabled:to-slate-400 disabled:shadow-none disabled:hover:scale-100 sm:px-3",
-                isInItinerary && "cursor-not-allowed"
+                isInItinerary && isCurrentMeal(assignedMeal) && "cursor-not-allowed"
               )}
             >
               <Plus size={14} />
-              <span className="truncate">{isInItinerary ? "Đã thêm" : "Thêm vào lịch trình"}</span>
+              <span className="truncate">{getMealActionLabel(assignedMeal)}</span>
             </button>
           </>
         ) : (
@@ -199,18 +225,18 @@ export default function RestaurantMiniCard({
               {meals.map((meal) => (
                 <button
                   key={meal}
-                  disabled={isInItinerary}
+                  disabled={isCurrentMeal(meal)}
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsChangingMeal(false);
                     onSelectMeal?.(meal, restaurant);
                   }}
                   className={cn(
-                    "rounded-lg border border-orange-200 bg-white px-2 py-1 text-[10px] font-bold text-orange-600 transition hover:bg-orange-600 hover:text-white disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400",
-                    isInItinerary && "cursor-not-allowed"
+                    "rounded-lg border border-orange-200 bg-white px-2 py-1 text-[10px] font-bold text-orange-600 transition hover:bg-orange-600 hover:text-white disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400",
+                    isMealOccupied(meal) && !isCurrentMeal(meal) && "border-amber-200 bg-amber-50 text-amber-700"
                   )}
                 >
-                  {formatMealDisplay(meal)}
+                  {getMealActionLabel(meal)}
                 </button>
               ))}
             </div>

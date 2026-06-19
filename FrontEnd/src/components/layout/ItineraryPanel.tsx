@@ -21,7 +21,7 @@ type ItineraryPanelProps = {
   currentItinerary?: any[];
   onDeleteMeal?: (id: string) => void;
   onResetItinerary?: () => void;
-  onReorder?: (orderedItems: { id: string, meal: string }[]) => void;
+  onReorder?: (orderedItems: { id: string }[]) => void;
   showBoardingPass?: boolean;
   onShowBoardingPassChange?: (open: boolean) => void;
 };
@@ -46,7 +46,7 @@ export default function ItineraryPanel({
   const [localItinerary, setLocalItinerary] = useState(currentItinerary);
   const isInternalUpdate = useRef(false);
 
-  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn hoặc đổi nhãn từ server)
+  // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn từ server)
   useEffect(() => {
     // Nếu đây là bản cập nhật do chính component này thực hiện (kéo thả), bỏ qua đồng bộ để tránh bị giật/reset
     if (isInternalUpdate.current) {
@@ -57,35 +57,12 @@ export default function ItineraryPanel({
   }, [currentItinerary]);
 
   const handleReorder = (newOrder: any[]) => {
-    // 1. Lấy ra danh sách các tag của bữa chính theo thứ tự HIỆN TẠI (trước khi kéo thả)
-    const mainMealTags = localItinerary
-      .map(i => i.meal)
-      .filter(meal => (meal || "").trim().toLowerCase() !== "xế");
-
-    let mainMealIdx = 0;
-
-    // 2. Gán lại tag cho danh sách mới
-    const updatedOrder = newOrder.map((item) => {
-      const isSnack = (item.meal || "").trim().toLowerCase() === "xế";
-      
-      // Quán Xế luôn giữ tag Xế
-      if (isSnack) {
-        return { ...item, meal: "Xế" };
-      }
-      
-      // Các quán chính lấy tag từ danh sách mainMealTags đã lưu
-      // Nếu vì lý do nào đó thiếu tag, fallback về "Tối"
-      const newMeal = mainMealTags[mainMealIdx] || "Tối";
-      mainMealIdx++;
-      return { ...item, meal: newMeal };
-    });
-
     isInternalUpdate.current = true;
-    setLocalItinerary(updatedOrder);
+    setLocalItinerary(newOrder);
 
-    // Gửi lên parent/backend để lưu lại sự thay đổi nhãn này
+    // Reorder chỉ thay đổi thứ tự hiển thị, không đổi nhãn bữa ăn của nhà hàng.
     if (onReorder) {
-      onReorder(updatedOrder.map(item => ({ id: item.id, meal: item.meal })));
+      onReorder(newOrder.map(item => ({ id: item.id })));
     }
   };
 

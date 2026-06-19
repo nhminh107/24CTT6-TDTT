@@ -72,7 +72,7 @@ describe("itineraryApi", () => {
   });
 
   it("nên gọi endpoint reorder với ordered_items đúng contract", async () => {
-    await itineraryApi.reorder("user-1", [{ id: "item-1", meal: "Bữa tối" }]);
+    await itineraryApi.reorder("user-1", [{ id: "item-1" }]);
 
     const [url, init] = (global.fetch as jest.Mock).mock.calls[0];
 
@@ -80,7 +80,7 @@ describe("itineraryApi", () => {
     expect(init.method).toBe("POST");
     expect(JSON.parse(init.body)).toEqual({
       user_id: "user-1",
-      ordered_items: [{ id: "item-1", meal: "Bữa tối" }],
+      ordered_items: [{ id: "item-1" }],
     });
   });
 });

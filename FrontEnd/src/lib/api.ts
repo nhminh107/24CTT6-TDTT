@@ -47,7 +47,7 @@ export const itineraryApi = {
     });
     return res.json();
   },
-  reorder: async (userId: string, orderedItems: { id: string, meal: string }[]) => {
+  reorder: async (userId: string, orderedItems: { id: string }[]) => {
     const res = await apiFetch(`${API_BASE_URL}/api/v1/itinerary/reorder`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

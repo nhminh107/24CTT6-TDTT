@@ -98,10 +98,10 @@ class ItineraryManager:
             print(f">>> ItineraryManager Error (select_restaurant): {e}")
             return False
 
-    async def reorder_itinerary(self, user_id: str, ordered_items: List[Dict[str, str]]) -> bool:
+    async def reorder_itinerary(self, user_id: str, ordered_items: List[Dict[str, Any]]) -> bool:
         return await asyncio.to_thread(self._reorder_itinerary_sync, user_id, ordered_items)
 
-    def _reorder_itinerary_sync(self, user_id: str, ordered_items: List[Dict[str, str]]) -> bool:
+    def _reorder_itinerary_sync(self, user_id: str, ordered_items: List[Dict[str, Any]]) -> bool:
         try:
             db = self._get_db()
             col = self._get_itinerary_collection(user_id)
@@ -109,7 +109,7 @@ class ItineraryManager:
             batch = db.batch()
             for index, item in enumerate(ordered_items):
                 doc_ref = col.document(item["id"])
-                batch.update(doc_ref, {"order": index, "meal": item["meal"]})
+                batch.update(doc_ref, {"order": index})
             
             batch.commit()
             return True
