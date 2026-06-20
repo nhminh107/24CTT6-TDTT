@@ -40,12 +40,12 @@ class SemanticCacheManager:
         return f"zone_{zone_lat}_{zone_lng}"
 
     
-    def check_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str):
+    def check_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str, diet_mode: str):
         normalized_prompt = self._normalize_prompt(prompt) 
         zone = self._get_location_zone(lat, lng)
         
-        # Băm ID từ chuỗi ĐÃ chuẩn hóa
-        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
+        # CẬP NHẬT: Nối thêm diet_mode vào cuối chuỗi trước khi encode và băm MD5
+        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}_{diet_mode}".encode()).hexdigest()
         
         print(f"DEBUG: Checking ID: {doc_id}")
 
@@ -58,17 +58,18 @@ class SemanticCacheManager:
         print("❌ [CACHE DEBUG] KHÔNG TÌM THẤY CACHE CHO ID NÀY!")
         return None
 
-    def save_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str, result_json: dict):
+    def save_cache(self, prompt: str, lat: float, lng: float, budget: int, health_key: str, diet_mode: str, result_json: dict):
         normalized_prompt = self._normalize_prompt(prompt)
         budget = budget if budget is not None else 0
         zone = self._get_location_zone(lat, lng)
         
-        # Băm ID từ chuỗi ĐÃ chuẩn hóa
-        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}".encode()).hexdigest()
-
+        # CẬP NHẬT: Nối thêm diet_mode vào cuối chuỗi trước khi encode và băm MD5
+        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}_{diet_mode}".encode()).hexdigest()
+        
+        print(f"DEBUG: Saving ID: {doc_id}")
+        
         self.collection.upsert(
+            ids=[doc_id],
             documents=[json.dumps(result_json)],
-            metadatas=[{"zone": zone, "budget": budget, "health_filters": health_key}],
-            ids=[doc_id]
+            metadatas=[{"zone": zone, "budget": budget, "health_key": health_key, "diet_mode": diet_mode}]
         )
-        print("💾 [CACHE DEBUG] ĐÃ LƯU THÀNH CÔNG VÀO DATABASE!")

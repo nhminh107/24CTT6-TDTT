@@ -651,6 +651,10 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         bypass_cache = wants_alternative and bool(exclude_ids)
         _api_log(request_id, f"Wants alternative: {wants_alternative}, Feedback reason: {feedback_reason}, Bypass cache: {bypass_cache}")
 
+        diet_mode = user_health_profile.get("diet_mode", "casual")
+
+        print(f"USER HEALTH FILTER MODE: {diet_mode}")
+
         # Check cache
         step_start = time.perf_counter()
         _api_log(request_id, "Checking semantic cache...")
@@ -660,7 +664,8 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             lat=user_lat,
             lng=user_lng,
             budget=budget_value,
-            health_key=health_key
+            health_key=health_key,
+            diet_mode=diet_mode
         )
 
         df_task = asyncio.create_task(asyncio.to_thread(_get_restaurant_df_cached))
@@ -801,6 +806,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
                 lng=user_lng,
                 budget=budget_value,
                 health_key=health_key,
+                diet_mode=diet_mode,
                 result_json=final_result_list
             )
 
