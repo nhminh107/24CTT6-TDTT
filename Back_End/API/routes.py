@@ -722,7 +722,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         # Sắp xếp lại danh sách đã gộp tổng hợp
         forbidden_tags_final = sorted(list(total_tags_set))
         
-        print(f"USER HEALTH FILLER MODE: {user_health_profile["diet_mode"]}" )
+        print(f"USER HEALTH FILLER MODE: {user_health_profile.get('diet_mode')}" )
         
         # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
         health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
