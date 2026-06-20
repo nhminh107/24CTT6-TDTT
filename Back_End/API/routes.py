@@ -9,6 +9,7 @@ import traceback
 import json
 import time
 import uuid
+from collections import deque
 
 
 
@@ -43,6 +44,8 @@ cache_manager = SemanticCacheManager()
 user_manager = UserManager()
 itinerary_manager = ItineraryManager()
 last_results_by_user = {}
+last_intent_by_user = {}
+RECENT_RESULT_LIMIT = 20
 health_risk_detector = HealthRiskDetector()
 _restaurant_df_cache = None
 _restaurant_json_cache = None
@@ -188,6 +191,23 @@ def _extract_context_from_result(result):
     return context_list
 
 
+def _remember_recent_results(user_id: str, result: list):
+    recent = last_results_by_user.get(user_id)
+    if not isinstance(recent, deque):
+        recent = deque(recent or [], maxlen=RECENT_RESULT_LIMIT)
+
+    known_ids = {str(item.get("id")) for item in recent if isinstance(item, dict) and item.get("id") is not None}
+    for item in _extract_context_from_result(result):
+        rid = str(item.get("id"))
+        if rid in known_ids:
+            continue
+        recent.append(item)
+        known_ids.add(rid)
+
+    last_results_by_user[user_id] = recent
+    return list(recent)
+
+
 def _apply_exclusions(filtered_data: dict, exclude_ids: list):
     if not filtered_data or not exclude_ids:
         return filtered_data
@@ -209,6 +229,62 @@ def _apply_exclusions(filtered_data: dict, exclude_ids: list):
         result[meal_tag] = filtered_df if not filtered_df.empty else df
     return result
 
+def _inherit_missing_alternative_constraints(parsed_json: dict, previous_intent: dict | None) -> dict:
+    if not isinstance(parsed_json, dict) or not parsed_json.get("wants_alternative"):
+        return parsed_json
+    if not isinstance(previous_intent, dict):
+        return parsed_json
+
+    current_meals = parsed_json.get("meals_detail")
+    previous_meals = previous_intent.get("meals_detail")
+    if not isinstance(current_meals, list) or not isinstance(previous_meals, list):
+        return parsed_json
+
+    previous_by_meal = {
+        str(item.get("meal")).strip().lower(): item
+        for item in previous_meals
+        if isinstance(item, dict) and item.get("meal")
+    }
+
+    for item in current_meals:
+        if not isinstance(item, dict):
+            continue
+        meal_key = str(item.get("meal") or "").strip().lower()
+        previous = previous_by_meal.get(meal_key)
+        if not previous:
+            continue
+
+        current_types = item.get("type") or []
+        if isinstance(current_types, str):
+            current_types = [current_types]
+        had_current_type = bool(current_types)
+
+        previous_types = previous.get("type") or []
+        if isinstance(previous_types, str):
+            previous_types = [previous_types]
+        if not current_types and previous_types:
+            item["type"] = list(previous_types)
+
+        if not item.get("semantic_query") and previous.get("semantic_query"):
+            item["semantic_query"] = previous.get("semantic_query")
+
+        # If the user explicitly changes venue type/cuisine, do not force the old dish into it.
+        if not item.get("dish") and not had_current_type and previous.get("dish"):
+            item["dish"] = previous.get("dish")
+
+    for key in ("budget", "location_pref", "shu"):
+        if parsed_json.get(key) in (None, "", 0) and previous_intent.get(key) not in (None, "", 0):
+            parsed_json[key] = previous_intent.get(key)
+
+    return parsed_json
+
+def _read_cached_result(cache_payload):
+    if isinstance(cache_payload, dict) and isinstance(cache_payload.get("result"), list):
+        return cache_payload.get("result"), cache_payload.get("meta", {}) or {}
+    if isinstance(cache_payload, list):
+        return cache_payload, {"cache_format": "legacy"}
+    return cache_payload, {}
+
 def _normalize_parsed_intent(parsed_json: dict) -> dict:
     if not isinstance(parsed_json, dict):
         return parsed_json
@@ -217,9 +293,14 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
     if not isinstance(meals_detail, list) or not meals_detail:
         return parsed_json
 
+    allowed_types = {
+        "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước",
+        "Quán Nhật", "Quán Âu", "Tiệm bánh"
+    }
+    allowed_type_lookup = {t.lower(): t for t in allowed_types}
     snack_types = {
         "quan nuoc", "tiem banh", "an vat", "tra sua",
-        "cafe", "quan ca phe"
+        "cafe", "quan ca phe", "quán nước", "quán cà phê"
     }
 
     normalized = []
@@ -238,7 +319,13 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
         types_raw = item.get("type") or []
         if isinstance(types_raw, str):
             types_raw = [types_raw]
-        types = [t for t in types_raw if t]
+        types = []
+        for t in types_raw:
+            if not t:
+                continue
+            normalized_type = allowed_type_lookup.get(str(t).strip().lower())
+            if normalized_type and normalized_type not in types:
+                types.append(normalized_type)
 
         semantic_raw = item.get("semantic_query")
         semantic = semantic_raw.strip() if isinstance(semantic_raw, str) else ""
@@ -426,7 +513,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
     try:
         # Lấy lịch trình hiện tại và các kết quả gợi ý gần nhất để cung cấp ngữ cảnh cho AI
         current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
-        last_suggestions = last_results_by_user.get(request.user_id, [])
+        last_suggestions = list(last_results_by_user.get(request.user_id, []))
         
         itinerary_context = ""
         if current_itinerary:
@@ -552,6 +639,9 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             print("[API_LOG] Error: LLM Parsing failed to return a result.")
             raise HTTPException(status_code=400, detail="AI không thể phân tích yêu cầu này.")
 
+        previous_intent = last_intent_by_user.get(request.user_id)
+        parsed_json = _normalize_parsed_intent(parsed_json)
+        parsed_json = _inherit_missing_alternative_constraints(parsed_json, previous_intent)
         parsed_json = _normalize_parsed_intent(parsed_json)
         _api_log(request_id, f"LLM Parsing completed | ms={_elapsed_ms(step_start)} | result={json.dumps(parsed_json, ensure_ascii=False)}")
 
@@ -643,6 +733,12 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
 
         wants_alternative = parsed_json.get("wants_alternative", False)
         feedback_reason = parsed_json.get("feedback_reason")
+        raw_meal_count = parsed_json.get('num_meals') or len(parsed_json.get('meals_detail', [])) or 1
+        try:
+            requested_meal_count = int(raw_meal_count)
+        except (TypeError, ValueError):
+            requested_meal_count = 1
+        max_per_meal = 3 if requested_meal_count == 1 else 1
         
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng, feedback_reason=feedback_reason)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
@@ -665,14 +761,23 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
 
         df_task = asyncio.create_task(asyncio.to_thread(_get_restaurant_df_cached))
 
-        cached_result = await cache_task
-        if cached_result and not bypass_cache:
-            _api_log(request_id, f"Cache hit | ms={_elapsed_ms(step_start)}")
+        cache_payload = await cache_task
+        cached_result, cache_meta = _read_cached_result(cache_payload)
+        is_legacy_cache = cache_meta.get("cache_format") == "legacy"
+        cache_policy_matches = (
+            cache_meta.get("max_per_meal") == max_per_meal
+            or (is_legacy_cache and max_per_meal == 1)
+            or (is_legacy_cache and isinstance(cached_result, list) and len(cached_result) >= max_per_meal)
+            or (not is_legacy_cache and "max_per_meal" not in cache_meta and max_per_meal == 1)
+        )
+        if cached_result and not bypass_cache and cache_policy_matches:
+            _api_log(request_id, f"Cache hit | ms={_elapsed_ms(step_start)} | meta={json.dumps(cache_meta, ensure_ascii=False)}")
             weight_task.cancel()
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
             with contextlib.suppress(asyncio.CancelledError): await df_task
-            last_results_by_user[request.user_id] = _extract_context_from_result(cached_result)
+            _remember_recent_results(request.user_id, cached_result)
+            last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
 
             # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
             if request.chat_id:
@@ -750,11 +855,12 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         step_start = time.perf_counter()
         _api_log(request_id, "LLM Selection for final itinerary...")
         selector = FinalResultLLM()
+        _api_log(request_id, f"Final selection max_per_meal={max_per_meal} for num_meals={requested_meal_count}")
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
             parsed_json,
-            max_per_meal = 3 if wants_alternative else 1
+            max_per_meal=max_per_meal
         )
         _api_log(request_id, f"Final selection completed | ms={_elapsed_ms(step_start)}")
 
@@ -801,10 +907,18 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
                 lng=user_lng,
                 budget=budget_value,
                 health_key=health_key,
-                result_json=final_result_list
+                result_json={
+                    "result": final_result_list,
+                    "meta": {
+                        "cache_version": 2,
+                        "max_per_meal": max_per_meal,
+                        "num_meals": requested_meal_count
+                    }
+                }
             )
 
-        last_results_by_user[request.user_id] = _extract_context_from_result(final_result_list)
+        _remember_recent_results(request.user_id, final_result_list)
+        last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
         _api_log(request_id, f"/prompt process completed successfully for user_id: {request.user_id} | total_ms={_elapsed_ms(total_start)}")
 
         # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
