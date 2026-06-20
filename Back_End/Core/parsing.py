@@ -109,6 +109,7 @@ class LLMParser():
             - Fields:
                 - "meal": (String) MUST ONLY choose from: "sáng", "trưa", "xế", "tối", "khuya", "any". Use "any" if no meal is explicitly mentioned.
                 - "type": (Array of Strings) (**MUST ONLY choose from: "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước","Quán Nhật", "Quán Âu", "Tiệm bánh"**).
+                  Never put health/risk tags such as DeepFried_Oily, Refined_Carbs, Dairy_Product, Gluten_Present, High_Sugar, High_Sodium, Seafood, Shellfish, Spicy, Alcohol_Pub, Red_Meat, Peanuts_Nuts, Low_GI_Diet into type.
                 - "semantic_query": (String|null) Atmosphere/style/taste/occasion/vibe only. Do not include dish names.
                 - "dish": (String|null) Concrete food or drink item only.
         8. "target_shop_id": (String|null) The ID of the specific restaurant discussed, resolved from SYSTEM CONTEXT only when the current prompt explicitly refers to it.
