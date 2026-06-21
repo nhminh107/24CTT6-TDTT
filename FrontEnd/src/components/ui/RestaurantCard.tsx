@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { MapPin, Phone, Star, ChevronDown } from "lucide-react";
+import { HeartPulse, MapPin, Phone, Star, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AlertCircle } from "lucide-react";
 import {
@@ -29,6 +29,8 @@ type Restaurant = {
 
 type RestaurantCardProps = {
   restaurant: Restaurant;
+  hasHealthProfile?: boolean;
+  onOpenHealthProfile?: () => void;
 };
 
 const formatPhoneNumber = (phone: string | number) => {
@@ -55,6 +57,8 @@ const normalizeImageUrl = (url: string | undefined | null) => {
 
 export default function RestaurantCard2({
   restaurant,
+  hasHealthProfile = false,
+  onOpenHealthProfile,
 }: RestaurantCardProps) {
   const [open, setOpen] = useState(false);
 
@@ -317,6 +321,31 @@ export default function RestaurantCard2({
               <p className="text-[14px] font-normal leading-relaxed text-slate-600">
                 {semanticText}
               </p>
+            </div>
+          )}
+
+          {!hasHealthProfile && (
+            <div className="mt-4 rounded-2xl border border-orange-100 bg-white p-4">
+              <div className="flex items-start gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-500">
+                  <HeartPulse size={18} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-slate-900">
+                    Insight sẽ chính xác hơn với hồ sơ sức khỏe
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-slate-600">
+                    Thêm dị ứng, bệnh nền hoặc chế độ ăn để AI cảnh báo món rủi ro sát với bạn hơn.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={onOpenHealthProfile}
+                    className="mt-3 rounded-xl bg-orange-500 px-3 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-orange-600"
+                  >
+                    Cập nhật hồ sơ sức khỏe
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>

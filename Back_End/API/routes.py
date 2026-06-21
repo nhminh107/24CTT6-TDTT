@@ -102,10 +102,11 @@ async def _save_user_message_background(user_id: str, chat_id: str | None, conte
 async def _auto_save_itinerary_background(user_id: str, final_result_list: list):
     try:
         seen_meals = []
+        auto_save_meals = {"sáng", "trưa", "xế", "tối", "khuya"}
         for item in final_result_list:
             meal = item.get("meal")
             meal_key = str(meal).strip().lower()
-            if not meal_key or meal_key in seen_meals:
+            if not meal_key or meal_key == "any" or meal_key not in auto_save_meals or meal_key in seen_meals:
                 continue
             seen_meals.append(meal_key)
             first_res = item.copy()
@@ -766,6 +767,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             with contextlib.suppress(asyncio.CancelledError): await df_task
             _remember_recent_results(request.user_id, cached_result)
             last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
+            await _auto_save_itinerary_background(request.user_id, cached_result)
 
             # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
             if request.chat_id:
@@ -901,10 +903,10 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
 
         _remember_recent_results(request.user_id, final_result_list)
         last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
-        _api_log(request_id, f"/prompt process completed successfully for user_id: {request.user_id} | total_ms={_elapsed_ms(total_start)}")
 
-        # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
-        background_tasks.add_task(_auto_save_itinerary_background, request.user_id, final_result_list)
+        # Tự động cập nhật Lịch trình trước khi trả response để frontend fetch không bị lệch trạng thái.
+        await _auto_save_itinerary_background(request.user_id, final_result_list)
+        _api_log(request_id, f"/prompt process completed successfully for user_id: {request.user_id} | total_ms={_elapsed_ms(total_start)}")
 
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:

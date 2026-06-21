@@ -24,6 +24,8 @@ type ItineraryPanelProps = {
   onReorder?: (orderedItems: { id: string }[]) => void;
   showBoardingPass?: boolean;
   onShowBoardingPassChange?: (open: boolean) => void;
+  hasHealthProfile?: boolean;
+  onOpenHealthProfile?: () => void;
 };
 
 export default function ItineraryPanel({
@@ -42,6 +44,8 @@ export default function ItineraryPanel({
   onReorder,
   showBoardingPass = false,
   onShowBoardingPassChange,
+  hasHealthProfile = false,
+  onOpenHealthProfile,
 }: ItineraryPanelProps) {
   const [localItinerary, setLocalItinerary] = useState(currentItinerary);
   const isInternalUpdate = useRef(false);
@@ -243,7 +247,11 @@ export default function ItineraryPanel({
 
           {/* Restaurant Card */}
           <div className="w-full">
-            <RestaurantCard restaurant={selectedRestaurant} />
+            <RestaurantCard
+              restaurant={selectedRestaurant}
+              hasHealthProfile={hasHealthProfile}
+              onOpenHealthProfile={onOpenHealthProfile}
+            />
           </div>
         </div>
       ) : (

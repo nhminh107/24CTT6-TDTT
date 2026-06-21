@@ -128,6 +128,13 @@ class LLMParser():
           ], target_shop_id=null.
         - Current: "Tìm quán nước"
           Output: location_pref=null, num_meals=1, meals_detail=[{{"meal": "xế", "type": ["Quán nước"], "semantic_query": null, "dish": null}}], target_shop_id=null.
+        - Current: "Lên lịch trình ăn nguyên ngày"
+          Output: location_pref=null, num_meals=4, meals_detail=[
+            {{"meal": "sáng", "type": [], "semantic_query": null, "dish": null}},
+            {{"meal": "trưa", "type": [], "semantic_query": null, "dish": null}},
+            {{"meal": "xế", "type": [], "semantic_query": null, "dish": null}},
+            {{"meal": "tối", "type": [], "semantic_query": null, "dish": null}}
+          ], target_shop_id=null.
         - Current: "Tìm quán phở, cà phê rồi ăn tối hải sản"
           Output: location_pref=null, num_meals=3, meals_detail=[
             {{"meal": "any", "type": ["Quán Việt"], "semantic_query": null, "dish": "phở"}},

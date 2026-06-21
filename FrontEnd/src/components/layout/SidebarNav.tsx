@@ -19,6 +19,8 @@ type SidebarNavProps = {
   onStateChange: (state: DashboardState) => void;
   availableFilters: string[];
   onOpenHealthProfile: () => void;
+  hasHealthProfile: boolean;
+  healthProfileItemCount: number;
   onOpenProfileSettings: () => void;
   onOpenLocationPrompt?: () => void;
   onTabChange?: (tab: "itinerary" | "detail") => void;
@@ -34,6 +36,8 @@ export default function SidebarNav({
   onStateChange,
   availableFilters,
   onOpenHealthProfile,
+  hasHealthProfile,
+  healthProfileItemCount,
   onOpenProfileSettings,
   onOpenLocationPrompt,
   onTabChange,
@@ -141,11 +145,38 @@ export default function SidebarNav({
                 <button
                   type="button"
                   onClick={onOpenHealthProfile}
-                  className="mt-3 flex w-full items-center gap-2.5 rounded-xl border border-slate-100 bg-slate-50/80 px-3 py-2.5 text-xs font-semibold text-slate-500 transition hover:border-orange-200 hover:bg-orange-50 hover:text-orange-500"
+                  className="mt-3 w-full rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-amber-50 p-3 text-left shadow-sm transition hover:border-orange-200 hover:shadow-md active:scale-[0.99]"
                 >
-                  <HeartPulse size={14} />
-                  Hồ sơ sức khỏe
-                  <span className="ml-auto text-slate-300">›</span>
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-orange-500 shadow-sm">
+                      <HeartPulse size={17} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="truncate text-sm font-bold text-slate-800">
+                          Cá nhân hóa sức khỏe
+                        </p>
+                        <span
+                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                            hasHealthProfile
+                              ? "bg-emerald-100 text-emerald-700"
+                              : "bg-orange-100 text-orange-700"
+                          }`}
+                        >
+                          {hasHealthProfile ? `${healthProfileItemCount} lưu ý` : "Chưa thiết lập"}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-[11px] leading-4 text-slate-500">
+                        Thêm dị ứng, bệnh nền để AI cảnh báo món không phù hợp.
+                      </p>
+                      <div className="mt-2 flex items-center justify-between">
+                        <span className="text-xs font-bold text-orange-600">
+                          {hasHealthProfile ? "Cập nhật hồ sơ" : "Thiết lập ngay"}
+                        </span>
+                        <span className="text-slate-300">›</span>
+                      </div>
+                    </div>
+                  </div>
                 </button>
 
                 <button
