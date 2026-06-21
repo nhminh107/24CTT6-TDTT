@@ -296,19 +296,6 @@ export default function RestaurantDetailModal({
     );
   }, [userVoteMap]); // eslint-disable-line react-hooks/exhaustive-deps
 
-// Trong component của bạn, dùng useMemo để sort
-const sortedComments = useMemo(() => {
-  // Clone mảng để tránh lỗi mutate state trực tiếp
-  return [...comments].sort((a, b) => {
-    // Thuật toán "tương tác"
-    // Giả sử: 1 like = 1 điểm, 1 dislike = -0.5 điểm (để giảm độ hot của comment toxic)
-    const scoreA = (a.like_count ?? 0) - (a.dislike_count ?? 0) * 0.5;
-    const scoreB = (b.like_count ?? 0) - (b.dislike_count ?? 0) * 0.5;
-    
-    // Sort giảm dần
-    return scoreB - scoreA;
-  });
-}, [comments]); // Chỉ chạy lại khi 'comments' từ Firestore thay đổi
 
   // ──────────────────────────────────────────────────────────────
   // ── SUBMIT COMMENT ──
@@ -780,7 +767,7 @@ const sortedComments = useMemo(() => {
                     Chưa có bình luận nào. Hãy là người đầu tiên nhận xét!
                   </div>
                 ) : (
-                  sortedComments.map((comment) => {
+                  comments.map((comment) =>  {
                     const isOwnComment = comment.user_id === CURRENT_USER.user_id;
                     const isEditing = editingCommentId === comment.comment_id;
 
