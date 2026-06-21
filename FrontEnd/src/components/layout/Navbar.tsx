@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { MapPin, LogOut, User } from "lucide-react";
+import { MapPin, LogOut, User,LayoutDashboard } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import MobileBottomNav from "./MobileBottomNav";
@@ -73,7 +73,7 @@ export default function Navbar() {
                         </span>
                       </div>
                     </button>
-                    
+                      
                     {/* Dropdown Menu (Hover Trigger) ... (unchanged) */}
                     <div className="absolute right-0 top-full mt-2 w-56 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 ease-out rounded-2xl border border-slate-100 bg-white p-2 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)]">
                       <div className="px-3 py-3 mb-2 border-b border-slate-100 flex flex-col gap-0.5">
@@ -85,6 +85,17 @@ export default function Navbar() {
                         <User size={16} /> Hồ sơ cá nhân
                       </Link>
                       
+                      {/* Nút Admin - Chỉ hiện khi role là admin */}
+                    {user.role === 'admin' && (
+                      <Link 
+                        href="/admin" 
+                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-purple-600 hover:bg-purple-50 transition-colors mb-1"
+                      >
+                        <LayoutDashboard size={16} /> {/* Đừng quên import icon này từ lucide-react */}
+                        Quản trị hệ thống
+                      </Link>
+                    )}
+
                       <button onClick={() => logout()} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors mt-1">
                         <LogOut size={16} /> Đăng xuất
                       </button>
