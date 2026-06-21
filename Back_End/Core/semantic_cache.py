@@ -44,7 +44,11 @@ class SemanticCacheManager:
         normalized_prompt = self._normalize_prompt(prompt) 
         zone = self._get_location_zone(lat, lng)
         
+<<<<<<< HEAD
         # Include diet_mode because strict/casual health handling changes ranking and warnings.
+=======
+        # CẬP NHẬT: Nối thêm diet_mode vào cuối chuỗi trước khi encode và băm MD5
+>>>>>>> origin/feature/Health_Cache
         doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}_{diet_mode}".encode()).hexdigest()
         
         print(f"DEBUG: Checking ID: {doc_id}")
@@ -63,12 +67,24 @@ class SemanticCacheManager:
         budget = budget if budget is not None else 0
         zone = self._get_location_zone(lat, lng)
         
+<<<<<<< HEAD
         # Include diet_mode because strict/casual health handling changes ranking and warnings.
         doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}_{diet_mode}".encode()).hexdigest()
 
+=======
+        # CẬP NHẬT: Nối thêm diet_mode vào cuối chuỗi trước khi encode và băm MD5
+        doc_id = hashlib.md5(f"{normalized_prompt}_{zone}_{budget}_{health_key}_{diet_mode}".encode()).hexdigest()
+        
+        print(f"DEBUG: Saving ID: {doc_id}")
+        
+>>>>>>> origin/feature/Health_Cache
         self.collection.upsert(
+            ids=[doc_id],
             documents=[json.dumps(result_json)],
+<<<<<<< HEAD
             metadatas=[{"zone": zone, "budget": budget, "health_key": health_key, "diet_mode": diet_mode}],
             ids=[doc_id]
+=======
+            metadatas=[{"zone": zone, "budget": budget, "health_key": health_key, "diet_mode": diet_mode}]
+>>>>>>> origin/feature/Health_Cache
         )
-        print("💾 [CACHE DEBUG] ĐÃ LƯU THÀNH CÔNG VÀO DATABASE!")
