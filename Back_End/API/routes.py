@@ -278,13 +278,6 @@ def _inherit_missing_alternative_constraints(parsed_json: dict, previous_intent:
 
     return parsed_json
 
-def _read_cached_result(cache_payload):
-    if isinstance(cache_payload, dict) and isinstance(cache_payload.get("result"), list):
-        return cache_payload.get("result"), cache_payload.get("meta", {}) or {}
-    if isinstance(cache_payload, list):
-        return cache_payload, {"cache_format": "legacy"}
-    return cache_payload, {}
-
 def _normalize_parsed_intent(parsed_json: dict) -> dict:
     if not isinstance(parsed_json, dict):
         return parsed_json
@@ -739,6 +732,8 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         except (TypeError, ValueError):
             requested_meal_count = 1
         max_per_meal = 3 if requested_meal_count == 1 else 1
+        diet_mode = user_health_profile.get("diet_mode", "casual")
+        _api_log(request_id, f"Diet mode for cache/scoring: {diet_mode}")
         
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng, feedback_reason=feedback_reason)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
@@ -756,22 +751,15 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             lat=user_lat,
             lng=user_lng,
             budget=budget_value,
-            health_key=health_key
+            health_key=health_key,
+            diet_mode=diet_mode
         )
 
         df_task = asyncio.create_task(asyncio.to_thread(_get_restaurant_df_cached))
 
-        cache_payload = await cache_task
-        cached_result, cache_meta = _read_cached_result(cache_payload)
-        is_legacy_cache = cache_meta.get("cache_format") == "legacy"
-        cache_policy_matches = (
-            cache_meta.get("max_per_meal") == max_per_meal
-            or (is_legacy_cache and max_per_meal == 1)
-            or (is_legacy_cache and isinstance(cached_result, list) and len(cached_result) >= max_per_meal)
-            or (not is_legacy_cache and "max_per_meal" not in cache_meta and max_per_meal == 1)
-        )
-        if cached_result and not bypass_cache and cache_policy_matches:
-            _api_log(request_id, f"Cache hit | ms={_elapsed_ms(step_start)} | meta={json.dumps(cache_meta, ensure_ascii=False)}")
+        cached_result = await cache_task
+        if cached_result and not bypass_cache:
+            _api_log(request_id, f"Cache hit | ms={_elapsed_ms(step_start)}")
             weight_task.cancel()
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
@@ -907,14 +895,8 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
                 lng=user_lng,
                 budget=budget_value,
                 health_key=health_key,
-                result_json={
-                    "result": final_result_list,
-                    "meta": {
-                        "cache_version": 2,
-                        "max_per_meal": max_per_meal,
-                        "num_meals": requested_meal_count
-                    }
-                }
+                diet_mode=diet_mode,
+                result_json=final_result_list
             )
 
         _remember_recent_results(request.user_id, final_result_list)
