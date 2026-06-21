@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef,useMemo } from "react";
 import axios from "axios";
 import {
   X,
@@ -14,11 +14,13 @@ import {
   Edit3,
   Trash2,
   Wifi,
+  Flag,
 } from "lucide-react";
 import { Restaurant } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import Toast, { ToastType } from "./Toast";
+import { reportComment } from "@/lib/reportsApi";
 
 // ── Firebase Client SDK ──
 import { db } from "@/lib/firebase";
@@ -78,6 +80,42 @@ export default function RestaurantDetailModal({
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editingCommentContent, setEditingCommentContent] = useState("");
   const [processingCommentId, setProcessingCommentId] = useState<string | null>(null);
+
+  // ── Report Comment Modal State ──
+  const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [reportingCommentId, setReportingCommentId] = useState<string | null>(null);
+  const [reportingCommentText, setReportingCommentText] = useState<string>("");
+  const [reportReason, setReportReason] = useState("");
+  const [reportSubmitting, setReportSubmitting] = useState(false);
+
+  // ── Scroll to Reported Comment ──
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Kiểm tra sessionStorage để xem có comment_id cần scroll tới không
+    const reportedCommentId = typeof window !== "undefined" 
+      ? sessionStorage.getItem("review_report_comment_id")
+      : null;
+
+    if (reportedCommentId) {
+      // Delay một chút để đảm bảo DOM đã render
+      const timer = setTimeout(() => {
+        const element = document.getElementById(`comment-${reportedCommentId}`);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+          // Highlight comment (optional)
+          element.classList.add("ring-2", "ring-amber-400");
+          setTimeout(() => {
+            element.classList.remove("ring-2", "ring-amber-400");
+          }, 2000);
+        }
+        // Clear sessionStorage sau khi sử dụng
+        sessionStorage.removeItem("review_report_comment_id");
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   /**
    * Map lưu vote hiện tại của user: { [comment_id]: "like" | "dislike" | null }
@@ -176,10 +214,6 @@ export default function RestaurantDetailModal({
           // Fetch song song tất cả vote documents
           const votePromises = rawComments.map(async (c) => {
             try {
-
-
-              
-
               const voteDocRef = doc(
                 db,
                 "restaurant_comments",
@@ -261,6 +295,20 @@ export default function RestaurantDetailModal({
       }))
     );
   }, [userVoteMap]); // eslint-disable-line react-hooks/exhaustive-deps
+
+// Trong component của bạn, dùng useMemo để sort
+const sortedComments = useMemo(() => {
+  // Clone mảng để tránh lỗi mutate state trực tiếp
+  return [...comments].sort((a, b) => {
+    // Thuật toán "tương tác"
+    // Giả sử: 1 like = 1 điểm, 1 dislike = -0.5 điểm (để giảm độ hot của comment toxic)
+    const scoreA = (a.like_count ?? 0) - (a.dislike_count ?? 0) * 0.5;
+    const scoreB = (b.like_count ?? 0) - (b.dislike_count ?? 0) * 0.5;
+    
+    // Sort giảm dần
+    return scoreB - scoreA;
+  });
+}, [comments]); // Chỉ chạy lại khi 'comments' từ Firestore thay đổi
 
   // ──────────────────────────────────────────────────────────────
   // ── SUBMIT COMMENT ──
@@ -434,25 +482,124 @@ export default function RestaurantDetailModal({
   };
 
   // ──────────────────────────────────────────────────────────────
-  // ── HELPER ──
+  // ── REPORT COMMENT ──
   // ──────────────────────────────────────────────────────────────
-  const formatCommentDate = (dateStr?: string) => {
-    if (!dateStr) return "Vừa xong";
+  const openReportModal = (comment: CommentItem) => {
+    if (!user) {
+      triggerToast("error", "Vui lòng đăng nhập để báo cáo bình luận!");
+      return;
+    }
+    if (comment.user_id === CURRENT_USER.user_id) {
+      triggerToast("error", "Không thể báo cáo bình luận của chính bạn!");
+      return;
+    }
+    setReportingCommentId(comment.comment_id);
+    setReportingCommentText(comment.content);
+    setReportReason("");
+    setReportModalOpen(true);
+  };
+
+  const closeReportModal = () => {
+    setReportModalOpen(false);
+    setReportingCommentId(null);
+    setReportingCommentText("");
+    setReportReason("");
+    setReportSubmitting(false);
+  };
+
+  const handleSubmitReport = async () => {
+    if (!reportReason.trim() || !reportingCommentId || !restaurant?.id) {
+      triggerToast("error", "Vui lòng chọn lý do báo cáo!");
+      return;
+    }
+
+    if (!navigator.onLine) {
+      triggerToast("error", "Thiết bị của bạn đang mất kết nối Internet. Vui lòng kiểm tra lại mạng!");
+      return;
+    }
+
+    setReportSubmitting(true);
     try {
-      const d = new Date(dateStr);
-      return (
-        d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" }) +
-        " - " +
-        d.toLocaleDateString("vi-VN")
-      );
-    } catch (e) {
-      return dateStr;
+      const response = await reportComment({
+        restaurant_id: String(restaurant.id),
+        comment_id: reportingCommentId,
+        comment_text: reportingCommentText,
+        reason: reportReason,
+        user_id: CURRENT_USER.user_id,
+      });
+
+      if (response.status === "success") {
+        triggerToast("success", "Báo cáo của bạn đã được gửi. Cảm ơn vì giúp chúng tôi duy trì cộng đồng sạch!");
+        closeReportModal();
+      } else {
+        triggerToast("error", response.message || "Gửi báo cáo thất bại. Vui lòng thử lại!");
+      }
+    } catch (error: any) {
+      console.error("Report comment failed", error);
+      triggerToast("error", "Gửi báo cáo thất bại. Vui lòng thử lại!");
+    } finally {
+      setReportSubmitting(false);
     }
   };
 
   // ──────────────────────────────────────────────────────────────
-  // ── RENDER ──
+  // ── HELPER ──
   // ──────────────────────────────────────────────────────────────
+  const formatCommentDate = (dateString: any) => {
+  if (!dateString) return "Đang cập nhật..."; // Trả về text mặc định nếu date bị undefined
+  
+  const date = new Date(dateString);
+  
+  // Kiểm tra xem chuỗi ngày tháng có hợp lệ không trước khi format
+  if (isNaN(date.getTime())) return "Ngày không hợp lệ"; 
+
+  // Sử dụng toLocaleString an toàn
+  return date.toLocaleString("vi-VN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+};
+
+ 
+
+
+  // Thêm đoạn code này vào bên trong RestaurantDetailModal
+  useEffect(() => {
+    // 1. Lấy mã ID comment vi phạm được lưu tạm từ trang bản đồ
+    const targetCommentId = sessionStorage.getItem("targetCommentId");
+    
+    // 2. Đảm bảo có ID và danh sách bình luận (comments) đã được tải xong (loadingComments === false)
+    if (targetCommentId && !loadingComments && comments && comments.length > 0) {
+      
+      // Tìm phần tử HTML của bình luận vi phạm
+      const commentElement = document.getElementById(`comment-${targetCommentId}`);
+      
+      if (commentElement) {
+        // Đợi 400ms để đảm bảo hiệu ứng mở Modal của bạn đã bung ra hoàn toàn
+        const timer = setTimeout(() => {
+          commentElement.scrollIntoView({ behavior: "smooth", block: "center" });
+          
+          // Thêm một hiệu ứng đổi màu nền nhẹ (highlight) để Admin dễ chú ý
+          commentElement.classList.add("ring-2", "ring-amber-400", "scale-[1.01]");
+          
+          // Sau 2 giây thì xóa highlight đi để trả lại giao diện gốc
+          setTimeout(() => {
+            commentElement.classList.remove("ring-2", "ring-amber-400", "scale-[1.01]");
+          }, 2000);
+
+          // 3. Xóa flag đi để tránh bị cuộn nhầm cho các lần mở modal bình thường sau này
+          sessionStorage.removeItem("targetCommentId");
+        }, 400);
+
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [comments, loadingComments]); // Chạy lại khi danh sách comments thay đổi hoặc trạng thái loading hoàn thành
+
+  console.log("Dữ liệu quán ăn trong Modal:", restaurant);
   if (!isOpen || !restaurant) return null;
 
   return (
@@ -468,7 +615,7 @@ export default function RestaurantDetailModal({
         {/* Hero Image */}
         <div className="relative h-56 w-full overflow-hidden sm:h-80">
           <img
-            src={restaurant.imageUrl || "/assets/images/AI.png"}
+            src={restaurant.imageUrl || (restaurant as any).image_url || "/assets/images/AI.png"}
             alt={restaurant.name}
             className="w-full h-full object-cover"
           />
@@ -478,10 +625,14 @@ export default function RestaurantDetailModal({
             <div className="flex flex-wrap items-center gap-2">
               <div className="flex items-center bg-yellow-400 px-2 py-0.5 rounded-full text-xs font-bold text-black">
                 <Star className="w-3 h-3 fill-current mr-1" />
-                {restaurant.rating}
+                {restaurant.rating ?? "Chưa có đánh giá"}
               </div>
               <span className="text-sm font-medium opacity-90">
-                • {restaurant.price.toLocaleString()} VNĐ
+                • {
+                  (restaurant?.price || (restaurant as any)?.avg_price) 
+                    ? Number(restaurant?.price || (restaurant as any)?.avg_price).toLocaleString("vi-VN") 
+                    : "Chưa cập nhật giá"
+                } VNĐ
               </span>
             </div>
           </div>
@@ -497,15 +648,17 @@ export default function RestaurantDetailModal({
                 </div>
                 <div>
                   <h4 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Địa chỉ</h4>
-                  <p className="text-slate-800 font-medium">{restaurant.address}</p>
-                  <a
-                    href={restaurant.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-rose-500 hover:underline inline-block mt-1 font-medium"
-                  >
-                    Xem trên Google Maps
-                  </a>
+                  <p className="text-slate-800 font-medium">{restaurant.address || "Chưa cập nhật địa chỉ"}</p>
+                  {(restaurant.mapUrl || (restaurant as any).map_url) && (
+                    <a
+                      href={restaurant.mapUrl || (restaurant as any).map_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-rose-500 hover:underline inline-block mt-1 font-medium"
+                    >
+                      Xem trên Google Maps
+                    </a>
+                  )}
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -524,7 +677,9 @@ export default function RestaurantDetailModal({
                 <Info className="w-4 h-4" />
                 Giới thiệu
               </h4>
-              <p className="text-slate-600 text-sm leading-relaxed">{restaurant.semanticText}</p>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                {restaurant.semanticText || (restaurant as any).semantic_text || "Chưa có thông tin giới thiệu cho nhà hàng này."}
+              </p>
             </div>
           </div>
 
@@ -625,14 +780,15 @@ export default function RestaurantDetailModal({
                     Chưa có bình luận nào. Hãy là người đầu tiên nhận xét!
                   </div>
                 ) : (
-                  comments.map((comment) => {
+                  sortedComments.map((comment) => {
                     const isOwnComment = comment.user_id === CURRENT_USER.user_id;
                     const isEditing = editingCommentId === comment.comment_id;
 
                     return (
                       <div
+                        id={`comment-${comment.comment_id}`}
                         key={comment.comment_id}
-                        className={`rounded-3xl border p-5 shadow-sm ${
+                        className={`rounded-3xl border p-5 shadow-sm transition ${
                           isOwnComment
                             ? "border-rose-300 bg-rose-50/40"
                             : "border-slate-200 bg-white"
@@ -778,6 +934,17 @@ export default function RestaurantDetailModal({
                                   </button>
                                 </div>
                                 )}
+
+                                {/* Nút Báo cáo - hiện cho những bình luận không phải của user */}
+                                {!isOwnComment && (
+                                  <button
+                                    onClick={() => openReportModal(comment)}
+                                    className="inline-flex items-center gap-1 rounded-full text-slate-400 hover:text-amber-600 p-2 transition"
+                                    title="Báo cáo bình luận"
+                                  >
+                                    <Flag className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                  </button>
+                                )}
                               </div>
                             </>
                           )}
@@ -801,6 +968,65 @@ export default function RestaurantDetailModal({
           onClose={() => setToastState((prev) => ({ ...prev, show: false }))}
         />
       )}
+
+      {/* ── REPORT COMMENT MODAL ── */}
+      {reportModalOpen && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm">
+          <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl p-6">
+            <button
+              onClick={closeReportModal}
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Báo cáo bình luận</h3>
+            <p className="text-sm text-slate-600 mb-4">
+              Giúp chúng tôi duy trì cộng đồng sạch bằng cách báo cáo nội dung không phù hợp.
+            </p>
+
+            {/* Hiển thị nội dung comment bị báo cáo */}
+            <div className="mb-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <p className="text-xs text-slate-500 font-semibold mb-1">COMMENT BỊ BÁO CÁO:</p>
+              <p className="text-sm text-slate-700 line-clamp-3">{reportingCommentText}</p>
+            </div>
+
+            {/* Chọn lý do báo cáo */}
+            <div className="mb-4">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
+                Lý do báo cáo <span className="text-rose-500">*</span>
+              </label>
+              <textarea
+                value={reportReason}
+                onChange={(e) => setReportReason(e.target.value)}
+                rows={4}
+                placeholder="Vui lòng mô tả lý do báo cáo bình luận này (ví dụ: spam, ngôn từ xúc phạm, nội dung không phù hợp...)..."
+                disabled={reportSubmitting}
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100 transition disabled:bg-slate-100"
+              />
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex gap-3">
+              <button
+                onClick={closeReportModal}
+                disabled={reportSubmitting}
+                className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-50"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={handleSubmitReport}
+                disabled={reportSubmitting || !reportReason.trim()}
+                className="flex-1 rounded-xl bg-rose-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-rose-600 disabled:cursor-not-allowed disabled:bg-slate-300"
+              >
+                {reportSubmitting ? "Đang gửi..." : "Gửi báo cáo"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+

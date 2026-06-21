@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import { Map, Source, Layer, Popup, NavigationControl, GeolocateControl, Marker, MapRef } from "react-map-gl/maplibre";
 import maplibregl from "maplibre-gl";
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -39,6 +40,7 @@ export default function MapExplore({
   onUserLocationChange,
 }: MapExploreProps) {
   const { user } = useAuth();
+  const searchParams = useSearchParams();
   const mapRef = useRef<MapRef>(null);
   const isStandalone = userPlaceId === undefined && userLocationText === undefined;
   const [restaurants, setRestaurants] = useState<ApiRestaurant[]>([]);
@@ -67,15 +69,72 @@ export default function MapExplore({
   const [addSuccess, setAddSuccess] = useState<string | null>(null);
   const [addError, setAddError] = useState<string | null>(null);
 
-  // Fetch itinerary if standalone
-  useEffect(() => {
-    if (!propItinerary && user?.uid) {
-      itineraryApi.get(user.uid).then(data => {
-        if (data.status === "success") setLocalItinerary(data.itinerary || []);
-      });
-    }
-  }, [propItinerary, user?.uid]);
+  // Report review state
+  const [reportAction, setReportAction] = useState<string | null>(null);
+  const [reportResId, setReportResId] = useState<string | null>(null);
+  const [reportCommentId, setReportCommentId] = useState<string | null>(null);
 
+  const action = searchParams.get("action");
+  const resId = searchParams.get("resId");
+  const commentId = searchParams.get("commentId");
+  
+  // =========================================================================
+  // EFFECT 1: (Sẵn có của bạn) Chỉ lo phần kiểm tra localStorage khi vào trang
+  // =========================================================================
+  useEffect(() => {
+    if (!isStandalone || typeof window === "undefined") return;
+
+    const savedLocation = localStorage.getItem("bmi_user_location") || "";
+    const savedPlaceId = localStorage.getItem("bmi_user_place_id") || "";
+    if (savedLocation || savedPlaceId) {
+      setStoredLocation({ location: savedLocation, placeId: savedPlaceId });
+    }
+    setStorageChecked(true);
+  }, [isStandalone]);
+
+  
+  useEffect(() => {
+    if (action !== "review_report" || !resId || !restaurants || restaurants.length === 0) return;
+
+    // 1. Tìm nhà hàng thô từ API
+    const rawRestaurant = restaurants.find(
+      (r: any) => String(r.id) === String(resId)
+    );
+    
+    if (rawRestaurant) {
+      // 2. CHUYỂN ĐỔI DỮ LIỆU THÀNH ĐÚNG TYPE RESTAURANT (MAPPING)
+      const formattedRestaurant: Restaurant = {
+        id: String(rawRestaurant.id),
+        name: rawRestaurant.name ?? "Tên quán ăn", // Nếu undefined sẽ lấy chuỗi mặc định
+  
+        address: rawRestaurant.address ?? "Chưa có địa chỉ",
+        rating: rawRestaurant.star ?? 0,
+        price: rawRestaurant.avg_price ?? 0,
+        phone: rawRestaurant.phone_num ?? "Chưa có số điện thoại",
+        mapUrl: `https://www.google.com/maps/search/?api=1&query=${rawRestaurant.lat},${rawRestaurant.lng}`,
+        imageUrl: rawRestaurant.image_url ?? "",
+        semanticText: rawRestaurant.semantic_text ?? "",
+        meals: rawRestaurant.meals,
+        lat: rawRestaurant.lat,
+        lng: rawRestaurant.lng,
+      }
+
+      // 3. Khai hỏa hiệu ứng bay bản đồ
+      const lng = formattedRestaurant.lng ?? 106.660172;
+      const lat = formattedRestaurant.lat ?? 10.762622;
+      if (mapRef.current) {
+        mapRef.current.flyTo({ center: [lng, lat], zoom: 16, essential: true });
+      }
+
+      // 4. Truyền dữ liệu ĐÃ CHUẨN HOÁ vào Modal
+      setSelectedResForModal(formattedRestaurant); // Không cần "as any" nữa, Type đã chuẩn khớp 100%
+      setIsModalOpen(true); 
+
+      if (commentId) {
+        sessionStorage.setItem("targetCommentId", commentId);
+      }
+    }
+  }, [action, resId, commentId, restaurants]);
   const refreshItinerary = useCallback(() => {
     if (!propItinerary && user?.uid) {
       itineraryApi.get(user.uid).then(data => {
@@ -97,18 +156,7 @@ export default function MapExplore({
     onUserLocationChange?.({ location: locationLabel, placeId });
   };
 
-  useEffect(() => {
-    if (!isStandalone || typeof window === "undefined") return;
-
-    const savedLocation = localStorage.getItem("bmi_user_location") || "";
-    const savedPlaceId = localStorage.getItem("bmi_user_place_id") || "";
-    if (savedLocation || savedPlaceId) {
-      setStoredLocation({ location: savedLocation, placeId: savedPlaceId });
-    }
-    setStorageChecked(true);
-  }, [isStandalone]);
-
-  // State for off-screen indicators
+ 
   const [edgeIndicators, setEdgeIndicators] = useState<any[]>([]);
 
   // Update edge indicators on map move/zoom
@@ -202,6 +250,66 @@ export default function MapExplore({
     }
     fetchAll();
   }, []);
+
+  // 2.5 Handle Report Review from URL Query Params
+  useEffect(() => {
+    const action = searchParams.get("action");
+    const resId = searchParams.get("resId");
+    const commentId = searchParams.get("commentId");
+
+    if (action === "review_report" && resId && commentId) {
+      setReportAction(action);
+      setReportResId(resId);
+      setReportCommentId(commentId);
+    }
+  }, [searchParams]);
+
+  // 2.6 Process Report Action (after restaurants loaded and map ready)
+  useEffect(() => {
+    if (
+      !reportAction ||
+      !reportResId ||
+      !reportCommentId ||
+      restaurants.length === 0 ||
+      !mapLoaded ||
+      !mapRef.current
+    ) {
+      return;
+    }
+
+    // Tìm nhà hàng có ID khớp
+    const foundRes = restaurants.find(
+      (r) => String(r.id) === String(reportResId)
+    );
+
+    if (!foundRes) {
+      console.warn(`Restaurant with ID ${reportResId} not found`);
+      return;
+    }
+
+    // Build restaurant object
+    const restaurantData = buildRestaurants([foundRes])[0];
+
+    // Fly to location
+    if (mapRef.current && foundRes.lat && foundRes.lng) {
+      mapRef.current.flyTo({
+        center: [foundRes.lng, foundRes.lat],
+        zoom: 16,
+      });
+    }
+
+    // Lưu commentId vào sessionStorage để RestaurantDetailModal scroll tới
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("review_report_comment_id", reportCommentId);
+    }
+
+    // Mở modal chi tiết nhà hàng
+    setSelectedResForModal(restaurantData);
+    setIsModalOpen(true);
+
+    // Clear report action để không lặp lại
+    setReportAction(null);
+  }, [reportAction, reportResId, reportCommentId, restaurants, mapLoaded]);
 
   // 3. Resolve user location từ userPlaceId — chỉ set state tọa độ
   //    flyTo thực hiện sau khi map load xong (xem handleMapLoad)

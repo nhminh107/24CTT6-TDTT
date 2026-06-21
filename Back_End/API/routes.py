@@ -9,7 +9,6 @@ import traceback
 import json
 import time
 import uuid
-from collections import deque
 
 
 
@@ -44,8 +43,6 @@ cache_manager = SemanticCacheManager()
 user_manager = UserManager()
 itinerary_manager = ItineraryManager()
 last_results_by_user = {}
-last_intent_by_user = {}
-RECENT_RESULT_LIMIT = 20
 health_risk_detector = HealthRiskDetector()
 _restaurant_df_cache = None
 _restaurant_json_cache = None
@@ -102,11 +99,10 @@ async def _save_user_message_background(user_id: str, chat_id: str | None, conte
 async def _auto_save_itinerary_background(user_id: str, final_result_list: list):
     try:
         seen_meals = []
-        auto_save_meals = {"sáng", "trưa", "xế", "tối", "khuya"}
         for item in final_result_list:
             meal = item.get("meal")
             meal_key = str(meal).strip().lower()
-            if not meal_key or meal_key == "any" or meal_key not in auto_save_meals or meal_key in seen_meals:
+            if not meal_key or meal_key in seen_meals:
                 continue
             seen_meals.append(meal_key)
             first_res = item.copy()
@@ -192,23 +188,6 @@ def _extract_context_from_result(result):
     return context_list
 
 
-def _remember_recent_results(user_id: str, result: list):
-    recent = last_results_by_user.get(user_id)
-    if not isinstance(recent, deque):
-        recent = deque(recent or [], maxlen=RECENT_RESULT_LIMIT)
-
-    known_ids = {str(item.get("id")) for item in recent if isinstance(item, dict) and item.get("id") is not None}
-    for item in _extract_context_from_result(result):
-        rid = str(item.get("id"))
-        if rid in known_ids:
-            continue
-        recent.append(item)
-        known_ids.add(rid)
-
-    last_results_by_user[user_id] = recent
-    return list(recent)
-
-
 def _apply_exclusions(filtered_data: dict, exclude_ids: list):
     if not filtered_data or not exclude_ids:
         return filtered_data
@@ -230,55 +209,6 @@ def _apply_exclusions(filtered_data: dict, exclude_ids: list):
         result[meal_tag] = filtered_df if not filtered_df.empty else df
     return result
 
-def _inherit_missing_alternative_constraints(parsed_json: dict, previous_intent: dict | None) -> dict:
-    if not isinstance(parsed_json, dict) or not parsed_json.get("wants_alternative"):
-        return parsed_json
-    if not isinstance(previous_intent, dict):
-        return parsed_json
-
-    current_meals = parsed_json.get("meals_detail")
-    previous_meals = previous_intent.get("meals_detail")
-    if not isinstance(current_meals, list) or not isinstance(previous_meals, list):
-        return parsed_json
-
-    previous_by_meal = {
-        str(item.get("meal")).strip().lower(): item
-        for item in previous_meals
-        if isinstance(item, dict) and item.get("meal")
-    }
-
-    for item in current_meals:
-        if not isinstance(item, dict):
-            continue
-        meal_key = str(item.get("meal") or "").strip().lower()
-        previous = previous_by_meal.get(meal_key)
-        if not previous:
-            continue
-
-        current_types = item.get("type") or []
-        if isinstance(current_types, str):
-            current_types = [current_types]
-        had_current_type = bool(current_types)
-
-        previous_types = previous.get("type") or []
-        if isinstance(previous_types, str):
-            previous_types = [previous_types]
-        if not current_types and previous_types:
-            item["type"] = list(previous_types)
-
-        if not item.get("semantic_query") and previous.get("semantic_query"):
-            item["semantic_query"] = previous.get("semantic_query")
-
-        # If the user explicitly changes venue type/cuisine, do not force the old dish into it.
-        if not item.get("dish") and not had_current_type and previous.get("dish"):
-            item["dish"] = previous.get("dish")
-
-    for key in ("budget", "location_pref", "shu"):
-        if parsed_json.get(key) in (None, "", 0) and previous_intent.get(key) not in (None, "", 0):
-            parsed_json[key] = previous_intent.get(key)
-
-    return parsed_json
-
 def _normalize_parsed_intent(parsed_json: dict) -> dict:
     if not isinstance(parsed_json, dict):
         return parsed_json
@@ -287,14 +217,9 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
     if not isinstance(meals_detail, list) or not meals_detail:
         return parsed_json
 
-    allowed_types = {
-        "Quán Việt", "Quán Chay", "Quán Thái", "Quán nước",
-        "Quán Nhật", "Quán Âu", "Tiệm bánh"
-    }
-    allowed_type_lookup = {t.lower(): t for t in allowed_types}
     snack_types = {
         "quan nuoc", "tiem banh", "an vat", "tra sua",
-        "cafe", "quan ca phe", "quán nước", "quán cà phê"
+        "cafe", "quan ca phe"
     }
 
     normalized = []
@@ -313,13 +238,7 @@ def _normalize_parsed_intent(parsed_json: dict) -> dict:
         types_raw = item.get("type") or []
         if isinstance(types_raw, str):
             types_raw = [types_raw]
-        types = []
-        for t in types_raw:
-            if not t:
-                continue
-            normalized_type = allowed_type_lookup.get(str(t).strip().lower())
-            if normalized_type and normalized_type not in types:
-                types.append(normalized_type)
+        types = [t for t in types_raw if t]
 
         semantic_raw = item.get("semantic_query")
         semantic = semantic_raw.strip() if isinstance(semantic_raw, str) else ""
@@ -507,7 +426,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
     try:
         # Lấy lịch trình hiện tại và các kết quả gợi ý gần nhất để cung cấp ngữ cảnh cho AI
         current_itinerary = await itinerary_manager.get_itinerary(request.user_id)
-        last_suggestions = list(last_results_by_user.get(request.user_id, []))
+        last_suggestions = last_results_by_user.get(request.user_id, [])
         
         itinerary_context = ""
         if current_itinerary:
@@ -633,9 +552,6 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             print("[API_LOG] Error: LLM Parsing failed to return a result.")
             raise HTTPException(status_code=400, detail="AI không thể phân tích yêu cầu này.")
 
-        previous_intent = last_intent_by_user.get(request.user_id)
-        parsed_json = _normalize_parsed_intent(parsed_json)
-        parsed_json = _inherit_missing_alternative_constraints(parsed_json, previous_intent)
         parsed_json = _normalize_parsed_intent(parsed_json)
         _api_log(request_id, f"LLM Parsing completed | ms={_elapsed_ms(step_start)} | result={json.dumps(parsed_json, ensure_ascii=False)}")
 
@@ -710,13 +626,13 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         forbidden_tags = user_health_profile.get("forbidden_tags", [])
         
         detected_tags = health_risk_detector.detect(request.prompt) 
-
+        
         total_tags_set = set(forbidden_tags) | set(detected_tags)
 
         # Sắp xếp lại danh sách đã gộp tổng hợp
         forbidden_tags_final = sorted(list(total_tags_set))
         
-        print(f"USER HEALTH FILLER MODE: {user_health_profile.get('diet_mode')}" )
+        print(f"USER HEALTH FILLER MODE: {user_health_profile["diet_mode"]}" )
         
         # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
         health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
@@ -727,14 +643,6 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
 
         wants_alternative = parsed_json.get("wants_alternative", False)
         feedback_reason = parsed_json.get("feedback_reason")
-        raw_meal_count = parsed_json.get('num_meals') or len(parsed_json.get('meals_detail', [])) or 1
-        try:
-            requested_meal_count = int(raw_meal_count)
-        except (TypeError, ValueError):
-            requested_meal_count = 1
-        max_per_meal = 3 if requested_meal_count == 1 else 1
-        diet_mode = user_health_profile.get("diet_mode", "casual")
-        _api_log(request_id, f"Diet mode for cache/scoring: {diet_mode}")
         
         weight_engine = Weight_Update(user_lat=user_lat, user_lng=user_lng, feedback_reason=feedback_reason)
         weight_task = asyncio.create_task(weight_engine.build_buff_weights())
@@ -752,8 +660,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             lat=user_lat,
             lng=user_lng,
             budget=budget_value,
-            health_key=health_key,
-            diet_mode=diet_mode
+            health_key=health_key
         )
 
         df_task = asyncio.create_task(asyncio.to_thread(_get_restaurant_df_cached))
@@ -765,9 +672,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
             df_task.cancel()
             with contextlib.suppress(asyncio.CancelledError): await weight_task
             with contextlib.suppress(asyncio.CancelledError): await df_task
-            _remember_recent_results(request.user_id, cached_result)
-            last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
-            await _auto_save_itinerary_background(request.user_id, cached_result)
+            last_results_by_user[request.user_id] = _extract_context_from_result(cached_result)
 
             # Lưu tin nhắn của assistant nếu có chat_id (cho Cache Hit)
             if request.chat_id:
@@ -845,12 +750,11 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         step_start = time.perf_counter()
         _api_log(request_id, "LLM Selection for final itinerary...")
         selector = FinalResultLLM()
-        _api_log(request_id, f"Final selection max_per_meal={max_per_meal} for num_meals={requested_meal_count}")
         final_itinerary = await selector.run_final_selection(
             scored_candidates,
             request.prompt,
             parsed_json,
-            max_per_meal=max_per_meal
+            max_per_meal = 3 if wants_alternative else 1
         )
         _api_log(request_id, f"Final selection completed | ms={_elapsed_ms(step_start)}")
 
@@ -897,16 +801,14 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
                 lng=user_lng,
                 budget=budget_value,
                 health_key=health_key,
-                diet_mode=diet_mode,
                 result_json=final_result_list
             )
 
-        _remember_recent_results(request.user_id, final_result_list)
-        last_intent_by_user[request.user_id] = json.loads(json.dumps(parsed_json, ensure_ascii=False))
-
-        # Tự động cập nhật Lịch trình trước khi trả response để frontend fetch không bị lệch trạng thái.
-        await _auto_save_itinerary_background(request.user_id, final_result_list)
+        last_results_by_user[request.user_id] = _extract_context_from_result(final_result_list)
         _api_log(request_id, f"/prompt process completed successfully for user_id: {request.user_id} | total_ms={_elapsed_ms(total_start)}")
+
+        # Tự động cập nhật Lịch trình với kết quả đầu tiên của mỗi bữa ăn
+        background_tasks.add_task(_auto_save_itinerary_background, request.user_id, final_result_list)
 
         # Lưu tin nhắn của assistant nếu có chat_id
         if request.chat_id:
@@ -1433,3 +1335,151 @@ async def vote_restaurant_comment(
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi vote: {str(e)}")
+
+
+# ── REPORT COMMENT ENDPOINTS ──
+
+class ReportCommentRequest(BaseModel):
+    restaurant_id: str
+    comment_id: str
+    comment_text: str
+    reason: str
+    user_id: str
+
+class UpdateReportStatusRequest(BaseModel):
+    status: Literal["pending", "resolved"]
+    type_resolve:Literal["deleted" , "dismissed" ]
+
+@user_router.post("/report-comment", status_code=status.HTTP_201_CREATED)
+async def report_comment(payload: ReportCommentRequest):
+    """
+    Tạo báo cáo bình luận vi phạm.
+    
+    Dữ liệu được lưu trữ trong collection `reports` ở Firestore.
+    """
+    try:
+        report_id = str(uuid.uuid4())
+        
+        report_data = {
+            "report_id": report_id,
+            "restaurant_id": payload.restaurant_id,
+            "comment_id": payload.comment_id,
+            "comment_text": payload.comment_text,
+            "reason": payload.reason,
+            "user_id": payload.user_id,
+            "status": "pending",
+            "created_at": datetime.utcnow().isoformat() + "Z",
+            "type_resolve":"None"
+        }
+        
+        # Lưu báo cáo vào Firestore
+        db.collection("reports").document(report_id).set(report_data)
+        
+        return {
+            "status": "success",
+            "message": "Báo cáo của bạn đã được gửi. Cảm ơn vì giúp chúng tôi duy trì cộng đồng sạch!",
+            "report_id": report_id,
+        }
+    except Exception as e:
+        print(f"[ERROR] Report comment failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi gửi báo cáo: {str(e)}")
+
+@user_router.get("/reports")
+async def get_reports(status_filter: Optional[str] = None):
+    """
+    Lấy danh sách báo cáo bình luận (Admin only).
+    
+    Query params:
+    - status: "pending" | "resolved" (optional)
+    """
+    try:
+        # TODO: Thêm kiểm tra admin role tại đây (nên từ JWT token)
+        
+        query = db.collection("reports")
+        
+        if status_filter and status_filter in ["pending", "resolved"]:
+            query = query.where("status", "==", status_filter)
+        
+        # Sắp xếp theo ngày tạo (mới nhất trước)
+        query = query.order_by("created_at", direction=firestore.Query.DESCENDING)
+        
+        docs = query.stream()
+        reports = []
+        
+        for doc in docs:
+            report = doc.to_dict()
+            reports.append(report)
+        
+        return {
+            "status": "success",
+            "data": reports,
+        }
+    except Exception as e:
+        print(f"[ERROR] Get reports failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải báo cáo: {str(e)}")
+
+@user_router.patch("/reports/{report_id}")
+async def update_report_status(report_id: str, payload: UpdateReportStatusRequest):
+    """
+    Cập nhật trạng thái báo cáo (Admin only).
+    
+    Status: "pending" -> "resolved"
+    """
+    try:
+        # TODO: Thêm kiểm tra admin role tại đây (nên từ JWT token)
+        
+        report_ref = db.collection("reports").document(report_id)
+        report_doc = report_ref.get()
+        
+        if not report_doc.exists:
+            raise HTTPException(status_code=404, detail="Báo cáo không tồn tại")
+        
+        # Cập nhật status
+        report_ref.update({
+            "status": payload.status,
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+            "type_resolve":payload.type_resolve
+        })
+        
+        return {
+            "status": "success",
+            "message": f"Cập nhật trạng thái báo cáo thành '{payload.status}' thành công.",
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"[ERROR] Update report status failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi cập nhật báo cáo: {str(e)}")
+# 1. Định nghĩa model để nhận dữ liệu từ Frontend
+class DeleteReportRequest(BaseModel):
+    report_id: str
+
+# 2. Endpoint xử lý xóa báo cáo
+@user_router.post("/reports/delete")
+async def delete_report(payload: DeleteReportRequest):
+    """
+    Xóa báo cáo vĩnh viễn khỏi Firestore (Admin only).
+    """
+    try:
+        report_id = payload.report_id
+        
+        # Tham chiếu đến document báo cáo
+        report_ref = db.collection("reports").document(report_id)
+        
+        # Kiểm tra xem báo cáo có tồn tại không
+        if not report_ref.get().exists:
+            raise HTTPException(status_code=404, detail="Báo cáo không tồn tại")
+        
+        # Thực hiện xóa
+        report_ref.delete()
+        
+        return {
+            "status": "success",
+            "message": "Đã xóa báo cáo thành công."
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        print(f"[ERROR] Delete report failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Lỗi hệ thống khi xóa báo cáo")
