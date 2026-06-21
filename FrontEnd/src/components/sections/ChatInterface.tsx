@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AlertTriangle, ImagePlus, SendHorizontal, Sparkles, X } from "lucide-react";
+import { AlertTriangle, HeartPulse, ImagePlus, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
@@ -56,6 +56,8 @@ type ChatInterfaceProps = {
   fetchItinerary?: () => Promise<void>;
   input?: string;
   onInputChange?: (value: string) => void;
+  hasHealthProfile?: boolean;
+  onOpenHealthProfile?: () => void;
 };
 
 export default function ChatInterface({
@@ -72,6 +74,8 @@ export default function ChatInterface({
   fetchItinerary,
   input: inputProp,
   onInputChange,
+  hasHealthProfile = false,
+  onOpenHealthProfile,
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStage, setLoadingStage] = useState("Đang hiểu yêu cầu của bạn");
@@ -79,6 +83,7 @@ export default function ChatInterface({
   const [internalInput, setInternalInput] = useState("");
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [selectedImagePreview, setSelectedImagePreview] = useState<string | null>(null);
+  const [healthBannerDismissed, setHealthBannerDismissed] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [errorModal, setErrorModal] = useState({
@@ -97,6 +102,20 @@ export default function ChatInterface({
   );
 
   const input = inputProp ?? internalInput;
+  const healthBannerKey = `bmi_health_onboarding_dismissed_${user?.uid || "guest"}`;
+  const showHealthBanner = !hasHealthProfile && !healthBannerDismissed;
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setHealthBannerDismissed(localStorage.getItem(healthBannerKey) === "true");
+  }, [healthBannerKey]);
+
+  const dismissHealthBanner = () => {
+    setHealthBannerDismissed(true);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(healthBannerKey, "true");
+    }
+  };
 
   useEffect(() => {
     return () => {
@@ -563,6 +582,48 @@ export default function ChatInterface({
           </div>
         </div>
       </div>
+
+      {showHealthBanner && (
+        <div className="rounded-2xl border border-orange-100 bg-orange-50/80 px-4 py-3 shadow-sm">
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-orange-500 shadow-sm">
+              <HeartPulse size={19} />
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-bold text-slate-900">
+                Cá nhân hóa gợi ý theo sức khỏe
+              </p>
+              <p className="mt-1 text-xs leading-5 text-slate-600">
+                Thêm dị ứng, bệnh nền hoặc chế độ ăn để BMI cảnh báo món không phù hợp trước khi bạn chọn quán.
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={onOpenHealthProfile}
+                  className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-3 py-2 text-xs font-bold text-white shadow-sm transition hover:opacity-90"
+                >
+                  Thiết lập hồ sơ sức khỏe
+                </button>
+                <button
+                  type="button"
+                  onClick={dismissHealthBanner}
+                  className="rounded-xl px-3 py-2 text-xs font-bold text-slate-500 transition hover:bg-white hover:text-slate-700"
+                >
+                  Để sau
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={dismissHealthBanner}
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition hover:bg-white hover:text-slate-600"
+              aria-label="Đóng gợi ý hồ sơ sức khỏe"
+            >
+              <X size={15} />
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Chat Messages Container */}
       <div className="flex-1 overflow-y-auto space-y-3 md:space-y-4 pb-4">

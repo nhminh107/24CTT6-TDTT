@@ -83,6 +83,8 @@ class FinalResultLLM:
         Nhiệm vụ: chọn đúng 1 quán ăn cho mỗi bữa từ danh sách ứng viên.
         Không tạo mới, chỉ chọn từ danh sách đã cho. Ưu tiên phù hợp yêu cầu người dùng.
         Tránh chọn trùng id giữa các bữa nếu có thể.
+        Với lịch trình nhiều bữa, ưu tiên đa dạng loại quán và món chính giữa các bữa.
+        Tránh chọn nhiều quán cùng phong cách/món chính như gà rán, fast food, pizza, burger nếu còn ứng viên khác phù hợp.
 
         Trả về DUY NHẤT JSON hợp lệ theo schema:
         {{
@@ -119,22 +121,79 @@ class FinalResultLLM:
                 result[meal] = str(rid)
         return result
 
+    def _restaurant_signature(self, row: dict) -> str:
+        text_parts = [
+            row.get('name', ''),
+            row.get('semantic_text', ''),
+            ' '.join(row.get('type') or []) if isinstance(row.get('type'), list) else str(row.get('type') or ''),
+            ' '.join(row.get('menu') or []) if isinstance(row.get('menu'), list) else str(row.get('menu') or '')
+        ]
+        text = ' '.join(str(part).lower() for part in text_parts if part)
+
+        signature_keywords = [
+            ('fried_chicken', ['gà rán', 'ga ran', 'fried chicken', 'kfc', 'lotteria', 'texas chicken', 'popeyes', 'jollibee']),
+            ('burger_fastfood', ['burger', 'hamburger', 'fast food', 'thức ăn nhanh', 'do an nhanh']),
+            ('pizza', ['pizza']),
+            ('hotpot', ['lẩu', 'lau', 'hotpot']),
+            ('bbq_grill', ['nướng', 'nuong', 'bbq', 'grill']),
+            ('seafood', ['hải sản', 'hai san', 'seafood', 'tôm', 'cua', 'ốc', 'ngao', 'sò', 'hàu']),
+            ('pho_noodle', ['phở', 'pho']),
+            ('bun_noodle', ['bún', 'bun']),
+            ('rice_com', ['cơm', 'com']),
+            ('coffee_drink', ['cà phê', 'cafe', 'trà sữa', 'quán nước', 'coffee', 'milk tea']),
+            ('bakery_dessert', ['bánh', 'banh', 'bakery', 'dessert', 'kem'])
+        ]
+        for signature, keywords in signature_keywords:
+            if any(keyword in text for keyword in keywords):
+                return signature
+
+        row_type = row.get('type')
+        if isinstance(row_type, list) and row_type:
+            return '|'.join(sorted(str(item).strip().lower() for item in row_type if item))
+        return 'unknown'
+
     def _select_unique_combination(self, meal_order: list, candidate_map: dict, max_per_meal: int = 1) -> list:
         selected_rows = []
         used_ids = set()
+        used_signatures = set()
+        diversify_signatures = max_per_meal == 1 and len(meal_order) > 1
 
         for meal in meal_order:
             candidates = candidate_map.get(meal, [])
-            count = 0  # Biến đếm số lượng quán đã chọn cho bữa này
+            count = 0
+            deferred_rows = []
             
             for row in candidates:
-                if count >= max_per_meal: # Dừng khi đã đủ số lượng (ví dụ: 3)
+                if count >= max_per_meal:
                     break
-                    
+
                 rid = str(row.get('id'))
-                if rid not in used_ids:
+                if rid in used_ids:
+                    continue
+
+                signature = self._restaurant_signature(row)
+                if diversify_signatures and signature != 'unknown' and signature in used_signatures:
+                    deferred_rows.append(row)
+                    continue
+
+                selected_rows.append(row)
+                used_ids.add(rid)
+                if signature != 'unknown':
+                    used_signatures.add(signature)
+                count += 1
+
+            if count < max_per_meal:
+                for row in deferred_rows:
+                    if count >= max_per_meal:
+                        break
+                    rid = str(row.get('id'))
+                    if rid in used_ids:
+                        continue
                     selected_rows.append(row)
                     used_ids.add(rid)
+                    signature = self._restaurant_signature(row)
+                    if signature != 'unknown':
+                        used_signatures.add(signature)
                     count += 1
                     
             if count == 0:

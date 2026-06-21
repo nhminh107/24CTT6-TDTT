@@ -197,6 +197,7 @@ class RestaurantScorer:
             }
 
         budget_per_meal = budget / num_meals if num_meals > 0 else 0
+        top_k_per_meal = 3 if num_meals <= 1 else min(10, max(3, num_meals * 2))
 
         semantic_map = {
             m['meal']: m.get('semantic_query') or ''
@@ -253,7 +254,7 @@ class RestaurantScorer:
                 axis=1
             )
 
-            # Lấy top 3 quán ăn tốt nhất cho bữa này
+            # Lấy top ứng viên tốt nhất cho bữa này; multi-meal cần pool rộng hơn để tránh trùng id/kiểu quán
             if semantic_query:
                 terms = self._extract_semantic_terms(semantic_query)
                 if terms and 'semantic_text' in df.columns:
@@ -264,11 +265,11 @@ class RestaurantScorer:
                 else:
                     df_for_rank = df
 
-                top_df = df_for_rank.sort_values(['semantic_score', 'score'], ascending=False).head(3).copy()
+                top_df = df_for_rank.sort_values(['semantic_score', 'score'], ascending=False).head(top_k_per_meal).copy()
                 if 'keyword_match' in top_df.columns:
                     top_df.drop(columns=['keyword_match'], inplace=True)
             else:
-                top_df = df.sort_values('score', ascending=False).head(3).copy()
+                top_df = df.sort_values('score', ascending=False).head(top_k_per_meal).copy()
             top_df['meal'] = meal_tag
             if not top_df.empty:
                 top_results.append(top_df)

@@ -141,6 +141,16 @@ export default function MainDashboard() {
   const [currentMessages, setCurrentMessages] = useState<ChatMessage[]>([]);
   const [currentItinerary, setCurrentItinerary] = useState<any[]>([]);
 
+  const healthProfileItemCount = useMemo(() => {
+    return (
+      healthProfile.selected_conditions.length +
+      healthProfile.selected_allergies.length +
+      (healthProfile.more_descriptions.trim() ? 1 : 0)
+    );
+  }, [healthProfile]);
+
+  const hasHealthProfile = healthProfileItemCount > 0;
+
   const fetchItinerary = async () => {
     if (!user?.uid) return;
     try {
@@ -523,6 +533,14 @@ export default function MainDashboard() {
     }
   };
 
+  useEffect(() => {
+    if (user?.uid) {
+      fetchHealthProfile();
+      return;
+    }
+    setHealthProfile(DEFAULT_HEALTH_PROFILE);
+  }, [user?.uid]);
+
   const handleHealthOpen = async () => {
     if (!user?.uid) {
       router.push("/login");
@@ -626,6 +644,8 @@ export default function MainDashboard() {
             onStateChange={handleStateChange}
             availableFilters={filters}
             onOpenHealthProfile={handleHealthOpen}
+            hasHealthProfile={hasHealthProfile}
+            healthProfileItemCount={healthProfileItemCount}
             onOpenProfileSettings={handleProfileOpen}
             onOpenLocationPrompt={() => setLocationPromptOpen(true)}
             onTabChange={handleItineraryTabChange}
@@ -656,6 +676,8 @@ export default function MainDashboard() {
             currentItinerary={currentItinerary}
             onSelectMeal={handleSelectMeal}
             fetchItinerary={fetchItinerary}
+            hasHealthProfile={hasHealthProfile}
+            onOpenHealthProfile={handleHealthOpen}
             />
         </main>
 
@@ -680,6 +702,8 @@ export default function MainDashboard() {
             onReorder={handleReorder}
             showBoardingPass={showBoardingPass}
             onShowBoardingPassChange={setShowBoardingPass}
+            hasHealthProfile={hasHealthProfile}
+            onOpenHealthProfile={handleHealthOpen}
           />
         </aside>
       </div>
@@ -738,6 +762,8 @@ export default function MainDashboard() {
               onReorder={handleReorder}
               showBoardingPass={showBoardingPass}
               onShowBoardingPassChange={setShowBoardingPass}
+              hasHealthProfile={hasHealthProfile}
+              onOpenHealthProfile={handleHealthOpen}
             />
           </div>
         </div>
@@ -761,7 +787,11 @@ export default function MainDashboard() {
               <X size={16} />
             </button>
             <div className="max-h-[85vh] overflow-y-auto p-3">
-              <RestaurantCard restaurant={selectedRestaurant} />
+              <RestaurantCard
+                restaurant={selectedRestaurant}
+                hasHealthProfile={hasHealthProfile}
+                onOpenHealthProfile={handleHealthOpen}
+              />
             </div>
           </div>
         </div>
