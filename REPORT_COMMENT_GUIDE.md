@@ -22,7 +22,7 @@ Lưu trữ tất cả báo cáo bình luận
   "user_id": "user_id_reporter",
   "status": "pending|resolved",
   "created_at": "2026-06-21T10:00:00Z",
-  "updated_at": "2026-06-21T11:00:00Z" (optional)
+  "updated_at": "2026-06-21T11:00:00Z" 
 }
 ```
 
