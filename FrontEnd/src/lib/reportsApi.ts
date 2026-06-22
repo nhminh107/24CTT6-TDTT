@@ -100,6 +100,22 @@ export const deleteCommentAsAdmin = async (restaurantId: string, commentId: stri
       }),
     });
 
+
+    if (!response.ok) {
+      // Đọc dữ liệu lỗi từ FastAPI (chính là cục {"detail": "Comment không tồn tại"})
+      const errorData = await response.json();
+      
+      // Tạo một đối tượng lỗi giả lập giống cấu trúc Axios để hàm ngoài catch được
+      const customError = new Error("API Error") as any;
+      customError.response = {
+        status: response.status,
+        data: errorData
+      };
+      
+      // Ném lỗi ra ngoài để kích hoạt khối CATCH ở hàm handleDeleteComment
+      throw customError;
+    }
+
     return await response.json();
   } catch (error) {
     console.error("API deleteCommentAsAdmin error:", error);

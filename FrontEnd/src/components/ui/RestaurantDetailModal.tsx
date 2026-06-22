@@ -868,7 +868,7 @@ export default function RestaurantDetailModal({
                             </div>
                           ) : (
                             <>
-                              <p className="text-sm leading-relaxed text-slate-700">{comment.content}</p>
+                              <p className="text-sm leading-relaxed text-slate-700 break-words whitespace-pre-wrap">{comment.content}</p>
                               <div className="mt-4 flex flex-wrap items-center gap-2">
                                 <button
                                   onClick={() => handleVote(comment.comment_id, "like")}

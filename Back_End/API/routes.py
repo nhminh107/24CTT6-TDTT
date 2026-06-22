@@ -16,7 +16,6 @@ from datetime import datetime,timezone
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-
 from Back_End.Core.parsing import LLMParser
 from Back_End.Core.QA_Chatbot import ChatBot
 from Back_End.Core.Filter import RestaurantFilter
@@ -1229,7 +1228,15 @@ async def delete_restaurant_comment(restaurant_id: str, comment_id: str, payload
 
         # Nếu hệ thống của bạn có dùng Realtime Socket (Socket.IO) để đồng bộ UI, 
         # await sio.emit("comment_deleted", {"comment_id": comment_id}, room=restaurant_id)
+        sub_collection_ref = comment_ref.collection("votes") # Thay "replies" bằng tên sub-collection thực tế của bạn
+        docs = sub_collection_ref.stream()
 
+        for doc in docs:
+            doc.reference.delete()
+
+        # 2. Xóa chính document comment đó
+        comment_ref.delete()
+        
         return {
             "status": "success",
             "message": "Comment deleted successfully"
@@ -1257,10 +1264,6 @@ async def vote_restaurant_comment(
               .document(comment_id)
         )
         vote_ref = comment_ref.collection("votes").document(payload.user_id)
-
-        comment_doc = comment_ref.get()
-        if not comment_doc.exists:
-            raise HTTPException(status_code=404, detail="Comment không tồn tại")
 
         existing_vote_doc = vote_ref.get()
         existing_vote = existing_vote_doc.to_dict() if existing_vote_doc.exists else None

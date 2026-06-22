@@ -39,6 +39,9 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState<"all" | "pending" | "resolved">("pending");
   const [processingReportId, setProcessingReportId] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "restaurant_asc" | "restaurant_desc">("newest");
+  const [reasonModal, setReasonModal] = useState<string | null>(null);
+  const [commentModal, setCommentModal] = useState<string | null>(null); // ← thêm dòng này
   const [toastState, setToastState] = useState<{
     show: boolean;
     type: ToastType;
@@ -125,11 +128,19 @@ export default function AdminPage() {
           }, 3000);
         }
       } else {
-        triggerToast("error", response.message || "Không thể xóa bình luận!");
+        triggerToast("error",response?.data?.detail || "Lỗi hệ thống khi xóa comment, có thể đã bị xóa bới admin khác hoặc không tồn tại!");
       }
-    } catch (error) {
+   } catch (error: any) {
+    // 💡 XỬ LÝ LỖI 404 TẠI ĐÂY
+    if (error.response?.status === 404) {
+      triggerToast("info", "Bình luận không tồn tại. Có thể đã bị xóa trước đó bởi admin khác.");
+      // Gọi luôn hàm đóng báo cáo vì comment đã mất rồi, không cần xóa nữa
+      await updateReportStatus(report.report_id, "resolved", "deleted");
+      setReports((prev) => prev.filter((r) => r.report_id !== report.report_id));
+    } else {
       console.error("Delete comment error:", error);
-      triggerToast("error", "Lỗi khi xóa bình luận. Vui lòng thử lại!");
+      triggerToast("error", "Lỗi hệ thống. Vui lòng thử lại sau!");
+    }
     } finally {
       setProcessingReportId(null);
     }
@@ -202,14 +213,90 @@ export default function AdminPage() {
     case "dismissed": return "Đã bỏ qua";
     default: return "Đã giải quyết";
   }
-};  
+};
+
+
+
+
   const pendingCount = reports.filter((r) => r.status === "pending").length;
   const filteredReports = reports.filter(
     (r) => filterStatus === "all" || r.status === filterStatus
   );
 
+  const sortedReports = [...filteredReports].sort((a, b) => {
+    switch (sortOrder) {
+      case "newest":
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      case "oldest":
+        return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
+      case "restaurant_asc":
+        return (a.restaurant_name || a.restaurant_id).localeCompare(b.restaurant_name || b.restaurant_id);
+      case "restaurant_desc":
+        return (b.restaurant_name || b.restaurant_id).localeCompare(a.restaurant_name || a.restaurant_id);
+      default:
+        return 0;
+    }
+  });
+
+
+  
+
   return (
     <div className="min-h-screen bg-slate-50">
+
+
+    {reasonModal !== null && (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      onClick={() => setReasonModal(null)}
+    >
+      <div
+        className="bg-white rounded-2xl border border-slate-200 p-6 w-full max-w-sm mx-4 shadow-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Lý do báo cáo</p>
+          <button
+            onClick={() => setReasonModal(null)}
+            className="text-slate-400 hover:text-slate-700 text-xl leading-none"
+          >
+            ×
+          </button>
+        </div>
+        {/* ← thêm max-h + overflow-y-auto để không tràn */}
+        <div className="max-h-60 overflow-y-auto pr-1">
+          <p className="text-sm text-slate-700 leading-relaxed break-words">{reasonModal}</p>
+        </div>
+      </div>
+    </div>
+  )}
+
+    {commentModal !== null && (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      onClick={() => setCommentModal(null)}
+    >
+      <div
+        className="bg-white rounded-2xl border border-slate-200 p-6 w-full max-w-lg mx-4 shadow-lg"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Nội dung bình luận</p>
+          <button
+            onClick={() => setCommentModal(null)}
+            className="text-slate-400 hover:text-slate-700 text-xl leading-none"
+          >
+            ×
+          </button>
+        </div>
+        {/* ← max-h + overflow-y-auto để không tràn khi nội dung quá dài */}
+        <div className="max-h-64 overflow-y-auto pr-1">
+          <p className="text-sm text-slate-700 leading-relaxed italic">"{commentModal}"</p>
+        </div>
+      </div>
+    </div>
+  )}
+
       {/* Header */}
       <div className="sticky top-0 z-40 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
@@ -308,48 +395,113 @@ export default function AdminPage() {
           </div>
 
           {/* Reports List */}
-          <div className="divide-y divide-slate-100">
-            {loading ? (
-              <div className="p-8 flex justify-center">
-                <Loader2 className="w-6 h-6 text-slate-400 animate-spin" />
-              </div>
-            ) : filteredReports.length === 0 ? (
-              <div className="p-8 text-center">
-                <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                <p className="text-slate-600 font-semibold">
-                  {filterStatus === "pending"
-                    ? "Không có báo cáo chưa xử lý nào"
-                    : "Không có báo cáo nào"}
-                </p>
-              </div>
-            ) : (
-              filteredReports.map((report) => (
-                <div
-                  key={report.report_id}
-                  className={`p-6 hover:bg-slate-50 transition ${
-                    report.status === "resolved" ? "opacity-60" : ""
-                  }`}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Flag className="w-4 h-4 text-amber-600 shrink-0" />
-                        <span className="text-sm font-bold text-slate-900">
-                          {report.restaurant_name || `Nhà hàng #${report.restaurant_id}`}
-                        </span>
-                        {report.status === "pending" && (
+          <div>
+          {/* Toolbar sort */}
+          <div className="flex items-center gap-3 px-6 py-3 border-b border-slate-200 bg-slate-50">
+            <label className="text-xs font-semibold text-slate-500">Sắp xếp:</label>
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value as typeof sortOrder)}
+              className="text-sm border border-slate-200 rounded-lg px-3 py-1.5 bg-white text-slate-700 cursor-pointer"
+            >
+              <option value="newest">Mới nhất</option>
+              <option value="oldest">Cũ nhất</option>
+              <option value="restaurant_asc">ID nhà hàng (A→Z)</option>
+              <option value="restaurant_desc">ID nhà hàng (Z→A)</option>
+            </select>
+          </div>
+
+          {loading ? (
+            <div className="p-8 flex justify-center">
+              <Loader2 className="w-6 h-6 text-slate-400 animate-spin" />
+            </div>
+          ) : sortedReports.length === 0 ? (
+            <div className="p-8 text-center">
+              <AlertCircle className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+              <p className="text-slate-600 font-semibold">
+                {filterStatus === "pending" ? "Không có báo cáo chưa xử lý nào" : "Không có báo cáo nào"}
+              </p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-slate-50 border-b border-slate-200">
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-36">Nhà hàng</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Bình luận</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-44">Lý do</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-28">Trạng thái</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-36">Ngày báo cáo</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider w-56">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {sortedReports.map((report) => (
+                    <tr
+                      key={report.report_id}
+                      className={`hover:bg-slate-50 transition ${report.status === "resolved" ? "opacity-60" : ""}`}
+                    >
+                      {/* Nhà hàng */}
+                      <td className="px-4 py-3 font-semibold text-slate-900 truncate max-w-[9rem]">
+                        <div className="flex items-center gap-1.5">
+                          <Flag className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                          <span className="truncate">{report.restaurant_name || `#${report.restaurant_id}`}</span>
+                        </div>
+                      </td>
+
+                      {/* Bình luận — MỚI */}
+                      <td className="px-4 py-3 text-slate-600 max-w-xs">
+                        <div className="flex items-start gap-1.5 min-w-0">
+                          <p className="line-clamp-2 italic flex-1 min-w-0">"{report.comment_text}"</p>
+                          {report.comment_text && report.comment_text.length > 80 && (
+                            <button
+                              onClick={() => setCommentModal(report.comment_text)}
+                              className="shrink-0 w-5 h-5 flex items-center justify-center rounded border border-slate-200 bg-slate-50 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition mt-0.5"
+                              aria-label="Xem đầy đủ bình luận"
+                            >
+                              <svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+                                <path d="M8 7v5M8 5v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                      </td>
+
+                      {/* Lý do */}
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className="text-slate-700 flex-1 min-w-0">
+                            {report.reason.length > 40
+                              ? report.reason.slice(0, 40) + "..."
+                              : report.reason}
+                          </span>
+                          {report.reason.length > 40 && (
+                            <button
+                              onClick={() => setReasonModal(report.reason)}
+                              className="shrink-0 w-5 h-5 flex items-center justify-center rounded border border-slate-200 bg-slate-50 text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
+                              aria-label="Xem đầy đủ lý do"
+                            >
+                              <svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/>
+                                <path d="M8 7v5M8 5v.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                              </svg>
+                            </button>
+                          )}
+                        </div>
+                      </td>
+
+                      {/* Trạng thái */}
+                      <td className="px-4 py-3 max-w-[11rem]">
+                        {report.status === "pending" ? (
                           <span className="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-700">
                             Chờ xử lý
                           </span>
-                        )}
-                        {report.status === "resolved" && (
-                          <div className="flex flex-col gap-1">
-                            {/* Tag chính */}
+                        ) : (
+                          <div className="flex flex-col gap-0.5">
                             <span className="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
                               Đã xử lý
                             </span>
-                            {/* Tag type_resolve hiển thị thêm */}
                             {report.type_resolve && (
                               <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
                                 ({getResolveLabel(report.type_resolve)})
@@ -357,80 +509,67 @@ export default function AdminPage() {
                             )}
                           </div>
                         )}
-                      </div>
+                      </td>
 
-                      <div className="mb-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
-                        <p className="text-xs text-slate-500 font-semibold mb-1">BÌNH LUẬN:</p>
-                        <p className="text-sm text-slate-700 line-clamp-2">"{report.comment_text}"</p>
-                      </div>
+                      {/* Ngày */}
+                      <td className="px-4 py-3 text-slate-500 whitespace-nowrap">
+                        {new Date(report.created_at).toLocaleString("vi-VN")}
+                      </td>
 
-                      <div className="space-y-1.5">
-                        <div>
-                          <p className="text-xs text-slate-500 font-semibold">LÝ DO BÁO CÁO:</p>
-                          <p className="text-sm text-slate-700">{report.reason}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-slate-500 font-semibold">NGÀY BÁO CÁO:</p>
-                          <p className="text-sm text-slate-700">
-                            {new Date(report.created_at).toLocaleString("vi-VN")}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex flex-wrap gap-2 sm:flex-col-reverse">
-                      {report.type_resolve !== "deleted" && (
-                        <button
-                          onClick={() => handleViewContext(report)}
-                          disabled={processingReportId === report.report_id}
-                          className="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 disabled:opacity-50"
-                        >
-                          <Eye className="w-4 h-4" />
-                          <span>Xem ngữ cảnh</span>
-                        </button>
-                      )}
-
-                      {/* Nút Xóa báo cáo (Nút mới) */}
-                      <button
-                        onClick={() => handleDeleteReport(report.report_id)}
-                        disabled={processingReportId === report.report_id}
-                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-100 hover:text-slate-900 transition disabled:opacity-50"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        <span>Xóa báo cáo</span>
-                      </button>
-                      {report.status === "pending" && (
-                        <>
+                      {/* Thao tác */}
+                      <td className="px-4 py-3">
+                        <div className={`flex flex-wrap gap-1.5 ${report.status !== "pending" ? "justify-center" : ""}`}>
+                          {report.type_resolve !== "deleted" && (
+                            <button
+                              onClick={() => handleViewContext(report)}
+                              disabled={processingReportId === report.report_id}
+                              className="inline-flex items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-100 disabled:opacity-50 transition"
+                            >
+                              <Eye className="w-3.5 h-3.5" />
+                              Xem
+                            </button>
+                          )}
                           <button
-                            onClick={() => handleDeleteComment(report)}
+                            onClick={() => handleDeleteReport(report.report_id)}
                             disabled={processingReportId === report.report_id}
-                            className="inline-flex items-center justify-center gap-2 rounded-xl bg-rose-50 border border-rose-200 px-4 py-2 text-sm font-semibold text-rose-600 transition hover:bg-rose-100 disabled:opacity-50"
+                            className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-500 hover:bg-slate-100 hover:text-slate-900 disabled:opacity-50 transition"
                           >
-                            {processingReportId === report.report_id ? (
-                              <Loader2 className="w-4 h-4 animate-spin" />
-                            ) : (
-                              <Trash2 className="w-4 h-4" />
-                            )}
-                            Xóa
+                            <Trash2 className="w-3.5 h-3.5" />
+                            Xóa báo cáo
                           </button>
-
-                          <button
-                            onClick={() => handleDismissReport(report.report_id)}
-                            disabled={processingReportId === report.report_id}
-                            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 disabled:opacity-50"
-                          >
-                            <Check className="w-4 h-4" />
-                            Bỏ qua
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+                          {report.status === "pending" && (
+                            <>
+                              <button
+                                onClick={() => handleDeleteComment(report)}
+                                disabled={processingReportId === report.report_id}
+                                className="inline-flex items-center gap-1 rounded-lg bg-rose-50 border border-rose-200 px-2.5 py-1.5 text-xs font-semibold text-rose-600 hover:bg-rose-100 disabled:opacity-50 transition"
+                              >
+                                {processingReportId === report.report_id ? (
+                                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                )}
+                                Xóa
+                              </button>
+                              <button
+                                onClick={() => handleDismissReport(report.report_id)}
+                                disabled={processingReportId === report.report_id}
+                                className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100 disabled:opacity-50 transition"
+                              >
+                                <Check className="w-3.5 h-3.5" />
+                                Bỏ qua
+                              </button>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
         </div>
 
         {/* Footer */}
