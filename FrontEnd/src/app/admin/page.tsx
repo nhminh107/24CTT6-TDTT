@@ -96,55 +96,65 @@ export default function AdminPage() {
   }, [isAdmin, filterStatus]);
 // Xóa comment
   const handleDeleteComment = async (report: Report) => {
-    if (!confirm("Bạn có chắc chắn muốn xóa bình luận này?")) return;
+  if (!confirm("Bạn có chắc chắn muốn xóa bình luận này?")) return;
 
-    setProcessingReportId(report.report_id);
-    try {
-      // 💡 ĐÃ SỬA: Truyền thêm user?.uid của Admin vào đây làm tham số thứ 3
-      const response = await deleteCommentAsAdmin(
-        report.restaurant_id,
-        report.comment_id,
-        user?.uid || "" 
-      );
+  setProcessingReportId(report.report_id);
+  try {
+    const response = await deleteCommentAsAdmin(
+      report.restaurant_id,
+      report.comment_id,
+      user?.uid || "" 
+    );
 
-      if (response.status === "success") {
-        // Cập nhật status báo cáo thành "resolved" trên database
-        const updateResponse = await updateReportStatus(report.report_id, "resolved", "deleted");
+    // 💡 KHỐI TRY GIỜ ĐÂY CHỈ XỬ LÝ TRƯỜNG HỢP 200 OK THÀNH CÔNG RỰC RỠ
+    if (response.status === "success") {
+      const updateResponse = await updateReportStatus(report.report_id, "resolved", "deleted");
 
-        if (updateResponse.status === "success") {
-          // 1. Cập nhật UI lập tức sang trạng thái "resolved" để hiện tag màu xanh
-          setReports((prev) =>
-            prev.map((r) =>
-             r.report_id === report.report_id 
-            ? { ...r, status: "resolved", type_resolve: "deleted" } 
-            : r
-            )
-          );
-          triggerToast("success", "Đã xóa bình luận và đóng báo cáo!");
+      if (updateResponse.status === "success") {
+        // 1. Cập nhật UI lập tức sang trạng thái "resolved" để hiện tag màu xanh
+        setReports((prev) =>
+          prev.map((r) =>
+            r.report_id === report.report_id 
+              ? { ...r, status: "resolved", type_resolve: "deleted" } 
+              : r
+          )
+        );
+        triggerToast("success", "Đã xóa bình luận và đóng báo cáo!");
 
-          // 2. Tự động ẩn bản ghi này khỏi màn hình sau 3 giây cho gọn giao diện
-          setTimeout(() => {
-            setReports((prev) => prev.filter((r) => r.report_id !== report.report_id));
-          }, 3000);
-        }
-      } else {
-        triggerToast("error",response?.data?.detail || "Lỗi hệ thống khi xóa comment, có thể đã bị xóa bới admin khác hoặc không tồn tại!");
+        // 2. Tự động ẩn bản ghi này khỏi màn hình sau 3 giây cho gọn giao diện
+        setTimeout(() => {
+          setReports((prev) => prev.filter((r) => r.report_id !== report.report_id));
+        }, 3000);
       }
-   } catch (error: any) {
-    // 💡 XỬ LÝ LỖI 404 TẠI ĐÂY
+    } else {
+      // Nhánh này chỉ chạy khi API trả về 200 OK nhưng cấu trúc JSON có status khác "success" (Rất hiếm)
+      triggerToast("error", response.message || "Không thể thực hiện thao tác xóa!");
+    }
+
+  } catch (error: any) {
+    // 💡 TẤT CẢ LỖI HTTP (404, 403, 500) GIỜ ĐÂY SẼ BỊ HÚNG CHÍNH XÁC Ở ĐÂY
+    console.error("Delete comment error caught in component:", error);
+
     if (error.response?.status === 404) {
-      triggerToast("info", "Bình luận không tồn tại. Có thể đã bị xóa trước đó bởi admin khác.");
-      // Gọi luôn hàm đóng báo cáo vì comment đã mất rồi, không cần xóa nữa
+      // Đọc chuỗi text hoặc object detail từ customError ta chủ động throw ở hàm fetch
+      const errorDetail = error.response.data?.detail;
+      const alertMessage = typeof errorDetail === "object" ? errorDetail.message : errorDetail;
+
+      triggerToast("info", alertMessage || "Bình luận không tồn tại. Có thể đã bị xóa trước đó bởi admin khác.");
+      
+      // Tự động dọn dẹp đóng báo cáo "mồ côi" ngay lập tức trên UI và DB
       await updateReportStatus(report.report_id, "resolved", "deleted");
       setReports((prev) => prev.filter((r) => r.report_id !== report.report_id));
+      
+    } else if (error.response?.status === 403) {
+      triggerToast("error", "Bạn không có quyền thực hiện hành động này!");
     } else {
-      console.error("Delete comment error:", error);
-      triggerToast("error", "Lỗi hệ thống. Vui lòng thử lại sau!");
+      triggerToast("error", "Lỗi hệ thống hoặc lỗi kết nối. Vui lòng thử lại sau!");
     }
-    } finally {
-      setProcessingReportId(null);
-    }
-  };
+  } finally {
+    setProcessingReportId(null);
+  }
+};
 
   // Bỏ qua báo cáo (đánh dấu resolved mà không xóa)
   const handleDismissReport = async (reportId: string) => {

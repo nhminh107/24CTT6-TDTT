@@ -119,7 +119,7 @@ export const deleteCommentAsAdmin = async (restaurantId: string, commentId: stri
     return await response.json();
   } catch (error) {
     console.error("API deleteCommentAsAdmin error:", error);
-    return { status: "error", message: "Lỗi kết nối mạng" };
+    throw error;
   }
 };
 
