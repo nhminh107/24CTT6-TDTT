@@ -48,23 +48,66 @@ export type ApiRestaurant = {
 };
 
 export function convertToGeoJSON(restaurants: ApiRestaurant[]) {
-  const getStyle = (types?: string[]) => {
-    const typeStr = types?.join(" ") || "";
-    if (typeStr.includes("Việt")) return { icon: "🍜", color: "#EA4335" }; // Đỏ Google
-    if (typeStr.includes("Nhật")) return { icon: "🍣", color: "#FF9800" }; // Cam
-    if (typeStr.includes("Thái")) return { icon: "🌶️", color: "#E91E63" }; // Hồng
-    if (typeStr.includes("Âu")) return { icon: "🍕", color: "#9C27B0" };   // Tím
-    if (typeStr.includes("Chay")) return { icon: "🥦", color: "#4CAF50" };  // Xanh lá
-    if (typeStr.includes("nước")) return { icon: "☕", color: "#03A9F4" }; // Xanh dương
-    if (typeStr.includes("bánh")) return { icon: "🍰", color: "#EC407A" }; // Hồng nhạt
-    if (typeStr.includes("nhanh")) return { icon: "🍔", color: "#795548" }; // Nâu
+  const getStyle = (res: ApiRestaurant) => {
+    const name = (res.name || "").toLowerCase();
+    const typeStr = (res.type || []).join(" ").toLowerCase();
+
+    // 1. Check Name first (very specific)
+    if (name.includes("phở") || name.includes("bún") || name.includes("mỳ") || name.includes("mì") || name.includes("hủ tiếu") || name.includes("bánh canh")) {
+      return { icon: "🍜", color: "#EA4335" }; // Đỏ (Món sợi Việt)
+    }
+    if (name.includes("hải sản") || name.includes("ốc") || name.includes("seafood") || name.includes("ghẹ") || name.includes("tôm") || name.includes("cua") || name.includes("cá") || name.includes("snails") || name.includes("sò") || name.includes("hàu") || name.includes("mực")) {
+      return { icon: "🦀", color: "#FF5722" }; // Cam đậm (Hải sản)
+    }
+    if (name.includes("cơm") || name.includes("rice")) {
+      return { icon: "🍚", color: "#FF9800" }; // Cam (Cơm)
+    }
+    if (name.includes("lẩu") || name.includes("hotpot") || name.includes("canh")) {
+      return { icon: "🍲", color: "#E91E63" }; // Hồng (Lẩu/Canh)
+    }
+    if (name.includes("nướng") || name.includes("bbq") || name.includes("steak") || name.includes("steakhouse") || name.includes("sườn")) {
+      return { icon: "🥩", color: "#D32F2F" }; // Đỏ sẫm (Món nướng)
+    }
+    if (name.includes("bánh mì") || name.includes("banh mi")) {
+      return { icon: "🥖", color: "#FFB300" }; // Vàng (Bánh mì)
+    }
+    if (name.includes("pizza")) {
+      return { icon: "🍕", color: "#FF5722" }; // Cam (Pizza)
+    }
+    if (name.includes("sushi") || name.includes("sashimi")) {
+      return { icon: "🍣", color: "#FF9800" }; // Cam (Sushi)
+    }
+    if (name.includes("chè") || name.includes("kem") || name.includes("ice cream") || name.includes("gelato")) {
+      return { icon: "🍨", color: "#EC407A" }; // Hồng nhạt (Tráng miệng)
+    }
+    if (name.includes("trà sữa") || name.includes("milktea") || name.includes("bubble")) {
+      return { icon: "🧋", color: "#00BCD4" }; // Xanh ngọc (Trà sữa)
+    }
+
+    // 2. Fallback to Types
+    if (typeStr.includes("chay")) return { icon: "🥗", color: "#4CAF50" };  // Xanh lá (Chay)
+    if (typeStr.includes("nhật")) return { icon: "🍣", color: "#FF9800" };  // Cam (Nhật)
+    if (typeStr.includes("thái")) return { icon: "🌶️", color: "#E91E63" };  // Hồng (Thái)
+    if (typeStr.includes("ấn")) return { icon: "🍛", color: "#FF5722" };   // Cam đậm (Ấn)
+    if (typeStr.includes("âu")) return { icon: "🍝", color: "#9C27B0" };    // Tím (Âu)
+    if (typeStr.includes("việt")) return { icon: "🍜", color: "#EA4335" };  // Đỏ (Việt)
+    if (typeStr.includes("cà phê") || name.includes("cafe") || name.includes("coffee")) {
+      return { icon: "☕", color: "#03A9F4" }; // Xanh dương (Cà phê)
+    }
+    if (typeStr.includes("nước") || name.includes("nước") || name.includes("tea") || name.includes("trà")) {
+      return { icon: "🥤", color: "#00BCD4" }; // Xanh ngọc (Nước giải khát)
+    }
+    if (typeStr.includes("bánh")) return { icon: "🍰", color: "#EC407A" };  // Hồng nhạt (Bánh)
+    if (typeStr.includes("nhanh")) return { icon: "🍔", color: "#795548" }; // Nâu (Fastfood)
+
+    // General fallback
     return { icon: "📍", color: "#757575" }; // Xám
   };
 
   return {
     type: "FeatureCollection",
     features: restaurants.map((res) => {
-      const style = getStyle(res.type);
+      const style = getStyle(res);
       return {
         type: "Feature",
         geometry: {
