@@ -147,15 +147,29 @@ export default function AppPage() {
           className={cn(
             "grid gap-6",
             isCompact
-              ? "lg:grid-cols-[0fr_1fr] lg:gap-0"
-              : "lg:grid-cols-[1.1fr_1.4fr]"
+              ? "lg:grid-cols-[1fr_0fr] lg:gap-0"
+              : "lg:grid-cols-[1.4fr_1.1fr]"
           )}
         >
+          <div className="space-y-6">
+            <ChatInterface
+              placeId={placeId}
+              input={promptInput}
+              onInputChange={setPromptInput}
+              onPreviewPass={(restaurants) => {
+                if (restaurants.length) {
+                  setMeals(buildMealStops(restaurants));
+                  setShowBoardingPass(true);
+                }
+              }}
+            />
+          </div>
+
           <motion.div
             initial={false}
             animate={
               isCompact
-                ? { opacity: 0, scale: 0.96, x: -28 }
+                ? { opacity: 0, scale: 0.96, x: 28 }
                 : { opacity: 1, scale: 1, x: 0 }
             }
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -222,20 +236,6 @@ export default function AppPage() {
               </div>
             </div>
           </motion.div>
-
-          <div className="space-y-6">
-            <ChatInterface
-              placeId={placeId}
-              input={promptInput}
-              onInputChange={setPromptInput}
-              onPreviewPass={(restaurants) => {
-                if (restaurants.length) {
-                  setMeals(buildMealStops(restaurants));
-                  setShowBoardingPass(true);
-                }
-              }}
-            />
-          </div>
         </motion.div>
       </div>
 
