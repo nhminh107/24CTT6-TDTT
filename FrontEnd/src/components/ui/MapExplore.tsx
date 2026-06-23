@@ -4,12 +4,41 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import { Map, Source, Layer, Popup, NavigationControl, GeolocateControl, Marker, MapRef } from "react-map-gl/maplibre";
 import maplibregl from "maplibre-gl";
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { convertToGeoJSON, ApiRestaurant, Restaurant, buildRestaurants, inferMealFromRestaurant } from "@/lib/utils";
-import { Star, MapPin, Navigation, Info, X, MessageSquare, Plus, Check, Loader2, ChevronDown, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
+import { convertToGeoJSON, ApiRestaurant, Restaurant, buildRestaurants, inferMealFromRestaurant, cn } from "@/lib/utils";
+import { Star, MapPin, Navigation, Info, X, MessageSquare, Plus, Check, Loader2, ChevronDown, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Utensils, Coffee, Soup, Cake, Pizza, Fish, Salad, Flame, Beer } from "lucide-react";
 import Link from "next/link";
 import RestaurantDetailModal from "./RestaurantDetailModal";
 import { itineraryApi } from "@/lib/api";
 import { useAuth } from "@/context/AuthContext";
+
+// Helper to render marker icons
+const getMarkerIcon = (iconName: string, className?: string) => {
+  const props = { className: className || "w-4 h-4 text-white" };
+  switch (iconName) {
+    case "utensils":
+      return <Utensils {...props} />;
+    case "coffee":
+      return <Coffee {...props} />;
+    case "soup":
+      return <Soup {...props} />;
+    case "cake":
+      return <Cake {...props} />;
+    case "pizza":
+      return <Pizza {...props} />;
+    case "fish":
+      return <Fish {...props} />;
+    case "salad":
+      return <Salad {...props} />;
+    case "flame":
+      return <Flame {...props} />;
+    case "beer":
+      return <Beer {...props} />;
+    case "star":
+      return <Star {...props} className={`${props.className} fill-white`} />;
+    default:
+      return <Utensils {...props} />;
+  }
+};
 
 // Goong Map configuration constants
 const DEFAULT_VIEW_STATE = {
@@ -415,6 +444,8 @@ export default function MapExplore({
         {/* MARKERS */}
         {restaurants.map((res: any, idx) => {
           const isSelected = currentItinerary.some((stop) => String(stop.id) === String(res.id) || stop.name === res.name);
+          const style = convertToGeoJSON([res]).features[0].properties;
+          const pinColor = isSelected ? "#F43F5E" : style.mapColor;
           
           // Always show markers for selected restaurants, even when zoomed out
           if (zoom <= 13 && !isSelected) return null;
@@ -431,27 +462,34 @@ export default function MapExplore({
               }}
               style={{ zIndex: isSelected ? 10 : 1 }}
             >
-              <div className={`relative flex flex-col items-center group cursor-pointer ${isSelected ? "scale-110" : ""}`}>
+              <div className="relative flex flex-col items-center group cursor-pointer">
                 {/* HIỆU ỨNG TỎA SÁNG RỘNG KHI ĐƯỢC CHỌN */}
                 {isSelected && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-3">
-                    <div className="absolute w-12 h-12 rounded-full bg-rose-500 animate-sonar" />
-                    <div className="absolute w-12 h-12 rounded-full bg-brand-coral animate-sonar [animation-delay:0.9s]" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-4">
+                    <div className="absolute w-12 h-12 rounded-full bg-rose-500/35 animate-sonar" />
                   </div>
                 )}
 
+                {/* Google Maps Realistic Pin Body */}
                 <div
-                  className={`relative w-9 h-9 rounded-full flex items-center justify-center border-2 shadow-xl transition-all group-hover:scale-125
-                    ${isSelected ? "border-rose-500 ring-2 ring-white z-10 bg-brand-coral" : "border-white bg-white"}`}
-                  style={{ backgroundColor: isSelected ? undefined : convertToGeoJSON([res]).features[0].properties.mapColor }}
+                  className={cn(
+                    "relative flex h-8 w-8 items-center justify-center rounded-full border border-white text-white shadow-lg transition-transform duration-300 group-hover:scale-110",
+                    isSelected ? "z-10 scale-110" : ""
+                  )}
+                  style={{ backgroundColor: pinColor }}
                 >
-                  <span className={`text-lg ${isSelected ? "animate-pulse" : ""}`}>
-                    {isSelected ? "📍" : convertToGeoJSON([res]).features[0].properties.mapIcon}
-                  </span>
+                  {getMarkerIcon(isSelected ? "star" : style.mapIcon, "w-4 h-4 text-white")}
                 </div>
-                <div className={`relative z-10 mt-1.5 px-2.5 py-1 rounded-lg shadow-md border transition-colors
+
+                {/* Pin Tip */}
+                <div
+                  className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] -mt-[1px] shadow-sm transition-transform duration-300 group-hover:scale-110"
+                  style={{ borderTopColor: pinColor }}
+                />
+
+                <div className={`relative z-10 mt-1 px-2.5 py-1 rounded-lg shadow-md border transition-colors
                   ${isSelected ? "bg-rose-600 border-rose-500" : "bg-white/95 border-slate-100"}`}>
-                  <p className={`text-[11px] font-black whitespace-nowrap ${isSelected ? "text-white" : "text-slate-800"}`}>
+                  <p className={`text-[10px] font-black whitespace-nowrap ${isSelected ? "text-white" : "text-slate-700"}`}>
                     {isSelected && "🌟 "}{res.name}
                   </p>
                 </div>
@@ -463,33 +501,47 @@ export default function MapExplore({
         {/* EXTRA ITINERARY MARKERS (For items not in the main list) */}
         {currentItinerary.filter(stop => 
           !restaurants.some(res => String(res.id) === String(stop.id) || res.name === stop.name)
-        ).map((stop, idx) => (
-          <Marker
-            key={`itinerary-${stop.id || idx}`}
-            longitude={stop.lng}
-            latitude={stop.lat}
-            anchor="bottom"
-            onClick={(e) => {
-              e.originalEvent.stopPropagation();
-              setPopupInfo(stop);
-            }}
-            style={{ zIndex: 11 }}
-          >
-            <div className="relative flex flex-col items-center group cursor-pointer scale-110">
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-3">
-                <div className="absolute w-12 h-12 rounded-full bg-rose-500 animate-sonar" />
-                <div className="absolute w-12 h-12 rounded-full bg-brand-coral animate-sonar [animation-delay:0.9s]" />
+        ).map((stop, idx) => {
+          const pinColor = "#F43F5E";
+          return (
+            <Marker
+              key={`itinerary-${stop.id || idx}`}
+              longitude={stop.lng}
+              latitude={stop.lat}
+              anchor="bottom"
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                setPopupInfo(stop);
+              }}
+              style={{ zIndex: 11 }}
+            >
+              <div className="relative flex flex-col items-center group cursor-pointer">
+                {/* HIỆU ỨNG TỎA SÁNG RỘNG KHI ĐƯỢC CHỌN */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none -mt-4">
+                  <div className="absolute w-12 h-12 rounded-full bg-rose-500/35 animate-sonar" />
+                </div>
+
+                {/* Google Maps Realistic Pin Body */}
+                <div
+                  className="relative flex h-8 w-8 items-center justify-center rounded-full border border-white bg-rose-500 text-white shadow-lg transition-transform duration-300 group-hover:scale-110 z-10 scale-110"
+                  style={{ backgroundColor: pinColor }}
+                >
+                  {getMarkerIcon("star", "w-4 h-4 text-white")}
+                </div>
+
+                {/* Pin Tip */}
+                <div
+                  className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[5px] -mt-[1px] shadow-sm transition-transform duration-300 group-hover:scale-110"
+                  style={{ borderTopColor: pinColor }}
+                />
+
+                <div className="relative z-10 mt-1 px-2.5 py-1 bg-rose-600 border border-rose-500 rounded-lg shadow-md transition-colors">
+                  <p className="text-[10px] font-black whitespace-nowrap text-white">🌟 {stop.name}</p>
+                </div>
               </div>
-              
-              <div className="relative z-10 w-9 h-9 rounded-full flex items-center justify-center border-2 border-rose-500 ring-2 ring-white bg-brand-coral shadow-xl transition-all group-hover:scale-125">
-                <span className="text-lg animate-pulse">📍</span>
-              </div>
-              <div className="relative z-10 mt-1.5 px-2.5 py-1 bg-rose-600 border border-rose-500 rounded-lg shadow-md transition-colors">
-                <p className="text-[11px] font-black whitespace-nowrap text-white">🌟 {stop.name}</p>
-              </div>
-            </div>
-          </Marker>
-        ))}
+            </Marker>
+          );
+        })}
 
         {/* USER LOCATION MARKER */}
         {userLocation && (
