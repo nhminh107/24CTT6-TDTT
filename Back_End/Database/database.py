@@ -140,6 +140,50 @@ class ChromaDBManager:
             similarity = self._cosine_similarity(query_embedding, emb)
             scores[rid] = (similarity + 1.0) / 2.0
         return scores
+
+    def upsert_restaurant(self, restaurant: dict):
+        restaurant_id = str(restaurant.get("id", "")).strip()
+        semantic_text = str(restaurant.get("semantic_text", "")).strip()
+        if not restaurant_id:
+            raise ValueError("Restaurant id is required for ChromaDB upsert.")
+        if not semantic_text:
+            raise ValueError("semantic_text is required for ChromaDB upsert.")
+
+        self.collection.upsert(
+            ids=[restaurant_id],
+            documents=[semantic_text],
+        )
+
+        # Replace this restaurant's menu vectors so edits do not leave stale items.
+        try:
+            self.menu_collection.delete(where={"restaurant_id": restaurant_id})
+        except Exception:
+            pass
+
+        menu_items = restaurant.get("menu") or []
+        if not isinstance(menu_items, list):
+            return
+
+        menu_documents = []
+        menu_ids = []
+        menu_metadatas = []
+        for idx, item in enumerate(menu_items):
+            item_text = str(item).strip()
+            if not item_text:
+                continue
+            menu_ids.append(f"{restaurant_id}__menu__{idx}")
+            menu_documents.append(item_text)
+            menu_metadatas.append({
+                "restaurant_id": restaurant_id,
+                "restaurant_name": restaurant.get("name", "")
+            })
+
+        if menu_documents:
+            self.menu_collection.upsert(
+                documents=menu_documents,
+                ids=menu_ids,
+                metadatas=menu_metadatas,
+            )
     
     def add(self, force=False): 
         data_path = os.path.join(DB_PATH, "data.json")

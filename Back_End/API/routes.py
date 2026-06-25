@@ -1,10 +1,10 @@
-from fastapi import APIRouter, BackgroundTasks, HTTPException,status
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException,status
 import asyncio
 import contextlib
 from pydantic import BaseModel,Field
 import os
 import pandas as pd
-from typing import List, Optional
+from typing import List, Optional, Union
 import traceback
 import json
 import time
@@ -25,7 +25,7 @@ from Back_End.Core.weight_update import Weight_Update
 from Back_End.Core.Maps import suggest_locations, get_place_detail
 from Back_End.Database.database import ChromaDBManager
 from Back_End.Core.semantic_cache import SemanticCacheManager
-from Back_End.Core.auth_handler import get_db
+from Back_End.Core.auth_handler import get_current_user, get_db
 from Back_End.Core.user_manager import UserManager
 from Back_End.Core.itinerary_manager import ItineraryManager
 from Back_End.Core.health_mapping import HealthRiskDetector
@@ -46,6 +46,7 @@ health_risk_detector = HealthRiskDetector()
 _restaurant_df_cache = None
 _restaurant_json_cache = None
 _restaurant_data_mtime = None
+_restaurant_write_lock = asyncio.Lock()
 
 def _api_log(request_id: str, message: str):
     print(f"[API_LOG][{request_id}] {message}")
@@ -77,6 +78,30 @@ def _get_restaurant_json_cached() -> list:
     global _restaurant_json_cache
     _get_restaurant_df_cached()
     return list(_restaurant_json_cache or [])
+
+def _normalize_string_list(value) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    return [str(value).strip()] if str(value).strip() else []
+
+def _next_restaurant_id(restaurants: list[dict]) -> int:
+    numeric_ids = []
+    for restaurant in restaurants:
+        try:
+            numeric_ids.append(int(restaurant.get("id")))
+        except (TypeError, ValueError):
+            continue
+    return (max(numeric_ids) + 1) if numeric_ids else 1
+
+def _write_restaurant_data(restaurants: list[dict]):
+    data_path = _restaurant_data_path()
+    temp_path = f"{data_path}.tmp"
+    with open(temp_path, "w", encoding="utf-8") as file:
+        json.dump(restaurants, file, ensure_ascii=False, indent=4)
+        file.write("\n")
+    os.replace(temp_path, data_path)
 
 async def _save_assistant_message_background(user_id: str, chat_id: str | None, content: str, restaurants: list | None = None):
     if not chat_id:
@@ -631,7 +656,7 @@ async def process_prompt(request: UserRequest, background_tasks: BackgroundTasks
         # Sắp xếp lại danh sách đã gộp tổng hợp
         forbidden_tags_final = sorted(list(total_tags_set))
         
-        print(f"USER HEALTH FILLER MODE: {user_health_profile["diet_mode"]}" )
+        print(f"USER HEALTH FILLER MODE: {user_health_profile['diet_mode']}" )
         
         # Dùng `forbidden_tags_final` để nối thành chuỗi health_key mới nhất
         health_key = ",".join(forbidden_tags_final) if forbidden_tags_final else "none"
@@ -873,6 +898,103 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 user_router = APIRouter(prefix="/api/user", tags=["Health Profile"])
+
+class RestaurantCreateRequest(BaseModel):
+    id: Optional[Union[int, str]] = None
+    name: str
+    address: str
+    lat: float
+    lng: float
+    avg_price: float = Field(ge=0)
+    shu: int = Field(default=3, ge=0, le=5)
+    star: float = Field(default=4.5, ge=0, le=5)
+    meals: List[str] = Field(default_factory=list)
+    semantic_text: str
+    image_url: str
+    type: List[str] = Field(default_factory=list)
+    phone_num: str = ""
+    main_tag: List[str] = Field(default_factory=list)
+    potential_tag: List[str] = Field(default_factory=list)
+    menu: List[str] = Field(default_factory=list)
+
+async def _require_admin_user(current_user: dict = Depends(get_current_user)):
+    uid = current_user.get("uid")
+    if current_user.get("admin") is True:
+        return current_user
+    if not uid:
+        raise HTTPException(status_code=403, detail="Không có quyền admin.")
+
+    def _is_admin():
+        user_doc = db.collection("users").document(uid).get()
+        return user_doc.exists and (user_doc.to_dict() or {}).get("role") == "admin"
+
+    is_admin = await asyncio.to_thread(_is_admin)
+    if not is_admin:
+        raise HTTPException(status_code=403, detail="Không có quyền admin.")
+    return current_user
+
+@router.post("/admin/restaurants")
+async def create_restaurant(payload: RestaurantCreateRequest, _: dict = Depends(_require_admin_user)):
+    try:
+        restaurant = payload.dict()
+        restaurant["name"] = restaurant["name"].strip()
+        restaurant["address"] = restaurant["address"].strip()
+        restaurant["semantic_text"] = restaurant["semantic_text"].strip()
+        restaurant["image_url"] = restaurant["image_url"].strip()
+        restaurant["phone_num"] = restaurant.get("phone_num", "").strip()
+
+        if not restaurant["name"]:
+            raise HTTPException(status_code=422, detail="Tên quán là bắt buộc.")
+        if not restaurant["address"]:
+            raise HTTPException(status_code=422, detail="Địa chỉ là bắt buộc.")
+        if not restaurant["semantic_text"]:
+            raise HTTPException(status_code=422, detail="Mô tả semantic_text là bắt buộc.")
+        if not restaurant["image_url"]:
+            raise HTTPException(status_code=422, detail="Ảnh hoặc link ảnh là bắt buộc.")
+
+        for key in ["meals", "type", "main_tag", "potential_tag", "menu"]:
+            restaurant[key] = _normalize_string_list(restaurant.get(key))
+
+        data_path = _restaurant_data_path()
+        async with _restaurant_write_lock:
+            with open(data_path, "r", encoding="utf-8") as file:
+                restaurants = json.load(file)
+            if not isinstance(restaurants, list):
+                raise HTTPException(status_code=500, detail="data.json không đúng định dạng danh sách.")
+
+            if restaurant.get("id") in [None, ""]:
+                restaurant["id"] = _next_restaurant_id(restaurants)
+            else:
+                try:
+                    restaurant["id"] = int(restaurant["id"])
+                except (TypeError, ValueError):
+                    restaurant["id"] = str(restaurant["id"]).strip()
+
+            restaurant_id = str(restaurant["id"])
+            if any(str(item.get("id")) == restaurant_id for item in restaurants):
+                raise HTTPException(status_code=409, detail=f"Quán có id {restaurant_id} đã tồn tại.")
+
+            await asyncio.to_thread(ChromaDBManager().upsert_restaurant, restaurant)
+
+            restaurants.append(restaurant)
+            _write_restaurant_data(restaurants)
+
+        return {
+            "status": "success",
+            "message": "Đã thêm quán và cập nhật vector DB.",
+            "data": restaurant,
+            "vector_update": {
+                "restaurant_id": restaurant_id,
+                "restaurant_vectors": 1,
+                "menu_vectors": len(restaurant.get("menu", [])),
+            },
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"[ERROR] Create restaurant failed: {str(e)}")
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Lỗi khi thêm quán: {str(e)}")
 
 # BẢNG ÁNH XẠ CỐ ĐỊNH ĐỂ TỐI ƯU TOKEN
 
