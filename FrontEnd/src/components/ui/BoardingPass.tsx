@@ -8,7 +8,7 @@ import { cn, formatMealDisplay } from "@/lib/utils";
 import { QRCodeSVG } from "qrcode.react";
 import { useEffect } from "react";
 import { itineraryApi } from "@/lib/api";
-import { authStorage } from "@/lib/auth";
+import { useAuth } from "@/context/AuthContext";
 
 const TICKET_WIDTH = 450;
 
@@ -272,6 +272,7 @@ export default function BoardingPass({
   className,
   variant = "inline",
 }: BoardingPassProps) {
+  const { user } = useAuth();
   const ticketRef = useRef<HTMLDivElement | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [shareUrl, setShareUrl] = useState<string>("");
@@ -279,7 +280,7 @@ export default function BoardingPass({
   useEffect(() => {
     const fetchShareUrl = async () => {
       try {
-        const uid = authStorage.getGoogleUid();
+        const uid = user?.uid;
         if (!uid) return;
         
         const response = await itineraryApi.share(uid, itinerary);
@@ -292,7 +293,7 @@ export default function BoardingPass({
       }
     };
     fetchShareUrl();
-  }, [itinerary]);
+  }, [itinerary, user?.uid]);
 
   const ticketNumber = useMemo(
     () => Math.random().toString(36).substr(2, 6).toUpperCase(),

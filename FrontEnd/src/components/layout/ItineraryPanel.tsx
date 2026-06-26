@@ -49,6 +49,7 @@ export default function ItineraryPanel({
 }: ItineraryPanelProps) {
   const [localItinerary, setLocalItinerary] = useState(currentItinerary);
   const isInternalUpdate = useRef(false);
+  const hasItineraryItems = currentItinerary.length > 0;
 
   // Đồng bộ local state khi prop thay đổi (ví dụ khi thêm/xóa bữa ăn từ server)
   useEffect(() => {
@@ -130,10 +131,22 @@ export default function ItineraryPanel({
 
           <Link
             href="/explore"
-            className="flex items-center gap-2 w-full justify-center py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-bold text-slate-600 hover:bg-white hover:border-brand-coral hover:text-brand-coral transition-all shadow-sm active:scale-[0.98] group"
+            className={`group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl border py-2.5 text-[10px] font-bold transition-all active:scale-[0.98] ${
+              hasItineraryItems
+                ? "border-brand-coral/40 bg-gradient-to-r from-brand-coral to-brand-flame text-white shadow-glow hover:shadow-lg"
+                : "border-slate-200 bg-slate-50 text-slate-600 shadow-sm hover:border-brand-coral hover:bg-white hover:text-brand-coral"
+            }`}
           >
-            <MapIcon size={14} className="text-slate-400 group-hover:text-brand-coral transition-colors" />
-            XEM BẢN ĐỒ KHÁM PHÁ
+            {hasItineraryItems && (
+              <span className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 animate-[map-button-shine_2.4s_ease-in-out_infinite] bg-white/25 blur-md" />
+            )}
+            <MapIcon
+              size={14}
+              className={`relative transition-colors ${
+                hasItineraryItems ? "text-white" : "text-slate-400 group-hover:text-brand-coral"
+              }`}
+            />
+            <span className="relative">XEM BẢN ĐỒ KHÁM PHÁ</span>
           </Link>
 
           <div className="flex-1 overflow-y-auto space-y-4 pr-1">

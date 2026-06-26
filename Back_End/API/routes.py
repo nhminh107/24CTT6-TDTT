@@ -1433,3 +1433,150 @@ async def vote_restaurant_comment(
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi vote: {str(e)}")
+
+# ── REPORT COMMENT ENDPOINTS ──
+
+class ReportCommentRequest(BaseModel):
+    restaurant_id: str
+    comment_id: str
+    comment_text: str
+    reason: str
+    user_id: str
+
+class UpdateReportStatusRequest(BaseModel):
+    status: Literal["pending", "resolved"]
+    type_resolve:Literal["deleted" , "dismissed" ]
+
+@user_router.post("/report-comment", status_code=status.HTTP_201_CREATED)
+async def report_comment(payload: ReportCommentRequest):
+    """
+    Tạo báo cáo bình luận vi phạm.
+    
+    Dữ liệu được lưu trữ trong collection `reports` ở Firestore.
+    """
+    try:
+        report_id = str(uuid.uuid4())
+        
+        report_data = {
+            "report_id": report_id,
+            "restaurant_id": payload.restaurant_id,
+            "comment_id": payload.comment_id,
+            "comment_text": payload.comment_text,
+            "reason": payload.reason,
+            "user_id": payload.user_id,
+            "status": "pending",
+            "created_at": datetime.utcnow().isoformat() + "Z",
+            "type_resolve":"None"
+        }
+        
+        # Lưu báo cáo vào Firestore
+        db.collection("reports").document(report_id).set(report_data)
+        
+        return {
+            "status": "success",
+            "message": "Báo cáo của bạn đã được gửi. Cảm ơn vì giúp chúng tôi duy trì cộng đồng sạch!",
+            "report_id": report_id,
+        }
+    except Exception as e:
+        print(f"[ERROR] Report comment failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi gửi báo cáo: {str(e)}")
+
+@user_router.get("/reports")
+async def get_reports(status_filter: Optional[str] = None):
+    """
+    Lấy danh sách báo cáo bình luận (Admin only).
+    
+    Query params:
+    - status: "pending" | "resolved" (optional)
+    """
+    try:
+        # TODO: Thêm kiểm tra admin role tại đây (nên từ JWT token)
+        
+        query = db.collection("reports")
+        
+        if status_filter and status_filter in ["pending", "resolved"]:
+            query = query.where("status", "==", status_filter)
+        
+        # Sắp xếp theo ngày tạo (mới nhất trước)
+        query = query.order_by("created_at", direction=firestore.Query.DESCENDING)
+        
+        docs = query.stream()
+        reports = []
+        
+        for doc in docs:
+            report = doc.to_dict()
+            reports.append(report)
+        
+        return {
+            "status": "success",
+            "data": reports,
+        }
+    except Exception as e:
+        print(f"[ERROR] Get reports failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi tải báo cáo: {str(e)}")
+
+@user_router.patch("/reports/{report_id}")
+async def update_report_status(report_id: str, payload: UpdateReportStatusRequest):
+    """
+    Cập nhật trạng thái báo cáo (Admin only).
+    
+    Status: "pending" -> "resolved"
+    """
+    try:
+        # TODO: Thêm kiểm tra admin role tại đây (nên từ JWT token)
+        
+        report_ref = db.collection("reports").document(report_id)
+        report_doc = report_ref.get()
+        
+        if not report_doc.exists:
+            raise HTTPException(status_code=404, detail="Báo cáo không tồn tại")
+        
+        # Cập nhật status
+        report_ref.update({
+            "status": payload.status,
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+            "type_resolve":payload.type_resolve
+        })
+        
+        return {
+            "status": "success",
+            "message": f"Cập nhật trạng thái báo cáo thành '{payload.status}' thành công.",
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"[ERROR] Update report status failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Lỗi hệ thống khi cập nhật báo cáo: {str(e)}")
+# 1. Định nghĩa model để nhận dữ liệu từ Frontend
+class DeleteReportRequest(BaseModel):
+    report_id: str
+
+# 2. Endpoint xử lý xóa báo cáo
+@user_router.post("/reports/delete")
+async def delete_report(payload: DeleteReportRequest):
+    """
+    Xóa báo cáo vĩnh viễn khỏi Firestore (Admin only).
+    """
+    try:
+        report_id = payload.report_id
+        
+        # Tham chiếu đến document báo cáo
+        report_ref = db.collection("reports").document(report_id)
+        
+        # Kiểm tra xem báo cáo có tồn tại không
+        if not report_ref.get().exists:
+            raise HTTPException(status_code=404, detail="Báo cáo không tồn tại")
+        
+        # Thực hiện xóa
+        report_ref.delete()
+        
+        return {
+            "status": "success",
+            "message": "Đã xóa báo cáo thành công."
+        }
+        
+    except HTTPException as he:
+        raise he
+    except Exception as e:
+        print(f"[ERROR] Delete report failed: {str(e)}")
+        raise HTTPException(status_code=500, detail="Lỗi hệ thống khi xóa báo cáo")

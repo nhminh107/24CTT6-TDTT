@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AlertTriangle, HeartPulse, ImagePlus, SendHorizontal, Sparkles, X } from "lucide-react";
+import { AlertTriangle, HeartPulse, ImagePlus, MapPin, SendHorizontal, Sparkles, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
 import AuthPromptModal from "@/components/ui/AuthPromptModal";
+import LocationSearch from "@/components/ui/LocationSearch";
 import RestaurantMiniCard from "@/components/ui/RestaurandMiniCard";
 import { getApiV1BaseUrl } from "@/lib/apiBase";
 import { Restaurant, ApiRestaurant, buildRestaurants } from "@/lib/utils";
@@ -58,7 +59,21 @@ type ChatInterfaceProps = {
   onInputChange?: (value: string) => void;
   hasHealthProfile?: boolean;
   onOpenHealthProfile?: () => void;
+  onLocationResolved?: (location: { location: string; placeId: string }) => void;
 };
+
+type PendingLocationRequest = {
+  prompt: string;
+  activeChatId: string | null;
+  messages: Message[];
+  imageFile: File | null;
+};
+
+const SEARCH_INTENT_PATTERN =
+  /(ăn|quán|nhà hàng|cafe|cà phê|gợi ý|tìm|lộ trình|bữa|món|hải sản|chay|view|ngân sách|buffet|fine dining|bistro|street food)/i;
+
+const LOCATION_HINT_PATTERN =
+  /(gần|quanh|khu vực|quận|huyện|phường|xã|đường|phố|tp\.?|thành phố|hà nội|đà nẵng|sài gòn|hồ chí minh|đà lạt|vũng tàu|nha trang|hải phòng|cần thơ|hội an|huế)/i;
 
 export default function ChatInterface({
   placeId,
@@ -76,6 +91,7 @@ export default function ChatInterface({
   onInputChange,
   hasHealthProfile = false,
   onOpenHealthProfile,
+  onLocationResolved,
 }: ChatInterfaceProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingStage, setLoadingStage] = useState("Đang hiểu yêu cầu của bạn");
@@ -84,6 +100,9 @@ export default function ChatInterface({
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [selectedImagePreview, setSelectedImagePreview] = useState<string | null>(null);
   const [healthBannerDismissed, setHealthBannerDismissed] = useState(false);
+  const [pendingLocationRequest, setPendingLocationRequest] = useState<PendingLocationRequest | null>(null);
+  const [inlineLocationValue, setInlineLocationValue] = useState("");
+  const [inlineLocationPlaceId, setInlineLocationPlaceId] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [errorModal, setErrorModal] = useState({
@@ -154,6 +173,12 @@ export default function ChatInterface({
     if (inputProp === undefined) {
       setInternalInput(value);
     }
+  };
+
+  const shouldAskForLocationBeforeSearch = (prompt: string) => {
+    if (placeId) return false;
+    if (!SEARCH_INTENT_PATTERN.test(prompt)) return false;
+    return !LOCATION_HINT_PATTERN.test(prompt);
   };
 
   const setChatError = (code: string, message: string) => {
@@ -299,10 +324,16 @@ export default function ChatInterface({
     };
   };
 
-  const callRestaurantApi = async (prompt: string, activeChatId: string | null, latestMessages: Message[]) => {
+  const callRestaurantApi = async (
+    prompt: string,
+    activeChatId: string | null,
+    latestMessages: Message[],
+    overridePlaceId?: string
+  ) => {
     setIsLoading(true);
     setLoadingStage("Đang hiểu yêu cầu của bạn");
     try {
+      const effectivePlaceId = overridePlaceId || placeId;
       const response = await fetch(`${API_V1_BASE_URL}/prompt`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -310,7 +341,7 @@ export default function ChatInterface({
           prompt,
           user_id: user?.uid || "guest_user",
           chat_id: activeChatId,
-          ...(placeId ? { place_id: placeId } : {})
+          ...(effectivePlaceId ? { place_id: effectivePlaceId } : {})
         })
       });
       let data: ApiResponse | null = null;
@@ -428,6 +459,59 @@ export default function ChatInterface({
     }
   };
 
+  const handleConfirmInlineLocation = async () => {
+    if (!pendingLocationRequest || !inlineLocationPlaceId) {
+      setChatError("LOCATION_REQUIRED", "Bạn vui lòng chọn một vị trí từ danh sách gợi ý hoặc dùng GPS hiện tại.");
+      return;
+    }
+
+    const pending = pendingLocationRequest;
+    const selectedLocation = inlineLocationValue.trim() || "Vị trí đã chọn";
+    const selectedPlaceId = inlineLocationPlaceId;
+
+    onLocationResolved?.({
+      location: selectedLocation,
+      placeId: selectedPlaceId
+    });
+
+    setPendingLocationRequest(null);
+    setInlineLocationValue("");
+    setInlineLocationPlaceId("");
+
+    try {
+      let prompt = pending.prompt;
+      if (pending.imageFile) {
+        setIsLoading(true);
+        setLoadingStage("Đang tải ảnh và đọc nội dung beta");
+        const imageUrl = await uploadMultimodalImage(pending.imageFile);
+        setLoadingStage("Đang chuyển ảnh thành yêu cầu tìm kiếm");
+        prompt = await transformMultimodalPrompt(pending.prompt, imageUrl);
+        clearSelectedImage();
+      }
+
+      callRestaurantApi(prompt, pending.activeChatId, pending.messages, selectedPlaceId);
+    } catch (error: any) {
+      setIsLoading(false);
+      setChatError("MULTIMODAL", error?.message || "Không thể xử lý ảnh gửi kèm.");
+      onMessagesChange?.([
+        ...pending.messages,
+        {
+          id: `${Date.now()}-location-error`,
+          role: "assistant",
+          content: "Mình chưa xử lý được ảnh này. Bạn có thể thử ảnh rõ hơn hoặc gửi yêu cầu bằng chữ trước nhé.",
+          restaurants: [],
+          isCompact: false
+        }
+      ]);
+    }
+  };
+
+  const handleCancelInlineLocationRequest = () => {
+    setPendingLocationRequest(null);
+    setInlineLocationValue("");
+    setInlineLocationPlaceId("");
+  };
+
   const handleSend = async () => {
     if (!input.trim() || isLoading) {
       return;
@@ -462,6 +546,29 @@ export default function ChatInterface({
     onMessagesChange?.(nextMessages);
     
     setInputValue("");
+
+    if (shouldAskForLocationBeforeSearch(originalPrompt)) {
+      const locationAskMessage: Message = {
+        id: `${messageId}-location-request`,
+        role: "assistant",
+        content: "Mình cần biết bạn muốn tìm quanh khu vực nào để gợi ý quán chính xác hơn.",
+        restaurants: [],
+        isCompact: false
+      };
+      const messagesWithLocationAsk: Message[] = [
+        ...nextMessages.map((msg) => ({ ...msg, isCompact: true })),
+        locationAskMessage
+      ];
+
+      onMessagesChange?.(messagesWithLocationAsk);
+      setPendingLocationRequest({
+        prompt: originalPrompt,
+        activeChatId: activeChatId ?? null,
+        messages: messagesWithLocationAsk,
+        imageFile: selectedImageFile
+      });
+      return;
+    }
 
     try {
       if (selectedImageFile) {
@@ -756,6 +863,60 @@ export default function ChatInterface({
           ))}
         </AnimatePresence>
 
+        {pendingLocationRequest && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="ml-0 max-w-xl rounded-3xl border border-brand-coral/15 bg-white p-4 shadow-soft md:ml-11"
+          >
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-brand-coral/10 text-brand-coral">
+                <MapPin size={19} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="text-sm font-bold text-slate-900">
+                  Chọn khu vực tìm kiếm
+                </div>
+                <p className="mt-1 text-xs leading-5 text-slate-500">
+                  BMI sẽ dùng vị trí này cho câu hỏi vừa rồi. Bạn có thể nhập địa điểm hoặc dùng GPS hiện tại.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <LocationSearch
+                value={inlineLocationValue}
+                onChange={(value) => {
+                  setInlineLocationValue(value);
+                  setInlineLocationPlaceId("");
+                }}
+                onSelect={(option) => {
+                  setInlineLocationValue(option.name);
+                  setInlineLocationPlaceId(option.id);
+                }}
+              />
+            </div>
+
+            <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={handleCancelInlineLocationRequest}
+                className="rounded-xl px-4 py-2.5 text-xs font-bold text-slate-500 transition hover:bg-slate-100 hover:text-slate-700"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmInlineLocation}
+                disabled={!inlineLocationPlaceId || isLoading}
+                className="rounded-xl bg-gradient-to-r from-brand-coral to-brand-flame px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                Tiếp tục tìm quán
+              </button>
+            </div>
+          </motion.div>
+        )}
+
         {isLoading && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -825,7 +986,7 @@ export default function ChatInterface({
             type="button"
             onClick={clearSelectedImage}
             className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-amber-700 shadow-sm transition hover:text-rose-600"
-            disabled={isLoading}
+            disabled={isLoading || Boolean(pendingLocationRequest)}
           >
             <X size={15} />
           </button>
@@ -847,7 +1008,7 @@ export default function ChatInterface({
         <button
           type="button"
           onClick={() => fileInputRef.current?.click()}
-          disabled={isLoading}
+          disabled={isLoading || Boolean(pendingLocationRequest)}
           title="Đính kèm ảnh menu hoặc món ăn"
           className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:border-brand-coral hover:text-brand-coral disabled:cursor-not-allowed disabled:opacity-50"
         >
@@ -863,14 +1024,14 @@ export default function ChatInterface({
               handleSend();
             }
           }}
-          placeholder="Nhập yêu cầu của bạn..."
+          placeholder={pendingLocationRequest ? "Chọn vị trí để tiếp tục câu hỏi trước..." : "Nhập yêu cầu của bạn..."}
           className="flex-1 bg-transparent text-xs md:text-sm text-slate-700 outline-none placeholder:text-slate-400"
-          disabled={isLoading}
+          disabled={isLoading || Boolean(pendingLocationRequest)}
         />
         <button
           type="button"
           onClick={handleSend}
-          disabled={isLoading || !input.trim()}
+          disabled={isLoading || Boolean(pendingLocationRequest) || !input.trim()}
           className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-brand-coral to-brand-flame text-white shadow-glow disabled:opacity-50 disabled:cursor-not-allowed transition"
         >
           <SendHorizontal size={16} />

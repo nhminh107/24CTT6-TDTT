@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
@@ -12,7 +12,6 @@ import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfile
 import InitialLocationModal from "@/components/ui/InitialLocationModal";
 import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
-import { useRef } from "react";
 import { Restaurant, buildRestaurants } from "@/lib/utils";
 import { itineraryApi } from "@/lib/api";
 
@@ -62,6 +61,19 @@ export default function MainDashboard() {
   const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
   const [restaurantModalOpen, setRestaurantModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [itineraryBubblePosition, setItineraryBubblePosition] = useState(() => {
+    if (typeof window === "undefined") return { x: 0, y: 0 };
+    return {
+      x: window.innerWidth - 68,
+      y: window.innerHeight - 144
+    };
+  });
+  const itineraryBubbleDragRef = useRef({
+    pointerId: -1,
+    offsetX: 0,
+    offsetY: 0,
+    moved: false
+  });
   const [dashboardState, setDashboardState] = useState<DashboardState>({
     location: "",
     placeId: "",
@@ -423,11 +435,31 @@ export default function MainDashboard() {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
     const handleChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
+      if (event.matches) {
+        setItineraryBubblePosition((position) =>
+          snapItineraryBubbleToEdge(position.x || window.innerWidth - 68, position.y || window.innerHeight - 144)
+        );
+      }
     };
     setIsMobile(mediaQuery.matches);
+    if (mediaQuery.matches) {
+      setItineraryBubblePosition((position) =>
+        snapItineraryBubbleToEdge(position.x || window.innerWidth - 68, position.y || window.innerHeight - 144)
+      );
+    }
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const handleResize = () => {
+      setItineraryBubblePosition((position) => snapItineraryBubbleToEdge(position.x, position.y));
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMobile]);
 
   const budgetDisplay = useMemo(() => {
     const amount = Number(dashboardState.budget);
@@ -437,7 +469,6 @@ export default function MainDashboard() {
     return `${amount.toLocaleString("vi-VN")} VNĐ`;
   }, [dashboardState.budget]);
 
-  const mealTimes = ["07:30", "12:15", "19:30", "21:00"];
   const mealTypes = ["Cafe", "Bistro", "Fine Dining", "Street Food"];
 
   const getTravelTime = () => `${Math.floor(10 + Math.random() * 11)}p`;
@@ -472,14 +503,87 @@ export default function MainDashboard() {
     [dashboardState.selectedRestaurants, selectedRestaurantId]
   );
 
-  const itineraryCount = dashboardState.selectedRestaurants.length;
-
   const handleSidebarToggle = () => {
     if (isMobile) {
       setMobileSidebarOpen((prev) => !prev);
       return;
     }
     setSidebarOpen((prev) => !prev);
+  };
+
+  const clampItineraryBubblePosition = (x: number, y: number) => {
+    if (typeof window === "undefined") return { x, y };
+    const bubbleSize = 56;
+    const edgeInset = 12;
+    const topInset = 84;
+    const bottomInset = 88;
+    return {
+      x: Math.min(Math.max(x, edgeInset), window.innerWidth - bubbleSize - edgeInset),
+      y: Math.min(Math.max(y, topInset), window.innerHeight - bubbleSize - bottomInset)
+    };
+  };
+
+  const snapItineraryBubbleToEdge = (x: number, y: number) => {
+    if (typeof window === "undefined") return { x, y };
+    const bubbleSize = 56;
+    const edgeInset = 12;
+    const clamped = clampItineraryBubblePosition(x, y);
+    const centerX = clamped.x + bubbleSize / 2;
+    return {
+      x: centerX < window.innerWidth / 2 ? edgeInset : window.innerWidth - bubbleSize - edgeInset,
+      y: clamped.y
+    };
+  };
+
+  const handleItineraryBubblePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    itineraryBubbleDragRef.current = {
+      pointerId: event.pointerId,
+      offsetX: event.clientX - rect.left,
+      offsetY: event.clientY - rect.top,
+      moved: false
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handleItineraryBubblePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = itineraryBubbleDragRef.current;
+    if (dragState.pointerId !== event.pointerId) return;
+
+    const nextPosition = clampItineraryBubblePosition(
+      event.clientX - dragState.offsetX,
+      event.clientY - dragState.offsetY
+    );
+
+    if (
+      Math.abs(nextPosition.x - itineraryBubblePosition.x) > 2 ||
+      Math.abs(nextPosition.y - itineraryBubblePosition.y) > 2
+    ) {
+      dragState.moved = true;
+    }
+
+    setItineraryBubblePosition(nextPosition);
+  };
+
+  const handleItineraryBubblePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = itineraryBubbleDragRef.current;
+    if (dragState.pointerId !== event.pointerId) return;
+
+    setItineraryBubblePosition((position) => snapItineraryBubbleToEdge(position.x, position.y));
+    event.currentTarget.releasePointerCapture(event.pointerId);
+    itineraryBubbleDragRef.current = {
+      ...dragState,
+      pointerId: -1
+    };
+  };
+
+  const handleItineraryBubbleClick = () => {
+    if (itineraryBubbleDragRef.current.moved) {
+      itineraryBubbleDragRef.current.moved = false;
+      return;
+    }
+    setItineraryTab("itinerary");
+    setMobileItineraryOpen(true);
   };
 
   const handleRestaurantSelect = (restaurantId: string) => {
@@ -678,6 +782,7 @@ export default function MainDashboard() {
             fetchItinerary={fetchItinerary}
             hasHealthProfile={hasHealthProfile}
             onOpenHealthProfile={handleHealthOpen}
+            onLocationResolved={handleUserLocationChange}
             />
         </main>
 
@@ -711,11 +816,17 @@ export default function MainDashboard() {
       {!mobileItineraryOpen && (
         <button
           type="button"
-          onClick={() => {
-            setItineraryTab("itinerary");
-            setMobileItineraryOpen(true);
+          onPointerDown={handleItineraryBubblePointerDown}
+          onPointerMove={handleItineraryBubblePointerMove}
+          onPointerUp={handleItineraryBubblePointerUp}
+          onPointerCancel={handleItineraryBubblePointerUp}
+          onClick={handleItineraryBubbleClick}
+          className="fixed z-30 inline-flex h-14 w-14 touch-none items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition-[box-shadow,transform] duration-200 hover:scale-105 active:scale-95 md:hidden"
+          style={{
+            left: itineraryBubblePosition.x,
+            top: itineraryBubblePosition.y
           }}
-          className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition hover:scale-105 md:hidden"
+          aria-label="Mở lịch trình"
         >
           <span className="relative">
             <CalendarCheck size={20} />
