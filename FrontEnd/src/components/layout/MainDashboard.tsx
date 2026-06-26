@@ -782,6 +782,7 @@ export default function MainDashboard() {
             fetchItinerary={fetchItinerary}
             hasHealthProfile={hasHealthProfile}
             onOpenHealthProfile={handleHealthOpen}
+            onLocationResolved={handleUserLocationChange}
             />
         </main>
 
