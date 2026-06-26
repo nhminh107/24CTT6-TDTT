@@ -40,6 +40,24 @@ body {
   border: 1px solid rgba(148, 163, 184, 0.22);
 }
 
+.app-sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.5) transparent;
+}
+
+.app-sidebar-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.app-sidebar-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.5);
+}
+
+.app-sidebar-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .section-spacing {
   padding: 6rem 1.5rem;
 }

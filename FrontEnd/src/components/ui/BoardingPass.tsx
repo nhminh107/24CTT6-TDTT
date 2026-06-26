@@ -230,21 +230,16 @@ const BoardingPassTicket = forwardRef<
           </div>
         </div>
 
-        <div className="mt-6 flex shrink-0 items-center justify-between gap-3 border-t border-dashed border-[#C5A059]/40 pt-6">
-          <div className="min-w-0 flex-1 space-y-2">
+        <div className="mt-6 flex shrink-0 items-center justify-between gap-4 border-t border-dashed border-[#C5A059]/40 pt-6">
+          <div className="min-w-0 flex-1">
             <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0B3C5D]/60 leading-normal">
-              Auth Ticket
+              Chia sẻ hành trình
             </div>
-            <div className="flex max-w-full items-center gap-1">
-              {Array.from({ length: 20 }).map((_, i) => (
-                <span
-                  key={i}
-                  className={cn(
-                    "h-8 w-[2px] shrink-0",
-                    i % 4 === 0 ? "bg-[#0B3C5D]" : "bg-[#C5A059]/40"
-                  )}
-                />
-              ))}
+            <div className="mt-1 text-sm font-bold leading-snug text-[#0B3C5D]">
+              {itinerary.length} điểm dừng · Vé #{ticketNumber}
+            </div>
+            <div className="mt-1 text-[10px] leading-[1.6] text-slate-500">
+              {shareUrl ? "Nhấn QR để mở link chia sẻ." : "Đang tạo link chia sẻ..."}
             </div>
           </div>
           <button
