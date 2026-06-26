@@ -22,7 +22,43 @@ const DEFAULT_VIEW_STATE = {
 const MAP_KEY = process.env.NEXT_PUBLIC_GOONG_MAP_API_KEY;
 const GOONG_MAP_STYLE_URL = `https://tiles.goong.io/assets/goong_map_web.json?api_key=${MAP_KEY}`;
 
-const MEAL_OPTIONS = ["Bữa sáng", "Bữa trưa", "Bữa tối", "Bữa phụ"];
+const normalizeMealKey = (meal: string | undefined | null) => {
+  const value = String(meal || "").trim().toLowerCase();
+  if (!value || value === "any") return "";
+  if (value.includes("sáng")) return "sáng";
+  if (value.includes("trưa")) return "trưa";
+  if (value.includes("tối")) return "tối";
+  if (value.includes("xế") || value.includes("phụ") || value.includes("khuya") || value.includes("snack")) return "xế";
+  return value;
+};
+
+const formatMealOption = (meal: string) => {
+  const key = normalizeMealKey(meal);
+  if (key === "sáng") return "Bữa sáng";
+  if (key === "trưa") return "Bữa trưa";
+  if (key === "tối") return "Bữa tối";
+  if (key === "xế") return "Bữa phụ";
+  return "";
+};
+
+const getRestaurantMealOptions = (restaurant: any): string[] => {
+  const seen = new Set<string>();
+  const rawMeals = Array.isArray(restaurant?.meals) ? restaurant.meals : [];
+  const rawTypes = Array.isArray(restaurant?.type) ? restaurant.type : [];
+  const hasSnackType = rawTypes.some((type: unknown) => {
+    const normalizedType = String(type || "").trim().toLowerCase();
+    return normalizedType === "quán nước" || normalizedType === "tiệm bánh";
+  });
+
+  return [...rawMeals, ...(hasSnackType ? ["xế"] : [])]
+    .map((meal: unknown) => formatMealOption(String(meal || "")))
+    .filter((meal: string) => {
+      const key = normalizeMealKey(meal);
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+};
 
 type MapExploreProps = {
   userPlaceId?: string;
@@ -522,10 +558,26 @@ export default function MapExplore({
     return currentItinerary.some((stop) => stop.id === popupInfo.id || String(stop.id) === String(popupInfo.id) || stop.name === popupInfo.name);
   }, [popupInfo, currentItinerary]);
 
-  // Meal đã dùng (để disable)
-  const usedMeals = useMemo(() => {
-    return currentItinerary.map((stop) => stop.meal);
+  const availableMealOptions = useMemo(() => {
+    if (!popupInfo) return [];
+    return getRestaurantMealOptions(popupInfo);
+  }, [popupInfo]);
+
+  // Meal đã dùng để hiển thị hành động thay thế, backend select sẽ thay quán cũ trong bữa đó.
+  const usedMealSet = useMemo(() => {
+    return new Set(
+      currentItinerary
+        .map((stop) => normalizeMealKey(stop.meal))
+        .filter(Boolean)
+    );
   }, [currentItinerary]);
+
+  const getMealActionLabel = useCallback((meal: string) => {
+    const mealText = meal.toLowerCase();
+    return usedMealSet.has(normalizeMealKey(meal))
+      ? `Thay thế ${mealText}`
+      : `Thêm vào ${mealText}`;
+  }, [usedMealSet]);
 
   // Reset meal picker khi đổi popup
   useEffect(() => {
@@ -752,7 +804,10 @@ console.log("currentItinerary", currentItinerary);
                             <button
                               onClick={() => {
                                 const suggested = inferMealFromRestaurant(popupInfo);
-                                if (suggested) {
+                                if (
+                                  suggested &&
+                                  availableMealOptions.some((meal) => normalizeMealKey(meal) === normalizeMealKey(suggested))
+                                ) {
                                   handleAddToItinerary(suggested);
                                 } else {
                                   setAddError("Không thể gợi ý bữa ăn tự động.");
@@ -764,24 +819,31 @@ console.log("currentItinerary", currentItinerary);
                               <span className="min-w-0 text-right text-[10px] font-normal text-slate-400">Gợi ý theo giờ mở</span>
                             </button>
 
-                            {MEAL_OPTIONS.map((meal) => {
-                              const isUsed = usedMeals.includes(meal);
-                              return (
-                                <button
-                                  key={meal}
-                                  onClick={() => !isUsed && handleAddToItinerary(meal)}
-                                  disabled={isUsed}
-                                  className={`w-full text-left px-3 py-2.5 text-xs font-semibold transition-colors flex items-center justify-between
-                                    ${isUsed
-                                      ? "text-slate-300 cursor-not-allowed bg-slate-50"
-                                      : "text-slate-700 hover:bg-orange-50 hover:text-brand-coral"
-                                    }`}
-                                >
-                                  {meal}
-                                  {isUsed && <span className="text-[10px] font-normal text-slate-300">Đã có</span>}
-                                </button>
-                              );
-                            })}
+                            {availableMealOptions.length > 0 ? (
+                              availableMealOptions.map((meal) => {
+                                const isUsed = usedMealSet.has(normalizeMealKey(meal));
+                                return (
+                                  <button
+                                    key={normalizeMealKey(meal)}
+                                    onClick={() => handleAddToItinerary(meal)}
+                                    className={`w-full text-left px-3 py-2.5 text-xs font-semibold transition-colors flex items-center justify-between
+                                      ${isUsed
+                                        ? "text-amber-700 bg-amber-50 hover:bg-amber-100"
+                                        : "text-slate-700 hover:bg-orange-50 hover:text-brand-coral"
+                                      }`}
+                                  >
+                                    <span>{meal}</span>
+                                    <span className={`text-[10px] font-normal ${isUsed ? "text-amber-600" : "text-slate-400"}`}>
+                                      {getMealActionLabel(meal)}
+                                    </span>
+                                  </button>
+                                );
+                              })
+                            ) : (
+                              <div className="px-3 py-2.5 text-xs font-semibold text-slate-400">
+                                Quán này chưa có bữa phù hợp
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
