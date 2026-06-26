@@ -1,29 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import {
-  ChevronRight,
   Flag,
   Check,
   Trash2,
   Eye,
   AlertCircle,
   Loader2,
-  ImagePlus,
-  PlusCircle,
-  Upload,
 } from "lucide-react";
 import Link from "next/link";
 import Toast, { ToastType } from "@/components/ui/Toast";
 import { getReports, deleteCommentAsAdmin, updateReportStatus,deleteReport } from "@/lib/reportsApi";
-import { getApiV1BaseUrl } from "@/lib/apiBase";
-
-const API_V1_BASE_URL = getApiV1BaseUrl();
-const CLOUDINARY_CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
-const CLOUDINARY_UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET;
-const MAX_RESTAURANT_IMAGE_SIZE = 5 * 1024 * 1024;
 
 interface Report {
   report_id: string;
@@ -38,53 +28,10 @@ interface Report {
   type_resolve: "deleted" | "dismissed" | null;
 }
 
-type RestaurantFormState = {
-  name: string;
-  address: string;
-  lat: string;
-  lng: string;
-  avg_price: string;
-  shu: string;
-  star: string;
-  meals: string;
-  semantic_text: string;
-  image_url: string;
-  type: string;
-  phone_num: string;
-  main_tag: string;
-  potential_tag: string;
-  menu: string;
-};
-
-const initialRestaurantForm: RestaurantFormState = {
-  name: "",
-  address: "",
-  lat: "",
-  lng: "",
-  avg_price: "",
-  shu: "3",
-  star: "4.5",
-  meals: "trưa, tối",
-  semantic_text: "",
-  image_url: "",
-  type: "Quán Việt",
-  phone_num: "",
-  main_tag: "",
-  potential_tag: "",
-  menu: "",
-};
-
-const splitListInput = (value: string) =>
-  value
-    .split(/[\n,]/)
-    .map((item) => item.trim())
-    .filter(Boolean);
-
 export default function AdminPage() {
   const router = useRouter();
   const { user } = useAuth();
   const isAdmin = (user as any)?.role === "admin";
-  const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   // State
   const [reports, setReports] = useState<Report[]>([]);
@@ -94,10 +41,6 @@ export default function AdminPage() {
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "restaurant_asc" | "restaurant_desc">("newest");
   const [reasonModal, setReasonModal] = useState<string | null>(null);
   const [commentModal, setCommentModal] = useState<string | null>(null); // ← thêm dòng này
-  const [showRestaurantForm, setShowRestaurantForm] = useState(false);
-  const [restaurantForm, setRestaurantForm] = useState<RestaurantFormState>(initialRestaurantForm);
-  const [uploadingImage, setUploadingImage] = useState(false);
-  const [submittingRestaurant, setSubmittingRestaurant] = useState(false);
   const [toastState, setToastState] = useState<{
     show: boolean;
     type: ToastType;
@@ -109,123 +52,6 @@ export default function AdminPage() {
     setTimeout(() => {
       setToastState((prev) => ({ ...prev, show: false }));
     }, 3000);
-  };
-
-  const updateRestaurantField = (field: keyof RestaurantFormState, value: string) => {
-    setRestaurantForm((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleRestaurantImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (!file.type.startsWith("image/")) {
-      triggerToast("error", "Vui lòng chọn một tệp ảnh hợp lệ.");
-      return;
-    }
-
-    if (file.size > MAX_RESTAURANT_IMAGE_SIZE) {
-      triggerToast("error", "Ảnh quán không được vượt quá 5MB.");
-      return;
-    }
-
-    if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_UPLOAD_PRESET) {
-      triggerToast("error", "Chưa cấu hình Cloudinary trong .env.local.");
-      return;
-    }
-
-    setUploadingImage(true);
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-
-      const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-        { method: "POST", body: formData }
-      );
-      const data = await response.json();
-
-      if (!response.ok || !data.secure_url) {
-        throw new Error(data.error?.message || "Upload failed");
-      }
-
-      updateRestaurantField("image_url", data.secure_url);
-      triggerToast("success", "Đã upload ảnh lên Cloudinary.");
-    } catch (error) {
-      console.error("Restaurant image upload error:", error);
-      triggerToast("error", "Không thể upload ảnh. Vui lòng thử lại.");
-    } finally {
-      setUploadingImage(false);
-      if (imageInputRef.current) imageInputRef.current.value = "";
-    }
-  };
-
-  const handleAddRestaurant = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!user) return;
-
-    const lat = Number(restaurantForm.lat);
-    const lng = Number(restaurantForm.lng);
-    const avgPrice = Number(restaurantForm.avg_price);
-    const shu = Number(restaurantForm.shu);
-    const star = Number(restaurantForm.star);
-
-    if (!restaurantForm.name.trim() || !restaurantForm.address.trim() || !restaurantForm.semantic_text.trim()) {
-      triggerToast("error", "Tên quán, địa chỉ và mô tả semantic là bắt buộc.");
-      return;
-    }
-    if (!restaurantForm.image_url.trim()) {
-      triggerToast("error", "Vui lòng upload ảnh hoặc nhập link ảnh.");
-      return;
-    }
-    if ([lat, lng, avgPrice, shu, star].some((value) => Number.isNaN(value))) {
-      triggerToast("error", "Lat, lng, giá, shu và sao phải là số hợp lệ.");
-      return;
-    }
-
-    setSubmittingRestaurant(true);
-    try {
-      const token = await user.getIdToken();
-      const response = await fetch(`${API_V1_BASE_URL}/admin/restaurants`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name: restaurantForm.name.trim(),
-          address: restaurantForm.address.trim(),
-          lat,
-          lng,
-          avg_price: avgPrice,
-          shu,
-          star,
-          meals: splitListInput(restaurantForm.meals),
-          semantic_text: restaurantForm.semantic_text.trim(),
-          image_url: restaurantForm.image_url.trim(),
-          type: splitListInput(restaurantForm.type),
-          phone_num: restaurantForm.phone_num.trim(),
-          main_tag: splitListInput(restaurantForm.main_tag),
-          potential_tag: splitListInput(restaurantForm.potential_tag),
-          menu: splitListInput(restaurantForm.menu),
-        }),
-      });
-
-      const data = await response.json();
-      if (!response.ok || data.status !== "success") {
-        throw new Error(data.detail || data.message || "Không thể thêm quán.");
-      }
-
-      setRestaurantForm(initialRestaurantForm);
-      setShowRestaurantForm(false);
-      triggerToast("success", `Đã thêm quán #${data.data?.id} và cập nhật vector DB.`);
-    } catch (error: any) {
-      console.error("Add restaurant error:", error);
-      triggerToast("error", error?.message || "Lỗi khi thêm quán.");
-    } finally {
-      setSubmittingRestaurant(false);
-    }
   };
 
   // Redirect nếu không phải admin
@@ -554,232 +380,6 @@ export default function AdminPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Add Restaurant */}
-        <div className="mb-8 rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-          <div className="flex flex-col gap-3 border-b border-slate-200 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-rose-600">Dữ liệu quán ăn</p>
-              <h2 className="mt-1 text-xl font-bold text-slate-900">Thêm quán mới</h2>
-              <p className="text-sm text-slate-600">
-                Ghi vào data.json và upsert vector cho semantic_text/menu ngay lập tức.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowRestaurantForm((prev) => !prev)}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-bold text-white hover:bg-slate-800 transition"
-            >
-              <PlusCircle className="h-4 w-4" />
-              {showRestaurantForm ? "Ẩn form" : "Thêm data quán"}
-            </button>
-          </div>
-
-          {showRestaurantForm && (
-            <form onSubmit={handleAddRestaurant} className="space-y-5 p-6">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Tên quán *</span>
-                  <input
-                    value={restaurantForm.name}
-                    onChange={(e) => updateRestaurantField("name", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="VD: Ăn Thôi"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Số điện thoại</span>
-                  <input
-                    value={restaurantForm.phone_num}
-                    onChange={(e) => updateRestaurantField("phone_num", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="+84 ..."
-                  />
-                </label>
-              </div>
-
-              <label className="block space-y-1.5">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Địa chỉ *</span>
-                <input
-                  value={restaurantForm.address}
-                  onChange={(e) => updateRestaurantField("address", e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                  placeholder="114 Bạch Đằng, Hải Châu, Đà Nẵng"
-                />
-              </label>
-
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Lat *</span>
-                  <input
-                    value={restaurantForm.lat}
-                    onChange={(e) => updateRestaurantField("lat", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="16.0682463"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Lng *</span>
-                  <input
-                    value={restaurantForm.lng}
-                    onChange={(e) => updateRestaurantField("lng", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="108.2248133"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Giá TB *</span>
-                  <input
-                    value={restaurantForm.avg_price}
-                    onChange={(e) => updateRestaurantField("avg_price", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="150000"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Shu</span>
-                  <input
-                    value={restaurantForm.shu}
-                    onChange={(e) => updateRestaurantField("shu", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="3"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Sao</span>
-                  <input
-                    value={restaurantForm.star}
-                    onChange={(e) => updateRestaurantField("star", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="4.8"
-                  />
-                </label>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Bữa phục vụ</span>
-                  <input
-                    value={restaurantForm.meals}
-                    onChange={(e) => updateRestaurantField("meals", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="sáng, trưa, tối"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Loại quán</span>
-                  <input
-                    value={restaurantForm.type}
-                    onChange={(e) => updateRestaurantField("type", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="Quán Việt, Quán nước"
-                  />
-                </label>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Main tag</span>
-                  <input
-                    value={restaurantForm.main_tag}
-                    onChange={(e) => updateRestaurantField("main_tag", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="Seafood, Shellfish"
-                  />
-                </label>
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Potential tag</span>
-                  <input
-                    value={restaurantForm.potential_tag}
-                    onChange={(e) => updateRestaurantField("potential_tag", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="Spicy, DeepFried_Oily"
-                  />
-                </label>
-              </div>
-
-              <label className="block space-y-1.5">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Semantic text *</span>
-                <textarea
-                  value={restaurantForm.semantic_text}
-                  onChange={(e) => updateRestaurantField("semantic_text", e.target.value)}
-                  className="min-h-24 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                  placeholder="Mô tả dùng cho semantic search: món nổi bật, không gian, phong cách, điểm mạnh..."
-                />
-              </label>
-
-              <label className="block space-y-1.5">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Menu</span>
-                <textarea
-                  value={restaurantForm.menu}
-                  onChange={(e) => updateRestaurantField("menu", e.target.value)}
-                  className="min-h-24 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                  placeholder={"Mỗi món một dòng hoặc cách nhau bằng dấu phẩy\ncơm chiên hải sản\nbánh xèo miền Trung"}
-                />
-              </label>
-
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto] md:items-end">
-                <label className="space-y-1.5">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Link ảnh *</span>
-                  <input
-                    value={restaurantForm.image_url}
-                    onChange={(e) => updateRestaurantField("image_url", e.target.value)}
-                    className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
-                    placeholder="https://res.cloudinary.com/..."
-                  />
-                </label>
-                <div>
-                  <input
-                    ref={imageInputRef}
-                    type="file"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={handleRestaurantImageUpload}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => imageInputRef.current?.click()}
-                    disabled={uploadingImage}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-100 disabled:opacity-50 md:w-auto"
-                  >
-                    {uploadingImage ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-                    Upload ảnh
-                  </button>
-                </div>
-              </div>
-
-              {restaurantForm.image_url && (
-                <div className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                  <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg bg-white">
-                    <img src={restaurantForm.image_url} alt="Preview quán" className="h-full w-full object-cover" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-bold text-slate-800">Ảnh sẽ lưu vào field image_url</p>
-                    <p className="truncate text-xs text-slate-500">{restaurantForm.image_url}</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:justify-end">
-                <button
-                  type="button"
-                  onClick={() => setRestaurantForm(initialRestaurantForm)}
-                  className="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-bold text-slate-600 hover:bg-slate-50"
-                >
-                  Xóa form
-                </button>
-                <button
-                  type="submit"
-                  disabled={submittingRestaurant || uploadingImage}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-rose-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-rose-700 disabled:opacity-50"
-                >
-                  {submittingRestaurant ? <Loader2 className="h-4 w-4 animate-spin" /> : <ImagePlus className="h-4 w-4" />}
-                  Thêm quán và cập nhật vector
-                </button>
-              </div>
-            </form>
-          )}
         </div>
 
         {/* Filter & List */}

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { CalendarCheck, Menu, X } from "lucide-react";
+import { CalendarCheck, Menu, MessageSquare, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
@@ -12,7 +12,6 @@ import HealthProfileModal, { HealthProfile } from "@/components/ui/HealthProfile
 import InitialLocationModal from "@/components/ui/InitialLocationModal";
 import ItineraryPanel from "./ItineraryPanel";
 import RestaurantCard from "@/components/ui/RestaurantCard";
-import { useRef } from "react";
 import { Restaurant, buildRestaurants } from "@/lib/utils";
 import { itineraryApi } from "@/lib/api";
 
@@ -62,6 +61,13 @@ export default function MainDashboard() {
   const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
   const [restaurantModalOpen, setRestaurantModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [chatBubblePosition, setChatBubblePosition] = useState({ x: 12, y: 132 });
+  const chatBubbleDragRef = useRef({
+    pointerId: -1,
+    offsetX: 0,
+    offsetY: 0,
+    moved: false
+  });
   const [dashboardState, setDashboardState] = useState<DashboardState>({
     location: "",
     placeId: "",
@@ -429,6 +435,11 @@ export default function MainDashboard() {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
+  useEffect(() => {
+    if (!isMobile) return;
+    setChatBubblePosition((position) => snapChatBubbleToEdge(position.x, position.y));
+  }, [isMobile]);
+
   const budgetDisplay = useMemo(() => {
     const amount = Number(dashboardState.budget);
     if (!amount || Number.isNaN(amount)) {
@@ -437,7 +448,6 @@ export default function MainDashboard() {
     return `${amount.toLocaleString("vi-VN")} VNĐ`;
   }, [dashboardState.budget]);
 
-  const mealTimes = ["07:30", "12:15", "19:30", "21:00"];
   const mealTypes = ["Cafe", "Bistro", "Fine Dining", "Street Food"];
 
   const getTravelTime = () => `${Math.floor(10 + Math.random() * 11)}p`;
@@ -472,14 +482,86 @@ export default function MainDashboard() {
     [dashboardState.selectedRestaurants, selectedRestaurantId]
   );
 
-  const itineraryCount = dashboardState.selectedRestaurants.length;
-
   const handleSidebarToggle = () => {
     if (isMobile) {
       setMobileSidebarOpen((prev) => !prev);
       return;
     }
     setSidebarOpen((prev) => !prev);
+  };
+
+  const clampChatBubblePosition = (x: number, y: number) => {
+    if (typeof window === "undefined") return { x, y };
+    const bubbleSize = 56;
+    const edgeInset = 12;
+    const topInset = 84;
+    const bottomInset = 88;
+    return {
+      x: Math.min(Math.max(x, edgeInset), window.innerWidth - bubbleSize - edgeInset),
+      y: Math.min(Math.max(y, topInset), window.innerHeight - bubbleSize - bottomInset)
+    };
+  };
+
+  const snapChatBubbleToEdge = (x: number, y: number) => {
+    if (typeof window === "undefined") return { x, y };
+    const bubbleSize = 56;
+    const edgeInset = 12;
+    const clamped = clampChatBubblePosition(x, y);
+    const centerX = clamped.x + bubbleSize / 2;
+    return {
+      x: centerX < window.innerWidth / 2 ? edgeInset : window.innerWidth - bubbleSize - edgeInset,
+      y: clamped.y
+    };
+  };
+
+  const handleChatBubblePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    chatBubbleDragRef.current = {
+      pointerId: event.pointerId,
+      offsetX: event.clientX - rect.left,
+      offsetY: event.clientY - rect.top,
+      moved: false
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handleChatBubblePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = chatBubbleDragRef.current;
+    if (dragState.pointerId !== event.pointerId) return;
+
+    const nextPosition = clampChatBubblePosition(
+      event.clientX - dragState.offsetX,
+      event.clientY - dragState.offsetY
+    );
+
+    if (
+      Math.abs(nextPosition.x - chatBubblePosition.x) > 2 ||
+      Math.abs(nextPosition.y - chatBubblePosition.y) > 2
+    ) {
+      dragState.moved = true;
+    }
+
+    setChatBubblePosition(nextPosition);
+  };
+
+  const handleChatBubblePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = chatBubbleDragRef.current;
+    if (dragState.pointerId !== event.pointerId) return;
+
+    setChatBubblePosition((position) => snapChatBubbleToEdge(position.x, position.y));
+    event.currentTarget.releasePointerCapture(event.pointerId);
+    chatBubbleDragRef.current = {
+      ...dragState,
+      pointerId: -1
+    };
+  };
+
+  const handleChatBubbleClick = () => {
+    if (chatBubbleDragRef.current.moved) {
+      chatBubbleDragRef.current.moved = false;
+      return;
+    }
+    setMobileSidebarOpen(true);
   };
 
   const handleRestaurantSelect = (restaurantId: string) => {
@@ -595,7 +677,7 @@ export default function MainDashboard() {
         <button
           type="button"
           onClick={handleSidebarToggle}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-100"
+          className="hidden h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-100 md:flex"
         >
           {(isMobile ? mobileSidebarOpen : sidebarOpen) ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -707,6 +789,25 @@ export default function MainDashboard() {
           />
         </aside>
       </div>
+
+      {isMobile && !mobileSidebarOpen && (
+        <button
+          type="button"
+          onPointerDown={handleChatBubblePointerDown}
+          onPointerMove={handleChatBubblePointerMove}
+          onPointerUp={handleChatBubblePointerUp}
+          onPointerCancel={handleChatBubblePointerUp}
+          onClick={handleChatBubbleClick}
+          className="fixed z-30 flex h-14 w-14 touch-none items-center justify-center rounded-full bg-gradient-to-br from-brand-coral to-brand-flame text-white shadow-glow transition-[box-shadow,transform] duration-200 hover:scale-105 active:scale-95 md:hidden"
+          style={{
+            left: chatBubblePosition.x,
+            top: chatBubblePosition.y
+          }}
+          aria-label="Mở lịch sử chat"
+        >
+          <MessageSquare size={22} />
+        </button>
+      )}
 
       {!mobileItineraryOpen && (
         <button
