@@ -3,7 +3,7 @@
 import { forwardRef, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import html2canvas from "html2canvas";
-import { Download, X } from "lucide-react";
+import { Check, Copy, Download, Link as LinkIcon, X } from "lucide-react";
 import { cn, formatMealDisplay } from "@/lib/utils";
 import { QRCodeSVG } from "qrcode.react";
 import { useEffect } from "react";
@@ -91,8 +91,9 @@ const BoardingPassTicket = forwardRef<
     nowLabel: string;
     ticketNumber: string;
     shareUrl: string;
+    onShareUrlClick?: () => void;
   }
->(function BoardingPassTicket({ itinerary, totalBudget, nowLabel, ticketNumber, shareUrl }, ref) {
+>(function BoardingPassTicket({ itinerary, totalBudget, nowLabel, ticketNumber, shareUrl, onShareUrlClick }, ref) {
   const stopTier = getStopTier(itinerary.length);
   const isMedium = stopTier === "medium";
   const isCompact = stopTier === "compact";
@@ -246,7 +247,16 @@ const BoardingPassTicket = forwardRef<
               ))}
             </div>
           </div>
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-soft">
+          <button
+            type="button"
+            onClick={shareUrl ? onShareUrlClick : undefined}
+            disabled={!shareUrl}
+            className={cn(
+              "flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white shadow-soft transition",
+              shareUrl ? "cursor-pointer hover:scale-105 hover:shadow-md active:scale-95" : "cursor-default"
+            )}
+            aria-label={shareUrl ? "Hiện link chia sẻ" : "Đang tạo link chia sẻ"}
+          >
             {shareUrl ? (
               <QRCodeSVG 
                 value={shareUrl} 
@@ -259,7 +269,7 @@ const BoardingPassTicket = forwardRef<
             ) : (
               <TicketSvgIcon name="qr" size={40} />
             )}
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -276,6 +286,8 @@ export default function BoardingPass({
   const ticketRef = useRef<HTMLDivElement | null>(null);
   const [isExporting, setIsExporting] = useState(false);
   const [shareUrl, setShareUrl] = useState<string>("");
+  const [showShareLink, setShowShareLink] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied">("idle");
 
   useEffect(() => {
     const fetchShareUrl = async () => {
@@ -294,6 +306,16 @@ export default function BoardingPass({
     };
     fetchShareUrl();
   }, [itinerary, user?.uid]);
+
+  useEffect(() => {
+    setCopyStatus("idle");
+  }, [shareUrl]);
+
+  useEffect(() => {
+    if (!copyStatus || copyStatus === "idle") return;
+    const timeout = window.setTimeout(() => setCopyStatus("idle"), 1800);
+    return () => window.clearTimeout(timeout);
+  }, [copyStatus]);
 
   const ticketNumber = useMemo(
     () => Math.random().toString(36).substr(2, 6).toUpperCase(),
@@ -325,6 +347,26 @@ export default function BoardingPass({
       await document.fonts.ready;
     }
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  };
+
+  const handleCopyShareUrl = async () => {
+    if (!shareUrl) return;
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopyStatus("copied");
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = shareUrl;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+      setCopyStatus("copied");
+    }
   };
 
   const handleExport = async () => {
@@ -421,6 +463,31 @@ export default function BoardingPass({
         </div>
       </div>
 
+      {showShareLink && shareUrl && (
+        <div className="rounded-2xl border border-[#0B3C5D]/10 bg-[#FDFBF7] p-3 shadow-sm">
+          <div className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#0B3C5D]/60">
+            <LinkIcon size={13} />
+            Link chia sẻ
+          </div>
+          <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-2">
+            <input
+              readOnly
+              value={shareUrl}
+              onFocus={(event) => event.currentTarget.select()}
+              className="min-w-0 flex-1 bg-transparent text-xs font-semibold text-slate-600 outline-none"
+            />
+            <button
+              type="button"
+              onClick={handleCopyShareUrl}
+              className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg bg-[#0B3C5D] px-2.5 text-[10px] font-bold text-[#C5A059] transition hover:opacity-90"
+            >
+              {copyStatus === "copied" ? <Check size={13} /> : <Copy size={13} />}
+              {copyStatus === "copied" ? "Đã copy" : "Copy"}
+            </button>
+          </div>
+        </div>
+      )}
+
       <div
         className={cn(
           "min-h-0 min-w-0 w-full max-w-full overflow-x-hidden overflow-y-auto",
@@ -434,6 +501,7 @@ export default function BoardingPass({
           nowLabel={nowLabel}
           ticketNumber={ticketNumber}
           shareUrl={shareUrl}
+          onShareUrlClick={() => setShowShareLink((prev) => !prev)}
         />
       </div>
     </div>
