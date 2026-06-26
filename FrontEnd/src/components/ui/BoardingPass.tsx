@@ -313,8 +313,12 @@ export default function BoardingPass({
 
   useEffect(() => {
     if (!copyStatus || copyStatus === "idle") return;
-    const timeout = window.setTimeout(() => setCopyStatus("idle"), 1800);
-    return () => window.clearTimeout(timeout);
+    const resetTimeout = window.setTimeout(() => setCopyStatus("idle"), 1800);
+    const closeTimeout = window.setTimeout(() => setShowShareLink(false), 650);
+    return () => {
+      window.clearTimeout(resetTimeout);
+      window.clearTimeout(closeTimeout);
+    };
   }, [copyStatus]);
 
   const ticketNumber = useMemo(
@@ -465,9 +469,19 @@ export default function BoardingPass({
 
       {showShareLink && shareUrl && (
         <div className="rounded-2xl border border-[#0B3C5D]/10 bg-[#FDFBF7] p-3 shadow-sm">
-          <div className="mb-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#0B3C5D]/60">
-            <LinkIcon size={13} />
-            Link chia sẻ
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#0B3C5D]/60">
+              <LinkIcon size={13} />
+              Link chia sẻ
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowShareLink(false)}
+              className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-slate-400 transition hover:bg-white hover:text-slate-700"
+              aria-label="Đóng link chia sẻ"
+            >
+              <X size={14} />
+            </button>
           </div>
           <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-2">
             <input
