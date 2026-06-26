@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
-import { CalendarCheck, Menu, MessageSquare, X } from "lucide-react";
+import { CalendarCheck, Menu, X } from "lucide-react";
 import SidebarNav from "./SidebarNav";
 import ChatInterface from "@/components/sections/ChatInterface";
 import ProfileSettings from "@/components/sections/ProfileSettings";
@@ -61,8 +61,14 @@ export default function MainDashboard() {
   const [mobileItineraryOpen, setMobileItineraryOpen] = useState(false);
   const [restaurantModalOpen, setRestaurantModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [chatBubblePosition, setChatBubblePosition] = useState({ x: 12, y: 132 });
-  const chatBubbleDragRef = useRef({
+  const [itineraryBubblePosition, setItineraryBubblePosition] = useState(() => {
+    if (typeof window === "undefined") return { x: 0, y: 0 };
+    return {
+      x: window.innerWidth - 68,
+      y: window.innerHeight - 144
+    };
+  });
+  const itineraryBubbleDragRef = useRef({
     pointerId: -1,
     offsetX: 0,
     offsetY: 0,
@@ -429,15 +435,30 @@ export default function MainDashboard() {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
     const handleChange = (event: MediaQueryListEvent) => {
       setIsMobile(event.matches);
+      if (event.matches) {
+        setItineraryBubblePosition((position) =>
+          snapItineraryBubbleToEdge(position.x || window.innerWidth - 68, position.y || window.innerHeight - 144)
+        );
+      }
     };
     setIsMobile(mediaQuery.matches);
+    if (mediaQuery.matches) {
+      setItineraryBubblePosition((position) =>
+        snapItineraryBubbleToEdge(position.x || window.innerWidth - 68, position.y || window.innerHeight - 144)
+      );
+    }
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   useEffect(() => {
     if (!isMobile) return;
-    setChatBubblePosition((position) => snapChatBubbleToEdge(position.x, position.y));
+    const handleResize = () => {
+      setItineraryBubblePosition((position) => snapItineraryBubbleToEdge(position.x, position.y));
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMobile]);
 
   const budgetDisplay = useMemo(() => {
@@ -490,7 +511,7 @@ export default function MainDashboard() {
     setSidebarOpen((prev) => !prev);
   };
 
-  const clampChatBubblePosition = (x: number, y: number) => {
+  const clampItineraryBubblePosition = (x: number, y: number) => {
     if (typeof window === "undefined") return { x, y };
     const bubbleSize = 56;
     const edgeInset = 12;
@@ -502,11 +523,11 @@ export default function MainDashboard() {
     };
   };
 
-  const snapChatBubbleToEdge = (x: number, y: number) => {
+  const snapItineraryBubbleToEdge = (x: number, y: number) => {
     if (typeof window === "undefined") return { x, y };
     const bubbleSize = 56;
     const edgeInset = 12;
-    const clamped = clampChatBubblePosition(x, y);
+    const clamped = clampItineraryBubblePosition(x, y);
     const centerX = clamped.x + bubbleSize / 2;
     return {
       x: centerX < window.innerWidth / 2 ? edgeInset : window.innerWidth - bubbleSize - edgeInset,
@@ -514,9 +535,9 @@ export default function MainDashboard() {
     };
   };
 
-  const handleChatBubblePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+  const handleItineraryBubblePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    chatBubbleDragRef.current = {
+    itineraryBubbleDragRef.current = {
       pointerId: event.pointerId,
       offsetX: event.clientX - rect.left,
       offsetY: event.clientY - rect.top,
@@ -525,43 +546,44 @@ export default function MainDashboard() {
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
-  const handleChatBubblePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
-    const dragState = chatBubbleDragRef.current;
+  const handleItineraryBubblePointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = itineraryBubbleDragRef.current;
     if (dragState.pointerId !== event.pointerId) return;
 
-    const nextPosition = clampChatBubblePosition(
+    const nextPosition = clampItineraryBubblePosition(
       event.clientX - dragState.offsetX,
       event.clientY - dragState.offsetY
     );
 
     if (
-      Math.abs(nextPosition.x - chatBubblePosition.x) > 2 ||
-      Math.abs(nextPosition.y - chatBubblePosition.y) > 2
+      Math.abs(nextPosition.x - itineraryBubblePosition.x) > 2 ||
+      Math.abs(nextPosition.y - itineraryBubblePosition.y) > 2
     ) {
       dragState.moved = true;
     }
 
-    setChatBubblePosition(nextPosition);
+    setItineraryBubblePosition(nextPosition);
   };
 
-  const handleChatBubblePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
-    const dragState = chatBubbleDragRef.current;
+  const handleItineraryBubblePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const dragState = itineraryBubbleDragRef.current;
     if (dragState.pointerId !== event.pointerId) return;
 
-    setChatBubblePosition((position) => snapChatBubbleToEdge(position.x, position.y));
+    setItineraryBubblePosition((position) => snapItineraryBubbleToEdge(position.x, position.y));
     event.currentTarget.releasePointerCapture(event.pointerId);
-    chatBubbleDragRef.current = {
+    itineraryBubbleDragRef.current = {
       ...dragState,
       pointerId: -1
     };
   };
 
-  const handleChatBubbleClick = () => {
-    if (chatBubbleDragRef.current.moved) {
-      chatBubbleDragRef.current.moved = false;
+  const handleItineraryBubbleClick = () => {
+    if (itineraryBubbleDragRef.current.moved) {
+      itineraryBubbleDragRef.current.moved = false;
       return;
     }
-    setMobileSidebarOpen(true);
+    setItineraryTab("itinerary");
+    setMobileItineraryOpen(true);
   };
 
   const handleRestaurantSelect = (restaurantId: string) => {
@@ -677,7 +699,7 @@ export default function MainDashboard() {
         <button
           type="button"
           onClick={handleSidebarToggle}
-          className="hidden h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-100 md:flex"
+          className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-100"
         >
           {(isMobile ? mobileSidebarOpen : sidebarOpen) ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -790,33 +812,20 @@ export default function MainDashboard() {
         </aside>
       </div>
 
-      {isMobile && !mobileSidebarOpen && (
-        <button
-          type="button"
-          onPointerDown={handleChatBubblePointerDown}
-          onPointerMove={handleChatBubblePointerMove}
-          onPointerUp={handleChatBubblePointerUp}
-          onPointerCancel={handleChatBubblePointerUp}
-          onClick={handleChatBubbleClick}
-          className="fixed z-30 flex h-14 w-14 touch-none items-center justify-center rounded-full bg-gradient-to-br from-brand-coral to-brand-flame text-white shadow-glow transition-[box-shadow,transform] duration-200 hover:scale-105 active:scale-95 md:hidden"
-          style={{
-            left: chatBubblePosition.x,
-            top: chatBubblePosition.y
-          }}
-          aria-label="Mở lịch sử chat"
-        >
-          <MessageSquare size={22} />
-        </button>
-      )}
-
       {!mobileItineraryOpen && (
         <button
           type="button"
-          onClick={() => {
-            setItineraryTab("itinerary");
-            setMobileItineraryOpen(true);
+          onPointerDown={handleItineraryBubblePointerDown}
+          onPointerMove={handleItineraryBubblePointerMove}
+          onPointerUp={handleItineraryBubblePointerUp}
+          onPointerCancel={handleItineraryBubblePointerUp}
+          onClick={handleItineraryBubbleClick}
+          className="fixed z-30 inline-flex h-14 w-14 touch-none items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition-[box-shadow,transform] duration-200 hover:scale-105 active:scale-95 md:hidden"
+          style={{
+            left: itineraryBubblePosition.x,
+            top: itineraryBubblePosition.y
           }}
-          className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom))] right-4 z-30 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-teal to-brand-lagoon text-white shadow-glow transition hover:scale-105 md:hidden"
+          aria-label="Mở lịch trình"
         >
           <span className="relative">
             <CalendarCheck size={20} />
