@@ -723,12 +723,12 @@ export default function MainDashboard() {
         <aside
           className={
             isMobile
-              ? `fixed inset-0 z-40 w-full overflow-y-auto bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur transition-transform duration-300 ease-out ${
+              ? `fixed inset-0 z-40 flex w-full flex-col overflow-hidden bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur transition-transform duration-300 ease-out ${
                   mobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
                 }`
               : `${
                   sidebarOpen ? "w-80 flex-shrink-0" : "w-0"
-                } overflow-y-auto border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
+                } flex flex-col overflow-hidden border-r border-slate-200/60 bg-white/70 backdrop-blur transition-all duration-300 ease-out`
           }
         >
           {isMobile && (
@@ -743,22 +743,24 @@ export default function MainDashboard() {
               </button>
             </div>
           )}
-          <SidebarNav
-            state={dashboardState}
-            onStateChange={handleStateChange}
-            availableFilters={filters}
-            onOpenHealthProfile={handleHealthOpen}
-            hasHealthProfile={hasHealthProfile}
-            healthProfileItemCount={healthProfileItemCount}
-            onOpenProfileSettings={handleProfileOpen}
-            onOpenLocationPrompt={() => setLocationPromptOpen(true)}
-            onTabChange={handleItineraryTabChange}
-            chatHistory={chatHistory}
-            currentChatId={currentChatId}
-            onNewChat={startLocalNewChat}
-            onChatSelect={handleChatSelect}
-            onDeleteChat={handleDeleteChat}
-          />
+          <div className="min-h-0 flex-1">
+            <SidebarNav
+              state={dashboardState}
+              onStateChange={handleStateChange}
+              availableFilters={filters}
+              onOpenHealthProfile={handleHealthOpen}
+              hasHealthProfile={hasHealthProfile}
+              healthProfileItemCount={healthProfileItemCount}
+              onOpenProfileSettings={handleProfileOpen}
+              onOpenLocationPrompt={() => setLocationPromptOpen(true)}
+              onTabChange={handleItineraryTabChange}
+              chatHistory={chatHistory}
+              currentChatId={currentChatId}
+              onNewChat={startLocalNewChat}
+              onChatSelect={handleChatSelect}
+              onDeleteChat={handleDeleteChat}
+            />
+          </div>
         </aside>
 
         {/* Main Chat Area */}

@@ -76,7 +76,7 @@ export default function SidebarNav({
 
   return (
     <>
-      <div className="flex h-full flex-1 flex-col p-5">
+      <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden p-5">
 
         {/* ── 1. Action Buttons ─────────────────────────────── */}
         <button
@@ -228,13 +228,18 @@ export default function SidebarNav({
 
         {/* ── 4. Chat History ───────────────────────────────── */}
         {user && (
-          <div className="mt-4 flex min-h-[18rem] flex-[1.35] flex-col">
-            <p className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-slate-400">
-              Lịch sử chat
-            </p>
-            <div className="flex-1 space-y-1 overflow-y-auto">
+          <div className="mt-4 flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white/55 shadow-sm">
+            <div className="flex shrink-0 items-center justify-between border-b border-slate-200/70 px-3.5 py-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                Lịch sử chat
+              </p>
+              <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500">
+                {chatHistory.length}
+              </span>
+            </div>
+            <div className="app-sidebar-scrollbar min-h-0 flex-1 space-y-1 overflow-y-scroll p-2">
               {chatHistory.length === 0 ? (
-                <p className="py-6 text-center text-xs text-slate-300">Chưa có cuộc trò chuyện nào</p>
+                <p className="py-6 text-center text-xs text-slate-400">Chưa có cuộc trò chuyện nào</p>
               ) : (
                 chatHistory.map((chat) => (
                   <button
@@ -243,8 +248,8 @@ export default function SidebarNav({
                     onClick={() => onChatSelect?.(chat.id)}
                     className={`group flex w-full items-start gap-2.5 rounded-xl border px-3 py-2.5 text-left transition ${
                       currentChatId === chat.id
-                        ? "border-brand-coral/20 bg-brand-coral/5"
-                        : "border-transparent hover:border-slate-200/60 hover:bg-white/70"
+                        ? "border-brand-coral/25 bg-brand-coral/10 shadow-sm"
+                        : "border-transparent bg-white/40 hover:border-slate-200/80 hover:bg-white/90"
                     }`}
                   >
                     <MessageSquare
